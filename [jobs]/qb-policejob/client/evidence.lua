@@ -21,7 +21,8 @@ local StatusList = {
     ['confused'] = Lang:t('evidence.confused'),
     ['alcohol'] = Lang:t('evidence.alcohol'),
     ["heavyalcohol"] = Lang:t('evidence.heavy_alcohol'),
-    ["agitated"] = Lang:t('evidence.agitated')
+    ["agitated"] = Lang:t('evidence.agitated'),
+    ['tobaccosmell'] = Lang:t('evidence.tobacco_smell'),
 }
 
 local WhitelistedWeapons = {

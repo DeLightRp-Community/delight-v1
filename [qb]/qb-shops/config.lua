@@ -105,6 +105,16 @@ Config.Products = {
             type = "item",
             slot = 12,
         },
+        [13] = {
+            name = "redwoodcigs",
+            price = 200,
+            amount = 5000,
+            info = {
+                uses = 20
+            },
+            type = "item",
+            slot = 13,
+        },
     },
     ["liquor"] = {
         [1] = {
@@ -130,6 +140,16 @@ Config.Products = {
             info = {},
             type = "item",
             slot = 3,
+        },
+        [4] = {
+            name = "redwoodcigs",
+            price = 200,
+            amount = 5000,
+            info = {
+                uses = 20
+            },
+            type = "item",
+            slot = 4,
         },
     },
     ["hardware"] = {
@@ -296,6 +316,16 @@ Config.Products = {
             info = {},
             type = "item",
             slot = 5,
+        },
+        [6] = {
+            name = "redwoodcigs",
+            price = 200,
+            amount = 5000,
+            info = {
+                uses = 20
+            },
+            type = "item",
+            slot = 6,
         },
     },
     ["gearshop"] = {

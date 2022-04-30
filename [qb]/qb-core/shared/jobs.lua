@@ -279,4 +279,15 @@ QBShared.Jobs = {
             },
         },
 	},
+    ['lumberjack'] = {
+		label = 'LumberJack',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Logger',
+                payment = 50
+            },
+        },
+    },
 }
