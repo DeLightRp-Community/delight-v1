@@ -11,7 +11,6 @@ end)
 RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
     PlayerData.job = JobInfo
 end)
-
 -- Functions
 
 local function OpenSuppliesMenu()
