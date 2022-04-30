@@ -64,10 +64,10 @@ Config.CokeLab = {
 }
 
 Config.WeedLab = {
-	--[[["enter"] = {
+	["enter"] = {
         coords = vector4(813.21, -2398.69, 23.66, 171.51), --vector3(813.21, -2398.69, 23.66)
     },
     ["exit"] = {
         coords = vector4(1088.68, -3187.68, -38.99, 176.04), -- GTA DLC Biker Cocaine Lab -- vector3(1088.68, -3187.68, -38.99)
-    },]]--
+    },
 }

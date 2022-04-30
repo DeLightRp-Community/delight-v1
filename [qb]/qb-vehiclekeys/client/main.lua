@@ -78,13 +78,13 @@ function LockpickDoor(isAdvanced)
                 loadAnimDict("veh@break_in@0h@p_m_one@")
                 if usingAdvanced then
                     TaskPlayAnim(ped, "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
-                    local seconds = math.random(60,120)
+                    local seconds = math.random(10,15)
                     local circles = 1
                     local success = exports['qb-lock']:StartLockPickCircle(circles, seconds, success)
                     lockpickFinish(success)
                 else 
                     TaskPlayAnim(ped, "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
-                    local seconds = math.random(120,240)
+                    local seconds = math.random(5,10)
                     local circles = 1
                     local success = exports['qb-lock']:StartLockPickCircle(circles, seconds, success)
                     lockpickFinish(success)
