@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>jl carboost</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/bennys.css" />
+    <link rel="stylesheet" href="./styles/boosting.css" />
+    <link rel="stylesheet" href="./styles/setting.css" />
+    <link rel="stylesheet" href="./styles/confirmbox.css" />
+
+    <!-- FROALA -->
+  </head>
+  <body oncopy="false" oncut="false" onpaste="false">
+    <div class="laptop">
+      <div class="desktop">
+        <div class="notification">
+          <!-- notification goes here -->
+        </div>
+        <div class="apps">
+          <div id="settings">
+            <div class="container">
+              <div class="setting-title">
+                <p style="font-size: large">Settings</p>
+              </div>
+              <div class="setting-body">
+                <div class="bg-input">
+                  <p>Wallpaper</p>
+                  <input id="background" type="url" inputmode="url" />
+                </div>
+                <div class="audio-settings">
+                  <p>Audio</p>
+                  <div class="audio-slider">
+                    <input
+                      id="volume-control"
+                      type="range"
+                      value="50"
+                      min="0"
+                      max="100"
+                    />
+                  </div>
+                </div>
+                <div class="toggle-text">
+                  <p>Desktop Text Color</p>
+                  <div class="toggle-div">
+                    <label for="toggle-text-color">
+                      <input
+                        type="checkbox"
+                        name="toggle-text-color"
+                        id="toggle-text-color"
+                      />
+                    </label>
+                    <p style="font-size: medium">Black/White</p>
+                  </div>
+                </div>
+              </div>
+              <div class="setting-confirm">
+                <button class="save-config">Save Config</button>
+              </div>
+            </div>
+          </div>
+          <div id="bennys-app">
+            <header>
+              <nav>
+                <h1>Bennys Motorshop</h1>
+                <ul>
+                  <i
+                    id="close-bennys"
+                    class="fa-solid fa-circle-xmark"
+                    style="font-size: 20px; color: rgb(245, 105, 105)"
+                  ></i>
+                </ul>
+              </nav>
+            </header>
+            <div class="container">
+              <div class="navigation">
+                <div class="category">
+                  <!-- WIP -->
+                  <!-- <button>Engine</button>
+                  <button>Cosmetic</button>
+                  <button>Etc</button>
+                  <button>Some shit</button> -->
+                  <!-- <button></button> -->
+                </div>
+                <div class="topnav">
+                  <button class="cart-button">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                  </button>
+                  <button class="home-button">
+                    <i class="fa-solid fa-house-chimney"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="cart">
+                <div class="cart-list">
+                  <!-- list of the cart -->
+                </div>
+                <div class="total">
+                  <div class="total-title">Total</div>
+                  <div class="total-price">$0</div>
+                </div>
+                <button class="buy-button">Checkout</button>
+              </div>
+              <div class="grid"></div>
+            </div>
+          </div>
+          <div id="boosting-app">
+            <header>
+              <nav>
+                <h1>Boosting</h1>
+                <ul>
+                  <i
+                    id="close-boosting"
+                    class="fa-solid fa-circle-xmark"
+                    style="font-size: 20px; color: rgb(245, 105, 105)"
+                  ></i>
+                </ul>
+              </nav>
+            </header>
+            <div class="container">
+              <div class="navigation">
+                <button class="my-contract">My Contract</button>
+                <button class="buy-contract">Buy Contract</button>
+                <button class="join-queue">Join Queue</button>
+                <div class="ref">
+                  <button
+                    class="refresh-contract"
+                    onclick="refreshContract(this)"
+                  >
+                    Refresh
+                  </button>
+                </div>
+              </div>
+              <div class="boosting-list" id="boosting-contract">
+                <div class="boost-proggress">
+                  <p id="currentclass">D</p>
+                  <div class="progress-bar">
+                    <div id="boosting-progress" class="progress"></div>
+                  </div>
+                  <p id="nextclass">C</p>
+                </div>
+                <h1 class="title" id="no-contract">
+                  You don't have any contract
+                </h1>
+                <!-- Boosting goes here -->
+              </div>
+              <div class="boosting-list hidden" id="boosting-shop">
+                <h1 class="title" id="no-contract-sale">No contract onsale</h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="desktopicons">
+          <div>
+            <img
+              id="bennys"
+              class="icon"
+              src="./assets/bennys.png"
+              alt="bennys"
+            />
+            <p>bennys</p>
+          </div>
+          <div>
+            <img
+              id="boosting"
+              class="icon"
+              src="./assets/boost.png"
+              alt="boosting"
+            />
+            <p>boosting</p>
+          </div>
+        </div>
+      </div>
+      <div class="winmanager">
+        <div class="left-icons">
+          <div class="icon start">
+            <img class="start" src="./assets/logo.png" alt="" />
+          </div>
+        </div>
+        <div class="right-icons">
+          <i id="setting" class="fas fa-duotone fa-gear"></i>
+          <i class="fas fa-wifi"></i>
+          <i id="volume" class="fas fa-volume-up"></i>
+          <i class="fas fa-battery-half"></i>
+          <div class="date-time">
+            <span id="time"></span>
+            <span id="date"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/app.js"></script>
+    <script src="./js/bennys.js"></script>
+    <script src="./js/boost.js"></script>
+  </body>
+</html>

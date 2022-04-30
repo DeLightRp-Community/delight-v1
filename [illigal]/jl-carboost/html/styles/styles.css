@@ -1,0 +1,366 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -ms-user-select: none;
+  user-select: none;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  color: white;
+}
+
+div.laptop {
+  width: 95%;
+  height: 95%;
+  bottom: -45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  visibility: hidden;
+  background-image: url(../assets/BG.jpg);
+  background-color: rgb(41, 41, 41);
+  border: 10px solid rgb(11, 13, 27);
+  border-bottom: 20px solid rgb(11, 13, 27);
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  opacity: 1;
+  transition: 1s;
+  z-index: -1;
+  animation: laptop_down forwards cubic-bezier(0.38, 0.09, 0.12, 0.93) 1s;
+}
+
+div.laptop.active {
+  opacity: 1;
+  animation: laptop_up forwards cubic-bezier(0.4, 0, 0.01, 1.17) 1s;
+  visibility: visible;
+  /* bottom: -45%; */
+}
+
+/* @keyframes laptop_up {
+  from {
+    bottom: -150%;
+  }
+  to {
+    bottom: -45%;
+  }
+} */
+
+@keyframes laptop_up {
+  from {
+    bottom: -150%;
+  }
+  to {
+    bottom: -45%;
+  }
+}
+
+@keyframes laptop_notification {
+  from {
+    bottom: -150%;
+  }
+  to {
+  }
+}
+
+@keyframes laptop_down {
+  from {
+    bottom: -45%;
+  }
+  to {
+    bottom: -150%;
+  }
+}
+
+div.laptop .notification {
+  display: flex;
+  position: absolute;
+  width: auto;
+  height: auto;
+  right: 0;
+  top: 5px;
+  z-index: 100;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.notification .alert {
+  opacity: 0;
+  background: linear-gradient(
+    to right,
+    rgba(21, 24, 43, 0.8),
+    rgba(30, 38, 77, 0.8),
+    rgba(10, 12, 41, 0.8)
+  );
+  backdrop-filter: blur(10px);
+  padding: 30px 20px;
+  margin: 5px;
+  min-width: 320px;
+  border-radius: 5px;
+  /* border-left: 7px solid#1b1a46; */
+  /* transition: 1s; */
+}
+
+.notification .alert.success {
+  border-left: 7px solid #32eb42;
+}
+
+.notification .alert.info {
+  border-left: 7px solid white;
+}
+
+.notification .alert.warning {
+  border-left: 7px solid #ffc353;
+}
+
+.notification .alert.error {
+  border-left: 7px solid #ff5252;
+}
+
+.notification .alert.active {
+  visibility: visible;
+  opacity: 1;
+  animation: sliding 1s ease forwards;
+}
+
+.notification .alert.hide {
+  animation: sliding_back 1s ease forwards;
+}
+
+@keyframes sliding {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
+  }
+}
+
+@keyframes sliding_back {
+  0% {
+    transform: translateX(0%);
+    opacity: 100%;
+  }
+  40% {
+    opacity: 50%;
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+.notification .alert .fa-bell {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.notification .alert .fa-circle-check {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: rgb(84, 216, 84);
+}
+
+.notification .alert .fa-times-circle {
+  position: absolute;
+  color: #ff5252;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.notification .alert .fa-exclamation-triangle {
+  position: absolute;
+  color: rgb(255, 199, 16);
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+}
+
+.notification .alert .message {
+  padding: 0 35px;
+  font-size: 15px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+  text-align: justify;
+  justify-content: center;
+}
+
+.notification .alert .close-btn {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 30px 15px;
+  cursor: pointer;
+}
+
+div .winmanager {
+  width: 100%;
+  height: 45px;
+  position: absolute;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(21, 24, 43, 0.8),
+    rgba(30, 38, 77, 0.8),
+    rgba(10, 12, 41, 0.8)
+  );
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(80, 80, 80, 0.3);
+  display: flex;
+  bottom: 0;
+  align-items: center;
+  z-index: 98;
+}
+
+div.icon {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+}
+
+div.start {
+  border-radius: 3px;
+}
+
+img.start {
+  height: 40px;
+}
+
+img {
+  height: 30px;
+  -webkit-user-drag: none;
+}
+
+div.winmanager > .left-icons {
+  padding: 10px;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+div.winmanager > .right-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  padding: 15px;
+  right: 0;
+}
+
+div.winmanager > .right-icons > i {
+  padding: 10px;
+}
+
+div.winmanager > .right-icons > div {
+  margin: 0 15px;
+}
+
+i.show-desktop {
+  margin-right: 15px;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
+i.fas {
+  font-size: 15px;
+  padding: 0 5px;
+  color: rgb(248, 248, 248);
+}
+
+div.date-time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-size: 12px;
+  font-family: "Segoe UI", sans-serif;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+div.desktopicons {
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+}
+
+div.desktopicons > div {
+  padding: 10px 20px;
+  display: inline-block;
+  text-align: center;
+  /* make every item centered */
+  justify-content: center;
+  left: 0;
+  list-style: none;
+  transition: 1s;
+}
+
+div.desktopicons.toggletext p {
+  color: black;
+}
+
+div.desktopicons > div > img {
+  border-radius: 2px;
+  transition: 0.5s;
+}
+
+div.desktopicons > div > img:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
+p {
+  font-family: "Segoe UI", sans-serif;
+  text-transform: capitalize;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.desktopicons img {
+  height: 60px;
+  width: 60px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #23222f;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.25);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #3f3f3f;
+}
+
+.apps {
+  z-index: 5;
+}
+
+.apps img {
+  width: auto;
+  height: auto;
+}
