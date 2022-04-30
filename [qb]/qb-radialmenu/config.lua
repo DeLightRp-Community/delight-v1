@@ -692,7 +692,7 @@ Config.JobInteractions = {
                     shouldClose = false
                 }
             }
-        }
+        },
         {
             id = 'checkvin',
             title = 'Check VIN',

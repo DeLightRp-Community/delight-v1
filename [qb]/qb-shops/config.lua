@@ -276,14 +276,14 @@ Config.Products = {
             requiredJob = { "mechanic" }
         },
         [16] = {
-            name = "brake1",
-            price = 1000, --Item price
-            stock = 50 -- Item stock
+            name = "fake_plate",
+            price = 500,
+            amount = 50,
             info = {},
             type = "item",
             slot = 16,
             requiredJob = { "mechanic" }
-        },    
+        },      
     },
     ["weedshop"] = {
         [1] = {

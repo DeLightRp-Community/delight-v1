@@ -1,5 +1,5 @@
 function GetSociety(name)
-    local result = MySQL.Sync.fetchAll('SELECT * FROM society WHERE name= ?', {name}) --exports['ghmattimysql']:execute("SELECT * FROM `society` WHERE `name` ='"..name.."' ")
+    local result = MySQL.Sync.fetchAll('SELECT * FROM management_funds WHERE job_name= ?', {name}) --exports['ghmattimysql']:execute("SELECT * FROM `society` WHERE `name` ='"..name.."' ")
     local data = result[1]
 
     return data
@@ -22,7 +22,7 @@ AddEventHandler('qb-banking:society:server:WithdrawMoney', function(pSource, a, 
     local amount = tonumber(a)
     local withdraw = sMoney - amount
 
-    local setter = MySQL.Sync.fetchAll("UPDATE society SET money =  ? WHERE name = ?", {withdraw, n})
+    local setter = MySQL.Sync.fetchAll("UPDATE management_funds SET amount =  ? WHERE job_name = ?", {withdraw, n})
 end)
 
 RegisterServerEvent('qb-banking:society:server:DepositMoney')
@@ -42,5 +42,5 @@ AddEventHandler('qb-banking:society:server:DepositMoney', function(pSource, a, n
     local deposit = sMoney + amount
 
     
-    local setter = MySQL.Sync.fetchAll("UPDATE society SET money =  ? WHERE name = ?", {deposit, n})
+    local setter = MySQL.Sync.fetchAll("UPDATE management_funds SET amount =  ? WHERE job_name = ?", {deposit, n})
 end)

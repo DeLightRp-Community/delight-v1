@@ -44,7 +44,7 @@ AddEventHandler('qb-banking:server:Withdraw', function(account, amount, note, fS
             return
         end
 
-        local result = MySQL.Sync.fetchAll('SELECT * FROM society WHERE name = ?', {job.name})
+        local result = MySQL.Sync.fetchAll('SELECT * FROM management_funds WHERE job_name = ?', {job.name})
         local data = result[1]
 
         if data then
@@ -75,7 +75,7 @@ AddEventHandler('qb-banking:server:Withdraw', function(account, amount, note, fS
             return
         end
 
-        local result = MySQL.Sync.fetchAll('SELECT * FROM society WHERE name= ?', {gang.name})
+        local result = MySQL.Sync.fetchAll('SELECT * FROM management_funds WHERE job_name= ?', {gang.name})
         local data = result[1]
 
         if data then
