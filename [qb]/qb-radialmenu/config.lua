@@ -693,6 +693,14 @@ Config.JobInteractions = {
                 }
             }
         }
+        {
+            id = 'checkvin',
+            title = 'Check VIN',
+            icon = 'search',
+            type = 'client',
+            event = 'jl-carboost:client:checkvin',
+            shouldClose = true
+        }
     },
     ["hotdog"] = {
         {
@@ -704,6 +712,7 @@ Config.JobInteractions = {
             shouldClose = true
         }
     }
+    
 }
 
 Config.TrunkClasses = {

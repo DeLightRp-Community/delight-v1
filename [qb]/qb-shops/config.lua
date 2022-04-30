@@ -274,7 +274,16 @@ Config.Products = {
             type = "item",
             slot = 15,
             requiredJob = { "mechanic" }
-        },        
+        },
+        [16] = {
+            name = "brake1",
+            price = 1000, --Item price
+            stock = 50 -- Item stock
+            info = {},
+            type = "item",
+            slot = 16,
+            requiredJob = { "mechanic" }
+        },    
     },
     ["weedshop"] = {
         [1] = {

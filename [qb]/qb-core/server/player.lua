@@ -133,6 +133,14 @@ function QBCore.Player.CheckPlayerData(source, PlayerData)
     PlayerData.position = PlayerData.position or QBConfig.DefaultSpawn
     PlayerData = QBCore.Player.LoadInventory(PlayerData)
     QBCore.Player.CreatePlayer(PlayerData)
+
+    -- Car Boosting
+    PlayerData.metadata['carboostclass'] = PlayerData.metadata['carboostclass'] or 'D'
+    PlayerData.metadata['carboostrep'] = PlayerData.metadata['carboostrep'] or 0
+    PlayerData.metadata['laptopdata'] = PlayerData.metadata['laptopdata'] or {
+        wallpaper = 'default',
+        apps = {}
+    }
 end
 
 -- On player logout
