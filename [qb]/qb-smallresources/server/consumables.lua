@@ -203,3 +203,12 @@ end)
 --         TriggerClientEvent("consumables:client:UseRedSmoke", source)
 --     end
 -- end)
+
+-- TaserAmmo
+QBCore.Functions.CreateUseableItem("taserammo", function(source, item)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(source)
+    if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("FillTaser", source)
+    end
+end) 
