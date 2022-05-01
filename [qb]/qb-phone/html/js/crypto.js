@@ -15,7 +15,7 @@ function SetupCryptoData(Crypto) {
     CryptoData.Worth = Crypto.Worth;
     CryptoData.WalletId = Crypto.WalletId;
 
-    $(".crypto-action-page-wallet").html("Wallet: "+CryptoData.Portfolio+" Qbit('s)");
+    $(".crypto-action-page-wallet").html("Wallet: "+CryptoData.Portfolio+" bit('s)");
     $(".crypto-walletid").html(CryptoData.WalletId);
     $(".cryptotab-course-list").html("");
     if (CryptoData.History.length > 0) {
@@ -48,7 +48,7 @@ function UpdateCryptoData(Crypto) {
     CryptoData.Worth = Crypto.Worth;
     CryptoData.WalletId = Crypto.WalletId;
 
-    $(".crypto-action-page-wallet").html("Wallet: "+CryptoData.Portfolio+" Qbit('s)");
+    $(".crypto-action-page-wallet").html("Wallet: "+CryptoData.Portfolio+" bit('s)");
     $(".crypto-walletid").html(CryptoData.WalletId);
     $(".cryptotab-course-list").html("");
     if (CryptoData.History.length > 0) {
@@ -109,17 +109,47 @@ $(document).on('click', '.crypto-header-footer-item', function(e){
 
 $(document).on('click', '.cryptotab-general-action', function(e){
     e.preventDefault();
-
+    $(".crypto-buy-ammount-for-update").html("0 Dollars");
     var Tab = $(this).data('action');
 
-    $(".crypto-action-page").css({"display":"block"});
-    $(".crypto-action-page").animate({
-        left: 0,
-    }, 300);
-    $(".crypto-action-page-"+Tab).css({"display":"block"});
-    QB.Phone.Functions.HeaderTextColor("black", 300);
-    ActionTab = Tab;
+    // ClearInputNew()
+    // $('.phone-new-box-body').fadeOut(350);
+
+    if(Tab == "buy-crypto"){
+        ClearInputNew()
+        $('#crypto-buy-btn').fadeIn(350);
+    } else if(Tab == "sell-crypto"){
+        ClearInputNew()
+        $('#crypto-sell-btn').fadeIn(350);
+    } else if(Tab == "transfer-crypto"){
+        ClearInputNew()
+        $('#crypto-transfer-btn').fadeIn(350);
+    }
+
+    // $(".crypto-action-page").css({"display":"block"});
+    // $(".crypto-action-page").animate({
+    //     left: 0,
+    // }, 300);
+    // $(".crypto-action-page-"+Tab).css({"display":"block"});
+    // QB.Phone.Functions.HeaderTextColor("black", 300);
+    // ActionTab = Tab;
 });
+
+$(".crypto-buy-input").keyup(function(){
+    var MoneyInput = this.value
+    var MoneyAmount = Math.ceil(CryptoData.Worth * MoneyInput)
+
+    $(".crypto-buy-ammount-for-update").html(MoneyAmount+" Dollars");
+});
+
+$(".crypto-sell-input").keyup(function(){
+    var MoneyInput = this.value
+    var MoneyAmount = Math.ceil(CryptoData.Worth * MoneyInput)
+
+    $(".crypto-buy-ammount-for-update").html(MoneyAmount+" Dollars");
+});
+
+
 
 $(document).on('click', '#cancel-crypto', function(e){
     e.preventDefault();
@@ -148,7 +178,7 @@ function CloseCryptoPage() {
 $(document).on('click', '#buy-crypto', function(e){
     e.preventDefault();
 
-    var Coins = $(".crypto-action-page-buy-crypto-input-coins").val();
+    var Coins = $(".crypto-buy-input").val();
     var Price = Math.ceil(Coins * CryptoData.Worth);
 
     if ((Coins !== "") && (Price !== "")) {
@@ -161,16 +191,17 @@ $(document).on('click', '#buy-crypto', function(e){
                     UpdateCryptoData(CryptoData)
                     CloseCryptoPage()
                     QB.Phone.Data.PlayerData.money.bank = parseInt(QB.Phone.Data.PlayerData.money.bank) - parseInt(Price);
-                    QB.Phone.Notifications.Add("fas fa-university", "QBank", "&#36; "+Price+",- has been withdrawn from your balance!", "#badc58", 2500);
+                    QB.Phone.Notifications.Add("fas fa-university", "Bank", "&#36; "+Price+",- has been withdrawn from your balance!", "#badc58", 2500);
+                    $('#crypto-buy-btn').fadeOut(350);
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough money..", "#badc58", 1500);
+                    QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough money..", "#badc58", 1500);
                 }
             });
         } else {
-            QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough money..", "#badc58", 1500);
+            QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough money..", "#badc58", 1500);
         }
     } else {
-        QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "Fill out all fields!", "#badc58", 1500);
+        QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "Fill out all fields!", "#badc58", 1500);
     }
 });
 
@@ -179,7 +210,7 @@ $(document).on('click', '#sell-crypto', function(e){
     if(e.handled !== true) {
         e.handled = true;
 
-    var Coins = $(".crypto-action-page-sell-crypto-input-coins").val();
+    var Coins = $(".crypto-sell-input").val();
     var Price = Math.ceil(Coins * CryptoData.Worth);
 
     if ((Coins !== "") && (Price !== "")) {
@@ -192,16 +223,17 @@ $(document).on('click', '#sell-crypto', function(e){
                     UpdateCryptoData(CryptoData)
                     CloseCryptoPage()
                     QB.Phone.Data.PlayerData.money.bank = parseInt(QB.Phone.Data.PlayerData.money.bank) + parseInt(Price);
-                    QB.Phone.Notifications.Add("fas fa-university", "QBank", "&#36; "+Price+",- has been added to your balance!", "#badc58", 2500);
+                    QB.Phone.Notifications.Add("fas fa-university", "Bank", "&#36; "+Price+",- has been added to your balance!", "#badc58", 2500);
+                    $('#crypto-sell-btn').fadeOut(350);
                 } else {
-                    QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough Qbits..", "#badc58", 1500);
+                    QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough bits..", "#badc58", 1500);
                 }
             });
         } else {
-            QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough Qbits..", "#badc58", 1500);
+            QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough bits..", "#badc58", 1500);
         }
     } else {
-        QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "Fill out all fields!", "#badc58", 1500);
+        QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "Fill out all fields!", "#badc58", 1500);
     }
     CloseCryptoPage();
     e.handled = false;
@@ -211,8 +243,8 @@ $(document).on('click', '#sell-crypto', function(e){
 $(document).on('click', '#transfer-crypto', function(e){
     e.preventDefault();
 
-    var Coins = $(".crypto-action-page-transfer-crypto-input-coins").val();
-    var WalletId = $(".crypto-action-page-transfer-crypto-input-walletid").val();
+    var Coins = $(".crypto-transfer-input").val();
+    var WalletId = $(".crypto-transfer-input-p").val();
 
     if ((Coins !== "") && (WalletId !== "")) {
         if (CryptoData.Portfolio >= Coins) {
@@ -222,23 +254,24 @@ $(document).on('click', '#transfer-crypto', function(e){
                     WalletId: WalletId,
                 }), function(CryptoData){
                     if (CryptoData == "notenough") {
-                        QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough Qbits..", "#badc58", 1500);
+                        QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough bits..", "#badc58", 1500);
                     } else if (CryptoData == "notvalid") {
                         QB.Phone.Notifications.Add("fas fa-university", "Crypto", "this Wallet-ID doesn't exist!", "#badc58", 2500);
                     } else {
                         UpdateCryptoData(CryptoData)
                         CloseCryptoPage()
                         QB.Phone.Notifications.Add("fas fa-university", "Crypto", "You transferred "+Coins+",- to "+WalletId+"!", "#badc58", 2500);
+                        $('#crypto-transfer-btn').fadeOut(350);
                     }
                 });
             } else {
                 QB.Phone.Notifications.Add("fas fa-university", "Crypto", "You can't transfer to yourself..", "#badc58", 2500);
             }
         } else {
-            QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough Qbits..", "#badc58", 1500);
+            QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "You don't have enough bits..", "#badc58", 1500);
         }
     } else {
-        QB.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "Fill out all fields!!", "#badc58", 1500);
+        QB.Phone.Notifications.Add("fab fa-bitcoin", "Crypto", "Fill out all fields!!", "#badc58", 1500);
     }
 });
 

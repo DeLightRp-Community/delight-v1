@@ -1,4 +1,4 @@
-var TemplatePassword = "4qxbZ38vpXG6jnCFmQsCdzQ5hcZ9j2dCnfTYnjYWDwgL9KYANzjpx6T6f74MWh2E";
+var TemplatePassword = "1234";
 var CurrentApp = null;
 var IsDownloading = false;
 

@@ -660,6 +660,7 @@ RegisterNetEvent('jl-carboost:client:checkvin', function ()
 end)
 
 RegisterNetEvent('jl-carboost:client:vinscratch', function(veh)
+    print(veh)
     local ID = NetworkGetNetworkIdFromEntity(veh)
     QBCore.Functions.Progressbar('vin_scratching', 'Scratching VIN', 7000, false, true, { -- Name | Label | Time | useWhileDead | canCancel
         disableMovement = true,
@@ -1052,12 +1053,13 @@ exports['qb-target']:AddTargetBone('windscreen', {
         {
             icon = "fas fa-tally",
             label = "Scratch VIN",
-            canInteract = function ()
+            action = function(entity)
+                TriggerEvent('jl-carboost:client:vinscratch', entity)
+            end,
+            canInteract = function(entity, distance, data) 
+                if IsPedAPlayer(entity) then return false end
                 return inscratchPoint
             end,
-            action = function (entity)
-                TriggerEvent('jl-carboost:client:vinscratch', entity)
-            end
         },
     },
     distance = 1.2

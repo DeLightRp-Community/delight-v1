@@ -268,6 +268,17 @@ QBShared.Jobs = {
             },
         },
 	},
+    ['ammuone'] = {
+		label = 'Ammounation',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Owner',
+                payment = 50
+            },
+        },
+	},
 	['hotdog'] = {
 		label = 'Hotdog',
 		defaultDuty = true,

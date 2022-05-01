@@ -1,22 +1,37 @@
 var selectedChar = null;
+var selectedCSN = null;
 var WelcomePercentage = "30vh"
+var CharDatas = [];
 qbMultiCharacters = {}
 var Loaded = false;
 var NChar = null;
 var EnableDeleteButton = false;
+var CharacterMaxCreate = [];
+var NumberOffClear = null;
+var SelectedCharGender = null;
 
 $(document).ready(function (){
     window.addEventListener('message', function (event) {
         var data = event.data;
+
         if (data.action == "ui") {
 			NChar = data.nChar;
             EnableDeleteButton = data.enableDeleteButton;
             if (data.toggle) {
+                RefreshExpertData()
                 $('.container').show();
                 $(".welcomescreen").fadeIn(150);
+                $(".SelectChar-NewMenu").fadeOut(150);
+                $(".NewbtnExpertMulti").fadeOut(150);
                 qbMultiCharacters.resetAll();
 
-                var originalText = "Retrieving player data";
+                CharacterMaxCreate = [];
+                for (let i = 1; i <= NChar; i++) {
+                    CharacterMaxCreate[i] = false
+                }
+                
+
+                var originalText = "Loading.";
                 var loadingProgress = 0;
                 var loadingDots = 0;
                 $("#loading-text").html(originalText);
@@ -25,15 +40,15 @@ $(document).ready(function (){
                     loadingDots++;
                     loadingProgress++;
                     if (loadingProgress == 3) {
-                        originalText = "Validating player data"
+                        originalText = "Loading.."
                         $("#loading-text").html(originalText);
                     }
                     if (loadingProgress == 4) {
-                        originalText = "Retrieving characters"
+                        originalText = "Loading..."
                         $("#loading-text").html(originalText);
                     }
                     if (loadingProgress == 6) {
-                        originalText = "Validating characters"
+                        originalText = "Loading...."
                         $("#loading-text").html(originalText);
                     }
                     if(loadingDots == 4) {
@@ -41,17 +56,15 @@ $(document).ready(function (){
                         loadingDots = 0;
                     }
                 }, 500);
-
+                $.post('https://qb-multicharacter/setupCharacters');
                 setTimeout(function(){
-					setCharactersList()
-                    $.post('https://qb-multicharacter/setupCharacters');
                     setTimeout(function(){
                         clearInterval(DotsInterval);
                         loadingProgress = 0;
-                        originalText = "Retrieving data";
+                        originalText = "Loading.....";
                         $(".welcomescreen").fadeOut(150);
-                        qbMultiCharacters.fadeInDown('.character-info', '20%', 400);
-                        qbMultiCharacters.fadeInDown('.characters-list', '20%', 400);
+                        $(".SelectChar-NewMenu").fadeIn(150);
+                        $(".NewbtnExpertMulti").fadeIn(150);
                         $.post('https://qb-multicharacter/removeBlur');
                     }, 2000);
                 }, 2000);
@@ -61,13 +74,10 @@ $(document).ready(function (){
             }
         }
 
-        if (data.action == "setupCharacters") {
-            setupCharacters(event.data.characters)
+         if (data.action == "SetupCharacterNUI") {
+            SetupCharNUI(event.data.left, event.data.top, event.data.cid, event.data.charinfo, event.data.Data)
         }
 
-        if (data.action == "setupCharInfo") {
-            setupCharInfo(event.data.chardata)
-        }
     });
 
     $('.datepicker').datepicker();
@@ -84,100 +94,29 @@ $('.disconnect-btn').click(function(e){
     $.post('https://qb-multicharacter/disconnectButton');
 });
 
-function setupCharInfo(cData) {
-    if (cData == 'empty') {
-        $('.character-info-valid').html('<span id="no-char">The selected character slot is not in use yet.<br><br>This character doesn\'t have information yet.</span>');
-    } else {
-        var gender = "Man"
-        if (cData.charinfo.gender == 1) { gender = "Woman" }
-        $('.character-info-valid').html(
-        '<div class="character-info-box"><span id="info-label">Name: </span><span class="char-info-js">'+cData.charinfo.firstname+' '+cData.charinfo.lastname+'</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Birth date: </span><span class="char-info-js">'+cData.charinfo.birthdate+'</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Gender: </span><span class="char-info-js">'+gender+'</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Nationality: </span><span class="char-info-js">'+cData.charinfo.nationality+'</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Job: </span><span class="char-info-js">'+cData.job.label+'</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Cash: </span><span class="char-info-js">&#36; '+cData.money.cash+'</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Bank: </span><span class="char-info-js">&#36; '+cData.money.bank+'</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Phone number: </span><span class="char-info-js">'+cData.charinfo.phone+'</span></div>' +
-        '<div class="character-info-box"><span id="info-label">Account number: </span><span class="char-info-js">'+cData.charinfo.account+'</span></div>');
-    }
+
+function SetupCharNUI(left, top, cid, charinfo, Data) {
+    CharDatas[Data.citizenid] = Data
+    var namechar = charinfo.firstname+" "+charinfo.lastname
+    var AddOption = '<div id="char-'+cid+'" data-namechar="'+namechar+'" data-csn="'+Data.citizenid+'" data-cid="'+cid+'" style="left: '+left+'%; top: '+top+'%;" class="New-NUI-Style"></div>';
+    CharacterMaxCreate[cid] = true
+    $('.SelectChar-NUI-New').append(AddOption);
+    
 }
 
-function setupCharacters(characters) {
-    $.each(characters, function(index, char){
-        $('#char-'+char.cid).html("");
-        $('#char-'+char.cid).data("citizenid", char.citizenid);
-        setTimeout(function(){
-            $('#char-'+char.cid).html('<span id="slot-name">'+char.charinfo.firstname+' '+char.charinfo.lastname+'<span id="cid">' + char.citizenid + '</span></span>');
-            $('#char-'+char.cid).data('cData', char)
-            $('#char-'+char.cid).data('cid', char.cid)
-        }, 100)
-    })
-}
-
-$(document).on('click', '#close-log', function(e){
+$(document).on('click', '.New-NUI-Style', function(e){
     e.preventDefault();
-    selectedLog = null;
-    $('.welcomescreen').css("filter", "none");
-    $('.server-log').css("filter", "none");
-    $('.server-log-info').fadeOut(250);
-    logOpen = false;
-});
+    var cid = $(this).data('cid');
+    var name = $(this).data('namechar');
+    var csn = $(this).data('csn');
 
-$(document).on('click', '.character', function(e) {
-    var cDataPed = $(this).data('cData');
-    e.preventDefault();
-    if (selectedChar === null) {
-        selectedChar = $(this);
-        if ((selectedChar).data('cid') == "") {
-            $(selectedChar).addClass("char-selected");
-            setupCharInfo('empty')
-            $("#play-text").html("Create");
-            $("#play").css({"display":"block"});
-            $("#delete").css({"display":"none"});
-            $.post('https://qb-multicharacter/cDataPed', JSON.stringify({
-                cData: cDataPed
-            }));
-        } else {
-            $(selectedChar).addClass("char-selected");
-            setupCharInfo($(this).data('cData'))
-            $("#play-text").html("Play");
-            $("#delete-text").html("Delete");
-            $("#play").css({"display":"block"});
-            if (EnableDeleteButton) {
-                $("#delete").css({"display":"block"});
-            }
-            $.post('https://qb-multicharacter/cDataPed', JSON.stringify({
-                cData: cDataPed
-            }));
-        }
-    } else if ($(selectedChar).attr('id') !== $(this).attr('id')) {
-        $(selectedChar).removeClass("char-selected");
-        selectedChar = $(this);
-        if ((selectedChar).data('cid') == "") {
-            $(selectedChar).addClass("char-selected");
-            setupCharInfo('empty')
-            $("#play-text").html("Register");
-            $("#play").css({"display":"block"});
-            $("#delete").css({"display":"none"});
-            $.post('https://qb-multicharacter/cDataPed', JSON.stringify({
-                cData: cDataPed
-            }));
-        } else {
-            $(selectedChar).addClass("char-selected");
-            setupCharInfo($(this).data('cData'))
-            $("#play-text").html("Play");
-            $("#delete-text").html("Delete");
-            $("#play").css({"display":"block"});
-            if (EnableDeleteButton) {
-                $("#delete").css({"display":"block"});
-            }
-            $.post('https://qb-multicharacter/cDataPed', JSON.stringify({
-                cData: cDataPed
-            }));
-        }
-    }
-});
+    selectedChar = cid
+    selectedCSN = csn
+
+    $(".SelectChar-DeleteChar").css({"background":"#f5a15b"});
+    $(".SelectChar-SpawnChar").css({"background":"#8ee074"});
+    $(".SelectChar-header").html(name);
+})
 
 var entityMap = {
     '&': '&amp;',
@@ -197,148 +136,189 @@ function escapeHtml(string) {
 }
 function hasWhiteSpace(s) {
     return /\s/g.test(s);
-}
+  }
 
-$('#nationality').keyup(function() {
-    var nationalityValue = $(this).val();
-    if(nationalityValue.indexOf(' ') !== -1) {
-        $(this).val(nationalityValue.replace(' ', ''))
+
+$(document).on('click', '#CreateCharExpert', function (e) {
+    e.preventDefault();
+    var AccessCreate = false
+    NumberOffClear = null
+    for (const [k, v] of Object.entries(CharacterMaxCreate).reverse()) {
+        if(v == false){
+            NumberOffClear = k
+            AccessCreate = true
+        }
+    }
+
+    if(AccessCreate){
+        SelectedCharGender = null
+        $('#qb-woman').attr('src','https://cdn.discordapp.com/attachments/877595408325574656/878254563063369818/female.png');
+        $('#qb-man').attr('src','https://cdn.discordapp.com/attachments/877595408325574656/878254579622502471/male.png');
+    
+        $(".qb-NewCharacterRegister").fadeIn(150);
+    }else{
+        $.post('https://qb-multicharacter/expertSendAlert', JSON.stringify({
+            text: "You have reached the maximum character",
+            type: "error",
+        }));
     }
 });
-
-$(document).on('click', '#create', function (e) {
+$(document).on('click', '.RegisterRed', function (e) {
+    e.preventDefault();
+    $(".qb-NewCharacterRegister").fadeOut(150);
+});
+  
+$(document).on('click', '.RegisterGreen', function (e) {
     e.preventDefault();
 
-    let firstname= escapeHtml($('#first_name').val())
-    let lastname= escapeHtml($('#last_name').val())
-    let nationality= escapeHtml($('#nationality').val())
-    let birthdate= escapeHtml($('#birthdate').val())
-    let gender= escapeHtml($('select[name=gender]').val())
-    let cid = escapeHtml($(selectedChar).attr('id').replace('char-', ''))
+    var success = true
+
+    let firstname = $("#firstname").val();
+    let lastname = $("#lastname").val();
+    let nationality = $("#nationality").val();
+    let birthdate = escapeHtml($('#born').val())
+    let gender = SelectedCharGender
+    let cid = NumberOffClear
     const regTest = new RegExp(profList.join('|'), 'i');
-    //An Ugly check of null objects
 
     if (!firstname || !lastname || !nationality || !birthdate || hasWhiteSpace(firstname) || hasWhiteSpace(lastname)|| hasWhiteSpace(nationality) ){
-        console.log("FIELDS REQUIRED")
+        $.post('https://qb-multicharacter/expertSendAlert', JSON.stringify({
+            text: "FIELDS REQUIRED",
+            type: "error",
+        }));
+        success = false
         return false;
     }
 
     if(regTest.test(firstname) || regTest.test(lastname)){
-        console.log("ERROR: You used a derogatory/vulgar term. Please try again!")
+        $.post('https://qb-multicharacter/expertSendAlert', JSON.stringify({
+            text: "You used a derogatory/vulgar term. Please try again!",
+            type: "error",
+        }));
+        success = false
         return false;
     }
 
-    $.post('https://qb-multicharacter/createNewCharacter', JSON.stringify({
-        firstname: firstname,
-        lastname: lastname,
-        nationality: nationality,
-        birthdate: birthdate,
-        gender: gender,
-        cid: cid,
-    }));
-    $(".container").fadeOut(150);
-    $('.characters-list').css("filter", "none");
-    $('.character-info').css("filter", "none");
-    qbMultiCharacters.fadeOutDown('.character-register', '125%', 400);
-    refreshCharacters()
+    if(gender == null){
+        $.post('https://qb-multicharacter/expertSendAlert', JSON.stringify({
+            text: "Select a Gender !",
+            type: "error",
+        }));
+        success = false
+        return false;
+    }
 
+    if(success){
+        $.post('https://qb-multicharacter/createNewCharacter', JSON.stringify({
+            firstname: firstname,
+            lastname: lastname,
+            nationality: nationality,
+            birthdate: birthdate,
+            gender: gender,
+            cid: cid,
+        }));
+        $(".qb-NewCharacterRegister").fadeOut(150);
+        $(".container").fadeOut(150);
+        qbMultiCharacters.fadeOutDown('.character-register', '125%', 400);
+    }
+});
+
+$(document).on('click', '.qb-Register-ImageStyle', function(e){
+    SelectedCharGender = null
+    var genders = $(this).data('gender');
+    if(genders == "man"){
+        SelectedCharGender = "Male"
+        $('#qb-man').attr('src','https://cdn.discordapp.com/attachments/877595408325574656/878350193475588146/male2.png');
+        $('#qb-woman').attr('src','https://cdn.discordapp.com/attachments/877595408325574656/878254563063369818/female.png');
+    }else{
+        SelectedCharGender = "Female"
+        $('#qb-woman').attr('src','https://cdn.discordapp.com/attachments/877595408325574656/878350146792984616/female2.png');
+        $('#qb-man').attr('src','https://cdn.discordapp.com/attachments/877595408325574656/878254579622502471/male.png');
+    }
 });
 
 $(document).on('click', '#accept-delete', function(e){
     $.post('https://qb-multicharacter/removeCharacter', JSON.stringify({
-        citizenid: $(selectedChar).data("citizenid"),
+        citizenid: selectedCSN
     }));
     $('.character-delete').fadeOut(150);
-    $('.characters-block').css("filter", "none");
+    $('.BlackScreenForNotAbuse').fadeOut(150);
     refreshCharacters();
 });
 
 $(document).on('click', '#cancel-delete', function(e){
     e.preventDefault();
-    $('.characters-block').css("filter", "none");
     $('.character-delete').fadeOut(150);
+    $('.BlackScreenForNotAbuse').fadeOut(150);
 });
 
-function setCharactersList() {
-    var htmlResult = '<div class="character-list-header"><p>My Characters</p></div>'
-    for (let i = 1; i <= NChar; i++) {
-        htmlResult += '<div class="character" id="char-'+ i +'" data-cid=""><span id="slot-name">Empty Slot<span id="cid"></span></span></div>'
-    }
-    htmlResult += '<div class="character-btn" id="play"><p id="play-text">Select a character</p></div><div class="character-btn" id="delete"><p id="delete-text">Select a character</p></div>'
-    $('.characters-list').html(htmlResult)
-}
-
 function refreshCharacters() {
-    var htmlResult = ''
-    for (let i = 1; i <= NChar; i++) {
-        htmlResult += '<div class="character" id="char-'+ i +'" data-cid=""><span id="slot-name">Empty Slot<span id="cid"></span></span></div>'
-    }
-
-    htmlResult += '<div class="character-btn" id="play"><p id="play-text">Select a character</p></div><div class="character-btn" id="delete"><p id="delete-text">Select a character</p></div>'
-    $('.characters-list').html(htmlResult)
-    
     setTimeout(function(){
         $(selectedChar).removeClass("char-selected");
         selectedChar = null;
         $.post('https://qb-multicharacter/setupCharacters');
-        $("#delete").css({"display":"none"});
-        $("#play").css({"display":"none"});
         qbMultiCharacters.resetAll();
     }, 100)
 }
 
-$("#close-reg").click(function (e) {
-    e.preventDefault();
-    $('.characters-list').css("filter", "none")
-    $('.character-info').css("filter", "none")
-    qbMultiCharacters.fadeOutDown('.character-register', '125%', 400);
-})
+function RefreshExpertData() {
+    $(".SelectChar-NUI-New").html("");
+    CharDatas = [];
+    $(".SelectChar-DeleteChar").css({"background":"#373737"});
+    $(".SelectChar-SpawnChar").css({"background":"#373737"});
+    $(".SelectChar-header").html("Select a Character");
+    $('.BlackScreenForNotAbuse').fadeOut(150);
+    $('#qb-woman').attr('src','https://cdn.discordapp.com/attachments/877595408325574656/878254563063369818/female.png');
+    $('#qb-man').attr('src','https://cdn.discordapp.com/attachments/877595408325574656/878254579622502471/male.png');
 
-$("#close-del").click(function (e) {
-    e.preventDefault();
-    $('.characters-block').css("filter", "none");
-    $('.character-delete').fadeOut(150);
-})
-
-$(document).on('click', '#play', function(e) {
-    e.preventDefault();
-    var charData = $(selectedChar).data('cid');
-
-    if (selectedChar !== null) {
-        if (charData !== "") {
-            $.post('https://qb-multicharacter/selectCharacter', JSON.stringify({
-                cData: $(selectedChar).data('cData')
-            }));
-            setTimeout(function(){
-                qbMultiCharacters.fadeOutDown('.characters-list', "-40%", 400);
-                qbMultiCharacters.fadeOutDown('.character-info', "-40%", 400);
-                qbMultiCharacters.resetAll();
-            }, 1500);
-        } else {
-            $('.characters-list').css("filter", "blur(2px)")
-            $('.character-info').css("filter", "blur(2px)")
-            qbMultiCharacters.fadeInDown('.character-register', '25%', 400);
-        }
-    }
-});
-
-$(document).on('click', '#delete', function(e) {
-    e.preventDefault();
-    var charData = $(selectedChar).data('cid');
-
-    if (selectedChar !== null) {
-        if (charData !== "") {
-            $('.characters-block').css("filter", "blur(2px)")
-            $('.character-delete').fadeIn(250);
-        }
-    }
-});
-
-qbMultiCharacters.fadeOutUp = function(element, time) {
-    $(element).css({"display":"block"}).animate({top: "-80.5%",}, time, function(){
-        $(element).css({"display":"none"});
-    });
+    $("#firstname").val("");
+    $("#lastname").val("");
+    $("#nationality").val("");
 }
+
+
+$(document).on('click', '.SelectChar-SpawnChar', function(e) {
+    e.preventDefault();
+
+    if (selectedChar !== null) {
+        $.post('https://qb-multicharacter/selectCharacter', JSON.stringify({
+            cData: CharDatas[selectedCSN]
+        }));
+        setTimeout(function(){
+            qbMultiCharacters.resetAll();
+        }, 1500);
+    }
+});
+
+$(document).on('click', '#RefreshExpert', function(e) {
+    e.preventDefault();
+    refreshCharacters()
+    RefreshExpertData()
+});
+
+$(document).on('click', '#HelpExpert', function(e) {
+    e.preventDefault();
+    $('.expertHelpMenu').fadeIn(150);
+});
+$(document).on('click', '.expertHelpMenu', function(e) {
+    e.preventDefault();
+    $('.expertHelpMenu').fadeOut(150);
+});
+
+$(document).on('click', '.SelectChar-DeleteChar', function(e) {
+    e.preventDefault();
+    if(EnableDeleteButton){
+        if (selectedChar !== null) {
+            $('.character-delete').fadeIn(250);
+            $('.BlackScreenForNotAbuse').fadeIn(150);
+        }
+    }else{
+        $.post('https://qb-multicharacter/expertSendAlert', JSON.stringify({
+            text: "Not allowed by the server",
+            type: "error",
+        }));
+    }
+});
 
 qbMultiCharacters.fadeOutDown = function(element, percent, time) {
     if (percent !== undefined) {
@@ -352,17 +332,8 @@ qbMultiCharacters.fadeOutDown = function(element, percent, time) {
     }
 }
 
-qbMultiCharacters.fadeInDown = function(element, percent, time) {
-    $(element).css({"display":"block"}).animate({top: percent,}, time);
-}
-
 qbMultiCharacters.resetAll = function() {
-    $('.characters-list').hide();
-    $('.characters-list').css("top", "-40");
-    $('.character-info').hide();
-    $('.character-info').css("top", "-40");
     $('.welcomescreen').css("top", WelcomePercentage);
     $('.server-log').show();
     $('.server-log').css("top", "25%");
-    selectedChar = null;
 }

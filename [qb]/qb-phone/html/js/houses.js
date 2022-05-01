@@ -56,13 +56,16 @@ var AnimationDuration = 200;
 $(document).on('click', '#myhouse-option-transfer', function(e){
     e.preventDefault();
 
-    $(".myhouses-options").animate({
-        left: -35+"vw"
-    }, AnimationDuration);
+    ClearInputNew()
+    $('#house-transfer-new-box').fadeIn(350);
 
-    $(".myhouse-option-transfer-container").animate({
-        left: 0
-    }, AnimationDuration);
+    // $(".myhouses-options").animate({
+    //     left: -35+"vw"
+    // }, AnimationDuration);
+
+    // $(".myhouse-option-transfer-container").animate({
+    //     left: 0
+    // }, AnimationDuration);
 });
 
 $(document).on('click', '#myhouse-option-keys', function(e){
@@ -127,7 +130,7 @@ function shakeElement(element){
 $(document).on('click', '#myhouse-option-transfer-confirm', function(e){
     e.preventDefault();
         
-    var NewBSN = $(".myhouse-option-transfer-container-citizenid").val();
+    var NewBSN = $("#myhouse-option-transfer-container-citizenid").val();
 
     $.post('https://qb-phone/TransferCid', JSON.stringify({
         newBsn: NewBSN,
@@ -151,7 +154,7 @@ $(document).on('click', '#myhouse-option-transfer-confirm', function(e){
         } else {
             QB.Phone.Notifications.Add("fas fa-home", "Houses", "This is an invalid CSN-number", "#27ae60", 2500);
             shakeElement(".myhouse-option-transfer-container");
-            $(".myhouse-option-transfer-container-citizenid").val("");
+            $("#myhouse-option-transfer-container-citizenid").val("");
         }
     });
 });

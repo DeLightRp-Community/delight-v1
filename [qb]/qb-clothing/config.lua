@@ -511,7 +511,7 @@ Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 
 -- width, length, minZ and maxZ are for the size and height of the PolyZone
 Config.Stores = {
-    [1] = {shopType = 'clothing', coords = vector3(1693.32, 4823.48, 41.06), width = 2, length = 2},
+    [1] = {shopType = 'clothing', coords = vector3(1693.32, 4823.48, 42.06), width = 2, length = 2},
     [2] = {shopType = 'clothing', coords = vector3(-712.215881, -155.352982, 37.4151268), width = 2, length = 2},
     [3] = {shopType = 'clothing', coords = vector3(-1192.94495, -772.688965, 17.3255997), width = 2, length = 2},
     [4] = {shopType = 'clothing', coords = vector3(425.236, -806.008, 28.491), width = 2, length = 2},

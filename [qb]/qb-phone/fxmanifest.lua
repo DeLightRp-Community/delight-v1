@@ -1,8 +1,8 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'QB-Phone'
-version '1.0.0'
+description 'amir_expert'
+version '1.0.5'
 
 ui_page 'html/index.html'
 
@@ -35,3 +35,14 @@ files {
 }
 
 lua54 'yes'
+
+escrow_ignore {
+    'config.lua',
+    'README.md',
+    'qb-phone.sql',
+    'client/animation.lua',
+    'client/main.lua',
+    'server/main.lua',
+    'LICENSE',
+}
+dependency '/assetpacks'

@@ -1,6 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 local PlayerJob = {}
 local patt = "[?!@#]"
+local CallVolume = 0.2
 PhoneData = {
     MetaData = {},
     isOpen = false,
@@ -30,14 +31,14 @@ PhoneData = {
 
 function string:split(delimiter)
     local result = { }
-    local from = 1
-    local delim_from, delim_to = string.find(self, delimiter, from)
+    local from  = 1
+    local delim_from, delim_to = string.find( self, delimiter, from  )
     while delim_from do
-	result[#result+1] = string.sub(self, from, delim_from - 1)
-        from = delim_to + 1
-        delim_from, delim_to = string.find(self, delimiter, from)
+      table.insert( result, string.sub( self, from , delim_from-1 ) )
+      from  = delim_to + 1
+      delim_from, delim_to = string.find( self, delimiter, from  )
     end
-	result[#result+1] = string.sub(self, from)
+    table.insert( result, string.sub( self, from  ) )
     return result
 end
 
@@ -145,6 +146,27 @@ local function findVehFromPlateAndLocate(plate)
             end
         end
     end
+end
+
+local function PublicPhone()
+    local PublicPhoneobject = {
+        -2103798695,1158960338,
+        1281992692,1511539537,
+        295857659,-78626473,
+        -1559354806
+    }
+        exports["qb-target"]:AddTargetModel(PublicPhoneobject, {
+            options = {
+                {
+                    type = "client",
+                    event = "stx-phone:client:publocphoneopen",
+                    icon = "fas fa-phone-alt",
+                    label = "Public Phone",
+                    job = false,
+                },
+            },
+            distance = 1.0
+        })
 end
 
 local function DisableDisplayControlActions()
@@ -261,8 +283,7 @@ local function LoadPhone()
             PhoneData = PhoneData,
             PlayerData = PhoneData.PlayerData,
             PlayerJob = PhoneData.PlayerData.job,
-            applications = Config.PhoneApplications,
-            PlayerId = GetPlayerServerId(PlayerId())
+            applications = Config.PhoneApplications
         })
     end)
 end
@@ -271,7 +292,7 @@ local function OpenPhone()
     QBCore.Functions.TriggerCallback('qb-phone:server:HasPhone', function(HasPhone)
         if HasPhone then
             PhoneData.PlayerData = QBCore.Functions.GetPlayerData()
-            SetNuiFocus(true, true)
+    	    SetNuiFocus(true, true)
             SendNUIMessage({
                 action = "open",
                 Tweets = PhoneData.Tweets,
@@ -298,7 +319,7 @@ local function OpenPhone()
                 newPhoneProp()
             end)
 
-            QBCore.Functions.TriggerCallback('qb-garage:server:GetPlayerVehicles', function(vehicles)
+            QBCore.Functions.TriggerCallback('qb-phone:server:GetGarageVehicles', function(vehicles)
                 PhoneData.GarageVehicles = vehicles
             end)
         else
@@ -538,8 +559,8 @@ RegisterNUICallback('Close', function()
         PhoneData.AnimationData.anim = nil
         DoPhoneAnimation('cellphone_text_to_call')
     end
-    SetNuiFocus(false, false)
-    SetTimeout(500, function()
+    SetTimeout(300, function()
+        SetNuiFocus(false, false)
         PhoneData.isOpen = false
     end)
 end)
@@ -604,9 +625,9 @@ RegisterNUICallback('SharedLocation', function(data)
     SendNUIMessage({
         action = "PhoneNotification",
         PhoneNotify = {
-            title = "Whatsapp",
+            title = "Messages",
             text = "Location has been set!",
-            icon = "fab fa-whatsapp",
+            icon = "fas fa-comment",
             color = "#25D366",
             timeout = 1500,
         },
@@ -790,6 +811,7 @@ end)
 RegisterNUICallback('InstallApplication', function(data, cb)
     local ApplicationData = Config.StoreApps[data.app]
     local NewSlot = GetFirstAvailableSlot()
+    --  local NewSlot = 17
 
     if not CanDownloadApps then
         return
@@ -831,12 +853,23 @@ RegisterNUICallback('DeleteImage', function(image,cb)
 end)
 
 
-RegisterNUICallback('track-vehicle', function(data, cb)
+-- RegisterNUICallback('track-vehicle', function(data, cb)
+--     local veh = data.veh
+--     if findVehFromPlateAndLocate(veh.plate) then
+--         QBCore.Functions.Notify("Your vehicle has been marked", "success")
+--     else
+--         QBCore.Functions.Notify("This vehicle cannot be located", "error")
+--     end
+-- end)
+
+RegisterNUICallback('gps-vehicle-garage', function(data, cb)
     local veh = data.veh
-    if findVehFromPlateAndLocate(veh.plate) then
-        QBCore.Functions.Notify("Your vehicle has been marked", "success")
+    if veh.state == "In" then
+        QBCore.Functions.Notify('GPS is set', "success")
+            local Garage = exports['qb-garages']:GetGarageNameLoc(veh.garage)
+            SetNewWaypoint(Garage.x, Garage.y)
     else
-        QBCore.Functions.Notify("This vehicle cannot be located", "error")
+        QBCore.Functions.Notify('Your car has no garage', "success")
     end
 end)
 
@@ -1355,46 +1388,39 @@ RegisterNUICallback("TakePhoto", function(data,cb)
             DestroyMobilePhone()
             CellCamActivate(false, false)
             cb(json.encode({ url = nil }))
+            OpenPhone()
             takePhoto = false
             break
         elseif IsControlJustPressed(1, 176) then -- TAKE.. PIC
             QBCore.Functions.TriggerCallback("qb-phone:server:GetWebhook",function(hook)
-                if hook then
-                    exports['screenshot-basic']:requestScreenshotUpload(tostring(hook), "files[]", function(data)
-                        local image = json.decode(data)
-                        DestroyMobilePhone()
-                        CellCamActivate(false, false)
-                        TriggerServerEvent('qb-phone:server:addImageToGallery', image.attachments[1].proxy_url)
-                        Wait(400)
-                        TriggerServerEvent('qb-phone:server:getImageFromGallery')
-                        cb(json.encode(image.attachments[1].proxy_url))
-                    end)
-                else
-                    return
-                end
+                QBCore.Functions.Notify('Uploading... !!', 'primary')
+                QBCore.Functions.Notify('Please wait', 'primary')
+                exports['screenshot-basic']:requestScreenshotUpload(tostring(hook), "files[]", function(data)
+                    local image = json.decode(data)
+                    DestroyMobilePhone()
+                    CellCamActivate(false, false)
+                    TriggerServerEvent('qb-phone:server:addImageToGallery', image.attachments[1].proxy_url)
+                    Wait(400)
+                    TriggerServerEvent('qb-phone:server:getImageFromGallery')
+                    cb(json.encode(image.attachments[1].proxy_url))
+                    QBCore.Functions.Notify('Upload successfully', 'success')
+                    OpenPhone()
+                end)
             end)
+
             takePhoto = false
         end
-        HideHudComponentThisFrame(7)
-        HideHudComponentThisFrame(8)
-        HideHudComponentThisFrame(9)
-        HideHudComponentThisFrame(6)
-        HideHudComponentThisFrame(19)
-        HideHudAndRadarThisFrame()
-        EnableAllControlActions(0)
-        Wait(0)
+          HideHudComponentThisFrame(7)
+          HideHudComponentThisFrame(8)
+          HideHudComponentThisFrame(9)
+          HideHudComponentThisFrame(6)
+          HideHudComponentThisFrame(19)
+          HideHudAndRadarThisFrame()
+          EnableAllControlActions(0)
+          Wait(0)
     end
-    Wait(1000)
-    OpenPhone()
-end)
-
-RegisterCommand('ping', function(source, args)
-    local PlayerData = QBCore.Functions.GetPlayerData()
-    if not args[1] then
-        QBCore.Functions.Notify("You need to input a Player ID", "error")
-    else
-        TriggerServerEvent('qb-phone:server:sendPing', args[1])
-    end
+    -- Wait(1000)
+    -- OpenPhone()
 end)
 
 -- Handler Events
@@ -1443,7 +1469,7 @@ end)
 
 RegisterNetEvent('qb-phone:client:TransferMoney', function(amount, newmoney)
     PhoneData.PlayerData.money.bank = newmoney
-    SendNUIMessage({ action = "PhoneNotification", PhoneNotify = { title = "QBank", text = "&#36;"..amount.." has been added to your account!", icon = "fas fa-university", color = "#8c7ae6", }, })
+    SendNUIMessage({ action = "PhoneNotification", PhoneNotify = { title = "Bank", text = "&#36;"..amount.." has been added to your account!", icon = "fas fa-university", color = "#8c7ae6", }, })
     SendNUIMessage({ action = "UpdateBank", NewBalance = PhoneData.PlayerData.money.bank })
 end)
 
@@ -1470,7 +1496,7 @@ RegisterNetEvent('qb-phone:client:UpdateTweets', function(src, Tweets, NewTweetD
                 action = "PhoneNotification",
                 PhoneNotify = {
                     title = "New Tweet (@"..NewTweetData.firstName.." "..NewTweetData.lastName..")",
-                    text = "A new tweet as been posted.",
+                    text = NewTweetData.message,
                     icon = "fab fa-twitter",
                     color = "#1DA1F2",
                 },
@@ -1675,6 +1701,18 @@ RegisterNetEvent('qb-phone:client:CancelCall', function()
     end
 end)
 
+RegisterNUICallback('phone-silent-button', function(data,cb) --call volume
+    if CallVolume == tonumber("0.2") then
+        CallVolume = 0
+        QBCore.Functions.Notify("Silent Mode On", "success")
+        cb(true)
+    else
+        CallVolume = 0.2
+        QBCore.Functions.Notify("Silent Mode Off", "error")
+        cb(false)
+    end
+end)
+
 RegisterNetEvent('qb-phone:client:GetCalled', function(CallerNumber, CallId, AnonymousCall)
     local RepeatCount = 0
     local CallData = {
@@ -1707,7 +1745,7 @@ RegisterNetEvent('qb-phone:client:GetCalled', function(CallerNumber, CallId, Ano
                     QBCore.Functions.TriggerCallback('qb-phone:server:HasPhone', function(HasPhone)
                         if HasPhone then
                             RepeatCount = RepeatCount + 1
-                            TriggerServerEvent("InteractSound_SV:PlayOnSource", "ringing", 0.2)
+                            TriggerServerEvent("InteractSound_SV:PlayOnSource", "ringing", CallVolume)
 
                             if not PhoneData.isOpen then
                                 SendNUIMessage({
@@ -1751,7 +1789,7 @@ RegisterNetEvent('qb-phone:client:UpdateMessages', function(ChatMessages, Sender
     local NumberKey = GetKeyByNumber(SenderNumber)
 
     if New then
-        PhoneData.Chats[#PhoneData.Chats+1] = {
+	    PhoneData.Chats[#PhoneData.Chats+1] = {
             name = IsNumberInContacts(SenderNumber),
             number = SenderNumber,
             messages = {},
@@ -1776,9 +1814,9 @@ RegisterNetEvent('qb-phone:client:UpdateMessages', function(ChatMessages, Sender
                 SendNUIMessage({
                     action = "PhoneNotification",
                     PhoneNotify = {
-                        title = "Whatsapp",
+                        title = "Messages",
                         text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                        icon = "fab fa-whatsapp",
+                        icon = "fas fa-comment",
                         color = "#25D366",
                         timeout = 1500,
                     },
@@ -1787,9 +1825,9 @@ RegisterNetEvent('qb-phone:client:UpdateMessages', function(ChatMessages, Sender
                 SendNUIMessage({
                     action = "PhoneNotification",
                     PhoneNotify = {
-                        title = "Whatsapp",
+                        title = "Messages",
                         text = "Messaged yourself",
-                        icon = "fab fa-whatsapp",
+                        icon = "fas fa-comment",
                         color = "#25D366",
                         timeout = 4000,
                     },
@@ -1812,9 +1850,9 @@ RegisterNetEvent('qb-phone:client:UpdateMessages', function(ChatMessages, Sender
 	    SendNUIMessage({
 	        action = "PhoneNotification",
 	        PhoneNotify = {
-		    title = "Whatsapp",
+		    title = "Messages",
 		    text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-		    icon = "fab fa-whatsapp",
+		    icon = "fas fa-comment",
 		    color = "#25D366",
 		    timeout = 3500,
 	        },
@@ -1836,9 +1874,9 @@ RegisterNetEvent('qb-phone:client:UpdateMessages', function(ChatMessages, Sender
                 SendNUIMessage({
                     action = "PhoneNotification",
                     PhoneNotify = {
-                        title = "Whatsapp",
+                        title = "Messages",
                         text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                        icon = "fab fa-whatsapp",
+                        icon = "fas fa-comment",
                         color = "#25D366",
                         timeout = 1500,
                     },
@@ -1847,9 +1885,9 @@ RegisterNetEvent('qb-phone:client:UpdateMessages', function(ChatMessages, Sender
                 SendNUIMessage({
                     action = "PhoneNotification",
                     PhoneNotify = {
-                        title = "Whatsapp",
+                        title = "Messages",
                         text = "Messaged yourself",
-                        icon = "fab fa-whatsapp",
+                        icon = "fas fa-comment",
                         color = "#25D366",
                         timeout = 4000,
                     },
@@ -1872,9 +1910,9 @@ RegisterNetEvent('qb-phone:client:UpdateMessages', function(ChatMessages, Sender
             SendNUIMessage({
                 action = "PhoneNotification",
                 PhoneNotify = {
-                    title = "Whatsapp",
+                    title = "Messages",
                     text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                    icon = "fab fa-whatsapp",
+                    icon = "fas fa-comment",
                     color = "#25D366",
                     timeout = 3500,
                 },
@@ -1925,7 +1963,7 @@ RegisterNetEvent('qb-phone:client:AddTransaction', function(SenderData, Transact
             PhoneNotify = {
                 title = "Crypto",
                 text = Message,
-                icon = "fas fa-chart-pie",
+                icon = "fab fa-bitcoin",
                 color = "#04b543",
                 timeout = 1500,
             },
@@ -2061,24 +2099,13 @@ RegisterNetEvent('qb-phone:refreshImages', function(images)
     PhoneData.Images = images
 end)
 
-RegisterNetEvent("qb-phone:client:CustomNotification", function(title, text, icon, color, timeout) -- Send a PhoneNotification to the phone from anywhere
-    SendNUIMessage({
-        action = "PhoneNotification",
-        PhoneNotify = {
-            title = title,
-            text = text,
-            icon = icon,
-            color = color,
-            timeout = timeout,
-        },
-    })
-end)
 
 -- Threads
 
 CreateThread(function()
     Wait(500)
     LoadPhone()
+    PublicPhone()
 end)
 
 CreateThread(function()
@@ -2109,3 +2136,311 @@ CreateThread(function()
         end
     end
 end)
+
+
+-- ping
+
+RegisterNUICallback('AcceptPingPlayer', function()  --accept
+    TriggerServerEvent('qb-pings:server:acceptping')
+    QBCore.Functions.Notify('Accept', 'success')
+    TriggerEvent("qb-phone:ping:client:UiUppers", false)
+end)
+
+RegisterNUICallback('rejectPingPlayer', function()  --reject
+    TriggerServerEvent('qb-pings:server:denyping')
+    QBCore.Functions.Notify('Reject', 'error')
+    TriggerEvent("qb-phone:ping:client:UiUppers", false)
+end)
+
+RegisterNUICallback('SendPingPlayer', function(data) --send ping
+    TriggerServerEvent('qb-pings:server:SendPing2', data.id)
+    
+end)
+
+local CurrentPings = {}
+
+RegisterNetEvent('qb-pings:client:DoPing', function(id)
+    local player = GetPlayerFromServerId(id)
+    local ped = GetPlayerPed(player)
+    local pos = GetEntityCoords(ped)
+    local coords = {
+        x = pos.x,
+        y = pos.y,
+        z = pos.z,
+    }
+        TriggerServerEvent('qb-pings:server:SendPing', id, coords)
+        -- TriggerEvent("debug", 'Pings: Send Ping', 'success')
+        -- QBCore.Functions.Notify('Pings: Send Ping', 'success')
+end)
+
+RegisterNetEvent('qb-pings:client:AcceptPing', function(PingData, SenderData)
+    local ped = PlayerPedId()
+    local pos = GetEntityCoords(ped)
+
+        TriggerServerEvent('qb-pings:server:SendLocation', PingData, SenderData)
+        -- TriggerEvent("debug", 'Pings: Send Location', 'success')
+        -- QBCore.Functions.Notify('Pings: Send Location', 'success')
+end)
+
+RegisterNetEvent('qb-pings:client:SendLocation', function(PingData, SenderData)
+    QBCore.Functions.Notify('The location is indicated on your map with a blip.', 'success')
+
+    CurrentPings[PingData.sender] = AddBlipForCoord(PingData.coords.x, PingData.coords.y, PingData.coords.z)
+    SetBlipSprite(CurrentPings[PingData.sender], 280)
+    SetBlipDisplay(CurrentPings[PingData.sender], 4)
+    SetBlipScale(CurrentPings[PingData.sender], 1.1)
+    SetBlipAsShortRange(CurrentPings[PingData.sender], false)
+    SetBlipColour(CurrentPings[PingData.sender], 0)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentSubstringPlayerName("Friend")
+    EndTextCommandSetBlipName(CurrentPings[PingData.sender])
+
+    SetTimeout(5 * (60 * 1000), function()
+        QBCore.Functions.Notify('Ping '..PingData.sender..' has expired..', 'error')
+        RemoveBlip(CurrentPings[PingData.sender])
+        CurrentPings[PingData.sender] = nil
+        TriggerEvent("qb-phone:ping:client:UiUppers", false)
+    end)
+end)
+
+RegisterNetEvent('qb-phone:ping:client:UiUppers', function(toggle)
+    if toggle then
+        SendNUIMessage({
+            action = "acceptrejectBlock",
+        })
+        TriggerEvent("qb-hud:ping:client:ShowIcon", true)
+    else
+        SendNUIMessage({
+            action = "acceptrejectNone",
+        })
+        TriggerEvent("qb-hud:ping:client:ShowIcon", false)
+    end
+end)
+
+
+RegisterNetEvent('qb-phone:client-annphonenumber', function(playerId, playerName, number)
+	local sourcePos = GetEntityCoords(GetPlayerPed(GetPlayerFromServerId(playerId)), false)
+    local pos = GetEntityCoords(PlayerPedId(), false)
+	local dist = #(pos - sourcePos)
+    if dist < 5.0 then
+		TriggerEvent('chat:addMessage', {
+			template = '<div class="chat-message" style="background-color: rgba(234, 135, 23, 0.50);">Number : <b>{0}</b></div>',
+			args = {" "..number}
+		})
+		
+    end
+end)
+
+
+RegisterNUICallback('CasinoAddBet', function(data) --casino
+    TriggerServerEvent('qb-phone:server:CasinoAddBet', data)
+end)
+
+RegisterNetEvent('qb-phone:client:addbetForAll', function(data) --casino
+    SendNUIMessage({
+        action = "BetAddToApp",
+        datas = data,
+    })
+end)
+
+RegisterNUICallback('BettingAddToTable', function(data) --casino
+    TriggerServerEvent('qb-phone:server:BettingAddToTable', data)
+end)
+
+RegisterNUICallback('CasinoDeleteTable', function(data) --casino
+    TriggerServerEvent('qb-phone:server:DeleteAndClearTable')
+end)
+
+RegisterNUICallback('CheckHasBetTable', function(data, cb) --casino
+    QBCore.Functions.TriggerCallback('qb-phone:server:CheckHasBetTable', function(HasTable)
+        cb(HasTable)
+    end)
+end)
+
+RegisterNUICallback('casino_status', function(data) --casino
+    TriggerServerEvent('qb-phone:server:casino_status')
+end)
+
+RegisterNUICallback('CheckHasBetStatus', function(data, cb) --casino
+    QBCore.Functions.TriggerCallback('qb-phone:server:CheckHasBetStatus', function(HasStatus)
+        cb(HasStatus)
+    end)
+end)
+
+RegisterNUICallback('WineridCasino', function(data) --casino
+    TriggerServerEvent('qb-phone:server:WineridCasino', data)
+end)
+
+RegisterNUICallback('GetJobCentersJobs', function(data, cb) --job center
+    cb(Config.JobCenter)
+end)
+
+RegisterNUICallback('CasinoPhoneJobCenter', function(data) --job center
+    if data.action == 1 then
+        TriggerServerEvent('qb-phone:server:SetJobJobCenter', data)
+    elseif data.action == 2 then
+        SetNewWaypoint(data.x, data.y)
+        QBCore.Functions.Notify('GPS is set', "success")
+    end
+end)
+
+RegisterNUICallback('employment_CreateJobGroup', function(data) --employment
+    TriggerServerEvent('qb-phone:server:employment_CreateJobGroup', data)
+end)
+
+RegisterNetEvent('qb-phone:client:EveryoneGrupAddsForAll', function(data) --employment
+    SendNUIMessage({
+        action = "GroupAddDIV",
+        datas = data,
+    })
+end)
+
+RegisterNUICallback('employment_DeleteGroup', function(data) --employment
+    TriggerServerEvent('qb-phone:server:employment_DeleteGroup', data)
+end)
+
+RegisterNUICallback('GetGroupsApp', function(data, cb) --casino
+    QBCore.Functions.TriggerCallback('qb-phone:server:GetGroupsApp', function(HasGroups)
+        cb(HasGroups)
+    end)
+end)
+
+RegisterNUICallback('employment_JoinTheGroup', function(data) --employment
+    TriggerServerEvent('qb-phone:server:employment_JoinTheGroup', data)
+end)
+
+RegisterNUICallback('employment_leave_grouped', function(data) --employment
+    TriggerServerEvent('qb-phone:server:employment_leave_grouped', data)
+end)
+
+RegisterNUICallback('employment_CheckPlayerNames', function(data, cb) --casino
+    QBCore.Functions.TriggerCallback('qb-phone:server:employment_CheckPlayerNames', function(HasName)
+        cb(HasName)
+    end, data.id)
+end)
+
+RegisterNUICallback('SendBillForPlayer_debt', function(data) --debt
+    TriggerServerEvent('qb-phone:server:SendBillForPlayer_debt', data)
+end)
+
+RegisterNUICallback('GetHasBills_debt', function(data, cb) --debt
+    QBCore.Functions.TriggerCallback('qb-phone:server:GetHasBills_debt', function(Has)
+        cb(Has)
+    end)
+end)
+
+RegisterNUICallback('debit_AcceptBillForPay', function(data) --debt
+    TriggerServerEvent('qb-phone:server:debit_AcceptBillForPay', data)
+end)
+
+RegisterNetEvent('qb-phone:RefreshPhoneForDebt', function() --debt
+    SendNUIMessage({
+        action = "DebtRefresh",
+    })
+end)
+
+RegisterNUICallback('wenmo_givemoney_toID', function(data) --wenmo
+    TriggerServerEvent('qb-phone:server:wenmo_givemoney_toID', data)
+end)
+
+RegisterNetEvent('hud:client:OnMoneyChange', function(type, amount, isMinus, reason) --wenmo
+    if type == "bank" then
+        if isMinus then --remove
+            SendNUIMessage({
+                action = "ChangeMoney_Wenmo",
+                Color = "#f5a15b",
+                Amount = "-$"..amount,
+                Reason = reason,
+            })
+        else --add
+            SendNUIMessage({
+                action = "ChangeMoney_Wenmo",
+                Color = "#8ee074",
+                Amount = "+$"..amount,
+                Reason = reason,
+            })
+        end
+    end
+end)
+
+RegisterNUICallback('documents_Save_Note_As', function(data) --documents
+    TriggerServerEvent('qb-phone:server:documents_Save_Note_As', data)
+end)
+
+RegisterNUICallback('GetNote_for_Documents_app', function(data, cb) --documents
+    QBCore.Functions.TriggerCallback('qb-phone:server:GetNote_for_Documents_app', function(Has)
+        cb(Has)
+    end)
+end)
+
+RegisterNetEvent('qb-phone:RefReshNotes_Free_Documents', function() --documents
+    SendNUIMessage({
+        action = "DocumentRefresh",
+    })
+end)
+
+
+RegisterNUICallback('Send_lsbn_ToChat', function(data) --LSBN
+    TriggerServerEvent('qb-phone:server:Send_lsbn_ToChat', data)
+end)
+
+RegisterNetEvent('qb-phone:LSBN-reafy-for-add', function(data, toggle, text) --LSBN
+    if toggle then
+        SendNUIMessage({
+            action = "PhoneNotification",
+            PhoneNotify = {
+                title = "LSBN",
+                text = text,
+                icon = "fas fa-bullhorn",
+                color = "#d8e212",
+                timeout = 1000,
+            },
+        })
+    end
+
+    SendNUIMessage({
+        action = "AddNews",
+        data = data,
+    })
+end)
+
+RegisterNUICallback('GetLSBNchats', function(data) --LSBN
+    TriggerServerEvent('qb-phone:server:GetLSBNchats', data)
+end)
+
+
+
+
+
+
+
+RegisterNetEvent('stx-phone:client:publocphoneopen',function() -- PublicPhone
+    SetNuiFocus(true, true)
+    SendNUIMessage({type = 'publicphoneopen'})
+end)
+
+RegisterNUICallback('publicphoneclose', function() -- PublicPhone
+    SetNuiFocus(false, false)
+end)
+
+
+
+-- RegisterCommand('testg', function()
+--     -- local Ply = QBCore.Functions.GetPlayerData().citizenid
+--     -- local CSN = exports['qb-phone']:GetGroupCSNs(Ply)
+--     -- print(json.encode(CSN))
+
+--     TriggerEvent('chat:addMessage', { template = '<img src="{0}" style="max-width: 300px;" />', args = { "https://cdn.discordapp.com/attachments/943928793809158164/943928807520350218/idcard.png" } })
+
+-- end)
+
+local function GetGroupCSNs(Data)
+    local gData = {}
+    QBCore.Functions.TriggerCallback('qb-phone:server:GetGroupCSNs', function(HasGroup)
+        gData = HasGroup
+    end, Data)
+    Wait(100)
+    return gData
+end
+
+exports('GetGroupCSNs', GetGroupCSNs)

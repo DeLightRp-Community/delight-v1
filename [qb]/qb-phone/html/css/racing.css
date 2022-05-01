@@ -4,7 +4,7 @@
     display: none;
     height: 100%;
     width: 100%;
-    background-color: rgb(31, 31, 31);
+    background-color: #202731;
     overflow: hidden;
 }
 
@@ -185,23 +185,26 @@
 }
 
 #join-race {
-    background-color: #44bd32;
-}
-
-#quit-race {
-    background-color: #c23616;
+    background-color: #8ee074;
+    color: black;
 }
 
 #join-race:hover {
-    background-color: #4dcf39;
+    background-color: #6cac59;
+}
+
+#quit-race {
+    background-color: #f5a15b;
+    color: black;
 }
 
 #quit-race:hover {
-    background-color: #e43c17;
+    background-color: #c27e47;
 }
 
 #start-race {
     background-color: #0590db;
+    color: black;
 }
 
 #start-race:hover {
@@ -214,7 +217,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgb(31, 31, 31);
+    background-color: #202731;
     z-index: 102;
     left: -30vh;
 }
@@ -438,19 +441,21 @@
 }
 
 #setup-race-accept {
-    background-color: #4ece3b;
-}
-
-#setup-race-cancel {
-    background-color: #d33013;
+    background-color: #8ee074;
+    color: black;
 }
 
 #setup-race-accept:hover {
-    background-color: #5ceb46;
+    background-color: #6cac59;
+}
+
+#setup-race-cancel {
+    background-color: #f5a15b;
+    color: black;
 }
 
 #setup-race-cancel:hover {
-    background-color: #eb3515;
+    background-color: #c27e47;
 }
 
 /* Create */
@@ -463,7 +468,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.racing-create-trackname {
+/* .racing-create-trackname {
     position: absolute;
     width: 20vh;
     height: 4vh;
@@ -476,9 +481,9 @@
     font-family: 'Poppins', sans-serif;
     color: rgb(0, 0, 0);
     transition: .1s linear;
-}
+} */
 
-.racing-create-trackname:focus {
+/* .racing-create-trackname:focus {
     border-bottom: .2vh solid rgb(255, 137, 40);
 }
 
@@ -488,7 +493,7 @@
 
 .racing-create-trackname::-webkit-inner-spin-button {
     display: none;
-}
+} */
 
 .racing-create {
     display: none;
@@ -564,7 +569,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: rgb(31, 31, 31);
+    background-color: #202731;
     z-index: 102;
     left: -30vh;
 }

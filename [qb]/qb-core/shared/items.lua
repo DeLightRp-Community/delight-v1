@@ -457,10 +457,12 @@ QBShared.Items = {
 	["cigarette"] 						= {["name"] = "cigarette",  	     		["label"] = "Cigarette",	 			["weight"] = 250, 		["type"] = "item", 		["image"] = "cigarette.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "Smokeable Tobacco"},
 	
 	-- Hacking
-	['hacking_device']			  	= {['name'] = "hacking_device",					['label'] = "Hacking device",			['weight'] = 500,		['type'] = 'item', 		['image'] = 'hacking_device.png',		['unique'] = true,		['useable']	= true,		['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = "A multi purpose hacking device"},
+	['hacking_device']			  	= {['name'] = "hacking_device",					['label'] = "Hacking device",			['weight'] = 500,		['type'] = 'item', 		['image'] = 'hacking_device.png',		['unique'] = true,		['useable']	= true,		['shouldClose'] = true,	   	['combinable'] = nil,   ['description'] = "A multi purpose hacking device"},
 
 	-- Fake Plate
-	['fake_plate']					= {['name'] = 'fake_plate',						['label'] = "Plate Number",				['weight'] = 500,		['type'] = 'item',		['image'] = 'fake_plate.png',			['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = "A fake plate?"},
+	['fake_plate']					= {['name'] = 'fake_plate',						['label'] = "Plate Number",				['weight'] = 500,		['type'] = 'item',		['image'] = 'fake_plate.png',			['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	   	['combinable'] = nil,   ['description'] = "A fake plate?"},
 
-	['driftkit'] 					= {['name'] = 'driftkit', 						['label'] = 'Drift Kit', 				['weight'] = 50,		['type'] = 'item', 		['image'] = 'driftkit.png',				 ['unique'] = false,	['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Vehicle Drift Kit'},
+	['driftkit'] 					= {['name'] = 'driftkit', 						['label'] = 'Drift Kit', 				['weight'] = 50,		['type'] = 'item', 		['image'] = 'driftkit.png',				['unique'] = false,		['useable'] = true, 	['shouldClose'] = true, 	['combinable'] = nil, 	['description'] = 'Vehicle Drift Kit'},
+	
+	['camera'] 						= {['name'] = 'camera',							['label'] = 'CCTV Camera',				['weight'] = 1000,		['type'] = 'item',		['image'] = 'camera.png',				['unique'] = true,		['useable'] = true,		['shouldClose'] = true,		['combinable'] = nil,	['description'] = 'A CCTV Camera... wonder what you can do with this'},
 }

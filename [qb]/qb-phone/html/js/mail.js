@@ -72,14 +72,14 @@ QB.Phone.Functions.SetupMails = function(Mails) {
     }
     var MessageTime = Hourssssss + ":" + Minutessss;
 
-    $("#mail-header-mail").html(QB.Phone.Data.PlayerData.charinfo.firstname+"."+QB.Phone.Data.PlayerData.charinfo.lastname+"@qbcore.com");
+    $("#mail-header-mail").html(QB.Phone.Data.PlayerData.charinfo.firstname+"."+QB.Phone.Data.PlayerData.charinfo.lastname+"@QBCore.com");
     $("#mail-header-lastsync").html("Last synchronized "+MessageTime);
     if (Mails !== null && Mails !== undefined) {
         if (Mails.length > 0) {
             $(".mail-list").html("");
             $.each(Mails, function(i, mail){
                 var date = new Date(mail.date);
-                var DateString = date.getDate()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
+                var DateString = date.getDay()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
                 var element = '<div class="mail" id="mail-'+mail.mailid+'"><span class="mail-sender" style="font-weight: bold;">'+mail.sender+'</span> <div class="mail-text"><p>'+mail.message+'</p></div> <div class="mail-time">'+DateString+'</div></div>';
 
                 $(".mail-list").append(element);
@@ -96,7 +96,7 @@ var MonthFormatting = ["January", "February", "March", "April", "May", "June", "
 
 QB.Phone.Functions.SetupMail = function(MailData) {
     var date = new Date(MailData.date);
-    var DateString = date.getDate()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
+    var DateString = date.getDay()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
     $(".mail-subject").html("<p><span style='font-weight: bold;'>"+MailData.sender+"</span><br>"+MailData.subject+"</p>");
     $(".mail-date").html("<p>"+DateString+"</p>");
     $(".mail-content").html("<p>"+MailData.message+"</p>");
@@ -120,12 +120,50 @@ QB.Phone.Functions.SetupMail = function(MailData) {
 
 $(document).on('click', '.test-slet', function(e){
     e.preventDefault();
-    $(".advert-home").animate({
-        left: 30+"vh"
-    });
-    $(".new-advert").animate({
-        left: 0+"vh"
-    });
+
+    ClearInputNew()
+    $('#advert-box-textt').fadeIn(350);
+
+
+    // $(".advert-home").animate({
+    //     left: 30+"vh"
+    // });
+    // $(".new-advert").animate({
+    //     left: 0+"vh"
+    // });
+});
+
+$(document).on('click', '#advert-sendmessage-chat', function(e){
+    e.preventDefault();
+
+    var Advert = $(".advert-box-textt-input").val();
+    let picture = $('#advert-new-url').val();
+
+    if (Advert !== "") {
+        // $(".advert-home").animate({
+        //     left: 0+"vh"
+        // });
+        // $(".new-advert").animate({
+        //     left: -30+"vh"
+        // });
+        $('#advert-box-textt').fadeOut(350);
+        if (!picture){
+            $.post('https://qb-phone/PostAdvert', JSON.stringify({
+                message: Advert,
+                url: null
+            }));
+            ClearInputNew()
+        // }else {
+        //     $.post('https://qb-phone/PostAdvert', JSON.stringify({
+        //         message: Advert,
+        //         url: picture
+        //     }));
+        }
+        // $('#advert-new-url').val("")
+        // $(".new-advert-textarea").val("");
+    } else {
+        QB.Phone.Notifications.Add("fas fa-ad", "Advertisement", "You can\'t post an empty ad!", "#ff8f1a", 2000);
+    }
 });
 
 $(document).on('click','.advimage', function (){
@@ -185,7 +223,7 @@ $(document).on('click', '#new-advert-submit', function(e){
 });
 
 QB.Phone.Functions.RefreshAdverts = function(Adverts) {
-    $("#advert-header-name").html("@"+QB.Phone.Data.PlayerData.charinfo.firstname+""+QB.Phone.Data.PlayerData.charinfo.lastname+" | "+QB.Phone.Data.PlayerData.charinfo.phone);
+    // $("#advert-header-name").html("@"+QB.Phone.Data.PlayerData.charinfo.firstname+""+QB.Phone.Data.PlayerData.charinfo.lastname+" | "+QB.Phone.Data.PlayerData.charinfo.phone);
     if (Adverts.length > 0 || Adverts.length == undefined) {
         $(".advert-list").html("");
         $.each(Adverts, function(i, advert){

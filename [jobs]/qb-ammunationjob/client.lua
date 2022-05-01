@@ -124,6 +124,7 @@ local function SellWeapon(zoneName, entity, weapon, coords, job)
     if dialog then
         if not dialog.stateId then return end
         exports['qb-target']:RemoveZone(zoneName)
+        print(entity)
         DeleteEntity(entity)
         TriggerServerEvent('qb-ammunation:server:buyWeapon', dialog.stateId, weapon, coords, job)
     end
@@ -153,21 +154,22 @@ RegisterNetEvent('qb-ammunation:client:showcaseWeapon', function(data)
         debugPoly = false
     }, {
         options = {
-            {
+            [1] = {
+                icon = 'fa-solid fa-ban',
+                label = 'Sell Weapon',
+                action = function()
+                    DeleteEntity(showcaseWeapon)
+                    exports['qb-target']:RemoveZone(zoneName)      
+                end
+            },
+            [2] = {
                 icon = 'fa-solid fa-basket-shopping',
                 label = 'Sell Weapon',
                 action = function()
+                    print()
                     SellWeapon(zoneName, showcaseWeapon, data.weapon, coords, PlayerData.job.name)
                 end
             },
-            {
-                icon = 'fa-solid fa-ban',
-                label = 'Remove Weapon',
-                action = function()
-                    exports['qb-target']:RemoveZone(zoneName)
-                    DeleteEntity(showcaseWeapon)
-                end
-            }
         },
         distance = 2.0,
     })

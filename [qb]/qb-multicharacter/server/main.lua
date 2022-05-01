@@ -5,7 +5,6 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local function GiveStarterItems(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
     for k, v in pairs(QBCore.Shared.StarterItems) do
         local info = {}
         if v.item == "id_card" then
@@ -28,7 +27,8 @@ end
 local function loadHouseData()
     local HouseGarages = {}
     local Houses = {}
-    local result = MySQL.Sync.fetchAll('SELECT * FROM houselocations', {})
+    local result = MySQL.Sync.fetchAll('SELECT * FROM houselocations', {}) -- new
+    -- local result = exports.oxmysql:executeSync('SELECT * FROM houselocations', {}) -- old
     if result[1] ~= nil then
         for k, v in pairs(result) do
             local owned = false
@@ -123,13 +123,15 @@ QBCore.Functions.CreateCallback("qb-multicharacter:server:GetUserCharacters", fu
     local src = source
     local license = QBCore.Functions.GetIdentifier(src, 'license')
 
-    MySQL.Async.execute('SELECT * FROM players WHERE license = ?', {license}, function(result)
+    MySQL.Async.execute('SELECT * FROM players WHERE license = ?', {license}, function(result) -- new
+    -- exports.oxmysql:execute('SELECT * FROM players WHERE license = ?', {license}, function(result) -- old
         cb(result)
     end)
 end)
 
 QBCore.Functions.CreateCallback("qb-multicharacter:server:GetServerLogs", function(source, cb)
-    MySQL.Async.execute('SELECT * FROM server_logs', {}, function(result)
+    MySQL.Async.execute('SELECT * FROM server_logs', {}, function(result) -- new
+    -- exports.oxmysql:execute('SELECT * FROM server_logs', {}, function(result) -- old
         cb(result)
     end)
 end)
@@ -154,25 +156,24 @@ QBCore.Functions.CreateCallback("qb-multicharacter:server:GetNumberOfCharacters"
     cb(numOfChars)
 end)
 
-QBCore.Functions.CreateCallback("qb-multicharacter:server:setupCharacters", function(source, cb)
+QBCore.Functions.CreateCallback("qb-multicharacter:server:SetupNewCharacter", function(source, cb)
     local license = QBCore.Functions.GetIdentifier(source, 'license')
     local plyChars = {}
-    MySQL.Async.fetchAll('SELECT * FROM players WHERE license = ?', {license}, function(result)
-        for i = 1, (#result), 1 do
-            result[i].charinfo = json.decode(result[i].charinfo)
-            result[i].money = json.decode(result[i].money)
-            result[i].job = json.decode(result[i].job)
-            plyChars[#plyChars+1] = result[i]
+    MySQL.Async.fetchAll('SELECT * FROM players WHERE license = ?', {license}, function(result) -- new
+    -- exports.oxmysql:execute('SELECT * FROM players WHERE license = ?', {license}, function(result) -- old
+        for k, v in pairs(result) do
+            local result = MySQL.Sync.fetchAll('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {v.citizenid, 1}) -- new
+            -- local result = exports.oxmysql:executeSync('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {v.citizenid, 1}) -- old
+
+            if result[1] ~= nil then
+                plyChars[k] = {result[1].model, result[1].skin, v.cid, v.charinfo, v}
+            elseif v.skin then
+                local Skins = json.decode(v.skin)
+                plyChars[k] = {nil, Skins, v.cid, v.charinfo, v}
+            else
+                plyChars[k] = {nil, nil, v.cid, v.charinfo, v}
+            end
         end
         cb(plyChars)
     end)
-end)
-
-QBCore.Functions.CreateCallback("qb-multicharacter:server:getSkin", function(source, cb, cid)
-    local result = MySQL.Sync.fetchAll('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1})
-    if result[1] ~= nil then
-        cb(result[1].model, result[1].skin)
-    else
-        cb(nil)
-    end
 end)

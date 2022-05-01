@@ -66,8 +66,37 @@ $(document).on('click', '.twitter-header-tab', function(e){
 
 $(document).on('click', '.twitter-new-tweet', function(e){
     e.preventDefault();
+    ClearInputNew()
+    $('#twt-box-textt').fadeIn(350);
+    // QB.Phone.Animations.TopSlideDown(".twitter-new-tweet-tab", 450, 0);
+});
 
-    QB.Phone.Animations.TopSlideDown(".twitter-new-tweet-tab", 450, 0);
+$(document).on('click', '#twt-sendmessage-chat', function(e){
+    e.preventDefault();
+
+    var TweetMessage = $(".twt-box-textt-input").val();
+    var imageURL = $('#tweet-new-url').val()
+    if (TweetMessage != "") {
+        var CurrentDate = new Date();
+        $.post('https://qb-phone/PostNewTweet', JSON.stringify({
+            Message: TweetMessage,
+            Date: CurrentDate,
+            Picture: QB.Phone.Data.MetaData.profilepicture,
+            url: imageURL
+        }), function(Tweets){
+            QB.Phone.Notifications.LoadTweets(Tweets);
+            ClearInputNew();
+            $('#twt-box-textt').fadeOut(350);
+        });
+        $.post('https://qb-phone/GetHashtags', JSON.stringify({}), function(Hashtags){
+            QB.Phone.Notifications.LoadHashtags(Hashtags)
+        })
+        QB.Phone.Animations.TopSlideUp(".twitter-new-tweet-tab", 450, -120);
+    } else {
+        QB.Phone.Notifications.Add("fab fa-twitter", "Twitter", "Fill a message!", "#1DA1F2");
+    };
+    $('#tweet-new-url').val("");
+    // $("#tweet-new-message").val("");
 });
 
 $(document).on('click', '#take-pic', function (e) {
@@ -91,7 +120,22 @@ QB.Phone.Notifications.LoadTweets = function(Tweets) {
             });
             if (clean == '') clean = 'Hmm, I shouldn\'t be able to do this...'
             var TwtMessage = QB.Phone.Functions.FormatTwitterMessage(clean);
-            var TimeAgo = moment(Tweet.date).format('MM/DD/YYYY hh:mm');
+            var today = new Date();
+            var TweetTime = new Date(Tweet.time);
+            var diffMs = (today - TweetTime);
+            var diffDays = Math.floor(diffMs / 86400000);
+            var diffHrs = Math.floor((diffMs % 86400000) / 3600000);
+            var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
+            var diffSeconds = Math.round(diffMs / 1000);
+            var TimeAgo = diffSeconds + ' s';
+
+            if (diffMins > 0) {
+                TimeAgo = diffMins + ' m';
+            } else if (diffHrs > 0) {
+                TimeAgo = diffHrs + ' h';
+            } else if (diffDays > 0) {
+                TimeAgo = diffDays + ' d';
+            }
 
             var TwitterHandle = Tweet.firstName + ' ' + Tweet.lastName
             var PictureUrl = "./img/default.png"
@@ -110,7 +154,7 @@ QB.Phone.Notifications.LoadTweets = function(Tweets) {
                 let TweetElement = '<div class="twitter-tweet" data-twthandler="@'+TwitterHandle.replace(" ", "_")+'"><div class="tweet-reply"><i class="fas fa-reply"></i></div>'+
                     '<div class="tweet-tweeter">'+Tweet.firstName+' '+Tweet.lastName+' &nbsp;<span>@'+TwitterHandle.replace(" ", "_")+' &middot; '+TimeAgo+'</span></div>'+
                     '<div class="tweet-message">'+TwtMessage+'</div>'+
-                    '<img class="image" src= ' + Tweet.url + ' style = " border-radius:4px; width: 70%; position:relative; z-index: 1; left:52px; margin:.6rem .5rem .6rem 1rem;height: auto; padding-bottom: 15px;">' +
+                    '<img class="image" src= ' + Tweet.url + ' style = "border-radius:4px;width: 89%;position:relative;z-index: 1;left: 6%;margin-bottom: 2%; height: auto;">' +
                     '<div class="twt-img" style="top: 1vh;"><img src="'+PictureUrl+'" class="tweeter-image"></div>' +
                     '</div>';
                 $(".twitter-home-tab").append(TweetElement);
@@ -132,9 +176,13 @@ $(document).on('click','#twt-delete-click',function(e){
 $(document).on('click', '.tweet-reply', function(e){
     e.preventDefault();
     var TwtName = $(this).parent().data('twthandler');
-    $('#tweet-new-url').val("");
-    $("#tweet-new-message").val(TwtName + " ");
-    QB.Phone.Animations.TopSlideDown(".twitter-new-tweet-tab", 450, 0);
+
+    ClearInputNew()
+    $('#twt-box-textt').fadeIn(350);
+    $(".twt-box-textt-input").val(TwtName+" ");
+    // $('#tweet-new-url').val("");
+    // $("#tweet-new-message").val(TwtName + " ");
+    // QB.Phone.Animations.TopSlideDown(".twitter-new-tweet-tab", 450, 0);
 });
 
 QB.Phone.Notifications.LoadMentionedTweets = function(Tweets) {
@@ -149,7 +197,22 @@ QB.Phone.Notifications.LoadMentionedTweets = function(Tweets) {
             });
             if (clean == '') clean = 'Hmm, I shouldn\'t be able to do this...'
             var TwtMessage = QB.Phone.Functions.FormatTwitterMessage(clean);
-            var TimeAgo = moment(Tweet.date).format('MM/DD/YYYY hh:mm');
+            var today = new Date();
+            var TweetTime = new Date(Tweet.time);
+            var diffMs = (today - TweetTime);
+            var diffDays = Math.floor(diffMs / 86400000);
+            var diffHrs = Math.floor((diffMs % 86400000) / 3600000);
+            var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
+            var diffSeconds = Math.round(diffMs / 1000);
+            var TimeAgo = diffSeconds + ' s';
+
+            if (diffSeconds > 60) {
+                TimeAgo = diffMins + ' m';
+            } else if (diffMins > 60) {
+                TimeAgo = diffHrs + ' h';
+            } else if (diffHrs > 24) {
+                TimeAgo = diffDays + ' d';
+            }
 
             var TwitterHandle = Tweet.firstName + ' ' + Tweet.lastName
             var PictureUrl = "./img/default.png";
@@ -319,7 +382,22 @@ QB.Phone.Notifications.LoadHashtagMessages = function(Tweets) {
             });
             if (clean == '') clean = 'Hmm, I shouldn\'t be able to do this...'
             var TwtMessage = QB.Phone.Functions.FormatTwitterMessage(clean);
-            var TimeAgo = moment(Tweet.date).format('MM/DD/YYYY hh:mm');
+            var today = new Date();
+            var TweetTime = new Date(Tweet.time);
+            var diffMs = (today - TweetTime);
+            var diffDays = Math.floor(diffMs / 86400000);
+            var diffHrs = Math.floor((diffMs % 86400000) / 3600000);
+            var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000);
+            var diffSeconds = Math.round(diffMs / 1000);
+            var TimeAgo = diffSeconds + ' s';
+
+            if (diffSeconds > 60) {
+                TimeAgo = diffMins + ' m';
+            } else if (diffMins > 60) {
+                TimeAgo = diffHrs + ' h';
+            } else if (diffHrs > 24) {
+                TimeAgo = diffDays + ' d';
+            }
 
             var TwitterHandle = Tweet.firstName + ' ' + Tweet.lastName
             var PictureUrl = "./img/default.png"
