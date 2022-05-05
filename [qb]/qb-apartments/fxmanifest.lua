@@ -26,7 +26,7 @@ client_scripts {
 dependencies {
 	'qb-core',
 	'qb-interior',
-	'qb-clothing',
+	'fivem-appearance',
 	'qb-weathersync'
 }
 
