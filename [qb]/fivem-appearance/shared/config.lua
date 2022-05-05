@@ -9,7 +9,7 @@ Config.SurgeonCost = 100
 
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 
-Config.EnablePedMenu = true
+Config.EnablePedMenu = false
 Config.PedMenuGroup = 'admin'
 
 Config.Blips = {

@@ -33,6 +33,9 @@ CreateThread(function()
         local pos = GetEntityCoords(ped)
         local inRange = false
         for k, v in pairs(Config.Registers) do
+            local register = {
+                GetHashKey("prop_till_01")
+            }
             local dist = #(pos - Config.Registers[k][1].xyz)
             if dist <= 1 and Config.Registers[k].robbed then
                 inRange = true
@@ -301,10 +304,7 @@ RegisterNetEvent('qb-storerobbery:success', function()
                 Wait(10000)
             end
         end)
-    else
-        SendNUIMessage({
-            action = "kekw",
-        })
+    
     end
 end)
 
@@ -342,10 +342,6 @@ RegisterNetEvent('SafeCracker:EndMinigame', function(won)
                     currentSafe = 0
                     takeAnim()
                 end
-            else
-                SendNUIMessage({
-                    action = "kekw",
-                })
             end
         end
     end
@@ -355,14 +351,9 @@ end)
 RegisterNUICallback('PadLockSuccess', function()
     if currentSafe ~= 0 then
         if not Config.Safes[currentSafe].robbed then
-            SendNUIMessage({
-                action = "kekw",
-            })
+            
         end
-    else
-        SendNUIMessage({
-            action = "kekw",
-        })
+
     end
 end)
 
