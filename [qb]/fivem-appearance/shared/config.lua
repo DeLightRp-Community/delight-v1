@@ -2,15 +2,49 @@ Config = {}
 
 Config.Debug = false
 
-Config.Money = 100
+Config.ClothingCost = 100
+Config.BarberCost = 100
+Config.TattooCost = 100
+Config.SurgeonCost = 100
 
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 
 Config.EnablePedMenu = true
 Config.PedMenuGroup = 'admin'
 
+Config.Blips = {
+    ['clothing'] = {
+        Show = true,
+        Sprite = 366,
+        Color = 47,
+        Scale = 0.7,
+        Name = "Clothing Store",
+    },
+    ['barber'] = {
+        Show = true,
+        Sprite = 71,
+        Color = 0,
+        Scale = 0.7,
+        Name = "Barber",
+    },
+    ['tattoo'] = {
+        Show = true,
+        Sprite = 75,
+        Color = 4,
+        Scale = 0.7,
+        Name = "Tattoo Shop",
+    },
+    ['surgeon'] = {
+        Show = true,
+        Sprite = 102,
+        Color = 4,
+        Scale = 0.7,
+        Name = "Plastic Surgeon",
+    }
+}
+
 Config.Stores = {
-    [1] = {shopType = 'clothing', coords = vector3(1693.2, 4828.11, 42.07), width = 4, length = 4},
+    [1] = {shopType = 'clothing', coords = vector3(1693.2, 4828.11, 42.07), width = 4, length = 4, showBlip = true}, -- showBlip overrides the blip visibilty configured above for the group
     [2] = {shopType = 'clothing', coords = vector3(-705.5, -149.22, 37.42), width = 4, length = 4},
     [3] = {shopType = 'clothing', coords = vector3(-1192.61, -768.4, 17.32), width = 4, length = 4},
     [4] = {shopType = 'clothing', coords = vector3(425.91, -801.03, 29.49), width = 4, length = 4},
@@ -51,10 +85,25 @@ Config.ClothingRooms = {
     --[6] = {requiredJob = "police", coords = vector3(-77.59, -129.17, 5.03)},
 }
 
+
+Config.PlayerOutfitRooms = {
+    -- Sample outfit room config
+--[[
+    [1] = {
+        coords = vector3(287.29, -573.41, 43.17),
+        width = 3,
+        length = 3,
+        citizenIDs = {
+            "BHH65156",
+        }
+    },
+    ]]--
+}
+
 Config.Outfits = {
     ['police'] = {
         ['male'] = {
-            [0] = {
+            [1] = {
                 outfitLabel = 'Short Sleeve',
                 outfitData = {
                     ['pants'] = {item = 24, texture = 0}, -- Pants
@@ -71,7 +120,7 @@ Config.Outfits = {
                 },
                 grades = {0, 1, 2, 3, 4},
             },
-            [1] = {
+            [2] = {
                 outfitLabel = 'Trooper Tan',
                 outfitData = {
                     ['pants'] = {item = 24, texture = 0}, -- Pants
@@ -88,7 +137,7 @@ Config.Outfits = {
                 },
                 grades = {0, 1, 2, 3, 4},
             },
-            [2] = {
+            [3] = {
                 outfitLabel = 'Long Sleeve',
                 outfitData = {
                     ['pants'] = {item = 24, texture = 0}, -- Pants
@@ -105,7 +154,7 @@ Config.Outfits = {
                 },
                 grades = {1, 2, 3, 4},
             },
-            [3] = {
+            [4] = {
                 outfitLabel = 'Trooper Black',
                 outfitData = {
                     ['pants'] = {item = 24, texture = 0}, -- Pants
@@ -122,7 +171,7 @@ Config.Outfits = {
                 },
                 grades = {2, 3, 4},
             },
-            [4] = {
+            [5] = {
                 outfitLabel = 'SWAT',
                 outfitData = {
                     ['pants'] = {item = 130, texture = 1}, -- Pants
@@ -140,7 +189,7 @@ Config.Outfits = {
             }
         },
         ['female'] = {
-            [0] = {
+            [1] = {
                 outfitLabel = 'Short Sleeve',
                 outfitData = {
                     ['pants'] = {item = 133, texture = 0}, -- Pants
@@ -157,7 +206,7 @@ Config.Outfits = {
                 },
                 grades = {0, 1, 2, 3, 4},
             },
-            [1] = {
+            [2] = {
                 outfitLabel = 'Trooper Tan',
                 outfitData = {
                     ['pants'] = {item = 133, texture = 0}, -- Pants
@@ -174,7 +223,7 @@ Config.Outfits = {
                 },
                 grades = {0, 1, 2, 3, 4},
             },
-            [2] = {
+            [3] = {
                 outfitLabel = 'Long Sleeve',
                 outfitData = {
                     ['pants'] = {item = 133, texture = 0}, -- Pants
@@ -191,7 +240,7 @@ Config.Outfits = {
                 },
                 grades = {1, 2, 3, 4},
             },
-            [3] = {
+            [4] = {
                 outfitLabel = 'Trooper Black',
                 outfitData = {
                     ['pants'] = {item = 133, texture = 0}, -- Pants
@@ -208,7 +257,7 @@ Config.Outfits = {
                 },
                 grades = {2, 3, 4},
             },
-            [4] = {
+            [5] = {
                 outfitLabel = 'SWAT',
                 outfitData = {
                     ['pants'] = {item = 135, texture = 1}, -- Pants
@@ -229,7 +278,7 @@ Config.Outfits = {
     },
     ['realestate'] = {
         ['male'] = {
-            [0] = {
+            [1] = {
                 -- Outfits
                 outfitLabel = 'Worker',
                 outfitData = {
@@ -249,7 +298,7 @@ Config.Outfits = {
             }
         },
         ['female'] = {
-            [0] = {
+            [1] = {
                 outfitLabel = 'Worker',
                 outfitData = {
                     ["pants"]       = { item = 57, texture = 2},  -- Pants
@@ -270,7 +319,7 @@ Config.Outfits = {
     },
     ['ambulance'] = {
         ['male'] = {
-            [0] = {
+            [1] = {
                 outfitLabel = 'T-Shirt',
                 outfitData = {
                     ['arms'] = {item = 85, texture = 0}, -- Arms
@@ -289,7 +338,7 @@ Config.Outfits = {
                 },
                 grades = {0, 1, 2, 3, 4},
             },
-            [1] = {
+            [2] = {
                 outfitLabel = 'Polo',
                 outfitData = {
                     ['arms'] = {item = 90, texture = 0}, -- Arms
@@ -308,7 +357,7 @@ Config.Outfits = {
                 },
                 grades = {2, 3, 4},
             },
-            [2] = {
+            [3] = {
                 outfitLabel = 'Doctor',
                 outfitData = {
                     ['arms'] = {item = 93, texture = 0}, -- Arms
@@ -329,7 +378,7 @@ Config.Outfits = {
             }
         },
         ['female'] = {
-            [0] = {
+            [1] = {
                 outfitLabel = 'T-Shirt',
                 outfitData = {
                     ['arms'] = {item = 109, texture = 0}, -- Arms
@@ -348,7 +397,7 @@ Config.Outfits = {
                 },
                 grades = {0, 1, 2, 3, 4},
             },
-            [1] = {
+            [2] = {
                 outfitLabel = 'Polo',
                 outfitData = {
                     ['arms'] = {item = 105, texture = 0}, -- Arms
@@ -367,7 +416,7 @@ Config.Outfits = {
                 },
                 grades = {2, 3, 4},
             },
-            [2] = {
+            [3] = {
                 outfitLabel = 'Doctor',
                 outfitData = {
                     ['arms'] = {item = 105, texture = 0}, -- Arms

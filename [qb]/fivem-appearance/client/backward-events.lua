@@ -24,7 +24,7 @@ RegisterNetEvent('qb-clothing:client:openMenu', function()
         components = true,
         props = true,
         tattoos = true
-    }, true)
+    }, true, 'all')
 end)
 
 RegisterNetEvent('qb-clothing:client:openOutfitMenu', function()
@@ -131,4 +131,8 @@ RegisterNetEvent('qb-clothing:client:loadOutfit', function(oData)
             ClearPedProp(ped, 2)
         end
     end
+end)
+
+RegisterNetEvent("qb-multicharacter:client:chooseChar", function()
+    TriggerServerEvent("fivem-appearance:server:resetOutfitCache")
 end)
