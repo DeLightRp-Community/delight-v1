@@ -60,7 +60,7 @@ body {
 
 .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
     color: #fff;
-    background-color: #DC143C;
+    background-color: #7b43ff;
 }
 
 a {
@@ -70,7 +70,7 @@ a {
 }
 
 a:hover {
-    color: #DC143C;
+    color: #7b43ff;
     text-decoration: underline;
 }
 
@@ -323,8 +323,8 @@ a:hover {
 }
 .btn-danger {
     color: #fff;
-    background-color: #DC143C;
-    border-color: #DC143C;
+    background-color: #7b43ff;
+    border-color: #7b43ff;
 }
 .btn-danger:hover {
     color: #fff;

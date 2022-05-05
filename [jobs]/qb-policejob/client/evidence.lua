@@ -75,6 +75,26 @@ local function DnaHash(s)
 end
 
 -- Events
+RegisterNetEvent('evidence:client:OpenEidenceCase', function(case)
+	local notfound = true
+	local pos = GetEntityCoords(GetPlayerPed(-1))
+
+	for k, v in pairs(Config.Locations["evidence"]) do
+		if (GetDistanceBetweenCoords(pos, v.x, v.y, v.z, true) < 2) then
+					notfound = false
+					TriggerServerEvent("inventory:server:OpenInventory", "stash", "case_evidence_"..case , {
+						maxweight = 80000,
+						slots = 500,
+					})
+					TriggerEvent("inventory:client:SetCurrentStash", "case_evidence_"..case)
+					break
+		end
+	end
+	if notfound then
+		TriggerEvent('chatMessage',"SYSTEM", "error", "Be Stash Police Nazdik Shavid")
+	end
+end)
+
 RegisterNetEvent('evidence:client:SetStatus', function(statusId, time)
     if time > 0 and StatusList[statusId] then
         if (CurrentStatusList == nil or CurrentStatusList[statusId] == nil) or

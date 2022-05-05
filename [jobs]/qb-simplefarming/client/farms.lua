@@ -187,7 +187,7 @@ BigGarden = {
     [1] = {
         label = "Mixed Garden",
         BlipCoord = vector3(1937.96, 4848.61, 45.46),
-        Blip = 1,
+        Blip = 540,
         BlipColor = 69,
         zones = {
             vector2(2012.6793212891, 4827.8100585938),

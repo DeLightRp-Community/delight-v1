@@ -24,6 +24,49 @@ CreateThread(function()
     end
 end)
 
+
+CreateThread(function()
+    while true do
+        Wait(1)
+        
+        Wait(100)
+        local models = {
+            'prop_till_01',
+          }
+          exports['qb-target']:AddTargetModel(models, {
+            options = { -- This is your options table, in this table all the options will be specified for the target to accept
+              {
+                icon = 'fas fa-example',
+                label = 'Test',
+                action = function(entity)
+                    local propExistAndDamage=false
+                    if IsPedAPlayer(entity) then return false end 
+                    local ped = PlayerPedId()
+                    local pos = GetEntityCoords(ped)
+                    local sani = GetClosestObjectOfType(pos, 2.0, GetHashKey('prop_till_01'), false)
+                    if DoesEntityExist(sani) then
+                        hpProp = GetEntityHealth(sani)
+                        if hpProp < 1000 then
+                            propExistAndDamage =true
+                        end
+                    end
+                    Wait(100)
+                    if propExistAndDamage then
+                        
+                    end
+                  
+                end,
+                -- canInteract = function(entity, distance, data) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
+                --   if IsPedAPlayer(entity) then return false end -- This will return false if the entity interacted with is a player and otherwise returns true
+                --   return true
+                -- end,
+                },
+            },
+            distance = 2.5, -- This is the distance for you to be at for the target to turn blue, this is in GTA units and has to be a float value
+          })
+    end
+end)
+
 CreateThread(function()
     Wait(1000)
     setupRegister()
@@ -33,9 +76,6 @@ CreateThread(function()
         local pos = GetEntityCoords(ped)
         local inRange = false
         for k, v in pairs(Config.Registers) do
-            local register = {
-                GetHashKey("prop_till_01")
-            }
             local dist = #(pos - Config.Registers[k][1].xyz)
             if dist <= 1 and Config.Registers[k].robbed then
                 inRange = true
@@ -304,7 +344,10 @@ RegisterNetEvent('qb-storerobbery:success', function()
                 Wait(10000)
             end
         end)
-    
+    else
+        SendNUIMessage({
+            action = "kekw",
+        })
     end
 end)
 
@@ -342,6 +385,10 @@ RegisterNetEvent('SafeCracker:EndMinigame', function(won)
                     currentSafe = 0
                     takeAnim()
                 end
+            else
+                SendNUIMessage({
+                    action = "kekw",
+                })
             end
         end
     end
@@ -351,9 +398,14 @@ end)
 RegisterNUICallback('PadLockSuccess', function()
     if currentSafe ~= 0 then
         if not Config.Safes[currentSafe].robbed then
-            
+            SendNUIMessage({
+                action = "kekw",
+            })
         end
-
+    else
+        SendNUIMessage({
+            action = "kekw",
+        })
     end
 end)
 

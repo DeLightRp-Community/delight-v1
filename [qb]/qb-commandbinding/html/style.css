@@ -24,7 +24,7 @@ body {
     position: absolute;
     width: 100%;
     height: 5vh;
-    background: #dc143c;
+    background: #7b43ff;
     text-align: center;
     top: 0;
     line-height: 1vh;
@@ -135,7 +135,7 @@ input[type="text"] {
     width: 100%;
     height: 5vh;
     top: 5vh;
-    border-bottom: 2px solid #dc143c;
+    border-bottom: 2px solid #7b43ff;
     margin-bottom: 1.2vh;
 }
 
@@ -160,7 +160,7 @@ input[type="text"] {
     height: 3.5vh;
     bottom: 0;
     text-align: center;
-    background: #dc143c;
+    background: #7b43ff;
     line-height: 0.7vh;
     transition: all 0.1s linear;
     border-radius: 0 0 0.7vh 0.7vh;

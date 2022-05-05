@@ -66,6 +66,7 @@ function QBCore.Player.CheckPlayerData(source, PlayerData)
     PlayerData.metadata['isdead'] = PlayerData.metadata['isdead'] or false
     PlayerData.metadata['inlaststand'] = PlayerData.metadata['inlaststand'] or false
     PlayerData.metadata['armor'] = PlayerData.metadata['armor'] or 0
+    PlayerData.metadata['division']  = PlayerData.metadata['division'] or ""
     PlayerData.metadata['ishandcuffed'] = PlayerData.metadata['ishandcuffed'] or false
     PlayerData.metadata['tracker'] = PlayerData.metadata['tracker'] or false
     PlayerData.metadata['injail'] = PlayerData.metadata['injail'] or 0

@@ -420,7 +420,7 @@ end
 function SetupStoreZones()
     local zones = {}
     for _, v in pairs(Config.Stores) do
-        zones[#zones + 1] = BoxZone:Create(v.coords, v.length, v.width, {
+            zones[#zones + 1] = BoxZone:Create(v.coords, v.length, v.width, {
             name = v.shopType,
             minZ = v.coords.z - 1.5,
             maxZ = v.coords.z + 1.5,
@@ -524,29 +524,100 @@ function SetupTargets()
     for k, v in pairs(Config.Stores) do
         local opts = {}
         if v.shopType == 'barber' then
-            opts = {
-                action = function(_)
-                    OpenBarberShop()
-                end,
-                icon = "fas fa-scissors",
-                label = "Barber",
-            }
+            -- opts = {
+            --     action = function(_)
+            --         OpenBarberShop()
+            --     end,
+            --     icon = "fas fa-scissors",
+            --     label = "Barber",
+            -- }
+            exports['qb-target']:SpawnPed({
+                model = 's_f_m_fembarber',
+                coords = v.coords,
+                minusOne = true,
+                freeze = true, 
+                invincible = true,
+                blockevents = true,
+                animDict = 'abigail_mcs_1_concat-0',
+                anim = 'csb_abigail_dual-0',
+                flag = 1,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                target = {
+                  options = {
+                    {
+                      icon = 'fas fa-scissors',
+                      label = 'Barber',
+                      action = function(entity) -- This is the action it has to perform, this REPLACES the event and this is OPTIONAL
+                        if IsPedAPlayer(entity) then return false end
+                        OpenBarberShop()
+                      end,
+                      
+                    }
+                  },
+                  distance = 2.5,
+                },
+              })
         elseif v.shopType == 'clothing' then
-            opts = {
-                action = function(_)
-                    TriggerEvent("fivem-appearance:client:openClothingShopMenu")
-                end,
-                icon = "fas fa-tshirt",
-                label = "Clothing Store",
-            }
+            -- opts = {
+            --     action = function(_)
+            --         TriggerEvent("fivem-appearance:client:openClothingShopMenu")
+            --     end,
+            --     icon = "fas fa-tshirt",
+            --     label = "Clothing Store",
+            -- }
+            exports['qb-target']:SpawnPed({
+                model = 's_f_y_shop_low',
+                coords = v.coords,
+                minusOne = true,
+                freeze = true, 
+                invincible = true,
+                blockevents = true,
+                animDict = 'abigail_mcs_1_concat-0',
+                anim = 'csb_abigail_dual-0',
+                flag = 1,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                target = {
+                  options = {
+                    {
+                      icon = 'fas fa-tshirt',
+                      label = 'Clothing Store',
+                      action = function(entity) -- This is the action it has to perform, this REPLACES the event and this is OPTIONAL
+                        if IsPedAPlayer(entity) then return false end
+                        TriggerEvent("fivem-appearance:client:openClothingShopMenu")
+                      end,
+                      
+                    }
+                  },
+                  distance = 2.5,
+                },
+              })
         elseif v.shopType == 'tattoo' then
-            opts = {
-                action = function(_)
-                    OpenTattooShop()
-                end,
-                icon = "fas fa-pen",
-                label = "Tattoos",
-            }
+            exports['qb-target']:SpawnPed({
+                model = 'u_m_y_tattoo_01',
+                coords = v.coords,
+                minusOne = true,
+                freeze = true, 
+                invincible = true,
+                blockevents = true,
+                animDict = 'abigail_mcs_1_concat-0',
+                anim = 'csb_abigail_dual-0',
+                flag = 1,
+                scenario = 'WORLD_HUMAN_AA_COFFEE',
+                target = {
+                  options = {
+                    {
+                      icon = 'fa-solid fa-palette',
+                      label = 'Tattoo Shop',
+                      action = function(entity) -- This is the action it has to perform, this REPLACES the event and this is OPTIONAL
+                        if IsPedAPlayer(entity) then return false end
+                        OpenTattooShop()
+                      end,
+                      
+                    }
+                  },
+                  distance = 2.5,
+                },
+              })
         elseif v.shopType == 'surgeon' then
             opts = {
                 action = function(_)

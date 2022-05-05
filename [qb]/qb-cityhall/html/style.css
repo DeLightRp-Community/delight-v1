@@ -39,7 +39,7 @@ body {
     left: 1.5vh;
     border-radius: 2vh;
     height: 10vh;
-    background: #dc143c;
+    background: #7b43ff;
 }
 
 .cityhall-option-blocks {
@@ -91,14 +91,14 @@ body {
 }
 
 .cityhall-option-block:hover {
-    border-bottom: 9px solid #dc143c;
+    border-bottom: 9px solid #7b43ff;
     opacity: 0.9;
 }
 
 .cityhall-option-block > i {
     font-size: 16vh;
     line-height: 21vh;
-    color: #dc143c;
+    color: #7b43ff;
 }
 
 .cityhall-option-block > p {
@@ -269,7 +269,7 @@ body {
     margin: 1vh;
     width: 20vh;
     height: 5vh;
-    background: #dc143c;
+    background: #7b43ff;
     border-radius: 0.5vh;
     transition: all 0.1s linear;
 }

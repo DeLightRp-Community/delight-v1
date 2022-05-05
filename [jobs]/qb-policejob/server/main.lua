@@ -351,13 +351,30 @@ QBCore.Commands.Add("depot", Lang:t("commands.depot"), {{name = "price", help = 
     end
 end)
 
-QBCore.Commands.Add("impound", Lang:t("commands.impound"), {}, false, function(source)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
+QBCore.Commands.Add("pimpound", "Police Impound A Vehicle (Police Only)", {}, false, function(source, args)
+	local Player = QBCore.Functions.GetPlayer(source)
     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
-        TriggerClientEvent("police:client:ImpoundVehicle", src, true)
+        TriggerClientEvent("police:client:ImpoundVehicle", source, true)
     else
-        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
+        TriggerClientEvent('QBCore:Notify', source, 'For Emergency Services Only', 'error')
+    end
+end)
+
+QBCore.Commands.Add("evidence", "Show evidence of case ", {{name="name", help="uniqe name of case whithout space"}}, true, function(source, args)
+	local Player = QBCore.Functions.GetPlayer(source)
+    if Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "sheriff" and Player.PlayerData.job.onduty then
+        TriggerClientEvent("evidence:client:OpenEidenceCase", source,args[1])
+    else
+        TriggerClientEvent('QBCore:Notify', source, 'For Emergency Services Only', 'error')
+    end
+end)
+
+QBCore.Commands.Add("impound", "Impound A Vehicle (Police Only)", {}, false, function(source, args)
+	local Player = QBCore.Functions.GetPlayer(source)
+    if Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "tuner" or Player.PlayerData.job.name == "mechanicb" and Player.PlayerData.job.onduty then
+	    TriggerClientEvent('police:client:DeleteVehicle', source)
+    else
+        TriggerClientEvent('QBCore:Notify', source, 'For Emergency Services Only', 'error')
     end
 end)
 
@@ -854,9 +871,19 @@ RegisterNetEvent('police:server:Impound', function(plate, fullImpound, price, bo
         else
             MySQL.Async.execute(
                 'UPDATE player_vehicles SET state = ?, body = ?, engine = ?, fuel = ? WHERE plate = ?',
-                {2, body, engine, fuel, plate})
+                {3, body, engine, fuel, plate})
             TriggerClientEvent('QBCore:Notify', src, Lang:t("info.vehicle_seized"))
         end
+    end
+end)
+
+RegisterNetEvent('police:server:mamoliImpound', function(plate, fullImpound, price, body, engine, fuel)
+    local src = source
+    if IsVehicleOwned(plate) then
+        MySQL.Async.execute(
+            'UPDATE player_vehicles SET state = ?, body = ?, engine = ?, fuel = ? WHERE plate = ?',
+            {2, body, engine, fuel, plate})
+        TriggerClientEvent('QBCore:Notify', src, "Vehicle completely seized!")
     end
 end)
 
@@ -1020,3 +1047,54 @@ CreateThread(function()
         UpdateBlips()
     end
 end)
+
+---------------------- division ----------------------
+
+QBCore.Commands.Add("division", "Division (Police Only)", {{name="ID", help="ID player"}, {name="Division", help="Set Division"}}, true, function(source, args, raws)
+	local xPlayer = QBCore.Functions.GetPlayer(source)
+	if xPlayer.PlayerData.job.name == 'police' and xPlayer.PlayerData.job.grade.level > 9 then
+
+		local target = tonumber(args[1])
+		if not target then
+            TriggerClientEvent('QBCore:Notify', source, 'Lotfan Id Player morde nazar ro vared konid', 'error')
+			return
+		end
+
+		local division = args[2]
+		if not division then
+            TriggerClientEvent('QBCore:Notify', source, 'Lotfan ye Division vared konid', 'error')
+			return
+		end
+
+		local found = false
+		division = string.lower(division)
+		if division == 'swat' or division == 'xray' or 'police' then
+			found = true
+		end
+
+		if not found then
+            TriggerClientEvent('QBCore:Notify', source, 'Shoma Hich kodom az division haye Tarif shode ro vared nakardid', 'error')
+			return
+		end
+
+		target = QBCore.Functions.GetPlayer(target)
+		if ( target.PlayerData.metadata["division"] == nil ) then
+			target.Functions.SetMetaData("division" , "")
+		end
+		if target and target.PlayerData.job.name == 'police' then
+
+			if ( target.PlayerData.metadata["division"] == division ) then
+				TriggerClientEvent('QBCore:Notify', source, 'Player morede nazare shoma az qabl dar in division bode ast', 'error')
+				return 
+			else
+				target.Functions.SetMetaData("division" , division)
+				TriggerClientEvent('QBCore:Notify', source, 'division set shod', 'success')
+
+			end
+		else
+            TriggerClientEvent('QBCore:Notify', source, 'Player morde nazare shoma police ya online nist', 'error')
+		end
+	else
+        TriggerClientEvent('QBCore:Notify', source, 'Shoma Dastresi Estefade az in Command ro nadarid', 'error')
+	end
+end)   

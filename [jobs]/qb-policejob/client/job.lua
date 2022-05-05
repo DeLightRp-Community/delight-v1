@@ -346,14 +346,61 @@ RegisterNetEvent('police:client:ImpoundVehicle', function(fullImpound, price)
     local bodyDamage = math.ceil(GetVehicleBodyHealth(vehicle))
     local engineDamage = math.ceil(GetVehicleEngineHealth(vehicle))
     local totalFuel = exports['LegacyFuel']:GetFuel(vehicle)
-    if vehicle ~= 0 and vehicle then
+    if vehicle ~= 0 and vehicle ~= nil then
         local ped = PlayerPedId()
         local pos = GetEntityCoords(ped)
         local vehpos = GetEntityCoords(vehicle)
         if #(pos - vehpos) < 5.0 and not IsPedInAnyVehicle(ped) then
-            local plate = QBCore.Functions.GetPlate(vehicle)
-            TriggerServerEvent("police:server:Impound", plate, fullImpound, price, bodyDamage, engineDamage, totalFuel)
-            QBCore.Functions.DeleteVehicle(vehicle)
+            QBCore.Functions.Progressbar("impond_vehicle", "Impound Vehicle..", 5000, false, true, {
+                disableMovement = true,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            }, {
+                animDict = "amb@code_human_police_investigate@idle_a",
+                anim = "idle_b",
+                flags = 16,
+            }, {}, {}, function() -- Done
+                StopAnimTask(PlayerPedId(), "amb@code_human_police_investigate@idle_a", "idle_b", 1.0)
+                local plate = QBCore.Functions.GetPlate(vehicle)
+                TriggerServerEvent("police:server:Impound", plate, fullImpound, price, bodyDamage, engineDamage, totalFuel)			
+                QBCore.Functions.DeleteVehicle(vehicle)
+            end, function() -- Cancel
+                StopAnimTask(PlayerPedId(), "amb@code_human_police_investigate@idle_a", "idle_b", 1.0)
+                QBCore.Functions.Notify("Canceled..", "error")
+            end)
+        end
+    end
+end)
+
+RegisterNetEvent('police:client:DeleteVehicle', function(fullImpound, price)
+    local vehicle = QBCore.Functions.GetClosestVehicle()
+    local bodyDamage = math.ceil(GetVehicleBodyHealth(vehicle))
+    local engineDamage = math.ceil(GetVehicleEngineHealth(vehicle))
+    local totalFuel = exports['LegacyFuel']:GetFuel(vehicle)
+    if vehicle ~= 0 and vehicle ~= nil then
+        local ped = PlayerPedId()
+        local pos = GetEntityCoords(ped)
+        local vehpos = GetEntityCoords(vehicle)
+        if #(pos - vehpos) < 5.0 and not IsPedInAnyVehicle(ped) then
+            QBCore.Functions.Progressbar("impond_vehicle", "Impound Vehicle..", 5000, false, true, {
+                disableMovement = true,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            }, {
+                animDict = "amb@code_human_police_investigate@idle_a",
+                anim = "idle_b",
+                flags = 16,
+            }, {}, {}, function() -- Done
+                StopAnimTask(PlayerPedId(), "amb@code_human_police_investigate@idle_a", "idle_b", 1.0)
+                local plate = QBCore.Functions.GetPlate(vehicle)
+                TriggerServerEvent("police:server:mamoliImpound", plate, fullImpound, price, bodyDamage, engineDamage, totalFuel)			
+                QBCore.Functions.DeleteVehicle(vehicle)
+            end, function() -- Cancel
+                StopAnimTask(PlayerPedId(), "amb@code_human_police_investigate@idle_a", "idle_b", 1.0)
+                QBCore.Functions.Notify("Canceled..", "error")
+            end)
         end
     end
 end)
@@ -914,7 +961,8 @@ CreateThread(function ()
     Wait(1000)
     while true do
         local sleep = 1000
-        if inHelicopter and PlayerJob.name == "police" then
+        local PlayerData = QBCore.Functions.GetPlayerData()
+        if inHelicopter and PlayerJob.name == "police" and PlayerData.metadata["division"] == "xray" then
             if onDuty then sleep = 5 end
             if IsControlJustReleased(0, 38) then
                 TriggerEvent("qb-police:client:spawnHelicopter")
