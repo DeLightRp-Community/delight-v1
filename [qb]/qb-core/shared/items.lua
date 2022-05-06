@@ -474,6 +474,8 @@ QBShared.Items = {
 	["vpn"]					        = { ["name"] = "vpn", 							["label"] = "vpn", 						["weight"] = 500, 		["type"] = "item", 		["image"] = "vpn.png", 					["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "????"},	
 
 	["tcard"]					    = { ["name"] = "tcard", 					  	["label"] = "tcard", 				    ["weight"] = 500, 		["type"] = "item", 		["image"] = "tcard.png", 				["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "????"},	
+	
+	["green-laptop"] 			     = {["name"] = "green-laptop", 					["label"] = "Green Laptop", 			["weight"] = 1000,  	["type"] = "item", 		["image"] = "laptop-green.png", 			["unique"] = false,     ["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "A green laptop.."},
 
 
 		-- Regular Fish
