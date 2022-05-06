@@ -1,20 +1,36 @@
-# qb-pawnshop
-Pawn Shop For QB-Core
+## qb-pawnshop
 
-# License
+Edit of qb-pawnshop for ANZ Gaming Networks. 
 
-    QBCore Framework
-    Copyright (C) 2021 Joshua Eger
 
-    This program is free software: you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
 
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
+## What I've changed with this version: 
+-Converted to a player ran store. 
 
-    You should have received a copy of the GNU General Public License
-    along with this program.  If not, see <https://www.gnu.org/licenses/>
+-Reverse billing system (Store pays out the customer based on what items they have).
+
+-Reverse billing system ^ payouts to customer comes out of society funds.
+
+-Money earned from selling items out back of shop goes back into society funds.
+
+-Employee commission payments on all sales.
+
+-Employees can trade the items in out the back of shop for a profit.
+
+-Complete with boss menu setup, fully functioning job.
+
+-Duty toggle.
+
+-Stash Tray for viewing customers items they want to pawn.
+
+-Integrated with qb-target (fully setup within qb-pawnshop, nothing to add).
+
+-Removed the melting process and coding.
+
+-Added new items to purchase within config set up for our server (Can easily be changed to suit your own)
+
+-Pawn Shop is set up for job 'sydpawn', you will need to change this if wanting to use a different one. 
+
+## join the discord:
+
+https://dsc.gg/anzdevelopments

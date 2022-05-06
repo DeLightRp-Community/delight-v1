@@ -86,7 +86,7 @@ Citizen.CreateThread(function()
 		options = {
 				{
 				  type = "client",
-				  event = "qb-crafting:opencraftingtable",
+				  event = "Processthionylchloride",
 				  icon = "fas fa-biohazard",
 				  label = "Process Thionyl Chloride",
 				},

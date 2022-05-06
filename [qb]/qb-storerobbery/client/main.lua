@@ -36,10 +36,16 @@ CreateThread(function()
           exports['qb-target']:AddTargetModel(models, {
             options = { -- This is your options table, in this table all the options will be specified for the target to accept
               {
-                icon = 'fas fa-example',
-                label = 'Test',
+                icon = 'fa-solid fa-screwdriver',
+                label = 'Rob Register',
                 action = function(entity)
-                    local propExistAndDamage=false
+                    if IsPedAPlayer(entity) then return false end 
+                    TriggerEvent('qb-storerobbery:UseLockpick',false)
+                  
+                end,
+                canInteract = function(entity, distance, data) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
+                  if IsPedAPlayer(entity) then return false end -- This will return false if the entity interacted with is a player and otherwise returns true
+                  local propExistAndDamage=false
                     if IsPedAPlayer(entity) then return false end 
                     local ped = PlayerPedId()
                     local pos = GetEntityCoords(ped)
@@ -47,19 +53,21 @@ CreateThread(function()
                     if DoesEntityExist(sani) then
                         hpProp = GetEntityHealth(sani)
                         if hpProp < 1000 then
-                            propExistAndDamage =true
+                            local ped = PlayerPedId()
+                            local pos = GetEntityCoords(ped)
+                            local inRange = false
+                            for k, v in pairs(Config.Registers) do
+                                local dist = #(pos - Config.Registers[k][1].xyz)
+                                if dist <= 1 then
+                                    inRange = true
+                                    Config.Registers[k].propExistAndDamage = true
+                                    print(Config.Registers[k].propExistAndDamage)
+                                    return true
+                                end
+                            end 
                         end
                     end
-                    Wait(100)
-                    if propExistAndDamage then
-                        
-                    end
-                  
                 end,
-                -- canInteract = function(entity, distance, data) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
-                --   if IsPedAPlayer(entity) then return false end -- This will return false if the entity interacted with is a player and otherwise returns true
-                --   return true
-                -- end,
                 },
             },
             distance = 2.5, -- This is the distance for you to be at for the target to turn blue, this is in GTA units and has to be a float value
@@ -67,7 +75,7 @@ CreateThread(function()
     end
 end)
 
-CreateThread(function()
+--[[CreateThread(function()
     Wait(1000)
     setupRegister()
     setupSafes()
@@ -87,9 +95,9 @@ CreateThread(function()
         end
         Wait(3)
     end
-end)
+end)]]
 
-CreateThread(function()
+--[[CreateThread(function()
     while true do
         Wait(1)
         local inRange = false
@@ -118,7 +126,7 @@ CreateThread(function()
                                         SetNuiFocus(true, true)
                                     else
                                         QBCore.Functions.TriggerCallback('qb-storerobbery:server:getPadlockCombination', function(combination)
-                                            TriggerEvent("SafeCracker:StartMinigame", combination)
+                                            TriggerEvent("safe_cracker:StartMinigame", combination)
                                         end, safe)
                                     end
 
@@ -150,7 +158,183 @@ CreateThread(function()
             Wait(2000)
         end
     end
+end)]]
+
+
+
+Citizen.CreateThread(function()
+    while true do 
+        Citizen.Wait(1)
+        local inRange = false
+        if QBCore ~= nil then
+            local pos = GetEntityCoords(PlayerPedId())
+            for safe,_ in pairs(Config.Safes) do
+                local dist = GetDistanceBetweenCoords(pos, Config.Safes[safe].x, Config.Safes[safe].y, Config.Safes[safe].z)
+                if dist < 3 then
+                    inRange = true
+                    if dist < 1.0 then
+                        if not Config.Safes[safe].robbed then
+                            if not robberyIsOnCooldown then
+                                currentSafe = safe
+                                --DrawText3Ds(Config.Safes[safe].x, Config.Safes[safe].y, Config.Safes[safe].z, '~g~E~w~ - Insert Combination')
+                                exports["qb-target"]:AddCircleZone("StoreSafe"..safe, vector3(Config.Safes[safe].x, Config.Safes[safe].y, Config.Safes[safe].z), 0.80, {
+                                    name="StoreSafe"..safe,
+                                    debugPoly=true,
+                                    useZ=true,
+                                    }, {
+                                        options = {
+                                            {
+                                                event = "qb-storerobbery:client:safe",
+                                                icon = "fas fa-clipboard",
+                                                label = "Crack Safe",
+                                            },
+                                            {
+                                                type = "client",
+                                                event = "storerob:safecheck",
+                                                icon = "fas fa-clipboard",
+                                                label = "Check Safe",
+                                            },
+                                        },
+                                        distance = 1.5
+                                })
+                        else
+                            --DrawText3Ds(Config.Safes[safe].x, Config.Safes[safe].y, Config.Safes[safe].z, 'Safe is Open.')
+                                
+                                
+                            exports['qb-core']:DrawText('Safe is Open.', 'left')
+                            --exports["qb-target"]:RemoveCircleZone("StoreSafe"..safe)
+                        end
+                    else
+                        --DrawText3Ds(Config.Safes[safe].x, Config.Safes[safe].y, Config.Safes[safe].z,'Safe opened ..')
+                        exports['qb-core']:DrawText('Safe opened ..', 'left')
+                    end
+                end
+            end
+        end
+    end
+
+        if not inRange then
+            Citizen.Wait(2000)
+            exports['qb-core']:HideText()
+        end
+    end
 end)
+
+local timer = 10
+local tasking = true
+function starttimer(currentSafe)
+    timer = Config.Safes[currentSafe].timer
+    Citizen.CreateThread(function()
+        while tasking do
+            if timer > 0  then
+                timer = timer - 1
+                print(timer)
+            else 
+                if timer < 0 then
+                    TriggerEvent("storerob:safecheck")
+                    timer = 0
+                    tasking = false
+                    
+                end
+            end
+            Citizen.Wait(1000)
+        end
+    end)
+end
+
+RegisterNetEvent('storerob:safecheck')
+AddEventHandler('storerob:safecheck', function()
+    if not Config.Safes[currentSafe].robbed then
+        if timer > 0 then
+            
+            print("1111111111")
+            local min = math.ceil(timer / 60)
+            QBCore.Functions.Notify("You Need To Wait " .. min .. " More Minutes.", "error")
+            print("222222222222")
+        else
+            print("3333333333333")
+            TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
+            currentSafe = 0
+            timer = 10
+            takeAnim()
+            copsCalled = false
+            print("444444444444")
+        end
+    else
+        QBCore.Functions.Notify("You Need To Crack Safe First ...", "error")
+    end
+end)
+
+RegisterNetEvent('qb-storerobbery:client:safe', function()
+    local pos = GetEntityCoords(PlayerPedId())
+    if not Config.Safes[currentSafe].robbed then
+        if CurrentCops >= Config.MinimumStoreRobberyPolice then
+            QBCore.Functions.TriggerCallback('QBCore:HasItem', function(result)
+                if result then
+                    if math.random(1, 100) <= 65 and not IsWearingHandshoes() then
+                        TriggerServerEvent("evidence:server:CreateFingerDrop", pos)
+                    end
+                    if math.random(1, 100) <= 50 then
+                        TriggerServerEvent('qb-hud:Server:GainStress', math.random(1, 3))
+                    end
+                    exports["memorygame"]:thermiteminigame(1, 3, 3, 10,
+                    function() -- success
+                        TriggerEvent("storerob:success")
+                    end,
+                    function() -- failure
+                        TriggerEvent("storerob:fail")
+                    end)
+
+                    if not copsCalled then
+                        -- local pos = GetEntityCoords(PlayerPedId())
+                        local s1, s2 = Citizen.InvokeNative(0x2EB41072B4C1E4C0, pos.x, pos.y, pos.z, Citizen.PointerValueInt(), Citizen.PointerValueInt())
+                        local street1 = GetStreetNameFromHashKey(s1)
+                        local street2 = GetStreetNameFromHashKey(s2)
+                        local streetLabel = street1
+                        if street2 ~= nil then 
+                            streetLabel = streetLabel .. " " .. street2
+                        end
+                        if copsCalled == false then
+                            --TriggerEvent('dispatch:storeRobbery', 'Store Robbery: Safe Cracking In Progress')
+                            TriggerServerEvent("qb-dispach:addCall", "10-47", "Store Robbery", {
+                                {icon="fa-shopping-cart", info="Super Market"},
+                                {icon="fa-road", info= streetLabel}
+                                }, {pos.x, pos.y, pos.z}, "police", 3000, 59, 3 )
+                            TriggerServerEvent("qb-storerobbery:server:callCops", "safe", currentSafe)
+                            copsCalled = true
+                        end
+                    end
+                else
+                    QBCore.Functions.Notify("You Are Missing An Item", "error")
+                end
+            end, "safe_cracker")
+        else
+            QBCore.Functions.Notify("Not enough police", "error")
+        end
+    else
+        QBCore.Functions.Notify("Safe Is Robbed", "error")
+    end
+end)
+
+RegisterNetEvent('storerob:success')
+AddEventHandler('storerob:success', function()
+    QBCore.Functions.Notify("Crack SuccessFull", "success")
+    QBCore.Functions.Notify("Wait For Safe To Be Opened", "error")
+    TriggerServerEvent("qb-storerobbery:server:setSafeStatus", currentSafe)
+    print("timer start")
+    starttimer(currentSafe)
+    print("timer start2")
+    --triggerCooldown()
+    TriggerServerEvent("QBCore:Server:RemoveItem", "safe_cracker", 1)
+    TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["safe_cracker"], "remove")
+end)
+
+RegisterNetEvent('storerob:fail')
+AddEventHandler('storerob:fail', function()
+     TriggerServerEvent("QBCore:Server:RemoveItem", "safe_cracker", 1)
+     TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["safe_cracker"], "remove")
+end)
+
 
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     PlayerJob = QBCore.Functions.GetPlayerData().job
@@ -170,7 +354,7 @@ RegisterNetEvent('police:SetCopCount', function(amount)
     CurrentCops = amount
 end)
 
-RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
+RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
     usingAdvanced = isAdvanced
     for k, v in pairs(Config.Registers) do
         local ped = PlayerPedId()
@@ -374,7 +558,7 @@ RegisterNUICallback('callcops', function()
     TriggerEvent("police:SetCopAlert")
 end)
 
-RegisterNetEvent('SafeCracker:EndMinigame', function(won)
+RegisterNetEvent('safe_cracker:EndMinigame', function(won)
     if currentSafe ~= 0 then
         if won then
             if currentSafe ~= 0 then

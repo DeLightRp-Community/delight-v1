@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'Edited QB-Pawnshop for ANZ Gaming Networks'
+description 'QB-Pawnshop'
 version '1.0.0'
 
 shared_scripts {
@@ -12,6 +12,11 @@ shared_scripts {
 
 server_script 'server/main.lua'
 
-client_script 'client/main.lua'
+client_scripts {
+	'@PolyZone/client.lua',
+	'@PolyZone/BoxZone.lua',
+	'@PolyZone/ComboZone.lua',
+    'client/main.lua'
+}
 
 lua54 'yes'

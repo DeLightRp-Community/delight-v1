@@ -86,8 +86,9 @@ Config.Plates = {
         },
         AttachedVehicle = nil,
     },
+}
 
-Config.Locations = {
+Config.Locations={
     ["exit"] = vector3(-339.04, -135.53, 39),
     ["duty"] = vector3(-33.39, -1040.74, 28.6),
     ["stash"] =vector3(-39.95, -1056.57, 28.4),

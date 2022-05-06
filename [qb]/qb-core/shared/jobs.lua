@@ -135,6 +135,22 @@ QBShared.Jobs = {
             },
 		},
 	},
+    ['sydpawn'] = {
+		label = 'PawnShop',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'pawner',
+                payment = 50
+            },
+            ['1'] = {
+                name = 'Manager',
+				isboss = true,
+                payment = 150
+            },
+		},
+	},
 	['cardealer'] = {
 		label = 'Vehicle Dealer',
 		defaultDuty = true,

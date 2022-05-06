@@ -75,7 +75,7 @@ AddEventHandler('ps-drugprocessing:ProcessCocaPowder', function()
 							print('You have this item HA')
 							CutCokePowder()
 							hasitem1 = false
-							hasitem2 = false	
+							hasitem2 = false
 						end
 					end, 'finescale')
 				else
