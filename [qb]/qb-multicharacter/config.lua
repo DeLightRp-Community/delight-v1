@@ -25,3 +25,8 @@ Config.TrainCoord = {
     Start = vector3(-523.14, -665.62, 9.9),
     Stop = vector3(-498.32, -665.63, 9.9),
 }
+
+Config.Clothing = {
+    ['qb-clothing'] = false,
+    ['fivem-appearance'] = true,
+}

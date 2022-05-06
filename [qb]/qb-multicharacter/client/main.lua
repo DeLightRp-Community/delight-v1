@@ -200,62 +200,66 @@ RegisterNUICallback('setupCharacters', function(data, cb)
     NewPeds = {}
     QBCore.Functions.TriggerCallback("qb-multicharacter:server:SetupNewCharacter", function(result)
         for k, v in pairs(result) do 
-            local model = tonumber(v[1])
-            if model ~= nil then
-                CreateThread(function()
-                    RequestModel(model)
-                    while not HasModelLoaded(model) do
-                        Wait(0)
-                    end
-                    local Screen, x, y = GetHudScreenPositionFromWorldPosition(Config.PedCords[k][1], Config.PedCords[k][2], Config.PedCords[k][3])
-                    local CharInfoData = json.decode(v[4])
-                    SendNUIMessage({
-                        action = "SetupCharacterNUI",
-                        left = x*100,
-                        top = y*70,
-                        cid = v[3],
-                        charinfo = CharInfoData,
-                        Data = v[5],
-                    })
-                    charPed = CreatePed(2, model, Config.PedCords[k][1], Config.PedCords[k][2], Config.PedCords[k][3], Config.PedCords[k][4], false, true)
-                    SetPedComponentVariation(charPed, 0, 0, 0, 2)
-                    FreezeEntityPosition(charPed, false)
-                    SetEntityInvincible(charPed, true)
-                    PlaceObjectOnGroundProperly(charPed)
-                    SetBlockingOfNonTemporaryEvents(charPed, true)
-                    local data = json.decode(v[2])
-                    TriggerEvent('qb-clothing:client:loadPlayerClothing', data, charPed)
-                    NewPeds[k] = {charPed}
-                end)
-            elseif v[2] ~= nil then
-                CreateThread(function()
-                    local model = v[2].model
-                    RequestModel(model)
-                    while not HasModelLoaded(model) do
-                        Wait(0)
-                    end
-                    local Screen, x, y = GetHudScreenPositionFromWorldPosition(Config.PedCords[k][1], Config.PedCords[k][2], Config.PedCords[k][3])
-                    local CharInfoData = json.decode(v[4])
-                    SendNUIMessage({
-                        action = "SetupCharacterNUI",
-                        left = x*100,
-                        top = y*70,
-                        cid = v[3],
-                        charinfo = CharInfoData,
-                        Data = v[5],
-                    })
-                    charPed = CreatePed(2, model, Config.PedCords[k][1], Config.PedCords[k][2], Config.PedCords[k][3], Config.PedCords[k][4], false, true)
-                    SetPedComponentVariation(charPed, 0, 0, 0, 2)
-                    FreezeEntityPosition(charPed, false)
-                    SetEntityInvincible(charPed, true)
-                    PlaceObjectOnGroundProperly(charPed)
-                    SetBlockingOfNonTemporaryEvents(charPed, true)
-                    exports['fivem-appearance']:setPedAppearance(charPed, v[2])
-                    NewPeds[k] = {charPed}
-                end)
+            if v[1] then
+                if Config.Clothing['qb-clothing'] then
+                    CreateThread(function()
+                        local model = tonumber(v[1])
+                        RequestModel(model)
+                        while not HasModelLoaded(model) do
+                            Wait(0)
+                        end
+                        local Screen, x, y = GetHudScreenPositionFromWorldPosition(Config.PedCords[k][1], Config.PedCords[k][2], Config.PedCords[k][3])
+                        local CharInfoData = json.decode(v[4])
+                        SendNUIMessage({
+                            action = "SetupCharacterNUI",
+                            left = x*100,
+                            top = y*70,
+                            cid = v[3],
+                            charinfo = CharInfoData,
+                            Data = v[5],
+                        })
+                        charPed = CreatePed(2, model, Config.PedCords[k][1], Config.PedCords[k][2], Config.PedCords[k][3], Config.PedCords[k][4], false, true)
+                        SetPedComponentVariation(charPed, 0, 0, 0, 2)
+                        FreezeEntityPosition(charPed, false)
+                        SetEntityInvincible(charPed, true)
+                        PlaceObjectOnGroundProperly(charPed)
+                        SetBlockingOfNonTemporaryEvents(charPed, true)
+                        local data = json.decode(v[2])
+                        TriggerEvent('qb-clothing:client:loadPlayerClothing', data, charPed)
+                        NewPeds[k] = {charPed}
+                    end)
+                elseif Config.Clothing['fivem-appearance'] then
+                    CreateThread(function()
+                        local model = GetHashKey(v[1])
+                        RequestModel(model)
+                        while not HasModelLoaded(model) do
+                            Wait(0)
+                        end
+                        local Screen, x, y = GetHudScreenPositionFromWorldPosition(Config.PedCords[k][1], Config.PedCords[k][2], Config.PedCords[k][3])
+                        local CharInfoData = json.decode(v[4])
+                        SendNUIMessage({
+                            action = "SetupCharacterNUI",
+                            left = x*100,
+                            top = y*70,
+                            cid = v[3],
+                            charinfo = CharInfoData,
+                            Data = v[5],
+                        })
+                        charPed = CreatePed(2, model, Config.PedCords[k][1], Config.PedCords[k][2], Config.PedCords[k][3], Config.PedCords[k][4], false, true)
+                        SetPedComponentVariation(charPed, 0, 0, 0, 2)
+                        FreezeEntityPosition(charPed, false)
+                        SetEntityInvincible(charPed, true)
+                        PlaceObjectOnGroundProperly(charPed)
+                        SetBlockingOfNonTemporaryEvents(charPed, true)
+                        exports['fivem-appearance']:setPedAppearance(charPed, json.decode(v[2]))
+                        NewPeds[k] = {charPed}
+                    end)
+                end
             else
+                print("1")
                 CreateThread(function()
                     local CharGender = json.decode(v[5]['charinfo'])
+                    local model = nil
                     if CharGender.gender == 1 then 
                         model = -1667301416 -- girl
                     else

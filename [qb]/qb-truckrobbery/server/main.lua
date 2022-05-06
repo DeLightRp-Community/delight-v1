@@ -1,8 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
-local ActivePolice = 2  		--<< needed policemen to activate the mission
-local cashA = 250 				--<<how much minimum you can get from a robbery
-local cashB = 450				--<< how much maximum you can get from a robbery
-local ActivationCost = 500		--<< how much is the activation of the mission (clean from the bank)
+local ActivePolice = 0  		--<< needed policemen to activate the mission
+local ActivationCost = 0		--<< how much is the activation of the mission (clean from the bank)
 local ResetTimer = 2700 * 1000  --<< timer every how many missions you can do, default is 600 seconds
 local ActiveMission = 0
 
@@ -31,7 +29,7 @@ if ActiveMission == 0 then
 
 		OdpalTimer()
     else
-		TriggerClientEvent('QBCore:Notify', _source, 'Need at least '..ActivePolice.. ' SASP to activate the mission.')
+		TriggerClientEvent('QBCore:Notify', _source, 'Need at least '..ActivePolice.. ' LSPD to activate the mission.')
     end
 	end
 else
@@ -64,20 +62,27 @@ RegisterServerEvent('AttackTransport:graczZrobilnapad')
 AddEventHandler('AttackTransport:graczZrobilnapad', function(moneyCalc)
 	local _source = source
 	local xPlayer = QBCore.Functions.GetPlayer(_source)
-	local bags = math.random(1,3)
-	local info = {
-		worth = math.random(cashA, cashB)
-	}
-	xPlayer.Functions.AddItem('markedbills', bags, false, info)
+	local bags = math.random(20,50)
+	xPlayer.Functions.AddItem('markedbills', bags, false)
 	TriggerClientEvent('inventory:client:ItemBox', _source, QBCore.Shared.Items['markedbills'], "add")
 
-	local chance = math.random(1, 100)
+	local chance = math.random(1, 20)
 	TriggerClientEvent('QBCore:Notify', _source, 'You took '..bags..' bags of cash from the van')
 
-	if chance >= 95 then
+	if chance == 20 then
 	xPlayer.Functions.AddItem('security_card_01', 1)
 	TriggerClientEvent('inventory:client:ItemBox', _source, QBCore.Shared.Items['security_card_01'], "add")
 	end
 
 Wait(2500)
+end)
+
+
+QBCore.Functions.CreateUseableItem("vpn", function(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+	if Player.Functions.GetItemByName('trojan_usb') ~= nil then
+        TriggerClientEvent("useVPN", source)
+    else
+        TriggerClientEvent('QBCore:Notify', source, "You're missing some thing ", "error")
+    end
 end)

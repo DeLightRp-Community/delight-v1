@@ -67,7 +67,3 @@ RegisterNetEvent('qb-jewellery:server:setTimeout', function()
         end)
     end
 end)
-
-QBCore.Functions.CreateUseableItem("gasmask" , function(item)
-    TriggerClientEvent("qb-jewlery:gasmask")
-end)

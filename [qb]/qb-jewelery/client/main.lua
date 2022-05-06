@@ -322,9 +322,6 @@ CreateThread(function()
     })
 end)
 
-RegisterNetEvent('qb-jewlery:gasmask', function(data)
-    SetPedComponentVariation(PlayerPedId(), 1, 38, 0, 2)
-end)
 
 local timer = true
 function Damage()

@@ -161,15 +161,40 @@ QBCore.Functions.CreateCallback("qb-multicharacter:server:SetupNewCharacter", fu
     local plyChars = {}
     MySQL.Async.fetchAll('SELECT * FROM players WHERE license = ?', {license}, function(result) -- new
     -- exports.oxmysql:execute('SELECT * FROM players WHERE license = ?', {license}, function(result) -- old
-        for k, v in pairs(result) do
-            local result = MySQL.Sync.fetchAll('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {v.citizenid, 1}) -- new
-            -- local result = exports.oxmysql:executeSync('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {v.citizenid, 1}) -- old
 
-            if result[1] ~= nil then
-                plyChars[k] = {result[1].model, result[1].skin, v.cid, v.charinfo, v}
-            elseif v.skin then
-                local Skins = json.decode(v.skin)
-                plyChars[k] = {nil, Skins, v.cid, v.charinfo, v}
+        for k, v in pairs(result) do
+            if Config.Clothing['qb-clothing'] then
+                local result = MySQL.Sync.fetchAll('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {v.citizenid, 1}) -- new
+                -- local result = exports.oxmysql:executeSync('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {v.citizenid, 1}) -- old
+                
+                if result then
+                    if result[1] ~= nil then
+                        plyChars[k] = {result[1].model, result[1].skin, v.cid, v.charinfo, v}
+                    else
+                        plyChars[k] = {nil, nil, v.cid, v.charinfo, v}
+                    end
+                else
+                    plyChars[k] = {nil, nil, v.cid, v.charinfo, v}
+                end
+                if not tonumber(result[1].model) then
+                    plyChars[k] = {nil, nil, v.cid, v.charinfo, v}
+                end
+            elseif Config.Clothing['fivem-appearance'] then
+                local result = MySQL.Sync.fetchAll('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {v.citizenid, 1}) -- new
+                -- local result = exports.oxmysql:executeSync('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {v.citizenid, 1}) -- old
+                
+                if result then
+                    if result[1] ~= nil then
+                        plyChars[k] = {result[1].model, result[1].skin, v.cid, v.charinfo, v}
+                    else
+                        plyChars[k] = {nil, nil, v.cid, v.charinfo, v}
+                    end
+                else
+                    plyChars[k] = {nil, nil, v.cid, v.charinfo, v}
+                end
+                if tonumber(result[1].model) then
+                    plyChars[k] = {nil, nil, v.cid, v.charinfo, v}
+                end
             else
                 plyChars[k] = {nil, nil, v.cid, v.charinfo, v}
             end
@@ -177,3 +202,4 @@ QBCore.Functions.CreateCallback("qb-multicharacter:server:SetupNewCharacter", fu
         cb(plyChars)
     end)
 end)
+
