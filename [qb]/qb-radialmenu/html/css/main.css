@@ -62,7 +62,7 @@ svg.menu.outer {
 }
 
 svg.menu > g > path {
-    fill: rgb(23 23 23 / 80%);
+    fill: rgba(23, 23, 23, 0.5);
 }
 
 svg.menu > g.sector > path {
@@ -91,7 +91,7 @@ svg.menu > g.center:hover > circle {
 
 svg.menu > g.center > circle {
     cursor: pointer;
-    fill: rgb(23 23 23 / 80%);
+    fill: rgba(23, 23, 23, 0.5);
 }
 
 svg.menu > g.center > text,
@@ -101,3 +101,4 @@ svg.menu > g.center > use {
     cursor: pointer;
     fill: white;
 }
+

@@ -80,50 +80,49 @@ local function SetupVehicleMenu()
         id = 'vehicle',
         title = 'Vehicle',
         icon = 'car',
-        type = 'client',
-        event = 'vehcontrol:openExternal',
+        items = {}
     }
 
-    -- local ped = PlayerPedId()
-    -- local Vehicle = GetVehiclePedIsIn(ped) ~= 0 and GetVehiclePedIsIn(ped) or getNearestVeh()
-    -- if Vehicle ~= 0 then
-    --     VehicleMenu.items[#VehicleMenu.items+1] = Config.VehicleDoors
-    --     if Config.EnableExtraMenu then VehicleMenu.items[#VehicleMenu.items+1] = Config.VehicleExtras end
+    local ped = PlayerPedId()
+    local Vehicle = GetVehiclePedIsIn(ped) ~= 0 and GetVehiclePedIsIn(ped) or getNearestVeh()
+    if Vehicle ~= 0 then
+        VehicleMenu.items[#VehicleMenu.items+1] = Config.VehicleDoors
+        if Config.EnableExtraMenu then VehicleMenu.items[#VehicleMenu.items+1] = Config.VehicleExtras end
 
-    --     if IsPedInAnyVehicle(ped) then
-    --         local seatIndex = #VehicleMenu.items+1
-    --         VehicleMenu.items[seatIndex] = deepcopy(Config.VehicleSeats)
+        if IsPedInAnyVehicle(ped) then
+            -- local seatIndex = #VehicleMenu.items+1
+            -- VehicleMenu.items[seatIndex] = deepcopy(Config.VehicleSeats)
 
-    --         local seatTable = {
-    --             [1] = Lang:t("options.driver_seat"),
-    --             [2] = Lang:t("options.passenger_seat"),
-    --             [3] = Lang:t("options.rear_left_seat"),
-    --             [4] = Lang:t("options.rear_right_seat"),
-    --         }
+            -- local seatTable = {
+            --     [1] = Lang:t("options.driver_seat"),
+            --     [2] = Lang:t("options.passenger_seat"),
+            --     [3] = Lang:t("options.rear_left_seat"),
+            --     [4] = Lang:t("options.rear_right_seat"),
+            -- }
 
-    --         local AmountOfSeats = GetVehicleModelNumberOfSeats(GetEntityModel(Vehicle))
-    --         for i = 1, AmountOfSeats do
-    --             local newIndex = #VehicleMenu.items[seatIndex].items+1
-    --             VehicleMenu.items[seatIndex].items[newIndex] = {
-    --                 id = i - 2,
-    --                 title = seatTable[i] or Lang:t("options.other_seats"),
-    --                 icon = 'caret-up',
-    --                 type = 'client',
-    --                 event = 'qb-radialmenu:client:ChangeSeat',
-    --                 shouldClose = false,
-    --             }
-    --         end
-    --     end
-    -- end
+            -- local AmountOfSeats = GetVehicleModelNumberOfSeats(GetEntityModel(Vehicle))
+            -- for i = 1, AmountOfSeats do
+            --     local newIndex = #VehicleMenu.items[seatIndex].items+1
+            --     VehicleMenu.items[seatIndex].items[newIndex] = {
+            --         id = i - 2,
+            --         title = seatTable[i] or Lang:t("options.other_seats"),
+            --         icon = 'caret-up',
+            --         type = 'client',
+            --         event = 'qb-radialmenu:client:ChangeSeat',
+            --         shouldClose = false,
+            --     }
+            -- end
+        end
+    end
 
-    -- if #VehicleMenu.items == 0 then
-    --     if vehicleIndex then
-    --         RemoveOption(vehicleIndex)
-    --         vehicleIndex = nil
-    --     end
-    -- else
-    --     vehicleIndex = AddOption(VehicleMenu, vehicleIndex)
-    -- end
+    if #VehicleMenu.items == 0 then
+        if vehicleIndex then
+            RemoveOption(vehicleIndex)
+            vehicleIndex = nil
+        end
+    else
+        vehicleIndex = AddOption(VehicleMenu, vehicleIndex)
+    end
 end
 
 local function SetupSubItems()
