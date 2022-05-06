@@ -17,8 +17,7 @@ Config.LicenseRank = 2
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 Config.Locations = {
     ["duty"] = {
-        [1] = vector3(441.7989, -982.0529, 30.67834),
-        [2] = vector4(-449.811, 6012.909, 31.815, 90.654),
+        [1] = vector3(441.91, -982.05, 30.88)
     },
     ["vehicle"] = {
         [1] = vector4(448.159, -1017.41, 28.562, 90.654),
@@ -26,10 +25,10 @@ Config.Locations = {
         [3] = vector4(-455.39, 6002.02, 31.34, 87.93),
     },
     ["stash"] = {
-        [1] = vector3(446.0, -996.8, 31.94),
+        [1] = vector3(446.85, -997.12, 30.69),
     },
     ["impound"] = {
-        [1] = vector4(459.1, -991.59, 25.7, 1.09), 
+        [1] = vector4(459.1, -991.59, 25.7, 1.09),
         [2] = vector4(-436.14, 5982.63, 31.34, 136.0),
     },
     ["helicopter"] = {
@@ -37,10 +36,10 @@ Config.Locations = {
         [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
     },
     ["armory"] = {
-        [1] = vector3(481.52, -994.76, 30.69),
+        [1] = vector3(482.33, -995.26, 30.69),
     },
     ["trash"] = {
-        [1] = vector4(439.0907, -976.746, 30.776, 93.03),
+        [1] = vector3(472.54, -994.41, 26.27),
     },
     ["fingerprint"] = {
         [1] = vector4(0, 0, 0, 0),
@@ -446,8 +445,8 @@ Config.Items = {
             authorizedJobGrades = {10, 11}
         },
         [24] = {
-            name = "specialbadge",
-            price = 0,
+            name = "harness",
+            price = 200,
             amount = 1,
             info = {},
             type = "item",
@@ -455,30 +454,12 @@ Config.Items = {
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
         [25] = {
-            name = "bodycam",
-            price = 0,
-            amount = 1,
-            info = {},
-            type = "item",
-            slot = 25,
-            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
-        },
-        [26] = {
-            name = "harness",
-            price = 200,
-            amount = 1,
-            info = {},
-            type = "item",
-            slot = 26,
-            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
-        },
-        [27] = {
             name = "taserammo",
             price = 200,
             amount = 100,
             info = {},
             type = "item",
-            slot = 27,
+            slot = 25,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
     }

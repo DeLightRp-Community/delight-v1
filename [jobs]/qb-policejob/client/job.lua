@@ -733,31 +733,6 @@ CreateThread(function()
         end
     end)
 
-    -- Armoury
-    local armouryZones = {}
-    for k, v in pairs(Config.Locations["armory"]) do
-        armouryZones[#armouryZones+1] = BoxZone:Create(
-            vector3(vector3(v.x, v.y, v.z)), 5, 1, {
-            name="box_zone",
-            debugPoly = false,
-            minZ = v.z - 1,
-            maxZ = v.z + 1,
-        })
-    end
-
-    local armouryCombo = ComboZone:Create(armouryZones, {name = "armouryCombo", debugPoly = false})
-    armouryCombo:onPlayerInOut(function(isPointInside)
-        if isPointInside then
-            inAmoury = true
-            if onDuty then
-                exports['qb-core']:DrawText(Lang:t('info.enter_armory'),'left')
-            end
-        else
-            inAmoury = false
-            exports['qb-core']:HideText()
-        end
-    end)
-
     -- Helicopter
     local helicopterZones = {}
     for k, v in pairs(Config.Locations["helicopter"]) do
@@ -883,6 +858,31 @@ CreateThread(function()
     end)
 end)
 
+CreateThread(function()
+    -- Toggle Duty
+    for k, v in pairs(Config.Locations["armory"]) do
+        exports['qb-target']:AddBoxZone("PoliceArmory_"..k, vector3(v.x, v.y, v.z), 1, 1, {
+            name = "PoliceArmory_"..k,
+            heading = 11,
+            debugPoly = false,
+            minZ = v.z - 1,
+            maxZ = v.z + 1,
+        }, {
+            options = {
+                {
+                    type = "client",
+                    event = "qb-police:client:openArmoury",
+                    icon = "fas fa-sign-in-alt",
+                    label = "Armory",
+                    job = "police",
+                },
+            },
+            distance = 1.5
+        })
+    end
+
+end)
+
 -- Personal Stash Thread
 CreateThread(function ()
     Wait(1000)
@@ -931,23 +931,6 @@ CreateThread(function ()
             if onDuty then sleep = 5 end
             if IsControlJustReleased(0, 38) then
                 TriggerEvent("qb-police:client:scanFingerPrint")
-            end
-        else
-            sleep = 1000
-        end
-        Wait(sleep)
-    end
-end)
-
--- Armoury Thread
-CreateThread(function ()
-    Wait(1000)
-    while true do
-        local sleep = 1000
-        if inAmoury and PlayerJob.name == "police" then
-            if onDuty then sleep = 5 end
-            if IsControlJustReleased(0, 38) then
-                TriggerEvent("qb-police:client:openArmoury")
             end
         else
             sleep = 1000
