@@ -184,13 +184,18 @@ Citizen.CreateThread(function()
                                     }, {
                                         options = {
                                             {
-                                                event = "qb-storerobbery:client:safe",
+                                                action = function(entity) -- This is the action it has to perform, this REPLACES the event and this is OPTIONAL
+                                                    if IsPedAPlayer(entity) then return false end -- This will return false if the entity interacted with is a player and otherwise returns true
+                                                    TriggerEvent('qb-storerobbery:client:safe', safe) -- Triggers a client event called testing:event and sends the argument 'test' with it
+                                                end,
                                                 icon = "fas fa-clipboard",
                                                 label = "Crack Safe",
                                             },
                                             {
-                                                type = "client",
-                                                event = "storerob:safecheck",
+                                                action = function(entity) -- This is the action it has to perform, this REPLACES the event and this is OPTIONAL
+                                                    if IsPedAPlayer(entity) then return false end -- This will return false if the entity interacted with is a player and otherwise returns true
+                                                    TriggerEvent('qb-storerobbery:client:safecheck', safe) -- Triggers a client event called testing:event and sends the argument 'test' with it
+                                                end,
                                                 icon = "fas fa-clipboard",
                                                 label = "Check Safe",
                                             },
@@ -220,52 +225,47 @@ Citizen.CreateThread(function()
     end
 end)
 
-local timer = 10
 local tasking = true
+local timer = 300
 function starttimer(currentSafe)
     timer = Config.Safes[currentSafe].timer
     Citizen.CreateThread(function()
-        while tasking do
+        while true do
             if timer > 0  then
                 timer = timer - 1
-                print(timer)
             else 
-                if timer < 0 then
-                    TriggerEvent("storerob:safecheck")
-                    timer = 0
-                    tasking = false
-                    
-                end
+                timer = 0
+                break
             end
             Citizen.Wait(1000)
         end
     end)
 end
 
-RegisterNetEvent('storerob:safecheck')
-AddEventHandler('storerob:safecheck', function()
-    if not Config.Safes[currentSafe].robbed then
+RegisterNetEvent('qb-storerobbery:client:safecheck', function(currentSafe)
+    
+    if Config.Safes[currentSafe].robbed or Config.Safes[currentSafe].robbed == 0 then
         if timer > 0 then
             
-            print("1111111111")
+            
             local min = math.ceil(timer / 60)
             QBCore.Functions.Notify("You Need To Wait " .. min .. " More Minutes.", "error")
-            print("222222222222")
+            
         else
-            print("3333333333333")
+            
             TriggerServerEvent("qb-storerobbery:server:SafeReward", currentSafe)
             currentSafe = 0
             timer = 10
             takeAnim()
             copsCalled = false
-            print("444444444444")
+            
         end
     else
         QBCore.Functions.Notify("You Need To Crack Safe First ...", "error")
     end
 end)
 
-RegisterNetEvent('qb-storerobbery:client:safe', function()
+RegisterNetEvent('qb-storerobbery:client:safe', function(currentSafe)
     local pos = GetEntityCoords(PlayerPedId())
     if not Config.Safes[currentSafe].robbed then
         if CurrentCops >= Config.MinimumStoreRobberyPolice then
@@ -277,7 +277,7 @@ RegisterNetEvent('qb-storerobbery:client:safe', function()
                     if math.random(1, 100) <= 50 then
                         TriggerServerEvent('qb-hud:Server:GainStress', math.random(1, 3))
                     end
-                    exports["memorygame"]:thermiteminigame(1, 3, 3, 10,
+                    exports["memorygame"]:thermiteminigame(10, 3, 3, 10,
                     function() -- success
                         TriggerEvent("storerob:success")
                     end,

@@ -53,8 +53,6 @@ RegisterNetEvent('qb-storerobbery:server:takeMoney', function(register, isDone)
                     label = "Safe Code: "..tostring(math.floor((code[1] % 360) / 3.60)).."-"..tostring(math.floor((code[2] % 360) / 3.60)).."-"..tostring(math.floor((code[3] % 360) / 3.60)).."-"..tostring(math.floor((code[4] % 360) / 3.60)).."-"..tostring(math.floor((code[5] % 360) / 3.60))
                 }
             end
-            Player.Functions.AddItem("stickynote", 1, false, info)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["stickynote"], "add")
         end
     end
 end)
@@ -78,22 +76,13 @@ end)
 RegisterNetEvent('qb-storerobbery:server:SafeReward', function(safe)
     local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
-	local bags = math.random(1,3)
-	local info = {
-		worth = math.random(cashA, cashB)
-	}
-	Player.Functions.AddItem('markedbills', bags, false, info)
+	local bags = math.random(3,10)
+    local chance = math.random(1, 10)
+	Player.Functions.AddItem('markedbills', bags, false)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
-    local luck = math.random(1, 100)
-    local odd = math.random(1, 100)
-    if luck <= 10 then
-        Player.Functions.AddItem("rolex", math.random(3, 7))
-        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["rolex"], "add")
-        if luck == odd then
-            Wait(500)
-            Player.Functions.AddItem("goldbar", 1)
-            TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["goldbar"], "add")
-        end
+    if chance == 5 then
+    Player.Functions.AddItem('vpn', bags, false)
+	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['vpn'], "add")
     end
 end)
 

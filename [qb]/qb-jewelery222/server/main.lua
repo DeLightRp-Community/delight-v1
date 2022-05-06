@@ -13,13 +13,7 @@ QBCore.Functions.CreateCallback('qb-jewellery:server:getCops', function(source, 
     cb(amount)
 end)
 
-RegisterServerEvent('av_vangelico:gas', function()
-    TriggerClientEvent('av_vangelico:humo',-1)
-end)
 -- Events
-RegisterNetEvent('qb-jewellery:server:ThermitePtfx', function()
-    TriggerClientEvent('qb-jewellery:client:ThermitePtfx', -1)
-end)
 
 RegisterNetEvent('qb-jewellery:server:setVitrineState', function(stateType, state, k)
     Config.Locations[k][stateType] = state
@@ -38,14 +32,14 @@ RegisterNetEvent('qb-jewellery:server:vitrineReward', function()
         if Player.Functions.AddItem(Config.VitrineRewards[item]["item"], amount) then
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[Config.VitrineRewards[item]["item"]], 'add')
         else
-            TriggerClientEvent('QBCore:Notify', src, 'You have to much in your pocket', 'error')
+            TriggerClientEvent('QBCore:Notify', src, Lang:t('error.to_much'), 'error')
         end
     else
         local amount = math.random(2, 4)
         if Player.Functions.AddItem("10kgoldchain", amount) then
             TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["10kgoldchain"], 'add')
         else
-            TriggerClientEvent('QBCore:Notify', src, 'You have to much in your pocket..', 'error')
+            TriggerClientEvent('QBCore:Notify', src, Lang:t('error.to_much'), 'error')
         end
     end
 end)
@@ -66,8 +60,4 @@ RegisterNetEvent('qb-jewellery:server:setTimeout', function()
             timeOut = false
         end)
     end
-end)
-
-QBCore.Functions.CreateUseableItem("gasmask" , function(item)
-    TriggerClientEvent("qb-jewlery:gasmask")
 end)

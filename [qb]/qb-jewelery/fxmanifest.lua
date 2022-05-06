@@ -4,16 +4,16 @@ game 'gta5'
 description 'QB-Jewelry'
 version '1.0.0'
 
-shared_scripts {
-    '@qb-core/shared/locale.lua',
-    'locale/en.lua', -- replace with desired language
-    'config.lua'
-}
+dependencies {
+    'qb-target',
+    'memorygame'
+} 
 
-client_script {
+shared_script 'config.lua'
+client_scripts {
+    'client/main.lua',
     '@PolyZone/client.lua',
     '@PolyZone/BoxZone.lua',
-    'client/main.lua'
 }
 server_script 'server/main.lua'
 

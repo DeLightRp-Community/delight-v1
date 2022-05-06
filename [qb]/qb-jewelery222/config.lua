@@ -1,10 +1,11 @@
 Config = Config or {}
 
-Config.Timeout = 60 * (60 * 1000)
-Config.DoorLock = 'qb' -- use 'qb' for qb-doorlock events
-Config.DoorId = 'jewelery' -- name of the door in your doorlock config
-Config.RequiredCops = 0
-Config.GasTime = 5
+-- Set to true or false or GetConvar('UseTarget', 'false') == 'true' to use global option or script specific
+-- These have to be a string thanks to how Convars are returned.
+Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
+
+Config.Timeout = 30 * (60 * 2000)
+Config.RequiredCops = 2
 Config.JewelleryLocation = {
     ["coords"] = vector3(-630.5, -237.13, 38.08),
 }
@@ -74,102 +75,102 @@ Config.VitrineRewards = {
 
 Config.Locations = {
     [1] = {
-        ["coords"] = vector4(-626.06, -234.19, 39.22, 216.17),
+        ["coords"] = vector3(-626.83, -235.35, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false,
     }, 
     [2] = {
-        ["coords"] = vector4(-626.58, -233.47, 39.22, 216.17),
+        ["coords"] = vector3(-625.81, -234.7, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [3] = {
-        ["coords"] = vector4(-625.4, -238.3, 39.22, 216.17),
+        ["coords"] = vector3(-626.95, -233.14, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [4] = {
-        ["coords"] = vector4(-626.46, -239.02, 39.24, 216.17),
+        ["coords"] = vector3(-628.0, -233.86, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [5] = {
-        ["coords"] = vector4(-627.59, -234.26, 38.97, 216.17),
+        ["coords"] = vector3(-625.7, -237.8, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false,
     }, 
     [6] = {
-        ["coords"] = vector4(-627.13, -234.79, 38.86, 216.17),
-        ["isOpened"] = false,
+        ["coords"] = vector3(-626.7, -238.58, 38.05),
+      ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [7] = {
-        ["coords"] = vector4(-624.25, -226.71, 39.22, 216.17),
+        ["coords"] = vector3(-624.55, -231.06, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [8] = {
-        ["coords"] = vector4(-625.2, -227.32, 39.22, 216.17),
+        ["coords"] = vector3(-623.13, -232.94, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [9] = {
-        ["coords"] = vector4(-623.72, -228.68, 39.24, 216.17),
+        ["coords"] = vector3(-620.29, -234.44, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false,
     }, 
     [10] = {
-        ["coords"] = vector4(-623.96, -230.76, 39.22, 127.04),
+        ["coords"] = vector3(-619.15, -233.66, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [11] = {
-        ["coords"] = vector4(-621.4, -228.77, 39.22, 127.04),
+        ["coords"] = vector3(-620.19, -233.44, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false,
     }, 
     [12] = {
-        ["coords"] = vector4(-619.25, -227.31, 39.24, 310.89),
+        ["coords"] = vector3(-617.63, -230.58, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false,
     }, 
     [13] = {
-        ["coords"] = vector4(-620.02, -226.36, 39.22, 304),
+        ["coords"] = vector3(-618.33, -229.55, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false,
     }, 
     [14] = {
-        ["coords"] = vector4(-617.86, -229.26, 39.22, 127.04),
+        ["coords"] = vector3(-619.7, -230.33, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false,
     }, 
     [15] = {
-        ["coords"] = vector4(-617.14, -230.28, 39.24, 127.04),
+        ["coords"] = vector3(-620.95, -228.6, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [16] = {
-        ["coords"] = vector4(-620.09, -230.63, 39.22, 127.04),
+        ["coords"] = vector3(-619.79, -227.6, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [17] = {
-        ["coords"] = vector4(-620.46, -232.87, 39.22, 216.17),
+        ["coords"] = vector3(-620.42, -226.6, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [18] = {
-        ["coords"] = vector4(-622.62, -232.63, 39.22, 127.04),
+        ["coords"] = vector3(-623.94, -227.18, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [19] = {
-        ["coords"] = vector4(-618.9, -234.17, 39.22, 216.17),
+        ["coords"] = vector3(-624.91, -227.87, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false, 
     },
     [20] = {
-        ["coords"] = vector4(-619.93, -234.85, 39.22, 216.17),
+        ["coords"] = vector3(-623.94, -228.05, 38.05),
         ["isOpened"] = false,
         ["isBusy"] = false,
     }

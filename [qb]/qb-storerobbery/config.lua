@@ -3,7 +3,7 @@ Config = {}
 Config.minEarn = 100
 Config.maxEarn = 450
 Config.RegisterEarnings = math.random(Config.minEarn, Config.maxEarn)
-Config.MinimumStoreRobberyPolice = 0
+Config.MinimumStoreRobberyPolice = 3
 Config.resetTime = (60 * 1000) * 30
 Config.tickInterval = 1000
 
@@ -43,25 +43,25 @@ Config.Registers = {
 }
 
 Config.Safes = {
-    [1] = {x = -43.43, y = -1748.3, z = 29.42, h = 52.5, type = "keypad", robbed = false, camId = 4, timer= 10}, 
-    [2] = {x = -1478.94, y = -375.5, z = 39.16, h = 229.5, type = "padlock", robbed = false, camId = 5, timer= 10},
-    [3] = {x = -1220.85, y = -916.05, z = 11.32, h = 229.5, type = "padlock", robbed = false, camId = 6, timer= 10},
-    [4] = {x = -709.74, y = -904.15, z = 19.21, h = 229.5, type = "keypad", robbed = false, camId = 7, timer= 10},
-    [5] = {x = 28.21, y = -1339.14, z = 29.49, type = "keypad", robbed = false, camId = 8, timer= 10},
-    [6] = {x = 1126.77, y = -980.1, z = 45.41, type = "padlock", robbed = false, camId = 9, timer= 10},
-    [7] = {x = 1159.46, y = -314.05, z = 69.2, type = "keypad", robbed = false, camId = 10, timer= 10},
-    [8] = {x = 378.17, y = 333.44, z = 103.56, type = "keypad", robbed = false, camId = 11, timer= 10},
-    [9] = {x = -1829.27, y = 798.76, z = 138.19, type = "keypad", robbed = false, camId = 12, timer= 10},
-    [10] = {x = -2959.64, y = 387.08, z = 14.04, type = "padlock", robbed = false, camId = 13, timer= 10},
-    [11] = {x = -3047.88, y = 585.61, z = 7.9, type = "keypad", robbed = false, camId = 14, timer= 10},
-    [12] = {x = -3250.02, y = 1004.43, z = 12.83, type = "keypad", robbed = false, camId = 15, timer= 10},
-    [13] = {x = 546.41, y = 2662.8, z = 42.15, type = "keypad", robbed = false, camId = 16, timer= 10},
-    [14] = {x = 1169.31, y = 2717.79, z = 37.15, type = "padlock", robbed = false, camId = 17, timer= 10},
-    [15] = {x = 2672.69, y = 3286.63, z = 55.24, type = "keypad", robbed = false, camId = 18, timer= 10},
-    [16] = {x = 1959.26, y = 3748.92, z = 32.34, type = "keypad", robbed = false, camId = 19, timer= 10},
-    [17] = {x = 1734.78, y = 6420.84, z = 35.03, type = "keypad", robbed = false, camId = 20, timer= 10},
-    [18] = {x = -168.40, y = 6318.80, z = 30.58, type = "padlock", robbed = false, camId = 27, timer= 10},
-    [19] = {x = 168.95, y = 6644.74, z = 31.70, type = "keypad", robbed = false, camId = 30, timer= 10},
+    [1] = {x = -43.43, y = -1748.3, z = 29.42, h = 52.5, type = "keypad", robbed = false, camId = 4, timer= 300}, 
+    [2] = {x = -1478.94, y = -375.5, z = 39.16, h = 229.5, type = "padlock", robbed = false, camId = 5, timer= 300},
+    [3] = {x = -1220.85, y = -916.05, z = 11.32, h = 229.5, type = "padlock", robbed = false, camId = 6, timer= 300},
+    [4] = {x = -709.74, y = -904.15, z = 19.21, h = 229.5, type = "keypad", robbed = false, camId = 7, timer= 300},
+    [5] = {x = 31.18, y = -1339.23, z = 29.5, h= 272.5, type = "keypad", robbed = false, camId = 8, timer= 300},
+    [6] = {x = 1126.77, y = -980.1, z = 45.41, type = "padlock", robbed = false, camId = 9, timer= 300},
+    [7] = {x = 1159.46, y = -314.05, z = 69.2, type = "keypad", robbed = false, camId = 10, timer= 300},
+    [8] = {x = 381.06, y = 332.68, z = 103.57, h = 260.69 ,type = "keypad", robbed = false, camId = 11, timer= 300},
+    [9] = {x = -1829.27, y = 798.76, z = 138.19, type = "keypad", robbed = false, camId = 12, timer= 300},
+    [10] = {x = -2959.64, y = 387.08, z = 14.04, type = "padlock", robbed = false, camId = 13, timer= 300},
+    [11] = {x = -3048.71, y = 588.47, z = 7.91, h = 17.18, type = "keypad", robbed = false, camId = 14, timer= 300},
+    [12] = {x = -3249.63, y = 1007.36, z = 12.83, h = 355.47, type = "keypad", robbed = false, camId = 15, timer= 300},
+    [13] = {x = 543.79, y = 2662.5, z = 42.16, h = 97.79, type = "keypad", robbed = false, camId = 16, timer= 300},
+    [14] = {x = 1169.31, y = 2717.79, z = 37.15, type = "padlock", robbed = false, camId = 17, timer= 300},
+    [15] = {x = 2674.29, y = 3289.19, z = 55.24, h = 328.63, type = "keypad", robbed = false, camId = 18, timer= 300},
+    [16] = {x = 1961.75, y = 3750.3, z = 32.34, h = 296.23, type = "keypad", robbed = false, camId = 19, timer= 300},
+    [17] = {x = 1737.45, y = 6419.46, z = 35.04, h = 245.39,  type = "keypad", robbed = false, camId = 20, timer= 300},
+    [18] = {x = -168.40, y = 6318.80, z = 30.58, type = "padlock", robbed = false, camId = 27, timer= 300},
+    [19] = {x = 170.96, y = 6642.55, z = 31.70, h = 226.3, type = "keypad", robbed = false, camId = 30, timer= 300},
 }
 
 
