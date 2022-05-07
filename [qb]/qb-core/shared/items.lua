@@ -475,9 +475,15 @@ QBShared.Items = {
 
 	["tcard"]					    = { ["name"] = "tcard", 					  	["label"] = "tcard", 				    ["weight"] = 500, 		["type"] = "item", 		["image"] = "tcard.png", 				["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "????"},	
 	
-	["green_laptop"] 			     = {["name"] = "green-laptop", 					["label"] = "Green Laptop", 			["weight"] = 1000,  	["type"] = "item", 		["image"] = "laptop-green.png", 			["unique"] = false,     ["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "A green laptop.."},
+	["green_laptop"] 			     = {["name"] = "green_laptop", 					["label"] = "Green Laptop", 			["weight"] = 1000,  	["type"] = "item", 		["image"] = "laptop-green.png", 			["unique"] = false,     ["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "A green laptop.."},
 
-	["yellow_laptop"] 			     = {["name"] = "yellow-laptop", 				["label"] = "yellow Laptop", 			["weight"] = 1000,  	["type"] = "item", 		["image"] = "yellow-green.png", 			["unique"] = false,     ["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "A yellow laptop.."},
+	["yellow_laptop"] 			     = {["name"] = "yellow_laptop", 				["label"] = "yellow Laptop", 			["weight"] = 1000,  	["type"] = "item", 		["image"] = "yellow-laptop.png", 			["unique"] = false,     ["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "A yellow laptop.."},
+
+
+
+	["explosive"] 					 = {["name"] = "explosive", 					["label"] = "Explosive", 				["weight"] = 5000, 		["type"] = "item", 		["image"] = "explosive.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   	["combinable"] = nil,   	["description"] = "An improvised explosive of fireworks and thermite"},
+
+['security_card_06'] 			 = {['name'] = 'security_card_06', 			  	['label'] = 'Security Card Red', 		['weight'] = 0, 		['type'] = 'item', 		['image'] = 'security_card_06.png', 	['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'A security card... I wonder what it goes to'},
 
 
 		-- Regular Fish

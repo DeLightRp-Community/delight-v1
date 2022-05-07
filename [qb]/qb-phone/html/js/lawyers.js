@@ -4,8 +4,6 @@ SetupLawyers = function(data) {
     var realestate = [];
     var mechanic = [];
     var taxi = [];
-    var police = [];
-    var ambulance = [];
 
     if (data.length > 0) {
 
@@ -21,12 +19,6 @@ SetupLawyers = function(data) {
             }
             if (lawyer.typejob == "taxi") {
                 taxi.push(lawyer);
-            }
-            if (lawyer.typejob == "police") {
-                police.push(lawyer);
-            }
-            if (lawyer.typejob == "ambulance") {
-                ambulance.push(lawyer);
             }
         });
 

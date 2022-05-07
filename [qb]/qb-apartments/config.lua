@@ -4,9 +4,10 @@ Apartments.SpawnOffset = 30
 Apartments.Locations = {
     ["apartment1"] = {
         name = "apartment1",
-        label = "South Rockford Drive",
+        label = "ALTA STREET - Los Santos",
+        type = "modernhotel_shell",
         coords = {
-            enter = vector4(-667.02, -1105.24, 14.63, 242.32),
+            enter = vector4(vector4(-271.05, -957.75, 31.22, 123.94)),
         },
         polyzoneBoxData = {
             heading = 245,
@@ -21,9 +22,10 @@ Apartments.Locations = {
     },
     ["apartment2"] = {
         name = "apartment2",
-        label = "Morningwood Blvd",
+        label = "South Sea - PaletoBay",
+        type = "furnitured_midapart",
         coords = {
-            enter = vector4(-1288.52, -430.51, 35.15, 124.81),
+            enter = vector4(-154.83, 6432.91, 31.92, 142.4),
         },
         polyzoneBoxData = {
             heading = 124,
@@ -38,9 +40,10 @@ Apartments.Locations = {
     },
     ["apartment3"] = {
         name = "apartment3",
-        label = "Integrity Way",
+        label = "Vacancy - Sandy Shore",
+        type = "standardmotel_shell",
         coords = {
-            enter = vector4(269.73, -640.75, 42.02, 249.07),
+            enter = vector4(1142.28, 2663.96, 38.16, 278.87),
         },
         polyzoneBoxData = {
             heading = 250,
@@ -49,40 +52,6 @@ Apartments.Locations = {
             debug = false,
             length = 1,
             width = 1,
-            distance = 2.0,
-            created = false
-        }
-    },
-    ["apartment4"] = {
-        name = "apartment4",
-        label = "Tinsel Towers",
-        coords = {
-            enter = vector4(-621.016, 46.677, 43.591, 179.36),
-        },
-        polyzoneBoxData = {
-            heading = 180,
-            minZ = 41.0,
-            maxZ = 45.5,
-            debug = false,
-            length = 1,
-            width = 2,
-            distance = 2.0,
-            created = false
-        }
-    },
-    ["apartment5"] = {
-        name = "apartment5",
-        label = "Fantastic Plaza",
-        coords = {
-            enter = vector4(291.517, -1078.674, 29.405, 270.75),
-        },
-        polyzoneBoxData = {
-            heading = 270,
-            minZ = 28.5,
-            maxZ = 31.0,
-            debug = false,
-            length = 1,
-            width = 2,
             distance = 2.0,
             created = false
         }

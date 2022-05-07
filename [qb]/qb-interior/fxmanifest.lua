@@ -10,6 +10,9 @@ client_scripts {
 	'client/main.lua',
 	'client/optional.lua'
 }
+shared_scripts {
+    'config.lua',
+}
 
 files {
 	'starter_shells_k4mb1.ytyp'
