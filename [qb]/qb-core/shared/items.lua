@@ -475,7 +475,9 @@ QBShared.Items = {
 
 	["tcard"]					    = { ["name"] = "tcard", 					  	["label"] = "tcard", 				    ["weight"] = 500, 		["type"] = "item", 		["image"] = "tcard.png", 				["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "????"},	
 	
-	["green-laptop"] 			     = {["name"] = "green-laptop", 					["label"] = "Green Laptop", 			["weight"] = 1000,  	["type"] = "item", 		["image"] = "laptop-green.png", 			["unique"] = false,     ["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "A green laptop.."},
+	["green_laptop"] 			     = {["name"] = "green-laptop", 					["label"] = "Green Laptop", 			["weight"] = 1000,  	["type"] = "item", 		["image"] = "laptop-green.png", 			["unique"] = false,     ["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "A green laptop.."},
+
+	["yellow_laptop"] 			     = {["name"] = "yellow-laptop", 				["label"] = "yellow Laptop", 			["weight"] = 1000,  	["type"] = "item", 		["image"] = "yellow-green.png", 			["unique"] = false,     ["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "A yellow laptop.."},
 
 
 		-- Regular Fish
