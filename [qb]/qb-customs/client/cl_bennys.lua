@@ -816,7 +816,7 @@ function EnterLocation(override)
         radialMenuItemId = nil
     end
 
-    exports['qb-core']:HideText()
+    exports['qb-core']:HideText("benny")
 
     local plyPed = PlayerPedId()
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
@@ -1003,7 +1003,7 @@ CreateThread(function()
                         radialMenuItemId = nil
                     end
 
-                    exports['qb-core']:HideText()
+                    exports['qb-core']:HideText("benny")
                 end
             end)
         end

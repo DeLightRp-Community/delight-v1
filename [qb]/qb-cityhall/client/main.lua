@@ -141,7 +141,7 @@ local function spawnPeds()
                                 exports['qb-core']:DrawText('[E] Open Cityhall')
                             end
                         else
-                            exports['qb-core']:HideText()
+                            exports['qb-core']:HideText("cityhall")
                             if current.drivingschool then
                                 inRangeDrivingSchool = false
                             elseif current.cityhall then
@@ -279,7 +279,7 @@ CreateThread(function()
                             setCityhallPageState(true, true)
                             exports['qb-core']:KeyPressed()
                             Wait(500)
-                            exports['qb-core']:HideText()
+                            exports['qb-core']:HideText("cityhall")
                             sleep = 1000
                         end
                     end
@@ -290,7 +290,7 @@ CreateThread(function()
                         sleep = 5000
                         exports['qb-core']:KeyPressed()
                         Wait(500)
-                        exports['qb-core']:HideText()
+                        exports['qb-core']:HideText("cityhall")
                     end
                 end
             end

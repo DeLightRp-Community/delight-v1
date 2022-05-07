@@ -1,7 +1,12 @@
-local function hideText()
-    SendNUIMessage({
-        action = 'HIDE_TEXT',
-    })
+local function hideText(where)
+    Wait(1000)
+    print(where)
+    if where~=nil then
+        SendNUIMessage({
+            action = 'HIDE_TEXT',
+        })
+    end
+    
 end
 
 local function drawText(text, position)
@@ -34,7 +39,7 @@ local function keyPressed()
             action = 'KEY_PRESSED',
         })
         Wait(500)
-        hideText()
+        hideText("keypress")
     end)
 end
 
@@ -47,7 +52,7 @@ RegisterNetEvent('qb-core:client:ChangeText', function(text, position)
 end)
 
 RegisterNetEvent('qb-core:client:HideText', function()
-    hideText()
+    hideText("core")
 end)
 
 RegisterNetEvent('qb-core:client:KeyPressed', function()

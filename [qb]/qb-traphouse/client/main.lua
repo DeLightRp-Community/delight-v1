@@ -60,7 +60,7 @@ local function RegisterTraphouseEntranceZone(traphouseID, traphouseData)
         if isPointInside then
             exports['qb-core']:DrawText('[E] ' .. Lang:t('targetInfo.enter'), 'left')
         else
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("trap")
         end
 
         isInsideEntranceTarget = isPointInside
@@ -101,7 +101,7 @@ local function RegisterTraphouseInteractionZone(traphouseID, traphouseData)
         if isPointInside then
             exports['qb-core']:DrawText('[E] ' .. Lang:t('targetInfo.options'), 'left')
         else
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("trap")
             TriggerEvent('qb-traphouse:client:target:CloseMenu')
         end
 
@@ -180,7 +180,7 @@ local function RegisterTraphouseExitZone(coords, traphouseID, traphouseData)
         if isPointInside then
             exports['qb-core']:DrawText('[E] ' .. Lang:t("targetInfo.leave"), 'left')
         else
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("trap")
         end
 
         isInsideExitTarget = isPointInside
@@ -611,7 +611,7 @@ CreateThread(function ()
                     wait = 0
                     if IsControlJustPressed(0, 38) then
                         TriggerEvent("qb-traphouse:client:EnterTraphouse")
-                        exports['qb-core']:HideText()
+                        exports['qb-core']:HideText("trap")
                     end
                 end
             else
@@ -637,7 +637,7 @@ CreateThread(function ()
                     wait = 0
                     if IsControlJustPressed(0, 38) then
                         LeaveTraphouse(ClosestTraphouse, data)
-                        exports['qb-core']:HideText()
+                        exports['qb-core']:HideText("trap")
                     end
                 end
 
@@ -645,7 +645,7 @@ CreateThread(function ()
                     wait = 0
                     if IsControlJustPressed(0, 38) then
                         OpenHeaderMenu(data)
-                        exports['qb-core']:HideText()
+                        exports['qb-core']:HideText("trap")
                     end
                 end
             end

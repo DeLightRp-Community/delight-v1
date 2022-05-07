@@ -256,7 +256,7 @@ freedom:onPlayerInOut(function(isPointInside)
 		insidefreedom = true
 	else
 		insidefreedom = false
-		exports['qb-core']:HideText()
+		exports['qb-core']:HideText("prison")
 	end
 end)
 
@@ -270,7 +270,7 @@ canteen:onPlayerInOut(function(isPointInside)
 		insidecanteen = true
 	else
 		insidecanteen = false
-		exports['qb-core']:HideText()
+		exports['qb-core']:HideText("prison")
 	end
 end)
 

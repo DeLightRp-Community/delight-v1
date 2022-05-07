@@ -432,7 +432,7 @@ RegisterNetEvent('qb-trucker:client:Deliver', function()
             LocationsDone[#LocationsDone+1] = CurrentLocation.id
             TriggerServerEvent("qb-shops:server:RestockShopItems", CurrentLocation.store)
             QBCore.Functions.Notify(Lang:t("mission.goto_next_point"))
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("truck")
             Delivering = false
             showMarker = false
             TriggerServerEvent('qb-trucker:server:nano')

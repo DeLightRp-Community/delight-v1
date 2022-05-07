@@ -78,7 +78,7 @@ local function jobstart(currentJob, currentLocation)
                         electricityzone:destroy()
                     end
                 else
-                    exports['qb-drawtext']:HideText()
+                    exports['qb-drawtext']:HideText("prison")
                 end
             end)
         end)

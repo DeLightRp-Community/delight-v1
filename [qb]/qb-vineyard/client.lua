@@ -160,7 +160,7 @@ for k=1, #grapeLocations do
 						if not IsPedInAnyVehicle(PlayerPedId()) and IsControlJustReleased(0,38) then
 							PickAnim()
 							pickProcess()
-							exports['qb-core']:HideText()
+							exports['qb-core']:HideText("vine")
 							random = 0
 						end
 						Wait(1)
@@ -169,7 +169,7 @@ for k=1, #grapeLocations do
 			end
 		else
 			if Config.Debug then log(Lang:t("text.zone_exited",{zone=label})) end
-			exports['qb-core']:HideText()
+			exports['qb-core']:HideText("vine")
 		end
 	end)
 end
@@ -238,7 +238,7 @@ Zones[1].zone:onPlayerInOut(function(isPointInside)
 		end
 	else
 		if Config.Debug then log(Lang:t("text.zone_exited",{zone="Start"})) end
-		exports['qb-core']:HideText()
+		exports['qb-core']:HideText("vine")
 	end
 end)
 
@@ -295,7 +295,7 @@ Zones[2].zone:onPlayerInOut(function(isPointInside)
 		end
 	else
 		if Config.Debug then log(Lang:t("text.zone_exited",{zone="Wine"})) end
-		exports['qb-core']:HideText()
+		exports['qb-core']:HideText("vine")
 	end
 end)
 
@@ -327,6 +327,6 @@ Zones[3].zone:onPlayerInOut(function(isPointInside)
 		end
 	else
 		if Config.Debug then log(Lang:t("text.zone_exited",{zone="Juice"})) end
-		exports['qb-core']:HideText()
+		exports['qb-core']:HideText("vine")
 	end
 end)

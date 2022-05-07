@@ -75,7 +75,7 @@ local function RegisterEntranceTarget()
       if isPointInside then
         exports['qb-core']:DrawText('[E] Enter Warehouse', 'left')
       else
-        exports['qb-core']:HideText()
+        exports['qb-core']:HideText("recy")
       end
 
       isInsideEntranceZone = isPointInside
@@ -116,7 +116,7 @@ local function RegisterExitTarget()
       if isPointInside then
         exports['qb-core']:DrawText('[E] Exit Warehouse', 'left')
       else
-        exports['qb-core']:HideText()
+        exports['qb-core']:HideText("recy")
       end
 
       isInsideExitZone = isPointInside
@@ -183,7 +183,7 @@ local function RegisterDutyTarget()
       if isPointInside then
         exports['qb-core']:DrawText(GetDutyTargetText(), 'left')
       else
-        exports['qb-core']:HideText()
+        exports['qb-core']:HideText("recy")
       end
 
       isInsideDutyZone = isPointInside
@@ -245,7 +245,7 @@ local function RegisterDeliveyTarget()
       if isPointInside and carryPackage then
         exports['qb-core']:DrawText('[E] Hand In Package', 'left')
       else
-        exports['qb-core']:HideText()
+        exports['qb-core']:HideText("recy")
       end
 
       isInsideDeliveryZone = isPointInside
@@ -426,7 +426,7 @@ function RegisterPickupTarget(coords)
       if isPointInside then
         exports['qb-core']:DrawText('[E] Get Package', 'left')
       else
-        exports['qb-core']:HideText()
+        exports['qb-core']:HideText("recy")
       end
 
       isInsidePickupZone = isPointInside
@@ -556,7 +556,7 @@ CreateThread(function()
           exports['qb-core']:KeyPressed()
           Wait(500)
           TriggerEvent('qb-recyclejob:client:target:enterLocation')
-          exports['qb-core']:HideText()
+          exports['qb-core']:HideText("recy")
         end
       end
       
@@ -566,7 +566,7 @@ CreateThread(function()
           exports['qb-core']:KeyPressed()
           Wait(500)
           TriggerEvent('qb-recyclejob:client:target:exitLocation')
-          exports['qb-core']:HideText()
+          exports['qb-core']:HideText("recy")
         end
       end
 
@@ -576,7 +576,7 @@ CreateThread(function()
           exports['qb-core']:KeyPressed()
           Wait(500)
           TriggerEvent('qb-recyclejob:client:target:toggleDuty')
-          exports['qb-core']:HideText()
+          exports['qb-core']:HideText("recy")
         end
       end
 
@@ -587,7 +587,7 @@ CreateThread(function()
             exports['qb-core']:KeyPressed()
             Wait(500)
             TriggerEvent('qb-recyclejob:client:target:pickupPackage')
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("recy")
           end
         elseif packageCoords and not carryPackage then
           sleep = 0
@@ -600,7 +600,7 @@ CreateThread(function()
             exports['qb-core']:KeyPressed()
             Wait(500)
             TriggerEvent('qb-recyclejob:client:target:dropPackage')
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("recy")
           end
         end
       end

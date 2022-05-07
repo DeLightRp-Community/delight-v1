@@ -750,7 +750,7 @@ function setupCabParkingLocation()
                 isPlayerInsideZone = true
             end
         else
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("shop")
             Notified = false
             isPlayerInsideZone = false
         end

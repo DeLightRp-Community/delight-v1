@@ -43,21 +43,6 @@ local function GetClosestVending()
     return object
 end
 
-local function DrawText3Ds(x, y, z, text)
-	SetTextScale(0.35, 0.35)
-    SetTextFont(4)
-    SetTextProportional(1)
-    SetTextColour(255, 255, 255, 215)
-    SetTextEntry("STRING")
-    SetTextCentre(true)
-    AddTextComponentString(text)
-    SetDrawOrigin(x,y,z, 0)
-    DrawText(0.0, 0.0)
-    local factor = (string.len(text)) / 370
-    DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
-    ClearDrawOrigin()
-end
-
 local function FormatWeaponAttachments(itemdata)
     local attachments = {}
     itemdata.name = itemdata.name:upper()
@@ -581,6 +566,7 @@ RegisterCommand('inventory', function()
 
             if CurrentVehicle then -- Trunk
                 local vehicleClass = GetVehicleClass(curVeh)
+                local plate = QBCore.Functions.GetPlate(curVeh)
                 local maxweight = 0
                 local slots = 0
                 if vehicleClass == 0 then
@@ -635,6 +621,7 @@ RegisterCommand('inventory', function()
                 local other = {
                     maxweight = maxweight,
                     slots = slots,
+                    plate = plate
                 }
                 TriggerServerEvent("inventory:server:OpenInventory", "trunk", CurrentVehicle, other)
                 OpenTrunk()

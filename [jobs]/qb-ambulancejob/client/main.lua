@@ -730,7 +730,7 @@ CreateThread(function()
             if IsControlJustReleased(0, 38) then
                 exports['qb-core']:KeyPressed(38)
                 LeaveBed()
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("ambulance")
             end
         end
         Wait(sleep)
@@ -943,7 +943,7 @@ else
                 else
                     inCheckin = false
                     listen = false
-                    exports['qb-core']:HideText()
+                    exports['qb-core']:HideText("ambulance")
                 end
             end)
         end
@@ -965,7 +965,7 @@ else
                 else
                     inBed = false
                     listen = false
-                    exports['qb-core']:HideText()
+                    exports['qb-core']:HideText("ambulance")
                 end
             end)
         end

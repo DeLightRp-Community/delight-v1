@@ -203,14 +203,11 @@ Citizen.CreateThread(function()
                                         distance = 1.5
                                 })
                         else
-                            --DrawText3Ds(Config.Safes[safe].x, Config.Safes[safe].y, Config.Safes[safe].z, 'Safe is Open.')
-                                
-                                
+
                             exports['qb-core']:DrawText('Safe is Open.', 'left')
-                            --exports["qb-target"]:RemoveCircleZone("StoreSafe"..safe)
+
                         end
                     else
-                        --DrawText3Ds(Config.Safes[safe].x, Config.Safes[safe].y, Config.Safes[safe].z,'Safe opened ..')
                         exports['qb-core']:DrawText('Safe opened ..', 'left')
                     end
                 end
@@ -218,12 +215,13 @@ Citizen.CreateThread(function()
         end
     end
 
-        if not inRange then
-            Citizen.Wait(2000)
-            exports['qb-core']:HideText()
-        end
+    if not inRange then
+        Citizen.Wait(2000)
+        exports['qb-core']:HideText("storerob")
+    end
     end
 end)
+
 
 local tasking = true
 local timer = 300
@@ -369,7 +367,6 @@ RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
                     if not IsWearingHandshoes() then
                         TriggerServerEvent("evidence:server:CreateFingerDrop", pos)
                     end
-
                     if not copsCalled then
                         exports['qb-dispatch']:StoreRobbery(v.camId)
 			            local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)

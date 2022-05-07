@@ -666,7 +666,12 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 				end
 				secondInv.name = "trunk-"..id
 				secondInv.label = "Trunk-"..id
-				secondInv.maxweight = other.maxweight or 60000
+				local result = exports.oxmysql:scalarSync('SELECT `actualCarryCapacity` FROM player_vehicles WHERE plate = ?',
+					{other.plate})
+				if result then
+					other.maxweight = json.decode(result)
+				end
+				-- secondInv.maxweight = other.maxweight or 60000
 				secondInv.inventory = {}
 				secondInv.slots = other.slots or 50
 				if (Trunks[id] and Trunks[id].isOpen) or (QBCore.Shared.SplitStr(id, "PLZI")[2] and Player.PlayerData.job.name ~= "police") then

@@ -447,7 +447,7 @@ function SetupStoreZones()
             end
         else
             inZone = false
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("appre")
         end
     end)
 end
@@ -478,7 +478,7 @@ function SetupClothingRoomZones()
             end
         else
             inZone = false
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("appre")
         end
     end)
 end
@@ -509,7 +509,7 @@ function SetupPlayerOutfitRoomZones()
             end
         else
             inZone = false
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("appre")
         end
     end)
 end

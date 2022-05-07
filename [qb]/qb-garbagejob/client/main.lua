@@ -166,13 +166,13 @@ local function RunWorkLoop()
                         end
                         if IsControlJustPressed(0, 51) then
                             hasBag = true
-                            exports['qb-core']:HideText()
+                            exports['qb-core']:HideText("garbage")
                             TakeAnim()
                         end
                     elseif Distance < 10 then
                         if GarbText then
                             GarbText = false
-                            exports['qb-core']:HideText()
+                            exports['qb-core']:HideText("garbage")
                         end
                         DrawText3D2(DeliveryData.coords, Lang:t("info.stand_grab_garbage"))
                     end
@@ -239,7 +239,7 @@ local function RunWorkLoop()
                                     DeliverAnim()
                                     Wait(1500)
                                     if TrucText then
-                                        exports['qb-core']:HideText()
+                                        exports['qb-core']:HideText("garbage")
                                         TrucText = false
                                     end
                                 end, function() -- Cancel
@@ -274,7 +274,7 @@ local function CreateZone(x, y, z)
                 listen = true
                 RunWorkLoop()
             else
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("garbage")
                 listen = false
             end
         end)
@@ -367,7 +367,7 @@ local function spawnPeds()
                             Listen4Control()
                         else
                             ControlListen = false
-                            exports['qb-core']:HideText()
+                            exports['qb-core']:HideText("garbage")
                         end
                     end
                 end)

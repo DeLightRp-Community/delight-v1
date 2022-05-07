@@ -82,7 +82,22 @@ Config.TargetBones = {
 }
 
 Config.TargetModels = {
-
+	["PDFingerPrint"] = {
+		models = {
+			`mp_m_fibsec_01`
+		},
+		options = {
+			{
+				type = "client",
+				event = "qb-police:client:scanFingerPrint",
+				icon = "fas fa-fingerprint",
+				label = "Scan Finger",
+				job = "police",
+				
+			},
+		},
+		distance = 3.5,
+	},
 }
 
 Config.GlobalPedOptions = {

@@ -87,7 +87,7 @@ RegisterCommand('911', function(source, args, rawCommand)
                     },
                     dispatchMessage = "Incoming Call", -- message
                     information = msg,
-                    job = {"police", "ambulance"} -- jobs that will get the alerts
+                    job = {"police"} -- jobs that will get the alerts
                 })
                 Wait(1000)
                 DeletePhone()
@@ -130,7 +130,7 @@ RegisterCommand('911a', function(source, args, rawCommand)
                     },
                     dispatchMessage = "Incoming Anonymous Call", -- message
                     information = msg,
-                    job = {"police", "ambulance"} -- jobs that will get the alerts
+                    job = {"police"} -- jobs that will get the alerts
                 })
                 Wait(1000)
                 DeletePhone()
@@ -147,7 +147,7 @@ RegisterCommand('911a', function(source, args, rawCommand)
 end)
 
 -- Regular 311 call that goes straight to the Police
-RegisterCommand('311', function(source, args, rawCommand)
+RegisterCommand('103', function(source, args, rawCommand)
     local msg = rawCommand:sub(5)
     if string.len(msg) > 0 then
         if not exports['qb-policejob']:IsHandcuffed() then
@@ -173,7 +173,7 @@ RegisterCommand('311', function(source, args, rawCommand)
                     },
                     dispatchMessage = "Incoming Call", -- message
                     information = msg,
-                    job = {"police", "ambulance"} -- jobs that will get the alerts
+                    job = {"ambulance"} -- jobs that will get the alerts
                 })
                 Wait(1000)
                 DeletePhone()
@@ -190,7 +190,7 @@ RegisterCommand('311', function(source, args, rawCommand)
 end)
 
 -- Regular 311 call that goes straight to the Police
-RegisterCommand('311a', function(source, args, rawCommand)
+RegisterCommand('103a', function(source, args, rawCommand)
     local msg = rawCommand:sub(5)
     if string.len(msg) > 0 then
         if not exports['qb-policejob']:IsHandcuffed() then
@@ -216,7 +216,7 @@ RegisterCommand('311a', function(source, args, rawCommand)
                     },
                     dispatchMessage = "Incoming Call", -- message
                     information = msg,
-                    job = {"police", "ambulance"} -- jobs that will get the alerts
+                    job = {"ambulance"} -- jobs that will get the alerts
                 })
                 Wait(1000)
                 DeletePhone()

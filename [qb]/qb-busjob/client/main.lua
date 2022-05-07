@@ -115,7 +115,7 @@ local function GetDeliveryLocation()
                 until not inRange
             end)
         else
-            exports["qb-core"]:HideText()
+            exports["qb-core"]:HideText("bus")
             inRange = false
         end
     end)
@@ -239,7 +239,7 @@ RegisterNetEvent('qb-busjob:client:DoBusNpc', function()
                         until not inRange
                     end)
                 else
-                    exports["qb-core"]:HideText()
+                    exports["qb-core"]:HideText("bus")
                     inRange = false
                 end
             end)
@@ -285,7 +285,7 @@ CreateThread(function()
                             exports["qb-core"]:DrawText(Lang:t('info.busstop_text'), 'left')
                             if IsControlJustReleased(0, 38) then
                                 BusGarage()
-                                exports["qb-core"]:HideText()
+                                exports["qb-core"]:HideText("bus")
                                 break
                             end
                         else
@@ -296,7 +296,7 @@ CreateThread(function()
                                         BusData.Active = false;
                                         DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
                                         RemoveBlip(NpcData.NpcBlip)
-                                        exports["qb-core"]:HideText()
+                                        exports["qb-core"]:HideText("bus")
                                         break
                                     end
                                 else
@@ -307,7 +307,7 @@ CreateThread(function()
                     until not inRange
                 end)
             else
-                exports["qb-core"]:HideText()
+                exports["qb-core"]:HideText("bus")
                 inRange = false
             end
         end

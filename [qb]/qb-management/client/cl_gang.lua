@@ -5,7 +5,7 @@ local shownGangMenu = false
 -- UTIL
 local function CloseMenuFullGang()
     exports['qb-menu']:closeMenu()
-    exports['qb-core']:HideText()
+    exports['qb-core']:HideText("manage")
     shownGangMenu = false
 end
 
@@ -319,7 +319,7 @@ CreateThread(function()
                                     end
 
                                     if IsControlJustReleased(0, 38) then
-                                        exports['qb-core']:HideText()
+                                        exports['qb-core']:HideText("manage")
                                         TriggerEvent("qb-gangmenu:client:OpenMenu")
                                     end
                                 end

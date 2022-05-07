@@ -46,20 +46,7 @@ end)
 	DisplayHelpTextFromStringLabel(0, 0, 1, 20000)
 end
 
-function DrawText3D(x, y, z, text)
-    local onScreen,_x,_y=World3dToScreen2d(x, y, z)
-    local px,py,pz=table.unpack(GetGameplayCamCoords())
-    SetTextScale(0.3, 0.3)
-    SetTextFont(4)
-    SetTextProportional(1)
-    SetTextColour(255, 255, 255, 215)
-    SetTextEntry("STRING")
-    SetTextCentre(1)
-    AddTextComponentString(text)
-    DrawText(_x,_y)
-    local factor = (string.len(text)) / 370
-    DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 90)
-end]]
+
 
 --Ped spawn and mission accept
 --[[Citizen.CreateThread(function()
@@ -85,7 +72,6 @@ end]]
 			end
 
             if dist <= 1.0 then
-				DrawText3D(MissionMarker.x, MissionMarker.y, MissionMarker.z, "~g~[E]~b~ To accept missions")
 				if IsControlJustPressed(0, 38) then
 				TriggerServerEvent("AttackTransport:akceptujto")
 				Citizen.Wait(500)
@@ -436,15 +422,10 @@ Citizen.CreateThread(function()
 
 			if dist <= 7 and BlownUp == 0 and PlayerJob.name ~= 'police' then
 				if BlowBackdoor == 0 then
-					--exports['qb-core']:DrawText('Press [G] to blow up the back door and take the money', 'left')
+					
 					BlowBackdoor = 1
 				end
-				--[[if IsControlPressed(0, 47) and GuardsDead == 1 then
-					--exports['qb-core']:HideText()
-					CheckVehicleInformation()
-					TriggerEvent("qb-truckrobbery:notif")					
-					Citizen.Wait(500)
-				end]]
+				
 			end
 
 
@@ -598,9 +579,9 @@ end)
 	QBCore.Functions.Notify('You are packing cash into a bag', "success")
 	local _time = GetGameTimer()
 	while GetGameTimer() - _time < 1200000 do
-		exports['qb-core']:DrawText('Hold [G] to bail out', 'left')
+		
 		if IsControlPressed(0, 47) then
-			exports['qb-core']:HideText()
+			
 			break
 		end
 		

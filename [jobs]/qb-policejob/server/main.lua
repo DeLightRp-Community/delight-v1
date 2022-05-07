@@ -371,7 +371,7 @@ end)
 
 QBCore.Commands.Add("impound", "Impound A Vehicle (Police Only)", {}, false, function(source, args)
 	local Player = QBCore.Functions.GetPlayer(source)
-    if Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "tuner" or Player.PlayerData.job.name == "mechanicb" and Player.PlayerData.job.onduty then
+    if Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "tuner" or Player.PlayerData.job.name == "mechanicb" then
 	    TriggerClientEvent('police:client:DeleteVehicle', source)
     else
         TriggerClientEvent('QBCore:Notify', source, 'For Emergency Services Only', 'error')
@@ -587,7 +587,7 @@ end)
 
 QBCore.Functions.CreateCallback('police:GetImpoundedVehicles', function(source, cb)
     local vehicles = {}
-    MySQL.Async.fetchAll('SELECT * FROM player_vehicles WHERE state = ?', {2}, function(result)
+    MySQL.Async.fetchAll('SELECT * FROM player_vehicles WHERE state = ?', {3}, function(result)
         if result[1] then
             vehicles = result
         end

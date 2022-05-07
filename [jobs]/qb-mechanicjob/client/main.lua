@@ -105,7 +105,7 @@ local function RegisterDutyTarget()
             if isPointInside then
                 exports['qb-core']:DrawText("[E] " .. label, 'left')
             else
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("mecha")
             end
     
             isInsideDutyZone = isPointInside
@@ -156,7 +156,7 @@ local function RegisterStashTarget()
             if isPointInside then
                 exports['qb-core']:DrawText("[E] Open Stash", 'left')
             else
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("mecha")
             end
     
             isInsideStashZone = isPointInside
@@ -185,7 +185,7 @@ local function RegisterGarageZone()
                 exports['qb-core']:DrawText('[E] Get Vehicle', 'left')
             end
         else
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("mecha")
         end
 
         isInsideGarageZone = isPointInside
@@ -222,7 +222,7 @@ function RegisterVehiclePlateZone(id, plate)
                 end
             end
         else
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("mecha")
         end
 
         isInsideVehiclePlateZone = isPointInside
@@ -1025,10 +1025,10 @@ CreateThread(function ()
                     if IsControlJustPressed(0, 38) then
                         if inVehicle then
                             DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
-                            exports['qb-core']:HideText()
+                            exports['qb-core']:HideText("mecha")
                         else
                             VehicleList()
-                            exports['qb-core']:HideText()
+                            exports['qb-core']:HideText("mecha")
                         end
                     end
                 end
@@ -1039,7 +1039,7 @@ CreateThread(function ()
                     local coords = Config.Plates[ClosestPlate].coords
                     if attachedVehicle then
                         if IsControlJustPressed(0, 38) then
-                            exports['qb-core']:HideText()
+                            exports['qb-core']:HideText("mecha")
                             OpenMenu()
                         end
                     else

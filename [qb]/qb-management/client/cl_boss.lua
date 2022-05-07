@@ -5,7 +5,7 @@ local shownBossMenu = false
 -- UTIL
 local function CloseMenuFull()
     exports['qb-menu']:closeMenu()
-    exports['qb-core']:HideText()
+    exports['qb-core']:HideText("manage")
     shownBossMenu = false
 end
 
@@ -317,7 +317,7 @@ CreateThread(function()
                                         shownBossMenu = true
                                     end
                                     if IsControlJustReleased(0, 38) then
-                                        exports['qb-core']:HideText()
+                                        exports['qb-core']:HideText("manage")
                                         TriggerEvent("qb-bossmenu:client:OpenMenu")
                                     end
                                 end

@@ -662,7 +662,43 @@ function FormatItemInfo(itemData, dom) {
         } else if (itemData.name == "fishicebox") {
             $(".item-info-title").html('<p>' + itemData.label + ' ' + itemData.info.boxid + '</p>')
             $(".item-info-description").html('<p><strong>Box Owner: </strong><span>' + itemData.info.boxOwner + '</span></p> Ice Box to store all of your fish');
-        }else {
+        }
+        else if (
+            itemData.name == "keepcompanionhusky" ||
+            itemData.name == "keepcompanionrottweiler" ||
+            itemData.name == "keepcompanionmtlion" ||
+            itemData.name == "keepcompanionmtlion2" ||
+            itemData.name == "keepcompanioncat" ||
+            itemData.name == "keepcompanionpoodle" ||
+            itemData.name == "keepcompanionpug" ||
+            itemData.name == "keepcompanionretriever" ||
+            itemData.name == "keepcompanionshepherd" ||
+            itemData.name == "keepcompanionwesty"
+        ) {
+            let gender = itemData.info.gender;
+            gender ? (gender = "male") : (gender = "female");
+            $(".item-info-title").html("<p>" + itemData.info.name + "</p>");
+            $(".item-info-description").html(
+                "<p><strong>Owner Phone: </strong><span>" +
+                itemData.info.owner.phone +
+                "</span></p><p><strong>Variation: </strong><span>" +
+                `${itemData.info.variation}` +
+                "</span></p><p><strong>Gender: </strong><span>" +
+                `${gender}` +
+                "</span></p><p><strong>Health: </strong><span>" +
+                itemData.info.health +
+                "</span></p><p><strong>Xp/Max: </strong><span>" +
+                `${itemData.info.XP} / ${maxExp(itemData.info.level)}` +
+                "</span></p><p><strong>Level: </strong><span>" +
+                itemData.info.level +
+                "</span></p><p><strong>Age: </strong><span>" +
+                callAge(itemData.info.age) +
+                "</span></p><p><strong>Food: </strong><span>" +
+                itemData.info.food +
+                "</span></p>"
+            );
+        }
+        else {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>" + itemData.description + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
         }
@@ -2599,8 +2635,8 @@ var requiredItemOpen = false;
             data.other != "" &&
             data.other.inventory != null
         ) {
-            var inv_type=$('.other-inventory').attr("data-inventory","crafting").children('.item-slot').addClass('crafting-slot')
             if (data.other.name=="crafting") {
+                var inv_type=$('.other-inventory').attr("data-inventory","crafting").children('.item-slot').addClass('crafting-slot')
                 $.each(data.other.inventory, function(i, item) {
                     var craftData=""
                     $.each(item.costs, function(i, item){
@@ -2612,10 +2648,10 @@ var requiredItemOpen = false;
                             '<div class="item-slot-label"><p>' + item.label + "</p></div>";
                         // if (item.name.split("_")[0] == "weapon") {
                             // if (!Inventory.IsWeaponBlocked(item.name)) {
-                                ItemLabel =
-                                    '<div class="item-slot-quality"><div class="item-slot-quality-bar"><p>100</p></div></div><div class="item-slot-label"><p>' +
-                                    item.label +
-                                    "</p></div>";
+                                // ItemLabel =
+                                //     '<div class="item-slot-quality"><div class="item-slot-quality-bar"><p>100</p></div></div><div class="item-slot-label"><p>' +
+                                //     item.label +
+                                //     "</p></div>";
                             // }
                         // }
                         $(".other-inventory")
@@ -2624,7 +2660,7 @@ var requiredItemOpen = false;
                         $(".other-inventory")
                             .find("[data-slot=" + item.slot + "]")
                             .html(
-                                '<div class="wrapper-craft-item"><div class="row"><div class="col-5"><div class="item-slot-img"><img src="images/' +
+                                '<div class="wrapper-craft-item"><div class="row"><div class="col-5"><div class="item-slot-img-craft"><img src="images/' +
                                 item.image +
                                 '" alt="' +
                                 item.name +
@@ -2646,6 +2682,7 @@ var requiredItemOpen = false;
                     }
                 });
             }else if (data.other.name=="attachment_crafting") {
+                var inv_type=$('.other-inventory').attr("data-inventory","crafting").children('.item-slot').addClass('crafting-slot')
                 $.each(data.other.inventory, function(i, item) {
                     var craftData=""
                     $.each(item.costs, function(i, item){
@@ -2657,10 +2694,10 @@ var requiredItemOpen = false;
                             '<div class="item-slot-label"><p>' + item.label + "</p></div>";
                         // if (item.name.split("_")[0] == "weapon") {
                             // if (!Inventory.IsWeaponBlocked(item.name)) {
-                                ItemLabel =
-                                    '<div class="item-slot-quality"><div class="item-slot-quality-bar"><p>100</p></div></div><div class="item-slot-label"><p>' +
-                                    item.label +
-                                    "</p></div>";
+                                // ItemLabel =
+                                //     '<div class="item-slot-quality"><div class="item-slot-quality-bar"><p>100</p></div></div><div class="item-slot-label"><p>' +
+                                //     item.label +
+                                //     "</p></div>";
                             // }
                         // }
                         $(".other-inventory")
@@ -2669,7 +2706,7 @@ var requiredItemOpen = false;
                         $(".other-inventory")
                             .find("[data-slot=" + item.slot + "]")
                             .html(
-                                '<div class="wrapper-craft-item"><div class="row"><div class="col-5"><div class="item-slot-img"><img src="images/' +
+                                '<div class="wrapper-craft-item"><div class="row"><div class="col-5"><div class="item-slot-img-craft"><img src="images/' +
                                 item.image +
                                 '" alt="' +
                                 item.name +
@@ -3187,3 +3224,39 @@ $("#item-give").droppable({
         );
     },
 });
+
+// keep-companion functions
+function callAge(age) {
+    let max = 0;
+    let min = 0;
+    if (age === 0) {
+      return 0;
+    }
+    for (let index = 1; index < 10; index++) {
+      max = 60 * 60 * 24 * index;
+      min = 60 * 60 * 24 * (index - 1);
+      if (age >= min && age <= max) {
+        return index - 1;
+      }
+    }
+  }
+  
+  function maxExp(level) {
+    let xp = Math.floor(
+      (1 / 4) * Math.floor((level + 300) * Math.pow(2, level / 7))
+    );
+    return xp;
+  }
+  
+  function currentLvlExp(xp) {
+    let maxExp = 0;
+    let minExp = 0;
+  
+    for (let index = 0; index <= 50; index++) {
+      maxExp = Math.floor(Math.floor((i + 300) * (2 ^ (i / 7))) / 4);
+      minExp = Math.floor(Math.floor((i - 1 + 300) * (2 ^ ((i - 1) / 7))) / 4);
+      if (xp >= minExp && xp <= maxExp) {
+        return i;
+      }
+    }
+  }

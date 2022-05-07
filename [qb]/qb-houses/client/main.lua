@@ -167,7 +167,7 @@ local function RegisterStashTarget()
         if isPointInside and not entering and isOwned then
             exports['qb-core']:DrawText(Lang:t("target.open_stash"), 'left')
         else
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("house")
         end
 
         isInsideStashTarget = isPointInside
@@ -191,7 +191,7 @@ local function RegisterOutfitsTarget()
         if isPointInside and not entering and isOwned then
             exports['qb-core']:DrawText(Lang:t("target.outfits"), 'left')
         else
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("house")
         end
 
         isInsideOutfitsTarget = isPointInside
@@ -215,7 +215,7 @@ local function RegisterCharactersTarget()
         if isPointInside and not entering and isOwned then
             exports['qb-core']:DrawText(Lang:t("target.change_character"), 'left')
         else
-            exports['qb-core']:HideText()
+            exports['qb-core']:HideText("house")
         end
 
         isInsiteCharactersTarget = isPointInside
@@ -1521,7 +1521,7 @@ CreateThread(function ()
                 wait = 0
                 if IsControlJustPressed(0, 38) then
                     TriggerEvent('qb-houses:client:OpenStash')
-                    exports['qb-core']:HideText()
+                    exports['qb-core']:HideText("house")
                 end
             end
 
@@ -1529,7 +1529,7 @@ CreateThread(function ()
                 wait = 0
                 if IsControlJustPressed(0, 38) then
                     TriggerEvent('qb-houses:client:ChangeOutfit')
-                    exports['qb-core']:HideText()
+                    exports['qb-core']:HideText("house")
                 end
             end
 
@@ -1537,7 +1537,7 @@ CreateThread(function ()
                 wait = 0
                 if IsControlJustPressed(0, 38) then
                     TriggerEvent('qb-houses:client:ChangeCharacter')
-                    exports['qb-core']:HideText()
+                    exports['qb-core']:HideText("house")
                 end
             end
         end

@@ -806,7 +806,7 @@ CreateThread(function()
                 end
             else
                 inZone = false
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("hotdog")
             end
         end)
     end

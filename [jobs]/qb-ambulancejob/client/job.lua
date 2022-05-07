@@ -451,7 +451,7 @@ CreateThread(function()
             else
                 inVehicle = false
                 CheckVehicle = false
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("ambulance")
             end
         end)
     end
@@ -472,7 +472,7 @@ CreateThread(function()
             else
                 inVehicle = false
                 CheckHelicopter = false
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("ambulance")
             end
         end)
     end
@@ -609,7 +609,7 @@ else
             else
                 inDuty = false
                 check = false
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("ambulance")
             end
         end)
 
@@ -635,7 +635,7 @@ else
             else
                 inStash = false
                 check = false
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("ambulance")
             end
         end)
 
@@ -661,7 +661,7 @@ else
             else
                 inArmory = false
                 check = false
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("ambulance")
             end
         end)
 
@@ -689,7 +689,7 @@ else
             else
                 onRoof = false
                 check = false
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("ambulance")
             end
         end)
 
@@ -717,7 +717,7 @@ else
             else
                 inMain = false
                 check = false
-                exports['qb-core']:HideText()
+                exports['qb-core']:HideText("ambulance")
             end
         end)
     end)

@@ -80,18 +80,18 @@ AddEventHandler("qb-fleeca:startLoot_c", function(data, name)
                         if dst1 < 2 then
                             if not helpTextShowing then
                                 helpTextShowing = true
-                                exports['qb-core']:DrawText('[E] Grab It !', 'left')
+                                -- exports['qb-core']:DrawText('[E] Grab It !', 'left')
                                 print("show")
                                 helpTextShowing = true
                             elseif dst1 < 0.75 and IsControlJustReleased(0, 38) then
-                                exports['qb-core']:HideText()
+                                exports['qb-core']:HideText("fleeca")
                                 print("Hide")
                                 TriggerServerEvent("qb-fleeca:lootup", name, "Loot")
                                 StartGrab(name)
                             end
                         else   
                             if helpTextShowing then
-                                exports['qb-core']:HideText()
+                                exports['qb-core']:HideText("fleeca")
                                 helpTextShowing = false
                             end
                         end

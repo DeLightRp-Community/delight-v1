@@ -405,7 +405,7 @@ CreateThread(function()
                 listen = false
                 if TextShown then
                     TextShown = false
-                    exports['qb-core']:HideText()
+                    exports['qb-core']:HideText("vehsale")
                 end
             end
         end)
@@ -427,7 +427,7 @@ CreateThread(function()
                         listen = false
                         if TextShown then
                             TextShown = false
-                            exports['qb-core']:HideText()
+                            exports['qb-core']:HideText("vehsale")
                         end
                     end
                 end)

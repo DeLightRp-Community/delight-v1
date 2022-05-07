@@ -211,7 +211,7 @@ CreateThread(function()
                 exports["qb-core"]:DrawText(Lang:t("info.open_shop"))
                 Listen4Control()
             else
-                exports["qb-core"]:HideText()
+                exports["qb-core"]:HideText("shop")
                 listen = false
             end
         end)
@@ -223,7 +223,7 @@ CreateThread(function()
                 exports["qb-core"]:DrawText(Lang:t("info.sell_chips"))
             else
                 inChips = false
-                exports["qb-core"]:HideText()
+                exports["qb-core"]:HideText("shop")
             end
         end)
     end
