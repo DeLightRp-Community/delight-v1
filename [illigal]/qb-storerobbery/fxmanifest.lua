@@ -7,7 +7,11 @@ version '1.0.0'
 ui_page 'html/index.html'
 
 shared_script 'config.lua'
-client_script 'client/main.lua'
+client_scripts {
+    'client/main.lua',
+    '@PolyZone/client.lua',
+    '@PolyZone/BoxZone.lua',
+}
 server_script 'server/main.lua'
 
 files {

@@ -160,6 +160,7 @@ end)]]
     end
 end)]]
 
+local CurrentZone=nil
 
 
 Citizen.CreateThread(function()
@@ -179,7 +180,7 @@ Citizen.CreateThread(function()
                                 --DrawText3Ds(Config.Safes[safe].x, Config.Safes[safe].y, Config.Safes[safe].z, '~g~E~w~ - Insert Combination')
                                 exports["qb-target"]:AddCircleZone("StoreSafe"..safe, vector3(Config.Safes[safe].x, Config.Safes[safe].y, Config.Safes[safe].z), 0.80, {
                                     name="StoreSafe"..safe,
-                                    debugPoly=true,
+                                    -- debugPoly=true,
                                     useZ=true,
                                     }, {
                                         options = {
@@ -210,14 +211,11 @@ Citizen.CreateThread(function()
                     else
                         exports['qb-core']:DrawText('Safe opened ..', 'left')
                     end
+                else
+                    exports['qb-core']:HideText("storerob")
                 end
             end
         end
-    end
-
-    if not inRange then
-        Citizen.Wait(2000)
-        exports['qb-core']:HideText("storerob")
     end
     end
 end)
@@ -298,7 +296,7 @@ RegisterNetEvent('qb-storerobbery:client:safe', function(currentSafe)
                                 {icon="fa-shopping-cart", info="Super Market"},
                                 {icon="fa-road", info= streetLabel}
                                 }, {pos.x, pos.y, pos.z}, "police", 3000, 59, 3 )
-                            TriggerServerEvent("qb-storerobbery:server:callCops", "safe", currentSafe)
+                            TriggerServerEvent("qb-storerobbery:server:callCops", "safe", streetLabel,{pos.x, pos.y, pos.z})
                             copsCalled = true
                         end
                     end
