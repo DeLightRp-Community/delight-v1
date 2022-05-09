@@ -411,7 +411,33 @@ RegisterNetEvent("qb-dispatch:client:officerdown", function()
         dispatchMessage = "Officer Down", -- message
         job = {"police", "ambulance"} -- jobs that will get the alerts
     })
-end) 
+end)
+
+RegisterNetEvent("qb-dispatch:client:fireshot", function()
+    local plyData = QBCore.Functions.GetPlayerData()
+    local currentPos = GetEntityCoords(PlayerPedId())
+    local locationInfo = getStreetandZone(currentPos)
+    local callsign = QBCore.Functions.GetPlayerData().metadata["callsign"]
+    TriggerServerEvent("dispatch:server:notify",{
+        dispatchcodename = "shotfire", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+        dispatchCode = "10-35",
+        firstStreet = locationInfo,
+        name = plyData.charinfo.firstname:sub(1,1):upper()..plyData.charinfo.firstname:sub(2).. " ".. plyData.charinfo.lastname:sub(1,1):upper()..plyData.charinfo.lastname:sub(2),
+        model = nil,
+        plate = nil,
+        callsign = callsign,
+        priority = 2, -- priority
+        firstColor = nil,
+        automaticGunfire = false,
+        origin = {
+            x = currentPos.x,
+            y = currentPos.y,
+            z = currentPos.z
+        },
+        dispatchMessage = "Shot Fire", -- message
+        job = {"police"} -- jobs that will get the alerts
+    })
+end)
 
 RegisterNetEvent("qb-dispatch:client:emsdown", function()
     local plyData = QBCore.Functions.GetPlayerData()

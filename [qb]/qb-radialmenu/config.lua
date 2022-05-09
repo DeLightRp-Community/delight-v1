@@ -434,6 +434,20 @@ Config.JobInteractions = {
     },
     ["police"] = {
         {
+            id = 'officerdown',
+            title = 'Officer Down',
+            icon = 'bell',
+            type = 'client',
+            event = 'qb-dispatch:client:officerdown',
+            shouldClose = true
+        }, {
+            id = 'fireshot',
+            title = 'Shot Fire',
+            icon = 'bell',
+            type = 'client',
+            event = 'qb-dispatch:client:fireshot',
+            shouldClose = true
+        }, {
             id = 'emergencybutton',
             title = 'Emergency button',
             icon = 'bell',

@@ -491,7 +491,9 @@ AddEventHandler('qb-fleeca:UseGreenLapTop', function(item)
                     
                         Wait(1000)
 
-                        if exports["minigame-fleeca"]:HackingFleeca(10000, 1) then
+                        local minigame = exports["minigame-fleeca"]:HackingFleeca(10000, 1)
+                        local ply = PlayerId()
+                        if minigame then
                             StopAnimTask(PlayerPedId(), hackAnimDict, "hack_loop", 1.0)
                             TriggerEvent('qb-fleeca:darkmail')
                             DeleteObject(laptop)
@@ -500,26 +502,16 @@ AddEventHandler('qb-fleeca:UseGreenLapTop', function(item)
                                 TriggerServerEvent("qb-fleeca:startcheck", k)
                             end)
 
+                        else
+                            DeleteObject(laptop)
+                            StopAnimTask(PlayerPedId(), hackAnimDict, "hack_loop", 1.0)
+                            ClearPedTasksImmediately(ply) 
                         end
-                        -- QBCore.Functions.TriggerCallback("qb-fleeca:getPolice", function(amount)			
-                        --     CurrentCops = amount
-                        --     if CurrentCops >= Fleeca.mincops then
-                        --             --TriggerEvent("client:newStress", true, 500)
-                        --             TriggerServerEvent("qb-fleeca:startcheck", k)
-                        --         else
-                        --             QBCore.Functions.Notify("Gefaald.", "error")
-                        --         end
-                        --     else
-                        --         QBCore.Functions.Notify("geen politie.", "error")
-                        --     end     
-                    
-                        --     DeleteObject(laptop)
-                        --     ClearPedTasksImmediately(ply)    
                         return p
                     else
                         QBCore.Functions.Notify("No Laptop", "error")
                     end
-                end, "green-laptop")
+                end, "green_laptop")
             end 
         end      		
     end  

@@ -131,6 +131,13 @@ QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "
             end
             licenseTable[args[2]] = true
             SearchedPlayer.Functions.SetMetaData("licences", licenseTable)
+            local lic=""
+            if args[2]=="driver" then
+                lic="driver_license"
+            else
+                lic="weaponlicense"
+            end
+            TriggerEvent('qb-police:server:requestId',lic,args[1])
             TriggerClientEvent('QBCore:Notify', SearchedPlayer.PlayerData.source, Lang:t("success.granted_license"), "success")
             TriggerClientEvent('QBCore:Notify', src, Lang:t("success.grant_license"), "success")
         else
@@ -139,6 +146,24 @@ QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "
     else
         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.rank_license"), "error")
     end
+end)
+
+RegisterNetEvent('qb-police:server:requestId', function(item, id)
+    local src = tonumber(id)
+    local Player = QBCore.Functions.GetPlayer(src)
+    local info = {}
+    if item == "driver_license" then
+        info.firstname = Player.PlayerData.charinfo.firstname
+        info.lastname = Player.PlayerData.charinfo.lastname
+        info.birthdate = Player.PlayerData.charinfo.birthdate
+        info.type = "Class C Driver License"
+    elseif item == "weaponlicense" then
+        info.firstname = Player.PlayerData.charinfo.firstname
+        info.lastname = Player.PlayerData.charinfo.lastname
+        info.birthdate = Player.PlayerData.charinfo.birthdate
+    end
+    if not Player.Functions.AddItem(item, 1, nil, info) then return end
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
 end)
 
 QBCore.Commands.Add("revokelicense", Lang:t("commands.license_revoke"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)

@@ -294,9 +294,19 @@ local function updateDoors(specificDoor)
     lastCoords = playerCoords
 end
 
-local function lockpickFinish(success)
-	if success then
-		QBCore.Functions.Notify(Lang:t("success.lockpick_success"), 'success', 2500)
+function openDoorAnim()
+    loadAnimDict("weapon@w_sp_jerrycan")
+    TaskPlayAnim(GetPlayerPed(-1), "weapon@w_sp_jerrycan", "fire", 3.0, 3.9, -1, 49, 0, 0, 0, 0)
+	SetTimeout(4000, function()
+		ClearPedTasks(GetPlayerPed(-1))
+	end)
+end
+
+local function lockpickFinish()
+
+	exports["memorygame"]:thermiteminigame(7, 3, 3, 10,
+    function() -- success
+        QBCore.Functions.Notify(Lang:t("success.lockpick_success"), 'success', 2500)
 		if closestDoor.data.coords then
 			TaskTurnPedToFaceCoord(playerPed, closestDoor.data.doors[1].objCoords.x, closestDoor.data.doors[1].objCoords.y, closestDoor.data.doors[1].objCoords.z, 0)
 		else
@@ -306,13 +316,15 @@ local function lockpickFinish(success)
 		local count = 0
 		while GetIsTaskActive(playerPed, 225) do
 			Wait(10)
-			count += 1
+			count = 1
 			if count == 150 then break end
 		end
+		openDoorAnim()
 		Wait(1800)
 		TriggerServerEvent('qb-doorlock:server:updateState', closestDoor.id, false, false, true, false) -- Broadcast new state of the door to everyone
-	else
-		QBCore.Functions.Notify(Lang:t("error.lockpick_fail"), 'error', 2500)
+    end,
+    function() -- failure
+        QBCore.Functions.Notify(Lang:t("error.lockpick_fail"), 'error', 2500)
 		if math.random(1,100) <= 17 then
 			if usingAdvanced then
 				TriggerServerEvent("QBCore:Server:RemoveItem", "advancedlockpick", 1, false)
@@ -322,7 +334,7 @@ local function lockpickFinish(success)
 				TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["lockpick"], "remove")
 			end
 		end
-	end
+    end)
 end
 
 local function isAuthorized(door)
@@ -485,7 +497,7 @@ end)
 RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)
 	if not closestDoor.data or not next(closestDoor.data) or PlayerData.metadata['isdead'] or PlayerData.metadata['ishandcuffed'] or (not closestDoor.data.pickable and not closestDoor.data.lockpick) or not closestDoor.data.locked then return end
 	usingAdvanced = isAdvanced
-	TriggerEvent('qb-lockpick:client:openLockpick', lockpickFinish)
+	lockpickFinish()
 end)
 
 RegisterNetEvent('qb-doorlock:client:addNewDoor', function()

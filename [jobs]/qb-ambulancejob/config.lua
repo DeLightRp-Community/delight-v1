@@ -15,8 +15,9 @@ Config.Locations = {
         [2] = vector3(-254.88, 6324.5, 32.58),
     },
     ["vehicle"] = {
-        [1] = vector4(329.69, -589.71, 28.8, 348.44),
+        [1] = vector4(326.84, -586.98, 28.8, 340.12),
         [2] = vector4(-234.28, 6329.16, 32.15, 222.5),
+        [3] = vector4(294.74, -607.1, 43.24, 71.69),
     },
     ["helicopter"] = {
         [1] = vector4(351.58, -587.45, 74.16, 160.5),
@@ -25,12 +26,6 @@ Config.Locations = {
     ["armory"] = {
         [1] = vector3(305.87, -601.59, 43.28),
         [2] = vector3(-245.13, 6315.71, 32.82),
-    },
-    ["roof"] = {
-        [1] = vector4(338.5, -583.85, 74.16, 245.5),
-    },
-    ["main"] = {
-        [1] = vector3(298.74, -599.33, 43.29),
     },
     ["stash"] = {
         [1] = vector3(307.22, -602.06, 43.63),
@@ -62,7 +57,6 @@ Config.AuthorizedVehicles = {
 	-- Grade 1
 	[1] = {
 		["ambulance"] = "Ambulance",
-
 	},
 	-- Grade 2
 	[2] = {
@@ -74,6 +68,18 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 4
 	[4] = {
+		["ambulance"] = "Ambulance",
+	},
+    -- Grade 5
+	[5] = {
+		["ambulance"] = "Ambulance",
+	},
+    -- Grade 6
+	[6] = {
+		["ambulance"] = "Ambulance",
+	},
+    -- Grade 7
+	[7] = {
 		["ambulance"] = "Ambulance",
 	}
 }

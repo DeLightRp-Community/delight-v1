@@ -31,6 +31,7 @@
     ></script>
     <link rel="stylesheet" type="text/css" href="./styles/styles.css" />
     <link rel="stylesheet" href="./styles/bennys.css" />
+    <link rel="stylesheet" href="./styles/shop.css" />
     <link rel="stylesheet" href="./styles/boosting.css" />
     <link rel="stylesheet" href="./styles/setting.css" />
     <link rel="stylesheet" href="./styles/confirmbox.css" />
@@ -109,10 +110,10 @@
                   <!-- <button></button> -->
                 </div>
                 <div class="topnav">
-                  <button class="cart-button">
+                  <button class="shop-cart-button">
                     <i class="fa-solid fa-cart-shopping"></i>
                   </button>
-                  <button class="home-button">
+                  <button class="shop-home-button">
                     <i class="fa-solid fa-house-chimney"></i>
                   </button>
                 </div>
@@ -125,7 +126,7 @@
                   <div class="total-title">Total</div>
                   <div class="total-price">$0</div>
                 </div>
-                <button class="buy-button">Checkout</button>
+                <button class="shop-buy-button">Checkout</button>
               </div>
               <div class="grid"></div>
             </div>
@@ -188,6 +189,15 @@
           </div>
           <div>
             <img
+              id="shop"
+              class="icon"
+              src="./assets/shop.png"
+              alt="bennys"
+            />
+            <p>Shop</p>
+          </div>
+          <div>
+            <img
               id="boosting"
               class="icon"
               src="./assets/boost.png"
@@ -217,6 +227,7 @@
     </div>
     <script src="./js/app.js"></script>
     <script src="./js/bennys.js"></script>
+    <script src="./js/shop.js"></script>
     <script src="./js/boost.js"></script>
   </body>
 </html>

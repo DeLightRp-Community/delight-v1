@@ -323,52 +323,40 @@ Config.ScratchingPoint = {
 }
 
 Config.BennysSell = {
-    ["brake1"] = {
-        item = 'brake1',
-        price = 1000,
-        stock = 50
-    },
-    ["brake2"] = {
-        item = 'brake2',
-        price = 1000,
-        stock = 50,
-    },
-    ["brake3"] = {
-        item = 'brake3',
-        price = 1000,
-        stock = 50,
-    },
-    ["engine4"] = {
-        item = 'engine4',
-        price = 502000,
-        stock = 50,
-    },
-    ["engine0"] = {
-        item = 'engine0',
-        price = 130000,
-        stock = 50,
-    },
-    ["engine1"] = {
-        item = 'engine1',
-        price = 120000,
-        stock = 50,
-    },
-    ["engine2"] = {
-        item = 'engine2',
-        price = 100000,
-        stock = 50,
-    },
-    ["engine3"] = {
-        item = 'engine3',
-        price = 100000,
-        stock = 50,
-    },
     ["fake_plate"] = {
         item = "fake_plate",
         price = 230,
         stock = 50,
     }
+}
 
+-- radio
+-- green_usb
+-- handcuffs
+-- p99
+
+
+Config.shopSell = {
+    ["radio"] = {
+        item = "radio",
+        price = 250,
+        stock = 50,
+    },
+    ["green_usb"] = {
+        item = "green_usb",
+        price = 8000,
+        stock = 50,
+    },
+    ["handcuffs"] = {
+        item = "handcuffs",
+        price = 1000,
+        stock = 50,
+    },
+    ["p99"] = {
+        item = "weapon_pistol",
+        price = 5000,
+        stock = 2,
+    },
 }
 
 Config.RandomName = {

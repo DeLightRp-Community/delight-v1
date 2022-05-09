@@ -12,7 +12,7 @@ Config = {
 -- Set this if you really wanna disable emotes in cars, as of 1.7.2 they only play the upper body part if in vehicle
     AllowedInCars = true,
 -- You can disable the (F3) menu here / change the keybind.
-	MenuKeybindEnabled = false,
+	MenuKeybindEnabled = true,
 	MenuKeybind = 170, -- Get the button number here https://docs.fivem.net/game-references/controls/
 -- You can disable the Favorite emote keybinding here.
 	FavKeybindEnabled = false,
@@ -21,7 +21,7 @@ Config = {
 -- Use a 512 x 128 image!
 -- NOte this might cause an issue of the image getting stuck on peoples screens
 	CustomMenuEnabled = false,
-	MenuImage = "https://i.imgur.com/kgzvDwQ.png",
+	MenuImage = "https://cdn.discordapp.com/attachments/910613937555406868/972557865229385808/emotemenu.png?size=4096",
 -- You can change the menu position here
 	MenuPosition = "right", -- (left, right)
 -- You can disable the Ragdoll keybinding here.
@@ -49,7 +49,7 @@ Config.KeybindKeys = {
 
 Config.Languages = {
   ['en'] = {
-        ['emotes'] = 'Emotes',
+        ['emotes'] = '',
         ['danceemotes'] = "🕺 Dance Emotes",
         ['propemotes'] = "📦 Prop Emotes",
         ['favoriteemotes'] = "🌟 Favorite",

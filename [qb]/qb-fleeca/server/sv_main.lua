@@ -115,7 +115,7 @@ QBCore.Functions.CreateCallback('qb-fleeca:server:HasItem', function(source, cb,
     end
 end)
 
-QBCore.Functions.CreateUseableItem("green-laptop", function(source, item)
+QBCore.Functions.CreateUseableItem("green_laptop", function(source, item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     print("Je moeder het werkt")
@@ -129,5 +129,5 @@ RegisterServerEvent('rick:removeLaptop')
 AddEventHandler('rick:removeLaptop', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    Player.Functions.RemoveItem('green-laptop', 1)
+    Player.Functions.RemoveItem('green_laptop', 1)
 end)

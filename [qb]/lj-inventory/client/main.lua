@@ -566,7 +566,6 @@ RegisterCommand('inventory', function()
 
             if CurrentVehicle then -- Trunk
                 local vehicleClass = GetVehicleClass(curVeh)
-                local plate = QBCore.Functions.GetPlate(curVeh)
                 local maxweight = 0
                 local slots = 0
                 if vehicleClass == 0 then
@@ -621,7 +620,6 @@ RegisterCommand('inventory', function()
                 local other = {
                     maxweight = maxweight,
                     slots = slots,
-                    plate = plate
                 }
                 TriggerServerEvent("inventory:server:OpenInventory", "trunk", CurrentVehicle, other)
                 OpenTrunk()

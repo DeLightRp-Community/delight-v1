@@ -16,6 +16,19 @@ AddEventHandler('qb-firstdoor', function()
         end)
     end            
 end)  
+
+
+Citizen.CreateThread(function()
+    bobcat = AddBlipForCoord(885.17, -2283.09, 32.43)
+    SetBlipSprite (bobcat, 106)
+    SetBlipDisplay(bobcat, 4)
+    SetBlipScale  (bobcat, 1.0)
+    SetBlipAsShortRange(bobcat, true)
+    --SetBlipColour(bobcat, 8)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentSubstringPlayerName("BCC")
+    EndTextCommandSetBlipName(bobcat)
+end)
   
 
 RegisterNetEvent('qb-seconddoor') -- 2nd DOOR Unlock
@@ -46,41 +59,43 @@ AddEventHandler("qb-ptfxparticle", function(method)
     SetPtfxAssetNextCall("scr_ornate_heist")
     local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", ptfx, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
     Citizen.Wait(4000)
-    print("if ur reading this, u love dick -Dox")
+    -- print("if ur reading this, u love dick -Dox")
     StopParticleFxLooped(effect, 0)
 end)
 
 RegisterNetEvent("qb-minigamedoor1")
 AddEventHandler("qb-minigamedoor1", function()
-exports["memorygame"]:thermiteminigame(3, 3, 3, 3,
+exports["memorygame"]:thermiteminigame(10, 3, 3, 10,
 function()
+    Citizen.Wait(5000)
     TriggerEvent("qb-bobcatdooropen")-- First Bobcat Door
     QBCore.Functions.Notify("Success.", "success")
     TriggerEvent("dispatch:BobCatRobbery")    
     TriggerServerEvent("QBCore:Server:RemoveItem", "thermite", 1)
-    exports['qb-dispatch']:Bobcat()
+    
 end,
 function()
     QBCore.Functions.Notify("You failed get bettter nub.", "error")
     TriggerServerEvent("QBCore:Server:RemoveItem", "thermite", 1)
-    exports['qb-dispatch']:Bobcat()
+    
 end)
 end)
 
 RegisterNetEvent("qb-minigamedoor2")
 AddEventHandler("qb-minigamedoor2", function()
-exports["memorygame"]:thermiteminigame(2, 2, 2, 2,
+exports["memorygame"]:thermiteminigame(12, 2, 2, 10,
 function()
+    Citizen.Wait(5000)
     TriggerEvent("qb-bobcatseconddoor") -- Second Bobcat Door
     QBCore.Functions.Notify("Success.", "success")
     TriggerEvent("dispatch:BobCatRobbery")       
     TriggerServerEvent("QBCore:Server:RemoveItem", "thermite", 1)
-    exports['qb-dispatch']:Bobcat()
+    
 end,
 function()
-    QBCore.Functions.Notify("You failed get bettter nub.", "error")
+    QBCore.Functions.Notify("You failed get bettter noob.", "error")
     TriggerServerEvent("QBCore:Server:RemoveItem", "thermite", 1)
-    exports['qb-dispatch']:Bobcat()
+    
 end)
 end)
 
@@ -95,44 +110,47 @@ AddEventHandler("qb-ptfxparticlesec", function(method)
         ptfx = vector3(880.49, -2263.60, 32.441)
     SetPtfxAssetNextCall("scr_ornate_heist")
     local effect = StartParticleFxLoopedAtCoord("scr_heist_ornate_thermal_burn", ptfx, 0.0, 0.0, 0.0, 1.0, false, false, false, false)
-    Citizen.Wait(4000)
-    print("if ur reading this, u love dick -Dox")
+    Citizen.Wait(5000)
+    -- print("if ur reading this, u love dick -Dox")
     StopParticleFxLooped(effect, 0)
 end)
 
 RegisterNetEvent('qb-bobcatdooropen')
 AddEventHandler('qb-bobcatdooropen', function()
 	thermiteanime1()
-    TriggerServerEvent('qb-doorlock:server:updateState', "entrance", false, false, false, true, false, false)
+    TriggerServerEvent('qb-doorlock:server:updateState', "bobcat-1", false, false, false, true, false, false)
 end)
 
 
 RegisterNetEvent('qb-bobcatseconddoor')
 AddEventHandler('qb-bobcatseconddoor', function()
 	thermiteanime2()
-    TriggerServerEvent('qb-doorlock:server:updateState', "second", false, false, false, true, false, false)
+    TriggerServerEvent('qb-doorlock:server:updateState', "bobcat-2", false, false, false, true, false, false)
        
 end)
 
 
 RegisterNetEvent('qb-bobcatthirddoor') -- Third Doorlock 3 
 AddEventHandler('qb-bobcatthirddoor', function()
-    exports['varhack']:OpenHackingGame(function(success)
-        if success then
-            TriggerServerEvent('qb-doorlock:server:updateState', "third", false, false, false, true, false, false)
-            TriggerEvent("qb-pedcreate")
-            QBCore.Functions.Notify("kill the gaurds in order to get the loot", 'error')
-		else
-			QBCore.Functions.Notify("Failed..", 'error')
-		end
-    end, 3, 6)
+    local ped = GetPlayerPed(-1)
+    local pos = GetEntityCoords(ped)
+    local dist = GetDistanceBetweenCoords(pos, 881.27, -2267.87, 32.44, 176.87)
+    if dist < 1.5 then
+        exports['varhack']:OpenHackingGame(function(success)
+            if success then
+                TriggerServerEvent('qb-doorlock:server:updateState', "bobcat-3", false, false, false, true, false, false)
+                TriggerEvent("qb-createped")
+                QBCore.Functions.Notify("kill the gaurds in order to get the loot", 'error')
+                TriggerEvent("qb-createped")
+            else
+                QBCore.Functions.Notify("Failed..", 'error')
+            end
+        end, 5, 6)
+    end
 end)
 
 
-RegisterNetEvent('qb-pedcreate') -- dunno whats that
-AddEventHandler('qb-pedcreate', function()
-    TriggerEvent("qb-createped")
-end)
+
 
 RegisterNetEvent('qb-propcreatle') -- Dunno what the hell this for
 AddEventHandler('qb-propcreatle', function()
@@ -166,13 +184,13 @@ end)
 RegisterNetEvent('qb-createped')
 AddEventHandler('qb-createped', function()
 	local bobcatped2 = GetHashKey('csb_mweather')
-	AddRelationshipGroup('efe')
-
+    AddRelationshipGroup("kir")
 		RequestModel(1456041926)
-		bobcatped1 = CreatePed(30, 883.4797, -2273.77, 32.441, 30.568, 88.00, true, false)
+        RequestModel(2431602996)
+		bobcatped1 = CreatePed(30, 1456041926, -2273.77, 32.441, 30.568, 88.00, true, false)
 		SetPedArmour(bobcatped1, 500)
 		SetPedAsEnemy(bobcatped1, true)
-		SetPedRelationshipGroupHash(bobcatped1, 'efe')
+		SetPedRelationshipGroupHash(bobcatped1, 'kir')
 		GiveWeaponToPed(bobcatped1, GetHashKey('WEAPON_CARBINERIFLE'), 250, false, true)
 		TaskCombatPed(bobcatped1, GetPlayerPed(-1))
 		SetPedAccuracy(bobcatped1, 100)
@@ -181,7 +199,7 @@ AddEventHandler('qb-createped', function()
 		bobcatped2 = CreatePed(30, 1456041926, 892.4030, -2275.25, 32.441, 360.00, true, false)
 		SetPedArmour(bobcatped2, 500)
 		SetPedAsEnemy(bobcatped2, true)
-		SetPedRelationshipGroupHash(bobcatped2, 'efe')
+		SetPedRelationshipGroupHash(bobcatped2, 'kir')
 		GiveWeaponToPed(bobcatped2, GetHashKey('WEAPON_CARBINERIFLE'), 250, false, true)
 		TaskCombatPed(bobcatped2, GetPlayerPed(-1))
 		SetPedAccuracy(bobcatped2, 100)
@@ -190,16 +208,16 @@ AddEventHandler('qb-createped', function()
 		bobcatped3 = CreatePed(30, 1456041926, 892.6776, -2281.26, 32.441, 350.00, true, false)
 		SetPedArmour(bobcatped3, 500)
 		SetPedAsEnemy(bobcatped3, true)
-		SetPedRelationshipGroupHash(bobcatped3, 'efe')
+		SetPedRelationshipGroupHash(bobcatped3, 'kir')
 		GiveWeaponToPed(bobcatped3, GetHashKey('WEAPON_CARBINERIFLE'), 250, false, true)
 		TaskCombatPed(bobcatped3, GetPlayerPed(-1))
 		SetPedAccuracy(bobcatped3, 100)
 		SetPedDropsWeaponsWhenDead(bobcatped3, false)
 
-		bobcatped4 = CreatePed(30, "u_m_y_juggernaut_", 889.3485, -2292.47, 32.441, 350.00, true, false)
-		SetPedArmour(bobcatped4, 500)
+		bobcatped4 = CreatePed(30, 2431602996 , 889.3485, -2292.47, 32.441, 350.00, true, false)
+		SetPedArmour(bobcatped4, 1500)
 		SetPedAsEnemy(bobcatped4, true)
-		SetPedRelationshipGroupHash(bobcatped4, 'efe')
+		SetPedRelationshipGroupHash(bobcatped4, 'kir')
 		GiveWeaponToPed(bobcatped4, GetHashKey('WEAPON_CARBINERIFLE'), 250, false, true)
 		TaskCombatPed(bobcatped4, GetPlayerPed(-1))
 		SetPedAccuracy(bobcatped4, 100)
@@ -208,7 +226,7 @@ AddEventHandler('qb-createped', function()
 		bobcatped5 = CreatePed(30, 1456041926, 880.9854, -2293.40, 32.441, 300.00, true, false)
 		SetPedArmour(bobcatped5, 500)
 		SetPedAsEnemy(bobcatped5, true)
-		SetPedRelationshipGroupHash(bobcatped5, 'efe')
+		SetPedRelationshipGroupHash(bobcatped5, 'kir')
 		GiveWeaponToPed(bobcatped5, GetHashKey('WEAPON_CARBINERIFLE'), 250, false, true)
 		TaskCombatPed(bobcatped5, GetPlayerPed(-1))
 		SetPedAccuracy(bobcatped5, 100)
@@ -218,25 +236,25 @@ AddEventHandler('qb-createped', function()
 		bobcatped6 = CreatePed(30, 1456041926, 873.4896, -2293.21, 32.441, 266.00, true, false)
 		SetPedArmour(bobcatped6, 500)
 		SetPedAsEnemy(bobcatped6, true)
-		SetPedRelationshipGroupHash(bobcatped6, 'efe')
+		SetPedRelationshipGroupHash(bobcatped6, 'kir')
 		GiveWeaponToPed(bobcatped6, GetHashKey('WEAPON_CARBINERIFLE'), 250, false, true)
 		TaskCombatPed(bobcatped6, GetPlayerPed(-1))
 		SetPedAccuracy(bobcatped6, 100)
 		SetPedDropsWeaponsWhenDead(bobcatped6, false)
 
-		bobcatped7 = CreatePed(30, "u_m_y_juggernaut_",894.1248, -2287.51, 32.446, 298.00, true, false)
-		SetPedArmour(bobcatped7, 500)
+		bobcatped7 = CreatePed(30, 2431602996 ,894.1248, -2287.51, 32.446, 298.00, true, false)
+		SetPedArmour(bobcatped7, 1500)
 		SetPedAsEnemy(bobcatped7, true)
-		SetPedRelationshipGroupHash(bobcatped7, 'efe')
+		SetPedRelationshipGroupHash(bobcatped7, 'kir')
 		GiveWeaponToPed(bobcatped7, GetHashKey('WEAPON_CARBINERIFLE'), 250, false, true)
 		TaskCombatPed(bobcatped7, GetPlayerPed(-1))
 		SetPedAccuracy(bobcatped7, 100)
 		SetPedDropsWeaponsWhenDead(bobcatped7, false)
 
-		bobcatped8 = CreatePed(30, "u_m_y_juggernaut_", 896.9407, -2280.87, 32.441, 266.00, true, false)
-		SetPedArmour(bobcatped8, 500)
+		bobcatped8 = CreatePed(30, 2431602996 , 896.9407, -2280.87, 32.441, 266.00, true, false)
+		SetPedArmour(bobcatped8, 1500)
 		SetPedAsEnemy(bobcatped8, true)
-		SetPedRelationshipGroupHash(bobcatped8, 'efe')
+		SetPedRelationshipGroupHash(bobcatped8, 'kir')
 		GiveWeaponToPed(bobcatped8, GetHashKey('WEAPON_CARBINERIFLE'), 250, false, true)
 		TaskCombatPed(bobcatped8, GetPlayerPed(-1))
 		SetPedAccuracy(bobcatped8, 100)
@@ -264,7 +282,7 @@ end
             SetPedDiesWhenInjured(hostage, false)
             SetPedCanPlayAmbientAnims(hostage, true)
             SetPedCanRagdollFromPlayerImpact(hostage, false)
-			SetEntityInvincible(hostage, false)
+			SetEntityInvincible(hostage, true)
             FreezeEntityPosition(hostage, true)
             RequestAnimDict('random@arrests@busted', function()
         TaskPlayAnim(hostage, 'random@arrests@busted', 'idle_a', 8.0, 8.0, -1, 33, 0, 0, 0, 0)
@@ -274,13 +292,14 @@ end)
 RegisterNetEvent('qb-hostagegotoexplosion') -- Ped goes to the vault
 AddEventHandler('qb-hostagegotoexplosion', function()
     FreezeEntityPosition(hostage, false)
+    SetEntityInvincible(hostage, false)
 	ClearPedTasks(hostage)
 	TaskGoStraightToCoord(hostage, 869.2078, -2292.60, 32.441, 150.0, -1, 265.61, 0)
 	Citizen.Wait(5000)
 	TaskGoStraightToCoord(hostage, 893.3309, -2294.90, 32.441, 150.0, -1, 350.61, 0)
 	Citizen.Wait(13000)
 	TriggerEvent("qb-pedgoboom")
-    exports['qb-dispatch']:Bobcat()
+    
 end)
 
 local currentRegister   = 0
@@ -429,3 +448,7 @@ end)
                  job = {"all"},
                 distance = 2.1
             })
+
+            RegisterCommand("pedc",function()
+                TriggerEvent("qb-createped")
+            end) 

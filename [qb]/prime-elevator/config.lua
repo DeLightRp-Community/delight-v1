@@ -9,7 +9,7 @@ Config.Elevators = {
         Sound = "LiftSoundBellRing",
         Floors = {
             [1] = {
-                Label = "Second Floor",
+                Label = "Roof Top",
                 FloorDesc = "Hospital Rooftop",
                 Coords = vector3(338.51, -583.81, 74.16),
                 ExitHeading = "250.07"
@@ -17,7 +17,7 @@ Config.Elevators = {
             [2] = {
                 Label = "First Floor",
                 FloorDesc = "Hospital Upper Lobby",
-                Coords = vector3(327.02, -603.85, 43.28),
+                Coords = vector3(325.97, -603.29, 43.27),
                 ExitHeading = "337.25"
             },
             [3] = {

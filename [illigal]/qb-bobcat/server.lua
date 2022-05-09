@@ -27,7 +27,7 @@ end)
 QBCore.Functions.CreateUseableItem("yellow_laptop", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
         TriggerClientEvent("qb-bobcatthirddoor", source)
-		TriggerClientEvent('QBCore:Notify', source, "Door Unlocked.", "success")
+		--TriggerClientEvent('QBCore:Notify', source, "Door Unlocked.", "success")
 end)
 
 QBCore.Functions.CreateUseableItem("thermitec", function(source, item)
@@ -72,3 +72,9 @@ AddEventHandler("qb-bobcat:server:loot", function()
         Citizen.Wait(500)
     end
 end)	
+
+RegisterServerEvent('qb-pedcreate') -- dunno whats that
+AddEventHandler('qb-pedcreate', function()
+    TriggerClientEvent("qb-createped")
+end)
+
