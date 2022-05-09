@@ -295,11 +295,6 @@ Config.Shops = {
                 defaultVehicle = 'esskey',
                 chosenVehicle = 'esskey',
             },
-            [8] = {
-                coords = vector4(282.69, -1150.46, 29.47, 288.12),
-                defaultVehicle = 'akuma',
-                chosenVehicle = 'akuma',
-            }
         },
     },
 }
