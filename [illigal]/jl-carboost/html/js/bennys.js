@@ -43,6 +43,7 @@ function loadBennysApp() {
     resp.json().then((resp) => {
       const storedata = resp.storeitem;
       // console.log(JSON.stringify(storedata));
+      $(".grid").html("");
       if (storedata) {
         storedata.forEach((data) => {
           const article = document.createElement("article");

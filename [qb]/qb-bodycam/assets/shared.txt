@@ -1,0 +1,1 @@
+["bodycam"] 			         = {["name"] = "bodycam", 				        ["label"] = "BodyCam", 		["weight"] = 500, 		["type"] = "item", 		["image"] = "bodycam.png", ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   	["combinable"] = nil,   ["description"] = "Capture Live Events.."},

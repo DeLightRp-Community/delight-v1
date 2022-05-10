@@ -270,6 +270,7 @@ local function ParkVehicle(veh, garageName, vehLocation)
 
             if not CanParkVehicle(veh, garageName, vehLocation) then return end
             TriggerServerEvent('qb-garage:server:updateVehicle', 1, totalFuel, engineDamage, bodyDamage, plate, garage)
+            TriggerEvent('nitrous:client:getNosLevel')
             ExitAndDeleteVehicle(veh)
             if plate then
                 OutsideVehicles[plate] = nil
@@ -568,6 +569,7 @@ RegisterNetEvent('qb-garages:client:TakeOutGarage', function(data, cb)
             DoCarDamage(veh, vehicle)
             SetEntityAsMissionEntity(veh, true, true)
             TriggerServerEvent('qb-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
+            TriggerEvent('nitrous:client:getNosLevel')
             closeMenuFull()
             if garage.WarpPlayerIntoVehicle ~= nil and garage.WarpPlayerIntoVehicle or WarpPlayerIntoVehicle then
                 TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)

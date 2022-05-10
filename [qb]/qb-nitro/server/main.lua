@@ -1,11 +1,38 @@
-RegisterNetEvent('nitro:__sync')
-AddEventHandler('nitro:__sync', function (boostEnabled, purgeEnabled, lastVehicle)
-  -- Fix for source reference being lost during loop below.
-  local source = source
+local QBCore = exports['qb-core']:GetCoreObject()
+local VehicleNitrous = {}
 
-  for _, player in ipairs(GetPlayers()) do
-    if player ~= tostring(source) then
-      TriggerClientEvent('nitro:__update', player, source, boostEnabled, purgeEnabled, lastVehicle)
-    end
-  end
+QBCore.Functions.CreateUseableItem("nitrous", function(source, item)
+    TriggerClientEvent('qb-nitrous:client:LoadNitrous', source)
+end)
+
+RegisterNetEvent('nitrous:server:LoadNitrous', function(Plate)
+    VehicleNitrous[Plate] = {
+        hasnitro = true,
+        level = 100,
+    }
+    TriggerClientEvent('nitrous:client:LoadNitrous', -1, Plate)
+end)
+
+RegisterNetEvent('nitrous:server:SyncFlames', function(netId)
+    TriggerClientEvent('nitrous:client:SyncFlames', -1, netId, source)
+end)
+
+RegisterNetEvent('nitrous:server:UnloadNitrous', function(Plate)
+    VehicleNitrous[Plate] = nil
+    TriggerClientEvent('nitrous:client:UnloadNitrous', -1, Plate)
+end)
+
+RegisterNetEvent('nitrous:server:UpdateNitroLevel', function(Plate, level)
+    VehicleNitrous[Plate].level = level
+    TriggerClientEvent('nitrous:client:UpdateNitroLevel', -1, Plate, level)
+    TriggerClientEvent('nitrous:client:UpdateNitrousLevel', -1, Plate, NitrousLevel)
+end)
+
+RegisterNetEvent('nitrous:server:StopSync', function(plate)
+    TriggerClientEvent('nitrous:client:StopSync', -1, plate)
+end)
+
+
+RegisterNetEvent('nitrous:server:updateVehicleNos', function(nos, plate)
+    MySQL.Async.execute('UPDATE player_vehicles SET nitrous = ? WHERE plate = ?', {nos, plate})
 end)

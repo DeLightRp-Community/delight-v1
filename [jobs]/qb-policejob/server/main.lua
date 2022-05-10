@@ -213,15 +213,15 @@ QBCore.Commands.Add("pobject", Lang:t("commands.place_object"), {{name = "type",
     end
 end)
 
-QBCore.Commands.Add("cuff", Lang:t("commands.cuff_player"), {}, false, function(source, args)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
-        TriggerClientEvent("police:client:CuffPlayer", src)
-    else
-        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
-    end
-end)
+-- QBCore.Commands.Add("cuff", Lang:t("commands.cuff_player"), {}, false, function(source, args)
+--     local src = source
+--     local Player = QBCore.Functions.GetPlayer(src)
+--     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
+--         TriggerClientEvent("police:client:CuffPlayer", src)
+--     else
+--         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
+--     end
+-- end)
 
 QBCore.Commands.Add("escort", Lang:t("commands.escort"), {}, false, function(source, args)
     local src = source
@@ -291,15 +291,15 @@ QBCore.Commands.Add("seizecash", Lang:t("commands.seizecash"), {}, false, functi
     end
 end)
 
-QBCore.Commands.Add("sc", Lang:t("commands.softcuff"), {}, false, function(source)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
-        TriggerClientEvent("police:client:CuffPlayerSoft", src)
-    else
-        TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
-    end
-end)
+-- QBCore.Commands.Add("sc", Lang:t("commands.softcuff"), {}, false, function(source)
+--     local src = source
+--     local Player = QBCore.Functions.GetPlayer(src)
+--     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
+--         TriggerClientEvent("police:client:CuffPlayerSoft", src)
+--     else
+--         TriggerClientEvent('QBCore:Notify', src, Lang:t("error.on_duty_police_only"), 'error')
+--     end
+-- end)
 
 QBCore.Commands.Add("cam", Lang:t("commands.camera"), {{name = "camid", help = Lang:t('info.camera_id')}}, false, function(source, args)
     local src = source
@@ -535,13 +535,13 @@ QBCore.Commands.Add('911p', Lang:t("commands.police_report"), {{name='message', 
 end)
 
 -- Items
-QBCore.Functions.CreateUseableItem("handcuffs", function(source, item)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    if Player.Functions.GetItemByName(item.name) then
-        TriggerClientEvent("police:client:CuffPlayerSoft", src)
-    end
-end)
+-- QBCore.Functions.CreateUseableItem("handcuffs", function(source, item)
+--     local src = source
+--     local Player = QBCore.Functions.GetPlayer(src)
+--     if Player.Functions.GetItemByName(item.name) then
+--         TriggerClientEvent("police:client:CuffPlayerSoft", src)
+--     end
+-- end)
 
 QBCore.Functions.CreateUseableItem("moneybag", function(source, item)
     local src = source

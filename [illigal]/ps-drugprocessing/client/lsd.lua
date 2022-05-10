@@ -129,3 +129,8 @@ function Processthionylchloride()
 
 	isProcessing = false
 end
+
+
+RegisterNetEvent('Processthionylchloride', function(data)
+	Processthionylchloride()
+end)

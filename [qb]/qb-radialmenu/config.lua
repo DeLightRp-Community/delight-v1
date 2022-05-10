@@ -434,6 +434,13 @@ Config.JobInteractions = {
     },
     ["police"] = {
         {
+            id = 'mdtmenu',
+            title = 'MDT',
+            icon = 'tablet',
+            type = 'client',
+            event = 'mdt:client:policemenu',
+            shouldClose = true
+        }, {
             id = 'officerdown',
             title = 'Officer Down',
             icon = 'bell',

@@ -355,6 +355,7 @@ RegisterNetEvent('consumables:client:meth', function()
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["meth"], "remove")
         TriggerEvent("evidence:client:SetStatus", "widepupils", 300)
 		TriggerEvent("evidence:client:SetStatus", "agitated", 300)
+        exports['tnj-buffs']:AddBuff("hacking", 150000)
         MethBagEffect()
     end, function() -- Cancel
         StopAnimTask(PlayerPedId(), "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)

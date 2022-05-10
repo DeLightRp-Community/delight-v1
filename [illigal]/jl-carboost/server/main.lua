@@ -150,6 +150,23 @@ RegisterNetEvent('jl-carboost:server:log', function (string, type)
    end
 end)
 
+QBCore.Functions.CreateCallback('jl-carboost:server:checkVPN', function(source, cb)
+	-- if not sentData then  return cb({}) end
+	local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+	if Player then
+		local vpn = Player.Functions.GetItemByName('vpn')
+      print(vpn)
+      if vpn ~= nil then
+         return cb(true)
+      else
+         return cb(false)
+      end
+   end
+
+	return cb(false)
+end)
+
 RegisterNetEvent('jl-carboost:server:finishBoosting', function (type, tier)
    local isNextLevel = false
    local src = source

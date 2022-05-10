@@ -332,3 +332,15 @@ end, Config.CommandPermission)
 QBCore.Commands.Add('doordebug', Lang:t("general.doordebug_command_description"), {}, false, function(source)
 	TriggerClientEvent('qb-doorlock:client:ToggleDoorDebug', source)
 end, Config.CommandPermission)
+
+
+QBCore.Functions.CreateUseableItem("thermite", function(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+	local lighter = Player.Functions.GetItemByName('lighter')
+	if lighter then
+		TriggerClientEvent("qb-doorlock:useThermite", source, false)
+	else
+		TriggerClientEvent("QBCore:Notify", source, "You don't have a lighter", "error")
+	end
+    
+end)

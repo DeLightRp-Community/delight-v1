@@ -21,7 +21,7 @@ client_scripts {
 
 server_scripts {
     'server/trunk.lua',
-    'server/stretcher.lua'
+    'server/stretcher.lua',
 }
 
 files {

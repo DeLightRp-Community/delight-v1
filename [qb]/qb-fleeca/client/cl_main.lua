@@ -80,7 +80,7 @@ AddEventHandler("qb-fleeca:startLoot_c", function(data, name)
                         if dst1 < 2 then
                             if not helpTextShowing then
                                 helpTextShowing = true
-                                -- exports['qb-core']:DrawText('[E] Grab It !', 'left')
+                                exports['qb-core']:DrawText('[E] Grab It !', 'left')
                                 print("show")
                                 helpTextShowing = true
                             elseif dst1 < 0.75 and IsControlJustReleased(0, 38) then
@@ -493,12 +493,13 @@ AddEventHandler('qb-fleeca:UseGreenLapTop', function(item)
 
                         local minigame = exports["minigame-fleeca"]:HackingFleeca(10000, 1)
                         local ply = PlayerId()
+                        local dooropentime = math.random(60000, 300000)
                         if minigame then
                             StopAnimTask(PlayerPedId(), hackAnimDict, "hack_loop", 1.0)
                             TriggerEvent('qb-fleeca:darkmail')
                             DeleteObject(laptop)
                             ClearPedTasksImmediately(ply)    
-                            Citizen.SetTimeout(12000, function()
+                            Citizen.SetTimeout(dooropentime, function()
                                 TriggerServerEvent("qb-fleeca:startcheck", k)
                             end)
 

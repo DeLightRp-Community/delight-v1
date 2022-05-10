@@ -176,6 +176,17 @@ QBShared.Jobs = {
             },
 		},
 	},
+    ['shenails'] = {
+		label = 'She Nail',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'nailer',
+                payment = 700
+            },
+		},
+	},
     ['sydpawn'] = {
 		label = 'PawnShop',
 		defaultDuty = true,
@@ -402,6 +413,19 @@ QBShared.Jobs = {
             },
         },
     },
+
+    ['bestbuds'] = {
+		label = 'bestbuds',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'bestbuds',
+                payment = 700
+            },
+        },
+    },
+
     ["burgershot"] = {
 		label = "Burgershot Employee",
 		defaultDuty = true,

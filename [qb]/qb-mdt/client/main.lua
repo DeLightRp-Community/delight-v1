@@ -47,6 +47,10 @@ end)
 ------------------------------------------
 --====================================================================================\
 
+RegisterNetEvent('mdt:client:policemenu', function()
+    ExecuteCommand("mdt")
+end)    
+
 RegisterKeyMapping('mdt', 'Open Police MDT', 'keyboard', 'k')
 
 RegisterCommand('mdt', function()

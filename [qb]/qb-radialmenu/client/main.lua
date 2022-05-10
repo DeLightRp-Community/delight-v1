@@ -4,6 +4,7 @@ local inRadialMenu = false
 
 local jobIndex = nil
 local vehicleIndex = nil
+local radioIndex = nil
 
 local DynamicMenuItems = {}
 local FinalMenuItems = {}
@@ -45,6 +46,7 @@ local function getNearestVeh()
 end
 
 local function AddOption(data, id)
+    
     local menuID = id ~= nil and id or (#DynamicMenuItems + 1)
     DynamicMenuItems[menuID] = deepcopy(data)
     return menuID
@@ -125,9 +127,140 @@ local function SetupVehicleMenu()
     end
 end
 
+local function SetupRadioMenu()
+    local RadioMenu = {
+        id = 'radio',
+        title = 'Radio',
+        icon = 'radio',
+        items = {
+            {
+                id = 'radio-on',
+                title = 'Turn On',
+                icon = 'power-off',
+                type = 'client',
+                event = 'qb-radialmenu:client:openDoor',
+                shouldClose = false
+            }, {
+                id = 'radio-on',
+                title = 'Turn Off',
+                icon = 'power-off',
+                type = 'client',
+                event = 'qb-radialmenu:client:openDoor',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio1',
+                title = 'CH 1',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel1',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio2',
+                title = 'CH 2',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel2',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio3',
+                title = 'CH 3',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel3',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio4',
+                title = 'CH 4',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel4',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio5',
+                title = 'CH 5',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel5',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio6',
+                title = 'CH 6',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel6',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio7',
+                title = 'CH 7',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel7',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio8',
+                title = 'CH 8',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel8',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio9',
+                title = 'CH 9',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel9',
+                shouldClose = false
+            },
+            {
+                id = 'joinradio10',
+                title = 'CH 10',
+                icon = 'radio',
+                type = 'client',
+                event = 'qb-radio:client:JoinRadioChannel10',
+                shouldClose = false
+            },
+
+        }   
+    }
+
+    local player = QBCore.Functions.GetPlayerData()
+    local jobName = player.job.name
+    -- print(json.encode(player.job))
+    if (jobName == "police" or jobName == "ambulance") and player.job.onduty then
+        if #RadioMenu.items == 0 then
+            if radioIndex then
+                RemoveOption(radioIndex)
+                vehicleIndex = nil
+            end
+        else
+            radioIndex = AddOption(RadioMenu, radioIndex)
+        end
+
+    else
+        if radioIndex then
+            RemoveOption(radioIndex)
+            vehicleIndex = nil
+        end
+    end
+
+    
+    
+    
+end
+
 local function SetupSubItems()
     SetupJobMenu()
     SetupVehicleMenu()
+    SetupRadioMenu()
 end
 
 local function selectOption(t, t2)

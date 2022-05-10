@@ -1,17 +1,12 @@
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
 
-name 'sw-nitro'
-description 'The most advanced nitro system for FiveM'
-author 'Deltanic - https://github.com/Deltanic/'
-url 'https://github.com/swcfx/sw-nitro'
+description 'QB-Nitro'
+version '1.0.0'
 
-client_script 'client/utils.lua'
-client_script 'client/fuel.lua'
-client_script 'client/ptfx.lua'
-client_script 'client/boost.lua'
-client_script 'client/purge.lua'
-client_script 'client/trails.lua'
 client_script 'client/main.lua'
 
-server_script 'server/main.lua'
+server_scripts {
+    'server/main.lua',
+    '@oxmysql/lib/MySQL.lua',
+}

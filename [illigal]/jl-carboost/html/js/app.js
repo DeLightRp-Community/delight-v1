@@ -123,20 +123,14 @@ $(document).ready(() => {
   };
 
   window.addEventListener("click", function (event) {
-    console.log(event.target.id)
     if (event.target.id != "splash") {
       if (event.target.id == "bennys") {
         if (bennys.classList.contains("active")) {
           return;
         }
         toggleDisplayApp(true, "#bennys-app");
-        createIcon(event.target.id);
-      }else if (event.target.id == "shop") {
-        if (shop.classList.contains("active")) {
-          return;
-        }
-        toggleDisplayApp(true, "#shop-app");
-        createIcon(event.target.id);
+        loadBennysApp()
+        createIcon("shop");
       } else if (event.target.id == "boosting") {
         if (boosting.classList.contains("active")) return;
         toggleDisplayApp(true, "#boosting-app");
@@ -146,9 +140,6 @@ $(document).ready(() => {
       } else if (event.target.id == "close-bennys") {
         toggleDisplayApp(false, "#bennys-app");
         closeBennys();
-      } else if (event.target.id == "close-shop") {
-        toggleDisplayApp(false, "#bennys-app");
-        closeShop();
       } else if (event.target.id == "close-boosting") {
         toggleDisplayApp(false, "#boosting-app");
         removeIcon("boost");
@@ -166,9 +157,6 @@ $(document).ready(() => {
         if (bennys.classList.contains("active")) {
           toggleDisplayApp(false, "#bennys-app");
           closeBennys();
-        } else if (shop.classList.contains("active")) {
-          toggleDisplayApp(false, "#shop-app");
-          closeShop();
         } else if (boosting.classList.contains("active")) {
           toggleDisplayApp(false, "#boosting-app");
           removeIcon("boost");
@@ -198,12 +186,6 @@ function toggleDisplayApp(bool, id) {
   let app = document.querySelector(id);
   if (bool && id != null) {
     if (app.id === "bennys-app") {
-      if (cart.classList.contains("active")) {
-        store.classList.remove("active");
-      } else {
-        store.classList.add("active");
-      }
-    }else if(app.id === "shop-app"){
       if (cart.classList.contains("active")) {
         store.classList.remove("active");
       } else {

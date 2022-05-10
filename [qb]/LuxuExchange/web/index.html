@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="datatableOptions.js"></script>
+    <link rel="stylesheet" href="index.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="datatable.css">
+</head>
+<body>
+    <!-- Main Page -->
+    <div class="main"> 
+        
+        <div class="navbar">
+            <ul>
+                <li class="active" id="navli">
+                    <a href="#">
+                        <i class='bx bx-home icon'></i>
+                        <i class='bx bxs-home activeIcon' ></i>
+                    </a>
+                </li>
+                <li id="navli">
+                    <a href="#">
+                        <i class='bx bx-user icon'></i>
+                        <i class='bx bxs-user activeIcon' ></i>
+                    </a>
+                </li>
+                <li id="navli" class="transactionspage">
+                    <a href="#">
+                        <i class='bx bx-receipt'></i>
+                        <i class='bx bxs-receipt activeIcon' ></i>
+                    </a>
+                </li>
+                <li id="navli">
+                    <a href="#">
+                        <i class='bx bx-paper-plane icon'></i>
+                        <i class='bx bxs-paper-plane activeIcon' ></i>
+                    </a>
+                </li>
+                <li id="navli">
+                    <a href="#">
+                        <i class='bx bx-cog icon'></i>
+                        <i class='bx bxs-cog activeIcon' ></i>
+                    </a>
+                </li>
+                <div class="indicator"></div>
+
+            </ul>
+            <img src="images/logo.svg" alt="Luxu.gg Crypto Exchange"  class="logoexchange"> 
+            <div class="notifyall">
+            </div>
+            <span id="exit-btn" >
+                <i class='bx bx-exit' ></i>
+                <i class='bx bxs-exit' ></i>
+                </span>
+        </div>
+        <hr>
+
+        
+        <div class="container"> 
+            <div class="portfolio">
+
+                <div class="balancediv">
+                    <img src="avatars/3.png" alt="PortfolioImg" width="50" id="avatarprofile" >
+                    <p class="username"></p>
+                    <p class="YourBalance">Purchasing Power</p>
+                    <p id="balance"></p>
+                </div>
+
+                <hr>
+
+                <div class="myassets">
+                    <p id="cryptop">Cryptocurrencies</p>
+                    <div class="scrollbardiv" id="style-2">
+                        <div class="asset-list">
+                            <ul>
+                                <li id="btcinfo" stock="BITSTAMP:BTCUSD">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/btc.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Bitcoin: <span id="btcprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="btcwallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="ethinfo" stock="BITSTAMP:ETHUSD">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/ethereum.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Ethereum: <span id="ethprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="ethwallet">Wallet: </div>
+                                        </div>
+                                    </div>
+
+                                </li>
+                                <li id="hexinfo" stock="UNISWAP:HEXUSDC">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/hex.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Hex: <span id="hexprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="hexwallet">Wallet: </div>
+                                        </div>
+
+                                </li>
+                                <li id="solinfo" stock="FTX:SOLUSD">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/solana.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Solana: <span id="solprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="solwallet">Wallet: </div>
+                                        </div>
+
+                                </li>
+                                <li id="dogeinfo" stock="BINANCE:DOGEUSDT">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/doge.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Dogecoin: <span id="dogeprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="dogewallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="adainfo" stock="BINANCE:ADAUSDT">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/cardano.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Cardano: <span id="adaprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="adawallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="shibinfo" stock="BINANCE:SHIBUSDT" value="KRAKEN:XMRUSD">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/shiba-inu.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Shiba Inu: <span id="shibprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="shibwallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="bnbinfo" stock="BINANCE:BNBUSDT">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/bnb.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>BNB: <span id="bnbprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="bnbwallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="troninfo" stock="BINANCE:TRXUSDT">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/tron.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Tron: <span id="tronprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="tronwallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="xrpinfo" stock="BINANCE:XRPUSDT">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/xrp.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>XRP: <span id="xrpprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="xrpwallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="avaxinfo" stock="BINANCE:AVAXUSDT">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/avax.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Avalanche: <span id="avaxprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="avaxwallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="maticinfo" stock="FTX:MATICUSD">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/matic.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>MATIC: <span id="maticprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="maticwallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="xmrinfo" stock="KRAKEN:XMRUSD">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/monero.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Monero: <span id="xmrprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="xmrwallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="lunainfo" stock="BINANCE:LUNAUSDT">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/luna.svg' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>LUNA: <span id="lunaprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="lunawallet">Wallet: </div>
+                                        </div>
+                                </li>
+                                <li id="aurorainfo" stock="HUOBI:AURORAUSDT">
+                                    <div class='container2'>
+                                        <div>
+                                            <img src='images/aurora.png' class='iconDetails'>
+                                        </div>
+                                        <div style='margin-left:35px;'>
+                                            <h4>Aurora: <span id="auroraprice">0</span></h4>
+                                            <div style="font-size:.6em;float:left;" id="aurorawallet">Wallet: </div>
+                                        </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div >
+
+            <!-- PREÇOS E HOLDING END -->
+
+            <div class="exchange-container"> 
+                <div class="chartandbuy-container">
+                    <div class="chart">
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                            <div id="tradingview_3418f"></div>
+                            <div class="tradingview-widget-copyright"></div>
+                            <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+                            <script type="text/javascript">
+                            new TradingView.widget(
+                            {
+                            "autosize":"true",
+                            "symbol": "BITSTAMP:BTCUSD",
+                            "interval": "D",
+                            "timezone": "Etc/UTC",
+                            "theme": "dark",
+                            "style": "1",
+                            "locale": "en",
+                            "toolbar_bg": "#f1f3f6",
+                            "enable_publishing": false,
+                            "allow_symbol_change": true,
+                            "container_id": "tradingview_3418f"
+                            });
+                            </script>
+                                
+                        </div>
+                        <!-- TradingView Widget END -->
+                    </div>
+                    <div class="buy">
+                        <div id="form">
+                            <p>Buy/Sell</p>
+                            <hr>
+                            <label for="buysell-asset">Choose asset:</label>
+
+                            <select id="bs-asset">
+                                <option value="btc">Bitcoin</option>
+                                <option value="eth">Ethereum</option>
+                                <option value="hex">Hex</option>
+                                <option value="sol">Solana</option>
+                                <option value="doge">Dogecoin</option>
+                                <option value="ada">Cardano</option>
+                                <option value="shib">Shiba Inu</option>
+                                <option value="bnb">BNB</option>
+                                <option value="tron">Tron</option>
+                                <option value="xrp">XRP</option>
+                                <option value="avax">Avalanche</option>
+                                <option value="matic">Matic</option>
+                                <option value="xmr">Monero</option>
+                                <option value="luna">Luna</option>
+                                <option value="aurora">Aurora</option>
+                            </select>
+                            <input class="cryptoinput" min="0" step="0.0001" type="number"  maxlength="16" placeholder="Amount..." id="bsinput" name="bsinput" onkeypress="return isNumberKey(event)" oninput="convertAmmount(this.value)" onchange="convertAmmount(this.value)">
+                            <span class="convertedammount"></span>
+                            <button id="buy-btn" type="button">Buy</button>
+                            <button id="sell-btn"  type="button">Sell</button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="tradinghistory-container">
+                    <div class="tradehistory">
+                        <p>Trading History</p>
+                        <div class="page1tablewarp">
+                            <table  id="page1th"  class=" stripe compact">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Type</th>
+                                        <th scope="col">Asset</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">Beneficiary</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="page2">
+            <div class="profile-page2">
+                <h1>Account details</h1>
+                <hr>
+                <div class="container-page2">
+                    <img src="avatars/3.png" alt="PortfolioImg" width="50" id="avatar">
+                    <h2><span id="username-page2">user</span></h2>
+                    <p class="totalbalance">Total Balance: <span id="totalbalance"></span></p>
+                    <p class="balance-page2">Bank balance: <span id="balance-page2"></span></p>
+                    <p class="totalcryptovalue">Total cryptocurrency value: <span id="totalcryptovalue"></span></p>
+                    <br>
+                    <hr>
+
+                    <!-- Address Info -->
+                    <div class="AddressInfo">
+                        <label><h2>Crypto Address Options</h1>
+                            <span id="changemsg">Change your address: <b>0x</b></span>
+                            <input class="changeaddrInput" type="text" onkeypress="return /[0-9a-zA-Z]/i.test(event.key)" name="New Address" placeholder="New address..." >
+                            <button class="changeaddrBTN" type="button">Change</button>
+                        </label>
+                        <p><span id="addressinfo"></span></p>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+            
+        </div>
+        <div class="page3">
+            <h1>Transaction History</h1>
+            <hr>
+            <div class="tablewrapPage3">
+                <table id="page3table" class="compact stripe">
+                    <thead>
+                        <tr>
+                            <th scope="col">Type</th>
+                            <th scope="col">Asset</th>
+                            <th scope="col">Amount</th>
+                            <th scope="col">Price</th>
+                            <th scope="col">Beneficiary</th>
+                            <th scope="col">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <!-- page4 Transfer crypto-->
+        <div class="page4">
+            <h1>Transfer cryptocurrency to another player</h1>
+            <hr>
+            <div class="transfer">
+                <form>
+                    <span>Receiver: </span>
+                    <input type="text" placeholder="User Address (e.g. 0xLuxu)" id="target-userid">
+                    <label for="t-asset">Choose asset:</label>
+                            <select  id="chosenassetsend">
+                            <option value="btc">Bitcoin</option>
+                            <option value="eth">Ethereum</option>
+                            <option value="hex">Hex</option>
+                            <option value="sol">Solana</option>
+                            <option value="doge">Dogecoin</option>
+                            <option value="ada">Cardano</option>
+                            <option value="shib">Shiba Inu</option>
+                            <option value="bnb">BNB</option>
+                            <option value="tron">Tron</option>
+                            <option value="xrp">XRP</option>
+                            <option value="avax">Avalanche</option>
+                            <option value="matic">Matic</option>
+                            <option value="xmr">Monero</option>
+                            <option value="luna">Luna</option>
+                            <option value="aurora">Aurora</option>
+                            </select>
+                    <input class="cryptoinput" min="0" step="0.0001" type="number" placeholder="Amount..." id="sendammount" onkeypress="return isNumberKey(event)">
+                    <button type="button" id="sendbtn">Send</button>
+                </form>
+                <div class="Cbalances">
+                    <div class="wrap">
+                        <h3>Your balances</h3>
+                        <div class="scrollbardiv-page4" id="style-2">
+                            <div class="asset-list">
+                                <ul>
+                                   <li id="btcinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/btc.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>Bitcoin: <span id="btcbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="ethinfo">
+                                      <div class='container2'>
+                                         <div>
+                                            <img src='images/ethereum.svg' class='iconDetails'>
+                                         </div>
+                                         <div style='margin-left:35px;'>
+                                            <h4>Ethereum: <span id="ethbalance">0</span></h4>
+                                         </div>
+                                      </div>
+                                   </li>
+                                   <li id="hexinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/hex.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>Hex: <span id="hexbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="solinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/solana.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>Solana: <span id="solbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="dogeinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/doge.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>Dogecoin: <span id="dogebalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="adainfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/cardano.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>Cardano: <span id="adabalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="shibinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/shiba-inu.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>Shiba Inu: <span id="shibbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="bnbinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/bnb.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>BNB: <span id="bnbbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="troninfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/tron.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>Tron: <span id="tronbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="xrpinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/xrp.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>XRP: <span id="xrpbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="avaxinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/avax.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>Avalanche: <span id="avaxbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="maticinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/matic.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>MATIC: <span id="maticbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="xmrinfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/monero.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>Monero: <span id="xmrbalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="lunainfo">
+                                      <div class='container2'>
+                                      <div>
+                                         <img src='images/luna.svg' class='iconDetails'>
+                                      </div>
+                                      <div style='margin-left:35px;'>
+                                         <h4>LUNA: <span id="lunabalance">0</span></h4>
+                                      </div>
+                                   </li>
+                                   <li id="aurorainfo">
+                                      <div class='container2'>
+                                         <div>
+                                            <img src='images/aurora.png' class='iconDetails'>
+                                         </div>
+                                         <div style='margin-left:35px;'>
+                                            <h4>Aurora: <span id="aurorabalance">0</span></h4>
+                                         </div>
+                                   </li>
+                                </ul>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+
+        <div class="page5">
+            <div class="page5wrap">
+                <h1 style="text-align: center;">Settings</h1>
+                <hr>
+                <label class="colorsettings">
+                    <span>Change theme color:</span>
+                    <select id="coloroptions">
+                        <option value="">Select a color</option>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="orange">Orange</option>
+                        <option value="pink">Pink</option>
+                        <option value="purple">Purple</option>
+                        <option value="ruby">Ruby</option>
+                    </select>
+                </label>
+                <hr>
+                <div class="changeprofilepicture">
+                    <div class="currentavatar">
+                        <h2>Change profile picture:</h2>
+                        <p>Current Avatar</p>
+                        <img src="avatars/3.png" alt="PortfolioImg" width="50" id="currentavatar">
+                    </div>
+                    <div class="mainphotocontainer">
+                        <div id="avatar-container">
+                        </div>
+                    </div>
+                    <div class="avatarupload">
+                        <p>Custom avatar</p>
+                        <input id="avatarlinkinput" type="text" placeholder="Paste the link to your image (jpg/png/gif)">
+                        <button class="avatarlinkbtn" id="avatarlinkbtn">Upload</button>
+                        <br>
+                        <button class="avatarlinkbtn save" id="avatarcontainerbutton">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <!-- SCRIPTS -->
+    <script src="script.js"></script>
+    <script src="navbar.js"></script>
+    <script src="page4.js"></script>
+    <script src="page2.js"></script>
+</body>
+</html>
+
+
+
+<!-- Sounds from Notification Sounds => https://notificationsounds.com/ -->
+

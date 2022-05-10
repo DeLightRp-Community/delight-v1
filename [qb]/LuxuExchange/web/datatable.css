@@ -1,0 +1,88 @@
+.tradehistory p{
+    text-align: center;
+    font-size: .8rem;
+    padding-bottom: 1%;
+}
+
+
+
+#page1th thead tr{
+   color: var(--customcolor) !important;
+   background-color: rgb(10, 10, 10);
+}
+
+
+
+#page3table thead tr{
+    color: var(--customcolor) !important;
+    background-color: rgb(10, 10, 10);
+}
+.tablewrapPage3{
+    padding: 3%;
+}
+
+#page3table_filter input{
+    background-color: black !important;
+    color: white !important;
+    border-radius: 25px !important;
+    outline: none !important;
+    border: 2px solid var(--customcolor) !important;
+    padding-right: 2% !important;
+    padding-left: 2% !important;
+    text-align: center !important;
+}
+#page3table_filter label{
+    display: none;
+}
+
+
+.paginate_button.current{
+    border-radius: 50%;
+}
+.paginate_button.next:hover{
+    border-radius: 25%!important;
+    background: var(--customcolor) !important;
+    border: none!important;
+    color: black;
+}
+.paginate_button.previous:hover{
+    border-radius: 25%!important;
+    background: var(--customcolor) !important;
+    border: none!important;
+    color: rgb(255, 255, 255);
+}
+.paginate_button.previous.disabled{
+    display: none;
+}
+.paginate_button:hover{
+    background: var(--customcolor)!important;
+}
+.paginate_button.current:hover{
+    background: white!important;
+}
+
+.paginate_button.next.disabled{
+    display: none;
+}
+
+.dataTables_info{
+    color: white !important;
+}
+
+ td {
+    background: rgb(12, 12, 12);
+}
+
+.paginate_button.current{
+    border-radius: 50% !important;
+    background-color: var(--customcolor) !important;
+    color: white !important;
+    border: none !important;
+}
+.paginate_button {
+    border-radius: 50% !important;
+}
+
+.paginate_button.current{
+    color: white!important;
+}

@@ -253,86 +253,95 @@ end)
 
 RegisterNUICallback('loadstore', function (data, cb)
     local storeitem = {}
-    if Config.BennysSell then
-        for k, v in pairs(Config.BennysSell) do
-            local name
-            if not storeitem[k] then
-                if QBCore.Shared.Items[v.item] ~= nil then
-                    if Config.BennysSell[k].name then
-                        name = Config.BennysSell[k].name
-                    else
-                       if QBCore.Shared.Items[v.item] ~= nil then
-                           name = QBCore.Shared.Items[v.item].label
-                       else
-                        name = "Unknown"
-                         return TriggerServerEvent('jl-carboost:server:log', "")
-                       end
-                    end
-                    storeitem[#storeitem+1] = {
-                        name = name,
-                        item = v.item,
-                        image = Config.Inventory ..QBCore.Shared.Items[v.item].image,
-                        price = v.price,
-                        stock = v.stock
-                    }
-                else
-                    TriggerServerEvent('jl-carboost:server:log', "The item is not found :"..k)
-                end
-            else
-                TriggerServerEvent("jl-carboost:server:log", "Duplicate item found: " .. k)
-            end
-        end
-        cb({
-            storeitem = storeitem
-        })
-    else
-        TriggerServerEvent('jl-carboost:server:log', "The store is empty")
-        cb({
-            error = "The store is empty"
-        })
-    end
-end)
+    local p = promise.new()
 
-RegisterNUICallback('loadshop', function (data, cb)
-    local storeitem = {}
-    if Config.shopSell then
-        for k, v in pairs(Config.shopSell) do
-            local name
-            if not storeitem[k] then
-                if QBCore.Shared.Items[v.item] ~= nil then
-                    if Config.shopSell[k].name then
-                        name = Config.shopSell[k].name
+    QBCore.Functions.TriggerCallback('jl-carboost:server:checkVPN', function(result)
+        p:resolve(result)
+    end)
+
+    local vpn = Citizen.Await(p)
+    print(json.encode(vpn))
+    if vpn then
+        if Config.BennysSell then
+            for k, v in pairs(Config.BennysSell) do
+                local name
+                if not storeitem[k] then
+                    if QBCore.Shared.Items[v.item] ~= nil then
+                        if Config.BennysSell[k].name then
+                            name = Config.BennysSell[k].name
+                        else
+                           if QBCore.Shared.Items[v.item] ~= nil then
+                               name = QBCore.Shared.Items[v.item].label
+                           else
+                            name = "Unknown"
+                             return TriggerServerEvent('jl-carboost:server:log', "")
+                           end
+                        end
+                        storeitem[#storeitem+1] = {
+                            name = name,
+                            item = v.item,
+                            image = Config.Inventory ..QBCore.Shared.Items[v.item].image,
+                            price = v.price,
+                            stock = v.stock
+                        }
                     else
-                       if QBCore.Shared.Items[v.item] ~= nil then
-                           name = QBCore.Shared.Items[v.item].label
-                       else
-                        name = "Unknown"
-                         return TriggerServerEvent('jl-carboost:server:log', "")
-                       end
+                        TriggerServerEvent('jl-carboost:server:log', "The item is not found :"..k)
                     end
-                    storeitem[#storeitem+1] = {
-                        name = name,
-                        item = v.item,
-                        image = Config.Inventory ..QBCore.Shared.Items[v.item].image,
-                        price = v.price,
-                        stock = v.stock
-                    }
                 else
-                    TriggerServerEvent('jl-carboost:server:log', "The item is not found :"..k)
+                    TriggerServerEvent("jl-carboost:server:log", "Duplicate item found: " .. k)
                 end
-            else
-                TriggerServerEvent("jl-carboost:server:log", "Duplicate item found: " .. k)
             end
+            cb({
+                storeitem = storeitem
+            })
+        else
+            TriggerServerEvent('jl-carboost:server:log', "The store is empty")
+            cb({
+                error = "The store is empty"
+            })
         end
-        cb({
-            storeitem = storeitem
-        })
     else
-        TriggerServerEvent('jl-carboost:server:log', "The store is empty")
-        cb({
-            error = "The store is empty"
-        })
+        if Config.lligalShop then
+            for k, v in pairs(Config.lligalShop) do
+                local name
+                if not storeitem[k] then
+                    if QBCore.Shared.Items[v.item] ~= nil then
+                        if Config.lligalShop[k].name then
+                            name = Config.lligalShop[k].name
+                        else
+                           if QBCore.Shared.Items[v.item] ~= nil then
+                               name = QBCore.Shared.Items[v.item].label
+                           else
+                            name = "Unknown"
+                             return TriggerServerEvent('jl-carboost:server:log', "")
+                           end
+                        end
+                        storeitem[#storeitem+1] = {
+                            name = name,
+                            item = v.item,
+                            image = Config.Inventory ..QBCore.Shared.Items[v.item].image,
+                            price = v.price,
+                            stock = v.stock
+                        }
+                    else
+                        TriggerServerEvent('jl-carboost:server:log', "The item is not found :"..k)
+                    end
+                else
+                    TriggerServerEvent("jl-carboost:server:log", "Duplicate item found: " .. k)
+                end
+            end
+            cb({
+                storeitem = storeitem
+            })
+        else
+            TriggerServerEvent('jl-carboost:server:log', "The store is empty")
+            cb({
+                error = "The store is empty"
+            })
+        end
     end
+
+    
 end)
 
 RegisterCommand('testconfig', function()
@@ -682,6 +691,7 @@ RegisterNetEvent('jl-carboost:client:checkvin', function ()
                             if result and result.success then
     
                                 QBCore.Functions.Notify(result.message, "primary")
+                               
                             else
                                 QBCore.Functions.Notify("Hmm you can't found the VIN", "error")
                             end
@@ -701,7 +711,6 @@ RegisterNetEvent('jl-carboost:client:checkvin', function ()
 end)
 
 RegisterNetEvent('jl-carboost:client:vinscratch', function(veh)
-    print(veh)
     local ID = NetworkGetNetworkIdFromEntity(veh)
     QBCore.Functions.Progressbar('vin_scratching', 'Scratching VIN', 7000, false, true, { -- Name | Label | Time | useWhileDead | canCancel
         disableMovement = true,
@@ -1094,13 +1103,12 @@ exports['qb-target']:AddTargetBone('windscreen', {
         {
             icon = "fas fa-tally",
             label = "Scratch VIN",
-            action = function(entity)
-                TriggerEvent('jl-carboost:client:vinscratch', entity)
-            end,
-            canInteract = function(entity, distance, data) 
-                if IsPedAPlayer(entity) then return false end
+            canInteract = function ()
                 return inscratchPoint
             end,
+            action = function (entity)
+                TriggerEvent('jl-carboost:client:vinscratch', entity)
+            end
         },
     },
     distance = 1.2
