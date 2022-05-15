@@ -1170,6 +1170,39 @@ Garages = {
             vector4(435.41, -1026.74, 28.35, 3.84),
         }
     },
+    ['Medic'] = {
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the parking area
+                vector2(317.39752197266, -561.99182128906),
+                vector2(311.2666015625, -578.88562011718),
+                vector2(318.85208129882, -582.59594726562),
+                vector2(316.68661499024, -587.97552490234),
+                vector2(333.8517150879, -594.22100830078),
+                vector2(343.94973754882, -567.3285522461),
+                vector2(322.3512878418, -559.9478149414)
+            },
+            ['minZ'] = 27.79,  -- min height of the parking zone
+            ['maxZ'] = 31.79,  -- max height of the parking zone
+        },
+        label = "Medic",
+        showBlip = false,
+        blipName = "Medic",
+        blipNumber = 357,
+        type = 'job',                --public, job, gang, depot
+        vehicleCategories = {'emergency'},
+        drawText = 'Parking',              --car, air, sea
+        job = "ambulance",
+        debug = false,
+        ['ParkingSpots'] = {
+            vector4(319.4, -586.03, 27.8, 342.09),
+            vector4(322.96, -587.38, 27.8, 341.02),
+            vector4(325.96, -588.56, 27.8, 342.42),
+            vector4(329.36, -589.72, 27.8, 343.34),
+            vector4(332.75, -591.02, 27.8, 341.96),
+            vector4(316.88, -578.18, 27.8, 248.74),
+            vector4(318.37, -573.93, 27.8, 250.65)
+        }
+    },
     ['mechanic'] = {
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the parking area

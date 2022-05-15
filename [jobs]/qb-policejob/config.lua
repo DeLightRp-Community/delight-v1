@@ -20,9 +20,7 @@ Config.Locations = {
         [1] = vector3(441.91, -982.05, 30.88)
     },
     ["vehicle"] = {
-        [1] = vector4(448.159, -1017.41, 28.562, 90.654),
-        [2] = vector4(471.13, -1024.05, 28.17, 274.5),
-        [3] = vector4(-455.39, 6002.02, 31.34, 87.93),
+        [1] = vector4(0, 0, 0, 0),
     },
     ["stash"] = {
         [1] = vector3(446.85, -997.12, 30.69),
@@ -457,6 +455,24 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 25,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+        },
+        [26] = {
+            name = "bodycam",
+            price = 0,
+            amount = 1,
+            info = {},
+            type = "item",
+            slot = 26,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+        },
+        [27] = {
+            name = "spikestrip",
+            price = 0,
+            amount = 1,
+            info = {},
+            type = "item",
+            slot = 27,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
     }

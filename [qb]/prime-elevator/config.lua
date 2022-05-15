@@ -45,10 +45,29 @@ Config.Elevators = {
                 ExitHeading = "262.86"
             },
         }
+    },
+
+    ["casinoEntrance"] = {
+        Name = "Casino Entrance",
+        Sound = "LiftSoundBellRing",
+        Floors = {
+            [1] = {
+                Label = "Exit",
+                FloorDesc = "Get out of Casino",
+                Coords = vector3(935.8, 47.26, 81.1),
+                ExitHeading = "137.75"
+            },
+            [2] = {
+                Label = "Enter",
+                FloorDesc = "Get in Casino",
+                Coords = vector3(1089.62, 206.15, -49.0),
+                ExitHeading = "349.13"
+            },
+        }
     }
 }
 
-Config.PolyZone = false -- This will show the box zones | If set to false it will hide the box zones
+Config.PolyZone = true -- This will show the box zones | If set to false it will hide the box zones
 
 Config.WaitTime = 8000 -- This will set the time for the ProgressBar | 1000 = 1 second
 
@@ -64,6 +83,10 @@ Config.ElevatorButton = {
     [4] = { name = "Main Floor", location = vector3(325.65, -603.39, 43.28), width = 0.1, length = 0.3, heading = 160.6, minz = 43.48, maxz = 43.78},
     [5] = { name = "Heli Pad", location = vector3(338.42, -583.71, 74.16), width = 0.5, length = 2.8, heading = 70.21, minz = 74.16 - 1, maxz = 74.16 + 1.5 },
 
+
+    -- Casino
+    [6] = { name = "Entrance", location = vector3(935.8, 47.26, 81.1), width = 1.0, length = 2.5, heading = 324.56, minz = 79.5, maxz = 82},
+    [7] = { name = "Exit", location = vector3(1090.05, 205.21, -49.0), width = 1.0, length = 2.5, heading = 177.31, minz = -51.0, maxz = -48.0}
 }
 
 Config.Language = {

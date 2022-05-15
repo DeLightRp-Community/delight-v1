@@ -519,6 +519,8 @@ local function CreateNewDrop(source, fromSlot, toSlot, itemAmount)
 		TriggerClientEvent("inventory:client:AddDropItem", -1, dropId, source, coords)
 		if itemData.name:lower() == "radio" then
 			TriggerClientEvent('Radio.Set', source, false)
+		elseif itemData.name:lower() == "bodycam" then
+			TriggerClientEvent("qb-bodycam:close", source)
 		end
 	else
 		TriggerClientEvent("QBCore:Notify", source, "You don't have this item!", "error")
@@ -889,12 +891,14 @@ RegisterNetEvent('inventory:server:UseItemSlot', function(slot)
 		elseif itemData.useable then
 			if itemData.info.quality then
 				if itemData.info.quality > 0 then
+					TriggerEvent("inventory:server:removeQuality",src, itemData)
 					TriggerClientEvent("QBCore:Client:UseItem", src, itemData)
 					TriggerClientEvent('inventory:client:ItemBox', src, itemInfo, "use")
 				else
 					TriggerClientEvent("QBCore:Notify", src, "You can't use this item", "error")
 				end
 			else
+				TriggerEvent("inventory:server:removeQuality",src, itemData)
 				TriggerClientEvent("QBCore:Client:UseItem", src, itemData)
 				TriggerClientEvent('inventory:client:ItemBox', src, itemInfo, "use")
 			end
@@ -916,6 +920,7 @@ RegisterNetEvent('inventory:server:UseItem', function(inventory, item)
 					end
 				end
 			end
+			TriggerEvent("inventory:server:removeQuality",src, itemData)
 			TriggerClientEvent("QBCore:Client:UseItem", src, itemData)
 		end
 	end
@@ -1087,6 +1092,8 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					AddToDrop(toInventory, toSlot, itemInfo["name"], fromAmount, fromItemData.info)
 					if itemInfo["name"] == "radio" then
 						TriggerClientEvent('Radio.Set', src, false)
+					elseif itemInfo["name"] == "bodycam" then
+						TriggerClientEvent("qb-bodycam:close", source)
 					end
 				end
 			end
@@ -1322,7 +1329,6 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 		local itemInfo = QBCore.Shared.Items[itemData.name:lower()]
 		local bankBalance = Player.PlayerData.money["bank"]
 		local price = tonumber((itemData.price*fromAmount))
-
 		if QBCore.Shared.SplitStr(shopType, "_")[1] == "Dealer" then
 			if QBCore.Shared.SplitStr(itemData.name, "_")[1] == "weapon" then
 				price = tonumber(itemData.price)
@@ -1345,6 +1351,12 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					TriggerClientEvent('QBCore:Notify', src, "You don't have enough cash..", "error")
 				end
 			end
+		elseif itemData.name == 'sacomineiros' then
+			local info = {
+			   bagminerid = math.random(111,999),
+			   bagminerOwner = Player.PlayerData.charinfo.firstname.." "..Player.PlayerData.charinfo.lastname,
+		   	}
+	   		Player.Functions.AddItem('sacomineiros', 1, nil, info, {["quality"] = 100})	
 		elseif QBCore.Shared.SplitStr(shopType, "_")[1] == "Itemshop" then
 			if Player.Functions.RemoveMoney("cash", price, "itemshop-bought-item") then
                 if QBCore.Shared.SplitStr(itemData.name, "_")[1] == "weapon" then
@@ -1370,12 +1382,26 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 			if Player.Functions.RemoveMoney("cash", price, "unkown-itemshop-bought-item") then
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('QBCore:Notify', src, itemInfo["label"] .. " bought!", "success")
-				TriggerEvent("qb-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				-- print(shopType)
+				if shopType == "police" then
+					TriggerEvent("qb-log:server:CreateLog", "police_armoury", "Armoury item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				elseif shopType == "hospital" then
+					TriggerEvent("qb-log:server:CreateLog", "ambulance_armoury", "Armoury item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				else
+					TriggerEvent("qb-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				end
 			elseif bankBalance >= price then
 				Player.Functions.RemoveMoney("bank", price, "unkown-itemshop-bought-item")
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('QBCore:Notify', src, itemInfo["label"] .. " bought!", "success")
-				TriggerEvent("qb-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				-- print(shopType)
+				if shopType == "police" then
+					TriggerEvent("qb-log:server:CreateLog", "police_armoury", "Armoury item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				elseif shopType == "hospital" then
+					TriggerEvent("qb-log:server:CreateLog", "ambulance_armoury", "Armoury item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				else
+					TriggerEvent("qb-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				end
 			else
 				TriggerClientEvent('QBCore:Notify', src, "You don\'t have enough cash..", "error")
 			end
@@ -1413,6 +1439,8 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 						AddToDrop(fromInventory, toSlot, itemInfo["name"], toAmount, toItemData.info)
 						if itemInfo["name"] == "radio" then
 							TriggerClientEvent('Radio.Set', src, false)
+						elseif itemInfo["name"] == "bodycam" then
+							TriggerClientEvent("qb-bodycam:close", source)
 						end
 						TriggerEvent("qb-log:server:CreateLog", "drop", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** with item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount .. "** - dropid: *" .. fromInventory .. "*")
 					else
@@ -1437,6 +1465,8 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 						AddToDrop(fromInventory, fromSlot, itemInfo["name"], toAmount, toItemData.info)
 						if itemInfo["name"] == "radio" then
 							TriggerClientEvent('Radio.Set', src, false)
+						elseif itemInfo["name"] == "bodycam" then
+							TriggerClientEvent("qb-bodycam:close", source)
 						end
 					end
 				else
@@ -1446,6 +1476,8 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				AddToDrop(toInventory, toSlot, itemInfo["name"], fromAmount, fromItemData.info)
 				if itemInfo["name"] == "radio" then
 					TriggerClientEvent('Radio.Set', src, false)
+				elseif itemInfo["name"] == "bodycam" then
+					TriggerClientEvent("qb-bodycam:close", source)
 				end
 			end
 		else
@@ -1559,6 +1591,20 @@ QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="
 					info.lastname = Player.PlayerData.charinfo.lastname
 					info.birthdate = Player.PlayerData.charinfo.birthdate
 					info.type = "Class C Driver License"
+				elseif itemData["name"] == "weaponlicense" then
+					info.firstname = Player.PlayerData.charinfo.firstname
+					info.lastname = Player.PlayerData.charinfo.lastname
+					info.birthdate = Player.PlayerData.charinfo.birthdate
+				elseif itemData["name"] == "lawyerpass" then
+					info.firstname = Player.PlayerData.charinfo.firstname
+					info.lastname = Player.PlayerData.charinfo.lastname
+					info.birthdate = Player.PlayerData.charinfo.birthdate
+				elseif itemData["name"] == "policecard" then
+					info.firstname = Player.PlayerData.charinfo.firstname
+					info.lastname = Player.PlayerData.charinfo.lastname
+					info.birthdate = Player.PlayerData.charinfo.birthdate
+					info.gender = Player.PlayerData.charinfo.gender
+					info.nationality = Player.PlayerData.charinfo.nationality
 				elseif itemData["type"] == "weapon" then
 					amount = 1
 					info.serie = tostring(QBCore.Shared.RandomInt(2) .. QBCore.Shared.RandomStr(3) .. QBCore.Shared.RandomInt(1) .. QBCore.Shared.RandomStr(2) .. QBCore.Shared.RandomInt(3) .. QBCore.Shared.RandomStr(4))
@@ -1621,52 +1667,110 @@ QBCore.Functions.CreateUseableItem("snowball", function(source, item)
     end
 end)
 
-QBCore.Functions.CreateUseableItem("driver_license", function(source, item)
-	local PlayerPed = GetPlayerPed(source)
-	local PlayerCoords = GetEntityCoords(PlayerPed)
-	for k, v in pairs(QBCore.Functions.GetPlayers()) do
-		local TargetPed = GetPlayerPed(v)
-		local dist = #(PlayerCoords - GetEntityCoords(TargetPed))
-		if dist < 3.0 then
-			TriggerClientEvent('chat:addMessage', v,  {
-					template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>First Name:</strong> {1} <br><strong>Last Name:</strong> {2} <br><strong>Birth Date:</strong> {3} <br><strong>Licenses:</strong> {4}</div></div>',
-					args = {
-						"Drivers License",
-						item.info.firstname,
-						item.info.lastname,
-						item.info.birthdate,
-						item.info.type
-					}
-				}
-			)
-		end
-	end
-end)
+-- QBCore.Functions.CreateUseableItem("driver_license", function(source, item)
+-- 	local PlayerPed = GetPlayerPed(source)
+-- 	local PlayerCoords = GetEntityCoords(PlayerPed)
+-- 	for k, v in pairs(QBCore.Functions.GetPlayers()) do
+-- 		local TargetPed = GetPlayerPed(v)
+-- 		local dist = #(PlayerCoords - GetEntityCoords(TargetPed))
+-- 		if dist < 3.0 then
+-- 			TriggerClientEvent('chat:addMessage', v,  {
+-- 					template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>First Name:</strong> {1} <br><strong>Last Name:</strong> {2} <br><strong>Birth Date:</strong> {3} <br><strong>Licenses:</strong> {4}</div></div>',
+-- 					args = {
+-- 						"Drivers License",
+-- 						item.info.firstname,
+-- 						item.info.lastname,
+-- 						item.info.birthdate,
+-- 						item.info.type
+-- 					}
+-- 				}
+-- 			)
+-- 		end
+-- 	end
+-- end)
 
-QBCore.Functions.CreateUseableItem("id_card", function(source, item)
-	local PlayerPed = GetPlayerPed(source)
-	local PlayerCoords = GetEntityCoords(PlayerPed)
-	for k, v in pairs(QBCore.Functions.GetPlayers()) do
-		local TargetPed = GetPlayerPed(v)
-		local dist = #(PlayerCoords - GetEntityCoords(TargetPed))
-		if dist < 3.0 then
-			local gender = "Man"
-			if item.info.gender == 1 then
-				gender = "Woman"
-			end
-			TriggerClientEvent('chat:addMessage', v,  {
-					template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>Civ ID:</strong> {1} <br><strong>First Name:</strong> {2} <br><strong>Last Name:</strong> {3} <br><strong>Birthdate:</strong> {4} <br><strong>Gender:</strong> {5} <br><strong>Nationality:</strong> {6}</div></div>',
-					args = {
-						"ID Card",
-						item.info.citizenid,
-						item.info.firstname,
-						item.info.lastname,
-						item.info.birthdate,
-						gender,
-						item.info.nationality
-					}
-				}
-			)
+-- QBCore.Functions.CreateUseableItem("id_card", function(source, item)
+-- 	local PlayerPed = GetPlayerPed(source)
+-- 	local PlayerCoords = GetEntityCoords(PlayerPed)
+-- 	for k, v in pairs(QBCore.Functions.GetPlayers()) do
+-- 		local TargetPed = GetPlayerPed(v)
+-- 		local dist = #(PlayerCoords - GetEntityCoords(TargetPed))
+-- 		if dist < 3.0 then
+-- 			local gender = "Man"
+-- 			if item.info.gender == 1 then
+-- 				gender = "Woman"
+-- 			end
+-- 			TriggerClientEvent('chat:addMessage', v,  {
+-- 					template = '<div class="chat-message advert"><div class="chat-message-body"><strong>{0}:</strong><br><br> <strong>Civ ID:</strong> {1} <br><strong>First Name:</strong> {2} <br><strong>Last Name:</strong> {3} <br><strong>Birthdate:</strong> {4} <br><strong>Gender:</strong> {5} <br><strong>Nationality:</strong> {6}</div></div>',
+-- 					args = {
+-- 						"ID Card",
+-- 						item.info.citizenid,
+-- 						item.info.firstname,
+-- 						item.info.lastname,
+-- 						item.info.birthdate,
+-- 						gender,
+-- 						item.info.nationality
+-- 					}
+-- 				}
+-- 			)
+-- 		end
+-- 	end
+-- end)
+
+local function HasItem(list, item)
+
+	for i = 1, #list do
+
+		if item == list[i] then
+			return true
 		end
 	end
+
+	return false
+end
+
+AddEventHandler("inventory:server:SearchLocalVehicleInventory", function(plate, list, cb)
+local trunk = Trunks[plate]
+local glovebox = Gloveboxes[plate]
+local result = false
+
+if trunk ~= nil then
+	for k, v in pairs(trunk.items) do
+		local ITEM = trunk.items[k].name
+		if HasItem(list, ITEM) then
+			RESULT = true
+		end
+	end
+else
+	trunk = GetOwnedVehicleItems(plate)
+
+	for k, v in pairs(trunk) do
+
+		local ITEM = trunk[k].name
+		if HasItem(list, ITEM) then
+			RESULT = true
+		end
+	end
+
+end
+
+if glovebox ~= nil then
+	for k, v in pairs(glovebox.items) do
+
+		local ITEM = glovebox.items[k].name
+		if HasItem(list, ITEM) then
+			RESULT = true
+		end
+	end
+else
+	glovebox = GetOwnedVehicleGloveboxItems(plate)
+
+	for k, v in pairs(glovebox) do
+		local ITEM = glovebox[k].name
+		if HasItem(list, ITEM) then
+			RESULT = true
+		end
+	end
+end
+cb(RESULT)
 end)

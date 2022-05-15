@@ -10,11 +10,18 @@ Config.MenuItems = {
         items = {
             {
                 id = 'givenum',
-                title = 'Give Contact Details',
+                title = 'Show Business Card',
                 icon = 'address-book',
                 type = 'client',
-                event = 'qb-phone:client:GiveContactDetails',
+                event = 'qb-idcard:client:showbusinessCard',
                 shouldClose = true
+            },{
+                id = 'givekey',
+                title = 'GiveKey',
+                icon = 'key',
+                type = 'client',
+                event = 'qb-radialmenu:client:giveCarKey',
+                shouldClose = true  
             }, {
                 id = 'getintrunk',
                 title = 'Get In Trunk',
@@ -305,14 +312,8 @@ Config.VehicleDoors = {
     shouldClose = true
 }
 
-Config.VehicleExtras = {
-    id = 'givekey',
-    title = 'GiveKey',
-    icon = 'key',
-    type = 'client',
-    event = 'qb-radialmenu:client:openDoor',
-    shouldClose = true
-}
+
+
 
 Config.VehicleSeats = {
     id = 'vehicleseats',
@@ -358,27 +359,13 @@ Config.JobInteractions = {
             type = 'client',
             event = 'police:client:EscortPlayer',
             shouldClose = true
-        }, {
-            id = 'stretcheroptions',
-            title = 'Stretcher',
-            icon = 'procedures',
-            items = {
-                {
-                    id = 'spawnstretcher',
-                    title = 'Spawn Stretcher',
-                    icon = 'plus',
-                    type = 'client',
-                    event = 'qb-radialmenu:client:TakeStretcher',
-                    shouldClose = false
-                }, {
-                    id = 'despawnstretcher',
-                    title = 'Remove Stretcher',
-                    icon = 'minus',
-                    type = 'client',
-                    event = 'qb-radialmenu:client:RemoveStretcher',
-                    shouldClose = false
-                }
-            }
+        },{
+            id = 'emsOption',
+            title = 'Ems Objects',
+            icon = 'user-friends',
+            type = 'client',
+            event = 'qb-radialmenu:client:TakeStretcher',
+            shouldClose = true
         }
     },
     ["taxi"] = {
@@ -434,6 +421,13 @@ Config.JobInteractions = {
     },
     ["police"] = {
         {
+            id = 'k9pedar',
+            title = 'K9',
+            icon = 'dog',
+            type = 'server',
+            event = 'K9:server:addk9babat',
+            shouldClose = true
+        }, {
             id = 'mdtmenu',
             title = 'MDT',
             icon = 'tablet',

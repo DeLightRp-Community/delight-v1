@@ -27,83 +27,21 @@ local originalNeonColourB = nil
 local originalXenonColour = nil
 local originalOldLivery = nil
 local originalPlateIndex = nil
-local originalXenonState = nil
-local originalTurboState = nil
 local attemptingPurchase = false
 local isPurchaseSuccessful = false
 local radialMenuItemId = nil
-
-local CurrentVehicleData = nil
-
-
 
 -----------------------
 ----   Functions   ----
 -----------------------
 
 --#[Local Functions]#--
-local function saveVehicle(url)
+local function saveVehicle()
     local plyPed = PlayerPedId()
     local veh = GetVehiclePedIsIn(plyPed, false)
     local myCar = QBCore.Functions.GetVehicleProperties(veh)
-    print(json.encode(myCar))
-    print(json.encode(CurrentVehicleData))
-    if CurrentVehicleData ~= nil then
-        QBCore.Functions.SetVehicleProperties(veh, CurrentVehicleData)
-    end
-    -- TriggerServerEvent('qb-customs:server:updateVehicle', myCar)
-    TriggerEvent('re2-tunerjob:tuner_mod:makeTunerRecipe',myCar,url)
+    TriggerServerEvent('qb-customs:server:updateVehicle', myCar)
 end
-
-
-local function takeImage()
-    SetNuiFocus(false, false)
-    -- CreateMobilePhone(1)
-    -- CellCamActivate(true, true)
-    takePhoto = true
-    while takePhoto do
-        if IsControlJustPressed(1, 27) then -- Toogle Mode
-            frontCam = not frontCam
-            -- CellFrontCamActivate(frontCam)
-        elseif IsControlJustPressed(1, 177) then -- CANCEL
-            DestroyMobilePhone()
-            CellCamActivate(false, false)
-            -- cb(json.encode({ url = nil }))
-            takePhoto = false
-            break
-        elseif IsControlJustPressed(1, 176) then -- TAKE.. PIC
-            QBCore.Functions.TriggerCallback("qb-phone:server:GetWebhook",function(hook)
-                if hook then
-                    exports['screenshot-basic']:requestScreenshotUpload(tostring(hook), "files[]", function(data)
-                        local image = json.decode(data)
-                        DestroyMobilePhone()
-                        CellCamActivate(false, false)
-                        TriggerServerEvent('qb-phone:server:addImageToGallery', image.attachments[1].proxy_url)
-                        Wait(400)
-                        TriggerServerEvent('qb-phone:server:getImageFromGallery')
-                        saveVehicle(image.attachments[1].proxy_url)
-                        print(image.attachments[1].proxy_url)
-                        cb(json.encode(image.attachments[1].proxy_url))
-                        
-                    end)
-                else
-                    return
-                end
-            end)
-            takePhoto = false
-        end
-        HideHudComponentThisFrame(7)
-        HideHudComponentThisFrame(8)
-        HideHudComponentThisFrame(9)
-        HideHudComponentThisFrame(6)
-        HideHudComponentThisFrame(19)
-        HideHudAndRadarThisFrame()
-        EnableAllControlActions(0)
-        Wait(0)
-    end
-    Wait(1000)
-end
-
 
 local function CreateBlip(blipData)
     local blip = AddBlipForCoord(blipData.coords.x, blipData.coords.y, blipData.coords.z)
@@ -288,16 +226,9 @@ function GetCurrentTurboState()
     return isEnabled and 0 or -1
 end
 
-function GetCurrentExtraState(extra)
-    local plyPed = PlayerPedId()
-    local plyVeh = GetVehiclePedIsIn(plyPed, false)
-    return IsVehicleExtraTurnedOn(plyVeh, extra)
-end
-
 function CheckValidMods(category, id, wheelType)
     local plyPed = PlayerPedId()
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
-    local tempMod = GetVehicleMod(plyVeh, id)
     local tempWheel = GetVehicleMod(plyVeh, 23)
     local tempWheelType = GetVehicleWheelType(plyVeh)
     local tempWheelCustom = GetVehicleModVariation(plyVeh, 23)
@@ -310,7 +241,7 @@ function CheckValidMods(category, id, wheelType)
     end
 
     if id == 14 then
-        for k, v in pairs(vehicleCustomisation) do
+        for k, _ in pairs(vehicleCustomisation) do
             if vehicleCustomisation[k].category == category then
                 hornNames = vehicleCustomisation[k].hornNames
 
@@ -400,7 +331,6 @@ end
 function RestoreOriginalWheels()
     local plyPed = PlayerPedId()
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
-    local doesHaveCustomWheels = GetVehicleModVariation(plyVeh, 23)
 
     SetVehicleWheelType(plyVeh, originalWheelType)
 
@@ -461,18 +391,6 @@ function RestorePlateIndex()
     SetVehicleNumberPlateTextIndex(plyVeh, originalPlateIndex)
 end
 
-function RestoreXenonState()
-    local plyPed = PlayerPedId()
-    local plyVeh = GetVehiclePedIsIn(plyPed, false)
-    ToggleVehicleMod(plyVeh, 22, originalXenonState)
-end
-
-function RestoreTurboState()
-    local plyPed = PlayerPedId()
-    local plyVeh = GetVehiclePedIsIn(plyPed, false)
-    ToggleVehicleMod(plyVeh, 18, originalTurboState)
-end
-
 function PreviewMod(categoryID, modID)
     local plyPed = PlayerPedId()
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
@@ -501,29 +419,6 @@ function PreviewWindowTint(windowTintID)
 
     SetVehicleWindowTint(plyVeh, windowTintID)
 end
-
-function PreviewXenonState(state)
-    local plyPed = PlayerPedId()
-    local plyVeh = GetVehiclePedIsIn(plyPed, false)
-
-    if originalXenonState == nil then
-        originalXenonState = IsToggleModOn(plyVeh, 22)
-    end
-
-    ToggleVehicleMod(plyVeh, 22, state)
-end
-
-function PreviewTurboState(state)
-    local plyPed = PlayerPedId()
-    local plyVeh = GetVehiclePedIsIn(plyPed, false)
-
-    if originalTurboState == nil then
-        originalTurboState = IsToggleModOn(plyVeh, 18)
-    end
-
-    ToggleVehicleMod(plyVeh, 18, state)
-end
-
 
 function PreviewColour(paintType, paintCategory, paintID)
     local plyPed = PlayerPedId()
@@ -640,8 +535,7 @@ function ApplyMod(categoryID, modID)
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
 
     if categoryID == 18 then
-        ToggleVehicleMod(plyVeh, categoryID, modID)
-        originalTurboState = modID
+        ToggleVehicleMod(plyVeh, categoryID, modID+1)
     elseif categoryID == 11 or categoryID == 12 or categoryID== 13 or categoryID == 15 or categoryID == 16 then --Performance Upgrades
         originalCategory = categoryID
         originalMod = modID
@@ -804,9 +698,8 @@ end
 function ExitBennys()
     local plyPed = PlayerPedId()
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
-    
-    -- saveVehicle()
-    
+
+    saveVehicle()
 
     DisplayMenuContainer(false)
     FreezeEntityPosition(plyVeh, false)
@@ -819,13 +712,11 @@ function ExitBennys()
     if next(CustomsData) then
         SetupInteraction()
     end
-    if CurrentVehicleData ~= nil then
-        takeImage()
-    else
-        saveVehicle("yaro")
-    end
+
     isPlyInBennys = false
 end
+
+
 function EnterLocation(override)
     local locationData = Config.Locations[CustomsData.location]
     local categories = (override and override.categories) or {
@@ -883,7 +774,7 @@ function EnterLocation(override)
 
     local plyPed = PlayerPedId()
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
-    local isMotorcycle = false
+    local isMotorcycle
 
     if GetVehicleClass(plyVeh) == 8 then --Motorcycle
         isMotorcycle = true
@@ -905,10 +796,6 @@ function EnterLocation(override)
             DisplayMenu(true, "repairMenu")
         else
             DisplayMenu(true, "mainMenu")
-            local ped = PlayerPedId()
-            local curVeh = GetVehiclePedIsIn(ped)
-            CurrentVehicleData = QBCore.Functions.GetVehicleProperties(curVeh)
-            print(CurrentVehicleData)
         end
 
         DisplayMenuContainer(true)
@@ -1052,7 +939,7 @@ CreateThread(function()
                 maxZ = spot.maxZ,
             })
 
-            newSpot:onPlayerInOut(function(isPointInside, point)
+            newSpot:onPlayerInOut(function(isPointInside, _)
                 if isPointInside then
                     CustomsData = {
                         ['location'] = location,
@@ -1117,13 +1004,13 @@ end)
 RegisterNetEvent("qb-customs:client:purchaseSuccessful", function()
     isPurchaseSuccessful = true
     attemptingPurchase = false
-    QBCore.Functions.Notify("Item Selected Successful")
+    QBCore.Functions.Notify("Purchase Successful")
 end)
 
 RegisterNetEvent("qb-customs:client:purchaseFailed", function()
     isPurchaseSuccessful = false
     attemptingPurchase = false
-    QBCore.Functions.Notify("Something Went Wrong", "error")
+    QBCore.Functions.Notify("Not enough money", "error")
 end)
 
 RegisterNetEvent('qb-customs:client:EnterCustoms', function(override)

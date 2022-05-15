@@ -303,6 +303,34 @@ QBShared.Jobs = {
             },
         },
 	},
+    ['tuner'] = {
+		label = 'Tuner',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = "Recruit",
+                payment = 700
+            },
+			['1'] = {
+                name = "Novice",
+                payment = 1000
+            },
+			['2'] = {
+                name = "Experienced",
+                payment = 1150
+            },
+			['3'] = {
+                name = "Advanced",
+                payment = 1250
+            },
+			['4'] = {
+                name = "Manager",
+				isboss = true,
+                payment = 1300
+            },
+        },
+	},
 	['judge'] = {
 		label = 'Honorary',
 		defaultDuty = true,
@@ -413,7 +441,6 @@ QBShared.Jobs = {
             },
         },
     },
-
     ['bestbuds'] = {
 		label = 'bestbuds',
 		defaultDuty = true,
@@ -425,7 +452,6 @@ QBShared.Jobs = {
             },
         },
     },
-
     ["burgershot"] = {
 		label = "Burgershot Employee",
 		defaultDuty = true,
@@ -469,32 +495,47 @@ QBShared.Jobs = {
             },
         },
 	},
-	["uwu"] = { --  UwU Cafe Job
-		label = "UwU Cafe",
+    ['pizza'] = {
+		label = 'Pizza Shop',
 		defaultDuty = true,
-        offDutyPay = false,
+		offDutyPay = false,
 		grades = {
             ['0'] = {
-                name = "Trainee",
-                payment = 700
-            },
-            ['1'] = {
-                name = "Cashier",
+                name = 'Employee',
                 payment = 1000
             },
+            ['1'] = {
+                name = 'Manger',
+                isboss = true,
+                payment = 1300  
+            },
+        },
+	},
+    ['uwu'] = {
+		label = 'UwU Cat Cafe',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = 'Novice',
+                payment = 50
+            },
+			['1'] = {
+                name = 'Employee',
+                payment = 75
+            },
 			['2'] = {
-                name = "Cook",
-                payment = 1100
+                name = 'Experienced',
+                payment = 100
             },
 			['3'] = {
-                name = "Manager",
-				isboss = true,
-                payment = 1150
+                name = 'Advanced',
+                payment = 125
             },
 			['4'] = {
-                name = "Store Owner",
+                name = 'Boss',
 				isboss = true,
-                payment = 1300
+                payment = 150
             },
         },
 	},
@@ -530,4 +571,24 @@ QBShared.Jobs = {
             },
         },
 	},
+    ["records"] = {
+        label = "Records",
+        offDutyPay = false,
+        defaultDuty = false,
+        grades = {
+            ['0'] = {
+                name = 'Worker',
+                payment = 30,
+            },
+            ['1'] = {
+                name = 'Vice Boss',
+                payment = 70,
+            },
+            ['2'] = {
+                name = 'Boss',
+                isboss = true,
+                payment = 130,
+            },
+        }
+    },
 }

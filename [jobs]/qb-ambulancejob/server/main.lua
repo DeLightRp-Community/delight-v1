@@ -2,7 +2,20 @@ local PlayerInjuries = {}
 local PlayerWeaponWounds = {}
 local QBCore = exports['qb-core']:GetCoreObject()
 local doctorCount = 0
+local Objects = {}
 -- Events
+local function CreateObjectId()
+    if Objects then
+        local objectId = math.random(10000, 99999)
+        while Objects[objectId] do
+            objectId = math.random(10000, 99999)
+        end
+        return objectId
+    else
+        local objectId = math.random(10000, 99999)
+        return objectId
+    end
+end
 
 -- Compatibility with txAdmin Menu's heal options.
 -- This is an admin only server side event that will pass the target player id or -1.
@@ -134,6 +147,17 @@ RegisterNetEvent('hospital:server:AddDoctor', function(job)
 		doctorCount = doctorCount + 1
 		TriggerClientEvent("hospital:client:SetDoctorCount", -1, doctorCount)
 	end
+end)
+local doctorTempCount = 0
+RegisterNetEvent('hospital:server:enableCheckin', function()
+	doctorTempCount = doctorCount
+	print("Abol")
+	TriggerClientEvent("hospital:client:SetDoctorCount", -1, 0)
+end)
+RegisterNetEvent('hospital:server:disableCheckin', function()
+	print("ghasem")
+	TriggerClientEvent("hospital:client:SetDoctorCount", -1, doctorTempCount)
+	doctorTempCount = 0
 end)
 
 RegisterNetEvent('hospital:server:RemoveDoctor', function(job)

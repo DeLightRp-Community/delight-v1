@@ -187,6 +187,7 @@ end)
 RegisterNetEvent('qb-vehicleshop:server:buyShowroomVehicle', function(vehicle)
     local src = source
     local vehicle = vehicle.buyVehicle
+    print("190 "..vehicle)
     local pData = QBCore.Functions.GetPlayer(src)
     local cid = pData.PlayerData.citizenid
     local cash = pData.PlayerData.money['cash']
@@ -203,9 +204,21 @@ RegisterNetEvent('qb-vehicleshop:server:buyShowroomVehicle', function(vehicle)
             plate,
             0
         })
+        if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+        else
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+        end
         TriggerClientEvent('QBCore:Notify', src, 'Congratulations on your purchase!', 'success')
         TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
         pData.Functions.RemoveMoney('cash', vehiclePrice, 'vehicle-bought-in-showroom')
+        if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Finance a " .. vehicle .. " first payment at " .. downPayment)
+        elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
+            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+        else
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+        end
         exports['jl-carboost']:AddVIN(plate)
     elseif bank > vehiclePrice then
         MySQL.Async.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state) VALUES (?, ?, ?, ?, ?, ?, ?)', {
@@ -217,9 +230,21 @@ RegisterNetEvent('qb-vehicleshop:server:buyShowroomVehicle', function(vehicle)
             plate,
             0
         })
+        if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+        else
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+        end
         TriggerClientEvent('QBCore:Notify', src, 'Congratulations on your purchase!', 'success')
         TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
         pData.Functions.RemoveMoney('bank', vehiclePrice, 'vehicle-bought-in-showroom')
+        if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Finance a " .. vehicle .. " first payment at " .. downPayment)
+        elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
+            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+        else
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+        end
         exports['jl-carboost']:AddVIN(plate)
     else
         TriggerClientEvent('QBCore:Notify', src, 'Not enough money', 'error')
@@ -231,6 +256,7 @@ RegisterNetEvent('qb-vehicleshop:server:financeVehicle', function(downPayment, p
     local src = source
     local downPayment = tonumber(downPayment)
     local paymentAmount = tonumber(paymentAmount)
+    print("235 "..vehicle)
     local pData = QBCore.Functions.GetPlayer(src)
     local cid = pData.PlayerData.citizenid
     local cash = pData.PlayerData.money['cash']
@@ -259,6 +285,13 @@ RegisterNetEvent('qb-vehicleshop:server:financeVehicle', function(downPayment, p
         })
         TriggerClientEvent('QBCore:Notify', src, 'Congratulations on your purchase!', 'success')
         TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
+        if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Finance a " .. vehicle .. " first payment at " .. downPayment)
+        elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
+            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+        else
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+        end
         pData.Functions.RemoveMoney('cash', downPayment, 'vehicle-bought-in-showroom')
     elseif bank >= downPayment then
         MySQL.Async.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state, balance, paymentamount, paymentsleft, financetime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', {
@@ -277,6 +310,13 @@ RegisterNetEvent('qb-vehicleshop:server:financeVehicle', function(downPayment, p
         TriggerClientEvent('QBCore:Notify', src, 'Congratulations on your purchase!', 'success')
         TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
         pData.Functions.RemoveMoney('bank', downPayment, 'vehicle-bought-in-showroom')
+        if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Finance a " .. vehicle .. " first payment at " .. downPayment)
+        elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
+            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+        else
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+        end
     else
         TriggerClientEvent('QBCore:Notify', src, 'Not enough money', 'error')
     end
@@ -298,6 +338,7 @@ RegisterNetEvent('qb-vehicleshop:server:sellShowroomVehicle', function(data, pla
         local cash = target.PlayerData.money['cash']
         local bank = target.PlayerData.money['bank']
         local vehicle = data
+        -- print("303 "..vehicle)
         local vehiclePrice = QBCore.Shared.Vehicles[vehicle]['price']
         local commission = round(vehiclePrice * Config.Commission)
         local plate = GeneratePlate()
@@ -317,6 +358,11 @@ RegisterNetEvent('qb-vehicleshop:server:sellShowroomVehicle', function(data, pla
             TriggerClientEvent('QBCore:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
             exports['qb-management']:AddMoney(player.PlayerData.job.name, vehiclePrice)
             TriggerClientEvent('QBCore:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
+            if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+                TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            else
+                TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            end
         elseif bank >= vehiclePrice then
             MySQL.Async.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state) VALUES (?, ?, ?, ?, ?, ?, ?)', {
                 target.PlayerData.license,
@@ -327,6 +373,13 @@ RegisterNetEvent('qb-vehicleshop:server:sellShowroomVehicle', function(data, pla
                 plate,
                 0
             })
+            if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+                TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
+                TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            else
+                TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            end
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('bank', vehiclePrice, 'vehicle-bought-in-showroom')
             player.Functions.AddMoney('bank', commission)
@@ -346,7 +399,7 @@ RegisterNetEvent('qb-vehicleshop:server:sellfinanceVehicle', function(downPaymen
     local src = source
     local player = QBCore.Functions.GetPlayer(src)
     local target = QBCore.Functions.GetPlayer(tonumber(playerid))
-
+    print("352 "..vehicle)
     if not target then
         TriggerClientEvent('QBCore:Notify', src, 'Invalid Player Id Supplied', 'error')
         return
@@ -381,6 +434,13 @@ RegisterNetEvent('qb-vehicleshop:server:sellfinanceVehicle', function(downPaymen
                 paymentAmount,
                 timer
             })
+            if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+                TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
+                TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            else
+                TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            end
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('cash', downPayment, 'vehicle-bought-in-showroom')
             player.Functions.AddMoney('bank', commission)
@@ -401,6 +461,13 @@ RegisterNetEvent('qb-vehicleshop:server:sellfinanceVehicle', function(downPaymen
                 paymentAmount,
                 timer
             })
+            if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+                TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
+                TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            else
+                TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
+            end
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('bank', downPayment, 'vehicle-bought-in-showroom')
             player.Functions.AddMoney('bank', commission)
@@ -475,6 +542,13 @@ QBCore.Commands.Add('transferVehicle', 'Gift or sell your vehicle', {{name = 'ID
         TriggerClientEvent('QBCore:Notify', src, 'You sold your vehicle for $'..comma_value(sellAmount), 'success')
         TriggerClientEvent('vehiclekeys:client:SetOwner', buyerId, plate)
         TriggerClientEvent('QBCore:Notify', buyerId, 'You bought a vehicle for $'..comma_value(sellAmount), 'success')
+        if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Sell Vehicle to  " .. GetPlayerName(buyerId) .. " priced at " .. sellAmount)
+        elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
+            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Sell Vehicle to  " .. GetPlayerName(buyerId) .. " priced at " .. sellAmount)
+        else
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Sell Vehicle to  " .. GetPlayerName(buyerId) .. " priced at " .. sellAmount)
+        end
     elseif target.Functions.GetMoney('bank') > sellAmount then
         local targetcid = target.PlayerData.citizenid
         MySQL.Async.execute('UPDATE player_vehicles SET citizenid = ? WHERE plate = ?', {targetcid, plate})
@@ -483,6 +557,13 @@ QBCore.Commands.Add('transferVehicle', 'Gift or sell your vehicle', {{name = 'ID
         TriggerClientEvent('QBCore:Notify', src, 'You sold your vehicle for $'..comma_value(sellAmount), 'success')
         TriggerClientEvent('vehiclekeys:client:SetOwner', buyerId, plate)
         TriggerClientEvent('QBCore:Notify', buyerId, 'You bought a vehicle for $'..comma_value(sellAmount), 'success')
+        if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Sell Vehicle to  " .. GetPlayerName(buyerId) .. " priced at " .. sellAmount)
+        elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
+            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Sell Vehicle to  " .. GetPlayerName(buyerId) .. " priced at " .. sellAmount)
+        else
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Sell Vehicle to  " .. GetPlayerName(buyerId) .. " priced at " .. sellAmount)
+        end
     else
         TriggerClientEvent('QBCore:Notify', src, 'The buyer doesn\'t have enough money', 'error')
     end

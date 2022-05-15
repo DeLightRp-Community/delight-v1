@@ -107,7 +107,7 @@ local function DnaHash(s)
 end
 
 -- Commands
-QBCore.Commands.Add("spikestrip", Lang:t("commands.place_spike"), {}, false, function(source)
+--[[QBCore.Commands.Add("spikestrip", Lang:t("commands.place_spike"), {}, false, function(source)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player then
@@ -115,7 +115,7 @@ QBCore.Commands.Add("spikestrip", Lang:t("commands.place_spike"), {}, false, fun
             TriggerClientEvent('police:client:SpawnSpikeStrip', src)
         end
     end
-end)
+end)]]
 
 QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)
     local src = source
@@ -1093,7 +1093,7 @@ QBCore.Commands.Add("division", "Division (Police Only)", {{name="ID", help="ID 
 
 		local found = false
 		division = string.lower(division)
-		if division == 'swat' or division == 'xray' or 'police' then
+		if division == 'swat' or division == 'xray' or division == 'k9' or 'police' then
 			found = true
 		end
 

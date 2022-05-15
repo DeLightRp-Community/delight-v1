@@ -197,7 +197,7 @@ RegisterNetEvent('police:client:spawnObject', function(objectId, type, player)
     }
 end)
 
-RegisterNetEvent('police:client:SpawnSpikeStrip', function()
+--[[RegisterNetEvent('police:client:SpawnSpikeStrip', function()
     if #SpawnedSpikes + 1 < Config.MaxSpikes then
         if PlayerJob.name == "police" and PlayerJob.onduty then
             local spawnCoords = GetOffsetFromEntityInWorldCoords(PlayerPedId(), 0.0, 2.0, 0.0)
@@ -221,7 +221,7 @@ end)
 
 RegisterNetEvent('police:client:SyncSpikes', function(table)
     SpawnedSpikes = table
-end)
+end)]]
 
 -- Threads
 CreateThread(function()

@@ -936,11 +936,11 @@ end)]]--
     }
     exports['qb-target']:AddTargetModel(toolBoxModels, {
             options = {
-                {
-                    event = "inventory:client:WeaponAttachmentCrafting",
-                    icon = "fas fa-wrench",
-                    label = "Weapon Attachment Crafting", 
-                },
+                -- {
+                --     event = "inventory:client:WeaponAttachmentCrafting",
+                --     icon = "fas fa-wrench",
+                --     label = "Weapon Attachment Crafting", 
+                -- },
                 {
                     event = "inventory:client:Crafting",
                     icon = "fas fa-wrench",

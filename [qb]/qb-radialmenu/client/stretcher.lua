@@ -5,7 +5,7 @@ local detachKeys = {157, 158, 160, 164, 165, 73, 36}
 
 -- Add your vehicles here that will allow Ambulance to get a stretcher out.
 local allowedStretcherVehicles = {
-    "ambulance",
+    "emsnspeedo",
 }
 
 -- Functions
@@ -148,23 +148,8 @@ end
 RegisterNetEvent('qb-radialmenu:client:TakeStretcher', function()
     local vehicle = checkForVehicles()
     if vehicle ~= 0 then
-        RequestModel("prop_ld_binbag_01")
-        while not HasModelLoaded("prop_ld_binbag_01") do
-            Wait(0)
-        end
-        local obj = CreateObject(`prop_ld_binbag_01`, GetEntityCoords(PlayerPedId()), true)
-        if obj ~= 0 then
-            SetEntityRotation(obj, 0.0, 0.0, GetEntityHeading(vehicle), false, false)
-            FreezeEntityPosition(obj, true)
-            PlaceObjectOnGroundProperly(obj)
-            stretcherObject = obj
-            SetTimeout(200, function()
-                attachToStretcher()
-                isAttached = true
-            end)
-        else
-            QBCore.Functions.Notify(Lang:t("error.obj_not_found"), 'error')
-        end
+        -- qb-fivemems:client:AmbulanceMenu
+        TriggerEvent('qb-fivemems:client:AmbulanceMenu')
     else
         QBCore.Functions.Notify(Lang:t("error.not_near_ambulance"), 'error')
     end

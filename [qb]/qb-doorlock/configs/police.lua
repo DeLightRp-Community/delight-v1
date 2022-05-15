@@ -136,7 +136,7 @@ Config.DoorList['police-police9'] = {
     fixText = false,
     objYaw = 0.0,
     doorLabel = '21',
-    distance = 2,
+    distance = 5,
     objName = 2130672747,
 }
 
@@ -150,7 +150,7 @@ Config.DoorList['police-police10'] = {
     fixText = false,
     objYaw = 0.0,
     doorLabel = '22',
-    distance = 2,
+    distance = 5,
     objName = 2130672747,
 }
 

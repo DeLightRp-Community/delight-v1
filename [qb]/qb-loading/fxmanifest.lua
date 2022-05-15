@@ -7,7 +7,7 @@ version '1.0'
 lua54 'yes'
 client_script 'client/client.lua'
 
-files { 'assets/**', 'html/*', }
+files { 'assets/**', 'html/*', 'html/video/video.mp4'}
 
 loadscreen { 'html/index.html' }
 loadscreen_cursor 'yes'

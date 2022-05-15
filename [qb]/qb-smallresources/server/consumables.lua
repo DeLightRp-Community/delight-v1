@@ -272,3 +272,18 @@ QBCore.Functions.CreateUseableItem("burger-fries", function(source, item)
         TriggerClientEvent("consumables:client:Eat", source, item.name)
     end
 end)
+--pizza
+
+QBCore.Functions.CreateUseableItem("cheese-pizza", function(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:Eat", source, item.name)
+    end
+end)
+
+QBCore.Functions.CreateUseableItem("sodacup", function(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:Drink", source, item.name)
+    end
+end)

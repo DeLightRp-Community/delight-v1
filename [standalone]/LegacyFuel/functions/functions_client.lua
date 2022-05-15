@@ -1,3 +1,5 @@
+local QBCore = exports['qb-core']:GetCoreObject()
+
 function GetFuel(vehicle)
 	return DecorGetFloat(vehicle, Config.FuelDecor)
 end
@@ -14,7 +16,7 @@ function LoadAnimDict(dict)
 		RequestAnimDict(dict)
 
 		while not HasAnimDictLoaded(dict) do
-			Wait(1)
+			Citizen.Wait(1)
 		end
 	end
 end

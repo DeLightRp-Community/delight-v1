@@ -1,6 +1,6 @@
 Config = {}
 
-Config.UseCommandToOpenMenu = true --[[ Use command to open menu, true or false ]]
+Config.UseCommandToOpenMenu = false --[[ Use command to open menu, true or false ]]
 
 Config.OpenExchangeCMD = "cex" --[[ Command name to open the Crypto Exchange ]]
 

@@ -10,6 +10,9 @@ Config.FuelDecor = "_FUEL_LEVEL"
 -- What keys are disabled while you're fueling.
 Config.DisableKeys = {0, 22, 23, 24, 29, 30, 31, 37, 44, 56, 82, 140, 166, 167, 168, 170, 288, 289, 311, 323}
 
+-- Want to use the HUD? Turn this to true.
+Config.EnableHUD = false
+
 -- Configure blips here. Turn both to false to disable blips all together.
 Config.ShowNearestGasStationOnly = true
 Config.ShowAllGasStations = false
@@ -31,6 +34,8 @@ Config.Strings = {
 	NotEnoughCashJerryCan = "Not enough cash to refill jerry can",
 	JerryCanFull = "Jerry can is full",
 	TotalCost = "Cost",
+	PurchaseJerryCan = "Press ~g~E ~w~to grab a jerry can",
+	RefillJerryCan = "Press ~g~E ~w~ to refill the jerry can",
 }
 
 Config.PumpModels = {
@@ -55,24 +60,24 @@ Config.RemoveHUDForBlacklistedVehicle = true
 -- Class multipliers. If you want SUVs to use less fuel, you can change it to anything under 1.0, and vise versa.
 Config.Classes = {
 	[0] = 1.0, -- Compacts
-	[1] = 1.0, -- Sedans
-	[2] = 1.0, -- SUVs
-	[3] = 1.0, -- Coupes
-	[4] = 1.0, -- Muscle
-	[5] = 1.0, -- Sports Classics
-	[6] = 1.0, -- Sports
-	[7] = 1.0, -- Super
+	[1] = 2.5, -- Sedans
+	[2] = 3.0, -- SUVs
+	[3] = 2.5, -- Coupes
+	[4] = 2.5, -- Muscle
+	[5] = 2.7, -- Sports Classics
+	[6] = 2.5, -- Sports
+	[7] = 3.0, -- Super
 	[8] = 1.0, -- Motorcycles
-	[9] = 1.0, -- Off-road
+	[9] = 3.5, -- Off-road
 	[10] = 1.0, -- Industrial
 	[11] = 1.0, -- Utility
-	[12] = 1.0, -- Vans
+	[12] = 3.5, -- Vans
 	[13] = 0.0, -- Cycles
-	[14] = 1.0, -- Boats
-	[15] = 1.0, -- Helicopters
-	[16] = 1.0, -- Planes
-	[17] = 1.0, -- Service
-	[18] = 1.0, -- Emergency
+	[14] = 4.5, -- Boats
+	[15] = 5.0, -- Helicopters
+	[16] = 6.5, -- Planes
+	[17] = 3.0, -- Service
+	[18] = 3.0, -- Emergency
 	[19] = 1.0, -- Military
 	[20] = 1.0, -- Commercial
 	[21] = 1.0, -- Trains
@@ -121,6 +126,5 @@ Config.GasStations = {
 	vector3(176.631, -1562.025, 29.263),
 	vector3(176.631, -1562.025, 29.263),
 	vector3(-319.292, -1471.715, 30.549),
-	vector3(-66.48, -2532.57, 6.14),
 	vector3(1784.324, 3330.55, 41.253)
 }

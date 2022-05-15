@@ -125,8 +125,8 @@ end)
 RegisterNetEvent('qb-bobcatseconddoor')
 AddEventHandler('qb-bobcatseconddoor', function()
 	thermiteanime2()
+    TriggerEvent("qb-createped")
     TriggerServerEvent('qb-doorlock:server:updateState', "bobcat-2", false, false, false, true, false, false)
-       
 end)
 
 
@@ -139,7 +139,7 @@ AddEventHandler('qb-bobcatthirddoor', function()
         exports['varhack']:OpenHackingGame(function(success)
             if success then
                 TriggerServerEvent('qb-doorlock:server:updateState', "bobcat-3", false, false, false, true, false, false)
-                TriggerEvent("qb-createped")
+                --TriggerEvent("qb-createped")
                 QBCore.Functions.Notify("kill the gaurds in order to get the loot", 'error')
                 TriggerEvent("qb-createped")
             else

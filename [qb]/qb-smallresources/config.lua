@@ -38,6 +38,8 @@ ConsumeablesEat = {
     ["burger-heartstopper"] = math.random(35, 54),
     ["burger-meatfree"] = math.random(35, 54),
     ["burger-fries"] = math.random(35, 54),
+
+    ["cheese-pizza"] = math.random(35, 50),
 }
 
 ConsumeablesDrink = {
@@ -51,6 +53,8 @@ ConsumeablesDrink = {
 
     ["burger-softdrink"] = math.random(40, 50),
     ["burger-mshake"] = math.random(40, 50),
+
+    ["sodacup"] = math.random(20, 40),
 }
 
 ConsumeablesAlcohol = {
@@ -93,7 +97,7 @@ Config.BlacklistedVehs = {
     [`MAVERICK`] = true,
     [`BLIMP`] = true,
     [`AIRTUG`] = true,
-    [`CAMPER`] = true,
+    [`CAMPER`] = false,
     [`HYDRA`] = true,
     [`OPPRESSOR`] = true,
     [`technical3`] = true,

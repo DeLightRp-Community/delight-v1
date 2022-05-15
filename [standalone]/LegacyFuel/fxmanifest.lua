@@ -5,7 +5,9 @@ author 'InZidiuZ'
 description 'Legacy Fuel'
 version '1.3'
 
-shared_script 'config.lua'
+shared_scripts { 
+	'config.lua'
+}
 
 client_scripts {
 	'functions/functions_client.lua',

@@ -588,7 +588,7 @@ function SetupTargets()
                       
                     }
                   },
-                  distance = 2.5,
+                  distance = 6.5,
                 },
               })
         elseif v.shopType == 'tattoo' then

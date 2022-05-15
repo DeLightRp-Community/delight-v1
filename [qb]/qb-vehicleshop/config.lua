@@ -9,7 +9,7 @@ Config.MinimumDown = 10 -- minimum percentage allowed down
 Config.MaximumPayments = 24 -- maximum payments allowed
 Config.Shops = {
     ['pdm'] = {
-        ['Type'] = 'free-use',  -- no player interaction is required to purchase a car
+        ['Type'] = 'managed',  -- no player interaction is required to purchase a car
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the shop
                 vector2(-56.727394104004, -1086.2325439453),
@@ -185,7 +185,7 @@ Config.Shops = {
             },
         },
     },
-    ['air'] = {
+    ['air'] = { 
         ['Type'] = 'free-use',  -- no player interaction is required to purchase a vehicle
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the shop
@@ -235,16 +235,17 @@ Config.Shops = {
         },
     },
     ['motorsell'] = {
-        ['Type'] = 'free-use',  -- no player interaction is required to purchase a car
+        ['Type'] = 'managed',  -- no player interaction is required to purchase a car
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the shop
-                vector2(305.3408203125, -1167.8504638672),
-                vector2(305.66094970704, -1143.8857421875),
-                vector2(262.1567993164, -1143.4772949218),
-                vector2(262.36260986328, -1178.2646484375)
+                vector2(319.21337890625, -1167.9049072266),
+                vector2(319.21337890625, -1167.9049072266),
+                vector2(319.39953613282, -1141.4072265625),
+                vector2(261.4464416504, -1141.5701904296),
+                vector2(262.53045654296, -1178.1197509766)
             },
-            ['minZ'] = 29.291984558106,  -- min height of the shop zone
-            ['maxZ'] = 29.606052398682,  -- max height of the shop zone
+            ['minZ'] = 29.0,  -- min height of the shop zone
+            ['maxZ'] = 27.0,  -- max height of the shop zone
             ['size'] = 2.75, -- size of the vehicles zones
         },
         ['Job'] = 'sandersmotor', -- Name of job or none
@@ -294,6 +295,72 @@ Config.Shops = {
                 coords = vector4(303.52, -1157.08, 29.47, 201.78),
                 defaultVehicle = 'esskey',
                 chosenVehicle = 'esskey',
+            },
+        },
+    },
+    ['policecars'] = {
+        ['Type'] = 'free-use',  -- no player interaction is required to purchase a car
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the shop
+                vector2(459.87796020508, -1021.2864379882),
+                vector2(466.1242980957, -1021.3388061524),
+                vector2(466.13272094726, -1012.9619140625),
+                vector2(459.75994873046, -1012.9376220704)
+            },
+            ['minZ'] = 28.0,  -- min height of the shop zone
+            ['maxZ'] = 28.0,  -- max height of the shop zone
+            ['size'] = 2.7, -- size of the vehicles zones
+        },
+        ['Job'] = 'police', -- Name of job or none
+        ['ShopLabel'] = 'police car', -- Blip name
+        ['showBlip'] = false,  -- true or false
+        ['blipSprite'] = 226,  -- Blip sprite
+        ['blipColor'] = 4,  -- Blip color
+        ['Categories'] = { -- Categories available to browse
+            ['policecar'] = 'Police Car'
+        },
+        ['TestDriveTimeLimit'] = 0, -- Time in minutes until the vehicle gets deleted
+        ['Location'] = vector3(425.8, -994.32, 25.7), -- Blip Location
+        ['ReturnLocation'] = vector3(425.8, -994.32, 25.7), -- Location to return vehicle, only enables if the vehicleshop has a job owned
+        ['VehicleSpawn'] = vector4(425.8, -994.32, 25.7, 269.57), -- Spawn location when vehicle is bought
+        ['ShowroomVehicles'] = {
+            [1] = {
+                coords = vector4(463.87, -1019.7, 27.1, 89.35), -- where the vehicle will spawn on display
+                defaultVehicle = 'npolvic', -- Default display vehicle
+                chosenVehicle = 'npolvic', -- Same as default but is dynamically changed when swapping vehicles
+            },
+        },
+    },
+    ['mediccars'] = {
+        ['Type'] = 'free-use',  -- no player interaction is required to purchase a car
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the shop
+                vector2(316.29791259766, -566.08618164062),
+                vector2(323.64569091796, -568.84851074218),
+                vector2(322.10223388672, -572.91516113282),
+                vector2(314.87008666992, -570.22259521484)
+            },
+            ['minZ'] = 28.0,  -- min height of the shop zone
+            ['maxZ'] = 28.0,  -- max height of the shop zone
+            ['size'] = 2.7, -- size of the vehicles zones
+        },
+        ['Job'] = 'ambulance', -- Name of job or none
+        ['ShopLabel'] = 'Medic car', -- Blip name
+        ['showBlip'] = false,  -- true or false
+        ['blipSprite'] = 226,  -- Blip sprite
+        ['blipColor'] = 4,  -- Blip color
+        ['Categories'] = { -- Categories available to browse
+            ['mediccar'] = 'Medic Car'
+        },
+        ['TestDriveTimeLimit'] = 0, -- Time in minutes until the vehicle gets deleted
+        ['Location'] = vector3(321.43, -565.36, 28.8), -- Blip Location
+        ['ReturnLocation'] = vector3(321.43, -565.36, 28.8), -- Location to return vehicle, only enables if the vehicleshop has a job owned
+        ['VehicleSpawn'] = vector4(321.43, -565.36, 28.8, 249.07), -- Spawn location when vehicle is bought
+        ['ShowroomVehicles'] = {
+            [1] = {
+                coords = vector4(320.2, -569.84, 27.8, 250.0), -- where the vehicle will spawn on display
+                defaultVehicle = 'emsnspeedo', -- Default display vehicle
+                chosenVehicle = 'emsnspeedo', -- Same as default but is dynamically changed when swapping vehicles
             },
         },
     },

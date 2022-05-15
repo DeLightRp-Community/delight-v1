@@ -328,6 +328,86 @@ local function IsInDamageList(damage)
     return retval
 end
 
+local isCheckinEnable=false
+CreateThread(function()
+    local model = `s_m_m_doctor_01`
+    for k, v in pairs(Config.Locations["checking"]) do
+        exports['qb-target']:SpawnPed({
+            model = model, 
+            coords = v, 
+            minusOne = true,
+            freeze = true, 
+            invincible = true,
+            blockevents = true,
+            animDict = 'abigail_mcs_1_concat-0',
+            anim = 'csb_abigail_dual-0',
+            flag = 1, 
+            scenario = 'world_human_clipboard', 
+            target = {
+              useModel = false,
+              options = {
+                {
+                  icon = 'fa-solid fa-clipboard',
+                  label = 'Check-in',
+                  action = function(entity)
+                    if IsPedAPlayer(entity) then return false end
+                    TriggerEvent('qb-ambulancejob:checkin')
+                  end,
+                },
+                {
+                    icon = 'fa-solid fa-prescription-bottle-medical',
+                    label = 'Pharmecy',
+                    type = "client", 
+                    event = "hospital:client:openAmbulanceShop",
+                },
+                {
+                    icon = 'fa-solid fa-check',
+                    label = 'Eneble Check In',
+                    type = "server", 
+                    event = "hospital:server:enableCheckin",
+                    canInteract = function(entity)
+                        if IsPedAPlayer(entity) then return false end 
+                        if isCheckinEnable then
+                            return false
+                        else
+                            return true
+                        end
+                    end,
+                    job = "ambulance"
+                },
+                {
+                    icon = 'fa-solid fa-xmark',
+                    label = 'Disable Check In',
+                    type = "server", 
+                    event = "hospital:server:disableCheckin",
+                    canInteract = function(entity)
+                        if IsPedAPlayer(entity) then return false end 
+                        if isCheckinEnable then
+                            return true
+                        else
+                            return false
+                        end
+                    end,
+                    job = "ambulance"
+                },
+                
+              },
+              distance = 4.5,
+            },
+          })
+    end
+  end)
+
+  RegisterNetEvent('hospital:client:openAmbulanceShop', function()
+    print(json.encode(Config.Items.shopItem))
+    local data = {
+        ["label"] = "Hospital Pharmecy",
+        ["products"] =  Config.Items.shopItem,
+        ['name'] = "pharmecy"
+    }
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", "Hospital_pharmecy",Config.ItemsPharmecy)
+  end)
+
 local function CheckWeaponDamage(ped)
     local detected = false
     for k, v in pairs(QBCore.Shared.Weapons) do
@@ -681,6 +761,12 @@ end)
 
 RegisterNetEvent('hospital:client:SetDoctorCount', function(amount)
     doctorCount = amount
+    print(amount <= Config.MinimalDoctors)
+    if amount <= Config.MinimalDoctors then
+        isCheckinEnable = true
+    else
+        isCheckinEnable = false
+    end
 end)
 
 RegisterNetEvent('hospital:client:adminHeal', function()
@@ -840,7 +926,14 @@ local listen = false
             Wait(1)
         end
     end)
-end 
+end
+
+CreateThread(function()
+    while true do
+        Wait(1000)
+        
+    end
+end)
 
 RegisterNetEvent('qb-ambulancejob:checkin', function()
     if doctorCount >= Config.MinimalDoctors then
@@ -878,25 +971,25 @@ end)
 -- Convar Turns into strings
 if Config.UseTarget == 'true' then
     CreateThread(function()
-        for k, v in pairs(Config.Locations["checking"]) do
-            exports['qb-target']:AddBoxZone("checking"..k, vector3(v.x, v.y, v.z), 3.5, 2, {
-                name = "checkin"..k,
-                heading = -72,
-                debugPoly = false,
-                minZ = v.z - 2,
-                maxZ = v.z + 2,
-            }, {
-                options = {
-                    {
-                        type = "client",
-                        icon = "fa fa-clipboard",
-                        event = "qb-ambulancejob:checkin",
-                        label = "Check In",
-                    }
-                },
-                distance = 1.5
-            })
-        end
+        -- for k, v in pairs(Config.Locations["checking"]) do
+        --     exports['qb-target']:AddBoxZone("checking"..k, vector3(v.x, v.y, v.z), 3.5, 2, {
+        --         name = "checkin"..k,
+        --         heading = -72,
+        --         debugPoly = false,
+        --         minZ = v.z - 2,
+        --         maxZ = v.z + 2,
+        --     }, {
+        --         options = {
+        --             {
+        --                 type = "client",
+        --                 icon = "fa fa-clipboard",
+        --                 event = "qb-ambulancejob:checkin",
+        --                 label = "Check In",
+        --             }
+        --         },
+        --         distance = 1.5
+        --     })
+        -- end
 
         for k, v in pairs(Config.Locations["beds"]) do
             exports['qb-target']:AddBoxZone("beds"..k,  v.coords, 2.5, 2.3, {
@@ -921,32 +1014,32 @@ if Config.UseTarget == 'true' then
 else
     CreateThread(function()
         local checkingPoly = {}
-        for k, v in pairs(Config.Locations["checking"]) do
-            checkingPoly[#checkingPoly+1] = BoxZone:Create(vector3(v.x, v.y, v.z), 3.5, 2, {
-                heading = -72,
-                name="checkin"..k,
-                debugPoly = false,
-                minZ = v.z - 2,
-                maxZ = v.z + 2,
-            })
-            local checkingCombo = ComboZone:Create(checkingPoly, {name = "checkingCombo", debugPoly = false})
-            checkingCombo:onPlayerInOut(function(isPointInside)
-                if isPointInside then
-                    inCheckin = true
-                    if doctorCount >= Config.MinimalDoctors then
-                        exports['qb-core']:DrawText(Lang:t('text.call_doc'),'left')
-                        CheckInControls("checkin")
-                    else
-                        exports['qb-core']:DrawText(Lang:t('text.check_in'), 'left')
-                        CheckInControls("checkin")
-                    end
-                else
-                    inCheckin = false
-                    listen = false
-                    exports['qb-core']:HideText("ambulance")
-                end
-            end)
-        end
+        -- for k, v in pairs(Config.Locations["checking"]) do
+        --     checkingPoly[#checkingPoly+1] = BoxZone:Create(vector3(v.x, v.y, v.z), 3.5, 2, {
+        --         heading = -72,
+        --         name="checkin"..k,
+        --         debugPoly = false,
+        --         minZ = v.z - 2,
+        --         maxZ = v.z + 2,
+        --     })
+        --     local checkingCombo = ComboZone:Create(checkingPoly, {name = "checkingCombo", debugPoly = false})
+        --     checkingCombo:onPlayerInOut(function(isPointInside)
+        --         if isPointInside then
+        --             inCheckin = true
+        --             if doctorCount >= Config.MinimalDoctors then
+        --                 exports['qb-core']:DrawText(Lang:t('text.call_doc'),'left')
+        --                 CheckInControls("checkin")
+        --             else
+        --                 exports['qb-core']:DrawText(Lang:t('text.check_in'), 'left')
+        --                 CheckInControls("checkin")
+        --             end
+        --         else
+        --             inCheckin = false
+        --             listen = false
+        --             exports['qb-core']:HideText("ambulance")
+        --         end
+        --     end)
+        -- end
         local bedPoly = {}
         for k, v in pairs(Config.Locations["beds"]) do
             bedPoly[#bedPoly+1] = BoxZone:Create(v.coords, 2.5, 2.3, {

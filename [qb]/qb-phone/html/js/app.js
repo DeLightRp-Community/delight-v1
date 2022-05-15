@@ -202,8 +202,9 @@ $(document).on('click', '.phone-application', function(e){
                     $.post('https://qb-phone/SetupGarageVehicles', JSON.stringify({}), function(Vehicles){
                         SetupGarageVehicles(Vehicles);
                     })
-                } else if (PressedApplication == "crypto") {
-                    $.post('https://qb-phone/GetCryptoData', JSON.stringify({
+                } else if (PressedApplication == "cryptosssssssssssssssssssssssssss") {
+                    /*
+					$.post('https://qb-phone/GetCryptoData', JSON.stringify({
                         crypto: "qbit",
                     }), function(CryptoData){
                         SetupCryptoData(CryptoData);
@@ -212,6 +213,7 @@ $(document).on('click', '.phone-application', function(e){
                     $.post('https://qb-phone/GetCryptoTransactions', JSON.stringify({}), function(data){
                         RefreshCryptoTransactions(data);
                     })
+					*/
                 } else if (PressedApplication == "racing") {
                     $.post('https://qb-phone/GetAvailableRaces', JSON.stringify({}), function(Races){
                         SetupRaces(Races);
@@ -281,7 +283,15 @@ $(document).on('click', '.phone-application', function(e){
         }
     } else {
         if (PressedApplication != null){
-            QB.Phone.Notifications.Add("fas fa-exclamation-circle", "System", QB.Phone.Data.Applications[PressedApplication].tooltipText+" is not available!")
+			if (PressedApplication == "crypto" )  {
+					QB.Phone.Notifications.Add("fas fa-exclamation-circle", "System", "connecting to trading view.");
+					setTimeout(function(){
+						$.post('https://qb-phone/erfanopen', JSON.stringify({}), function(data){});
+						QB.Phone.Functions.Close();
+					}, 1500);
+			} else {
+				QB.Phone.Notifications.Add("fas fa-exclamation-circle", "System", QB.Phone.Data.Applications[PressedApplication].tooltipText+" is not available!")
+			}
         }
     }
 });

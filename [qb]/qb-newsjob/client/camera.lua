@@ -186,7 +186,7 @@ CreateThread(function()
 		local vehicle = GetVehiclePedIsIn(lPed)
 		if PlayerJob.name == "reporter" then
 			if holdingCam then
-				if IsControlJustReleased(1, 244) then
+				if IsControlJustReleased(0, 47) then
 					movcamera = true
 					SetTimecycleModifier("default")
 					SetTimecycleModifierStrength(0.3)

@@ -506,6 +506,7 @@ end
 --Crim Client
 Citizen.CreateThread(function()
 Wait(1000)
+if GetHashKey('stockade') then
 local models = {
 	"seat_dside_r",
 	"seat_pside_r",
@@ -519,11 +520,12 @@ exports['qb-target']:AddTargetBone(models, {
 			label = "Plant the C4",
 			canInteract = function(entity, distance, data) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
 				if IsPedAPlayer(entity) then return false end -- This will return false if the entity interacted with is a player and otherwise returns true
-				if BlownUp == 0 then
-					return true
-				else
-					return false
-				end
+				
+					if BlownUp == 0  then
+						return true
+					else
+						return false
+					end
 				
 			end,
 		},
@@ -545,6 +547,7 @@ exports['qb-target']:AddTargetBone(models, {
 	},
 	distance = 4.0
 })
+end
 
 end)
 

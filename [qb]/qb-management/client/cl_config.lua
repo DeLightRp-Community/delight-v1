@@ -28,6 +28,15 @@ Config.BossMenus = {
     ['burgershot'] = {
         vector3(-1177.69, -896.09, 14.88),
     },
+    ['records'] = {
+        vector3(-817.12, -699.44, 32.14),
+    },
+    ['uwu'] = {
+        vector3(-596.14, -1052.56, 22.34),
+    },
+    ['pizza'] = {
+        vector3(797.12, -751.6, 31.27),
+    },
 }
 
 Config.BossMenuZones = {
@@ -54,6 +63,15 @@ Config.BossMenuZones = {
     },
     ['burgershot'] = {
         { coords = vector3(-1177.69, -896.09, 14.88), length = 1.15, width = 2.6, heading = 353.0, minZ = 13.88, maxZ = 15.50 },
+    },
+    ['records'] = {
+        { coords = vector3(-817.12, -699.44, 32.14), length = 1, width = 1, heading = 0, minZ = 28.74, maxZ = 32.74 },
+    },
+    ['uwu'] = {
+        { coords = vector3(-596.14, -1052.56, 22.34), length = 1, width = 1, heading = 0, minZ = 19.14, maxZ = 23.14 },
+    },
+    ['pizza'] = {
+        { coords = vector3(797.12, -751.6, 31.27), length = 1, width = 1, heading = 0, minZ = 27.87, maxZ = 31.87 },
     },
 }
 

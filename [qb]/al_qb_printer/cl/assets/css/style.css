@@ -1,0 +1,167 @@
+:root {
+  --primary: #121212;
+  --secondary: #1E1E1E;
+  --lighterGray: #616161;
+  --primaryBlue: #03A9F4;
+  --primaryRed: #FF0266;
+  --text: #D4D4D4;
+  --print-preview-width: 250px;
+  --paper-width: 500px;
+}
+
+/* body {
+    background-image: url("https://img.gta5-mods.com/q95/images/fivereborn/9518dd-unknown2%20(1).png");
+} */
+#root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#root #paper {
+  position: relative;
+  width: var(--paper-width);
+  background-color: #fff;
+}
+
+#root #paper .imported-obj img {
+  width: 100%;
+  height: 100%;
+}
+
+#root #paper .imported-obj img.bnw {
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+#root #printer-interface {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding: 15px;
+  background-color: var(--primary);
+  border-radius: 5px;
+}
+
+#root #printer-interface #print-preview {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#root #printer-interface #print-preview #pp-paper {
+  width: var(--print-preview-width);
+  background-color: gainsboro;
+  margin-bottom: 25px;
+}
+
+#root #printer-interface #print-preview #pp-paper .imported-obj {
+  max-width: 100%;
+  max-height: 100%;
+  width: 50px;
+}
+
+#root #printer-interface #print-preview #pp-paper .imported-obj img {
+  width: 100%;
+  height: 100%;
+}
+
+#root #print-settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-left: 30px;
+  background-color: var(--secondary);
+  width: 200px;
+  position: relative;
+  border-radius: 5px;
+}
+
+#root #print-settings .settings-wrapper {
+  position: relative;
+  width: 80%;
+  height: 93%;
+}
+
+#root #print-settings .settings-wrapper div {
+  margin-bottom: 39px;
+}
+
+#root #print-settings .settings-wrapper .caret {
+  fill: #fff !important;
+}
+
+#root #print-settings .settings-wrapper .dropdown-content li > a, #root #print-settings .settings-wrapper .dropdown-content li > span {
+  color: var(--primaryBlue) !important;
+}
+
+#root #print-settings .settings-wrapper li {
+  background-color: var(--primary) !important;
+}
+
+#root #print-settings .settings-wrapper a {
+  position: absolute;
+  width: 100%;
+  bottom: 50px;
+}
+
+#root #print-settings h1 {
+  position: absolute;
+  text-align: center;
+  width: 90%;
+  bottom: 0px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.input-field label {
+  color: var(--text) !important;
+}
+
+.input-field input {
+  color: var(--text) !important;
+}
+
+.input-field input:focus + label {
+  color: var(--primaryBlue) !important;
+}
+
+.input-field input:focus {
+  border-bottom: 1px solid var(--primaryBlue) !important;
+  -webkit-box-shadow: 0 1px 0 0 var(--primaryBlue) !important;
+          box-shadow: 0 1px 0 0 var(--primaryBlue) !important;
+}
+
+a {
+  background-color: var(--primaryBlue) !important;
+  color: #000 !important;
+  font-weight: 600 !important;
+}
+
+.toast {
+  background-color: var(--primary) !important;
+}
+/*# sourceMappingURL=style.css.map */

@@ -909,6 +909,10 @@ RegisterNUICallback('GetCryptoData', function(data, cb)
     end, data.crypto)
 end)
 
+RegisterNUICallback('erfanopen', function(data, cb)
+    TriggerEvent('LuxuGGExchange:openMenu')
+end)
+
 RegisterNUICallback('BuyCrypto', function(data, cb)
     QBCore.Functions.TriggerCallback('qb-crypto:server:BuyCrypto', function(CryptoData)
         cb(CryptoData)

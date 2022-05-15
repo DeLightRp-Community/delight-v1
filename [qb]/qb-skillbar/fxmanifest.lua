@@ -6,7 +6,10 @@ version '1.0.0'
 
 ui_page "html/index.html"
 
-client_script 'client/main.lua'
+client_scripts {
+    '@mka-lasers/client/client.lua',
+    'client/main.lua',
+}
 
 files {
     'html/index.html',

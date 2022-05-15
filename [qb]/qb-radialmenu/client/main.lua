@@ -131,104 +131,93 @@ local function SetupRadioMenu()
     local RadioMenu = {
         id = 'radio',
         title = 'Radio',
-        icon = 'radio',
+        icon = 'radio-tuner',
         items = {
             {
-                id = 'radio-on',
+                id = 'radioon',
                 title = 'Turn On',
                 icon = 'power-off',
                 type = 'client',
-                event = 'qb-radialmenu:client:openDoor',
-                shouldClose = false
+                event = 'zerio-radio:client:onbabat',
+                shouldClose = true
             }, {
-                id = 'radio-on',
+                id = 'radiooff',
                 title = 'Turn Off',
                 icon = 'power-off',
                 type = 'client',
-                event = 'qb-radialmenu:client:openDoor',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:onRadioDrop',
+                shouldClose = true
+            }, {
                 id = 'joinradio1',
                 title = 'CH 1',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel1',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:JoinRadioChannel1',
+                shouldClose = true
+            }, {
                 id = 'joinradio2',
                 title = 'CH 2',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel2',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:JoinRadioChannel2',
+                shouldClose = true
+            }, {
                 id = 'joinradio3',
                 title = 'CH 3',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel3',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:JoinRadioChannel3',
+                shouldClose = true
+            }, {
                 id = 'joinradio4',
                 title = 'CH 4',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel4',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:JoinRadioChannel4',
+                shouldClose = true
+            }, {
                 id = 'joinradio5',
                 title = 'CH 5',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel5',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:JoinRadioChannel5',
+                shouldClose = true
+            }, {
                 id = 'joinradio6',
                 title = 'CH 6',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel6',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:JoinRadioChannel6',
+                shouldClose = true
+            }, {
                 id = 'joinradio7',
                 title = 'CH 7',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel7',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:JoinRadioChannel7',
+                shouldClose = true
+            }, {
                 id = 'joinradio8',
                 title = 'CH 8',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel8',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:JoinRadioChannel8',
+                shouldClose = true
+            }, {
                 id = 'joinradio9',
                 title = 'CH 9',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel9',
-                shouldClose = false
-            },
-            {
+                event = 'zerio-radio:client:JoinRadioChannel9',
+                shouldClose = true
+            }, {
                 id = 'joinradio10',
                 title = 'CH 10',
                 icon = 'radio',
                 type = 'client',
-                event = 'qb-radio:client:JoinRadioChannel10',
-                shouldClose = false
+                event = 'zerio-radio:client:JoinRadioChannel10',
+                shouldClose = true
             },
-
         }   
     }
 
@@ -236,15 +225,23 @@ local function SetupRadioMenu()
     local jobName = player.job.name
     -- print(json.encode(player.job))
     if (jobName == "police" or jobName == "ambulance") and player.job.onduty then
-        if #RadioMenu.items == 0 then
-            if radioIndex then
-                RemoveOption(radioIndex)
-                vehicleIndex = nil
-            end
-        else
-            radioIndex = AddOption(RadioMenu, radioIndex)
-        end
-
+        QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+            if HasItem then
+                if #RadioMenu.items == 0 then
+                    if radioIndex then
+                        RemoveOption(radioIndex)
+                        vehicleIndex = nil
+                    end
+                else
+                    radioIndex = AddOption(RadioMenu, radioIndex)
+                end
+            else
+                if radioIndex then
+                    RemoveOption(radioIndex)
+                    vehicleIndex = nil
+                end
+            end    
+        end, "radio")
     else
         if radioIndex then
             RemoveOption(radioIndex)
@@ -362,37 +359,34 @@ RegisterNetEvent('qb-radialmenu:client:noPlayers', function()
     QBCore.Functions.Notify(Lang:t("error.no_people_nearby"), 'error', 2500)
 end)
 
-RegisterNetEvent('qb-radialmenu:client:openDoor', function(data)
-    local string = data.id
-    local replace = string:gsub("door", "")
-    local door = tonumber(replace)
-    local ped = PlayerPedId()
-    local closestVehicle = GetVehiclePedIsIn(ped) ~= 0 and GetVehiclePedIsIn(ped) or getNearestVeh()
-    if closestVehicle ~= 0 then
-        if closestVehicle ~= GetVehiclePedIsIn(ped) then
-            local plate = QBCore.Functions.GetPlate(closestVehicle)
-            if GetVehicleDoorAngleRatio(closestVehicle, door) > 0.0 then
-                if not IsVehicleSeatFree(closestVehicle, -1) then
-                    TriggerServerEvent('qb-radialmenu:trunk:server:Door', false, plate, door)
-                else
-                    SetVehicleDoorShut(closestVehicle, door, false)
-                end
-            else
-                if not IsVehicleSeatFree(closestVehicle, -1) then
-                    TriggerServerEvent('qb-radialmenu:trunk:server:Door', true, plate, door)
-                else
-                    SetVehicleDoorOpen(closestVehicle, door, false, false)
-                end
-            end
-        else
-            if GetVehicleDoorAngleRatio(closestVehicle, door) > 0.0 then
-                SetVehicleDoorShut(closestVehicle, door, false)
-            else
-                SetVehicleDoorOpen(closestVehicle, door, false, false)
+local function GetClosestPlayer()
+    local closestPlayers = QBCore.Functions.GetPlayersFromCoords()
+    local closestDistance = -1
+    local closestPlayer = -1
+    local coords = GetEntityCoords(PlayerPedId())
+    for i=1, #closestPlayers, 1 do
+        if closestPlayers[i] ~= PlayerId() then
+            local pos = GetEntityCoords(GetPlayerPed(closestPlayers[i]))
+            local distance = #(pos - coords)
+
+            if closestDistance == -1 or closestDistance > distance then
+                closestPlayer = closestPlayers[i]
+                closestDistance = distance
             end
         end
+	end
+	return closestPlayer, closestDistance
+end
+
+RegisterNetEvent('qb-radialmenu:client:giveCarKey', function()
+    local player, distance = GetClosestPlayer()
+    if player ~= -1 and distance < 1.5 then
+        local PlayerId = GetPlayerServerId(player)
+        local plate = QBCore.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), true))
+        TriggerServerEvent('vehiclekeys:server:GiveVehicleKeys', plate, PlayerId)
+        -- QBCore.Functions.Notify("You Give Vehicle Key to Player", "error")
     else
-        QBCore.Functions.Notify(Lang:t("error.no_vehicle_found"), 'error', 2500)
+        QBCore.Functions.Notify("Get close to the car", "error")
     end
 end)
 

@@ -7,7 +7,9 @@ Config.RosterLink = {
     ['doj'] = '',
 }
 
-Config.Fuel = "lj-fuel" -- "LegacyFuel", "lj-fuel"
+Config.OnlyShowOnDuty = true
+
+Config.Fuel = "LegacyFuel" -- "LegacyFuel", "lj-fuel"
 
 Config.PenalCodeTitles = {
     [1] = 'OFFENSES AGAINST PERSONS',

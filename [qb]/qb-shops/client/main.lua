@@ -97,6 +97,12 @@ local function openShop(shop, data)
     end)
 end
 
+function openExternalShop(data)
+    openShop(data.name,data)
+end
+
+exports('openExternalShop', openExternalShop)
+
 local listen = false
 local function Listen4Control()
     CreateThread(function()

@@ -92,6 +92,7 @@ Config.DurabilityMultiplier = {
 	['weapon_bullpuprifle_mk2'] 	= 0.15,
 	['weapon_militaryrifle'] 		= 0.15,
     ['weapon_heavyrifle']           = 0.15,
+    ['weapon_mm4']                  = 0.15,
 
 	-- Light Machine Guns
 	['weapon_mg'] 				    = 0.15, 

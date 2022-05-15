@@ -18,6 +18,23 @@ function ConvertQuality(item)
     return percentDone
 end
 
+RegisterNetEvent('inventory:server:removeQuality', function(source, item)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    local data = item
+    print(QBCore.Shared.Items[item.name:lower()]["created_at"]) 
+    if QBCore.Shared.Items[item.name:lower()]["created"] ~= nil and QBCore.Shared.Items[item.name:lower()]["created"] == "use" then
+        local quality_use = 100
+        if Player.PlayerData.items[data.slot].info.quality ==nil then
+            Player.PlayerData.items[data.slot].info.quality= 100 - (100/QBCore.Shared.Items[item.name:lower()]["decay"])
+        else
+            quality_use= Player.PlayerData.items[data.slot].info.quality - (100/QBCore.Shared.Items[item.name:lower()]["decay"])            
+        end
+        Player.PlayerData.items[data.slot].info.quality = quality_use
+        Player.Functions.SetInventory(Player.PlayerData.items)
+    end
+end)
+
 QBCore.Functions.CreateCallback('inventory:server:ConvertQuality', function(source, cb, inventory, other)
     local src = source
     local data = {}
@@ -26,7 +43,7 @@ QBCore.Functions.CreateCallback('inventory:server:ConvertQuality', function(sour
         if item.created then
             if QBCore.Shared.Items[item.name:lower()]["decay"] ~= nil or QBCore.Shared.Items[item.name:lower()]["decay"] ~= 0 then
                 if item.info then
-		    if type(item.info) == "string" then
+		            if type(item.info) == "string" then
                         item.info = {}
                     end
                     if item.info.quality == nil then

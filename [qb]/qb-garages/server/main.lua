@@ -165,6 +165,10 @@ RegisterNetEvent('qb-garage:server:updateVehicleState', function(state, plate, g
     MySQL.Async.execute('UPDATE player_vehicles SET state = ?, garage = ?, depotprice = ? WHERE plate = ?',{state, garage, 0, plate})
 end)
 
+RegisterNetEvent('qb-garage:server:updateVehicleNos', function(nos, plate)
+    MySQL.Async.execute('UPDATE player_vehicles SET nitrous = ? WHERE plate = ?', {nos, plate})
+end)
+
 RegisterNetEvent('qb-garages:server:UpdateOutsideVehicles', function(Vehicles)
     local src = source
     local ply = QBCore.Functions.GetPlayer(src)

@@ -23,7 +23,8 @@ files {
 
 dependencies {
     'qb-core',
-    'qb-spawn'
+    -- 'qb-spawn'
+    'jerzys_spawn'
 }
 
 lua54 'yes'

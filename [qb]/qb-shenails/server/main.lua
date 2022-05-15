@@ -43,8 +43,16 @@ QBCore.Functions.CreateUseableItem("blacknails", function(source, item) -- chang
             if result[1] ~= nil then
                 skin = json.decode(result[1].skin)
             end
-            skin["accessory"].item = 121 -- change this
-            skin["accessory"].texture = 0 -- change this
+            if skin['accessory']~= nil then
+                skin["accessory"].item = 121 -- change this
+                skin["accessory"].texture = 0 -- change this
+            else
+                local accessory = {
+                    item = 121,
+                    texture = 0
+                }
+                skin['accessory']=accessory
+            end
             SetPedComponentVariation(ped, 7, skin["accessory"].item, skin["accessory"].texture, 2)
             TaskPlayAnim(ped, "nmt_3_rcm-10", "cs_nigel_dual-10", 8.00, -8.00, 1200, 51, 0.00, 0, 0, 0)
             skin = json.encode(skin)

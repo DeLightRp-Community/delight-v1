@@ -1,0 +1,30 @@
+I. YCD file insert to stream folder
+
+cannot be used on all sweatshirts!
+
+
+
+
+
+-----------------------------------------
+For used in your script:
+local dictName = 'bzzz@animations@hands'
+local animName = 'bz_hands'
+
+
+
+
+
+-----------------------------------------
+How add to dpemotes?
+1) Copy and paste to dpemotes/Client/AnimationList.lua >>> DP.Emotes
+
+["pockets"] = {"bzzz@animations@hands", "bz_hands", "Hands in pockets", AnimationOptions =
+   {
+    EmoteMoving = false, -- or true if you want to walk
+    EmoteLoop = true,
+   }},
+  
+2) Restart script or server  
+   
+command: /e pockets

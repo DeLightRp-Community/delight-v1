@@ -6,12 +6,12 @@ RegisterNetEvent('prison:server:SetJailStatus', function(jailTime)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     Player.Functions.SetMetaData("injail", jailTime)
-    if jailTime > 0 then
-        if Player.PlayerData.job.name ~= "unemployed" then
-            Player.Functions.SetJob("unemployed")
-            TriggerClientEvent('QBCore:Notify', src, Lang:t("info.lost_job"))
-        end
-    end
+    --if jailTime > 0 then
+        --if Player.PlayerData.job.name ~= "unemployed" then
+        --    Player.Functions.SetJob("unemployed")
+        --    TriggerClientEvent('QBCore:Notify', src, Lang:t("info.lost_job"))
+        --end
+    --end
 end)
 
 RegisterNetEvent('prison:server:SaveJailItems', function()

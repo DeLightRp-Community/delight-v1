@@ -20,7 +20,7 @@ Config = {
 -- You can change the header image for the f3 menu here
 -- Use a 512 x 128 image!
 -- NOte this might cause an issue of the image getting stuck on peoples screens
-	CustomMenuEnabled = false,
+	CustomMenuEnabled = true,
 	MenuImage = "https://cdn.discordapp.com/attachments/910613937555406868/972557865229385808/emotemenu.png?size=4096",
 -- You can change the menu position here
 	MenuPosition = "right", -- (left, right)
@@ -49,7 +49,7 @@ Config.KeybindKeys = {
 
 Config.Languages = {
   ['en'] = {
-        ['emotes'] = '',
+        ['emotes'] = 'Emotes',
         ['danceemotes'] = "🕺 Dance Emotes",
         ['propemotes'] = "📦 Prop Emotes",
         ['favoriteemotes'] = "🌟 Favorite",

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerzy's Spawn</title>
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/main.css">
+</head>
+<body class="hide" id="spawnBody">
+    <div class="notification">
+    </div>
+    <section id="jerzys_spawn">
+        <div class="coords">
+          <div class="top">
+          </div>
+          <div class="left">
+          </div>
+        </div>
+        <div id="devMode" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Enable Dev Mode" style="display: none;">
+            <span class="material-icons">
+                code
+            </span>
+        </div>
+        <span data-bs-toggle="modal" data-bs-target="#toggleAdd">
+        <div id="addCord" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Add Cords">
+            <span class="material-icons">
+                add
+            </span>
+        </div>
+        </span>
+        <span id="closeUi">
+        <div id="settings" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Close">
+            <span class="material-icons">
+              highlight_off
+            </span>                
+        </div>
+        </span>
+        <div class="jerzys_spawn_background">
+            <img src="assets/img/map.jpg" alt="">
+        </div>
+        <div class="spawn_box floatY">
+            <div class="spawn_header">
+                Welcome to the DeLight Rp
+            </div>
+            <div class="spawn_body">
+            </div>
+            <div class="spawn_footer">
+            </div>
+        </div>
+        <div class="logo">
+           <!--<img src="./assets/img/logo.png" alt="" class="setLogo">-->
+           <div class="logo_text">
+               <div class="logo_text_top">DeLight</div>
+               <div class="logo_text_bottom">Season 1</div>
+           </div>
+        </div>
+        <section id="chooseApartment" class="floatY"> 
+          <label for="apartment" class="apartment-label">Choose Apartment</label>
+          <select name="apartment" id="apartment">
+          </select>
+        </section>
+        <section id="chooseApartmentAccount" class="floatY"> 
+          <label for="apartmentAccount" class="apartment-label">Choose Apartment</label>
+          <select name="apartmentAccount" id="apartmentAccount">
+          </select>
+          <div class="spawn_aparments">
+            Enter Apartment
+          </div>
+        </section>
+        <section id="enterHouse">
+          <div id="enterHouseLocation">Choose Appartment</div>
+        </section>
+        <section id="lastLocation" class="floatY">
+          <div id="enterLastLocation">Last Location</div>
+        </section>
+    </section>
+    <section id="modal">
+        <div class="modal fade jerzys_modal" id="toggleSettings" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered"">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="locationName" class="modal_title_name">Location Name</h5>
+                  <div class="jerzy-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="material-icons-outlined">close</span>
+                  </div>
+                </div>
+                <div class="modal-body">
+                  <div class="form_group">
+                      <div class="label" class="name_modal">Name</div>
+                      <input type="text" name="cord_name" id="cord_name">
+                  </div>
+                  <div class="form_group">
+                    <div class="label" class="desc_modal">Description</div>
+                    <input type="text" name="cord_name" id="cord_name">
+                </div>
+                  <div class="form_group">
+                    <div class="label" class="vector_modal">Vector3 Cords</div>
+                    <input type="text" name="v3" id="v3" placeholder="x,y,z">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn-jerzy close" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn-jerzy save">Save changes</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade jerzys_modal" id="toggleAdd" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered"">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="addTitle">Add Cord</h5>
+                  <div class="jerzy-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="material-icons-outlined">close</span>
+                  </div>
+                </div>
+                <div class="modal-body">
+                  <div class="form_group">
+                      <div class="label" for="create_cord_name" class="name_modal" id="add_name">Name</div>
+                      <input type="text" name="create_cord_name" id="create_cord_name" placeholder="Enter Location Name">
+                  </div>
+                  <div class="form_group">
+                    <div class="label" for="create_cord_description" class="desc_modal" id="add_desc">Description</div>
+                    <input type="text" name="create_cord_description" id="create_cord_description" placeholder="Enter Location Description">
+                </div>
+                  <div class="form_group">
+                    <div class="label" for="v3_cord" class="vector_modal" id="vector_coords">Vector3 Cords</div>
+                    <div class="form_grid_three">
+                      <input type="number" name="x_cord" id="x_cord" placeholder="X Cord">
+                      <input type="number" name="y_cord" id="y_cord" placeholder="Y Cord">
+                      <input type="number" name="z_cord" id="z_cord" placeholder="Z Cord">
+                    </div>
+                  </div>
+                  <div class="form_group">
+                    <div class="label" class="vector_helper" class="vector_helper" id="vector_name">Vector Insert Helper</div>
+                    <input type="text" name="helper" id="helper" placeholder="Help to insert your Coords">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn-jerzy close" data-bs-dismiss="modal" id="add_close" >Close</button>
+                  <button type="button" class="btn-jerzy createAdd save" data-bs-dismiss="modal"id="add_create">Create Coord</button>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="modal fade jerzys_modal" id="editCord" tabindex="-1" aria-labelledby="editCordTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered"">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="editCordTitle">Location Name</h5>
+                  <div class="jerzy-modal-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="material-icons-outlined">close</span>
+                  </div>
+                </div>
+                <div class="modal-body">
+                  <div class="form_group">
+                      <div class="label" class="name_modal">Name</div>
+                      <input type="text" name="edit_cord_name" id="edit_cord_name">
+                  </div>
+                  <div class="form_group">
+                    <div class="label" class="desc_modal">Description</div>
+                    <input type="text" name="edit_cord_desc" id="edit_cord_desc">
+                </div>
+                  <div class="form_group">
+                    <div class="label" class="vector_modal">Vector3 Cords</div>
+                    <div class="form_grid_three">
+                      <input type="number" name="x_cord" id="x_cord_edit" placeholder="Enter X Cord">
+                      <input type="number" name="y_cord" id="y_cord_edit" placeholder="Enter Y Cord">
+                      <input type="number" name="z_cord" id="z_cord_edit" placeholder="Enter Z Cord">
+                    </div>
+                  </div>
+                  <div class="form_group">
+                    <div class="label" class="vector_helper">Vector Insert Helper</div>
+                    <input type="text" name="helper" id="helper" placeholder="Help to insert your Coords">
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn-jerzy close" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn-jerzy save saveBtn" id="save_id" data-save-id="" data-bs-dismiss="modal">Save changes</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    </section>
+    <section id="enterAnimation">
+      <div class="left"></div>
+      <div class="right"></div>
+      <div class="logo_enter">
+        <div class="logo_text_enter">
+          <div class="logo_text_top_enter">DeLight RP</div>
+          <div class="logo_text_bottom_enter">Season 1</div>
+        </div>
+        <!--<img src="assets/img/logo.png" alt="" class="">-->
+      </div>
+    </section>
+    <input type="hidden" name="https://jerzy.tebex.io/">
+    <script src="./assets/js/bootstrap.bundle.js"></script>
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/gsap.min.js"></script>
+    <script src="./assets/js/ScrollTrigger.js" type="module"></script>
+    <script src="./assets/js/jqueryui.js"></script>
+    <script src="./assets/js/main.js" type="module"></script>
+</body>
+</html>

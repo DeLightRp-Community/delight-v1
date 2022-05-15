@@ -142,9 +142,9 @@ end
 local function GetDutyTargetText()
   local text = nil
   if onDuty then
-    text = '[E] Clock Out'
+    text = 'Clock Out'
   else
-    text = '[E] Clock In'
+    text = 'Clock In'
   end
 
   return text

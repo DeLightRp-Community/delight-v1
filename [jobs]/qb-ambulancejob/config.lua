@@ -2,22 +2,20 @@ Config = {}
 
 Config.UseTarget = GetConvar('UseTarget', false)
 
-Config.MinimalDoctors = 2
+Config.MinimalDoctors = 1
 Config.WipeInventoryOnRespawn = true
 
 Config.Locations = {
     ["checking"] = {
-	    [1] = vector3(308.19, -595.35, 43.29),
-	    [2] = vector3(-254.54, 6331.78, 32.43), -- paleto
+	    [1] = vector4(308.31, -595.38, 43.28, 74.7),
+	    [2] = vector4(-256.67, 6331.46, 32.43, 309.72), -- paleto
     },
     ["duty"] = {
         [1] = vector3(311.91, -593.44, 44.09),
-        [2] = vector3(-254.88, 6324.5, 32.58),
+        [2] = vector3(-267.19, 6320.68, 33.24),
     },
     ["vehicle"] = {
-        [1] = vector4(326.84, -586.98, 28.8, 340.12),
-        [2] = vector4(-234.28, 6329.16, 32.15, 222.5),
-        [3] = vector4(294.74, -607.1, 43.24, 71.69),
+        [1] = vector4(0, 0, 0, 0),
     },
     ["helicopter"] = {
         [1] = vector4(351.58, -587.45, 74.16, 160.5),
@@ -25,29 +23,60 @@ Config.Locations = {
     },
     ["armory"] = {
         [1] = vector3(305.87, -601.59, 43.28),
-        [2] = vector3(-245.13, 6315.71, 32.82),
+        [2] = vector3(-254.91, 6326.51, 32.43),
     },
     ["stash"] = {
         [1] = vector3(307.22, -602.06, 43.63),
+        [2] = vector3(-256.05, 6327.6, 32.43)
     },
     ["beds"] = {
-        [1] = {coords = vector4(353.1, -584.6, 43.11, 152.08), taken = false, model = 1631638868},
-        [2] = {coords = vector4(356.79, -585.86, 43.11, 152.08), taken = false, model = 1631638868},
-        [3] = {coords = vector4(354.12, -593.12, 43.1, 336.32), taken = false, model = 2117668672},
-        [4] = {coords = vector4(350.79, -591.8, 43.1, 336.32), taken = false, model = 2117668672},
-        [5] = {coords = vector4(346.99, -590.48, 43.1, 336.32), taken = false, model = 2117668672},
-        [6] = {coords = vector4(360.32, -587.19, 43.02, 152.08), taken = false, model = -1091386327},
-        [7] = {coords = vector4(349.82, -583.33, 43.02, 152.08), taken = false, model = -1091386327},
-        [8] = {coords = vector4(326.98, -576.17, 43.02, 152.08), taken = false, model = -1091386327},
+        [1] = {coords = vector4(354.39, -600.14, 44.22, 73.76), taken = false, model = 1631638868},
+        [2] = {coords = vector4(359.39, -586.04, 44.2, 71.6), taken = false, model = 1631638868},
+        [3] = {coords = vector4(361.39, -581.18, 44.19, 76.46), taken = false, model = 1631638868},
+        [4] = {coords = vector4(363.78, -589.12, 44.21, 75.72), taken = false, model = 1631638868},
+        [5] = {coords = vector4(364.93, -585.89, 44.21, 72.11), taken = false, model = 1631638868},
+        [6] = {coords = vector4(366.39, -581.62, 44.21, 72.17), taken = false, model = 1631638868},
 	--- paleto
-	    [9] = {coords = vector4(-252.43, 6312.25, 32.34, 313.48), taken = false, model = 2117668672},
-        [10] = {coords = vector4(-247.04, 6317.95, 32.34, 134.64), taken = false, model = 2117668672},
-        [11] = {coords = vector4(-255.98, 6315.67, 32.34, 313.91), taken = false, model = 2117668672},
+	    [9] = {coords = vector4(-252.23, 6323.17, 33.34, 136.79), taken = false, model = 2117668672},
+        [10] = {coords = vector4(-246.74, 6318.14, 33.34, 134.04), taken = false, model = 2117668672},
+        [11] = {coords = vector4(-245.18, 6316.45, 33.34, 135.31), taken = false, model = 2117668672},
     },
     ["stations"] = {
-        [1] = {label = Lang:t('info.pb_hospital'), coords = vector4(304.27, -600.33, 43.28, 272.249)}
+        [1] = {label = Lang:t('info.pb_hospital'), coords = vector4(304.27, -600.33, 43.28, 272.249)},
+        [2] = {label = Lang:t('info.paleto_hospital'), coords = vector4(-251.6, 6327.88, 32.43, 2.32)}
     }
 }
+
+Config.ItemsPharmecy = {
+    label = "Pharmecy",
+        slots = 3,
+        items = {
+            [1] = {
+                name = 'bandage',
+                price = 100,
+                amount = 1,
+                info = {},
+                type = 'item',
+                slot = 1,
+            },
+            [2] = {
+                name = 'firstaid',
+                price = 200,
+                amount = 20,
+                info = {},
+                type = 'item',
+                slot = 2,
+            },
+            [3] = {
+                name = 'walkstick',
+                price = 1000,
+                amount = 20,
+                info = {},
+                type = 'item',
+                slot = 3
+            }
+        }
+    }
 
 Config.AuthorizedVehicles = {
 	-- Grade 0
@@ -83,6 +112,7 @@ Config.AuthorizedVehicles = {
 		["ambulance"] = "Ambulance",
 	}
 }
+
 
 Config.Helicopter = "polmav"
 
@@ -138,7 +168,7 @@ Config.Items = {
             type = "item",
             slot = 6,
         },
-    }
+    },
 }
 
 Config.BillCost = 2000
@@ -608,4 +638,8 @@ Config.VehicleSettings = {
             ["12"] = true,
         }
     }
+}
+
+Config.Objects = {
+    ["tent"] = {model = `prop_gazebo_03`, freeze = true},
 }
