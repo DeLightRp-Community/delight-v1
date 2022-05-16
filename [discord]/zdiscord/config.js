@@ -31,7 +31,7 @@ const DiscordGuildId = "856277326475296788";
 
 // STAFF CHAT
 const EnableStaffChatForwarding = false;
-const DiscordStaffChannelId = "930782371253469294";
+const DiscordStaffChannelId = "946122365778149482";
 const AdditionalStaffChatRoleIds = [
     // "000000000000000",
 ];

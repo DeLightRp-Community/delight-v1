@@ -108,7 +108,6 @@ RegisterNetEvent('qb-resturant:OrderMenu', function(data)
    })
    end)
 
-   Citizen.CreateThread(function()
     exports["qb-target"]:AddBoxZone("yakhchal", vector3(805.68, -761.3, 26.78), 0.8, 1, {
         name = "yakhchal",
         heading = 350.0,
@@ -127,7 +126,7 @@ RegisterNetEvent('qb-resturant:OrderMenu', function(data)
         },
     distance = 2.5
     })
-end)
+
 
 --Oven station--
 
