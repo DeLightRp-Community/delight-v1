@@ -380,6 +380,14 @@ QBCore.Functions.CreateUseableItem("bandage", function(source, item)
 	end
 end)
 
+QBCore.Functions.CreateUseableItem("ifak", function(source, item)
+	local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+	if Player.Functions.GetItemByName(item.name) ~= nil then
+		TriggerClientEvent("hospital:client:UseIfak", src)
+	end
+end)
+
 QBCore.Functions.CreateUseableItem("painkillers", function(source, item)
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)

@@ -268,7 +268,7 @@ Config.Items = {
             authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11}
         },
         [6] = {
-            name = "weapon_carbinerifle",
+            name = "weapon_mm4",
             price = 50000,
             amount = 1,
             info = {
@@ -473,6 +473,16 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 27,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+        },
+
+        [28] = {
+            name = "ifak",
+            price = 0,
+            amount = 1,
+            info = {},
+            type = "item",
+            slot = 28,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
     }

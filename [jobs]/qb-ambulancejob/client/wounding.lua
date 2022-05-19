@@ -92,6 +92,28 @@ RegisterNetEvent('hospital:client:UseBandage', function()
     end)
 end)
 
+RegisterNetEvent('hospital:client:UseIfak', function()
+    local ped = PlayerPedId()
+    QBCore.Functions.Progressbar("use_Ifak", "Using Ifak ...", 4000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+		disableMouse = false,
+		disableCombat = true,
+    }, {
+		animDict = "anim@amb@business@weed@weed_inspecting_high_dry@",
+		anim = "weed_inspecting_high_base_inspector",
+		flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(ped, "anim@amb@business@weed@weed_inspecting_high_dry@", "weed_inspecting_high_base_inspector", 1.0)
+        TriggerServerEvent("QBCore:Server:RemoveItem", "ifak", 1)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["ifak"], "remove")
+        SetEntityHealth(ped, GetEntityHealth(ped) + 50)
+    end, function() -- Cancel
+        StopAnimTask(ped, "anim@amb@business@weed@weed_inspecting_high_dry@", "weed_inspecting_high_base_inspector", 1.0)
+        QBCore.Functions.Notify(Lang:t('error.canceled'), "error")
+    end)
+end)
+
 RegisterNetEvent('hospital:client:UsePainkillers', function()
     local ped = PlayerPedId()
     QBCore.Functions.Progressbar("use_bandage", Lang:t('progress.painkillers'), 3000, false, true, {

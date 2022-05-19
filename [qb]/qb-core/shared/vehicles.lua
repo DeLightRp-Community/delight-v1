@@ -347,6 +347,7 @@ QBShared.Vehicles = {
 		['hash'] = `tribike3`,
 		['shop'] = 'pdm',
 	},
+	
 	--- Motorcycles
 	['akuma'] = {
 		['name'] = 'Akuma',

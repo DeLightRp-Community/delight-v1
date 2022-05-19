@@ -10,7 +10,7 @@ RegisterNetEvent("qb-pawnshop:server:sellPawnItems", function(itemName, itemAmou
 
     if Player.Functions.RemoveItem(itemName, tonumber(itemAmount)) then
         if Config.SocietyMoney then
-            TriggerEvent('qb-bossmenu:server:addAccountMoney','sydpawn', totalPrice)
+            TriggerEvent('qb-bossmenu:server:addAccountMoney','pawnshop', totalPrice)
         else
             Player.Functions.AddMoney("cash", totalPrice)
         end
@@ -40,7 +40,7 @@ RegisterServerEvent("qb-pawnshop:server:Charge", function(citizen, price)
 		if biller.PlayerData.citizenid ~= billed.PlayerData.citizenid then
 			if amount and amount > 0 then
                 billed.Functions.AddMoney('cash', amount, "pawn-payment")
-                TriggerEvent('qb-bossmenu:server:removeAccountMoney','sydpawn', amount)
+                TriggerEvent('qb-bossmenu:server:removeAccountMoney','pawnshop', amount)
                 biller.Functions.AddMoney('bank', commission)
                 TriggerClientEvent('QBCore:Notify', billed.PlayerData.source, '$'..amount..' payment received.', 'success') -- CUSTOMER NOTIFICATION OF PAYMENT
                 TriggerClientEvent('QBCore:Notify', biller.PlayerData.source, '$'..amount..' payment sent, commission received successfully.', 'success') -- EMPLOYEE NOTIFICATION OF PAYMENT

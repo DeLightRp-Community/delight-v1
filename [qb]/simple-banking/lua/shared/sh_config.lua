@@ -5,35 +5,26 @@ SimpleBanking.Config = SimpleBanking.Config or {}
 SimpleBanking.Config["Days_Transaction_History"] = 5 -- How many days should the transaction history go back in the bank?
 
 SimpleBanking.Config["business_ranks"] = { -- what ranks can see the society accounts in the menu, and deposit/withdraw/transfer from them?
-    ['mayor'] = true,
     ['Manager'] = true,
     ['owner'] = true,
-    ['chief'] = true,
-    ['director'] = true,
+    ['CEO'] = true,
+    ['Boss'] = true,
 }
 
 SimpleBanking.Config["business_ranks_overrides"] = {
     ['police'] = {
-        ['boss'] = true,
-    },
-    ['burgershot'] = {
-        ['boss'] = true,
-    },
-    ['vlada'] = {
-        ['boss'] = true,
+        ['Ast. Chief'] = true,
+        ['Chief of Police'] = true
     },
     ['ambulance'] = {
-        ['boss'] = true,
+        ['EMS Chief'] = true,
+        ['Captain'] = true,
+        ['Lieutenant'] = true,
     },
-    ['realestate'] = {
-        ['boss'] = true,
-    },
-    ['cardealer'] = {
-        ['boss'] = true,
-    },
-    ['mechanic'] = {
-        ['boss'] = true,
-    },
+    ['nightclub'] = {
+        ['Galaxy Club Owner'] =true
+    }
+    
 }
 
 SimpleBanking.Config["gang_ranks"] = {

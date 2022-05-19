@@ -418,37 +418,36 @@ AddEventHandler('qb-pedgoboom', function()
     TriggerEvent("qb-propcreate")
 end)
 	
-    exports["qb-target"]:AddCircleZone("capitulate", vector3(870.4505, -2288.83, 32.441), 1.0, {
-        name ="capitulate",
-        useZ = true,
-        --debugPoly=true
-        }, {
-            options = {
-                {
-                    event = "qb-hostagegotoexplosion",
-                    icon = "fas fa-bomb",
-                    label = "Blast the Door!",
-                },
-             },
-             job = {"all"},
-            distance = 2.1
-        })
-        exports["qb-target"]:AddCircleZone("lootweapon", vector3(883.0063, -2283.38, 32.441), 1.0, {
-            name ="lootweapon",
-            useZ = true,
-            --debugPoly=true
-            }, {
-                options = {
-                    {
-                        event = "qb-collect",
-                        icon = "fas fa-box",
-                        label = "Loot Weapon!",
-                    },
-                 },
-                 job = {"all"},
-                distance = 2.1
-            })
-
-            RegisterCommand("pedc",function()
-                TriggerEvent("qb-createped")
-            end) 
+exports["qb-target"]:AddCircleZone("capitulate", vector3(870.4505, -2288.83, 32.441), 1.0, {
+    name ="capitulate",
+    useZ = true,
+    --debugPoly=true
+}, {
+    options = {
+        {
+            event = "qb-hostagegotoexplosion",
+            icon = "fas fa-bomb",
+            label = "Blast the Door!",
+        },
+     },
+     job = {"all"},
+    distance = 2.1
+})
+exports["qb-target"]:AddCircleZone("lootweapon", vector3(883.0063, -2283.38, 32.441), 1.0, {
+name ="lootweapon",
+useZ = true,
+--debugPoly=true
+}, {
+    options = {
+        {
+            event = "qb-collect",
+            icon = "fas fa-box",
+            label = "Loot Weapon!",
+        },
+     },
+     job = {"all"},
+    distance = 2.1
+})
+        RegisterCommand("pedc",function()
+            TriggerEvent("qb-createped")
+        end) 

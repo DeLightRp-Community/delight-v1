@@ -190,7 +190,7 @@ function OpenATM(data, transactions, name)
 {
     if (data && data !== null)
     {
-        let tbl = JSON.parse(data);
+        let tbl = JSON.parse(data); 
         for (var i = 0; i < tbl.length; i++)
         {
             let tTbl = tbl[i];
@@ -314,7 +314,6 @@ Listeners["OpenUI"] = function(data)
 
 Listeners["edit_account"] = function(data)
 {
-
     if (data) {
         let auths = JSON.parse(data.auths);
         $("#who_has_access").html("");

@@ -842,18 +842,18 @@ CreateThread(function()
     end
 end)
 
-CreateThread(function()
-    while true do
-        local Driver, plyVeh = Info()
-        if Driver then
-            if GetVehicleCurrentGear(plyVeh) < 3 and GetVehicleCurrentRpm(plyVeh) == 1.0 and math.ceil(GetEntitySpeed(plyVeh) * 2.236936) > 50 then
-              while GetVehicleCurrentRpm(plyVeh) > 0.6 do
-                  SetVehicleCurrentRpm(plyVeh, 0.3)
-                  Wait(1)
-              end
-              Wait(800)
-            end
-        end
-        Wait(500)
-    end
-end)
+-- CreateThread(function()
+--     while true do
+--         local Driver, plyVeh = Info()
+--         if Driver then
+--             if GetVehicleCurrentGear(plyVeh) < 3 and GetVehicleCurrentRpm(plyVeh) == 1.0 and math.ceil(GetEntitySpeed(plyVeh) * 2.236936) > 50 then
+--               while GetVehicleCurrentRpm(plyVeh) > 0.6 do
+--                   SetVehicleCurrentRpm(plyVeh, 0.3)
+--                   Wait(1)
+--               end
+--               Wait(800)
+--             end
+--         end
+--         Wait(500)
+--     end
+-- end)

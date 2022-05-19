@@ -32,12 +32,12 @@ AddEventHandler('qb-banking:server:Withdraw', function(account, amount, note, fS
     if(account == "business") then
         local job = Player.PlayerData.job
 
-        if not SimpleBanking.Config["business_ranks"][string.lower(job.grade.name)] and not SimpleBanking.Config["business_ranks_overrides"][string.lower(job.name)] then
+        if not SimpleBanking.Config["business_ranks"][job.grade.name] and not SimpleBanking.Config["business_ranks_overrides"][string.lower(job.name)] then
             return
         end
 
-        local low = string.lower(job.name)
-        local grade = string.lower(job.grade.name)
+        local low = job.name
+        local grade = job.grade.name
 
         if (SimpleBanking.Config["business_ranks_overrides"][low] and not SimpleBanking.Config["business_ranks_overrides"][low][grade]) then
 

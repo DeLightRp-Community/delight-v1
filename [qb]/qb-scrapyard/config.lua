@@ -9,13 +9,7 @@ Config.Locations = {
 }
 
 Config.Items = {
-    "metalscrap",
-    "plastic",
-    "copper",
-    "iron",
-    "aluminum",
-    "steel",
-    "glass",
+    "recyclepart",
 }
 
 Config.CurrentVehicles = {}

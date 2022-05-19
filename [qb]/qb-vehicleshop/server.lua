@@ -354,9 +354,10 @@ RegisterNetEvent('qb-vehicleshop:server:sellShowroomVehicle', function(data, pla
             })
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('cash', vehiclePrice, 'vehicle-bought-in-showroom')
-            player.Functions.AddMoney('bank', commission)
-            TriggerClientEvent('QBCore:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
-            exports['qb-management']:AddMoney(player.PlayerData.job.name, vehiclePrice)
+            -- player.Functions.AddMoney('bank', Commission)
+            -- TriggerClientEvent('QBCore:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
+
+            exports['qb-management']:AddMoney(player.PlayerData.job.name, commission)
             TriggerClientEvent('QBCore:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
             if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
                 TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
@@ -382,9 +383,10 @@ RegisterNetEvent('qb-vehicleshop:server:sellShowroomVehicle', function(data, pla
             end
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('bank', vehiclePrice, 'vehicle-bought-in-showroom')
-            player.Functions.AddMoney('bank', commission)
-            exports['qb-management']:AddMoney(player.PlayerData.job.name, vehiclePrice)
-            TriggerClientEvent('QBCore:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
+            -- player.Functions.AddMoney('bank', commission)
+            -- print(commission)
+            exports['qb-management']:AddMoney(player.PlayerData.job.name, commission)
+            -- TriggerClientEvent('QBCore:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
             TriggerClientEvent('QBCore:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
         else
             TriggerClientEvent('QBCore:Notify', src, 'Not enough money', 'error')
@@ -443,9 +445,10 @@ RegisterNetEvent('qb-vehicleshop:server:sellfinanceVehicle', function(downPaymen
             end
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('cash', downPayment, 'vehicle-bought-in-showroom')
-            player.Functions.AddMoney('bank', commission)
-            TriggerClientEvent('QBCore:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
-            exports['qb-management']:AddMoney(player.PlayerData.job.name, vehiclePrice)
+            -- player.Functions.AddMoney('bank', commission)
+            -- TriggerClientEvent('QBCore:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
+            -- print(commission)
+            exports['qb-management']:AddMoney(player.PlayerData.job.name, commission)
             TriggerClientEvent('QBCore:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
         elseif bank >= downPayment then
             MySQL.Async.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state, balance, paymentamount, paymentsleft, financetime) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', {
@@ -470,9 +473,10 @@ RegisterNetEvent('qb-vehicleshop:server:sellfinanceVehicle', function(downPaymen
             end
             TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', target.PlayerData.source, vehicle, plate)
             target.Functions.RemoveMoney('bank', downPayment, 'vehicle-bought-in-showroom')
-            player.Functions.AddMoney('bank', commission)
-            TriggerClientEvent('QBCore:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
-            exports['qb-management']:AddMoney(player.PlayerData.job.name, vehiclePrice)
+            -- player.Functions.AddMoney('bank', commission)
+            -- TriggerClientEvent('QBCore:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
+            -- print(commission)
+            exports['qb-management']:AddMoney(player.PlayerData.job.name, commission)
             TriggerClientEvent('QBCore:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
         else
             TriggerClientEvent('QBCore:Notify', src, 'Not enough money', 'error')

@@ -1,8 +1,8 @@
 Config = {}
 Config.UsingTarget = GetConvar('UseTarget', 'false') == 'true'
 Config.Commission = 0.10 -- Percent that goes to sales person from a full car sale 10%
-Config.FinanceCommission = 0.05 -- Percent that goes to sales person from a finance sale 5%
-Config.FinanceZone = vector3(-29.53, -1103.67, 26.42) -- Where the finance menu is located
+Config.FinanceCommission = 0.5 -- Percent that goes to sales person from a finance sale 5%
+Config.FinanceZone = vector3(-32.94, -1097.28, 27.27)-- Where the finance menu is located
 Config.PaymentWarning = 10 -- time in minutes that player has to make payment before repo
 Config.PaymentInterval = 24 -- time in hours between payment being due
 Config.MinimumDown = 10 -- minimum percentage allowed down
@@ -47,27 +47,27 @@ Config.Shops = {
         ['VehicleSpawn'] = vector4(-56.79, -1109.85, 26.43, 71.5), -- Spawn location when vehicle is bought
         ['ShowroomVehicles'] = {
             [1] = {
-                coords = vector4(-1265.31, -354.44, 27.3 , 205.08),
+                coords = vector4(-1265.31, -354.44, 26.3 , 205.08),
                 defaultVehicle = 'blade',
                 chosenVehicle = 'blade',
             },
             [2] = {
-                coords = vector4(-54.33, -1096.98, 27.3, 77.35),
+                coords = vector4(-54.33, -1096.98, 26.3, 77.35),
                 defaultVehicle = 'moonbeam',
                 chosenVehicle = 'moonbeam',
             },
             [3] = {
-                coords = vector4(-47.83, -1091.91, 27.3, 240.15),
+                coords = vector4(-47.83, -1091.91, 26.3, 240.15),
                 defaultVehicle = 'nero',
                 chosenVehicle = 'nero',
             },
             [4] = {
-                coords = vector4(-36.93, -1093.23, 27.3, 52.32),
+                coords = vector4(-36.93, -1093.23, 26.3, 52.32),
                 defaultVehicle = 'neon',
                 chosenVehicle = 'neon',
             },
             [5] = {
-                coords = vector4(-42.39, -1101.63, 27.3, 159.23),
+                coords = vector4(-42.39, -1101.63, 26.3, 159.23),
                 defaultVehicle = 'asbo',
                 chosenVehicle = 'asbo',
             },
@@ -119,21 +119,6 @@ Config.Shops = {
                 coords = vector4(-1269.21, -365.03, 35.91, 297.12),
                 defaultVehicle = 'nero',
                 chosenVehicle = 'nero',
-            },
-            [4] = {
-                coords = vector4(-1252.07, -364.2, 35.91, 56.44),
-                defaultVehicle = 'bati',
-                chosenVehicle = 'bati',
-            },
-            [5] = {
-                coords = vector4(-1255.49, -365.91, 35.91, 55.63),
-                defaultVehicle = 'carbonrs',
-                chosenVehicle = 'carbonrs',
-            },
-            [6] = {
-                coords = vector4(-1249.21, -362.97, 35.91, 53.24),
-                defaultVehicle = 'hexer',
-                chosenVehicle = 'hexer',
             },
         }
     }, -- Add your next table under this comma

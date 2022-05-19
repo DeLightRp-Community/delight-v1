@@ -28,6 +28,6 @@ RegisterCommand("anim-r", function()
     exports['qb-core']:DrawText('Animation Cleared !', 'left')
     Wait(1000)
     exports['qb-core']:HideText()
-    exports['qb-core']:HideText("anim")
+    exports['qb-core']:HideText()
     
 end)

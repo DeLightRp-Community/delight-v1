@@ -236,6 +236,21 @@ QBShared.Items = {
 	['weapontint_orange'] 	 		 = {['name'] = 'weapontint_orange', 			['label'] = 'Orange Tint', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weapontint_orange.png', 	['unique'] = false, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Orange Weapon Tint'},
 	['weapontint_plat'] 	 		 = {['name'] = 'weapontint_plat', 				['label'] = 'Platinum Tint', 			['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weapontint_plat.png', 		['unique'] = false, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Platinum Weapon Tint'},
 
+	-- Custom Weapns Passion
+	['weapon_beanbag']		 	 = {['name'] = 'weapon_beanbag', 		 	['label'] = 'Beanbag',		    		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_SHOTGUN',			['image'] = 'weapon_beanbag.png', 		  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_bonesaw'] 		 	 = {['name'] = 'weapon_bonesaw', 		 	['label'] = 'Bonesaw', 	        		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_bonesaw.png', 		  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_dildo'] 			 = {['name'] = 'weapon_dildo', 		 		['label'] = 'Dildo', 	        		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_dildo.png', 		  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_fork'] 			 = {['name'] = 'weapon_fork', 		 		['label'] = 'Fork', 	        		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_fork.png', 			  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_gitar'] 		 	 = {['name'] = 'weapon_gitar', 		 		['label'] = 'Gitar', 	        		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_gitar.png', 		  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_katana'] 			 = {['name'] = 'weapon_katana', 		 	['label'] = 'Katana', 	        		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_katana.png', 		  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_kiketsusword'] 	 = {['name'] = 'weapon_kiketsusword', 		['label'] = 'Kiketsusword', 	        ['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_kiketsusword.png', 	  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_kiritosword'] 		 = {['name'] = 'weapon_kiritosword', 		['label'] = 'Kiritosword', 	        	['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_kiritosword.png', 	  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_lucille'] 		 	 = {['name'] = 'weapon_lucille', 		 	['label'] = 'Lucille', 	        		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_lucille.png', 		  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_ramboknife'] 		 = {['name'] = 'weapon_ramboknife', 	 	['label'] = 'Ramboknife', 	      	 	['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_ramboknife.png', 	  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_roses'] 			 = {['name'] = 'weapon_roses', 		 		['label'] = 'Roses', 	        		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_roses.png', 		  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_stampedrifle']		 = {['name'] = 'weapon_stampedrifle', 		['label'] = 'StampedRifle',		    	['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'weapon_stampedrifle.png', 	  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_tacticalcarbine']	 = {['name'] = 'weapon_tacticalcarbine', 	['label'] = 'TacticalCarbine',		    ['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'weapon_tacticalcarbine.png', ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	
 	-- ITEMS
 
 	-- Ammo ITEMS
@@ -335,10 +350,11 @@ QBShared.Items = {
 
 	-- Medication
 	['firstaid'] 			 		 = {['name'] = 'firstaid', 						['label'] = 'First Aid', 				['weight'] = 2500, 		['type'] = 'item', 		['image'] = 'firstaid.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'You can use this First Aid kit to get people back on their feet'},
-	['bandage'] 			 		 = {['name'] = 'bandage', 						['label'] = 'Bandage', 					['weight'] = 0, 		['type'] = 'item', 		['image'] = 'bandage.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'A bandage works every time'},
-    ['ifaks']                        = {['name'] = 'ifaks',                         ['label'] = 'ifaks',                    ['weight'] = 200,      ['type'] = 'item',       ['image'] = 'ifaks.png',                ['unique'] = false,     ['useable'] = true,     ['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'ifaks for healing and a complete stress remover.'},
-	['painkillers'] 			 	 = {['name'] = 'painkillers', 					['label'] = 'Painkillers', 				['weight'] = 0, 		['type'] = 'item', 		['image'] = 'painkillers.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'For pain you can\'t stand anymore, take this pill that\'d make you feel great again'},
+	['bandage'] 			 		 = {['name'] = 'bandage', 						['label'] = 'Bandage', 					['weight'] = 5000, 		['type'] = 'item', 		['image'] = 'bandage.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'A bandage works every time'},
+    ['ifaks']                        = {['name'] = 'ifaks',                         ['label'] = 'ifaks',                    ['weight'] = 200,      	['type'] = 'item',      ['image'] = 'ifaks.png',                ['unique'] = false,     ['useable'] = true,     ['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'ifaks for healing and a complete stress remover.'},
+	['painkillers'] 			 	 = {['name'] = 'painkillers', 					['label'] = 'Painkillers', 				['weight'] = 100, 		['type'] = 'item', 		['image'] = 'painkillers.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'For pain you can\'t stand anymore, take this pill that\'d make you feel great again'},
 	['walkstick'] 				 	 = {['name'] = 'walkstick', 			  	  	['label'] = 'Walking Stick', 			['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'walkstick.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Walking stick for ya\'ll grannies out there.. HAHA'},
+	['ifak'] 				 	 	 = {['name'] = 'ifak', 			  	  			['label'] = 'Ifak', 					['weight'] = 5000, 		['type'] = 'item', 		['image'] = 'ifak.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'police stuff'},
 
 	-- Communication
 	['phone'] 			 	 	 	 = {['name'] = 'phone', 			  			['label'] = 'Phone', 					['weight'] = 700, 		['type'] = 'item', 		['image'] = 'phone.png', 				['unique'] = true, 		['useable'] = false, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'Neat phone ya got there'},
@@ -669,7 +685,7 @@ QBShared.Items = {
 
 	["bodycam"] 			        = {["name"] = "bodycam", 				["label"] = "BodyCam", 			["weight"] = 500, 		["type"] = "item", 		["image"] = "bodycam.png", 					["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Capture Live Events.."},
 
-	["spikestrip"] 					= {["name"] = "spikestrip",				["label"] = "Spikestrip",		["weight"] = 25,		["type"] = "item",		["image"] = "spikestrip.png",				["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "A spikestrip"},
+	["spikestrip"] 					= {["name"] = "spikestrip",				["label"] = "Spikestrip Kit",	["weight"] = 40000,		["type"] = "item",		["image"] = "spikestrip.png",				["unique"] = false,		["useable"] = true,		["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "A spikestrip"},
 
 	['k9'] 				 	 		= {['name'] = 'k9', 			  	  	['label'] = 'Police K9', 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'k9.png', 						['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Call For Back Up Buddy'},
 	
@@ -696,6 +712,11 @@ QBShared.Items = {
 	['tent'] 			    		= {['name'] = 'tent', 					['label'] = 'tent', 			['weight'] = 400, 		['type'] = 'item', 		['image'] = 'tent.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious flour'},
 
 	['pizza-dough'] 			    = {['name'] = 'pizza-dough', 			['label'] = 'pizza-dough', 		['weight'] = 400, 		['type'] = 'item', 		['image'] = 'pizza-dough.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious pizza-dough'},
+
+
+	['recyclepart'] 			    = {['name'] = 'recyclepart', 			['label'] = 'recyclepart', 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'recyclepart.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = '...'},
+
+	['starterpack'] 			    = {['name'] = 'starterpack', 			['label'] = 'Gift Box', 		['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'starterpack.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Welcome to DelightRp'},
 
 
 	['redslushy'] 					= {['name'] = 'redslushy',        		['label'] = 'Red Slushy',        			['weight'] = 750,         ['type'] = 'item',         ['image'] = 'redslushy.png',           		['unique'] = true,     ['useable'] = true,     ['shouldClose'] = true,       ['combinable'] = nil,   ['description'] = 'Damn a Slushy...',["created"] = nil,["decay"] = 1.0},
@@ -792,4 +813,13 @@ QBShared.Items = {
 	['printed_paper'] 				 = {['name'] = 'printed_paper', 			  	['label'] = 'Printed Paper', 			['weight'] = 100, 		['type'] = 'item', 		['image'] = 'paper.png', 			    ['unique'] = true, 		['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Printed paper'},
 	['printer_paper'] 				 = {['name'] = 'printer_paper', 			  	['label'] = 'A4 bundle', 			    ['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'a4bundle.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Stack of printer paper'},
 	['printer_ink'] 				 = {['name'] = 'printer_ink', 			  		['label'] = 'Printer ink', 			    ['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'printerink.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Ink for printer'},
+
+	-- casino
+	["casino_redchip"] 				 = {["name"] = "casino_redchip", 			 ["label"] = "Casino Chip", 			["weight"] = 0, 		["type"] = "item", 		["image"] = "casino_redchip.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino Inside Track Chip"}, 
+	["casino_whitechip"] 			 = {["name"] = "casino_whitechip", 			 ["label"] = "Casino Chip", 			["weight"] = 0, 		["type"] = "item", 		["image"] = "casino_whitechip.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino Slot Machine Chip"},
+	["casino_bluechip"] 			 = {["name"] = "casino_bluechip", 			 ["label"] = "Casino Chip", 			["weight"] = 0, 		["type"] = "item", 		["image"] = "casino_bluechip.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino Roulette Chip"},
+	["casino_blackchip"] 			 = {["name"] = "casino_blackchip", 			 ["label"] = "Casino Chip", 			["weight"] = 0, 		["type"] = "item", 		["image"] = "casino_blackchip.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino Blackjack Chip"},
+	["casino_goldchip"] 			 = {["name"] = "casino_goldchip", 			 ["label"] = "Casino Chip", 			["weight"] = 0, 		["type"] = "item", 		["image"] = "casino_goldchip.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino Chip"},
+	["casino_member"] 				 = {["name"] = "casino_member", 			 ["label"] = "Casino Membership", 		["weight"] = 500, 		["type"] = "item", 		["image"] = "casino_member.png", 				["unique"] = true, 		["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino Member Card"},
+	["casino_vip"] 					 = {["name"] = "casino_vip", 			 	 ["label"] = "V.I.P Membership", 		["weight"] = 500, 		["type"] = "item", 		["image"] = "casino_vip.png", 				    ["unique"] = true, 		["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["description"] = "Diamond Casino V.I.P Card"},
 }

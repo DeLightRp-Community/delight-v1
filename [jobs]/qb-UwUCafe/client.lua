@@ -20,6 +20,7 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
 end)
 
 RegisterNetEvent('QBCore:Client:SetDuty', function(duty)
+    local PlayerData = QBCore.Functions.GetPlayerData()
     if PlayerData.job.name == 'uwu' then
     	onDuty = duty
     end
@@ -33,16 +34,16 @@ end)
 ----- Blip no mapa --------------
 
 Citizen.CreateThread(function()
-    uwu = Config.MapLoc
-    SetBlipSprite (uwu, 621)
+    uwu = AddBlipForCoord(vector3(-582.49, -1062.94, 22.35))
+    SetBlipSprite (uwu, 671)
     SetBlipDisplay(uwu, 4)
-    SetBlipScale  (uwu, 0.9)
+    SetBlipScale  (uwu, 1.00)
     SetBlipAsShortRange(uwu, true)
     SetBlipColour(uwu, 34)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("UwU Cafe")
+    BeginTextCommandSetBlipName('STRING')
+    AddTextComponentSubstringPlayerName('UwU Cafe')
     EndTextCommandSetBlipName(uwu)
-end) 
+end)
 
 --------------------
 ----- Menus --------
@@ -836,17 +837,20 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
+    local PlayerData = QBCore.Functions.GetPlayerData()
     if Config.UsarPed == true then
-    local blip = Config.PedMapLoc
-	SetBlipSprite(blip, 59)
-	SetBlipDisplay(blip, 4)
-	SetBlipScale(blip, 0.7)
-	SetBlipAsShortRange(blip, true)
-	SetBlipColour(blip, 2)
-	BeginTextCommandSetBlipName("STRING")
-	AddTextComponentSubstringPlayerName("Ingredients Seller")
-    EndTextCommandSetBlipName(blip)
-    end
+        if PlayerData.job.name == "uwu" then
+            blip = AddBlipForCoord(vector3(462.2, -693.88, 26.44))
+            SetBlipSprite (blip, 480)
+            SetBlipDisplay(blip, 4)
+            SetBlipScale  (blip, 1.00)
+            SetBlipAsShortRange(blip, true)
+            SetBlipColour(blip, 2)
+            BeginTextCommandSetBlipName('STRING')
+            AddTextComponentSubstringPlayerName('Ingredients Seller')
+            EndTextCommandSetBlipName(blip)
+        end    
+    end    
 end)
 
 Citizen.CreateThread(function ()

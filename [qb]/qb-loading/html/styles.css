@@ -26,6 +26,13 @@ span.q-btn__content.text-center.col.items-center.q-anchor--skip.justify-center.c
 .q-focus-helper { opacity: 0!important; }
 
 #video {
-    width: 100%;
-    height: 100%;
+    /* width: 100%;
+    height: 100%; */
+    /* margin: auto; */
+    display: block;
+    margin: auto;
+}
+.q-parallax{
+    height: 100%!important;
+    width: 100%!important;
 }

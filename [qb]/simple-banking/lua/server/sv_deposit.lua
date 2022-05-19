@@ -33,12 +33,12 @@ AddEventHandler('qb-banking:server:Deposit', function(account, amount, note, fSt
         local job = Player.PlayerData.job
         local job_grade = job.grade.name
 
-        if (not SimpleBanking.Config["business_ranks"][string.lower(job_grade)] and not SimpleBanking.Config["business_ranks_overrides"][string.lower(job.name)]) then
+        if (not SimpleBanking.Config["business_ranks"][job_grade] and not SimpleBanking.Config["business_ranks_overrides"][job.name]) then
             return
         end
 
-        local low = string.lower(job.name)
-        local grade = string.lower(job_grade)
+        local low = job.name
+        local grade = job_grade
 
         if (SimpleBanking.Config["business_ranks_overrides"][low] and not SimpleBanking.Config["business_ranks_overrides"][low][grade]) then
             return

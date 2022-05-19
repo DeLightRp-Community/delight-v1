@@ -75,25 +75,23 @@ function Processlsd()
 end
 
 
-Citizen.CreateThread(function()
-	exports['qb-target']:AddBoxZone("thychloride", vector3(-679.77, 5800.7, 17.33), 1, 1, {
-		name="thychloride",
-		heading=340.0,
-		debugPoly=false,
-		minZ = 14.33,
-		maxZ = 18.33,
-	  },{
-		options = {
-				{
-				  type = "client",
-				  event = "Processthionylchloride",
-				  icon = "fas fa-biohazard",
-				  label = "Process Thionyl Chloride",
-				},
-			 },
-		distance = 2.5
-		 })
-	end)
+exports['qb-target']:AddBoxZone("thychloride", vector3(-679.77, 5800.7, 17.33), 1, 1, {
+	name="thychloride",
+	heading=340.0,
+	debugPoly=false,
+	minZ = 14.33,
+	maxZ = 18.33,
+  },{
+	options = {
+			{
+			  type = "client",
+			  event = "Processthionylchloride",
+			  icon = "fas fa-biohazard",
+			  label = "Process Thionyl Chloride",
+			},
+		 },
+	distance = 2.5
+})
 
 function Processthionylchloride()
 	isProcessing = true

@@ -12,8 +12,22 @@
     </head>
     <!-- This is where you want to replace with your audio -->
 
-    <!-- <audio autoplay loop id="audio" src="/assets/audio/noncopyright.mp3"></audio> -->
-
+    <audio autoplay loop id="audio" src="/assets/audio/music.mp3"></audio>
+    <script>
+        window.onload = function(){
+          var myVideo = document.getElementById("audio");
+        
+          document.onkeydown = function(event) {
+            console.log(event.keyCode)
+            switch (event.keyCode) {
+              case 32: //SpaceBar
+                myVideo.muted = !myVideo.muted;
+              break;
+            }
+            return false;
+          }
+        }
+        </script>
     <body>
         <div id="loading-main" style="min-height: auto;">
 
@@ -28,13 +42,28 @@
 
             <!-- This is where you want to replace with your video -->
 
-            
+            <!-- :height="1080" -->
             <q-parallax :height="1080">
                 <template v-slot:media>
-                    <video id="video" autoplay loop>
-                    <source type="video/mp4" src="/assets/video/video.mp4"></video>
+                    <video id="video" autoplay muted loop>
+                        <source type="video/mp4" src="/assets/video/video.mp4">
+                    </video>
                 </template>
             </q-parallax>
+
+            <div class="absolute-top q-pa-xl">
+                <q-card flat style="width: auto; background: transparent;">
+                    <q-card-section class="row items-center no-wrap">
+                        <q-carousel animated infinite :autoplay="secondap" v-model="secondslide" transition-next="fade" transition-prev="fade" class="bg-transparent text-white">
+                            <q-carousel-slide name="1" class="column no-wrap flex-center">
+                                <div style="width: 30vw; white-space: pre-wrap;" class="text-left text-h6">
+                                    {{ CarouselText1 }}
+                                </div>
+                            </q-carousel-slide>
+                        </q-carousel>
+                    </q-card-section>
+                </q-card>
+            </div>
 
             <div class="absolute-bottom q-pa-xl">
                 <q-card flat style="width: auto; background: transparent;">

@@ -189,3 +189,59 @@ Config.CarWash = { -- carwash
         ["coords"] = vector3(-699.62, -932.7, 19.01),
     }
 }
+
+Config.compatable_weapon_hashes = {
+    -- X putter den længere ned
+    -- Z Putter det længere til venstre
+    -- Y putter det længere ud
+    ---- ** Drugs ** ---- 
+
+    -- Weed
+    ["wetbud"] = { model = "bkr_prop_weed_drying_02a", hash = GetHashKey("bkr_prop_weed_drying_02a"), bone = 24817, x = 0.2275, y = -0.16, z = 0.0, xr = 0.0, yr = 90.0, zr = 0.0},
+    
+    -- meth
+    ["meth"] = { model = "hei_prop_pill_bag_01", hash = GetHashKey("hei_prop_pill_bag_01"), bone = 24817, x = -0.25, y = -0.14, z = 0.15, xr = 0.0, yr = 90.0, zr = 0.0},
+
+
+    -- Contraband
+    ["markedbills"] = { model = "prop_money_bag_01", hash = GetHashKey("prop_money_bag_01"), bone = 24817, x = -0.5, y = -0.14, z = 0.15, xr = 0.0, yr = 90.0, zr = 0.0},
+    
+    -- Custom Weapons
+    ["weapon_assaultrifle"] = { model = "w_ar_assaultrifle", hash = GetHashKey("weapon_assaultrifle"), bone = 24818, x = 0.0, y = -0.17, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_specialcarbine_mk2"] = { model = "w_ar_scar", hash = GetHashKey("weapon_specialcarbine_mk2"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_m4"] = { model = "w_ar_m4", hash = GetHashKey("weapon_m4"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_microsmg3"] = { model = "w_sb_microsmg3", hash = GetHashKey("weapon_microsmg3"), bone = 24818, x = 0.0, y = -0.17, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_microsmg2"] = { model = "w_sb_microsmg2", hash = GetHashKey("weapon_microsmg2"), bone = 24818, x = 0.0, y = -0.17, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_m14"] = { model = "w_sr_m14", hash = GetHashKey("weapon_m14"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_carbinerifle"] = { model = "w_ar_carbinerifle", hash = GetHashKey("weapon_carbinerifle"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_compactrifle"] = { model = "w_ar_draco", hash = GetHashKey("weapon_compactrifle"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_combatpdw"] = { model = "W_SB_MPX", hash = GetHashKey("weapon_combatpdw"), bone = 24818, x = -0.1, y = -0.19, z = -0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_pumpshotgun_mk2"] = { model = "w_sg_pumpshotgunmk2", hash = GetHashKey("weapon_pumpshotgun_mk2"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_machete"] = { model = "w_me_machette_lr", hash = GetHashKey("weapon_machete"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_minismg2"] = { model = "w_sb_skorpion", hash = GetHashKey("weapon_minismg2"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_katanas"] = { model = "katana_sheath", hash = GetHashKey("weapon_katanas"), bone = 24818, x = -0.1, y = -0.17, z = -0.05, xr = 225.0, yr = 8.0, zr = 90.0},
+    ["weapon_mk18b"] = { model = "w_ar_mk18b", hash = GetHashKey("weapon_mk18b"), bone = 24818, x = 0.0, y = -0.19, z = 0.07, xr = 0.0, yr = 0.0, zr = 0.0},
+
+
+    -- assault rifles:
+    ["weapon_carbinerifle_mk2"] = { model = "w_ar_carbineriflemk2", hash = GetHashKey("WEAPON_CARBINERIFLE_MK2"),bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_specialcarbine"] = { model = "w_ar_specialcarbine", hash = -1063057011,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_bullpuprifle"] = { model = "w_ar_bullpuprifle", hash = 2132975508,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_advancedrifle"] = { model = "w_ar_advancedrifle", hash = -1357824103,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    -- sub machine guns:
+    ["weapon_appistol"] = { model = "w_pi_appistol", hash = 584646201,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_microsmg"] = { model = "w_sb_microsmg", hash = 324215364,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_assaultsmg"] = { model = "w_sb_assaultsmg", hash = -27001577,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.07},
+    ["weapon_smg"] = { model = "w_sb_smg", hash = 736523883,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_smgmk2"] = { model = "w_sb_smgmk2", hash = GetHashKey("WEAPON_SMG_MK2"),bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_gusenberg"] = { model = "w_sb_gusenberg", hash = 1627465347,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    -- sniper rifles:
+    ["weapon_sniperrifle"] = { model = "w_sr_sniperrifle", hash = 100416529,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    -- shotguns:
+    ["weapon_assaultshotgun"] = { model = "w_sg_assaultshotgun", hash = -494615257,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_bullpupshotgun"] = { model = "w_sg_bullpupshotgun", hash = -1654528753,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_pumpshotgun"] = { model = "w_sg_pumpshotgun", hash = 487013001,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_musket"] = { model = "w_ar_musket", hash = -1466123874,bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+    ["weapon_heavyshotgun"] = { model = "w_sg_heavyshotgun", hash = GetHashKey("WEAPON_HEAVYSHOTGUN"),bone = 24816,x = 0.2275,y = -0.16,z = 0.016,xr = 0.0,yr = 0.0,zr = 1.0},
+}
+

@@ -816,7 +816,7 @@ CreateThread(function()
             if IsControlJustReleased(0, 38) then
                 exports['qb-core']:KeyPressed(38)
                 LeaveBed()
-                exports['qb-core']:HideText("ambulance")
+                exports['qb-core']:HideText()
             end
         end
         Wait(sleep)

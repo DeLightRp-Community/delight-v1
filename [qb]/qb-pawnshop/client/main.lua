@@ -25,7 +25,7 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     QBCore.Functions.GetPlayerData(function(PlayerData)
         PlayerJob = PlayerData.job
         if PlayerData.job.onduty then
-            if PlayerData.job.name == "sydpawn" then
+            if PlayerData.job.name == "pawnshop" then
                 TriggerServerEvent("QBCore:ToggleDuty")
             end
         end
@@ -47,7 +47,7 @@ CreateThread(function()
 	while true do
 			local ped = PlayerPedId()
 			local pos = GetEntityCoords(ped)
-			if onDuty and PlayerJob.Name == "sydpawn" then
+			if onDuty and PlayerJob.Name == "pawnshop" then
 				if #(pos - vector3(175.0, -1322.27, 29.36)) >= Config.ClockOutDist then 
 					onDuty = not onDuty
 					TriggerServerEvent("QBCore:ToggleDuty")
@@ -62,7 +62,7 @@ RegisterNetEvent('qb-pawnshop:toggleDuty', function()
 	TriggerServerEvent('QBCore:ToggleDuty')
 end)
 
-CreateThread(function()
+--[[CreateThread(function()
 	while true do
 		Wait(500)
 		local pos = GetEntityCoords(PlayerPedId())
@@ -88,7 +88,7 @@ CreateThread(function()
 			exports['qb-menu']:closeMenu()
 		end
     end
-end)
+end)]]
 
 RegisterNetEvent('qb-pawnshop:client:openMenu', function()
 	if Config.UseTimes then
@@ -228,8 +228,8 @@ end)
 RegisterNetEvent('qb-pawnshop:Stash')
 AddEventHandler('qb-pawnshop:Stash',function(data)
 	id = data.stash
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "SydPawn_"..id)
-    TriggerEvent("inventory:client:SetCurrentStash", "SydPawn_"..id)
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "pawnshop_"..id)
+    TriggerEvent("inventory:client:SetCurrentStash", "pawnshop_"..id)
 end)
 
 -----------------------------------------------------------------------------------------
@@ -237,12 +237,12 @@ end)
 -----------------------------------------------------------------------------------------
 ---- DUTY 
 exports['qb-target']:AddBoxZone("PawnClockin", vector3(168.88, -1313.76, 29.38), 0.75, 2, { name="PawnClockin", heading = 333, debugPoly=false, minZ=28.36, maxZ=29.96 }, 
-{ options = { { event = "qb-pawnshop:toggleDuty", icon = "fas fa-user-check", label = "Toggle Duty", job = "sydpawn" }, },
+{ options = { { event = "qb-pawnshop:toggleDuty", icon = "fas fa-user-check", label = "Toggle Duty", job = "pawnshop" }, },
   distance = 2.0
 })
 ---- REGISTER 
 exports['qb-target']:AddBoxZone("PawnRegister", vector3(174.02, -1322.66, 29.15), 0.75, 0.75, { name="PawnRegister", heading = 331, debugPoly=false, minZ=28.36, maxZ=29.96, }, 
-{ options = { { event = "qb-pawnshop:client:Charge", icon = "fas fa-credit-card", label = "Pay Customer", job = "sydpawn" }, },
+{ options = { { event = "qb-pawnshop:client:Charge", icon = "fas fa-credit-card", label = "Pay Customer", job = "pawnshop" }, },
   distance = 2.0
 })
 ---- TRAY 
@@ -252,6 +252,11 @@ exports['qb-target']:AddBoxZone("PawnCounter", vector3(173.48, -1320.72, 29.39),
 })
 ---- COMPANY STASH 
 exports['qb-target']:AddBoxZone("PawnStash", vector3(158.4, -1310.66, 29.38), 1.75, 1.75, { name="PawnStash", heading = 333, debugPoly=false, minZ=28.36, maxZ=29.51 }, 
-{ options = { {  event = "qb-pawnshop:Stash", icon = "fas fa-credit-card", label = "Open Stash", stash = "Stash", job = "sydpawn"  }, },
+{ options = { {  event = "qb-pawnshop:Stash", icon = "fas fa-credit-card", label = "Open Stash", stash = "Stash", job = "pawnshop"  }, },
+  distance = 1.0
+})
+
+exports['qb-target']:AddBoxZone("PawnItemSell", vector3(157.34, -1316.77, 29.36), 1.6, 1, { name="PawnItemSell", heading=65, minZ=26.96,maxZ=30.96 }, 
+{ options = { {  event = "qb-pawnshop:client:openMenu", icon = "fas fa-credit-card", label = "Sell Items", stash = "Stash", job = "pawnshop"  }, },
   distance = 1.0
 })

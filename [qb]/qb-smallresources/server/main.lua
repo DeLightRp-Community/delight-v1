@@ -19,6 +19,12 @@ QBCore.Functions.CreateUseableItem("harness", function(source, item)
     TriggerClientEvent('seatbelt:client:UseHarness', src, item)
 end)
 
+QBCore.Functions.CreateUseableItem("starterpack", function(source)
+    local src = source
+    TriggerClientEvent('qb-smallrecources:starterpack', src)
+end)
+
+
 RegisterNetEvent('equip:harness', function(item)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
@@ -63,3 +69,22 @@ QBCore.Functions.CreateCallback('smallresources:server:GetCurrentPlayers', funct
     end
     cb(TotalPlayers)
 end)
+
+
+RegisterNetEvent('qb-smallrecources:rewardpack', function()
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    Player.Functions.RemoveItem('starterpack', 1)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["starterpack"], "remove")
+    Player.Functions.AddItem("lockpick", math.random(1,2))
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["lockpick"], "add")
+    Player.Functions.AddItem("burger-bleeder", math.random(3,5))
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["burger-bleeder"], "add")
+    Player.Functions.AddItem("water_bottle", math.random(3,5))
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["water_bottle"], "add")
+    Player.Functions.AddItem("repairkit", math.random(1,2))
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["repairkit"], "add")
+    Player.Functions.AddItem("bandage", math.random(1,3))
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["bandage"], "add")
+end)
+

@@ -274,50 +274,27 @@ canteen:onPlayerInOut(function(isPointInside)
 	end
 end)
 
-local function interaction()
-	if Config.UseTarget then
-			exports['qb-target']:AddTargetEntity(freedom_ped, {
-				options = {
-				{
-					type = "client",
-					event = "prison:client:Leave",
-					icon = 'fas fa-clipboard',
-					label = 'Check time',
-				}
-				},
-				distance = 2.5,
-			})
-			exports['qb-target']:AddTargetEntity(canteen_ped, {
-				options = {
-				{
-					type = "client",
-					event = "prison:client:canteen",
-					icon = 'fas fa-clipboard',
-					label = 'Get Food',
-				}
-				},
-				distance = 2.5,
-			})
-	else
-		if insidefreedom then
-			if IsControlJustReleased(0, 38) then
-				TriggerEvent("prison:client:Leave")
-			end
-		end
 
-		if insidecanteen then
-			if IsControlJustReleased(0, 38) then
-				TriggerEvent("prison:client:canteen")
-			end
-		end
-	end
-end
-
-
-
-CreateThread(function()
-    while true do
-        Wait(3)
-		interaction()
-    end
-end)
+	
+exports['qb-target']:AddTargetEntity(freedom_ped, {
+	options = {
+	{
+		type = "client",
+		event = "prison:client:Leave",
+		icon = 'fas fa-clipboard',
+		label = 'Check time',
+	}
+	},
+	distance = 2.5,
+})
+exports['qb-target']:AddTargetEntity(canteen_ped, {
+	options = {
+	{
+		type = "client",
+		event = "prison:client:canteen",
+		icon = 'fas fa-clipboard',
+		label = 'Get Food',
+	}
+	},
+	distance = 2.5,
+})

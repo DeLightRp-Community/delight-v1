@@ -262,52 +262,50 @@ CreateThread(function()
     EndTextCommandSetBlipName(Dealer)
 end)
 
-CreateThread(function()
-    for k, v in pairs(Config.Locations) do
-        exports['qb-target']:AddBoxZone("JewelleryCase"..k, vector3(v.coords.x, v.coords.y, v.coords.z-1), 0.6, 1.2, {
-            name = "JewelleryCase"..k,
-            heading = v.coords.w,
-            -- debugPoly = true,
-            minZ = 37.65,
-            maxZ = 38.35,
-            }, {
-                options = { 
-                {
-                    action = function()
-                        smashVitrine(k)
-                    end,
-                    icon = 'fas fa-gem',
-                    label = 'Smash Case',
-                    canInteract = function()
-                        if v["isOpened"] or v["isBusy"] then 
-                            return false
-                        end
-                        return true
-                    end,
-                }
-            },
-            distance = 1.5,
-        })
-    end
-    exports['qb-target']:AddBoxZone("JewelleryThermite", vector3(-595.94, -283.74, 50.32), 0.4, 0.8, {
-        name = "JewelleryThermite",
-        heading = 302.79,
+for k, v in pairs(Config.Locations) do
+    exports['qb-target']:AddBoxZone("JewelleryCase"..k, vector3(v.coords.x, v.coords.y, v.coords.z-1), 0.6, 1.2, {
+        name = "JewelleryCase"..k,
+        heading = v.coords.w,
         -- debugPoly = true,
-        minZ = 50.25,
-        maxZ = 51.35,
+        minZ = 37.65,
+        maxZ = 38.35,
         }, {
             options = { 
             {
-                type = "client",
-                event = "qb-jewellery:client:Thermite",
+                action = function()
+                    smashVitrine(k)
+                end,
                 icon = 'fas fa-gem',
-                label = 'Disable Security'
+                label = 'Smash Case',
+                canInteract = function()
+                    if v["isOpened"] or v["isBusy"] then 
+                        return false
+                    end
+                    return true
+                end,
             }
         },
         distance = 1.5,
     })
-end)
+end
 
+exports['qb-target']:AddBoxZone("JewelleryThermite", vector3(-595.94, -283.74, 50.32), 0.4, 0.8, {
+    name = "JewelleryThermite",
+    heading = 302.79,
+    -- debugPoly = true,
+    minZ = 50.25,
+    maxZ = 51.35,
+    }, {
+        options = { 
+        {
+            type = "client",
+            event = "qb-jewellery:client:Thermite",
+            icon = 'fas fa-gem',
+            label = 'Disable Security'
+        }
+    },
+    distance = 1.5,
+})
 
 local timer = true
 function Damage()

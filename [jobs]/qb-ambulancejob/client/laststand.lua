@@ -79,7 +79,7 @@ function SetLaststand(bool, spawn)
         end
 
         InLaststand = true
-
+        TriggerEvent("zerio-radio:client:removedradio")
         TriggerServerEvent('hospital:server:ambulanceAlert', Lang:t('info.civ_down'))
 
         CreateThread(function()

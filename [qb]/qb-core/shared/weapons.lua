@@ -146,4 +146,19 @@ QBShared.Weapons = {
 	-- Animals
 	[`weapon_animal`]	= {['name'] = 'weapon_animal',	['label'] = 'Animal',	['ammotype'] = nil,	['damagereason'] = 'Mauled'},
     [`weapon_cougar`]	= {['name'] = 'weapon_cougar',	['label'] = 'Cougar',	['ammotype'] = nil,	['damagereason'] = 'Mauled'},
+
+	-- Custom Weapns Passion
+	[`weapon_beanbag`]		 	= {['name'] = 'weapon_beanbag', 		['label'] = 'Weapon Beanbag',		['ammotype'] = 'AMMO_SHOTGUN',	['damagereason'] = 'Devastated / Pulverized / Shotgunned'},
+	[`weapon_bonesaw`] 			= {['name'] = 'weapon_bonesaw', 		['label'] = 'Bonesaw', 				['ammotype'] = nil,				['damagereason'] = 'Knifed / Stabbed / Eviscerated'},
+	[`weapon_dildo`] 			= {['name'] = 'weapon_dildo', 			['label'] = 'Dildo', 				['ammotype'] = nil,				['damagereason'] = 'Melee killed / Whacked / Executed / Beat down / Murdered / Battered'},
+	[`weapon_fork`] 			= {['name'] = 'weapon_fork', 			['label'] = 'Fork', 				['ammotype'] = nil,				['damagereason'] = 'Knifed / Stabbed / Eviscerated'},
+	[`weapon_gitar`] 			= {['name'] = 'weapon_gitar', 			['label'] = 'Gitar', 				['ammotype'] = nil,				['damagereason'] = 'Melee killed / Whacked / Executed / Beat down / Murdered / Battered'},
+	[`weapon_katana`] 			= {['name'] = 'weapon_katana', 			['label'] = 'Katana', 				['ammotype'] = nil,				['damagereason'] = 'Knifed / Stabbed / Eviscerated'},
+	[`weapon_kiketsusword`] 	= {['name'] = 'weapon_kiketsusword', 	['label'] = 'Kiketsusword', 		['ammotype'] = nil,				['damagereason'] = 'Knifed / Stabbed / Eviscerated'},
+	[`weapon_kiritosword`] 		= {['name'] = 'weapon_kiritosword', 	['label'] = 'Kiritosword', 			['ammotype'] = nil,				['damagereason'] = 'Knifed / Stabbed / Eviscerated'},
+	[`weapon_lucille`] 			= {['name'] = 'weapon_lucille', 		['label'] = 'Lucille', 				['ammotype'] = nil,				['damagereason'] = 'Knifed / Stabbed / Eviscerated'},
+	[`weapon_ramboknife`] 		= {['name'] = 'weapon_ramboknife', 		['label'] = 'Ramboknife', 			['ammotype'] = nil,				['damagereason'] = 'Knifed / Stabbed / Eviscerated'},
+	[`weapon_roses`] 			= {['name'] = 'weapon_roses', 			['label'] = 'Roses', 				['ammotype'] = nil,				['damagereason'] = 'Melee killed / Whacked / Executed / Beat down / Murdered / Battered'},
+	[`weapon_stampedrifle`] 	= {['name'] = 'weapon_stampedrifle', 	['label'] = 'Stamped Rifle', 		['ammotype'] = 'AMMO_RIFLE',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
+	[`weapon_tacticalcarbine`] 	= {['name'] = 'weapon_tacticalcarbine', ['label'] = 'Tactical Carbine', 	['ammotype'] = 'AMMO_RIFLE',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
 }

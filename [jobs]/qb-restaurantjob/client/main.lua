@@ -22,32 +22,28 @@ Citizen.CreateThread(function()
     local PlayerData = QBCore.Functions.GetPlayerData()
     
         
-            for k, v in pairs(Config.Locations) do
-
-                Wait(idle)
-                -- body
-                
-                    exports['qb-target']:AddBoxZone(v.text, vector3(v.coords), 2, 2, {
-                        name=v.text,
-                        --heading= v.heading,
-                        debugPoly=false,
-                        minZ = v.coords.z - 2,
-                        maxZ = v.coords.z + 1 ,
-                      },{
-                        options = {
-                          {
-                            type = "client",
-                            action = function(entity)
-                                TriggerEvent(Config.FolderName..":client:OpenMenu", v.config)
-                            end,
-                            icon = "fa fa-tint",  
-                            label = v.text,
-                            job = "pizza",
-                          },
-                        },
-                        distance = 2.0,
-                      })
-            end
+    for k, v in pairs(Config.Locations) do
+        exports['qb-target']:AddBoxZone(v.text, vector3(v.coords), 2, 2, {
+            name=v.text,
+            --heading= v.heading,
+            debugPoly=false,
+            minZ = v.coords.z - 2,
+            maxZ = v.coords.z + 1 ,
+          },{
+            options = {
+              {
+                type = "client",
+                action = function(entity)
+                    TriggerEvent(Config.FolderName..":client:OpenMenu", v.config)
+                end,
+                icon = "fa fa-tint",  
+                label = v.text,
+                job = "pizza",
+              },
+            },
+            distance = 2.0,
+        })
+    end
 
 end)
 
@@ -106,7 +102,7 @@ RegisterNetEvent('qb-resturant:OrderMenu', function(data)
            }
        },
    })
-   end)
+end)
 
     exports["qb-target"]:AddBoxZone("yakhchal", vector3(805.68, -761.3, 26.78), 0.8, 1, {
         name = "yakhchal",

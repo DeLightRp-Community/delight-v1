@@ -137,6 +137,21 @@ Config.DurabilityMultiplier = {
 	['weapon_fireextinguisher'] 	= 0.15,
 	['weapon_hazardcan'] 			= 0.15,
     ['weapon_fertilizercan'] 		= 0.15,
+
+    -- Custom Weapns Passion
+    ['weapon_beanbag'] 				 = 0.15,
+    ['weapon_bonesaw'] 				 = 0.15,
+    ['weapon_dildo'] 				 = 0.15,
+    ['weapon_fork'] 				 = 0.15,
+    ['weapon_gitar'] 				 = 0.15,
+    ['weapon_katana'] 				 = 0.15,
+    ['weapon_kiketsusword'] 		 = 0.15,
+    ['weapon_kiritosword'] 		     = 0.15,
+    ['weapon_lucille'] 		         = 0.15,
+    ['weapon_ramboknife'] 		     = 0.15,
+    ['weapon_roses'] 		         = 0.15,
+    ['weapon_stampedrifle'] 		 = 0.15,
+    ['weapon_tacticalcarbine'] 		 = 0.15,
 }
 
 Config.WeaponRepairPoints = {
@@ -895,4 +910,6 @@ WeaponAttachments = {
             item = 'marksmanrifle_luxuryfinish',
         },
     },
+
+    
 }

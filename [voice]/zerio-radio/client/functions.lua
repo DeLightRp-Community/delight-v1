@@ -126,6 +126,16 @@ local function leavebabatradio()
     Framework.Functions.Notify(Config.messages['you_leave'], 'error')
 end    
 
+--Events
+AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+    PlayerData = QBCore.Functions.GetPlayerData()
+end)
+
+RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
+    PlayerData = {}
+    leavebabatradio()
+end)
+
 RegisterNetEvent('zerio-radio:client:onRadioDrop', function()
     if RadioChannel ~= 0 then
         leavebabatradio()
@@ -135,21 +145,6 @@ end)
 RegisterNetEvent('zerio-radio:client:onbabat', function ()
     if RadioChannel == 0 then
         onbabatradio()   
-    end
-end)
-
-CreateThread(function()
-    while true do
-        Wait(1000)
-        if LocalPlayer.state.isLoggedIn and onRadio then
-            Framework.Functions.TriggerCallback('zerio-radio:server:GetbabatItem', function(hasItem)
-                if not hasItem then
-                    if RadioChannel ~= 0 then
-                        leavebabatradio()
-                    end
-                end
-            end, "radio")
-        end
     end
 end)
 

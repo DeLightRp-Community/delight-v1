@@ -177,11 +177,9 @@ exports["qb-target"]:AddCircleZone("Bomb", vector3(651.99, 101.11, 81.16), 2.0, 
                 icon = "fas fa-user-secret",
                 label = "Restore Power",
                 job = "police",
-		
-		            canInteract = function()
-                            if blackout then return true else return false end 
-                        end
-
+		        canInteract = function()
+                    if blackout then return true else return false end 
+                end
             },
         },
         distance = 2.0

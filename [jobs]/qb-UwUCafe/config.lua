@@ -2,10 +2,10 @@ Config = {}
 
 Config.UsarPed = true -- em false tudo o que envolve o ped será desativado automaticamente (target, spawn do ped, menu para compra e localização no mapa)
 Config.Ped = {462.2, -693.88, 26.44,"Sr Manel",91.22,0x94562DD7,"a_m_m_farmer_01"} -- ordem: coords - nome (label) - heading - hash - nome de spawn do ped
-Config.PedMapLoc = AddBlipForCoord(462.2, -693.88, 26.44) -- location do blip do ped no mapa (deve ser o mesmo do ped)
+--Config.PedMapLoc = AddBlipForCoord(462.2, -693.88, 26.44) -- location do blip do ped no mapa (deve ser o mesmo do ped)
 Config.PedTargetLoc = vector3(462.2, -693.88, 27.44) -- Localização do target do ped (deve ser o mesmo do ped)
 
-Config.MapLoc = AddBlipForCoord(-582.49, -1062.94, 22.35) -- Localização para o blip do cafe no mapa
+--Config.MapLoc = AddBlipForCoord(-582.49, -1062.94, 22.35) -- Localização para o blip do cafe no mapa
 
 Config.Gatos = { -- locations de spawn dos gatos
     ['cat1'] = {['coords'] = vector4(-573.9, -1056.29, 22.43, 115.15),['sitting'] = true},

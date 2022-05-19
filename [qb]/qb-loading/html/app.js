@@ -5,7 +5,7 @@ const { ref } = Vue
 const load = Vue.createApp({
   setup () {
     return {
-      CarouselText1: '',
+      CarouselText1: 'Space For Mute/UnMute Music',
       CarouselSubText1: '',
       CarouselText2: '',
       CarouselSubText2: '',

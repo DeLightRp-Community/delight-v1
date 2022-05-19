@@ -25,55 +25,57 @@ CreateThread(function()
 end)
 
 
-CreateThread(function()
-    while true do
-        Wait(1)
+-- CreateThread(function()
+--     while true do
+--         Wait(1)
         
-        Wait(100)
-        local models = {
-            'prop_till_01',
-          }
-          exports['qb-target']:AddTargetModel(models, {
-            options = { -- This is your options table, in this table all the options will be specified for the target to accept
-              {
-                icon = 'fa-solid fa-screwdriver',
-                label = 'Rob Register',
-                action = function(entity)
-                    if IsPedAPlayer(entity) then return false end 
-                    TriggerEvent('qb-storerobbery:UseLockpick',false)
-                  
-                end,
-                canInteract = function(entity, distance, data) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
-                  if IsPedAPlayer(entity) then return false end -- This will return false if the entity interacted with is a player and otherwise returns true
-                  local propExistAndDamage=false
-                    if IsPedAPlayer(entity) then return false end 
+--         Wait(100)
+        
+--     end
+-- end)
+
+local models = {
+    'prop_till_01',
+}
+exports['qb-target']:AddTargetModel(models, {
+    options = { -- This is your options table, in this table all the options will be specified for the target to accept
+      {
+        icon = 'fa-solid fa-screwdriver',
+        label = 'Rob Register',
+        action = function(entity)
+            if IsPedAPlayer(entity) then return false end 
+            TriggerEvent('qb-storerobbery:UseLockpick',false)
+          
+        end,
+        canInteract = function(entity, distance, data) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
+          if IsPedAPlayer(entity) then return false end -- This will return false if the entity interacted with is a player and otherwise returns true
+          local propExistAndDamage=false
+            if IsPedAPlayer(entity) then return false end 
+            local ped = PlayerPedId()
+            local pos = GetEntityCoords(ped)
+            local sani = GetClosestObjectOfType(pos, 2.0, GetHashKey('prop_till_01'), false)
+            if DoesEntityExist(sani) then
+                hpProp = GetEntityHealth(sani)
+                if hpProp < 1000 then
                     local ped = PlayerPedId()
                     local pos = GetEntityCoords(ped)
-                    local sani = GetClosestObjectOfType(pos, 2.0, GetHashKey('prop_till_01'), false)
-                    if DoesEntityExist(sani) then
-                        hpProp = GetEntityHealth(sani)
-                        if hpProp < 1000 then
-                            local ped = PlayerPedId()
-                            local pos = GetEntityCoords(ped)
-                            local inRange = false
-                            for k, v in pairs(Config.Registers) do
-                                local dist = #(pos - Config.Registers[k][1].xyz)
-                                if dist <= 1 then
-                                    inRange = true
-                                    Config.Registers[k].propExistAndDamage = true
-                                    print(Config.Registers[k].propExistAndDamage)
-                                    return true
-                                end
-                            end 
+                    local inRange = false
+                    for k, v in pairs(Config.Registers) do
+                        local dist = #(pos - Config.Registers[k][1].xyz)
+                        if dist <= 1 then
+                            inRange = true
+                            Config.Registers[k].propExistAndDamage = true
+                            print(Config.Registers[k].propExistAndDamage)
+                            return true
                         end
-                    end
-                end,
-                },
-            },
-            distance = 2.5, -- This is the distance for you to be at for the target to turn blue, this is in GTA units and has to be a float value
-          })
-    end
-end)
+                    end 
+                end
+            end
+        end,
+        },
+    },
+    distance = 2.5, -- This is the distance for you to be at for the target to turn blue, this is in GTA units and has to be a float value
+})
 
 --[[CreateThread(function()
     Wait(1000)
@@ -165,7 +167,7 @@ local CurrentZone=nil
 
 Citizen.CreateThread(function()
     while true do 
-        Citizen.Wait(1)
+        Wait(500)
         local inRange = false
         if QBCore ~= nil then
             local pos = GetEntityCoords(PlayerPedId())

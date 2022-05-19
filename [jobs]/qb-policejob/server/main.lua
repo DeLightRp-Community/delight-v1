@@ -535,13 +535,13 @@ QBCore.Commands.Add('911p', Lang:t("commands.police_report"), {{name='message', 
 end)
 
 -- Items
--- QBCore.Functions.CreateUseableItem("handcuffs", function(source, item)
---     local src = source
---     local Player = QBCore.Functions.GetPlayer(src)
---     if Player.Functions.GetItemByName(item.name) then
---         TriggerClientEvent("police:client:CuffPlayerSoft", src)
---     end
--- end)
+QBCore.Functions.CreateUseableItem("handcuffs", function(source, item)
+     local src = source
+     local Player = QBCore.Functions.GetPlayer(src)
+     if Player.Functions.GetItemByName(item.name) then
+         TriggerClientEvent("police:client:CuffPlayer", src)
+     end
+ end)
 
 QBCore.Functions.CreateUseableItem("moneybag", function(source, item)
     local src = source

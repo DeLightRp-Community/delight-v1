@@ -96,10 +96,12 @@ QBShared.Jobs = {
             },
 			['5'] = {
                 name = "Lieutenant",
+				isboss = true,
                 payment = 1600
             },
 			['6'] = {
                 name = "Captain",
+				isboss = true,
                 payment = 1800
             },
 			['7'] = {
@@ -187,7 +189,7 @@ QBShared.Jobs = {
             },
 		},
 	},
-    ['sydpawn'] = {
+    ['pawnshop'] = {
 		label = 'PawnShop',
 		defaultDuty = true,
 		offDutyPay = false,
@@ -471,6 +473,7 @@ QBShared.Jobs = {
             },
 			['3'] = {
                 name = "Manager",
+                isboss = true,
                 payment = 1150
             },
 			['4'] = {
@@ -491,6 +494,7 @@ QBShared.Jobs = {
             },
             ['1'] = {
                 name = 'Manger',
+                isboss = true,
                 payment = 1300
             },
         },

@@ -55,12 +55,6 @@ Config = {
 	},
 	PickupBoxModel = "prop_cs_cardbox_01",
 	ItemTable = {
-		[1] = "metalscrap",
-		[2] = "plastic",
-		[3] = "copper",
-		[4] = "iron",
-		[5] = "aluminum",
-		[6] = "steel",
-		[7] = "glass",
+		[1] = "recyclepart",
 	}
 }

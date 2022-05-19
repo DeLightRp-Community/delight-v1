@@ -565,30 +565,26 @@ end)
 -- Threads
 
 if Config.UseTarget then
-    CreateThread(function()
-        -- Toggle Duty
-        for k, v in pairs(Config.Locations["duty"]) do
-            exports['qb-target']:AddBoxZone("PoliceDuty_"..k, vector3(v.x, v.y, v.z), 1, 1, {
-                name = "PoliceDuty_"..k,
-                heading = 11,
-                debugPoly = false,
-                minZ = v.z - 1,
-                maxZ = v.z + 1,
-            }, {
-                options = {
-                    {
-                        type = "client",
-                        event = "qb-policejob:ToggleDuty",
-                        icon = "fas fa-sign-in-alt",
-                        label = "Sign In",
-                        job = "police",
-                    },
+    for k, v in pairs(Config.Locations["duty"]) do
+        exports['qb-target']:AddBoxZone("PoliceDuty_"..k, vector3(v.x, v.y, v.z), 1, 1, {
+            name = "PoliceDuty_"..k,
+            heading = 11,
+            debugPoly = false,
+            minZ = v.z - 1,
+            maxZ = v.z + 1,
+        }, {
+            options = {
+                {
+                    type = "client",
+                    event = "qb-policejob:ToggleDuty",
+                    icon = "fas fa-sign-in-alt",
+                    label = "Sign In",
+                    job = "police",
                 },
-                distance = 1.5
-            })
-        end
-
-    end)
+            },
+            distance = 1.5
+        })
+    end
 
 else
     -- Toggle Duty
