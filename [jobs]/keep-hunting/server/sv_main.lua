@@ -162,7 +162,8 @@ AddEventHandler('keep-hunting:server:sellmeat', function()
             if price == 0 then
                 TriggerClientEvent('QBCore:Notify', src, "You didn't have any sellable items")
             else
-                Player.Functions.AddMoney("cash", price, "sold-items-hunting")
+                Player.Functions.AddMoney("paycheck", price, "sold-items-hunting")
+                TriggerClientEvent('QBCore:Notify', src, "Payment Add to Your Paycheck")
                 TriggerClientEvent('QBCore:Notify', src, "You have sold your items and recieved $" .. price)
             end
         else

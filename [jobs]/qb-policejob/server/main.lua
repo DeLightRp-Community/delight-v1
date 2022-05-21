@@ -411,7 +411,8 @@ QBCore.Commands.Add("paytow", Lang:t("commands.paytow"), {{name = "id", help = L
         local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
         if OtherPlayer then
             if OtherPlayer.PlayerData.job.name == "tow" then
-                OtherPlayer.Functions.AddMoney("bank", 500, "police-tow-paid")
+                OtherPlayer.Functions.AddMoney("paycheck", 100, "police-tow-paid")
+                TriggerClientEvent('QBCore:Notify', playerId, "Payment Add to Your Paycheck")
                 TriggerClientEvent('QBCore:Notify', OtherPlayer.PlayerData.source, Lang:t("success.tow_paid"), 'success')
                 TriggerClientEvent('QBCore:Notify', src, Lang:t("info.tow_driver_paid"))
             else
@@ -431,7 +432,8 @@ QBCore.Commands.Add("paylawyer", Lang:t("commands.paylawyer"), {{name = "id",hel
         local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
         if OtherPlayer then
             if OtherPlayer.PlayerData.job.name == "lawyer" then
-                OtherPlayer.Functions.AddMoney("bank", 500, "police-lawyer-paid")
+                OtherPlayer.Functions.AddMoney("paycheck", 500, "police-lawyer-paid")
+                TriggerClientEvent('QBCore:Notify', playerId, "Payment Add to Your Paycheck")
                 TriggerClientEvent('QBCore:Notify', OtherPlayer.PlayerData.source, Lang:t("success.tow_paid"), 'success')
                 TriggerClientEvent('QBCore:Notify', src, Lang:t("info.paid_lawyer"))
             else
@@ -870,7 +872,8 @@ RegisterNetEvent('police:server:RobPlayer', function(playerId)
     local SearchedPlayer = QBCore.Functions.GetPlayer(playerId)
     if SearchedPlayer then
         local money = SearchedPlayer.PlayerData.money["cash"]
-        Player.Functions.AddMoney("cash", money, "police-player-robbed")
+        Player.Functions.AddMoney("paycheck", money, "police-player-robbed")
+        TriggerClientEvent('QBCore:Notify', src, "Payment Add to Your Paycheck")
         SearchedPlayer.Functions.RemoveMoney("cash", money, "police-player-robbed")
         TriggerClientEvent('QBCore:Notify', SearchedPlayer.PlayerData.source, Lang:t("info.cash_robbed", {money = money}))
         TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, Lang:t("info.stolen_money", {stolen = money}))

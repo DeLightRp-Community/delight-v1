@@ -15,7 +15,8 @@ RegisterNetEvent('tr-lumberjack:sellItems', function()
                 end
             end
         end
-        Player.Functions.AddMoney("cash", price)
+        Player.Functions.AddMoney("paycheck", price)
+        TriggerClientEvent('QBCore:Notify', source, "Payment Add to Your Paycheck")
         TriggerClientEvent('QBCore:Notify', source, Config.Alerts["successfully_sold"])
     else 
 		TriggerClientEvent('QBCore:Notify', source, Config.Alerts["error_sold"])

@@ -14,7 +14,8 @@ RegisterNetEvent('qb-simpefarming:sellItems', function()
                 end
             end
         end
-        Player.Functions.AddMoney("cash", price)
+        Player.Functions.AddMoney("paycheck", price)
+        TriggerClientEvent('QBCore:Notify', src, "Payment Add to Your Paycheck")
         TriggerClientEvent('QBCore:Notify', src, "You have sold your items")
     else 
 		TriggerClientEvent('QBCore:Notify', src, "You do not have the items to sell here!")

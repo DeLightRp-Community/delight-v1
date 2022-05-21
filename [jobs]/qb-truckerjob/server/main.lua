@@ -22,7 +22,8 @@ RegisterNetEvent('qb-trucker:server:DoBail', function(bool, vehInfo)
         end
     else
         if Bail[Player.PlayerData.citizenid] ~= nil then
-            Player.Functions.AddMoney('cash', Bail[Player.PlayerData.citizenid], "trucker-bail-paid")
+            Player.Functions.AddMoney('paycheck', Bail[Player.PlayerData.citizenid], "trucker-bail-paid")
+            TriggerClientEvent('QBCore:Notify', Bail[Player.PlayerData.citizenid], "Payment Add to Your Paycheck")
             Bail[Player.PlayerData.citizenid] = nil
             TriggerClientEvent('QBCore:Notify', src, Lang:t("success.refund_to_cash", {value = Config.BailPrice}), 'success')
         end
@@ -50,7 +51,8 @@ RegisterNetEvent('qb-trucker:server:01101110', function(drops)
     local taxAmount = math.ceil((price / 100) * PaymentTax)
     local payment = price - taxAmount
     Player.Functions.AddJobReputation(drops)
-    Player.Functions.AddMoney("bank", payment, "trucker-salary")
+    Player.Functions.AddMoney("paycheck", payment, "trucker-salary")
+    TriggerClientEvent('QBCore:Notify', src, "Payment Add to Your Paycheck")
     TriggerClientEvent('QBCore:Notify', src, Lang:t("success.you_earned", {value = payment}), 'success')
 end)
 
