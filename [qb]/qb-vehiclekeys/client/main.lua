@@ -5,7 +5,7 @@ local HasVehicleKey = false
 local IsRobbing = false
 local IsHotwiring = false
 local AlertSend = false
-local lockpicked = false
+local lockpicked = true
 local lockpickedPlate = nil
 local usingAdvanced
 local hacked = false
@@ -84,7 +84,7 @@ local function LockVehicle()
                     Wait(750)
                     ClearPedTasks(ped)
                     TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 5, "lock", 0.3)
-                    SetVehicleDoorsLocked(veh, 2)
+                    SetVehicleDoorsLocked(veh, 1)
                     if (GetVehicleDoorLockStatus(veh) == 2) then
                         SetVehicleLights(veh, 2)
                         Wait(250)
@@ -334,6 +334,7 @@ local function Hack()
         local vehpos = GetEntityCoords(vehicle)
         if #(pos - vehpos) < 2.5 then
             local vehLockStatus = GetVehicleDoorLockStatus(vehicle)
+            print(vehLockStatus)
             if(vehLockStatus >= 0) then
                 local authorized = isAuthorized(vehicle)
                 if authorized then
@@ -557,7 +558,7 @@ CreateThread(function()
                             QBCore.Functions.TriggerCallback('vehiclekeys:server:CheckHasKey', function(result)
                                 if not lockpicked and lockpickedPlate ~= plate then
                                     if result == false then
-                                        SetVehicleDoorsLocked(entering, 2)
+                                        SetVehicleDoorsLocked(entering, 1)
                                         HasVehicleKey = false
                                     else 
                                         HasVehicleKey = true
