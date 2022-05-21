@@ -11,7 +11,7 @@ Config.Products = {
     ["normal"] = {
         [1] = {
             name = "tosti",
-            price = 2,
+            price = 50,
             amount = 50,
             info = {},
             type = "item",
@@ -19,7 +19,7 @@ Config.Products = {
         },
         [2] = {
             name = "water_bottle",
-            price = 2,
+            price = 40,
             amount = 40,
             info = {},
             type = "item",
@@ -27,7 +27,7 @@ Config.Products = {
         },
         [3] = {
             name = "kurkakola",
-            price = 2,
+            price = 50,
             amount = 50,
             info = {},
             type = "item",
@@ -35,7 +35,7 @@ Config.Products = {
         },
         [4] = {
             name = "twerks_candy",
-            price = 2,
+            price = 40,
             amount = 40,
             info = {},
             type = "item",
@@ -43,7 +43,7 @@ Config.Products = {
         },
         [5] = {
             name = "snikkel_candy",
-            price = 2,
+            price = 40,
             amount = 40,
             info = {},
             type = "item",
@@ -51,7 +51,7 @@ Config.Products = {
         },
         [6] = {
             name = "sandwich",
-            price = 2,
+            price = 60,
             amount = 60,
             info = {},
             type = "item",
@@ -59,7 +59,7 @@ Config.Products = {
         },
         [7] = {
             name = "beer",
-            price = 7,
+            price = 50,
             amount = 50,
             info = {},
             type = "item",
@@ -67,7 +67,7 @@ Config.Products = {
         },
         [11] = {
             name = "lighter",
-            price = 2,
+            price = 50,
             amount = 50,
             info = {},
             type = "item",
@@ -87,7 +87,7 @@ Config.Products = {
     ["liquor"] = {
         [1] = {
             name = "beer",
-            price = 7,
+            price = 50,
             amount = 50,
             info = {},
             type = "item",
@@ -95,7 +95,7 @@ Config.Products = {
         },
         [2] = {
             name = "whiskey",
-            price = 10,
+            price = 60,
             amount = 50,
             info = {},
             type = "item",
@@ -103,7 +103,7 @@ Config.Products = {
         },
         [3] = {
             name = "vodka",
-            price = 12,
+            price = 60,
             amount = 50,
             info = {},
             type = "item",
@@ -122,15 +122,15 @@ Config.Products = {
     },
     ["hardware"] = {
         [1] = {
-            name = "lockpick",
-            price = 200,
-            amount = 50,
+            name = "weapon_wrench",
+            price = 1000,
+            amount = 250,
             info = {},
             type = "item",
             slot = 1,
         },
         [2] = {
-            name = "weapon_wrench",
+            name = "weapon_hammer",
             price = 1000,
             amount = 250,
             info = {},
@@ -138,120 +138,128 @@ Config.Products = {
             slot = 2,
         },
         [3] = {
-            name = "weapon_hammer",
-            price = 1000,
-            amount = 250,
-            info = {},
-            type = "item",
-            slot = 3,
-        },
-        [4] = {
             name = "repairkit",
             price = 500,
             amount = 50,
             info = {},
             type = "item",
-            slot = 4,
+            slot = 3,
             requiredJob = { "mechanic", "police" }
         },
-        [5] = {
+        [4] = {
             name = "screwdriverset",
             price = 500,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 4,
+        },
+        [5] = {
+            name = "phone",
+            price = 1000,
             amount = 50,
             info = {},
             type = "item",
             slot = 5,
         },
         [6] = {
-            name = "phone",
-            price = 1000,
+            name = "binoculars",
+            price = 500,
             amount = 50,
             info = {},
             type = "item",
             slot = 6,
         },
         [7] = {
-            name = "radio",
-            price = 500,
-            amount = 50,
+            name = "firework1",
+            price = 50,
+            amount = 100,
             info = {},
             type = "item",
             slot = 7,
         },
         [8] = {
-            name = "binoculars",
-            price = 500,
+            name = "firework2",
+            price = 200,
             amount = 50,
             info = {},
             type = "item",
             slot = 8,
         },
         [9] = {
-            name = "firework1",
-            price = 50,
-            amount = 100,
+            name = "firework3",
+            price = 300,
+            amount = 50,
             info = {},
             type = "item",
             slot = 9,
         },
         [10] = {
-            name = "firework2",
-            price = 200,
+            name = "firework4",
+            price = 400,
             amount = 50,
             info = {},
             type = "item",
             slot = 10,
         },
         [11] = {
-            name = "firework3",
-            price = 300,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 11,
-        },
-        [12] = {
-            name = "firework4",
-            price = 400,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 12,
-        },
-        [13] = {
             name = "fitbit",
             price = 800,
             amount = 150,
             info = {},
             type = "item",
-            slot = 13,
+            slot = 11,
         },
-        [14] = {
+        [12] = {
             name = "cleaningkit",
             price = 200,
             amount = 150,
             info = {},
             type = "item",
-            slot = 14,
+            slot = 12,
         },
-        [15] = {
+        [13] = {
             name = "advancedrepairkit",
             price = 800,
             amount = 50,
             info = {},
             type = "item",
-            slot = 15,
+            slot = 13,
             requiredJob = { "mechanic" }
         },
-        [16] = {
+        [14] = {
             name = "fake_plate",
             price = 5000,
             amount = 50,
             info = {},
             type = "item",
-            slot = 16,
+            slot = 14,
             requiredJob = { "mechanic" }
-        },      
+        },   
+        [15] = {
+            name = "handdrill",
+            price = 500,
+            amount = 150,
+            info = {},
+            type = "item",
+            slot = 15,
+        },  
+        [16] = {
+            name = "drillbit",
+            price = 100,
+            amount = 150,
+            info = {},
+            type = "item",
+            slot = 15,
+        }, 
+        [17] = {
+            name = "drill",
+            price = 700,
+            amount = 150,
+            info = {},
+            type = "item",
+            slot = 17,
+        },   
     },
     ["weedshop"] = {
         [1] = {
@@ -480,53 +488,53 @@ Config.Products = {
             type = 'item',
             slot = 6
         },
-        [8] = {
+        [7] = {
             name = 'keepcompanioncat',
             price = 50000,
             amount = 5,
             info = {},
             type = 'item',
-            slot = 8
+            slot = 7
         },
-        [10] = {
+        [8] = {
             name = 'keepcompanionhusky',
             price = 30000,
             amount = 5,
             info = {},
             type = 'item',
-            slot = 10
+            slot = 8
         },
-        [11] = {
+        [9] = {
             name = 'petfood',
             price = 500,
             amount = 1000,
             info = {},
             type = 'item',
-            slot = 11
+            slot = 9
         },
-        [12] = {
+        [10] = {
             name = 'collarpet',
             price = 10000,
             amount = 50,
             info = {},
             type = 'item',
-            slot = 12
+            slot = 10
         },
-        [13] = {
+        [11] = {
             name = 'firstaidforpet',
             price = 4000,
             amount = 50,
             info = {},
             type = 'item',
-            slot = 13
+            slot = 11
         }
     },
 
     ["huntingshop"] = {
         [1] = {
             name = 'weapon_musket',
-            price = 5000,
-            amount = 1,
+            price = 2000,
+            amount = 100,
             info = {},
             type = 'weapon',
             slot = 1,
@@ -535,7 +543,7 @@ Config.Products = {
         [2] = {
             name = 'shotgun_ammo',
             price = 100,
-            amount = 20,
+            amount = 500,
             info = {},
             type = 'item',
             slot = 2,
@@ -543,16 +551,16 @@ Config.Products = {
         },
         [3] = {
             name = 'huntingbait',
-            price = 200,
-            amount = 20,
+            price = 50,
+            amount = 1000,
             info = {},
             type = 'item',
             slot = 3
         },
         [4] = {
             name = 'weapon_knife',
-            price = 1000,
-            amount = 1,
+            price = 500,
+            amount = 500,
             info = {},
             type = 'item',
             slot = 4

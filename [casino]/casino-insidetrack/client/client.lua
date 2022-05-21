@@ -22,7 +22,7 @@ CreateThread(function()
                 TriggerEvent('doj:casinoinsideTrackHeader') 
             elseif Config.HorseBetPrompt == 'peek' then
                 text = '<b>Diamond Casino Inside Track</b>'
-                exports['qb-core']:DrawText('show', text)
+                exports['cd_drawtextui']:DrawTextUi('show', text)
                 exports['qb-target']:AddCircleZone("Betting", vector3(956.121,70.185,70.433), 1.0, {
                     name="Betting",
                     heading=160,
@@ -41,7 +41,7 @@ CreateThread(function()
             end
         else
 			exports['qb-menu']:closeMenu()
-            exports['qb-core']:HideText()
+            exports['cd_drawtextui']:HideTextUi('hide')
         end
     end)
 end)

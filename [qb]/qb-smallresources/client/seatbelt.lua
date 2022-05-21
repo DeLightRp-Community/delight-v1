@@ -30,7 +30,7 @@ RegisterCommand('toggleseatbelt', function()
     end
 end, false)
 
-RegisterKeyMapping('toggleseatbelt', 'Toggle Seatbelt', 'keyboard', 'B')
+RegisterKeyMapping('toggleseatbelt', 'Toggle Seatbelt', 'keyboard', 'K')
 
 -- Events
 

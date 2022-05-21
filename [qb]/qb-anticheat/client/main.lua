@@ -152,7 +152,7 @@ end
 
 CreateThread(function() 	-- Spawned car --
     while true do
-        Wait(0)
+        Wait(5000)
         local ped = PlayerPedId()
         local player = PlayerId()
         local veh = GetVehiclePedIsIn(ped)

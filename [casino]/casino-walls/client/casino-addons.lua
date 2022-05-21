@@ -9,7 +9,7 @@ RegisterNetEvent('qb-casino:client:openCasinoShop', function()
 end)
 
 RegisterNetEvent('doj:casinoChipMenu', function()
-    -- TriggerEvent('qb-core:client:HideText')
+    TriggerEvent('drawtextui:HideUI')
     exports['qb-menu']:openMenu({
         {
             header = "Diamond Casino Chip Exchange",
@@ -79,7 +79,7 @@ CreateThread(function()
                 TriggerEvent('doj:casinoMenuHeader') 
             elseif Config.CasinoEmployeePrompt == 'peek' then
                 text = '<b>Diamond Casino Exchange</b>'
-                exports['qb-core']:DrawText('show', text)
+                exports['cd_drawtextui']:DrawTextUi('show', text)
                 exports['qb-target']:AddTargetModel(`U_F_M_CasinoCash_01`, {
                     options = {
                         { 
@@ -93,7 +93,7 @@ CreateThread(function()
             end
         else
             exports['qb-menu']:closeMenu()
-            exports['qb-core']:HideText()
+            exports['cd_drawtextui']:HideTextUi('hide')
         end
     end)
 end)
@@ -129,7 +129,7 @@ RegisterNetEvent('doj:casinoMenuHeader', function()
 end)
 
 RegisterNetEvent('doj:casinoMainMenu', function()
-    exports['qb-core']:HideText()
+    exports['cd_drawtextui']:HideTextUi('hide')
     exports['qb-menu']:openMenu({
         {
             header = "Diamond Casino",

@@ -310,7 +310,7 @@ RegisterNetEvent("doj:client:startingBets", function(args)
             sittingAtBlackjackTable = false
             drawTimerBar = false
             drawCurrentHand = false
-            exports['qb-core']:HideText() 
+            exports['casinoUi']:HideCasinoUi('hide') 
             waitingForBetState = false
             TriggerServerEvent("Blackjack:leaveBlackjackTable")
             closestDealerPed, closestDealerPedDistance = getClosestDealer()
@@ -415,11 +415,11 @@ CreateThread(function()
             end
             if inZone and not alreadyEnteredZone then
                 alreadyEnteredZone = true
-                exports['qb-core']:DrawText('show', text)  
+                exports['cd_drawtextui']:DrawTextUi('show', text)  
             end
             if not inZone and alreadyEnteredZone then
                 alreadyEnteredZone = false
-                exports['qb-core']:HideText()
+                exports['cd_drawtextui']:HideTextUi('hide')
             end
         end
         Wait(sleep)		
@@ -449,10 +449,13 @@ end)
 CreateThread(function()
     while true do
         if drawTimerBar then
-            exports['qb-core']:DrawText('show', "Diamond Casino Blackjack</p>Game Starting in: "..tostring(timeLeft).."s</p>Current Bet: "..tostring(currentBetAmount))  
+            -- QBCore.Functions.TriggerCallback('BLACKJACK:server:blackChipsAmount', function(result)
+            --     exports['casinoUi']:DrawCasinoUi('show', "Diamond Casino Blackjack</p>Game Starting in: "..tostring(timeLeft).."s</p>Current Bet: "..tostring(currentBetAmount).."</p>Availble chips: "..tostring(result))   
+	        -- end) 
+            exports['casinoUi']:DrawCasinoUi('show', "Diamond Casino Blackjack</p>Game Starting in: "..tostring(timeLeft).."s</p>Current Bet: "..tostring(currentBetAmount))  
         end
         if drawCurrentHand then
-            exports['qb-core']:DrawText('show', "Your hand: "..tostring(currentHand).."</p>Dealers Hand: "..tostring(dealersHand))  
+            exports['cd_drawtextui']:DrawTextUi('show', "Your hand: "..tostring(currentHand).."</p>Dealers Hand: "..tostring(dealersHand))  
         end
         Wait(500)
     end
@@ -469,7 +472,7 @@ RegisterNetEvent("Blackjack:beginBetsBlackjack")
 AddEventHandler("Blackjack:beginBetsBlackjack",function(gameID,tableId)
     globalGameId = gameID
     -- blackjackInstructional = setupBlackjackInstructionalScaleform("instructional_buttons")
-    exports['qb-core']:HideText()
+    exports['cd_drawtextui']:HideTextUi('hide')
     TriggerEvent("doj:client:openBetMenu")
     QBCore.Functions.Notify("Place your bets", 'primary', 3500)
     bettedThisRound = false
@@ -504,7 +507,7 @@ RegisterNetEvent("Blackjack:beginCardGiveOut")
 AddEventHandler("Blackjack:beginCardGiveOut",function(gameId,cardData,chairId,cardIndex,gotCurrentHand,tableId)
     if closeToCasino then
         blackjackGameInProgress = true
-        exports['qb-core']:HideText() 
+        exports['casinoUi']:HideCasinoUi('hide') 
         blackjackAnimsToLoad = {
             "anim_casino_b@amb@casino@games@blackjack@dealer",
             "anim_casino_b@amb@casino@games@shared@dealer@",
@@ -635,6 +638,10 @@ function goToBlackjackSeat(blackjackSeatID)
 
     closestDealerPed, closestDealerPedDistance = getClosestDealer()
     PlayAmbientSpeech1(closestDealerPed,"MINIGAME_DEALER_GREET","SPEECH_PARAMS_FORCE_NORMAL_CLEAR",1)
+
+    
+    -- print("[CMG Casino] start sit at blackjack seat") 
+    -- exports['cd_drawtextui']:DrawTextUi('show', "Waiting for next game to start...") 
 
     blackjackAnimsToLoad = {
       "anim_casino_b@amb@casino@games@blackjack@dealer",

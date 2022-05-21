@@ -10,8 +10,8 @@ function AlertBoosting(netid, type)
         , blipSprite = 326, blipColour = 1}
         local dispatchData = {dispatchData = data, caller = 'Alarm', coords = carPos}
         TriggerServerEvent('wf-alerts:svNotify', dispatchData)
-    elseif type == "qb-dispatch" then
-        exports['qb-dispatch']:CarBoosting(car)
+    elseif type == "ps-dispatch" then
+        exports['ps-dispatch']:CarBoosting(car)
     else
         TriggerServerEvent('jl-carboost:notifypolice', netid)
     end
@@ -59,7 +59,7 @@ function VehicleData(vehicle)
     return vehInfo
 end
 
--- From qb-dispatch
+-- From ps-dispatch
 RegisterNetEvent('jl-carboost:notifyboosting', function (pos, veh)
     local Player = QBCore.Functions.GetPlayerData()
     if Player.job.name == 'police' then

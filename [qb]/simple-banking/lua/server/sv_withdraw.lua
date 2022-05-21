@@ -25,7 +25,20 @@ AddEventHandler('qb-banking:server:Withdraw', function(account, amount, note, fS
         Player.Functions.AddMoney('cash', withdraw)
         Player.Functions.RemoveMoney('bank', withdraw)
 
-        AddTransaction(src, "personal", -amount, "withdraw", "N/A", (note ~= "" and note or "Isplačeno €"..format_int(amount).."."))
+        AddTransaction(src, "personal", -amount, "withdraw", "N/A", (note ~= "" and note or "Paid out $"..format_int(amount).."."))
+        RefreshTransactions(src)
+    end
+    if account == "paycheck" then
+        if amount > Player.PlayerData.money["paycheck"] then
+            TriggerClientEvent("qb-banking:client:Notify", src, "error", "Your bank doesn't have this much money!") 
+            return
+        end
+        local withdraw = math.floor(amount)
+
+        Player.Functions.AddMoney('cash', withdraw)
+        Player.Functions.RemoveMoney('paycheck', withdraw)
+
+        AddTransaction(src, "paycheck", -amount, "withdraw", "N/A", (note ~= "" and note or "Paid out $"..format_int(amount).."."))
         RefreshTransactions(src)
     end
 
@@ -52,10 +65,10 @@ AddEventHandler('qb-banking:server:Withdraw', function(account, amount, note, fS
             if sM >= amount then
                 TriggerEvent('qb-banking:society:server:WithdrawMoney',src, amount, data.name)
 
-                AddTransaction(src, "business", -amount, "deposit", job.label, (note ~= "" and note or "Withdrew €"..format_int(amount).." from ".. job.label .."'s account."))
+                AddTransaction(src, "business", -amount, "deposit", job.label, (note ~= "" and note or "Withdrew $"..format_int(amount).." from ".. job.label .."'s account."))
                 Player.Functions.AddMoney('cash', amount)
             else
-                TriggerClientEvent("qb-banking:client:Notify", src, "error", "Not enough money current balance: €"..sM) 
+                TriggerClientEvent("qb-banking:client:Notify", src, "error", "Not enough money current balance: $"..sM) 
             end
         end
     end
@@ -83,10 +96,10 @@ AddEventHandler('qb-banking:server:Withdraw', function(account, amount, note, fS
             if sM >= amount then
                 TriggerEvent('qb-banking:society:server:WithdrawMoney',src, amount, data.name)
 
-                AddTransaction(src, "organization", -amount, "deposit", gang.label, (note ~= "" and note or "Withdrew €"..format_int(amount).." from ".. gang.label .."'s account."))
+                AddTransaction(src, "organization", -amount, "deposit", gang.label, (note ~= "" and note or "Withdrew $"..format_int(amount).." from ".. gang.label .."'s account."))
                 Player.Functions.AddMoney('cash', amount)
             else
-                TriggerClientEvent("qb-banking:client:Notify", src, "error", "Not enough money current balance: €"..sM) 
+                TriggerClientEvent("qb-banking:client:Notify", src, "error", "Not enough money current balance: $"..sM) 
             end
         end
     end

@@ -489,8 +489,33 @@ RegisterCommand('phone', function()
     end
 end)
 
-RegisterKeyMapping('phone', 'Open Phone', 'keyboard', 'M')
+--[[RegisterCommand('Answer', function()
+    PlayerData = QBCore.Functions.GetPlayerData()
+    if not PhoneData.isOpen and LocalPlayer.state.isLoggedIn then
+        if not PlayerData.metadata['ishandcuffed'] and not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] and not IsPauseMenuActive() then
+            AnswerCall()
+        else
+            QBCore.Functions.Notify("Action not available at the moment..", "error")
+        end
+    end
+end)
 
+RegisterCommand('ignore', function()
+    PlayerData = QBCore.Functions.GetPlayerData()
+    if not PhoneData.isOpen and LocalPlayer.state.isLoggedIn then
+        if not PlayerData.metadata['ishandcuffed'] and not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] and not IsPauseMenuActive() then
+            CancelCall()
+        else
+            QBCore.Functions.Notify("Action not available at the moment..", "error")
+        end
+    end
+end)
+RegisterKeyMapping('Answer', 'Answer Phone', 'keyboard', 'U')
+
+RegisterKeyMapping('ignore', 'ignore Phone Call', 'keyboard', 'J')]]
+
+
+RegisterKeyMapping('phone', 'Open Phone', 'keyboard', 'M')
 -- NUI Callbacks
 
 RegisterNUICallback('CancelOutgoingCall', function()

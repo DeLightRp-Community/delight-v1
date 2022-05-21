@@ -378,6 +378,14 @@ QBCore.Functions.CreateUseableItem("cafe-uwu", function(source, item)
     end
 end)
 
+QBCore.Functions.CreateUseableItem("cafe-uwuu", function(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
+        TriggerClientEvent('mt-UwUCafe:client:BeberCafe2', source)
+        Player.Functions.RemoveItem('cafe-uwuu', 1)
+    end
+end)
+
 QBCore.Functions.CreateUseableItem("latte-uwu", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
 	if Player.Functions.GetItemBySlot(item.slot) ~= nil then

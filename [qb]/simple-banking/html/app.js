@@ -33,6 +33,7 @@ function ResetModals(type)
 
 var lang = [];
 lang["personal"] = "Personal Account";
+lang["paycheck"] = "Paycheck Account";
 lang["business"] = "Buisness Account";
 lang["organization"] = "Organization Account";
 lang["deposit"] = "Deposit";
@@ -41,23 +42,30 @@ lang["transfer"] = "Transfer";
 
 var relang = [];
 relang["Personal Account"] = "personal";
+relang["Paycheck Account"] = "paycheck";
 relang["Buisness Account"] = "business";
 relang["Organization Account"] = "organization";
 
-function AddAccount(account_name, account_type, bal, ply_Name)
+function AddAccount(account_name, account_type, bal, ply_Name,bankType)
 {
     if (playerName == null || playerName === "")
         playerName = ply_Name;
 
     let temp_name = account_name.replace(/"|'/g,'');
     let temp_Name = account_name.replace(/\s+/g, '');
-    
     let transferAcc = relang[account_type];
-    
     if (ValidAccounts[temp_Name])
         return UpdateAccount(temp_Name, bal);
-
-    $("#Player_Accounts").append("<div id='"+temp_Name+"'\
+    var btns="";
+    if(temp_Name=="paycheck"){
+        btns = "<button type='button' class='btn btn-light mb-2 text-muted withdraw' data-toggle='modal' data-target='#WithdrawModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>WITHDRAW</button>"
+    }
+    else{
+        btns="<button type='button' class='btn btn-light mb-2 text-muted deposit' data-toggle='modal' data-target='#DepositModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>DEPOSIT</button>\
+        <button type='button' class='btn btn-light mb-2 text-muted withdraw' data-toggle='modal' data-target='#WithdrawModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>WITHDRAW</button>\
+        <button type='button' class='btn btn-light mb-2 text-muted transfer' data-toggle='modal' data-target='#TransferModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>TRANSFER</button>";
+    }
+    $("#Player_Accounts").append("<div id='"+temp_Name+"'>\
         <div class='card bgdark2'>\
             <div class='account'>\
                 <h5 class='card-title note'>" + account_name + (relang[account_type] === "personal" && " </i>" || "") + "</h5>\
@@ -82,14 +90,13 @@ function AddAccount(account_name, account_type, bal, ply_Name)
 \
                 <hr>\
                 <div class='d-flex justify-content-between'>\
-                    <button type='button' class='btn btn-light mb-2 text-muted deposit' data-toggle='modal' data-target='#DepositModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>DEPOSIT</button>\
-                    <button type='button' class='btn btn-light mb-2 text-muted withdraw' data-toggle='modal' data-target='#WithdrawModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>WITHDRAW</button>\
-                    <button type='button' class='btn btn-light mb-2 text-muted transfer' data-toggle='modal' data-target='#TransferModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>TRANSFER</button>\
-                </div>\
+                    "+btns+"</div>\
             </div>\
-    </div><br/></div>");
-
-    ValidAccounts[temp_Name] = transferAcc;
+            </div><br/></div>");
+    
+        ValidAccounts[temp_Name] = transferAcc;
+    
+    
 }
 
 function timeSince(date) {
@@ -186,15 +193,17 @@ function AddTransaction(trans_id, account, amount, time, note, why, receiver, pl
 }
 
 
-function OpenATM(data, transactions, name)
+function OpenATM(data, transactions, name,bankType)
 {
+    
     if (data && data !== null)
     {
         let tbl = JSON.parse(data); 
+        // $("#Player_Accounts").html('')
         for (var i = 0; i < tbl.length; i++)
         {
             let tTbl = tbl[i];
-            AddAccount((tTbl.type === "business" && tTbl.name || tTbl.type === "organization" && tTbl.name || "Personal Account"), (lang[tTbl.type] && lang[tTbl.type] || tTbl.type), tTbl.amount, name);
+            AddAccount((tTbl.type === "business" && tTbl.name || tTbl.type === "organization" && tTbl.name || "Personal Account" && tTbl.type || "paycheck" && tTbl.name ), (lang[tTbl.type] && lang[tTbl.type] || tTbl.type), tTbl.amount, name,bankType);
         }
     }
 
@@ -309,7 +318,7 @@ Listeners["notification"] = function(data)
 Listeners["OpenUI"] = function(data)
 {
     let name = data.name;
-    OpenATM(data.accounts, data.transactions, name);
+    OpenATM(data.accounts, data.transactions, name,data.bankType);
 }
 
 Listeners["edit_account"] = function(data)

@@ -15,6 +15,7 @@ local Translations = {
     success = {},
     info = {
         received_paycheck = 'You received your paycheck of $%{value}',
+        taxPickup = 'Tax',
         job_info = 'Job: %{value} | Grade: %{value2} | Duty: %{value3}',
         gang_info = 'Gang: %{value} | Grade: %{value2}',
         on_duty = 'You are now on duty!',

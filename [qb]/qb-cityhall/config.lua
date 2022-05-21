@@ -23,11 +23,11 @@ Config.Cityhalls = {
                 cost = 50,
                 metadata = "driver"
             },
-            ["weaponlicense"] = {
-                label = "Weapon License",
-                cost = 50,
-                metadata = "weapon"
-            },
+            -- ["weaponlicense"] = {
+            --     label = "Weapon License",
+            --     cost = 50,
+            --     metadata = "weapon"
+            -- },
         }
     },
 }
@@ -44,7 +44,7 @@ Config.DrivingSchools = {
             title = "Driving School"
         },
         instructors = {
-            "DJD56142",
+            "QEA73998",
             "DXT09752",
             "SRI85140",
         }

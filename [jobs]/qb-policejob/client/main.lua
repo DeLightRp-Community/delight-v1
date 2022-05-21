@@ -208,6 +208,8 @@ RegisterNetEvent('police:client:SendPoliceEmergencyAlert', function()
     TriggerServerEvent('hospital:server:ambulanceAlert', Lang:t('info.officer_down', {lastname = Player.charinfo.lastname, callsign = Player.metadata.callsign}))
 end)
 
+
+
 -- Threads
 CreateThread(function()
     for k, station in pairs(Config.Locations["stations"]) do

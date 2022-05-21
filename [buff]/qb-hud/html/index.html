@@ -63,7 +63,7 @@
                         <q-tab-panels v-model="tab" animated swipeable vertical transition-prev="jump-up" transition-next="jump-up" class="bg-active-tab">
                             <q-tab-panel name="hud">
                                 <div class="q-mb-md">
-                                    <div class="text-h6 q-mb-md">Reset Hud <img class="brand-logo" align="right" src="./brand-logo.svg"></img></div>
+                                    <div class="text-h6 q-mb-md">Reset Hud <img class="brand-logo" align="right" src="./logo.png"></img></div>
                                     <div class="q-pa-md q-gutter-sm">
                                         <q-btn v-on:click="resetStorage($event)" :loading="progress[0].loading" :percentage="progress[0].percentage" text-color="textbutton" color="bgbutton" @click="startComputing(0)" style="width: 150px"> Reset Settings
                                         <template v-slot:loading> <q-spinner-gears class="on-left"></q-spinner-gears> Resetting... </template></q-btn>
@@ -75,7 +75,7 @@
                                     <hr>
                                     <div class="text-h6 q-mb-md">Options</div>
                                     <div class="text-h7">
-                                        <q-item borderless tag="label" v-ripple>
+                                        <!-- <q-item borderless tag="label" v-ripple>
                                             <q-item-section avatar>
                                                 <q-checkbox v-model="isOutMapChecked" v-on:click="showOutMap($event)" color="checkbox" val="1"></q-checkbox>
                                             </q-item-section>
@@ -83,8 +83,8 @@
                                                 <q-item-label>Show Minimap Only in Vehicle</q-item-label>
                                                 <q-item-label class="text-h7" caption>Disabling this will always keep your minimap on your screen</q-item-label>
                                             </q-item-section>
-                                        </q-item>
-                                        <q-item borderless tag="label" v-ripple>
+                                        </q-item> -->
+                                        <!-- <q-item borderless tag="label" v-ripple>
                                             <q-item-section avatar>
                                                 <q-checkbox v-model="isOutCompassChecked" v-on:click="showOutCompass($event)" color="checkbox" val="2"></q-checkbox>
                                             </q-item-section>
@@ -92,7 +92,7 @@
                                                 <q-item-label>Show Compass Only in Vehicle</q-item-label>
                                                 <q-item-label class="text-h7" caption>Disabling this will always keep your compass on your screen</q-item-label>
                                             </q-item-section>
-                                        </q-item>
+                                        </q-item> -->
                                         <q-item borderless tag="label" v-ripple>
                                             <q-item-section avatar>
                                                 <q-checkbox v-model="isCompassFollowChecked" v-on:click="showFollowCompass($event)" color="checkbox" val="3"></q-checkbox>

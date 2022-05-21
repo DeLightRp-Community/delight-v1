@@ -37,7 +37,7 @@ end)
 
 
 RegisterNetEvent('qb-banking:client:bank:openUI')
-AddEventHandler('qb-banking:client:bank:openUI', function() -- this one bank from target models
+AddEventHandler('qb-banking:client:bank:openUI', function(bankType) -- this one bank from target models
 	if not bMenuOpen then
 		TriggerEvent('animations:client:EmoteCommandStart', {"ATM"})
 
@@ -47,7 +47,7 @@ AddEventHandler('qb-banking:client:bank:openUI', function() -- this one bank fro
 			disableMouse = false,
 			disableCombat = true,
 		}, {}, {}, {}, function() -- Done
-			ToggleUI()
+			ToggleUI(bankType)
 		end, function()
 			QBCore.Functions.Notify('Canceled', 'warning')
 			TriggerEvent('animations:client:EmoteCommandStart', {"c"})
@@ -65,7 +65,7 @@ AddEventHandler('qb-banking:client:atm:openUI', function() -- this opens ATM
 			disableMouse = false,
 			disableCombat = true,
 		}, {}, {}, {}, function() -- Done
-			ToggleUI()
+			ToggleUI('atm')
 		end, function()
 			QBCore.Functions.Notify('Canceled', 'warning')
 			TriggerEvent('animations:client:EmoteCommandStart', {"c"})
@@ -99,8 +99,10 @@ exports['qb-target']:AddBoxZone("Bank1", vector3(149.07, -1041.16, 29.54), 1.5, 
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-banking:client:bank:openUI",
+            	action = function(entity) 
+					if IsPedAPlayer(entity) then return false end 
+					TriggerEvent('qb-banking:client:bank:openUI', 'bank')
+				end,
 				icon = "fas fa-piggy-bank",
 				label = "Sign In",
 			},
@@ -117,8 +119,10 @@ exports['qb-target']:AddBoxZone("Bank2", vector3(-1212.98, -331.53, 38.24), 1.5,
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-banking:client:bank:openUI",
+            	action = function(entity) 
+					if IsPedAPlayer(entity) then return false end 
+					TriggerEvent('qb-banking:client:bank:openUI', 'bank')
+				end,
 				icon = "fas fa-piggy-bank",
 				label = "Sign In",
 			},
@@ -135,8 +139,10 @@ exports['qb-target']:AddBoxZone("Bank3", vector3(-2962.16, 482.17, 15.7), 1.5, 4
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-banking:client:bank:openUI",
+            	action = function(entity) 
+					if IsPedAPlayer(entity) then return false end 
+					TriggerEvent('qb-banking:client:bank:openUI', 'bank')
+				end,
 				icon = "fas fa-piggy-bank",
 				label = "Sign In",
 			},
@@ -153,8 +159,10 @@ exports['qb-target']:AddBoxZone("Bank4", vector3(-112.29, 6469.38, 31.63), 1.5, 
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-banking:client:bank:openUI",
+            	action = function(entity) 
+					if IsPedAPlayer(entity) then return false end 
+					TriggerEvent('qb-banking:client:bank:openUI', 'bank')
+				end,
 				icon = "fas fa-piggy-bank",
 				label = "Sign In",
 			},
@@ -171,8 +179,10 @@ exports['qb-target']:AddBoxZone("Bank5", vector3(313.56, -279.7, 54.8), 1.5, 4.5
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-banking:client:bank:openUI",
+            	action = function(entity) 
+					if IsPedAPlayer(entity) then return false end 
+					TriggerEvent('qb-banking:client:bank:openUI', 'bank')
+				end,
 				icon = "fas fa-piggy-bank",
 				label = "Sign In",
 			},
@@ -189,8 +199,10 @@ exports['qb-target']:AddBoxZone("Bank6", vector3(-351.51, -49.8, 49.04), 1.5, 4.
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-banking:client:bank:openUI",
+            	action = function(entity) 
+					if IsPedAPlayer(entity) then return false end 
+					TriggerEvent('qb-banking:client:bank:openUI', 'bank')
+				end,
 				icon = "fas fa-piggy-bank",
 				label = "Sign In",
 			},
@@ -207,28 +219,42 @@ exports['qb-target']:AddBoxZone("Bank7", vector3(1175.92, 2707.86, 38.09), 1.5, 
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-banking:client:bank:openUI",
+            	action = function(entity) 
+					if IsPedAPlayer(entity) then return false end 
+					TriggerEvent('qb-banking:client:bank:openUI', 'bank')
+				end,
 				icon = "fas fa-piggy-bank",
 				label = "Sign In",
 			},
 		},
 		distance = 2.5
 })
-
-exports['qb-target']:AddBoxZone("BigBank", vector3(242.41, 225.03, 106.29), 1.5, 4.5, {
+local point={
+	vector2(256.62841796875, 226.9614868164),
+	vector2(257.10583496094, 228.25079345704),
+	vector2(271.34005737304, 222.74778747558),
+	vector2(267.6277770996, 211.14305114746),
+	vector2(252.93574523926, 216.45069885254),
+	vector2(253.44396972656, 217.67492675782),
+	vector2(265.62649536132, 213.30068969726),
+	vector2(267.26770019532, 214.43572998046),
+	vector2(269.7096862793, 221.39178466796),
+	vector2(268.96551513672, 222.47755432128)
+  }
+exports['qb-target']:AddPolyZone("BigBank", point, {
 	name = "BigBank",
-	heading = 342.44,
 	debugPoly = false,
 	minZ = 105,
 	maxZ = 108,
 	}, {
 		options = {
 			{
-            	type = "client",
-            	event = "qb-banking:client:bank:openUI",
 				icon = "fas fa-piggy-bank",
 				label = "Sign In",
+				action = function(entity) 
+					if IsPedAPlayer(entity) then return false end 
+					TriggerEvent('qb-banking:client:bank:openUI', 'bigbank')
+				end,
 			},
 		},
 		distance = 2.5

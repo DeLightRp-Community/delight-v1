@@ -279,6 +279,7 @@ RegisterNetEvent('hospital:client:TreatWounds', function()
                 }, {}, {}, function() -- Done
                     isHealingPerson = false
                     StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    
                     QBCore.Functions.Notify(Lang:t('success.helped_player'), 'success')
                     TriggerServerEvent("hospital:server:TreatWounds", playerId)
                 end, function() -- Cancel
@@ -321,14 +322,42 @@ end
 
 RegisterNetEvent('qb-ambulancejob:stash', function()
     if onDuty then
-        TriggerServerEvent("inventory:server:OpenInventory", "stash", "ambulancestash_"..QBCore.Functions.GetPlayerData().citizenid)
+        TriggerServerEvent("inventory:server:OpenInventory", "stash", "ambulancestash_"..QBCore.Functions.GetPlayerData().citizenid,{
+            maxweight = 10000,
+            slots = 6,
+        })
         TriggerEvent("inventory:client:SetCurrentStash", "ambulancestash_"..QBCore.Functions.GetPlayerData().citizenid)
     end
 end)
 
+
 RegisterNetEvent('qb-ambulancejob:armory', function()
+    local authorizedItems = {
+        label = Lang:t('menu.pol_armory'),
+        slots = 30,
+        items = {}
+    }
+    local index = 1
+    for _, armoryItem in pairs(Config.Items.items) do
+        for i=1, #armoryItem.authorizedJobGrades do
+            if armoryItem.authorizedJobGrades[i] == PlayerJob.grade.level then
+                authorizedItems.items[index] = armoryItem
+                authorizedItems.items[index].slot = index
+                index = index + 1
+            end
+        end
+    end
+    
     if onDuty then
-        TriggerServerEvent("inventory:server:OpenInventory", "shop", "hospital", Config.Items)
+        TriggerServerEvent("inventory:server:OpenInventory", "shop", "hospital", Config.Items, authorizedItems)
+    end
+end)
+
+RegisterNetEvent('qb-ambulance:client:openMedicalBag', function(bagID)
+    if onDuty then
+        -- TriggerServerEvent("inventory:server:OpenInventory", "shop", "hospital", Config.Items)
+        TriggerServerEvent("inventory:server:OpenInventory", "stash", "medicalBag_"..bagID)
+        TriggerEvent("inventory:client:SetCurrentStash", "medicalBag_"..bagID)
     end
 end)
 

@@ -798,6 +798,21 @@ RegisterNetEvent('mt-UwUCafe:client:BeberCafe', function() -- Comer panqueca
     end)
 end)
 
+RegisterNetEvent('mt-UwUCafe:client:BeberCafe2', function() -- Comer panqueca
+    TriggerEvent('animations:client:EmoteCommandStart', {"coffee"})
+    QBCore.Functions.Progressbar('beber_cafe', 'DRINKING A COFFEE...', 5000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+        disableMouse = false,
+        disableCombat = true,
+    }, {}, {}, {}, function()
+        TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + math.random(30, 50))
+        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        exports['tnj-buffs']:StaminaBuffEffect(15000, 1.4)
+        
+    end)
+end)
+
 RegisterNetEvent('mt-UwUCafe:client:BeberLatte', function() -- Comer panqueca
     TriggerEvent('animations:client:EmoteCommandStart', {"coffee"})
     QBCore.Functions.Progressbar('beber_latte', 'DRINKING A LATTE...', 5000, false, true, {

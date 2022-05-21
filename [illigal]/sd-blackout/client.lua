@@ -98,11 +98,6 @@ AddEventHandler('sd-blackout', function()
 	TriggerServerEvent("qb-weathersync:server:toggleBlackout")
 end)
 
-RegisterCommand('blackout2', function(source, args, rawCommand)
-	TriggerEvent('sd-blackout')
-	end)
-
-
 -- Blackout Restoration
 
 RegisterNetEvent('sd-blackoutfix')
@@ -116,6 +111,37 @@ AddEventHandler('sd-blackoutfix', function()
 	TriggerServerEvent("qb-weathersync:server:toggleBlackout")
 end)
 	
+RegisterNetEvent('sd-blackoutanim', function ()
+    TriggerEvent('animations:client:EmoteCommandStart', {"weld"})
+    QBCore.Functions.Progressbar("spawn_object", "Fix Black Out", 18000, false, true, {
+        disableMovement = true,
+        disableCarMovement = true,
+        disableMouse = false,
+        disableCombat = true,
+    }, {}, {}, {}, function() -- Done
+        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        TriggerEvent("sd-blackoutfix")
+        removeweld()
+    end, function() -- Cancel
+        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        QBCore.Functions.Notify("Cancel...", "error")
+        removeweld()
+    end)
+end)
+
+function removeweld()
+    local player = PlayerId()
+    local plyPed = GetPlayerPed(player)
+    local plyPos = GetEntityCoords(plyPed, false)
+ 
+    local propdel = GetClosestObjectOfType(plyPos.x, plyPos.y, plyPos.z - 2.0, 200.0, GetHashKey("prop_weld_torch"), false, 0, 0)
+    if propdel ~= 0 then
+        SetEntityAsMissionEntity(propdel, true, true)
+        DeleteObject(propdel)
+        SetEntityAsNoLongerNeeded(propdel)
+    end
+end
+
 -- Explosive Plant Animation
 
 function bombanime()
@@ -173,7 +199,7 @@ exports["qb-target"]:AddCircleZone("Bomb", vector3(651.99, 101.11, 81.16), 2.0, 
             },
             { 	
                 type = "client",
-                event = "sd-blackoutfix",
+                event = "sd-blackoutanim",
                 icon = "fas fa-user-secret",
                 label = "Restore Power",
                 job = "police",

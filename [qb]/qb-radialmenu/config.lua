@@ -325,20 +325,27 @@ Config.VehicleSeats = {
 Config.JobInteractions = {
     ["ambulance"] = {
         {
+            id = 'mdtmedic',
+            title = 'MDT',
+            icon = 'tablet',
+            type = 'client',
+            event = 'mdt:client:fullmenuradila',
+            shouldClose = true
+        }, {
             id = 'statuscheck',
             title = 'Check Health Status',
             icon = 'heartbeat',
             type = 'client',
             event = 'hospital:client:CheckStatus',
             shouldClose = true
-        },{
+        }, {
             id = 'revivep',
             title = 'Revive',
             icon = 'user-md',
             type = 'client',
             event = 'hospital:client:RevivePlayer',
             shouldClose = true
-        },{
+        }, {
             id = 'treatwounds',
             title = 'Heal wounds',
             icon = 'band-aid',
@@ -359,7 +366,7 @@ Config.JobInteractions = {
             type = 'client',
             event = 'police:client:EscortPlayer',
             shouldClose = true
-        },{
+        }, {
             id = 'emsOption',
             title = 'Ems Objects',
             icon = 'user-friends',
@@ -428,25 +435,25 @@ Config.JobInteractions = {
             event = 'K9:server:addk9babat',
             shouldClose = true
         }, {
-            id = 'mdtmenu',
+            id = 'mdtpolice',
             title = 'MDT',
             icon = 'tablet',
             type = 'client',
-            event = 'mdt:client:policemenu',
+            event = 'mdt:client:fullmenuradila',
             shouldClose = true
         }, {
             id = 'officerdown',
             title = 'Officer Down',
             icon = 'bell',
             type = 'client',
-            event = 'qb-dispatch:client:officerdown',
+            event = 'ps-dispatch:client:officerdown',
             shouldClose = true
         }, {
             id = 'fireshot',
             title = 'Shot Fire',
             icon = 'bell',
             type = 'client',
-            event = 'qb-dispatch:client:fireshot',
+            event = 'ps-dispatch:client:fireshot',
             shouldClose = true
         }, {
             id = 'emergencybutton',

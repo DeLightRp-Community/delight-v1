@@ -7,8 +7,8 @@ div#openmenu { display: none; position: absolute; width: 50%; top: 45%; left: 50
 
 /* Menu tab & panel styles */
 .text-tabcolor { color: rgb(255, 255, 255)!important; }
-.bg-active-tab { background: rgb(23 23 23)!important; }
-.bg-panel { background: rgb(30 30 30)!important; }
+.bg-active-tab { background: rgb(35, 40, 51)!important; }
+.bg-panel { background: rgb(49, 70, 94)!important; }
 .q-tab-panels { border-top-right-radius: 12px!important; border-bottom-right-radius: 12px!important; } /* change all 12px for a different border radius (rounds edges of the menu) */
 .q-splitter__panel.q-splitter__before { border-top-left-radius: 12px!important; border-bottom-left-radius: 12px!important; } /* change all 12px for a different border radius (rounds edges of the menu) */
 .q-tabs--vertical.q-tabs--not-scrollable .q-tabs__content { border-top-left-radius: 12px!important; border-bottom-left-radius: 12px!important; } /* change all 12px for a different border radius (rounds edges of the menu) */
@@ -19,11 +19,11 @@ div#openmenu { display: none; position: absolute; width: 50%; top: 45%; left: 50
 
 /* Menu buttons & checkboxes & toggle switch icons styles */
 .text-textbutton { color: rgb(0, 0, 0)!important; }
-.bg-bgbutton { background: rgb(220 20 60)!important; }
+.bg-bgbutton { background: rgb(112, 241, 69)!important; }
 .q-checkbox__inner { color: rgb(255 255 255 / 70%)!important; }
-.text-checkbox { color: rgb(220 20 60)!important; }
+.text-checkbox { color: rgb(247, 168, 99)!important; }
 .q-checkbox__svg { color: rgb(0, 0, 0)!important; }
-.q-checkbox__inner--truthy .q-checkbox__bg { box-shadow: 0px 0px 3px 3px rgb(220 20 60 / 15%)!important; } /* if you want the checkboxes to have a glow/shadow */
+.q-checkbox__inner--truthy .q-checkbox__bg { box-shadow: 0px 0px 3px 3px rgb(247 168 99 / 15%)!important; } /* if you want the checkboxes to have a glow/shadow */
 .text-toggleicons { color: rgb(0, 0, 0)!important; }
 
 /* Menu misc */
@@ -58,7 +58,7 @@ div#q-loading-bar { display: none!important; } /* makes sure there's no ajax loa
 #money-container {
   position: absolute;
   right: 2vw;
-  top: 5vh;
+  top: 2vh;
   font-weight: 400;
   font-size: 40px;
 }
@@ -109,7 +109,7 @@ div#q-loading-bar { display: none!important; } /* makes sure there's no ajax loa
 /* Vehicle HUD */
 
 speed:after {
-  content: "KPH"; /* If using KPH change this content from MPH */
+  content: "MPH"; /* If using KPH change this content from MPH */
   display: block;
   padding-top: 3px;
   padding-left: 2px;

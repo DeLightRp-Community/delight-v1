@@ -236,8 +236,15 @@ local function ResetAll()
         limbs = BodyParts,
         isBleeding = tonumber(isBleeding)
     })
-    TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", 100)
-    TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", 100)
+    local player = QBCore.Functions.GetPlayerData()
+    
+    if player.metadata["hunger"]<20 then
+        TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", 20)
+    end
+    if player.metadata["thirst"]<20 then
+    TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", 20)
+    end
+    
 end
 
 local function loadAnimDict(dict)
@@ -328,7 +335,8 @@ local function IsInDamageList(damage)
     return retval
 end
 
-local isCheckinEnable=false
+local isCheckinEnable=true
+
 CreateThread(function()
     local model = `s_m_m_doctor_01`
     for k, v in pairs(Config.Locations["checking"]) do
@@ -367,10 +375,10 @@ CreateThread(function()
                     event = "hospital:server:enableCheckin",
                     canInteract = function(entity)
                         if IsPedAPlayer(entity) then return false end 
-                        if isCheckinEnable then
-                            return false
-                        else
+                        if not isCheckinEnable then
                             return true
+                        else
+                            return false
                         end
                     end,
                     job = "ambulance"
@@ -661,7 +669,7 @@ RegisterNetEvent('hospital:client:Revive', function()
 
     TriggerServerEvent("hospital:server:RestoreWeaponDamage")
     SetEntityMaxHealth(player, 200)
-    SetEntityHealth(player, 200)
+    SetEntityHealth(player, 120)
     ClearPedBloodDamage(player)
     SetPlayerSprint(PlayerId(), true)
     ResetAll()
@@ -711,6 +719,7 @@ RegisterNetEvent('hospital:client:HealInjuries', function(type)
     else
         ResetPartial()
     end
+    SetEntityHealth(PlayerPedId(), 200)
     TriggerServerEvent("hospital:server:RestoreWeaponDamage")
     QBCore.Functions.Notify(Lang:t('success.wounds_healed'), 'success')
 end)
@@ -751,10 +760,9 @@ RegisterNetEvent('hospital:client:SendBillEmail', function(amount)
         end
         local charinfo = QBCore.Functions.GetPlayerData().charinfo
         TriggerServerEvent('qb-phone:server:sendNewMail', {
-            sender = Lang:t('mail.sender'),
-            subject = Lang:t('mail.subject'),
-            message = Lang:t('mail.message', {gender = gender, lastname = charinfo.lastname, costs = amount}),
-            button = {}
+            sender = "Hospital",
+            subject = "Check In",
+            message = "you paid 2000$ for wounds",
         })
     end)
 end)
@@ -909,24 +917,24 @@ CreateThread(function()
 end)
 
 local listen = false
- local function CheckInControls(variable)
-    CreateThread(function()
-        listen = true
-        while listen do
-            if IsControlJustPressed(0, 38) then
-                exports['qb-core']:KeyPressed(38)
-                if variable == "checkin" then
-                   TriggerEvent('qb-ambulancejob:checkin')
-                    listen = false
-                elseif variable == "beds" then
-                    TriggerEvent('qb-ambulancejob:beds')
-                    listen = false
-                end
-            end
-            Wait(1)
-        end
-    end)
-end
+--  local function CheckInControls(variable)
+--     CreateThread(function()
+--         listen = true
+--         while listen do
+--             if IsControlJustPressed(0, 38) then
+--                 exports['qb-core']:KeyPressed(38)
+--                 if variable == "checkin" then
+--                    TriggerEvent('qb-ambulancejob:checkin')
+--                     listen = false
+--                 elseif variable == "beds" then
+--                     TriggerEvent('qb-ambulancejob:beds')
+--                     listen = false
+--                 end
+--             end
+--             Wait(1)
+--         end
+--     end)
+-- end
 
 CreateThread(function()
     while true do

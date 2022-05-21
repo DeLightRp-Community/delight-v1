@@ -38,7 +38,7 @@ Config["Minar"] = {
 -- Location of Stones Ilegal
 ----------------------
 Config.NomeJobPolicia = "police"    -- Name of job police
-Config.PoliciaNecessaria = 3        -- Amount of police needed
+Config.PoliciaNecessaria = 4        -- Amount of police needed
 Config.NecessarioPolicia = true    -- Police needed?
 
 Config.BlipIllegal = {
@@ -253,7 +253,7 @@ Config.QBMenuSellingClose       = "< Close"
 ----------------------
 Config.PayForVehicle = true
 Config.AmountPayForVehicle = 250
-Config.TempoParaSpawnarNovamente = 60000            -- Time to spawn another vehicle. 60000 = 1 Min
+Config.TempoParaSpawnarNovamente = 600000            -- Time to spawn another vehicle. 60000 = 1 Min
 Config.Fuel = "LegacyFuel"                                          -- Name of your fuel script
 Config.VehicleKeysTrigger = "vehiclekeys:client:SetOwner"           -- Trigger to give vehiclekeys
 
@@ -280,15 +280,15 @@ Config.Products = {
     ["Miners"] = {
         [1] = {
             name = "water_bottle",                                  
-            price = 5,
+            price = 40,
             amount = 25,
             info = {},
             type = "item",
             slot = 1,
         },
         [2] = {
-            name = "weapon_bread",                                  
-            price = 5,
+            name = "sandwich",                                  
+            price = 60,
             amount = 25,
             info = {},
             type = "item",
@@ -296,7 +296,7 @@ Config.Products = {
         },
         [3] = {
             name = "oculosmineiro",                                  
-            price = 5,
+            price = 50,
             amount = 25,
             info = {},
             type = "item",
@@ -304,7 +304,7 @@ Config.Products = {
         },
         [4] = {
             name = "fonesmineiro",                                  
-            price = 5,
+            price = 50,
             amount = 25,
             info = {},
             type = "item",
@@ -312,7 +312,7 @@ Config.Products = {
         },
         [5] = {
             name = "sacomineiros",                                  
-            price = 5,
+            price = 100,
             amount = 25,
             info = {},
             type = "item",
@@ -320,7 +320,7 @@ Config.Products = {
         },
         [6] = {
             name = "maquina",                                  
-            price = 5,
+            price = 500,
             amount = 25,
             info = {},
             type = "item",
@@ -383,6 +383,7 @@ Config.PedListMineiros = {                                              -- Peds 
 ------------
 Config.ChanceChamarPolicia = 50     --The higher the value, the lower the probability
 function ChamarPolicia()
-    TriggerServerEvent('qb-dispatch:illegalmining')
+    --TriggerServerEvent('ps-dispatch:illegalmining')
+    exports['ps-dispatch']:Illegal_Mining()
     -- You can trigger your dispatch
 end

@@ -115,6 +115,11 @@ QBCore.Functions.CreateUseableItem("meth", function(source, item)
     TriggerClientEvent("consumables:client:meth", src)
 end)
 
+QBCore.Functions.CreateUseableItem("heroin", function(source, item)
+    local src = source
+    TriggerClientEvent("consumables:client:heroin", src)
+end)
+
 ----------- / Tools
 
 QBCore.Functions.CreateUseableItem("armor", function(source, item)

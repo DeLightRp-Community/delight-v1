@@ -76,16 +76,16 @@ Config.Businesses = {
 }
 
 Config.Plates = {
-    [1] = {
-        coords = vector4(-29.38, -1042.73, 28.63, 161.81),
-        boxData = {
-            heading = 340,
-            length = 5,
-            width = 2.5,
-            debugPoly = false
-        },
-        AttachedVehicle = nil,
-    },
+    -- [1] = {
+    --     coords = vector4(-29.38, -1042.73, 28.63, 161.81),
+    --     boxData = {
+    --         heading = 340,
+    --         length = 5,
+    --         width = 2.5,
+    --         debugPoly = false
+    --     },
+    --     AttachedVehicle = nil,
+    -- },
 }
 
 Config.Locations={
@@ -96,8 +96,8 @@ Config.Locations={
 }
 
 Config.Vehicles = {
-    ["flatbed"] = "Flatbed",
-    ["towtruck"] = "Towtruck",
+    -- ["flatbed"] = "Flatbed",
+    -- ["towtruck"] = "Towtruck",t
 }
 
 Config.MinimalMetersForDamage = {

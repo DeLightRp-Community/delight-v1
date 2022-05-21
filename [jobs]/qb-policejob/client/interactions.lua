@@ -22,6 +22,18 @@ local function IsTargetDead(playerId)
     return retval
 end
 
+local function Isinlaststand(playerId)
+    local retval = false
+    QBCore.Functions.TriggerCallback('police:server:isinlaststand', function(result)
+        retval = result
+    end, playerId)
+    Wait(100)
+    return retval
+end
+
+
+
+
 local function HandCuffAnimation()
     local ped = PlayerPedId()
     if isHandcuffed == true then
@@ -120,7 +132,7 @@ RegisterNetEvent('police:client:RobPlayer', function()
     if player ~= -1 and distance < 2.5 then
         local playerPed = GetPlayerPed(player)
         local playerId = GetPlayerServerId(player)
-        if IsEntityPlayingAnim(playerPed, "missminuteman_1ig_2", "handsup_base", 3) or IsEntityPlayingAnim(playerPed, "mp_arresting", "idle", 3) or IsTargetDead(playerId) then
+        if IsEntityPlayingAnim(playerPed, "missminuteman_1ig_2", "handsup_base", 3) or IsEntityPlayingAnim(playerPed, "mp_arresting", "idle", 3) or IsTargetDead(playerId) or Isinlaststand(playerId) then
             QBCore.Functions.Progressbar("robbing_player", Lang:t("progressbar.robbing"), math.random(5000, 7000), false, true, {
                 disableMovement = true,
                 disableCarMovement = true,
@@ -214,7 +226,7 @@ RegisterNetEvent('police:client:PutPlayerInVehicle', function()
     local player, distance = QBCore.Functions.GetClosestPlayer()
     if player ~= -1 and distance < 2.5 then
         local playerId = GetPlayerServerId(player)
-        if not isHandcuffed and not isEscorted then
+        if not isHandcuffed and not isEscorted or Isinlaststand(playerId) then
             TriggerServerEvent("police:server:PutPlayerInVehicle", playerId)
         end
     else
@@ -284,6 +296,17 @@ RegisterNetEvent('police:client:CuffPlayerSoft', function()
         Wait(2000)
     end
 end)
+
+function CuffAnimation(cuffer)
+	loadAnimDict("mp_arrest_paired")
+	local cuffer = GetPlayerPed(GetPlayerFromServerId(tonumber(cuffer)))
+	local dir = GetEntityHeading(cuffer)
+	--TriggerEvent('police:cuffAttach',cuffer)
+	SetEntityCoords(PlayerPedId(), GetOffsetFromEntityInWorldCoords(cuffer, 0.0, 0.45, 0.0))
+	Citizen.Wait(100)
+	SetEntityHeading(PlayerPedId(),dir)
+	TaskPlayAnim(PlayerPedId(), "mp_arrest_paired", "crook_p2_back_right", 8.0, -8, -1, 32, 0, 0, 0, 0)
+end
 
 RegisterNetEvent('police:client:CuffPlayer', function()
     if not IsPedRagdoll(PlayerPedId()) then

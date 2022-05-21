@@ -24,6 +24,15 @@ QBCore.Functions.CreateUseableItem("starterpack", function(source)
     TriggerClientEvent('qb-smallrecources:starterpack', src)
 end)
 
+QBCore.Functions.CreateUseableItem("medicalbag", function(source,item)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(source)
+	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
+        -- TriggerClientEvent('attach:medicalBag', src, item.info.boxid)
+        TriggerClientEvent('qb-ambulance:client:openMedicalBag', src, item.info.bagID)
+        
+    end
+end)
 
 RegisterNetEvent('equip:harness', function(item)
     local src = source
@@ -76,6 +85,8 @@ RegisterNetEvent('qb-smallrecources:rewardpack', function()
     local Player = QBCore.Functions.GetPlayer(src)
     Player.Functions.RemoveItem('starterpack', 1)
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["starterpack"], "remove")
+    Player.Functions.AddItem("phone", 1)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["phone"], "add")
     Player.Functions.AddItem("lockpick", math.random(1,2))
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["lockpick"], "add")
     Player.Functions.AddItem("burger-bleeder", math.random(3,5))
@@ -87,4 +98,3 @@ RegisterNetEvent('qb-smallrecources:rewardpack', function()
     Player.Functions.AddItem("bandage", math.random(1,3))
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["bandage"], "add")
 end)
-

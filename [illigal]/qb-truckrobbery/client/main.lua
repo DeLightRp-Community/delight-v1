@@ -237,7 +237,7 @@ AddEventHandler('qb-armoredtruckheist:client:911alert', function()
 		if street2 ~= nil then
 			streetLabel = streetLabel .. " " .. street2
 		end
-		exports['qb-dispatch']:VanRobbery()
+		exports['ps-dispatch']:VanRobbery()
 
 			TriggerServerEvent("qb-armoredtruckheist:server:callCops", streetLabel, transCoords)
 
@@ -252,7 +252,7 @@ AddEventHandler('qb-armoredtruckheist:client:robberyCall', function(streetLabel,
         local store = "Armored Truck"
 
             PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-			exports['qb-dispatch']:TruckRobbery()
+			exports['ps-dispatch']:TruckRobbery()
 
         local transG = 250
         local blip = AddBlipForCoord(coords.x, coords.y, coords.z)

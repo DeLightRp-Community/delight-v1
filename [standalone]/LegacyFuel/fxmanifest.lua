@@ -1,24 +1,30 @@
-fx_version 'bodacious'
+fx_version 'cerulean'
 game 'gta5'
 
-author 'InZidiuZ'
-description 'Legacy Fuel'
-version '1.3'
-
-shared_scripts { 
-	'config.lua'
-}
+description 'ps-fuel'
+version '1.0'
+author 'github.com/Project-Sloth'
 
 client_scripts {
-	'functions/functions_client.lua',
-	'source/fuel_client.lua'
+    '@PolyZone/client.lua',
+	'client/client.lua',
+	'client/utils.lua'
 }
 
 server_scripts {
-	'source/fuel_server.lua'
+	'server/server.lua'
+}
+
+shared_scripts {
+	'@qb-core/shared/locale.lua',
+	'locales/en.lua',
+	-- 'locales/de.lua',
+	'shared/config.lua',
 }
 
 exports {
 	'GetFuel',
 	'SetFuel'
 }
+
+lua54 'yes'

@@ -27,20 +27,20 @@ RegisterNetEvent('QBCore:Client:OnGangUpdate', function(GangInfo)
     SendNUIMessage({type = "refresh_accounts"})
 end)
 
-function ToggleUI()
+function ToggleUI(bankType)
     local charinfo = QBCore.Functions.GetPlayerData().charinfo
     bMenuOpen = not bMenuOpen
 
     if (not bMenuOpen) then
         SetNuiFocus(false, false)
     else
-        QBCore.Functions.TriggerCallback("qb-banking:server:GetBankData", function(data, transactions)
+        QBCore.Functions.TriggerCallback("qb-banking:server:GetBankData", function(data, transactions, bankType)
             local PlayerBanks = json.encode(data)
 
 
             SetNuiFocus(true, true)
-            SendNUIMessage({type = 'OpenUI', accounts = PlayerBanks, transactions = json.encode(transactions), name = charinfo.firstname.. " ".. charinfo.lastname})
-        end)
+            SendNUIMessage({type = 'OpenUI',bankType = bankType ,accounts = PlayerBanks, transactions = json.encode(transactions), name = charinfo.firstname.. " ".. charinfo.lastname})
+        end,bankType)
     end
 end
 

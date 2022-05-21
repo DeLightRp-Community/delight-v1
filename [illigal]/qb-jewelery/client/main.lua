@@ -133,7 +133,7 @@ local ThermiteEffect = function()
     Wait(25000)
     ClearPedTasks(ped)
     Wait(2000)
-    exports['qb-dispatch']:VangelicoRobbery()
+    exports['ps-dispatch']:VangelicoRobbery()
     TriggerServerEvent('av_vangelico:gas')
     if Config.DoorLock == 'qb' then
         TriggerServerEvent('qb-doorlock:server:updateState', Config.DoorId, false, false, false, true, false, false)

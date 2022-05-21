@@ -177,18 +177,33 @@ function PaycheckInterval()
                             if account < payment then -- Checks if company has enough money to pay society
                                 TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, Lang:t('error.company_too_poor'), 'error')
                             else
-                                Player.Functions.AddMoney('bank', payment)
+                                Player.Functions.AddMoney('paycheck', payment)
                                 exports['qb-management']:RemoveMoney(Player.PlayerData.job.name, payment)
                                 TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, Lang:t('info.received_paycheck', {value = payment}))
                             end
                         else
-                            Player.Functions.AddMoney('bank', payment)
+                            Player.Functions.AddMoney('paycheck', payment)
                             TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, Lang:t('info.received_paycheck', {value = payment}))
                         end
                     else
-                        Player.Functions.AddMoney('bank', payment)
+                        Player.Functions.AddMoney('paycheck', payment)
                         TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, Lang:t('info.received_paycheck', {value = payment}))
                     end
+                end
+            end
+        end
+    end
+    SetTimeout(QBCore.Config.Money.PayCheckTimeOut * (60 * 1000), PaycheckInterval)
+end
+-- Tax
+function PaycheckInterval()
+    if next(QBCore.Players) then
+        for _, Player in pairs(QBCore.Players) do
+            if Player then
+                local payment = (Player.PlayerData.job.payment*15)/100
+                if Player.PlayerData.job and payment > 0 and (QBShared.Jobs[Player.PlayerData.job.name].offDutyPay or Player.PlayerData.job.onduty) then
+                    Player.Functions.RemoveMoney('bank', payment)
+                    TriggerClientEvent('QBCore:Notify', Player.PlayerData.source, Lang:t('info.taxPickup', {value = payment}))
                 end
             end
         end

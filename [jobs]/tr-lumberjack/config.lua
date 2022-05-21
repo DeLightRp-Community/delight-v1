@@ -62,18 +62,18 @@ LumberJob = {
     TradeRecevied_Min = 1,
     TradeRecevied_Max = 3,
 
-    AxePrice = 100,                                                 -- Axe Price ($100)
+    AxePrice = 500,                                                 -- Axe Price ($100)
 }
 
 Config.Sell = {
     ["tree_lumber"] = {
-        ["price"] = math.random(45, 60)                             -- Seller Price
+        ["price"] = 30                             -- Seller Price
     },
     ["tree_bark"] = {
-        ["price"] = math.random(20, 30)
+        ["price"] = 10
     },
     ["wood_plank"] = {
-        ["price"] = math.random(65, 100)
+        ["price"] = 50
     },
 }
 

@@ -48,6 +48,7 @@ CreateThread(function()
           end
         end
         for key, attached_object in pairs(attached_weapons) do
+          -- print(inHotbar(attached_object.hash))
             if GetSelectedPedWeapon(ped) == attached_object.hash or not inHotbar(attached_object.hash) then
               DeleteObject(attached_object.handle)
               attached_weapons[key] = nil

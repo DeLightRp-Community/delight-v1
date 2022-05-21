@@ -177,6 +177,7 @@ RegisterNetEvent('jl-carboost:server:finishBoosting', function (type, tier)
    local randomRep = math.random(Config.MinRep, Config.MaxRep)
    if type ~= 'vin' then
       pData.Functions.AddMoney(Config.Payment, amountMoney, 'finished-boosting')
+      --exports['LuxuExchange']:AddCrypto(pData, btc, amountMoney)
       if Config.Payment == 'crypto' then
          TriggerClientEvent('QBCore:Notify', src, Lang:t('info.payment_crypto', {
             amount = amountMoney

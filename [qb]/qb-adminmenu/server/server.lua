@@ -6,7 +6,9 @@ local permissions = {
     ['ban'] = 'admin',
     ['noclip'] = 'admin',
     ['kickall'] = 'admin',
-    ['kick'] = 'admin'
+    ['kick'] = 'admin',
+    ['giveitem'] = 'admin',
+    ['']
 }
 local players = {}
 
@@ -170,7 +172,7 @@ end)
 
 RegisterNetEvent('qb-admin:server:SendReport', function(name, targetSrc, msg)
     local src = source
-    if QBCore.Functions.HasPermission(src, 'admin') or IsPlayerAceAllowed(src, 'command') then
+    if QBCore.Functions.HasPermission(src, 'admin') or QBCore.Functions.HasPermission(src, 'god') or IsPlayerAceAllowed(src, 'command') then
         if QBCore.Functions.IsOptin(src) then
             TriggerClientEvent('chat:addMessage', src, {
                 color = {255, 0, 0},

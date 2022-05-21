@@ -901,21 +901,27 @@ end
 
 function SetupInteraction()
     local text = CustomsData.drawtextui
-    if Config.UseRadial then
-        if not radialMenuItemId then
-            radialMenuItemId = exports['qb-radialmenu']:AddOption({
-                id = 'customs',
-                title = 'Enter Customs',
-                icon = 'wrench',
-                type = 'client',
-                event = 'qb-customs:client:EnterCustoms',
-                shouldClose = true
-            })
+    QBCore.Functions.GetPlayerData(function(PlayerData)
+        if PlayerData.job.name == "mechanic" or PlayerData.job.name == "tuner" then
+            if Config.UseRadial then
+                if not radialMenuItemId then
+                    radialMenuItemId = exports['qb-radialmenu']:AddOption({
+                        id = 'customs',
+                        title = 'Enter Customs',
+                        icon = 'wrench',
+                        type = 'client',
+                        event = 'qb-customs:client:EnterCustoms',
+                        shouldClose = true
+                    })
+                end
+            else
+                text = '[E] '..text
+                CheckForKeypress()
+            end
+        else
+            print("no job")
         end
-    else
-        text = '[E] '..text
-        CheckForKeypress()
-    end
+    end)    
     exports['qb-core']:DrawText(text, 'left')
 end
 

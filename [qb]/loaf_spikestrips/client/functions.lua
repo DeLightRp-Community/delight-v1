@@ -44,24 +44,26 @@ function DeployStinger()
     return stinger
 end
 
-RegisterNetEvent("loaf_spikestrips:placeSpikestrip", function()
+RegisterNetEvent("loaf_spikestrips:placeSpikestrip")
+AddEventHandler("loaf_spikestrips:placeSpikestrip", function()
     DeployStinger()
 end)
 
 function RemoveStinger()
-    local player = PlayerId()
-    local plyPed = GetPlayerPed(player)
-    local plyPos = GetEntityCoords(plyPed, false)
-    local propdelsp = GetClosestObjectOfType(plyPos.x, plyPos.y, plyPos.z - 2.0, 200.0, GetHashKey("p_ld_stinger_s"), false, 0, 0)
-    TriggerServerEvent("loaf_spikestrips:removedSpike")
-    if propdelsp ~= 0 then
-        SetEntityAsMissionEntity(propdelsp, true, true)
-        DeleteObject(propdelsp)
-        SetEntityAsNoLongerNeeded(propdelsp)
+    if DoesEntityExist(closestStinger) then
+        NetworkRequestControlOfEntity(closestStinger)
+        SetEntityAsMissionEntity(closestStinger, true, true)
+        DeleteEntity(closestStinger)
+
+        Wait(250)
+        if not DoesEntityExist(closestStinger) then
+            TriggerServerEvent("loaf_spikestrips:removedSpike")
+        end
     end
 end
 
-RegisterNetEvent("loaf_spikestrips:removeSpikestrip", function()
+RegisterNetEvent("loaf_spikestrips:removeSpikestrip")
+AddEventHandler("loaf_spikestrips:removeSpikestrip", function()
     RemoveStinger()
 end)
 

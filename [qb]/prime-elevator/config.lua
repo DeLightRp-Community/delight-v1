@@ -23,8 +23,8 @@ Config.Elevators = {
             [3] = {
                 Label = "Ground Floor",
                 FloorDesc = "Hospital Garage",
-                Coords = vector3(340.18, -584.68, 28.8),
-                ExitHeading = "104.87"
+                Coords = vector3(330.29, -601.07, 43.28),
+                ExitHeading = "64.53"
             },
         }
     },

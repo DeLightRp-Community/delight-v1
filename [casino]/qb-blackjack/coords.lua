@@ -50,6 +50,14 @@ tables = { -- Spawns Ped Only -- Setup Currently For This https://forum.cfx.re/t
 		coords = vector4(993.20, 43.70, 69.25, 279.25), --Table 14
 		highStakes = true
 	},
+	{ 
+		coords = vector4(409.27, 254.1, 91.05, 74.15), --Table 16
+		highStakes = false
+	},
+	{ 
+		coords = vector4(406.08, 255.1, 91.05, 250.32), --Table 16
+		highStakes = false
+	},
 }
 
 --[[

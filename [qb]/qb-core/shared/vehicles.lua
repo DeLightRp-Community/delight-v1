@@ -4268,6 +4268,15 @@ QBShared.Vehicles = {
 		['hash'] = `camper`,
 		['shop'] = 'illigal',
 	},
+	["npolmm"] = {
+		["name"] = "Nagasaki",
+		["brand"] = "Police",
+		["model"] = "npolmm",
+		["price"] = 15000,
+		["category"] = "policecar",
+		["hash"] = `npolvic`,
+		["shop"] = "policecars",
+	},
 	["npolvic"] = {
 		["name"] = "Ford Victoria",
 		["brand"] = "Police",

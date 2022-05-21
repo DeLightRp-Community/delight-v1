@@ -4,7 +4,7 @@ Config.Debug = false -- Set to True to enable Debug Prints
 Config.MoneyType = 'bank'
 Config.RepairMoneyType = 'cash'
 Config.UseRadial = true -- Will use qb-radial menu for entering instead of press E
-Config.allowGovPlateIndex = false -- Setting this to true will allow all vehicles to purchase gov plate index "Blue on White #3" (only for emergency vehicles otherwise)
+Config.allowGovPlateIndex =false  -- Setting this to true will allow all vehicles to purchase gov plate index "Blue on White #3" (only for emergency vehicles otherwise)
 maxVehiclePerformanceUpgrades = 0 -- | All Upgrades: 0 | No Upgrades: -1 | Can be -1 to 4
 
 -- ADJUST PRICING

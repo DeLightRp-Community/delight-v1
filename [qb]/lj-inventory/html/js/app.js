@@ -429,7 +429,6 @@ $(document).on("click", "#weapon-attachments", function(e) {
 });
 
 function FormatItemInfo(itemData, dom) {
-
     let element = $('.ply-iteminfo-container');
     let itemOffset = $(dom).offset();
     element.css('top', itemOffset.top - element.height());
@@ -633,12 +632,24 @@ function FormatItemInfo(itemData, dom) {
         } else if (itemData.name == "labkey") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>Lab: " + itemData.info.lab + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
-        }else if (itemData.name == "redwoodcigs") { // Cigarette Pack
+        } else if (itemData.name == "redwoodcigs") { // Cigarette Pack
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html(
                 "<p>" + itemData.info.uses + " cigarettes left.</p>"
             );
-        }else if (itemData.name == "bass") {
+        } else if (itemData.name == "arcadeblue") {
+            $(".item-info-title").html('<p>'+itemData.label+'</p>')
+            $(".item-info-description").html('<p><strong>Owner: </strong>'+itemData.info.owner+'</p><strong>Play Card Time:</strong> '+itemData.info.cardtime+' minutes</p>'); 
+            $(".item-info-stats").html('<p>Weight: '+((itemData.weight * itemData.amount) / 1000).toFixed(1) +' | Amount: '+itemData.amount+ ' | Quality: '+itemData.info.quality.toFixed(0)+'%</p>') 
+        } else if (itemData.name == "arcadegreen") {
+            $(".item-info-title").html('<p>'+itemData.label+'</p>')
+            $(".item-info-description").html('<p><strong>Owner: </strong>'+itemData.info.owner+'</p><strong>Play Card Time:</strong> '+itemData.info.cardtime+' minutes</p>'); 
+            $(".item-info-stats").html('<p>Weight: '+((itemData.weight * itemData.amount) / 1000).toFixed(1) +' | Amount: '+itemData.amount+ ' | Quality: '+itemData.info.quality.toFixed(0)+'%</p>') 
+        } else if (itemData.name == "arcadegold") {
+            $(".item-info-title").html('<p>'+itemData.label+'</p>')
+            $(".item-info-description").html('<p><strong>Owner: </strong>'+itemData.info.owner+'</p><strong>Play Card Time:</strong> '+itemData.info.cardtime+' minutes</p>'); 
+            $(".item-info-stats").html('<p>Weight: '+((itemData.weight * itemData.amount) / 1000).toFixed(1) +' | Amount: '+itemData.amount+ ' | Quality: '+itemData.info.quality.toFixed(0)+'%</p>') 
+        } else if (itemData.name == "bass") {
             $(".item-info-title").html('<p>' + itemData.label + '</p>')
             $(".item-info-description").html('<p>Species: ' + itemData.info.species + '</p>Weight: ' + itemData.info.lbs + ' lbs</p>Type: ' + itemData.info.type);
         } else if (itemData.name == "stingray") {
@@ -705,8 +716,8 @@ function FormatItemInfo(itemData, dom) {
             );
         }
         else {
-            // $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            // $(".item-info-description").html("<p>" + itemData.description + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>" + itemData.description + "</p><p style=\"font-size:11px\"><b>Weight: </b>" + itemData.weight + " | <b>Amount: </b> " + itemData.amount + " | <b>Quality: </b> " + "<a style=\"font-size:11px;color:green\">" + Math.floor(itemData.info.quality) + "</a>");
         }
     }
 }

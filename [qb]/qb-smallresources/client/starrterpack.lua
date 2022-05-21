@@ -5,8 +5,8 @@ RegisterNetEvent('qb-smallrecources:starterpack', function(data)
             disableMouse = false,
             disableCombat = true,
         }, {
-            animDict = "veh@break_in@0h@p_m_one@",
-            anim = "low_force_entry_ds",
+            animDict = "",
+            anim = "",
             flags = 16,
         }, {}, {}, function() -- Done
             

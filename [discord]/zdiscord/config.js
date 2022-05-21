@@ -26,14 +26,14 @@ const DebugLogs = false;
 const EnableDiscordBot = true;
 
 // DISCORD BOT
-const DiscordBotToken = "OTYzNTA1ODY0ODg1NTQzMDAy.YlXEww.n8oc-9JBiTAHq5N2KtkxG5ugWhk";
+const DiscordBotToken = "OTc2OTQ5NTQ4MjEzNzYwMTEy.GttQCT.EXkEVE_yWvtAmGFNw8fteMd_L-6rUjWNoihsjs";
 const DiscordGuildId = "856277326475296788";
 
 // STAFF CHAT
-const EnableStaffChatForwarding = false;
-const DiscordStaffChannelId = "946122365778149482";
+const EnableStaffChatForwarding = true;
+const DiscordStaffChannelId = "976950336520589352";
 const AdditionalStaffChatRoleIds = [
-    // "000000000000000",
+    "975100588394151976", //Staff command
 ];
 
 // WHITELISTING / ALLOWLISTING
@@ -42,15 +42,15 @@ const DiscordWhitelistRoleIds = "946122365778149482";
 
 // SLASH COMMANDS / DISCORD PERMISSIONS
 const EnableDiscordSlashCommands = true;
-const DiscordModRoleId = "930782271718457356";
-const DiscordAdminRoleId = "930782272678920242";
-const DiscordGodRoleId = "930787991495016479";
+const DiscordModRoleId = "";
+const DiscordAdminRoleId = "";
+const DiscordGodRoleId = "975100588394151976";
 
 // DISCORD BOT STATUS
 const EnableBotStatusMessages = true;
 const BotStatusMessages = [
     "{DelightRP}",
-    "{playercount} online",
+    "Specting Players",
 ];
 
 // ACE PERMISSIONS

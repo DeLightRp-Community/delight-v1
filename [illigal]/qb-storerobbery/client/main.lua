@@ -368,7 +368,7 @@ RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
                         TriggerServerEvent("evidence:server:CreateFingerDrop", pos)
                     end
                     if not copsCalled then
-                        exports['qb-dispatch']:StoreRobbery(v.camId)
+                        exports['ps-dispatch']:StoreRobbery(v.camId)
 			            local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)
                         local street1 = GetStreetNameFromHashKey(s1)
                         local street2 = GetStreetNameFromHashKey(s2)
@@ -395,7 +395,7 @@ RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
                     end
 
                     if not copsCalled then
-                        exports['qb-dispatch']:StoreRobbery(v.camId)
+                        exports['ps-dispatch']:StoreRobbery(v.camId)
 			            local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)
                         local street1 = GetStreetNameFromHashKey(s1)
                         local street2 = GetStreetNameFromHashKey(s2)

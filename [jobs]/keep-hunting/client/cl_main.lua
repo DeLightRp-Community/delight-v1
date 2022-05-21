@@ -244,6 +244,7 @@ end
 local hasMusket = false
 
 function disablePlayerFiring()
+    local PlyPedId = PlayerPedId()
     DisableControlAction(0, 24) -- INPUT_ATTACK
     DisableControlAction(0, 69) -- INPUT_VEH_ATTACK
     DisableControlAction(0, 70) -- INPUT_VEH_ATTACK2
@@ -256,15 +257,16 @@ function disablePlayerFiring()
     DisableControlAction(0, 24, true)
     DisableControlAction(0, 47, true)
     DisableControlAction(0, 58, true)
-    DisablePlayerFiring(ped, true)
+    DisablePlayerFiring(PlyPedId, true)
+    SetCurrentPedWeapon(PlyPedId, "weapon_unarmed", true)
 end
 
 local function blockShooting()
     local playerId = PlayerId()
     local PlyPedId = PlayerPedId()
     Citizen.CreateThread(function()
-        while hasMusket do
-            Citizen.Wait(1)
+        while true do
+            Citizen.Wait(0)
             local aiming, targetPed = GetEntityPlayerIsFreeAimingAt(playerId)
             local PedType = GetPedType(targetPed)
 
@@ -279,6 +281,7 @@ local function blockShooting()
                 else
                     hasMusket = false
                 end
+                
             end
         end
     end)
@@ -287,7 +290,7 @@ end
 if Config.ShootingProtection then
     local hashTable = {}
     for key, weapon in pairs(Config.ProtectedWeapons) do
-        table.insert(hashTable, GetHashKey(weapon))
+        table.insert(hashTable, GetHashKey("weapon_musket"))
     end
     Citizen.CreateThread(function()
         while true do

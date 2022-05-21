@@ -668,12 +668,7 @@ RegisterNetEvent('inventory:server:OpenInventory', function(name, id, other)
 				end
 				secondInv.name = "trunk-"..id
 				secondInv.label = "Trunk-"..id
-				local result = exports.oxmysql:scalarSync('SELECT `actualCarryCapacity` FROM player_vehicles WHERE plate = ?',
-					{other.plate})
-				if result then
-					other.maxweight = json.decode(result)
-				end
-				-- secondInv.maxweight = other.maxweight or 60000
+				secondInv.maxweight = other.maxweight or 60000
 				secondInv.inventory = {}
 				secondInv.slots = other.slots or 50
 				if (Trunks[id] and Trunks[id].isOpen) or (QBCore.Shared.SplitStr(id, "PLZI")[2] and Player.PlayerData.job.name ~= "police") then
@@ -1380,6 +1375,10 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 			end
 		else
 			if Player.Functions.RemoveMoney("cash", price, "unkown-itemshop-bought-item") then
+				if itemData.name=="medicalbag" then
+					-- print("Hello")
+					itemData.info.bagID = math.random(0000000000,9999999999)
+				end
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('QBCore:Notify', src, itemInfo["label"] .. " bought!", "success")
 				if shopType == "police" then
@@ -1391,6 +1390,10 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				end
 			elseif bankBalance >= price then
 				Player.Functions.RemoveMoney("bank", price, "unkown-itemshop-bought-item")
+				if itemData.name=="medicalbag" then
+					-- print("Hello")
+					itemData.info.bagID = math.random(0000000000,9999999999)
+				end
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('QBCore:Notify', src, itemInfo["label"] .. " bought!", "success")
 				if shopType == "police" then

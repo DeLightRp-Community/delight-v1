@@ -210,6 +210,8 @@ Config.compatable_weapon_hashes = {
     ["weapon_assaultrifle"] = { model = "w_ar_assaultrifle", hash = GetHashKey("weapon_assaultrifle"), bone = 24818, x = 0.0, y = -0.17, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
     ["weapon_specialcarbine_mk2"] = { model = "w_ar_scar", hash = GetHashKey("weapon_specialcarbine_mk2"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
     ["weapon_m4"] = { model = "w_ar_m4", hash = GetHashKey("weapon_m4"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+    ["weapon_mm4"] = { model = "w_ar_MM4", hash = GetHashKey("weapon_mm4"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
+
     ["weapon_microsmg3"] = { model = "w_sb_microsmg3", hash = GetHashKey("weapon_microsmg3"), bone = 24818, x = 0.0, y = -0.17, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
     ["weapon_microsmg2"] = { model = "w_sb_microsmg2", hash = GetHashKey("weapon_microsmg2"), bone = 24818, x = 0.0, y = -0.17, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},
     ["weapon_m14"] = { model = "w_sr_m14", hash = GetHashKey("weapon_m14"), bone = 24818, x = 0.0, y = -0.19, z = 0.1, xr = 0.0, yr = 0.0, zr = 0.0},

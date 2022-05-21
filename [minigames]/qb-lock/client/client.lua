@@ -37,13 +37,13 @@ RegisterNUICallback('success', function()
     return Result
 end)
 
-RegisterCommand("lockpick", function()
-	local time = math.random(10,15)
-	local circles = math.random(5,6)
-	local success = exports['qb-lock']:StartLockPickCircle(circles, time)
-	if success then
-		print("win")
-	else
-		print("fail")
-	end
-end)
+-- RegisterCommand("lockpick", function()
+-- 	local time = math.random(10,15)
+-- 	local circles = math.random(5,6)
+-- 	local success = exports['qb-lock']:StartLockPickCircle(circles, time)
+-- 	if success then
+-- 		print("win")
+-- 	else
+-- 		print("fail")
+-- 	end
+-- end)

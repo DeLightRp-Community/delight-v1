@@ -221,14 +221,37 @@ RegisterNUICallback('lastLocation', function (data,cb)
 end)
 
 RegisterNUICallback('spawnApartment', function (data,cb)
-    local apId = data.apartment
-    local apType = data.apartmentType
-    print(apType,apId)
-    TriggerEvent('qb-apartments:client:LastLocationHouse', apType,apId)
-    beforePlayer()
-    TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
-    TriggerEvent('QBCore:Client:OnPlayerLoaded')
-    showUi(false)
-    screenFadeIn()
-    cb('ok')
+    -- QBCore.Functions.GetPlayerData(function(PlayerData)
+    --     if PlayerData.metadata["injail"] > 0 then
+    --         TriggerEvent("prison:client:Enter", PlayerData.metadata["injail"])
+    --     else
+    --         LeaveApartment(ClosestHouse)
+    --     end
+    -- end)
+    local PlayerData = coreName.Functions.GetPlayerData()
+    if PlayerData.metadata["injail"] > 0 then
+        -- local PlayerData = coreName.Functions.GetPlayerData()
+        local x = PlayerData.position.x
+        local y = PlayerData.position.y
+        local z = PlayerData.position.z
+        beforePlayer()
+            SetEntityCoords(PlayerPedId(), x,y,z)
+            FreezeEntityPosition(PlayerPedId(), false)
+        afterPlayer()
+        TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
+        TriggerEvent('QBCore:Client:OnPlayerLoaded')
+        cb('ok')
+    else
+        local apId = data.apartment
+        local apType = data.apartmentType
+        print(apType,apId)
+        TriggerEvent('qb-apartments:client:LastLocationHouse', apType,apId)
+        beforePlayer()
+        TriggerServerEvent('QBCore:Server:OnPlayerLoaded')
+        TriggerEvent('QBCore:Client:OnPlayerLoaded')
+        showUi(false)
+        screenFadeIn()
+        cb('ok')
+    end
+    
 end)

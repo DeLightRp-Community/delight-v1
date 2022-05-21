@@ -20,7 +20,7 @@ function EquipParachuteAnim()
     TaskPlayAnim(PlayerPedId(), "clothingshirt", "try_shirt_positive_d", 8.0, 1.0, -1, 49, 0, 0, 0, 0)
 end
 
-function HealOxy()
+--[[function HealOxy()
     if not healing then
         healing = true
     else
@@ -34,7 +34,7 @@ function HealOxy()
         SetEntityHealth(PlayerPedId(), GetEntityHealth(PlayerPedId()) + 6)
     end
     healing = false
-end
+end]]
 
 function MethBagEffect()
     local startStamina = 8
@@ -266,7 +266,10 @@ RegisterNetEvent('consumables:client:Cokebaggy', function()
         TriggerServerEvent("QBCore:Server:RemoveItem", "cokebaggy", 1)
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cokebaggy"], "remove")
         TriggerEvent("evidence:client:SetStatus", "widepupils", 200)
-        CokeBaggyEffect()
+        AlienEffect()
+        --exports['tnj-buffs']:AddBuff("super-armor", 150000)
+        exports['tnj-buffs']:AddArmorBuff(30000, 10)
+        exports['tnj-buffs']:AddBuff("intelligence", 300000)
     end, function() -- Cancel
         StopAnimTask(ped, "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
         QBCore.Functions.Notify("Canceled..", "error")
@@ -332,7 +335,7 @@ RegisterNetEvent('consumables:client:oxy', function()
         TriggerServerEvent("QBCore:Server:RemoveItem", "oxy", 1)
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["oxy"], "remove")
         ClearPedBloodDamage(PlayerPedId())
-		HealOxy()
+		exports['tnj-buffs']:AddBuff("super-health", 150000)
     end, function() -- Cancel
         StopAnimTask(PlayerPedId(), "mp_suicide", "pill", 1.0)
         QBCore.Functions.Notify("Canceled", "error")
@@ -357,6 +360,7 @@ RegisterNetEvent('consumables:client:meth', function()
 		TriggerEvent("evidence:client:SetStatus", "agitated", 300)
         exports['tnj-buffs']:AddBuff("intelligence", 150000)
         MethBagEffect()
+        exports['tnj-buffs']:StaminaBuffEffect(15000, 1.4)
     end, function() -- Cancel
         StopAnimTask(PlayerPedId(), "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
         QBCore.Functions.Notify("Canceled..", "error")
@@ -379,6 +383,30 @@ RegisterNetEvent('consumables:client:UseJoint', function()
         TriggerEvent("evidence:client:SetStatus", "weedsmell", 300)
         TriggerEvent('animations:client:SmokeWeed')
     end)
+end)
+
+RegisterNetEvent('consumables:client:heroin', function()
+    QBCore.Functions.Progressbar("snort_heroin", "Smoking Heroin", 1500, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+        disableMouse = false,
+        disableCombat = true,
+    }, {
+        animDict = "switch@trevor@trev_smoking_meth",
+        anim = "trev_smoking_meth_loop",
+        flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(PlayerPedId(), "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
+        TriggerServerEvent("QBCore:Server:RemoveItem", "heroin", 1)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["heroin"], "remove")
+        TriggerEvent("evidence:client:SetStatus", "widepupils", 300)
+		TriggerEvent("evidence:client:SetStatus", "agitated", 300)
+        exports['tnj-buffs']:AddBuff("luck", 300000)
+        MethBagEffect()
+    end, function() -- Cancel
+        StopAnimTask(PlayerPedId(), "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
+        QBCore.Functions.Notify("Canceled..", "error")
+	end)
 end)
 
 RegisterNetEvent('consumables:client:UseParachute', function()

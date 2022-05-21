@@ -227,8 +227,8 @@ local function Scratching()
 end
 
 local function BoostingAlert()
-    if Config.Alert == 'qb-dispatch' then
-        AlertBoosting(carID, 'qb-dispatch')
+    if Config.Alert == 'ps-dispatch' then
+        AlertBoosting(carID, 'ps-dispatch')
     elseif Config.Alert == 'linden_outlawalert' then
         AlertBoosting(carID, 'linden_outlawalert')
     else

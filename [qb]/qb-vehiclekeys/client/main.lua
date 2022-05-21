@@ -246,7 +246,7 @@ end
 local function LockpickMinigame()
     local authorized
     local count=math.random(3,4)
-    local time = math.random(3,5)
+    local time = math.random(2,3)
     local finished = exports['qb-lock']:StartLockPickCircle(count, time)
     if finished then
         authorized = true
@@ -288,7 +288,7 @@ local function LockpickDoor(isAdvanced)
                     animstart = false
                     StopAnimTask(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 1.0)
                 else
-                    exports['qb-dispatch']:VehicleTheft(vehicle)
+                    exports['ps-dispatch']:VehicleTheft(vehicle)
                     animstart = false
                     StopAnimTask(PlayerPedId(), "veh@break_in@0h@p_m_one@", "low_force_entry_ds", 1.0)
                 end
@@ -318,7 +318,7 @@ local function HackVeh()
                 SetVehicleEngineOn(vehicle, false, false, true)
             else
                 QBCore.Functions.Notify('You Failed To Get The Keys!', 'error')
-                exports['qb-dispatch']:VehicleTheft(vehicle)
+                exports['ps-dispatch']:VehicleTheft(vehicle)
             end
             IsHotwiring = false
             StopAnimTask(ped, "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 1.0)
@@ -351,7 +351,7 @@ local function Hack()
                     lockpicked = true
                     lockpickedPlate = QBCore.Functions.GetPlate(vehicle)
                 else
-                    exports['qb-dispatch']:VehicleTheft(vehicle)
+                    exports['ps-dispatch']:VehicleTheft(vehicle)
                 end
                 StopAnimTask(PlayerPedId(), dict, anim, 1.0)
             end
@@ -372,12 +372,12 @@ local function Hotwire()
         local hotwireTime = math.random(20000, 40000)
         SetVehicleAlarm(vehicle, true)
         SetVehicleAlarmTimeLeft(vehicle, hotwireTime)
-        exports['qb-dispatch']:VehicleTheft(vehicle)
+        exports['ps-dispatch']:VehicleTheft(vehicle)
         loadAnimDict("anim@amb@clubhouse@tutorial@bkr_tut_ig3@")
         TaskPlayAnim(ped, "anim@amb@clubhouse@tutorial@bkr_tut_ig3@", "machinic_loop_mechandplayer", 8.0, -8.0, -1, 16, 0, false, false, false)
         -- local finish = exports['qb-lock']:StartLockPickCircle(10, 20)
         local count=math.random(4,7)
-        local time = math.random(5,7)
+        local time = math.random(2,3)
         local finish = exports['qb-lock']:StartLockPickCircle(count, time)
         if finish then
             lockpicked = false
@@ -386,7 +386,7 @@ local function Hotwire()
             SetVehicleEngineOn(vehicle, false, false, true)
             QBCore.Functions.Notify('You got the keys!', 'success')
         else
-            exports['qb-dispatch']:VehicleTheft(vehicle)
+            exports['ps-dispatch']:VehicleTheft(vehicle)
             QBCore.Functions.Notify('You Failed To Hotwire The Vehicle', 'error')
         end
         IsHotwiring = false
@@ -546,7 +546,7 @@ CreateThread(function()
                                     SetVehicleDoorsLocked(entering, 1)
                                     HasVehicleKey = true
                                 else
-                                    SetVehicleDoorsLocked(entering, 2)
+                                    SetVehicleDoorsLocked(entering, 1)
                                 end
                             else
                                 TriggerEvent("vehiclekeys:client:SetOwner", plate)
