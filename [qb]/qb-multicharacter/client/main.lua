@@ -200,7 +200,7 @@ RegisterNUICallback('setupCharacters', function(data, cb)
     NewPeds = {}
     QBCore.Functions.TriggerCallback("qb-multicharacter:server:SetupNewCharacter", function(result)
         for k, v in pairs(result) do 
-            if v[1] then
+            if v[1] ~= nil then
                 if Config.Clothing['qb-clothing'] then
                     CreateThread(function()
                         local model = tonumber(v[1])
@@ -256,7 +256,6 @@ RegisterNUICallback('setupCharacters', function(data, cb)
                     end)
                 end
             else
-                print("1")
                 CreateThread(function()
                     local CharGender = json.decode(v[5]['charinfo'])
                     local model = nil

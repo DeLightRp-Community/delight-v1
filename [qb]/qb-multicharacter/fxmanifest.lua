@@ -2,7 +2,7 @@ fx_version 'cerulean'
 game 'gta5'
 
 description 'amir_expert#1911 MultiCharacter'
-version '1.0.6'
+version '1.0.7'
 
 shared_script 'config.lua'
 client_script 'client/main.lua'
@@ -23,8 +23,7 @@ files {
 
 dependencies {
     'qb-core',
-    -- 'qb-spawn'
-    'jerzys_spawn'
+    'qb-spawn'
 }
 
 lua54 'yes'

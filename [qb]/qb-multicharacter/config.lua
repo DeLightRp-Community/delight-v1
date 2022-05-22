@@ -9,7 +9,7 @@ Config.EnableDeleteButton = true -- Define if the player can delete the characte
 
 Config.DefaultNumberOfCharacters = 5 -- min = 1 | max = 5
 Config.PlayersNumberOfCharacters = { -- Define maximum amount of player characters by rockstar license (you can find this license in your server's database in the player table)
-    { license = "license:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", numberOfChars = 5 },
+    { license = "license:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx", numberOfChars = 2 },
 }
 
 Config.PedCords = {
