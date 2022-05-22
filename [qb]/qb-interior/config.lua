@@ -14,7 +14,7 @@ Interior.MotelsOffsets = {
         logout = json.decode('{"x": -0.8, "y": 1.0, "z": 1.0, "h":2.263}')--vector3(291.52, -1078.67, 0.41)
     },
     ["standardmotel_shell"]={
-        exit = json.decode('{"x": 0.6, "y": 2.44, "z": 1, "h":88.77}'),
+        exit = json.decode('{"x": 0.6, "y": 2.44, "z": 1, "h":268.77}'),
 	    clothes = json.decode('{"x": -1.35, "y": -2.8, "z": 1.2, "h":2.263}'),
 	    stash = json.decode('{"x": -1.5, "y": 3.22, "z": 0.0, "h":2.263}'),
 	    logout = json.decode('{"x": 0.8, "y": 1.1, "z": 1.0, "h":2.263}'),--vector3(291.57, -1078.56, 0.34)
