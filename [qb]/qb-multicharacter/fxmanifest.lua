@@ -23,7 +23,8 @@ files {
 
 dependencies {
     'qb-core',
-    'qb-spawn'
+    -- 'qb-spawn'
+    'fivem-appearance'
 }
 
 lua54 'yes'
