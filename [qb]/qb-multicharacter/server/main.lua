@@ -122,7 +122,7 @@ end)
 QBCore.Functions.CreateCallback("qb-multicharacter:server:GetUserCharacters", function(source, cb)
     local src = source
     local license = QBCore.Functions.GetIdentifier(src, 'license')
-    MySQL.Async.execute('SELECT * FROM players WHERE license = ?', {license}, function(result) -- new
+    MySQL.Async.execute('SELECT * FROM players WHERE license = '..license, {}, function(result) -- new
     -- exports.oxmysql:execute('SELECT * FROM players WHERE license = ?', {license}, function(result) -- old
         cb(result)
     end)
