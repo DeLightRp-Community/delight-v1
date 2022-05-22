@@ -902,7 +902,7 @@ end
 function SetupInteraction()
     local text = CustomsData.drawtextui
     QBCore.Functions.GetPlayerData(function(PlayerData)
-        if PlayerData.job.name == "mechanic" or PlayerData.job.name == "tuner" then
+        if PlayerData.job.name == "mechanic" or PlayerData.job.name == "tuner" or PlayerData.job.name == "police" or PlayerData.job.name == "ambulance" then
             if Config.UseRadial then
                 if not radialMenuItemId then
                     radialMenuItemId = exports['qb-radialmenu']:AddOption({

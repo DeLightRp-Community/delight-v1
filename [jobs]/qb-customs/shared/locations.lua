@@ -347,9 +347,9 @@ Config.Locations = {
             respray = true,
             liveries = true,
             tint = true,
-            -- extras = true,
-            -- plate = true,
-            -- cosmetics = true,
+             extras = true,
+             plate = true,
+             cosmetics = true,
         },
         drawtextui = {
             text = "MRPD Motorworks",

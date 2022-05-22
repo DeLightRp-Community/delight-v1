@@ -91,8 +91,8 @@ QBCore.Commands.Add('givecash', 'Usage /givecash [ID] [AMOUNT]', {{name = 'id', 
                     if amount > 0 then
                         if xPlayer.Functions.RemoveMoney('cash', amount) then
                             if xReciv.Functions.AddMoney('cash', amount) then
-                                TriggerClientEvent('QBCore:Notify', src, Lang:t('success.give_cash',{id = tostring(id), cash = tostring(amount)}), "success")
-                                TriggerClientEvent('QBCore:Notify', id, Lang:t('success.received_cash',{id = tostring(src), cash = tostring(amount)}), "success")
+                                TriggerClientEvent('QBCore:Notify', src, "Cash has been given to player", "success")
+                                TriggerClientEvent('QBCore:Notify', id, "Money add to Your Account", "success")
                                 TriggerClientEvent("payanimation", src)
                             else
                                 -- Return player cash

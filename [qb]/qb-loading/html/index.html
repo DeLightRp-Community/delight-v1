@@ -51,7 +51,7 @@
                 </template>
             </q-parallax>
 
-            <div class="absolute-top q-pa-xl">
+            <!-- <div class="absolute-top q-pa-xl">
                 <q-card flat style="width: auto; background: transparent;">
                     <q-card-section class="row items-center no-wrap">
                         <q-carousel animated infinite :autoplay="secondap" v-model="secondslide" transition-next="fade" transition-prev="fade" class="bg-transparent text-white">
@@ -63,9 +63,9 @@
                         </q-carousel>
                     </q-card-section>
                 </q-card>
-            </div>
+            </div> -->
 
-            <div class="absolute-bottom q-pa-xl">
+            <div class="absolute-top q-pa-xl">
                 <q-card flat style="width: auto; background: transparent;">
                     <q-card-section class="row items-center no-wrap">
 
@@ -73,11 +73,12 @@
 
                         <!-- <img class="cursor-none brand-logo" src="/assets/branding/logo.png"></img> -->
                         <q-space></q-space>
-                        <!-- <q-btn :ripple="false" flat size="xl" icon="downloading" color="white" @click="download = true"></q-btn> -->
-                        <!-- <div class="loadingbar">
+                        but
+                        <!-- <q-btn :ripple="false" flat size="xl" icon="" color="white" @click="download = true"></q-btn> -->
+                        <div class="loadingbar">
                             <div class="loadbar"><div class="thingy"></div></div>
-                        </div> -->
-                        <!-- <q-btn icon="settings_suggest" color="bgbutton" @click="settings = true"></q-btn> -->
+                        </div>
+                        <q-btn icon="settings_suggest" color="bgbutton" @click="settings = true"></q-btn>
                     </q-card-section>
                 </q-card>
             </div>
@@ -100,7 +101,7 @@
                 </q-card>
             </q-dialog> -->
 
-            <!-- <q-dialog no-shake v-model="settings" position="right">
+            <q-dialog no-shake v-model="settings" position="right">
                 <q-card style="max-width: 300px; margin-right: 3.4vw; top: 20vh!important;">
                     <q-card-section class="row items-center q-pb-none">
                         <div style="white-space: pre-wrap;" class="text-h6">
@@ -112,7 +113,7 @@
 
                     <q-card-section style="padding-top: 0px;">
                         <q-toggle v-model="audioplay" size="lg" checked-icon="headset" keep-color color="togglecolor" label="Audio-track Enabled" unchecked-icon="headset_off" onclick="audiotoggle()"></q-toggle>
-                        <div style="white-space: pre-wrap;" class="text-h7 text-weight-medium q-mb-md-d">
+                        <!-- <div style="white-space: pre-wrap;" class="text-h7 text-weight-medium q-mb-md-d">
                             {{ AudioTrackDesc1 }}
                         </div>
                         <q-toggle v-model="secondap" size="lg" checked-icon="view_carousel" keep-color color="togglecolor" label="Auto-play Enabled" unchecked-icon="image"></q-toggle>
@@ -122,10 +123,10 @@
                         <q-toggle v-model="playvideo" size="lg" checked-icon="play_arrow" keep-color color="togglecolor" label="Play-video Enabled" unchecked-icon="play_disabled" onclick="videotoggle()"></q-toggle>
                         <div style="white-space: pre-wrap;" class="text-h7 text-weight-medium q-mb-md-d">
                             {{ PlayVideoDesc3 }}
-                        </div>
+                        </div> -->
                     </q-card-section>
                 </q-card>
-            </q-dialog> -->
+            </q-dialog>
         </div>
     </body>
 </html>

@@ -1,31 +1,4 @@
 Config = {}
-Config.Rob = true -- Enables robbing AI cars at gunpoint
--- All chances are 0-1 <= so lower == less chance, higher == higher chance
-Config.HotwireChance = 0.5 -- Chance for successful hotwire or not
-Config.RemoveLockpickNormal = 0.5 -- Chance to remove lockpick on fail
-Config.RemoveLockpickAdvanced = 0.2 -- Chance to remove advanced lockpick on fail
-Config.RobberyChance = 0.5 -- Chance to get ped keys or drive off
-Config.AlertCooldown = 10000 -- 10 seconds
-Config.PoliceAlertChance = 0.5 -- Chance of alerting police during the day
-Config.PoliceNightAlertChance = 0.25 -- Chance of alerting police at night (times:01-06)
-
-
--- Vehicle that require hacking to get keys/unlock doors
-Config.Vehicle = {
-    -- https://wiki.gtanet.work/index.php?title=Vehicle_Classes
-    ['vehicle_class'] = {
-        'emergency'
-    },
-    -- QBCore.Shared.Vehicles brand
-    ['brand'] = {
-    },
-
-    ['name'] = {
-        -- 'blista'
-    }
- }
-
-
 
 Config.NoRobWeapons = {
     "WEAPON_UNARMED",

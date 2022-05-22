@@ -9,19 +9,19 @@ Config.MaxPlayers = GetConvarInt('sv_maxclients', 48) -- It returns 48 if it can
 -- Minimum Police for Actions
 Config.IllegalActions = {
     ["storerobbery"] = {
-        minimum = 2,
+        minimum = 3,
         busy = false,
     },
     ["bankrobbery"] = {
-        minimum = 3,
+        minimum = 5,
         busy = false,
     },
     ["jewellery"] = {
-        minimum = 3,
+        minimum = 8,
         busy = false,
     },
     ["pacific"] = {
-        minimum = 5,
+        minimum = 15,
         busy = false,
     },
 }
@@ -33,4 +33,4 @@ Config.CurrentCops = 0
 Config.CurrentAmbulance = 0
 
 -- Show ID's for all players or Opted in Staff
-Config.ShowIDforALL = false
+Config.ShowIDforALL = true
