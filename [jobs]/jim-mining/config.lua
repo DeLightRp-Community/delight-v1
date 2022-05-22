@@ -50,10 +50,10 @@ Config.RewardPool = {
 	[3] = "goldore",
 	[4] = "ironore",
 	-- [5] = "metalscrap",
-	[6] = 'uncut_ruby',
-	[7] = 'uncut_emerald',
-	[8] = 'uncut_diamond',
-	[9] = 'uncut_sapphire',
+	[5] = 'uncut_ruby',
+	[6] = 'uncut_emerald',
+	[7] = 'uncut_diamond',
+	[8] = 'uncut_sapphire',
 }
 
 ------------------------------------------------------------
