@@ -116,6 +116,8 @@ local function SetupVehicleMenu()
             --         shouldClose = false,
             --     }
             -- end
+        else
+            RemoveOption(vehicleIndex)
         end 
     end
 end
