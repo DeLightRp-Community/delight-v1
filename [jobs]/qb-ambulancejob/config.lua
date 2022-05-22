@@ -108,7 +108,7 @@ Config.Helicopter = "polmav"
 
 Config.Items = {
     label = Lang:t('info.safe'),
-    slots = 30,
+    slots = 7,
     items = {
         [1] = {
             name = "radio",
@@ -116,7 +116,7 @@ Config.Items = {
             amount = 50,
             info = {},
             type = "item",
-            slot = 2,
+            slot = 1,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
         [2] = {
@@ -125,7 +125,7 @@ Config.Items = {
             amount = 50,
             info = {},
             type = "item",
-            slot = 3,
+            slot = 2,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
         [3] = {
@@ -134,7 +134,7 @@ Config.Items = {
             amount = 50,
             info = {},
             type = "item",
-            slot = 4,
+            slot = 3,
             authorizedJobGrades = {6, 7, 8, 9, 10, 11}
         },
         [4] = {
@@ -143,17 +143,16 @@ Config.Items = {
             amount = 50,
             info = {},
             type = "item",
-            slot = 5,
+            slot = 4,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
-        
         [5] = {
             name = "weapon_flashlight",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
-            slot = 6,
+            slot = 5,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
         [6] = {
@@ -162,7 +161,7 @@ Config.Items = {
             amount = 50,
             info = {},
             type = "item",
-            slot = 7,
+            slot = 6,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
         [7] = {
@@ -171,7 +170,7 @@ Config.Items = {
             amount = 1,
             info = {},
             type = "item",
-            slot = 8,
+            slot = 7,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
     },

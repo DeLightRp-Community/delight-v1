@@ -456,85 +456,85 @@ Config.Products = {
             type = 'item',
             slot = 1
         },
+        -- [2] = {
+        --     name = 'keepcompanionshepherd',
+        --     price = 20000,
+        --     amount = 5,
+        --     info = {},
+        --     type = 'item',
+        --     slot = 2
+        -- },
         [2] = {
-            name = 'keepcompanionshepherd',
-            price = 20000,
+            name = 'keepcompanionretriever',
+            price = 15000,
             amount = 5,
             info = {},
             type = 'item',
             slot = 2
         },
         [3] = {
-            name = 'keepcompanionretriever',
-            price = 15000,
+            name = 'keepcompanionrottweiler',
+            price = 30000,
             amount = 5,
             info = {},
             type = 'item',
             slot = 3
         },
         [4] = {
-            name = 'keepcompanionrottweiler',
-            price = 30000,
+            name = 'keepcompanionpug',
+            price = 20000,
             amount = 5,
             info = {},
             type = 'item',
             slot = 4
         },
         [5] = {
-            name = 'keepcompanionpug',
-            price = 20000,
+            name = 'keepcompanionpoodle',
+            price = 18000,
             amount = 5,
             info = {},
             type = 'item',
             slot = 5
         },
         [6] = {
-            name = 'keepcompanionpoodle',
-            price = 18000,
+            name = 'keepcompanioncat',
+            price = 50000,
             amount = 5,
             info = {},
             type = 'item',
             slot = 6
         },
         [7] = {
-            name = 'keepcompanioncat',
-            price = 50000,
+            name = 'keepcompanionhusky',
+            price = 30000,
             amount = 5,
             info = {},
             type = 'item',
             slot = 7
         },
         [8] = {
-            name = 'keepcompanionhusky',
-            price = 30000,
-            amount = 5,
-            info = {},
-            type = 'item',
-            slot = 8
-        },
-        [9] = {
             name = 'petfood',
             price = 500,
             amount = 1000,
             info = {},
             type = 'item',
-            slot = 9
+            slot = 8
         },
-        [10] = {
+        [9] = {
             name = 'collarpet',
             price = 10000,
             amount = 50,
             info = {},
             type = 'item',
-            slot = 10
+            slot = 9
         },
-        [11] = {
+        [10] = {
             name = 'firstaidforpet',
             price = 4000,
             amount = 50,
             info = {},
             type = 'item',
-            slot = 11
+            slot = 10
         }
     },
 
