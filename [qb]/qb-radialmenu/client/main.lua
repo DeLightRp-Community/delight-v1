@@ -92,6 +92,8 @@ local function SetupVehicleMenu()
         if Config.EnableExtraMenu then VehicleMenu.items[#VehicleMenu.items+1] = Config.VehicleExtras end
 
         if IsPedInAnyVehicle(ped) then
+            RemoveOption(vehicleIndex)
+            vehicleIndex = AddOption(VehicleMenu, vehicleIndex)
             -- local seatIndex = #VehicleMenu.items+1
             -- VehicleMenu.items[seatIndex] = deepcopy(Config.VehicleSeats)
 
@@ -114,16 +116,7 @@ local function SetupVehicleMenu()
             --         shouldClose = false,
             --     }
             -- end
-        end
-    end
-
-    if #VehicleMenu.items == 0 then
-        if vehicleIndex then
-            RemoveOption(vehicleIndex)
-            vehicleIndex = nil
-        end
-    else
-        vehicleIndex = AddOption(VehicleMenu, vehicleIndex)
+        end 
     end
 end
 
