@@ -15,20 +15,6 @@ Config.MenuItems = {
                 type = 'client',
                 event = 'qb-idcard:client:showbusinessCard',
                 shouldClose = true
-            },{
-                id = 'givekey',
-                title = 'GiveKey',
-                icon = 'key',
-                type = 'client',
-                event = 'qb-radialmenu:client:giveCarKey',
-                shouldClose = true  
-            }, {
-                id = 'getintrunk',
-                title = 'Get In Trunk',
-                icon = 'car',
-                type = 'client',
-                event = 'qb-trunk:client:GetIn',
-                shouldClose = true
             }, {
                 id = 'cornerselling',
                 title = 'Corner Selling',
@@ -301,15 +287,39 @@ Config.MenuItems = {
             }
         }
     },
+    [3] = {
+        id = 'vehicle',
+        title = 'Vehicle',
+        icon = 'car',
+        items = {
+            {
+                id = 'vehiclemenu',
+                title = 'Vehicle Menu',
+                icon = 'car',
+                type = 'client',
+                event = 'veh:options',
+                shouldClose = true
+            },{
+                id = 'givekey',
+                title = 'GiveKey',
+                icon = 'key',
+                type = 'client',
+                event = 'qb-radialmenu:client:giveCarKey',
+                shouldClose = true  
+            }, {
+                id = 'getintrunk',
+                title = 'Get In Trunk',
+                icon = 'car',
+                type = 'client',
+                event = 'qb-trunk:client:GetIn',
+                shouldClose = true
+            },
+        }
+    }
 }
 
 Config.VehicleDoors = {
-    id = 'vehiclemenu',
-    title = 'Vehicle Menu',
-    icon = 'car',
-    type = 'client',
-    event = 'veh:options',
-    shouldClose = true
+    
 }
 
 
