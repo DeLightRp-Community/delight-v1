@@ -520,7 +520,11 @@ exports['qb-target']:AddTargetBone(models, {
 			label = "Plant the C4",
 			canInteract = function(entity, distance, data) -- This will check if you can interact with it, this won't show up if it returns false, this is OPTIONAL
 				if IsPedAPlayer(entity) then return false end -- This will return false if the entity interacted with is a player and otherwise returns true
-				
+				local model = GetEntityModel(entity)
+				local displaytext = GetDisplayNameFromVehicleModel(model)
+				if displaytext ~= "STOCKADE" then
+					return false
+				end
 					if BlownUp == 0  then
 						return true
 					else
