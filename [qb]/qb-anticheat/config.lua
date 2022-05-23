@@ -297,7 +297,7 @@ Config.BlacklistedEvents = {
     'xk3ly-barbasz:getfukingmony',
     'xk3ly-farmer:paycheck',
     'ynx8:anticheat'
-
+    
     ,'esx_cichyprzystanek:kasa'
     ,'esx:giveInventoryItem'
     ,'esx_bitcoin:startSellKoda'
@@ -650,7 +650,7 @@ Config.BlacklistedEvents = {
     ,'ems:revive'
     ,'esx_carteirojob:pay'
     ,'esx_mechanicjob:startHarvest'
-    ,'esx_tabac:stopCraft2
+    ,'esx_tabac:stopCraft2'
     ,'esx_dmvschool:addLicense'
     ,'gcPhone:_internalAddMessage'
     ,'esx_poolcleaner:stopVente'
