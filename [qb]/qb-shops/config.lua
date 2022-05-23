@@ -544,7 +544,7 @@ Config.Products = {
             price = 2000,
             amount = 100,
             info = {},
-            type = 'weapon',
+            type = 'hunting',
             slot = 1,
             requiresLicense = true
         },
@@ -553,7 +553,7 @@ Config.Products = {
             price = 100,
             amount = 500,
             info = {},
-            type = 'item',
+            type = 'hunting',
             slot = 2,
             requiresLicense = true
         },
@@ -1135,7 +1135,7 @@ Config.Locations = {
 
     ["huntingshop"] = {
         ["label"] = "Hunting Shop",
-        ["type"] = "weapon",
+        ["type"] = "hunting",
         ["coords"] = vector4(-679.21, 5839.53, 17.33, 234.51),
         ["ped"] = 'ig_hunter',
         ["scenario"] = "WORLD_HUMAN_COP_IDLES",

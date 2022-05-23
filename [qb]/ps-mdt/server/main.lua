@@ -19,7 +19,7 @@ local function IsPolice(job)
     return false
 end
 
-AddEventHandler("onResourceStart", function(resourceName)
+AddEventHandler("onResourceStart", function(resourceName)m
 	if (resourceName == 'ps-mdt') then
         activeUnits = {}
     end

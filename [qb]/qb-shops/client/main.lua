@@ -61,9 +61,35 @@ local function openShop(shop, data)
     local ShopItems = {}
     ShopItems.items = {}
     QBCore.Functions.TriggerCallback("qb-shops:server:getLicenseStatus", function(hasLicense, hasLicenseItem)
+        print(json.encode(hasLicense))
         ShopItems.label = data["label"]
+        print(data.type)
         if data.type == "weapon" then
-            if hasLicense and hasLicenseItem then
+            if hasLicense.weapon and hasLicenseItem then
+                ShopItems.items = SetupItems(shop)
+                QBCore.Functions.Notify(Lang:t("success.dealer_verify"), "success")
+                Wait(500)
+            else
+                for i = 1, #products do
+                    if not products[i].requiredJob then
+                        if not products[i].requiresLicense then
+                            ShopItems.items[#ShopItems.items + 1] = products[i]
+                        end
+                    else
+                        for i2 = 1, #products[i].requiredJob do
+                            if QBCore.Functions.GetPlayerData().job.name == products[i].requiredJob[i2] and not products[i].requiresLicense then
+                                ShopItems.items[#ShopItems.items + 1] = products[i]
+                            end
+                        end
+                    end
+                end
+                QBCore.Functions.Notify(Lang:t("error.dealer_decline"), "error")
+                Wait(500)
+                QBCore.Functions.Notify(Lang:t("error.talk_cop"), "error")
+                Wait(1000)
+            end
+        elseif data.type == "hunting" then
+            if hasLicense.hunting then
                 ShopItems.items = SetupItems(shop)
                 QBCore.Functions.Notify(Lang:t("success.dealer_verify"), "success")
                 Wait(500)

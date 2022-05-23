@@ -121,7 +121,7 @@ QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.grade.level >= Config.LicenseRank then
-        if args[2] == "driver" or args[2] == "weapon" then
+        if args[2] == "driver" or args[2] == "weapon" or args[2] == "hunting" then
             local SearchedPlayer = QBCore.Functions.GetPlayer(tonumber(args[1]))
             if not SearchedPlayer then return end
             local licenseTable = SearchedPlayer.PlayerData.metadata["licences"]
@@ -134,8 +134,10 @@ QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "
             local lic=""
             if args[2]=="driver" then
                 lic="driver_license"
-            else
+            elseif args[2]=="weapon" then
                 lic="weaponlicense"
+            elseif args[2]=="hunting" then
+                lic="huntlicense"
             end
             TriggerEvent('qb-police:server:requestId',lic,args[1])
             TriggerClientEvent('QBCore:Notify', SearchedPlayer.PlayerData.source, Lang:t("success.granted_license"), "success")
@@ -162,15 +164,17 @@ RegisterNetEvent('qb-police:server:requestId', function(item, id)
         info.lastname = Player.PlayerData.charinfo.lastname
         info.birthdate = Player.PlayerData.charinfo.birthdate
     end
-    if not Player.Functions.AddItem(item, 1, nil, info) then return end
-    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
+    if not item == "huntlicense" then
+        if not Player.Functions.AddItem(item, 1, nil, info) then return end
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
+    end
 end)
 
 QBCore.Commands.Add("revokelicense", Lang:t("commands.license_revoke"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.grade.level >= Config.LicenseRank then
-        if args[2] == "driver" or args[2] == "weapon" then
+        if args[2] == "driver" or args[2] == "weapon" or args[2] == "hunting" then
             local SearchedPlayer = QBCore.Functions.GetPlayer(tonumber(args[1]))
             if not SearchedPlayer then return end
             local licenseTable = SearchedPlayer.PlayerData.metadata["licences"]

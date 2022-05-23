@@ -95,7 +95,8 @@ function QBCore.Player.CheckPlayerData(source, PlayerData)
     PlayerData.metadata['licences'] = PlayerData.metadata['licences'] or {
         ['driver'] = true,
         ['business'] = false,
-        ['weapon'] = false
+        ['weapon'] = false,
+        ['hunting'] = false
     }
     PlayerData.metadata['inside'] = PlayerData.metadata['inside'] or {
         house = nil,
