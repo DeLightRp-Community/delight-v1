@@ -173,13 +173,13 @@ end)
 RegisterNetEvent('qb-admin:server:SendReport', function(name, targetSrc, msg)
     local src = source
     if QBCore.Functions.HasPermission(src, 'admin') or QBCore.Functions.HasPermission(src, 'god') or IsPlayerAceAllowed(src, 'command') then
-        if QBCore.Functions.IsOptin(src) then
+        -- if QBCore.Functions.IsOptin(src) then
             TriggerClientEvent('chat:addMessage', src, {
                 color = {255, 0, 0},
                 multiline = true,
                 args = {Lang:t("info.admin_report")..name..' ('..targetSrc..')', msg}
             })
-        end
+        -- end
     end
 end)
 
@@ -273,6 +273,7 @@ QBCore.Commands.Add('report', Lang:t("info.admin_report"), {{name='message', hel
     local src = source
     local msg = table.concat(args, ' ')
     local Player = QBCore.Functions.GetPlayer(source)
+    
     TriggerClientEvent('qb-admin:client:SendReport', -1, GetPlayerName(src), src, msg)
     TriggerEvent('qb-log:server:CreateLog', 'report', 'Report', 'green', '**'..GetPlayerName(source)..'** (CitizenID: '..Player.PlayerData.citizenid..' | ID: '..source..') **Report:** ' ..msg, false)
 end)
@@ -343,19 +344,20 @@ QBCore.Commands.Add('reportr', Lang:t("commands.reply_to_report"), {{name='id', 
     local OtherPlayer = QBCore.Functions.GetPlayer(playerId)
     if msg == '' then return end
     if not OtherPlayer then return TriggerClientEvent('QBCore:Notify', src, 'Player is not online', 'error') end
-    if not QBCore.Functions.HasPermission(src, 'admin') or IsPlayerAceAllowed(src, 'command') ~= 1 then return end
-    TriggerClientEvent('chat:addMessage', playerId, {
-        color = {255, 0, 0},
-        multiline = true,
-        args = {'Admin Response', msg}
-    })
-    TriggerClientEvent('chat:addMessage', src, {
-        color = {255, 0, 0},
-        multiline = true,
-        args = {'Report Response ('..playerId..')', msg}
-    })
-    TriggerClientEvent('QBCore:Notify', src, 'Reply Sent')
-    TriggerEvent('qb-log:server:CreateLog', 'report', 'Report Reply', 'red', '**'..GetPlayerName(src)..'** replied on: **'..OtherPlayer.PlayerData.name.. ' **(ID: '..OtherPlayer.PlayerData.source..') **Message:** ' ..msg, false)
+    if  QBCore.Functions.HasPermission(src, 'admin') or QBCore.Functions.HasPermission(src, 'god') then 
+        TriggerClientEvent('chat:addMessage', playerId, {
+            color = {255, 0, 0},
+            multiline = true,
+            args = {'Admin Response', msg}
+        })
+        TriggerClientEvent('chat:addMessage', src, {
+            color = {255, 0, 0},
+            multiline = true,
+            args = {'Report Response ('..playerId..')', msg}
+        })
+        TriggerClientEvent('QBCore:Notify', src, 'Reply Sent')
+        TriggerEvent('qb-log:server:CreateLog', 'report', 'Report Reply', 'red', '**'..GetPlayerName(src)..'** replied on: **'..OtherPlayer.PlayerData.name.. ' **(ID: '..OtherPlayer.PlayerData.source..') **Message:** ' ..msg, false)
+    end
 end, 'admin')
 
 QBCore.Commands.Add('setmodel', Lang:t("commands.change_ped_model"), {{name='model', help='Name of the model'}, {name='id', help='Id of the Player (empty for yourself)'}}, false, function(source, args)
