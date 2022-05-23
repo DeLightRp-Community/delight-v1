@@ -108,7 +108,7 @@ Config.Helicopter = "polmav"
 
 Config.Items = {
     label = Lang:t('info.safe'),
-    slots = 7,
+    slots = 15,
     items = {
         [1] = {
             name = "radio",
