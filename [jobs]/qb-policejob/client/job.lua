@@ -827,25 +827,51 @@ CreateThread(function()
     end
 end)
 
-CreateThread(function()
-    Wait(10)
-	policePeds()
-end)
+-- CreateThread(function()
+--     Wait(10)
+-- 	policePeds()
+-- end)
 
-function policePeds()
-    --ped fingerprint
-    model = GetHashKey("mp_m_fibsec_01")
-    RequestModel(model)
-    while not HasModelLoaded(model) do
-        Wait(1)
-    end
-    ped1 = CreatePed(0, model , 475.54, -1014.1, 25.27, true)
-    FreezeEntityPosition(ped1, true)
-    SetEntityHeading(ped1, 2.4 )
-    SetEntityInvincible(ped1, true)
-    SetBlockingOfNonTemporaryEvents(ped1, true)
-    TaskStartScenarioInPlace(ped1, "WORLD_HUMAN_STAND_IMPATIENT", 0, true)
-end
+-- function policePeds()
+--     --ped fingerprint
+--     model = GetHashKey("mp_m_fibsec_01")
+--     RequestModel(model)
+--     while not HasModelLoaded(model) do
+--         Wait(1)
+--     end
+--     ped1 = CreatePed(0, model , 475.54, -1014.1, 25.27, true)
+--     FreezeEntityPosition(ped1, true)
+--     SetEntityHeading(ped1, 2.4 )
+--     SetEntityInvincible(ped1, true)
+--     SetBlockingOfNonTemporaryEvents(ped1, true)
+--     TaskStartScenarioInPlace(ped1, "WORLD_HUMAN_STAND_IMPATIENT", 0, true)
+-- end
+
+exports['qb-target']:SpawnPed({
+    model = 'mp_m_fibsec_01',
+    coords = vector4(475.54, -1014.1, 26.27, 2.4),
+    minusOne = true, 
+    freeze = true,
+    invincible = true, 
+    blockevents = true,
+    animDict = 'abigail_mcs_1_concat-0', 
+    anim = 'csb_abigail_dual-0',
+    flag = 1,
+    scenario = 'WORLD_HUMAN_STAND_IMPATIENT', 
+    target = { 
+      useModel = false, 
+      options = {
+        { 
+          num = 1, 
+          type = "client", 
+          label = 'Finger Print',
+          event = "qb-police:client:scanFingerPrint",
+          job = 'police', 
+        }
+      },
+      distance = 2.5,
+    },
+})
 
 -- Helicopter Thread
 CreateThread(function ()
