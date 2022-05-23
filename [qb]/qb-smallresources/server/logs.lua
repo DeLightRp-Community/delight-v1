@@ -78,7 +78,7 @@ RegisterNetEvent('qb-log:server:CreateLog', function(name, title, color, message
             },
             ['description'] = message,
             ['author'] = {
-                ['name'] = 'DelightRPa Logs',
+                ['name'] = 'DelightRP Logs',
                 ['icon_url'] = 'https://cdn.discordapp.com/attachments/930782372155260939/973539190576906351/56569569659.png?size=4096',
             },
         }
