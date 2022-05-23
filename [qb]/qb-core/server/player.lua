@@ -700,3 +700,4 @@ function QBCore.Player.CreateSerialNumber()
 end
 
 PaycheckInterval() -- This starts the paycheck system
+TaxInterval() -- This starts the Tax system

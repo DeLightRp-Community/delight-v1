@@ -1608,6 +1608,19 @@ RegisterNetEvent("qb-phone-new:client:BankNotify", function(text)
     })
 end)
 
+RegisterNetEvent("qb-phone-new:client:paycheckNotify", function(text)
+    SendNUIMessage({
+        action = "PhoneNotification",
+        NotifyData = {
+            title = "paycheck",
+            content = text,
+            icon = "fas fa-university",
+            timeout = 3500,
+            color = "#ff002f",
+        },
+    })
+end)
+
 RegisterNetEvent('qb-phone:client:NewMailNotify', function(MailData)
     SendNUIMessage({
         action = "PhoneNotification",
