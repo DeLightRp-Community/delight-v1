@@ -90,3 +90,4 @@ CreateThread(function()
         ToggleUsePickupsForPlayer(PlayerId(), hash, false)
     end
 end)
+
