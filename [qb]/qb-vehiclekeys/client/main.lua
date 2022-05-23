@@ -369,12 +369,11 @@ function LockpickIgnition(isAdvanced)
             IsHotwiring = false
             gay = true
             if gay then
-                local time = math.random(7,10)
+                local time = math.random(2,3)
                 local circles = math.random(2,4)
                 local success = exports['qb-lock']:StartLockPickCircle(circles, time, success)
                 print(success)
                 if success then
-                    
                     TriggerEvent("vehiclekeys:client:SetOwner", GetVehicleNumberPlateText(vehicle))
                 else
                     QBCore.Functions.Notify("Lockpick failed!", "error")
@@ -398,7 +397,7 @@ AddEventHandler('qb-lock:pick', function(target)
     local mashin = QBCore.Functions.GetClosestVehicle()
 if IsPedInAnyVehicle(PlayerPedId()) then
 
-    local time = math.random(7,10)
+    local time = math.random(2,3)
 	local circles = math.random(2,4)
 	local success = exports['qb-lock']:StartLockPickCircle(circles, time, success)
     
@@ -435,7 +434,7 @@ else
                  SetVehicleAlarm(vehicle, true)
                 SetVehicleAlarmTimeLeft(vehicle, hotwireTime)
                 local checkPlayer = IsPedInAnyVehicle(PlayerPedId())
-                local time = math.random(7,10)
+                local time = math.random(2,3)
 	            local circles = math.random(2,4)
 	            local success = exports['qb-lock']:StartLockPickCircle(circles, time, success)
                 if success then
