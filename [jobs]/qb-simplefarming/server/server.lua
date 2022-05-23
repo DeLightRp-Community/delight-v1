@@ -126,7 +126,7 @@ end)
 RegisterServerEvent('qb-simplefarming:cowmilking', function()
     local source = source
     local Player = QBCore.Functions.GetPlayer(tonumber(source))
-    local cow_milkbucket = math.random(1,)
+    local cow_milkbucket = math.random(1,2)
     Player.Functions.RemoveItem('emptycowbucket', 1)
     TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['milkbucket'], "remove")
     Wait(1000)

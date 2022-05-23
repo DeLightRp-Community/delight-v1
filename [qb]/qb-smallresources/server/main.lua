@@ -100,8 +100,8 @@ RegisterNetEvent('qb-smallrecources:rewardpack', function()
 end)
 
 
-AddEventHandler("playerSpawned", function()
-    if not isCop then
-        disablePlayerVehicleRewards(-1);
-        end
-end)
+-- AddEventHandler("playerSpawned", function()
+--     if not isCop then
+--         disablePlayerVehicleRewards(-1);
+--         end
+-- end)
