@@ -178,18 +178,18 @@ Config.PhoneApplications = {
         slot = 14,
         Alerts = 0,
     },
-    ["jobcenter"] = {
-        app = "jobcenter",
-        color = "#151515",
-        color2 = "#161616",
-        icon = "fas fa-id-badge",
-        tooltipText = "Job Center",
-        style = "color: #78bdfd; font-size: 2.7vh";
-        job = false,
-        blockedjobs = {},
-        slot = 15,
-        Alerts = 0,
-    },
+    -- ["jobcenter"] = {
+    --     app = "jobcenter",
+    --     color = "#151515",
+    --     color2 = "#161616",
+    --     icon = "fas fa-id-badge",
+    --     tooltipText = "Job Center",
+    --     style = "color: #78bdfd; font-size: 2.7vh";
+    --     job = false,
+    --     blockedjobs = {},
+    --     slot = 15,
+    --     Alerts = 0,
+    -- },
     ["employment"] = {
         app = "employment",
         color = "#151515",
