@@ -126,7 +126,7 @@ end)
 RegisterServerEvent('qb-simplefarming:cowmilking', function()
     local source = source
     local Player = QBCore.Functions.GetPlayer(tonumber(source))
-    local cow_milkbucket = math.random(1,3)
+    local cow_milkbucket = math.random(1,)
     Player.Functions.RemoveItem('emptycowbucket', 1)
     TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['milkbucket'], "remove")
     Wait(1000)
@@ -284,7 +284,7 @@ end)
 RegisterServerEvent('qb-simplefarming:cornpicking', function()
     local source = source
     local Player = QBCore.Functions.GetPlayer(tonumber(source))
-    local cornfarming = math.random(1,3)
+    local cornfarming = 1
     Player.Functions.AddItem('corncob', cornfarming)
     TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['corncob'], "add")
     TriggerClientEvent('QBCore:Notify', source, "Grabbed " ..cornfarming.. " Corn Cobs")
@@ -374,7 +374,7 @@ end)
 RegisterServerEvent('qb-simplefarming:grapepicking', function()
     local source = source
     local Player = QBCore.Functions.GetPlayer(tonumber(source))
-    local grapepicking = math.random(1,2)
+    local grapepicking = 1
     Player.Functions.AddItem('grapes', grapepicking)
     TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items['grapes'], "add")
     TriggerClientEvent('QBCore:Notify', source, "Grabbed " ..grapepicking.. " Grapes")
