@@ -98,3 +98,10 @@ RegisterNetEvent('qb-smallrecources:rewardpack', function()
     Player.Functions.AddItem("bandage", math.random(1,3), nil, {["quality"] = 100})
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["bandage"], "add")
 end)
+
+
+AddEventHandler("playerSpawned", function()
+    if not isCop then
+        disablePlayerVehicleRewards(-1);
+        end
+end)

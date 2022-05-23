@@ -274,9 +274,11 @@ canteen:onPlayerInOut(function(isPointInside)
 	end
 end)
 
-
+local time = {
+	"s_m_m_armoured_01"
+}
 	
-exports['qb-target']:AddTargetEntity(freedom_ped, {
+exports['qb-target']:AddTargetEntity(time, {
 	options = {
 	{
 		type = "client",
@@ -287,7 +289,8 @@ exports['qb-target']:AddTargetEntity(freedom_ped, {
 	},
 	distance = 2.5,
 })
-exports['qb-target']:AddTargetEntity(canteen_ped, {
+
+exports['qb-target']:AddTargetEntity(time, {
 	options = {
 	{
 		type = "client",
