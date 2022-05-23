@@ -27,12 +27,12 @@ Config.PenalCodeTitles = {
 Config.PenalCode = {
     [1] = {
         [1] = {title = 'Simple Assault', class = 'Misdemeanor', id = 'P.C. 1001', months = 7, fine = 500, color = 'green'},
-        [2] = {title = 'Adam Robaei', class = 'Misdemeanor', id = 'P.C. 1001', months = 15, fine = 1500, color = 'green'},
+        [2] = {title = 'Adam Robaei', class = 'Misdemeanor', id = 'P.C. 1001', months = 30, fine = 1500, color = 'green'},
         [3] = {title = 'Roboodan Karmand Dolat', class = 'Misdemeanor', id = 'P.C. 1001', months = 0, fine = 0, color = 'green'},
         [4] = {title = 'Ghatl Amm', class = 'Misdemeanor', id = 'P.C. 1001', months = 100, fine = 10000, color = 'green'},
         [5] = {title = 'Ghatle Daraje 2', class = 'Misdemeanor', id = 'P.C. 1001', months = 80, fine = 8000, color = 'green'},
         [6] = {title = 'Ghatle Daraje 1', class = 'Misdemeanor', id = 'P.C. 1001', months = 400, fine = 15000, color = 'green'},
-        [7] = {title = 'Tahdid Fard', class = 'Misdemeanor', id = 'P.C. 1001', months = 5, fine = 500, color = 'green'},
+        [7] = {title = 'Tahdid Fard', class = 'Misdemeanor', id = 'P.C. 1001', months = 10, fine = 500, color = 'green'},
         [8] = {title = 'Ghatle Karmand Dolati', class = 'Misdemeanor', id = 'P.C. 1001', months = 0, fine = 0, color = 'green'},
         [9] = {title = 'Be Khatar Andakhtan Jane Digaran', class = 'Misdemeanor', id = 'P.C. 1001', months = 10, fine = 500, color = 'green'},
         [10] = {title = 'Tahdid Fardi Ba Aslahe', class = 'Misdemeanor', id = 'P.C. 1001', months = 0, fine = 5000, color = 'green'},
@@ -42,23 +42,23 @@ Config.PenalCode = {
         [1] = {title = 'Petty Theft', class = 'Infraction', id = 'P.C. 2001', months = 0, fine = 250, color = 'green'},
         [2] = {title = 'Shop Robbery', class = 'Infraction', id = 'P.C. 2001', months = 15, fine = 500, color = 'green'},
         [3] = {title = 'Vehicle theft', class = 'Infraction', id = 'P.C. 2001', months = 5, fine = 250, color = 'green'},
-        [4] = {title = 'Grand Thef Auto', class = 'Infraction', id = 'P.C. 2001', months = 10, fine = 500, color = 'green'},
-        [5] = {title = 'Bank Robbery', class = 'Infraction', id = 'P.C. 2001', months = 20, fine = 2000, color = 'green'},
-        [6] = {title = 'Javaheri', class = 'Infraction', id = 'P.C. 2001', months = 25, fine = 1250, color = 'green'},
-        [7] = {title = 'Dashtan Citizen Card Serghati', class = 'Infraction', id = 'P.C. 2001', months = 7, fine = 500, color = 'green'},
-        [8] = {title = 'Bank Markazi', class = 'Infraction', id = 'P.C. 2001', months = 50, fine = 8000, color = 'green'},
-        [9] = {title = 'Dashtan Poole Kasif Bain 1 Ta 40 Ta', class = 'Infraction', id = 'P.C. 2001', months = 8, fine = 700, color = 'green'},
-        [10] = {title = 'Dashtan Poole Kasif 40 Ta Be Bala', class = 'Infraction', id = 'P.C. 2001', months = 16, fine = 1400, color = 'green'},
+        [4] = {title = 'Grand Thef Auto', class = 'Infraction', id = 'P.C. 2001', months = 15, fine = 500, color = 'green'},
+        [5] = {title = 'Bank Robbery', class = 'Infraction', id = 'P.C. 2001', months = 60, fine = 2000, color = 'green'},
+        [6] = {title = 'Javaheri', class = 'Infraction', id = 'P.C. 2001', months = 70, fine = 1250, color = 'green'},
+        [7] = {title = 'Dashtan Citizen Card Serghati', class = 'Infraction', id = 'P.C. 2001', months = 10, fine = 500, color = 'green'},
+        [8] = {title = 'Bank Markazi', class = 'Infraction', id = 'P.C. 2001', months = 200, fine = 8000, color = 'green'},
+        [9] = {title = 'Dashtan Poole Kasif Bain 1 Ta 40 Ta', class = 'Infraction', id = 'P.C. 2001', months = 10, fine = 700, color = 'green'},
+        [10] = {title = 'Dashtan Poole Kasif 40 Ta Be Bala', class = 'Infraction', id = 'P.C. 2001', months = 20, fine = 1400, color = 'green'},
        
     },
     [3] = {
         [1] = {title = 'Impersonating', class = 'Misdemeanor', id = 'P.C. 3001', months = 15, fine = 1250, color = 'green'},
-        [2] = {title = 'Baj Gereftan', class = 'Misdemeanor', id = 'P.C. 3001', months = 15, fine = 2000, color = 'green'},
-        [3] = {title = 'Kollah Bardari', class = 'Misdemeanor', id = 'P.C. 3001', months = 25, fine = 2500, color = 'green'},
+        [2] = {title = 'Baj Gereftan', class = 'Misdemeanor', id = 'P.C. 3001', months = 10, fine = 2000, color = 'green'},
+        [3] = {title = 'Kollah Bardari', class = 'Misdemeanor', id = 'P.C. 3001', months = 15, fine = 2500, color = 'green'},
         [4] = {title = 'Jaale Hoviat Yek Citizen', class = 'Misdemeanor', id = 'P.C. 3001', months = 0, fine = 0, color = 'green'},
         [5] = {title = 'Jaale Hovviate Yek Karmandane Dolat', class = 'Misdemeanor', id = 'P.C. 3001', months = 0, fine = 0, color = 'green'},
-        [6] = {title = 'Pelak Taghallobi', class = 'Misdemeanor', id = 'P.C. 3001', months = 8, fine = 200, color = 'green'},
-        [7] = {title = 'Pool Shooei', class = 'Misdemeanor', id = 'P.C. 3001', months = 30, fine = 2000, color = 'green'},
+        [6] = {title = 'Pelak Taghallobi', class = 'Misdemeanor', id = 'P.C. 3001', months = 15, fine = 200, color = 'green'},
+        [7] = {title = 'Pool Shooei', class = 'Misdemeanor', id = 'P.C. 3001', months = 40, fine = 2000, color = 'green'},
        
     },
     [4] = {
@@ -72,12 +72,12 @@ Config.PenalCode = {
     [6] = {
         [1] = {title = 'Disobeying a Peace Officer', class = 'infraction', id = 'P.C. 6001', months = 0, fine = 750, color = 'green'},
         [2] = {title = 'Sarpichi As Dastoor Karmand Dolat', class = 'infraction', id = 'P.C. 6001', months = 5, fine = 200, color = 'green'},
-        [3] = {title = 'Ashoobgari', class = 'infraction', id = 'P.C. 6001', months = 10, fine = 500, color = 'green'},
+        [3] = {title = 'Ashoobgari', class = 'infraction', id = 'P.C. 6001', months = 15, fine = 500, color = 'green'},
         [4] = {title = 'Kharabkari', class = 'infraction', id = 'P.C. 6001', months = 0, fine = 500, color = 'green'},
-        [5] = {title = 'Barham Zadan Aramesh', class = 'infraction', id = 'P.C. 6001', months = 0, fine = 500, color = 'green'},
+        [5] = {title = 'Barham Zadan Aramesh', class = 'infraction', id = 'P.C. 6001', months = 5, fine = 500, color = 'green'},
         [6] = {title = 'Azar Va Azziat', class = 'infraction', id = 'P.C. 6001', months = 5, fine = 250, color = 'green'},
         [7] = {title = 'Shooresh', class = 'infraction', id = 'P.C. 6001', months = 0, fine = 0, color = 'green'},
-        [7] = {title = 'Takhribe Amvale Omoomi', class = 'infraction', id = 'P.C. 6001', months = 15, fine = 0, color = 'green'},
+        [8] = {title = 'Takhribe Amvale Omoomi', class = 'infraction', id = 'P.C. 6001', months = 10, fine = 0, color = 'green'},
 
         
     },
@@ -94,35 +94,36 @@ Config.PenalCode = {
     },
     [8] = {
         [1] = {title = 'Criminal Possession of Weapon Class A', class = 'Felony', id = 'P.C. 8001', months = 10, fine = 500, color = 'green'},
-        [2] = {title = 'Dashtan Gune Class 1', class = 'Felony', id = 'P.C. 8001', months = 10, fine = 1000, color = 'green'},
-        [3] = {title = 'Dashtan Gune Class 2', class = 'Felony', id = 'P.C. 8001', months = 20, fine = 2000, color = 'green'},
-        [4] = {title = 'Dashtan Gune Class 3', class = 'Felony', id = 'P.C. 8001', months = 30, fine = 3000, color = 'green'},
+        [2] = {title = 'Dashtan Gune Class 1', class = 'Felony', id = 'P.C. 8001', months = 15, fine = 1000, color = 'green'},
+        [3] = {title = 'Dashtan Gune Class 2', class = 'Felony', id = 'P.C. 8001', months = 30, fine = 2000, color = 'green'},
+        [4] = {title = 'Dashtan Gune Class 3', class = 'Felony', id = 'P.C. 8001', months = 60, fine = 3000, color = 'green'},
         [5] = {title = 'Dashtan Aslahe Dolati', class = 'Felony', id = 'P.C. 8001', months = 100, fine = 10000, color = 'green'},
-        [6] = {title = 'Dashtan Mavad Monfajere ', class = 'Felony', id = 'P.C. 8001', months = 30, fine = 6000, color = 'green'},
-        [7] = {title = 'Moghavemat Dar Barabare Afrade Dolati ', class = 'Felony', id = 'P.C. 8001', months = 0, fine = 500, color = 'green'},
+        [6] = {title = 'Dashtan Mavad Monfajere ', class = 'Felony', id = 'P.C. 8001', months = 50, fine = 6000, color = 'green'},
+        [7] = {title = 'Moghavemat Dar Barabare Afrade Dolati ', class = 'Felony', id = 'P.C. 8001', months = 10, fine = 500, color = 'green'},
         [8] = {title = 'Terrorism', class = 'Felony', id = 'P.C. 8001', months = 0, fine = 0, color = 'green'},
         [9] = {title = 'Ghachaghe Aslahe', class = 'Felony', id = 'P.C. 8001', months = 0, fine = 0, color = 'green'},
-        [10] = {title = 'Dashtan Attachment Gun Ha', class = 'Felony', id = 'P.C. 8001', months = 30, fine = 5000, color = 'green'},
+        [10] = {title = 'Dashtan Attachment Gun Ha', class = 'Felony', id = 'P.C. 8001', months = 40, fine = 5000, color = 'green'},
+        [11] = {title = 'Foroosh Aslahe', class = 'Felony', id = 'P.C. 8001', months = 0, fine = 0, color = 'green'},
 
 
         
     },
     [9] = {
         [1] = {title = 'Driving While Intoxicated', class = 'Misdemeanor', id = 'P.C. 9001', months = 0, fine = 300, color = 'green'},
-        [2] = {title = 'Sorat Gheyre Mojaz : Be Azaye Har 10 Km', class = 'Misdemeanor', id = 'P.C. 9001', months = 0, fine = 100, color = 'green'},
+        [2] = {title = 'Sorat Gheyre Mojaz Be Azaye Har 10 Km', class = 'Misdemeanor', id = 'P.C. 9001', months = 0, fine = 100, color = 'green'},
         [3] = {title = 'Park Gheyre Mojaz', class = 'Misdemeanor', id = 'P.C. 9001', months = 0, fine = 100, color = 'green'},
-        [4] = {title = 'Ranandegi dar Halate Masti', class = 'Misdemeanor', id = 'P.C. 9001', months = 5, fine = 500, color = 'green'},
-        [5] = {title = 'Farar Kardan As Police (Pursuit)', class = 'Misdemeanor', id = 'P.C. 9001', months = 10, fine = 300, color = 'green'},
+        [4] = {title = 'Ranandegi dar Halate Masti', class = 'Misdemeanor', id = 'P.C. 9001', months = 10, fine = 500, color = 'green'},
+        [5] = {title = 'Farar Kardan As Police (Pursuit)', class = 'Misdemeanor', id = 'P.C. 9001', months = 15, fine = 300, color = 'green'},
         [6] = {title = 'Rananadegi Khatarnak', class = 'Misdemeanor', id = 'P.C. 9001', months = 0, fine = 250, color = 'green'},
         [7] = {title = 'Ranandegi Bedoone Govahiname', class = 'Misdemeanor', id = 'P.C. 9001', months = 0, fine = 0, color = 'green'},
-        [8] = {title = 'Mosabeghe Khiabani', class = 'Misdemeanor', id = 'P.C. 9001', months = 15, fine = 1000, color = 'green'},
+        [8] = {title = 'Mosabeghe Khiabani', class = 'Misdemeanor', id = 'P.C. 9001', months = 20, fine = 1000, color = 'green'},
         
         
     },
     [10] = {
         [1] = {title = 'Hunting in Restricted Areas', class = 'Infraction', id = 'P.C. 10001', months = 0, fine = 450, color = 'green'},
-        [2] = {title = 'Shenkare Gheyre Ghanooni', class = 'Infraction', id = 'P.C. 10001', months = 10, fine = 2000, color = 'green'},
-        [3] = {title = 'Mahigiri Gheyre Ghanooni', class = 'Infraction', id = 'P.C. 10001', months = 10, fine = 2000, color = 'green'},
+        [2] = {title = 'Shenkare Gheyre Ghanooni', class = 'Infraction', id = 'P.C. 10001', months = 20, fine = 2000, color = 'green'},
+        [3] = {title = 'Mahigiri Gheyre Ghanooni', class = 'Infraction', id = 'P.C. 10001', months = 15, fine = 2000, color = 'green'},
         
     }
 }
