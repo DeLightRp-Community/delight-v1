@@ -69,13 +69,13 @@ Config.TomatoesProcessing = 4
 
 -- Processed Items
 Config.AppleJuice = 1                                   -- Received Amount
-Config.BaconProcessed = 3
-Config.HamProcessed = 2
+Config.BaconProcessed = 1
+Config.HamProcessed = 1
 Config.PorkProcessed = 1
-Config.SausageProcessed = 2
-Config.CowMeat = 2
-Config.Milk = 4
-Config.PumpkinBoxes = 3
+Config.SausageProcessed = 1
+Config.CowMeat = 1
+Config.Milk = 1
+Config.PumpkinBoxes = 1
 Config.CornProcessed = 1
 Config.GrapeProcessed = 1
 Config.ChillyProcessed = 1
@@ -83,30 +83,30 @@ Config.TomatoesProcessed = 1
 
 -- Processing time
 Config.ProcessingTime = {
-    ["apple_processingtime"] = 5000,                    -- MS = Seconds (5000 ms = 5 seconds)
+    ["apple_processingtime"] = 10000,                    -- MS = Seconds (5000 ms = 5 seconds)
     ["beef_processingtime"] = 10000,
     ["bacon_processingtime"] = 10000,
     ["ham_processingtime"] = 10000,
     ["pork_processingtime"] = 10000,
     ["sausage_processingtime"] = 10000,
-    ["milk_tradingtime"] = 7500,
-    ["pumpkin_smashingtime"] = 7500,
-    ["grape_processingtime"] = 7500,
-    ["chillypepper_processingtime"] = 7500,
-    ["tomatoes_processingtime"] = 7500,
+    ["milk_tradingtime"] = 10000,
+    ["pumpkin_smashingtime"] = 10000,
+    ["grape_processingtime"] = 10000,
+    ["chillypepper_processingtime"] = 10000,
+    ["tomatoes_processingtime"] = 10000,
 }
 
 
 -- Sell Items
 Config.Sell = {
     ["apple"] = {
-        ["price"] = math.random(15, 20)                  -- Seller Price
+        ["price"] = 30             -- Seller Price
     },
     ["apple_juice"] = {
-        ["price"] = 30
+        ["price"] = 45
     },
     ["milkbucket"] = {
-        ["price"] = 30
+        ["price"] = 45
     },
     ["raw_beef"] = {
         ["price"] = 30
@@ -118,7 +118,7 @@ Config.Sell = {
         ["price"] = 30
     },
     ["rawpumpkin"] = {
-        ["price"] = 30
+        ["price"] = 45
     },
     ["pumpkinpiebox"] = {
         ["price"] = 30
@@ -142,7 +142,7 @@ Config.Sell = {
         ["price"] = 30
     },
     ["chillypepper"] = {
-        ["price"] = 30
+        ["price"] = 45
     },
     ["hotsauce"] = {
         ["price"] = 30
@@ -151,7 +151,7 @@ Config.Sell = {
         ["price"] = 30
     },
     ["tomatopaste"] = {
-        ["price"] = 30
+        ["price"] = 45
     },
     ["raw_bacon"] = {
         ["price"] = 30
@@ -166,16 +166,16 @@ Config.Sell = {
         ["price"] = 30
     },
     ["cooked_bacon"] = {
-        ["price"] = 30
+        ["price"] = 45
     },
     ["cooked_sausage"] = {
-        ["price"] = 30
+        ["price"] = 45
     },
     ["cooked_pork"] = {
-        ["price"] = 30
+        ["price"] = 45
     },
     ["cooked_ham"] = {
-        ["price"] = 30
+        ["price"] = 45
     },
     ["pig_leather"] = {
         ["price"] = 30
