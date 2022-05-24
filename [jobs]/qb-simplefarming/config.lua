@@ -103,85 +103,85 @@ Config.Sell = {
         ["price"] = math.random(15, 20)                  -- Seller Price
     },
     ["apple_juice"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["milkbucket"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["raw_beef"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["beef"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["milk"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["rawpumpkin"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["pumpkinpiebox"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["slicedpie"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["corncob"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["canofcorn"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["grapes"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["grapejuice"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["greenpepper"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["chillypepper"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["hotsauce"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["tomato"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["tomatopaste"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["raw_bacon"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["raw_sausage"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["raw_pork"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["raw_ham"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["cooked_bacon"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["cooked_sausage"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["cooked_pork"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["cooked_ham"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["pig_leather"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     },
     ["cow_leather"] = {
-        ["price"] = math.random(35, 45)
+        ["price"] = 30
     }
     
 }
