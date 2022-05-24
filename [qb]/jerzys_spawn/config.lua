@@ -57,7 +57,7 @@ Config.version = "0.9"
 Config.JSlanguage = 'en' -- en,de,pl Avaible for now. (the Ui language)
 Config.coreName = 'QBCore' -- Rename the "Core" name
 
-Config.devMode = 'false' -- if true, "/openUi" works
+Config.devMode = false -- if true, "/openUi" works
 
 -- [[ Use QB ]] --
 -- Config.useQbApartment = false -- Default uses appartments right now
