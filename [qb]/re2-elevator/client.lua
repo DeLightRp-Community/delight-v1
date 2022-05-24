@@ -63,26 +63,29 @@ end)
 
 RegisterNetEvent('re2-elevator:client:teleportTo', function(data)
     local ped = PlayerPedId()
-    QBCore.Functions.Progressbar("Call_The_Lift", "Please Wait for Elevator", 5000, false, false, {
-        disableMovement = true,
-        disableCarMovement = true,
-        disableMouse = false,
-        disableCombat = true,
-    }, {
-        animDict = "anim@apt_trans@elevator",
-        anim = "elev_1",
-        flags = 16,
-    }, {}, {}, function() -- Done
-        StopAnimTask(ped, "anim@apt_trans@elevator", "elev_1", 1.0)
-        DoScreenFadeOut(500)
-        Wait(1000)
-        if Config.UseSoundEffect then
-            TriggerServerEvent("InteractSound_SV:PlayOnSource", "LiftSoundBellRing", 0.05)
-        end
-        SetEntityCoords(ped, data.loc.x, data.loc.y, data.loc.z, 0, 0, 0, false)
-        SetEntityHeading(ped, data.loc.w)
-        Wait(1000)
-        DoScreenFadeIn(600)
-        
-    end)
+    if not IsPedInAnyVehicle(ped) then
+        QBCore.Functions.Progressbar("Call_The_Lift", "Please Wait for Elevator", 5000, false, false, {
+            disableMovement = true,
+            disableCarMovement = true,
+            disableMouse = false,
+            disableCombat = true,
+        }, {
+            animDict = "anim@apt_trans@elevator",
+            anim = "elev_1",
+            flags = 16,
+        }, {}, {}, function() -- Done
+            StopAnimTask(ped, "anim@apt_trans@elevator", "elev_1", 1.0)
+            DoScreenFadeOut(500)
+            Wait(1000)
+            if Config.UseSoundEffect then
+                TriggerServerEvent("InteractSound_SV:PlayOnSource", "LiftSoundBellRing", 0.05)
+            end
+            SetEntityCoords(ped, data.loc.x, data.loc.y, data.loc.z, 0, 0, 0, false)
+            SetEntityHeading(ped, data.loc.w)
+            Wait(1000)
+            DoScreenFadeIn(600)
+            
+        end)
+    end
+    
 end)
