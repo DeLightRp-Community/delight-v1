@@ -213,11 +213,11 @@ RegisterNetEvent('qb-vehicleshop:server:buyShowroomVehicle', function(vehicle)
         TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
         pData.Functions.RemoveMoney('cash', vehiclePrice, 'vehicle-bought-in-showroom')
         if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
-            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Finance a " .. vehicle .. " first payment at " .. downPayment)
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Finance a " .. vehicle .. " first payment at " .. vehiclePrice)
         elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
-            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
         else
-            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
         end
         exports['jl-carboost']:AddVIN(plate)
     elseif bank > vehiclePrice then
@@ -239,11 +239,11 @@ RegisterNetEvent('qb-vehicleshop:server:buyShowroomVehicle', function(vehicle)
         TriggerClientEvent('qb-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
         pData.Functions.RemoveMoney('bank', vehiclePrice, 'vehicle-bought-in-showroom')
         if QBCore.Shared.Vehicles[vehicle]['shop']=="policecars" then
-            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Finance a " .. vehicle .. " first payment at " .. downPayment)
+            TriggerEvent("qb-log:server:CreateLog", "police_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Finance a " .. vehicle .. " first payment at " .. vehiclePrice)
         elseif QBCore.Shared.Vehicles[vehicle]['shop'] == "mediccars" then
-            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+            TriggerEvent("qb-log:server:CreateLog", "medic_cars", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
         else
-            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. downPayment)
+            TriggerEvent("qb-log:server:CreateLog", "vehicleshop", "vehicle Buy", "green","**" .. GetPlayerName(src) .. "** Buy a " .. vehicle .. " priced at " .. vehiclePrice)
         end
         exports['jl-carboost']:AddVIN(plate)
     else

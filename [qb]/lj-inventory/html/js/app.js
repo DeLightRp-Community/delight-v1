@@ -3219,28 +3219,28 @@ $(document).on("click", "#rob-money", function(e) {
 
 // Give
 
-$("#item-give").droppable({
-    hoverClass: "button-hover",
-    drop: function(event, ui) {
-        setTimeout(function() {
-            IsDragging = false;
-        }, 300);
-        fromData = ui.draggable.data("item");
-        fromInventory = ui.draggable.parent().attr("data-inventory");
-        amount = $("#item-amount").val();
-        if (amount == 0) {
-            amount = fromData.amount;
-        }
-        $.post(
-            "https://lj-inventory/GiveItem",
-            JSON.stringify({
-                inventory: fromInventory,
-                item: fromData,
-                amount: parseInt(amount),
-            })
-        );
-    },
-});
+// $("#item-give").droppable({
+//     hoverClass: "button-hover",
+//     drop: function(event, ui) {
+//         setTimeout(function() {
+//             IsDragging = false;
+//         }, 300);
+//         fromData = ui.draggable.data("item");
+//         fromInventory = ui.draggable.parent().attr("data-inventory");
+//         amount = $("#item-amount").val();
+//         if (amount == 0) {
+//             amount = fromData.amount;
+//         }
+//         $.post(
+//             "https://lj-inventory/GiveItem",
+//             JSON.stringify({
+//                 inventory: fromInventory,
+//                 item: fromData,
+//                 amount: parseInt(amount),
+//             })
+//         );
+//     },
+// });
 
 // keep-companion functions
 function callAge(age) {
