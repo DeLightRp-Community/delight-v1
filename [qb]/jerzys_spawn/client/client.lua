@@ -57,24 +57,24 @@ local function afterPlayer(ped)
 end
 ---
 
---[[ Commands ]]
-if Config.devMode then
-    RegisterCommand('openUi', function ()
-        TriggerServerEvent('jerzys_spawn:server:getAll')
-        TriggerServerEvent('jerzys_spawn:server:checkAdmin')
-        TriggerServerEvent('qb-multicharacter:server:loadUserData')
-    end)
-else
-    print('no dev mode')
-end
+-- --[[ Commands ]]
+-- if Config.devMode then
+--     RegisterCommand('openUi', function ()
+--         TriggerServerEvent('jerzys_spawn:server:getAll')
+--         TriggerServerEvent('jerzys_spawn:server:checkAdmin')
+--         TriggerServerEvent('qb-multicharacter:server:loadUserData')
+--     end)
+-- else
+--     print('no dev mode')
+-- end
 
-if Config.devMode then
-    RegisterCommand('closeUi', function ()
-        showUi(false)
-    end)
-end
-RegisterCommand('updateUi', function ()
-    TriggerServerEvent('jerzys_spawn:server:updateAll')
+-- if Config.devMode then
+--     RegisterCommand('closeUi', function ()
+--         showUi(false)
+--     end)
+-- end
+-- RegisterCommand('updateUi', function ()
+--     TriggerServerEvent('jerzys_spawn:server:updateAll')
 end)
 
 --[[ Net Events ]]
