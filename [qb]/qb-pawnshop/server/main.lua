@@ -48,3 +48,35 @@ RegisterServerEvent("qb-pawnshop:server:Charge", function(citizen, price)
 		else TriggerClientEvent('QBCore:Notify', src, 'You cannot pay yourself...', 'error') end
 	else TriggerClientEvent('QBCore:Notify', src, 'Person not available', 'error') end
 end) 
+
+local function hasCraftItems(source, CostItems, amount)
+	local Player = QBCore.Functions.GetPlayer(source)
+    print(json.encode(CostItems))
+	for k, v in pairs(CostItems) do
+		if Player.Functions.GetItemByName(k) ~= nil then
+			if Player.Functions.GetItemByName(k).amount < (v * amount) then
+				return false
+			end
+		else
+			return false
+		end
+	end
+	return true
+end
+
+QBCore.Functions.CreateCallback('qb-pawnshop:server:craftItem', function (source, cb, data)
+    local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    print(hasCraftItems(src,data.material, 1))
+    if hasCraftItems(src,data.material, 1) then
+        for k, v in pairs(data.material) do
+            Player.Functions.RemoveItem(k, v)
+        end
+        TriggerClientEvent("inventory:client:ItemBox", source, QBCore.Shared.Items[data["name"]], "add")
+	    TriggerClientEvent('QBCore:Notify', src, QBCore.Shared.Items[data["name"]].label..'craft was succesful !', "success")
+        Player.Functions.AddItem(data["name"], 1)
+        return cb(true)
+    else
+        return cb(false)
+    end
+ end)

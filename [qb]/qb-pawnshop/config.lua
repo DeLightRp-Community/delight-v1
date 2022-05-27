@@ -153,4 +153,55 @@ Config.PawnItems = {
         item = "gold_ring",
         price = math.random(390, 550)
     }
+
+    [37] = {
+        item = "markedbills",
+        price = math.random(400, 550)
+    }
+}
+
+
+cfg = {
+    modifyTime = 2000,
+    modLocation = {
+        [1] = {coords = vector4(136.09, -3030.32, 6.69, 181.36), blip = true},
+    },
+
+    crafts = {
+        ["Material"] = {
+            ["plastic"] = {
+                items = {["recyclepart"] = 1,}
+            },
+            ["metalscrap"] = {
+                items = {["recyclepart"] = 1,}
+            },
+            ["copper"] = {
+                items = {["recyclepart"] = 1,}
+            },
+            ["aluminum"] = {
+                items = {["recyclepart"] = 1,}
+            },
+            ["iron"] = {
+                items = {["recyclepart"] = 1,}
+            },
+            ["steel"] = {
+                items = {["recyclepart"] = 1,}
+            },
+            ["rubber"] = {
+                items = {["recyclepart"] = 1,}
+            },
+            ["glass"] = {
+                items = {["recyclepart"] = 1,}
+            },
+        },
+
+        ["illegal Craft"] = {
+            ["lockpick"] = {
+                items = {["iron"] = 5, ["steel"] = 3, ["aluminum"] = 2,}
+            },
+            ["advancedlockpick"] = {
+                items = {["iron"] = 15, ["steel"] = 13, ["aluminum"] = 12,}
+            },
+        },
+    }
 }

@@ -225,11 +225,103 @@ RegisterNetEvent('qb-pawnshop:client:Charge', function()
 end)
 
 --- CUSTOMER TRAYS
-RegisterNetEvent('qb-pawnshop:Stash')
-AddEventHandler('qb-pawnshop:Stash',function(data)
-	id = data.stash
-    TriggerServerEvent("inventory:server:OpenInventory", "stash", "pawnshop_"..id)
-    TriggerEvent("inventory:client:SetCurrentStash", "pawnshop_"..id)
+
+RegisterNetEvent("qb-pawnshop:Stash")
+AddEventHandler("qb-pawnshop:Stash", function()
+    TriggerEvent("inventory:client:SetCurrentStash", "pawnshopstash")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "pawnshopstash", {
+        maxweight = 10000000,
+        slots = 50,
+    })
+end)
+
+
+RegisterNetEvent("qb-pawnshop:Stash2")
+AddEventHandler("qb-pawnshop:Stash2", function()
+    TriggerEvent("inventory:client:SetCurrentStash", "pawnshoptray")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "pawnshoptray", {
+        maxweight = 250000,
+        slots = 6,
+    })
+end)
+
+RegisterNetEvent('qb-pawnshop:client:openCraftMenu', function()
+    local craftCategory = {{
+        header = "Craft Category",
+        isMenuHeader = true, -- Set to true to make a nonclickable title
+    },}
+    for i, v in pairs(cfg.crafts) do
+        local tempData= {
+            header = i,
+            txt = i.." Levels",
+			params = {
+                isServer = false,
+                event = "qb-pawnshop:client:openCraftSub",
+                args = {
+                    type = i,
+                }
+            }
+        }
+        table.insert(craftCategory, tempData)
+    end
+    
+    exports['qb-menu']:openMenu(craftCategory)
+end)
+
+RegisterNetEvent('qb-pawnshop:client:craftItem', function(data)
+
+    QBCore.Functions.Progressbar('craft',"Craft "..QBCore.Shared.Items[data.name].label, 10000, false, true, { -- Name | Label | Time | useWhileDead | canCancel
+        disableMovement = true,
+        disableCarMovement = true,
+        disableMouse = false,
+        disableCombat = true,
+    }, {
+        animDict = '"anim@amb@clubhouse@tutorial@bkr_tut_ig3@"@',
+        anim = 'machinic_loop_mechandplayer',
+        flags = 16,
+    }, {}, {}, function() 
+        QBCore.Functions.TriggerCallback('qb-pawnshop:server:craftItem', function(result)
+            if result then
+
+                QBCore.Functions.Notify("Item Craft Sucessfuly", "primary")
+                
+            else
+                QBCore.Functions.Notify("You Dont Have the Material", "error")
+            end
+        end, data)
+        ClearPedTasks(PlayerPedId())
+    end, function() -- Play When Cancel
+        QBCore.Functions.Notify("Cancelled", "error")
+        ClearPedTasks(PlayerPedId())
+    end)
+end)
+
+
+RegisterNetEvent('qb-pawnshop:client:openCraftSub', function(data)
+    local craftSubs = {
+
+    }
+    for i, v in pairs(cfg.crafts[data.type]) do
+        local txt= ""
+        for k, vv in pairs(v.items) do
+            txt =txt..k.." "..vv.." "
+        end
+        local tempData= {
+            header = QBCore.Shared.Items[i].label,
+            txt = txt,
+			params = {
+                isServer = false,
+                event = "qb-pawnshop:client:craftItem",
+                args = {
+                    material = v.items,
+                    name = i
+                }
+            }
+        }
+        table.insert(craftSubs, tempData)
+    end
+    
+    exports['qb-menu']:openMenu(craftSubs)
 end)
 
 -----------------------------------------------------------------------------------------
@@ -247,7 +339,7 @@ exports['qb-target']:AddBoxZone("PawnRegister", vector3(174.02, -1322.66, 29.15)
 })
 ---- TRAY 
 exports['qb-target']:AddBoxZone("PawnCounter", vector3(173.48, -1320.72, 29.39), 0.75, 2, { name="PawnCounter", heading = 63, debugPoly=false, minZ=28.36, maxZ=29.56 }, 
-{ options = { { event = "qb-pawnshop:Stash", icon = "fas fa-hamburger", label = "Counter", stash = "Counter" }, },
+{ options = { { event = "qb-pawnshop:Stash2", icon = "fas fa-hamburger", label = "Counter", stash = "Counter" }, },
   distance = 2.0
 })
 ---- COMPANY STASH 
@@ -258,5 +350,10 @@ exports['qb-target']:AddBoxZone("PawnStash", vector3(158.4, -1310.66, 29.38), 1.
 
 exports['qb-target']:AddBoxZone("PawnItemSell", vector3(157.34, -1316.77, 29.36), 1.6, 1, { name="PawnItemSell", heading=65, minZ=26.96,maxZ=30.96 }, 
 { options = { {  event = "qb-pawnshop:client:openMenu", icon = "fas fa-credit-card", label = "Sell Items", stash = "Stash", job = "pawnshop"  }, },
+  distance = 1.0
+})
+
+exports['qb-target']:AddBoxZone("Pawncraft", vector3(172.81, -1317.25, 29.36), 2.6, 2, { name="Pawncraft", heading=335, minZ=26.76,maxZ=30.76 }, 
+{ options = { {  event = "qb-pawnshop:client:openCraftMenu", icon = "fas fa-credit-card", label = "Craft Items", stash = "Stash", job = "pawnshop"  }, },
   distance = 1.0
 })
