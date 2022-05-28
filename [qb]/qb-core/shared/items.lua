@@ -689,6 +689,8 @@ QBShared.Items = {
 	
 	['cheese-pizza'] 			    = {['name'] = 'cheese-pizza', 			['label'] = 'Cheese Pizza', 	['weight'] = 400, 		['type'] = 'item', 		['image'] = 'cheese-pizza.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious Cheese Pizza'},
 
+	['slice-pizza'] 			    = {['name'] = 'slice-pizza', 			['label'] = 'slice Pizza', 		['weight'] = 400, 		['type'] = 'item', 		['image'] = 'cheese-pizza.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious Cheese Pizza'},
+
 	['mushrooms'] 			    	= {['name'] = 'mushrooms', 				['label'] = 'Mushrooms', 		['weight'] = 400, 		['type'] = 'item', 		['image'] = 'Mushrooms.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious Mushrooms'},
 
 	['onion'] 			    		= {['name'] = 'onion', 					['label'] = 'onion', 			['weight'] = 400, 		['type'] = 'item', 		['image'] = 'onion.png', 					['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious onion'},

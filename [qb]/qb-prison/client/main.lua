@@ -267,6 +267,7 @@ debugPoly = false,
 canteen:onPlayerInOut(function(isPointInside)
 	if isPointInside then
 		exports['qb-core']:DrawText('[E] Open Canteen', 'left')
+		TriggerEvent("prison:client:Leave")
 		insidecanteen = true
 	else
 		insidecanteen = false
@@ -274,11 +275,8 @@ canteen:onPlayerInOut(function(isPointInside)
 	end
 end)
 
-local time = {
-	"s_m_m_armoured_01"
-}
 	
-exports['qb-target']:AddTargetEntity(time, {
+exports['qb-target']:AddTargetEntity("s_m_m_armoured_01", {
 	options = {
 	{
 		type = "client",
@@ -290,7 +288,7 @@ exports['qb-target']:AddTargetEntity(time, {
 	distance = 2.5,
 })
 
-exports['qb-target']:AddTargetEntity(time, {
+exports['qb-target']:AddTargetEntity("s_m_m_armoured_01", {
 	options = {
 	{
 		type = "client",

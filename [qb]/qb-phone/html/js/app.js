@@ -242,7 +242,13 @@ $(document).on('click', '.phone-application', function(e){
                     $.post('https://qb-phone/SetupStoreApps', JSON.stringify({}), function(data){
                         SetupAppstore(data);
                     });
-                } else if (PressedApplication == "trucker") {
+                }else if(PressedApplication == "group-chats") {
+                    $.post('https://qb-phone/GetChatRooms', JSON.stringify({}), function(ChatRooms){
+                        QB.Phone.Functions.HeaderTextColor("white", 100);
+                        QB.Phone.Functions.LoadChatRooms(ChatRooms)
+                    })
+                } 
+                else if (PressedApplication == "trucker") {
                     $.post('https://qb-phone/GetTruckerData', JSON.stringify({}), function(data){
                         SetupTruckerInfo(data);
                     });
@@ -798,6 +804,9 @@ $(document).ready(function(){
                 break;
             case "RefreshAlerts":
                 QB.Phone.Functions.SetupAppWarnings(event.data.AppData);
+                break;
+            case "RefreshGroupChat":
+                QB.Phone.Functions.RefreshGroupChat(event.data.messageData)
                 break;
         }
     })

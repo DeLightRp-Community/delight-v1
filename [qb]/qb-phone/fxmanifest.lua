@@ -14,12 +14,16 @@ shared_scripts {
 
 client_scripts {
     'client/main.lua',
-    'client/animation.lua'
+    'client/animation.lua',
+    'client/discordia.lua',
+    'client/room_creation.lua'
 }
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'server/main.lua'
+    'server/main.lua',
+    'server/discordia.lua',
+    'server/room_creation.lua'
 }
 
 files {
