@@ -26,12 +26,12 @@ const DebugLogs = false;
 const EnableDiscordBot = true;
 
 // DISCORD BOT
-const DiscordBotToken = "OTc2OTQ5NTQ4MjEzNzYwMTEy.GttQCT.EXkEVE_yWvtAmGFNw8fteMd_L-6rUjWNoihsjs";
-const DiscordGuildId = "856277326475296788";
+const DiscordBotToken = "";
+const DiscordGuildId = "";
 
 // STAFF CHAT
 const EnableStaffChatForwarding = true;
-const DiscordStaffChannelId = "976950336520589352";
+const DiscordStaffChannelId = "";
 const AdditionalStaffChatRoleIds = [
     "975100588394151976", //Staff command
 ];
