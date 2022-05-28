@@ -19,11 +19,11 @@ Config.JobStash = {
 
 Drink = {
     [1] = {
-        label = "Water", 
-        description = "Water Bottle", 
-        item = "water_bottle", --item that will be given
+        label = "Beer", 
+        description = "Beer Bottle", 
+        item = "Beer", --item that will be given
         required = {}, -- required items to make (empty if no items required)
-        progressbar = "Grabbing Water", -- text to display on progressbar
+        progressbar = "Grabbing Beer", -- text to display on progressbar
         progresstime = 5000, -- time required to make in milliseconds
         dictionary = 'amb@prop_human_bbq@male@idle_a', --dictionary name for animation
         animname = "idle_b", --animation name
@@ -56,6 +56,21 @@ Oven = {
             [1] = {itemName = "pizza-dough", amount = 1},
             [2] = {itemName = "sauce", amount = 3},
             [3] = {itemName = "cheese", amount = 4},
+        }, -- required items to make
+        progressbar = "Making Cheese Pizza", -- text to display on progressbar
+        progresstime = 15000, -- in milliseconds
+        dictionary = "anim@mp_player_intmenu@key_fob@", --dictionary name for animation
+        animname = "fob_click", --animation name
+    },
+
+    [2] = {
+        label = "Make Slice Pizza", 
+        description = "Pizza Dough = 1 | Sauce = 2 | Cheese = 2 ", 
+        item = "cheese-pizza", --item that will be given
+        required = {
+            [1] = {itemName = "pizza-dough", amount = 1},
+            [2] = {itemName = "sauce", amount = 2},
+            [3] = {itemName = "cheese", amount = 2},
         }, -- required items to make
         progressbar = "Making Cheese Pizza", -- text to display on progressbar
         progresstime = 15000, -- in milliseconds
@@ -100,7 +115,7 @@ Config.Items = {
         items = {
             [1] = {
                 name = "mushrooms",
-                price = 100,
+                price = 4,
                 amount = 50,
                 info = {},
                 type = "item",
@@ -108,7 +123,7 @@ Config.Items = {
             },
             [2] = {
                 name = "onion",
-                price = 300,
+                price = 3,
                 amount = 50,
                 info = {},
                 type = "item",
@@ -116,7 +131,7 @@ Config.Items = {
             },
             [3] = {
                 name = "burger-tomato",
-                price = 50,
+                price = 5,
                 amount = 5,
                 info = {},
                 type = "item",
@@ -124,7 +139,7 @@ Config.Items = {
             },
             [4] = {
                 name = "yeast",
-                price = 100,
+                price = 6,
                 amount = 50,
                 info = {},
                 type = "item",
@@ -132,7 +147,7 @@ Config.Items = {
             },
             [5] = {
                 name = "salt",
-                price = 200,
+                price = 2,
                 amount = 5,
                 info = {},
                 type = "item",
@@ -140,7 +155,7 @@ Config.Items = {
             },
             [6] = {
                 name = "flour",
-                price = 200,
+                price = 6,
                 amount = 50,
                 info = {},
                 type = "item",

@@ -237,3 +237,17 @@ Config.DoorList['ambulance-parking3'] = {
     locked = true,
     distance = 2,
 }
+
+-- printer created by AmirTech
+Config.DoorList['ambulance-printer'] = {
+    fixText = false,
+    objName = 854291622,
+    doorRate = 1.0,
+    doorType = 'door',
+    distance = 2,
+    doorLabel = 'printer',
+    objCoords = vec3(340.781830, -581.821472, 43.433910),
+    locked = true,
+    authorizedJobs = { ['ambulance'] = 0 },
+    objYaw = 340.00003051758,
+}

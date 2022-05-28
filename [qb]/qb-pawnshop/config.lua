@@ -153,11 +153,20 @@ Config.PawnItems = {
         item = "gold_ring",
         price = math.random(390, 550)
     }
+
+    [37] = {
+        item = "markedbills",
+        price = math.random(400, 550)
+    }
 }
 
 
 cfg = {
+<<<<<<< HEAD
     modifyTime = 5000,
+=======
+    modifyTime = 2000,
+>>>>>>> 51964c475e8cf41034552493376fc9ebea37bdfd
     modLocation = {
         [1] = {coords = vector4(136.09, -3030.32, 6.69, 181.36), blip = true},
     },

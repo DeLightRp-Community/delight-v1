@@ -82,7 +82,7 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 	SetBlockingOfNonTemporaryEvents(canteen_ped, true)
 	TaskStartScenarioInPlace(canteen_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
-	freedom_ped = CreatePed(5, GetHashKey('s_m_m_armoured_01') , 1836.37, 2585.33, 44.88, 78.67, false, true)
+	freedom_ped = CreatePed(5, GetHashKey('s_m_m_armoured_01') , 1761.0, 2492.94, 45.74, 211.33, false, true)
 	FreezeEntityPosition(freedom_ped, true)
 	SetEntityInvincible(freedom_ped, true)
 	SetBlockingOfNonTemporaryEvents(freedom_ped, true)
@@ -276,7 +276,11 @@ canteen:onPlayerInOut(function(isPointInside)
 end)
 
 	
+<<<<<<< HEAD
 exports['qb-target']:AddTargetEntity("s_m_m_armoured_01", {
+=======
+exports['qb-target']:AddTargetModel("s_m_m_armoured_01", {
+>>>>>>> 51964c475e8cf41034552493376fc9ebea37bdfd
 	options = {
 	{
 		type = "client",
@@ -288,7 +292,11 @@ exports['qb-target']:AddTargetEntity("s_m_m_armoured_01", {
 	distance = 2.5,
 })
 
+<<<<<<< HEAD
 exports['qb-target']:AddTargetEntity("s_m_m_armoured_01", {
+=======
+exports['qb-target']:AddTargetModel("s_m_m_armoured_01", {
+>>>>>>> 51964c475e8cf41034552493376fc9ebea37bdfd
 	options = {
 	{
 		type = "client",

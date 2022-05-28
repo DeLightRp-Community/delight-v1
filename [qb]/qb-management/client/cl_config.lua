@@ -73,6 +73,9 @@ Config.BossMenuZones = {
     ['pizza'] = {
         { coords = vector3(797.12, -751.6, 31.27), length = 1, width = 1, heading = 0, minZ = 27.87, maxZ = 31.87 },
     },
+    ['pawnshop'] = {
+        { coords = vector3(167.5, -1314.45, 29.36), length = 1, width = 1, heading = 65, minZ = 26.36, maxZ = 30.36 },
+    },
 }
 
 Config.GangMenus = {
