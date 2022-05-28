@@ -152,7 +152,7 @@ Config.PawnItems = {
     [36] = {
         item = "gold_ring",
         price = math.random(390, 550)
-    }
+    },
 
     [37] = {
         item = "markedbills",
@@ -161,8 +161,8 @@ Config.PawnItems = {
 }
 
 
-cfg = {
-    modifyTime = 2000,
+Config.cfg = {
+    modifyTime = 1000,
     modLocation = {
         [1] = {coords = vector4(136.09, -3030.32, 6.69, 181.36), blip = true},
     },

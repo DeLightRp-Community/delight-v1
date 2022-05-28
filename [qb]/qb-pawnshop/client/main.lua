@@ -250,7 +250,7 @@ RegisterNetEvent('qb-pawnshop:client:openCraftMenu', function()
         header = "Craft Category",
         isMenuHeader = true, -- Set to true to make a nonclickable title
     },}
-    for i, v in pairs(cfg.crafts) do
+    for i, v in pairs(Config.cfg.crafts) do
         local tempData= {
             header = i,
             txt = i.." Levels",
@@ -301,7 +301,7 @@ RegisterNetEvent('qb-pawnshop:client:openCraftSub', function(data)
     local craftSubs = {
 
     }
-    for i, v in pairs(cfg.crafts[data.type]) do
+    for i, v in pairs(Config.cfg.crafts[data.type]) do
         local txt= ""
         for k, vv in pairs(v.items) do
             txt =txt..k.." "..vv.." "

@@ -75,7 +75,7 @@ end
 -- end
 -- RegisterCommand('updateUi', function ()
 --     TriggerServerEvent('jerzys_spawn:server:updateAll')
-end)
+-- end)
 
 --[[ Net Events ]]
 
