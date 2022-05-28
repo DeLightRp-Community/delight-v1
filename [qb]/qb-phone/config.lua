@@ -2,6 +2,15 @@ Config = Config or {}
 Config.BillingCommissions = { -- This is a percentage (0.10) == 10%
     mechanic = 0.10
 }
+
+
+--------------------------------
+Config.ChatSeller = 'csb_sol'
+Config.SellerLocation = vector4(-517.45, -673.15, 10.81, 268.85)
+Config.PhoneHackItem = 'vpn'
+--------------------------------
+
+
 Config.RepeatTimeout = 2000
 Config.CallRepeats = 10
 Config.OpenPhone = 244
@@ -185,6 +194,18 @@ Config.PhoneApplications = {
     --     icon = "fas fa-id-badge",
     --     tooltipText = "Job Center",
     --     style = "color: #78bdfd; font-size: 2.7vh";
+    --     job = false,
+    --     blockedjobs = {},
+    --     slot = 15,
+    --     Alerts = 0,
+    -- },
+    -- ["group-chats"] = {
+    --     app = "group-chats",
+    --     color = "#87cefe",
+    --     color2 = "#6ab3e1",
+    --     icon = "fas fa-comment-dots",
+    --     tooltipText = "CyberCord",
+    --     tooltipPos = "bottom",
     --     job = false,
     --     blockedjobs = {},
     --     slot = 15,

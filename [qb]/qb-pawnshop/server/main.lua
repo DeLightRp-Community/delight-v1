@@ -49,6 +49,8 @@ RegisterServerEvent("qb-pawnshop:server:Charge", function(citizen, price)
 	else TriggerClientEvent('QBCore:Notify', src, 'Person not available', 'error') end
 end) 
 
+<<<<<<< HEAD
+=======
 local function hasCraftItems(source, CostItems, amount)
 	local Player = QBCore.Functions.GetPlayer(source)
     print(json.encode(CostItems))
@@ -63,6 +65,7 @@ local function hasCraftItems(source, CostItems, amount)
 	end
 	return true
 end
+>>>>>>> 51964c475e8cf41034552493376fc9ebea37bdfd
 
 QBCore.Functions.CreateCallback('qb-pawnshop:server:craftItem', function (source, cb, data)
     local src = source

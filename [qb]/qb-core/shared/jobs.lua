@@ -101,7 +101,7 @@ QBShared.Jobs = {
             },
 			['6'] = {
                 name = "Captain",
-				isboss = true,
+				-- isboss = true,
                 payment = 1800
             },
 			['7'] = {

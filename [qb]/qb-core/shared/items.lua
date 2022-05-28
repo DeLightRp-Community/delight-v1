@@ -689,7 +689,11 @@ QBShared.Items = {
 	
 	['cheese-pizza'] 			    = {['name'] = 'cheese-pizza', 			['label'] = 'Cheese Pizza', 	['weight'] = 400, 		['type'] = 'item', 		['image'] = 'cheese-pizza.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious Cheese Pizza'},
 
+<<<<<<< HEAD
+	['slice-pizza'] 			    = {['name'] = 'slice-pizza', 			['label'] = 'slice Pizza', 		['weight'] = 400, 		['type'] = 'item', 		['image'] = 'cheese-pizza.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious Cheese Pizza'},
+=======
 	['slice-pizza'] 			    = {['name'] = 'slice-pizza', 			['label'] = 'slice Pizza', 		['weight'] = 400, 		['type'] = 'item', 		['image'] = 'slice-pizza.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious Cheese Pizza'},
+>>>>>>> 51964c475e8cf41034552493376fc9ebea37bdfd
 
 	['mushrooms'] 			    	= {['name'] = 'mushrooms', 				['label'] = 'Mushrooms', 		['weight'] = 400, 		['type'] = 'item', 		['image'] = 'Mushrooms.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Delicious Mushrooms'},
 

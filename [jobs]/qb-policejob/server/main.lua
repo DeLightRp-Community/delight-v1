@@ -1138,3 +1138,10 @@ QBCore.Commands.Add("division", "Division (Police Only)", {{name="ID", help="ID 
         TriggerClientEvent('QBCore:Notify', source, 'Shoma Dastresi Estefade az in Command ro nadarid', 'error')
 	end
 end)   
+
+
+
+RegisterServerEvent('police:remmaskGranted') -- that is np's code ((pooria))
+AddEventHandler('police:remmaskGranted', function(targetplayer)
+    TriggerClientEvent('police:remmaskAccepted', targetplayer)
+end)
