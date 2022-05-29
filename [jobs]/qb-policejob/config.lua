@@ -33,6 +33,9 @@ Config.Locations = {
         [1] = vector4(449.168, -981.325, 43.691, 87.234),
         [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
     },
+    ["boat"] = {
+        [1] = vector4(-774.98, -1428.95, 0.27, 141.33),
+    },
     ["armory"] = {
         [1] = vector3(482.33, -995.26, 30.69),
     },
@@ -47,12 +50,15 @@ Config.Locations = {
         [2] = {label = "Prison", coords = vector4(1845.903, 2585.873, 45.672, 272.249)},
         [3] = {label = "Police Station Paleto", coords = vector4(-451.55, 6014.25, 31.716, 223.81)},
         [4] = {label = "Vespucci police Station", coords = vector4(-1087.52, -817.34, 19.3, 223.81)},
+        [5] = {label = "Park Renger Station" , coords = vector4(381.06, 798.68, 187.46, 188.85)},
+        [6] = {label = "SASP Station" , coords = vector4(845.88, -1299.81, 28.24, 82.45)}
     },
 }
 
 Config.ArmoryWhitelist = {}
 
 Config.PoliceHelicopter = "POLMAV"
+Config.PoliceBoat = "predator"
 
 Config.SecurityCameras = {
     hideradar = false,
@@ -487,6 +493,7 @@ Config.Items = {
         },
     }
 }
+
 
 Config.VehicleSettings = {
     ["car1"] = { --- Model name

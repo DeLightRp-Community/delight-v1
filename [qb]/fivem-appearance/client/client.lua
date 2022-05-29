@@ -248,23 +248,27 @@ function OpenMenu(isPedMenu, backEvent, menuType, menuData)
             isMenuHeader = true -- Set to true to make a nonclickable title
         }
         menuItems[#menuItems + 1] = {
-            header = "Civilian Outfit",
-            txt = "Put on your clothes",
+            header = "Change Outfit",
+            txt = "Pick from any of your currently saved outfits",
             params = {
-                event = "fivem-appearance:client:reloadSkin"
-            }
-        }
-        menuItems[#menuItems + 1] = {
-            header = "Work Clothes",
-            txt = "Pick from any of your work outfits",
-            params = {
-                event = "fivem-appearance:client:openJobOutfitsListMenu",
+                event = "fivem-appearance:client:changeOutfitMenu",
                 args = {
-                    backEvent = backEvent,
-                    menuData = menuData
+                    isPedMenu = isPedMenu,
+                    backEvent = backEvent
                 }
             }
         }
+        -- menuItems[#menuItems + 1] = {
+        --     header = "Work Clothes",
+        --     txt = "Pick from any of your work outfits",
+        --     params = {
+        --         event = "fivem-appearance:client:openJobOutfitsListMenu",
+        --         args = {
+        --             backEvent = backEvent,
+        --             menuData = menuData
+        --         }
+        --     }
+        -- }
     end
     exports['qb-menu']:openMenu(menuItems)
 end

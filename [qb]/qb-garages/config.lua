@@ -24,7 +24,7 @@
             -- Important: Make sure the parking zone is high enough - higher than the tallest vehicle and touches the ground (turn on debug to see)
         },
         label = 'Hangar', -- label displayed on phone
-        type = 'public', -- 'public', 'job', 'depot' or 'gang'
+        type = 'public', -- 'public', 'job', 'depot' or 'gang'tt
         showBlip = true, -- optional, when not defined, defaults to false
         blipName = 'Police', -- otional
         blipNumber = 90, -- optional, numbers can be found here: https://docs.fivem.net/docs/game-references/blips/
@@ -1456,6 +1456,93 @@ Garages = {
         },
         debug = false
     },
+    ['parkgarage'] = {
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the parking area
+                vector2(372.33624267578, 792.97204589844),
+                vector2(372.42376708984, 800.30078125),
+                vector2(376.52709960938, 800.34875488282),
+                vector2(376.60943603516, 792.78399658204)
+            },
+            ['minZ'] = 185.0,  -- min height of the parking zone
+            ['maxZ'] = 190.0,  -- max height of the parking zone
+        },
+        label = 'Park Ranger Garage',
+        type = 'job',
+        job = "police",
+        vehicleCategories = {'emergency'},
+        drawText = 'Parking',
+        ["ParkingSpots"] = {
+            vector4(374.48, 796.55, 187.27, 174.59),
+        },
+        debug = false
+    },
+    ['davisparking'] = {
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the parking area
+                vector2(393.02227783204, -1603.341796875),
+                vector2(408.28567504882, -1616.0670166016),
+                vector2(387.17419433594, -1640.3360595704),
+                vector2(380.38192749024, -1634.2916259766),
+                vector2(389.11367797852, -1623.3859863282),
+                vector2(381.62356567382, -1617.0964355468)
+            },
+            ['minZ'] = 28.0,  -- min height of the parking zone
+            ['maxZ'] = 30.0,  -- max height of the parking zone
+        },
+        label = 'Davis Police Garage',
+        type = 'job',
+        job = "police",
+        vehicleCategories = {'emergency'},
+        drawText = 'Parking',
+        ["ParkingSpots"] = {
+            vector4(386.84, -1615.09, 29.29, 229.4),
+            vector4(388.81, -1612.72, 29.29, 226.69),
+            vector4(390.78, -1610.57, 29.29, 229.72),
+            vector4(392.74, -1607.93, 29.29, 249.33),
+            vector4(403.32, -1617.06, 29.29, 53.64),
+            vector4(401.27, -1619.4, 29.29, 46.15),
+            vector4(399.17, -1621.54, 29.29, 111.72),
+            vector4(397.34, -1624.01, 29.29, 53.79),
+            vector4(395.18, -1626.26, 29.29, 73.06),
+            vector4(393.47, -1629.08, 29.29, 50.05),
+            vector4(387.09, -1637.03, 29.29, 324.02),
+            vector4(384.55, -1634.72, 29.29, 317.72)
+        },
+        debug = false
+    },
+    ['troopergarage'] = {
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the parking area
+                vector2(816.89190673828, -1326.8825683594),
+                vector2(816.53625488282, -1357.6959228516),
+                vector2(857.2416381836, -1356.8504638672),
+                vector2(856.98718261718, -1327.8947753906)
+            },
+            ['minZ'] = 26.0,  -- min height of the parking zone
+            ['maxZ'] = 28.0,  -- max height of the parking zone
+        },
+        label = 'SASP Garage',
+        type = 'job',
+        job = "police",
+        vehicleCategories = {'emergency'},
+        drawText = 'Parking',
+        ["ParkingSpots"] = {
+            vector4(843.23, -1334.26, 26.09, 247.43),
+            vector4(843.2, -1339.9, 26.05, 241.74),
+            vector4(842.82, -1345.79, 26.06, 250.92),
+            vector4(843.38, -1351.92, 26.08, 241.94),
+            vector4(828.99, -1351.57, 26.1, 67.89),
+            vector4(828.87, -1345.54, 26.09, 70.04),
+            vector4(829.13, -1339.53, 26.09, 64.7),
+            vector4(827.06, -1332.86, 26.11, 66.12)
+            
+        },
+        debug = false
+    },
+
+
+
     -- ['pdhelipad'] = {
     --     ['Zone'] = {
     --         ['Shape'] = { --polygon that surrounds the parking area

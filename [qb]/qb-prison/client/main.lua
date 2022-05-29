@@ -276,11 +276,7 @@ canteen:onPlayerInOut(function(isPointInside)
 end)
 
 	
-<<<<<<< HEAD
-exports['qb-target']:AddTargetEntity("s_m_m_armoured_01", {
-=======
 exports['qb-target']:AddTargetModel("s_m_m_armoured_01", {
->>>>>>> 51964c475e8cf41034552493376fc9ebea37bdfd
 	options = {
 	{
 		type = "client",
@@ -292,11 +288,7 @@ exports['qb-target']:AddTargetModel("s_m_m_armoured_01", {
 	distance = 2.5,
 })
 
-<<<<<<< HEAD
-exports['qb-target']:AddTargetEntity("s_m_m_armoured_01", {
-=======
 exports['qb-target']:AddTargetModel("s_m_m_armoured_01", {
->>>>>>> 51964c475e8cf41034552493376fc9ebea37bdfd
 	options = {
 	{
 		type = "client",

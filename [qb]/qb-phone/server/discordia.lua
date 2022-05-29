@@ -1,6 +1,15 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 ChatRooms = {}
 
+
+function escape_sqli(source)
+    local replacements = {
+        ['"'] = '\\"',
+        ["'"] = "\\'"
+    }
+    return source:gsub("['\"]", replacements)
+end
+
 -- Generates a random letter
 --
 -- @returns string

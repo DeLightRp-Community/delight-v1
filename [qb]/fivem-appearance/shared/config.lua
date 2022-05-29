@@ -76,9 +76,12 @@ Config.Stores = {
 }
 
 Config.ClothingRooms = {
-    [1] = {requiredJob = "police", isGang = false, coords = vector3(463.43, -999.07, 30.69), width = 3, length = 3},
+    [1] = {requiredJob = "police", isGang = false, coords = vector3(462.63, -998.9, 30.69), width = 3, length = 3},
     --[2] = {requiredJob = "police", isGang = false, coords = vector3(454.43, -988.85, 30.69), width = 2, length = 2},
-    [2] = {requiredJob = "police", isGang = false, coords = vector3(301.3, -599.04, 43.28), width = 3, length = 3}, -- Right double door in Hospital Map that is on QBCore GitHub
+    [2] = {requiredJob = "ambulance", isGang = false, coords = vector3(301.3, -599.04, 43.28), width = 3, length = 3}, -- Right double door in Hospital Map that is on QBCore GitHub
+    [3] = {requiredJob = "police", isGang = false, coords = vector3(360.99, -1592.58, 25.45), width = 3, length = 3},-- Davis Police Station
+    [4] = {requiredJob = "police", isGang = false, coords = vector3(387.34, 799.8, 187.46), width = 3, length = 3}, -- Park Ranger Station 
+    [5] = {requiredJob = "police", isGang = false, coords = vector3(852.72, -1313.76, 28.24), width = 3, length = 3},-- SASP Station 
     --[3] = {requiredJob = "police", coords = vector3(314.76, 671.78, 14.73)},
     --[3] = {requiredJob = "ambulance", coords = vector3(338.70, 659.61, 14.71)},    
     --[4] = {requiredJob = "ambulance", coords = vector3(-1098.45, 1751.71, 23.35)},    

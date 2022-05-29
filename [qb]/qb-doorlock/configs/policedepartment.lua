@@ -405,3 +405,17 @@ Config.DoorList['policedepartment-roof'] = {
     locked = true,
     doorLabel = 'roof',
 }
+
+-- backgaragedoor created by hkari
+Config.DoorList['policedepartment-backgaragedoor'] = {
+    objCoords = vec3(488.894806, -1017.211976, 27.149350),
+    objYaw = 90.0,
+    locked = true,
+    objName = -1603817716,
+    fixText = false,
+    distance = 5,
+    authorizedJobs = { ['police'] = 0 },
+    doorLabel = 'backgaragedoor',
+    doorType = 'garage',
+    doorRate = 1.0,
+}

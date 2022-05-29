@@ -1,3 +1,4 @@
+QBCore = exports['qb-core']:GetCoreObject() -- Used Globally
 local currentGate = 0
 local requiredItemsShowed = false
 local requiredItems = {}

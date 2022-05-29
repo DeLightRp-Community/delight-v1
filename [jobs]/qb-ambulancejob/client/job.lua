@@ -450,7 +450,7 @@ CreateThread(function()
             maxZ = v.z + 2,
         })
         boxZone:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" and PlayerJob.grade > 3 and onDuty then
+            if isPointInside and PlayerJob.name =="ambulance" and PlayerJob.grade.level > 3 and onDuty then
                 inVehicle = true
                 exports['qb-core']:DrawText(Lang:t('text.heli_button'), 'left')
                 EMSHelicopter(k)
