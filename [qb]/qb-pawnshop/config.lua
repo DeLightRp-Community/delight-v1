@@ -161,17 +161,9 @@ Config.PawnItems = {
 }
 
 
-<<<<<<< HEAD
 Config.cfg = {
-    modifyTime = 1000,
-=======
-cfg = {
-<<<<<<< HEAD
-    modifyTime = 5000,
-=======
-    modifyTime = 2000,
->>>>>>> 51964c475e8cf41034552493376fc9ebea37bdfd
->>>>>>> cb97c0f8fd358bf795ea2d52de1f8069fe37cec5
+    modifyTime = 3000,
+
     modLocation = {
         [1] = {coords = vector4(136.09, -3030.32, 6.69, 181.36), blip = true},
     },

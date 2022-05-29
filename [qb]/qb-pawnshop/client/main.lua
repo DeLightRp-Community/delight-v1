@@ -270,7 +270,7 @@ end)
 
 RegisterNetEvent('qb-pawnshop:client:craftItem', function(data)
 
-    QBCore.Functions.Progressbar('craft',"Craft "..QBCore.Shared.Items[data.name].label, 10000, false, true, { -- Name | Label | Time | useWhileDead | canCancel
+    QBCore.Functions.Progressbar('craft',"Craft "..QBCore.Shared.Items[data.name].label, Config.cfg.modifyTime, false, true, { -- Name | Label | Time | useWhileDead | canCancel
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
