@@ -1,8 +1,7 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 RegisterNetEvent('inventory:server:SaveInventory', function(type, id)
     local source = source
-	-- wait(400)
-    -- print(id)
+
     if id~=nil and string.find(id, "tunerStash") then
         local result ={}
         local result = MySQL.Sync.fetchAll('SELECT * FROM stashitems WHERE stash = @plate', { ["@plate"] = id })

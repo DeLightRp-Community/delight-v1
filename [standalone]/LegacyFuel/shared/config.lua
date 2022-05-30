@@ -7,7 +7,7 @@ Config.BlowUpChance = 5 -- percentage for chance of engine explosion
 Config.RefillCost = 100 -- default price
 Config.CostMultiplier = 3.0 -- tax basically
 Config.canCost = 200 -- buy jerry can price
-Config.refuelCost = 300 -- refueling jerry can price
+Config.refuelCost = 600 -- refueling jerry can price
 Config.GlobalTax = 15.0
 
 Config.fuelPrice = 2.0 -- fuel price in litres I guess

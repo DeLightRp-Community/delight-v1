@@ -19,6 +19,9 @@ Config.IgnoredGroups = {
 -- Blacklisted plates --
 Config.BlacklistedPlates = {
     "BRUTAN",
+    "STARX",
+    "KOS",
+    "Kosnane"
 }
 
 

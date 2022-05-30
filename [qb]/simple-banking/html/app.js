@@ -60,6 +60,10 @@ function AddAccount(account_name, account_type, bal, ply_Name,bankType)
     if(temp_Name=="paycheck"){
         btns = "<button type='button' class='btn btn-light mb-2 text-muted withdraw' data-toggle='modal' data-target='#WithdrawModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>WITHDRAW</button>"
     }
+    else if(transferAcc=="business"){
+        btns="<button type='button' class='btn btn-light mb-2 text-muted deposit' data-toggle='modal' data-target='#DepositModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>DEPOSIT</button>\
+        <button type='button' class='btn btn-light mb-2 text-muted withdraw' data-toggle='modal' data-target='#WithdrawModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>WITHDRAW</button>";
+    }
     else{
         btns="<button type='button' class='btn btn-light mb-2 text-muted deposit' data-toggle='modal' data-target='#DepositModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>DEPOSIT</button>\
         <button type='button' class='btn btn-light mb-2 text-muted withdraw' data-toggle='modal' data-target='#WithdrawModal' onClick='ResetModals(\"" + transferAcc + "\", \"" + "\")'>WITHDRAW</button>\

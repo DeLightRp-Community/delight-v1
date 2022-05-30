@@ -260,14 +260,14 @@ Config.Products = {
             type = "item",
             slot = 17,
         }, 
-        [18] = {
-            name = "lockpick",
-            price = 500,
-            amount = 20,
-            info = {},
-            type = "item",
-            slot = 18,
-        },   
+        -- [18] = {
+        --     name = "lockpick",
+        --     price = 500,
+        --     amount = 20,
+        --     info = {},
+        --     type = "item",
+        --     slot = 18,
+        -- },   
     },
     ["weedshop"] = {
         [1] = {
