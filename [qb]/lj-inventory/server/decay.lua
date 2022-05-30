@@ -25,7 +25,7 @@ RegisterNetEvent('inventory:server:removeQuality', function(source, item)
     print(QBCore.Shared.Items[item.name:lower()]["created_at"]) 
     if QBCore.Shared.Items[item.name:lower()]["created"] ~= nil and QBCore.Shared.Items[item.name:lower()]["created"] == "use" then
         local quality_use = 100
-        if Player.PlayerData.items[data.slot].info.quality ==nil then
+        if Player.PlayerData.items[data.slot].info~=nil and Player.PlayerData.items[data.slot].info.quality == nil then
             Player.PlayerData.items[data.slot].info.quality= 100 - (100/QBCore.Shared.Items[item.name:lower()]["decay"])
         else
             quality_use= Player.PlayerData.items[data.slot].info.quality - (100/QBCore.Shared.Items[item.name:lower()]["decay"])            
