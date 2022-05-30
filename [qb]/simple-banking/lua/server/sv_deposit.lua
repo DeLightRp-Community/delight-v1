@@ -1,5 +1,6 @@
 RegisterServerEvent('qb-banking:server:Deposit')
 AddEventHandler('qb-banking:server:Deposit', function(account, amount, note, fSteamID)
+
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 
@@ -52,7 +53,7 @@ AddEventHandler('qb-banking:server:Deposit', function(account, amount, note, fSt
             local deposit = math.floor(amount)
 
             Player.Functions.RemoveMoney('cash', deposit)
-            TriggerEvent('qb-banking:society:server:DepositMoney', src, deposit, data.name)
+            TriggerEvent('qb-banking:society:server:DepositMoney', src, deposit, data.job_name)
             AddTransaction(src, "business", amount, "deposit", job.label, (note ~= "" and note or "Deposited $"..format_int(amount).." cash into ".. job.label .."'s business account."))        end
     end
 

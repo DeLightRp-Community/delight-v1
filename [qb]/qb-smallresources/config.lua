@@ -126,6 +126,8 @@ Config.BlacklistedVehs = {
     [`rrocket`] = true,
     [`ruiner2`] = true,
     [`deluxo`] = true,
+    [`besra`] = true,
+    [`annihilator2`] = true
 }
 
 Config.BlacklistedPeds = {

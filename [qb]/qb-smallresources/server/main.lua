@@ -87,7 +87,7 @@ RegisterNetEvent('qb-smallrecources:rewardpack', function()
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["starterpack"], "remove")
     Player.Functions.AddItem("phone", 1)
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["phone"], "add")
-    Player.Functions.AddItem("lockpick", math.random(1,2), nil, {["quality"] = 100})
+    Player.Functions.AddItem("lockpick", math.random(1,2), nil )
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["lockpick"], "add")
     Player.Functions.AddItem("burger-bleeder", math.random(3,5), nil, {["quality"] = 100})
     TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items["burger-bleeder"], "add")
@@ -100,3 +100,4 @@ RegisterNetEvent('qb-smallrecources:rewardpack', function()
 end)
 
 
+-- {["quality"] = 100}

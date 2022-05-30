@@ -61,9 +61,9 @@ AddEventHandler('qb-banking:server:Withdraw', function(account, amount, note, fS
         local data = result[1]
 
         if data then
-            local sM = tonumber(data.money)
+            local sM = tonumber(data.amount)
             if sM >= amount then
-                TriggerEvent('qb-banking:society:server:WithdrawMoney',src, amount, data.name)
+                TriggerEvent('qb-banking:society:server:WithdrawMoney',src, amount, data.job_name)
 
                 AddTransaction(src, "business", -amount, "deposit", job.label, (note ~= "" and note or "Withdrew $"..format_int(amount).." from ".. job.label .."'s account."))
                 Player.Functions.AddMoney('cash', amount)
@@ -92,9 +92,9 @@ AddEventHandler('qb-banking:server:Withdraw', function(account, amount, note, fS
         local data = result[1]
 
         if data then
-            local sM = tonumber(data.money)
+            local sM = tonumber(data.amount)
             if sM >= amount then
-                TriggerEvent('qb-banking:society:server:WithdrawMoney',src, amount, data.name)
+                TriggerEvent('qb-banking:society:server:WithdrawMoney',src, amount, data.job_name)
 
                 AddTransaction(src, "organization", -amount, "deposit", gang.label, (note ~= "" and note or "Withdrew $"..format_int(amount).." from ".. gang.label .."'s account."))
                 Player.Functions.AddMoney('cash', amount)
