@@ -1,5 +1,21 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
+
+local function hasCraftItems(source, CostItems, amount)
+	local Player = QBCore.Functions.GetPlayer(source)
+    print(json.encode(CostItems))
+	for k, v in pairs(CostItems) do
+		if Player.Functions.GetItemByName(k) ~= nil then
+			if Player.Functions.GetItemByName(k).amount < (v * amount) then
+				return false
+			end
+		else
+			return false
+		end
+	end
+	return true
+end
+
 -----------------------------------------------------------------------------------------
 -- Selling Items to Pawn Store
 -----------------------------------------------------------------------------------------
@@ -53,7 +69,6 @@ end)
 QBCore.Functions.CreateCallback('qb-pawnshop:server:craftItem', function (source, cb, data)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    print(hasCraftItems(src,data.material, 1))
     if hasCraftItems(src,data.material, 1) then
         for k, v in pairs(data.material) do
             Player.Functions.RemoveItem(k, v)
