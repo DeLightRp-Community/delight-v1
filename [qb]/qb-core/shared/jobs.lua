@@ -339,7 +339,13 @@ QBShared.Jobs = {
 		offDutyPay = false,
 		grades = {
             ['0'] = {
+                name = 'Mayor',
+                payment = 700
+            },
+
+            ['1'] = {
                 name = 'Judge',
+                isboss = true,
                 payment = 700
             },
         },

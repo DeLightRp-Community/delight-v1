@@ -55,7 +55,7 @@ Config.Peds = {
     -- Cityhall Ped
     {
         model = 'cs_fbisuit_01',
-        coords = vec4(-553.76, -189.65, 37.22, 154.55),
+        coords = vec4(-552.5, -202.98, 38.24, 326.45),
         scenario = 'WORLD_HUMAN_STAND_MOBILE',
         cityhall = true,
         zoneOptions = { -- Used for when UseTarget is false

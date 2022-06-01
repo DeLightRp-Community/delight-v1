@@ -145,7 +145,7 @@ Config.AmbulanceJobs = {
 }
 
 Config.DojJobs = {
-    ['lawyer'] = true,
+    ['judge'] = true,
 }
 
 -- Leave my hacky code alone ya goblins
@@ -529,7 +529,7 @@ function GetJobType(job)
 	elseif Config.AmbulanceJobs[job] then
 		return 'ambulance'
 	elseif Config.DojJobs[job] then
-		return 'doj'
+		return 'judge'
 	else
 		return nil
 	end

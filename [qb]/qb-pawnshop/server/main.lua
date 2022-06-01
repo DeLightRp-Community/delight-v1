@@ -26,7 +26,8 @@ RegisterNetEvent("qb-pawnshop:server:sellPawnItems", function(itemName, itemAmou
 
     if Player.Functions.RemoveItem(itemName, tonumber(itemAmount)) then
         if Config.SocietyMoney then
-            TriggerEvent('qb-bossmenu:server:addAccountMoney','pawnshop', totalPrice)
+            exports['qb-management']:AddMoney(Player.PlayerData.job.name, totalPrice)
+            --TriggerEvent('qb-bossmenu:server:addAccountMoney','pawnshop', totalPrice)
         else
             Player.Functions.AddMoney("cash", totalPrice)
         end
@@ -51,16 +52,19 @@ RegisterServerEvent("qb-pawnshop:server:Charge", function(citizen, price)
     local biller = QBCore.Functions.GetPlayer(source)
     local billed = QBCore.Functions.GetPlayer(tonumber(citizen))
     local amount = tonumber(price)
-    local commission = amount * 0.15 -- AMOUNT THE EMPLOYEE RECEIVES AS COMMISSION (15% BY DEFAULT)
+    local commission = amount * 0.10 -- AMOUNT THE EMPLOYEE RECEIVES AS COMMISSION (15% BY DEFAULT)
 	if billed ~= nil then
 		if biller.PlayerData.citizenid ~= billed.PlayerData.citizenid then
-			if amount and amount > 0 then
+
+			if amount <= biller.PlayerData.money["cash"] then 
                 billed.Functions.AddMoney('cash', amount, "pawn-payment")
-                TriggerEvent('qb-bossmenu:server:removeAccountMoney','pawnshop', amount)
+
+                biller.Functions.RemoveMoney('cash', amount, "pawn-payment")
+
                 biller.Functions.AddMoney('bank', commission)
                 TriggerClientEvent('QBCore:Notify', billed.PlayerData.source, '$'..amount..' payment received.', 'success') -- CUSTOMER NOTIFICATION OF PAYMENT
                 TriggerClientEvent('QBCore:Notify', biller.PlayerData.source, '$'..amount..' payment sent, commission received successfully.', 'success') -- EMPLOYEE NOTIFICATION OF PAYMENT
-			else TriggerClientEvent('QBCore:Notify', src, 'Must be more than 0.', 'error')	end
+			else TriggerClientEvent('QBCore:Notify', src, 'You dont have enough money', 'error')	end
 		else TriggerClientEvent('QBCore:Notify', src, 'You cannot pay yourself...', 'error') end
 	else TriggerClientEvent('QBCore:Notify', src, 'Person not available', 'error') end
 end) 

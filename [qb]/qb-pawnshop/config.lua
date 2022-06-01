@@ -162,7 +162,7 @@ Config.PawnItems = {
 
 
 Config.cfg = {
-    modifyTime = 3000,
+    modifyTime = 1000,
 
     modLocation = {
         [1] = {coords = vector4(136.09, -3030.32, 6.69, 181.36), blip = true},

@@ -1568,6 +1568,15 @@ QBShared.Vehicles = {
 		['hash'] = `baller`,
 		['shop'] = 'pdm',
 	},
+	['esv'] = {
+		['name'] = 'ESv',
+		['brand'] = 'Gallivanter',
+		['model'] = 'ESv',
+		['price'] = 10000,
+		['category'] = 'suvs',
+		['hash'] = `esv`,
+		['shop'] = 'pdm',
+	},
 	['baller2'] = {
 		['name'] = 'Baller',
 		['brand'] = 'Gallivanter',
