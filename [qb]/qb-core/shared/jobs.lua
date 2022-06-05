@@ -339,28 +339,44 @@ QBShared.Jobs = {
 		offDutyPay = false,
 		grades = {
             ['0'] = {
-                name = 'Mayor',
+                name = 'Trainee',
                 payment = 700
             },
-
             ['1'] = {
-                name = 'Judge',
+                name = 'Lawyer',
+                payment = 1000
+            },
+            ['2'] = {
+                name = 'U.S Lawyer',
+                payment = 1200
+            },
+            ['3'] = {
+                name = 'Local Judge',
+                payment = 1300
+            },
+            ['4'] = {
+                name = 'U.S Judge',
                 isboss = true,
-                payment = 700
+                payment = 1400
+            },
+            ['5'] = {
+                name = 'Chief Justice of U.S',
+                isboss = true,
+                payment = 1500
             },
         },
 	},
-	['lawyer'] = {
-		label = 'Law Firm',
-		defaultDuty = true,
-		offDutyPay = false,
-		grades = {
-            ['0'] = {
-                name = 'Associate',
-                payment = 500
-            },
-        },
-	},
+	-- ['lawyer'] = {
+	-- 	label = 'Law Firm',
+	-- 	defaultDuty = true,
+	-- 	offDutyPay = false,
+	-- 	grades = {
+    --         ['0'] = {
+    --             name = 'Associate',
+    --             payment = 500
+    --         },
+    --     },
+	-- },
 	['reporter'] = {
 		label = 'Reporter',
 		defaultDuty = true,
