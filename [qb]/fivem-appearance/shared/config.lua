@@ -82,6 +82,7 @@ Config.ClothingRooms = {
     [3] = {requiredJob = "police", isGang = false, coords = vector3(360.99, -1592.58, 25.45), width = 3, length = 3},-- Davis Police Station
     [4] = {requiredJob = "police", isGang = false, coords = vector3(387.34, 799.8, 187.46), width = 3, length = 3}, -- Park Ranger Station 
     [5] = {requiredJob = "police", isGang = false, coords = vector3(852.72, -1313.76, 28.24), width = 3, length = 3},-- SASP Station 
+    [6] = {requiredJob = "mechanic", isGang = false, coords = vector3(-15.39, -1055.01, 32.4), width = 3, length = 3},-- Mechanic
     --[3] = {requiredJob = "police", coords = vector3(314.76, 671.78, 14.73)},
     --[3] = {requiredJob = "ambulance", coords = vector3(338.70, 659.61, 14.71)},    
     --[4] = {requiredJob = "ambulance", coords = vector3(-1098.45, 1751.71, 23.35)},    
