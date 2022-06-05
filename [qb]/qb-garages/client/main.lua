@@ -412,6 +412,7 @@ RegisterNetEvent('qb-garages:client:OpenPDGarage', function()
 end)
 
 RegisterNetEvent("qb-garages:client:GarageMenu", function(data)
+    print(json.encode(data))
     local type = data.type
     local garageId = data.garageId
     local garage = data.garage

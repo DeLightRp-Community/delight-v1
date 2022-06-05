@@ -33,6 +33,7 @@ QBCore.Functions.CreateCallback("qb-garage:server:GetOutsideVehicle", function(s
 end)
 
 QBCore.Functions.CreateCallback("qb-garage:server:GetGarageVehicles", function(source, cb, garage, garageType, category)
+    -- print(garageType)
     local src = source
     local pData = QBCore.Functions.GetPlayer(src)
     if garageType == "public" then        --Public garages give player cars in the garage only
@@ -44,7 +45,8 @@ QBCore.Functions.CreateCallback("qb-garage:server:GetGarageVehicles", function(s
             end
         end)
     elseif garageType == "depot" then    --Depot give player cars that are not in garage only
-        MySQL.Async.fetchAll('SELECT * FROM player_vehicles WHERE citizenid = ? AND (state = ? OR garage = ?)', {pData.PlayerData.citizenid, 0, garage}, function(result)
+        print("Hello")
+        MySQL.Async.fetchAll('SELECT * FROM player_vehicles WHERE citizenid = ? AND (state = ? OR garage = ? OR state = ?)', {pData.PlayerData.citizenid, 0, garage, 2}, function(result)
             local tosend = {}
             if result[1] then
                 if type(category) == 'table' then
