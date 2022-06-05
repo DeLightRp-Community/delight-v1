@@ -120,8 +120,4 @@ client_scripts {
 	, "dlc_security/office2.lua"
 	, "dlc_security/office3.lua"
 	, "dlc_security/office4.lua"
-
-
-	-- island
-	,"island/cayo_perico.lua"
 }

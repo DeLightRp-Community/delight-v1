@@ -391,8 +391,16 @@ RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
         end
         createTestDriveReturn()
         startTestDriveTimer(Config.Shops[getShopInsideOf()]["TestDriveTimeLimit"] * 60)
-    else
+    elseif inTestDrive and closestVehicle and testDriveVeh ~= 0 then 
+
         QBCore.Functions.Notify('Already in test drive', 'error')
+
+     
+        testDriveVeh = 0
+        inTestDrive = false
+        QBCore.Functions.DeleteVehicle(veh)
+        SetEntityCoords(PlayerPedId(), prevCoords)
+        QBCore.Functions.Notify('Vehicle test drive complete')
     end
 end)
 

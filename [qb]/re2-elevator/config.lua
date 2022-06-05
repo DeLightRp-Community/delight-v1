@@ -17,7 +17,6 @@ Config.locations = {
             ["teleport"] = vector4(344.28, -586.2, 28.8, 244.59),
             ["button"] = vector4(345.05, -584.85, 28.8, 73.66)
         },
-        
     }
 }
 

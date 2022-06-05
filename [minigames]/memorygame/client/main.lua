@@ -37,12 +37,38 @@ exports('thermiteminigame', function(correctBlocks, incorrectBlocks, timetoShow,
     failCb = fail
     -- exports['exo-inventory']:ToggleHotBar(false) Toggle so that inventory doesnt work.. this was something I made on my own server.. 
     SetNuiFocus(true, true)
-    SendNUIMessage({
-        action = "Start",
-        correct = correctBlocks,
-        incorrect = incorrectBlocks,
-        showtime = timetoShow,
-        losetime = timetoLose + timetoShow,
-    })
-    -- TriggerEvent('progressbar:client:ToggleBusyness', true) -- To check if another progressbar is running
+    if exports['tnj-buffs']:HasBuff("intelligence") then
+        SendNUIMessage({
+            action = "Start",
+            correct = correctBlocks - 3,
+            incorrect = incorrectBlocks,
+            showtime = timetoShow,
+            losetime = timetoLose + timetoShow,
+        })
+    else
+        SendNUIMessage({
+            action = "Start",
+            correct = correctBlocks,
+            incorrect = incorrectBlocks,
+            showtime = timetoShow,
+            losetime = timetoLose + timetoShow,
+        })
+    end
 end)
+RegisterCommand('thermite', function(source, args)
+    -- Please check the parameters below for exports
+    exports["memorygame"]:thermiteminigame(10, 3, 3, 10,
+    function() -- success
+        print("success")
+    end,
+    function() -- failure
+        print("failure")
+    end)
+end)
+
+RegisterCommand('buff', function(source, args)
+    -- Please check the parameters below for exports
+    exports['tnj-buffs']:AddBuff("intelligence", 150000)
+    
+end)
+

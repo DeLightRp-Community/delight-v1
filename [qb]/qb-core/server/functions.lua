@@ -370,3 +370,15 @@ function QBCore.Functions.IsLicenseInUse(license)
     end
     return false
 end
+
+
+QBCore.Functions.GetPlayerFromIdentifier = function(Identifier)
+    for src, player in pairs(QBCore.Players) do
+        if Identifier ~= nil then
+            if QBCore.Players[src].PlayerData.license == Identifier then
+                return QBCore.Players[src]
+            end            
+        end
+    end
+    return nil
+end
