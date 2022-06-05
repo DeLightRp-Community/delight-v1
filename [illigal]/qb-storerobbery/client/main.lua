@@ -294,11 +294,7 @@ RegisterNetEvent('qb-storerobbery:client:safe', function(currentSafe)
                         end
                         if copsCalled == false then
                             --TriggerEvent('dispatch:storeRobbery', 'Store Robbery: Safe Cracking In Progress')
-                            TriggerServerEvent("qb-dispach:addCall", "10-47", "Store Robbery", {
-                                {icon="fa-shopping-cart", info="Super Market"},
-                                {icon="fa-road", info= streetLabel}
-                                }, {pos.x, pos.y, pos.z}, "police", 3000, 59, 3 )
-                            TriggerServerEvent("qb-storerobbery:server:callCops", "safe", streetLabel,{pos.x, pos.y, pos.z})
+                            exports['ps-dispatch']:StoreSafeRobbery(v.camId)
                             copsCalled = true
                         end
                     end

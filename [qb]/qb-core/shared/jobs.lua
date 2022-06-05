@@ -590,4 +590,25 @@ QBShared.Jobs = {
             },
         }
     },
+
+    ["digitalden"] = {
+        label = "Digital Den",
+        offDutyPay = false,
+        defaultDuty = true,
+        grades = {
+            ['0'] = {
+                name = 'Newbie',
+                payment = 300,
+            },
+            ['1'] = {
+                name = 'Hacker',
+                payment = 400,
+            },
+            ['2'] = {
+                name = 'Boss',
+                isboss = true,
+                payment = 500,
+            },
+        }
+    },
 }

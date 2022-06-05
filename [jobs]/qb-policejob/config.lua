@@ -491,6 +491,16 @@ Config.Items = {
             slot = 28,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
+
+        [29] = {
+            name = "diving_gear",
+            price = 500,
+            amount = 10,
+            info = {},
+            type = "item",
+            slot = 29,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+        },
     }
 }
 

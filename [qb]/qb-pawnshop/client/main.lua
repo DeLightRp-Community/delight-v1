@@ -7,11 +7,11 @@ local headerOpen = false
 
 CreateThread(function()
 	local blip = AddBlipForCoord(175.0, -1322.27, 29.36)
-	SetBlipSprite(blip, 431)
+	SetBlipSprite(blip, 440)
 	SetBlipDisplay(blip, 4)
-	SetBlipScale(blip, 0.47)
+	SetBlipScale(blip, 1.00)
 	SetBlipAsShortRange(blip, true)
-	SetBlipColour(blip, 5)
+	SetBlipColour(blip, 2)
 	BeginTextCommandSetBlipName("STRING")
 	AddTextComponentSubstringPlayerName(Lang:t("info.title"))
 	EndTextCommandSetBlipName(blip)
@@ -348,8 +348,8 @@ exports['qb-target']:AddBoxZone("PawnStash", vector3(158.4, -1310.66, 29.38), 1.
   distance = 1.0
 })
 
-exports['qb-target']:AddBoxZone("PawnItemSell", vector3(157.34, -1316.77, 29.36), 1.6, 1, { name="PawnItemSell", heading=65, minZ=26.96,maxZ=30.96 }, 
-{ options = { {  event = "qb-pawnshop:client:openMenu", icon = "fas fa-credit-card", label = "Sell Items", stash = "Stash", job = "pawnshop"  }, },
+exports['qb-target']:AddBoxZone("PawnItemSell", vector3(157.49, -1316.62, 29.36), 0.8, 2, { name="PawnItemSell", heading=335, minZ=27.16,maxZ=31.16 }, 
+{ options = { {  event = "qb-pawnshop:client:openMenu", icon = "fas fa-credit-card", label = "Sell Items", job = "pawnshop"  }, },
   distance = 1.0
 })
 

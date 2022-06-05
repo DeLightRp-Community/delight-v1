@@ -598,6 +598,29 @@ local function Illegal_Mining()
     })
 end exports('Illegal_Mining', Illegal_Mining)
 
-RegisterCommand('testdispatch',function()
-    TriggerEvent('')
-end)
+local function StoreSafeRobbery(camId)
+    local currentPos = GetEntityCoords(PlayerPedId())
+    local locationInfo = getStreetandZone(currentPos)
+    local gender = GetPedGender()
+    TriggerServerEvent("dispatch:server:notify", {
+        dispatchcodename = "storesaferobbery", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+        dispatchCode = "10-90",
+        firstStreet = locationInfo,
+        gender = gender,
+        camId = camId,
+        model = nil,
+        plate = nil,
+        priority = 2, -- priority
+        firstColor = nil,
+        automaticGunfire = false,
+        origin = {
+            x = currentPos.x,
+            y = currentPos.y,
+            z = currentPos.z
+        },
+        dispatchMessage = _U('storesaferobbery'), -- message
+        job = { "police" } -- jobs that will get the alerts
+    })
+end
+
+exports('StoreSafeRobbery', StoreSafeRobbery)
