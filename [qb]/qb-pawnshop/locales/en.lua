@@ -9,7 +9,7 @@ local Translations = {
         items_received = 'You received %{value} x %{value2}',
     },
     info = {
-        title = 'Sydney Pawnshop',
+        title = 'Pani Pawnshop',
         subject = 'Melting Items',
         message = 'We finished melting your items. You can come pick them up at any time.',
         open_pawn = 'Open Menu',

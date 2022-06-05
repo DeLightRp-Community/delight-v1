@@ -61,7 +61,7 @@ RegisterServerEvent("qb-pawnshop:server:Charge", function(citizen, price)
 
                 biller.Functions.RemoveMoney('cash', amount, "pawn-payment")
 
-                biller.Functions.AddMoney('bank', commission)
+                exports['qb-management']:AddMoney(player.PlayerData.job.name, commission)
                 TriggerClientEvent('QBCore:Notify', billed.PlayerData.source, '$'..amount..' payment received.', 'success') -- CUSTOMER NOTIFICATION OF PAYMENT
                 TriggerClientEvent('QBCore:Notify', biller.PlayerData.source, '$'..amount..' payment sent, commission received successfully.', 'success') -- EMPLOYEE NOTIFICATION OF PAYMENT
 			else TriggerClientEvent('QBCore:Notify', src, 'You dont have enough money', 'error')	end
