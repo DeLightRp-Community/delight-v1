@@ -126,7 +126,7 @@ local function StaminaBuffEffect(time, value)
         hasStaminaBuffActive = true
         CreateThread(function()
             SetRunSprintMultiplierForPlayer(PlayerId(), value)
-            while exports['tnj-buffs']:HasBuff("stamina") do
+            while exports['ps-buffs']:HasBuff("stamina") do
                 Wait(500)
                 SetPlayerStamina(PlayerId(), GetPlayerStamina(PlayerId()) + math.random(1,10))
             end
@@ -146,7 +146,7 @@ local function SwimmingBuffEffect(time, value)
         hasSwimmingBuffActive = true
         CreateThread(function()
             SetSwimMultiplierForPlayer(PlayerId(), value)
-            while exports['tnj-buffs']:HasBuff("swimming") do
+            while exports['ps-buffs']:HasBuff("swimming") do
                 Wait(500)
                 SetPlayerStamina(PlayerId(), GetPlayerStamina(PlayerId()) + math.random(1,10))
             end
@@ -197,3 +197,21 @@ local function AddArmorBuff(time, value)
         end)
     end
 end exports('AddArmorBuff', AddArmorBuff)
+
+--- Method to add stress buff to player
+--- @param time  - Time in ms the stress buff will be active
+--- @param value - The amount of stress the player will lose every 5 seconds
+local hasStressBuffActive = false
+local function AddStressBuff(time, value)
+    AddBuff("super-stress", time)
+    if not hasStressBuffActive then
+        hasStressBuffActive = true
+        CreateThread(function()
+            while HasBuff("super-stress") do
+                Wait(5000)
+                TriggerServerEvent("hud:server:RelieveStress", value)
+            end
+            hasStressBuffActive = false
+        end)
+    end
+end exports('AddStressBuff', AddStressBuff)
