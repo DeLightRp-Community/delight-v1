@@ -77,10 +77,10 @@ RegisterNetEvent('qb-storerobbery:server:SafeReward', function(safe)
     local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
 	local bags = math.random(3,10)
-    local chance = math.random(1, 10)
+    local chance = math.random(1, 5)
 	Player.Functions.AddItem('markedbills', bags, false)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
-    if chance == 5 then
+    if chance == 1 then
     Player.Functions.AddItem('vpn', bags, false)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['vpn'], "add")
     end

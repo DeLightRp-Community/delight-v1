@@ -4,7 +4,7 @@ local NUI_status = false
 function StartLockPickCircle(circles, seconds)
     Result = nil
     NUI_status = true
-    if exports['tnj-buffs']:HasBuff("intelligence") then
+    if exports['ps-buffs']:HasBuff("intelligence") then
         circles = circles - 1
         seconds = seconds + 2
     end

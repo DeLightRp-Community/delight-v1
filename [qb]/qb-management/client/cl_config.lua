@@ -20,7 +20,7 @@ Config.BossMenus = {
         vector3(-27.47, -1107.13, 27.27),
     },
     ['mechanic'] = {
-        vector3(-25.19, -1051.68, 32.4),
+        vector3(-33.61, -1037.5, 28.6),
     },
     ['sandersmotor'] = {
         vector3(274.91, -1153.14, 33.24),

@@ -1096,3 +1096,88 @@ CreateThread(function()
         end
     end
 end)
+
+
+RegisterNetEvent('qb-mechanicjob:client:openCraftMenu', function()
+    local craftCategory = {{
+        header = "Craft Category",
+        isMenuHeader = true, -- Set to true to make a nonclickable title
+    },}
+    for i, v in pairs(Config.cfg.crafts) do
+        local tempData= {
+            header = i,
+            txt = i.." Levels",
+			params = {
+                isServer = false,
+                event = "qb-mechanicjob:client:openCraftSub",
+                args = {
+                    type = i,
+                }
+            }
+        }
+        table.insert(craftCategory, tempData)
+    end
+    
+    exports['qb-menu']:openMenu(craftCategory)
+end)
+
+RegisterNetEvent('qb-mechanicjob:client:openCraftSub', function(data)
+    local craftSubs = {
+
+    }
+    for i, v in pairs(Config.cfg.crafts[data.type]) do
+        local txt= ""
+        for k, vv in pairs(v.items) do
+            txt =txt..k.." "..vv.." "
+        end
+        local tempData= {
+            header = QBCore.Shared.Items[i].label,
+            txt = txt,
+			params = {
+                isServer = false,
+                event = "qb-mechanicjob:client:craftItem",
+                args = {
+                    material = v.items,
+                    name = i
+                }
+            }
+        }
+        table.insert(craftSubs, tempData)
+    end
+    
+    exports['qb-menu']:openMenu(craftSubs)
+end)
+
+RegisterNetEvent('qb-mechanicjob:client:craftItem', function(data)
+
+    QBCore.Functions.Progressbar('craft',"Craft "..QBCore.Shared.Items[data.name].label, Config.cfg.modifyTime, false, true, { -- Name | Label | Time | useWhileDead | canCancel
+        disableMovement = true,
+        disableCarMovement = true,
+        disableMouse = false,
+        disableCombat = true,
+    }, {
+        animDict = '"anim@amb@clubhouse@tutorial@bkr_tut_ig3@"@',
+        anim = 'machinic_loop_mechandplayer',
+        flags = 16,
+    }, {}, {}, function() 
+        QBCore.Functions.TriggerCallback('qb-mechanicjob:server:craftItem', function(result)
+            if result then
+
+                QBCore.Functions.Notify("Item Craft Sucessfuly", "primary")
+                
+            else
+                QBCore.Functions.Notify("You Dont Have the Material", "error")
+            end
+        end, data)
+        ClearPedTasks(PlayerPedId())
+    end, function() -- Play When Cancel
+        QBCore.Functions.Notify("Cancelled", "error")
+        ClearPedTasks(PlayerPedId())
+    end)
+end)
+
+
+exports['qb-target']:AddBoxZone("mechcraft", vector3(-36.41, -1070.88, 28.4), 3.4, 1, { name="mechcraft", heading=70, minZ=26.0,maxZ=30.0 }, 
+{ options = { {  event = "qb-mechanicjob:client:openCraftMenu", icon = "fas fa-credit-card", label = "Craft Items", job = "mechanic"  }, },
+  distance = 1.0
+})

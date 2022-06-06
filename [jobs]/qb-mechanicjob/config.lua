@@ -76,16 +76,16 @@ Config.Businesses = {
 }
 
 Config.Plates = {
-    -- [1] = {
-    --     coords = vector4(-29.38, -1042.73, 28.63, 161.81),
-    --     boxData = {
-    --         heading = 340,
-    --         length = 5,
-    --         width = 2.5,
-    --         debugPoly = false
-    --     },
-    --     AttachedVehicle = nil,
-    -- },
+     [1] = {
+         coords = vector4(-29.38, -1042.73, 28.63, 161.81),
+         boxData = {
+             heading = 340,
+             length = 5,
+             width = 2.5,
+             debugPoly = false
+         },
+         AttachedVehicle = nil,
+    },
 }
 
 Config.Locations={
@@ -96,8 +96,8 @@ Config.Locations={
 }
 
 Config.Vehicles = {
-    -- ["flatbed"] = "Flatbed",
-    -- ["towtruck"] = "Towtruck",t
+     ["flatbed"] = "Flatbed",
+     ["towtruck"] = "Towtruck",t
 }
 
 Config.MinimalMetersForDamage = {
@@ -133,4 +133,29 @@ Config.Damages = {
     ["brakes"] = "Brakes",
     ["clutch"] = "Clutch",
     ["fuel"] = "Fuel Tank",
+}
+
+Config.cfg = {
+    modifyTime = 10000,
+
+    modLocation = {
+        [1] = {coords = vector4(-36.59, -1069.96, 28.4, 158.56), blip = true},
+    },
+
+    crafts = {
+        ["Mechanic Items"] = {
+            ["repairkit"] = {
+                items = {["iron"] = 2,["plastic"] = 1,}
+            },
+            ["advancedrepairkit"] = {
+                items = {["aluminum"] = 3,["iron"] = 2,}
+            },
+            ["cleaningkit"] = {
+                items = {["steel"] = 3,["rubber"] = 2,}
+            },
+            ["harness"] = {
+                items = {["rubber"] = 3,["plastic"] = 2,}
+            },
+        },
+    }
 }

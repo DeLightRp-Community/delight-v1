@@ -400,7 +400,7 @@ end)
 
 QBCore.Commands.Add("impound", "Impound A Vehicle (Police Only)", {}, false, function(source, args)
 	local Player = QBCore.Functions.GetPlayer(source)
-    if Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "tuner" or Player.PlayerData.job.name == "mechanicb" then
+    if Player.PlayerData.job.name == "police" or Player.PlayerData.job.name == "tuner" or Player.PlayerData.job.name == "mechanic" then
 	    TriggerClientEvent('police:client:DeleteVehicle', source)
     else
         TriggerClientEvent('QBCore:Notify', source, 'For Emergency Services Only', 'error')
