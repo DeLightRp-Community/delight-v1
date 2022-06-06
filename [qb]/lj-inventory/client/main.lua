@@ -568,7 +568,7 @@ RegisterCommand('inventory', function()
                 local vehicleClass = GetVehicleClass(curVeh)
                 local maxweight = 0
                 local slots = 0
-                print(vehicleClass)
+                -- print(vehicleClass)
                 if vehicleClass == 0 then
                     maxweight = 100000
                     slots = 30
