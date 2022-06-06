@@ -51,6 +51,7 @@ local Webhooks = {
     ["ambulance_shiftlog"]= 'https://discord.com/api/webhooks/975265685267697744/Dznfpa-TVg-QQtnWzzSI5ljwloNsYwZbpmnypgWIq93bzsfs3v1EOrr4XgW55oboCDiJ',
     ["taxi_shiftlog"]= 'https://discord.com/api/webhooks/975265817702826014/QTXz3NEImrZNvPde2ZzhEYgG4csFbSuivXPDA0EES5x0jAOCVz0Vb4iYtivAAvou72xf',
     ["mechanic_shiftlog"]= 'https://discord.com/api/webhooks/975265817702826014/QTXz3NEImrZNvPde2ZzhEYgG4csFbSuivXPDA0EES5x0jAOCVz0Vb4iYtivAAvou72xf',
+    ["adminlog"] = 'https://discord.com/api/webhooks/983413654068277318/S7gT-ziQkUKjTJq0ckG3cu4uv9QykmwL7-YSyu5FUd8StSrm5fqza8LKqwED0eC6ihKA'
 }
 
 local Colors = { -- https://www.spycolor.com/

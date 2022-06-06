@@ -231,7 +231,7 @@ AddEventHandler("qb-pawnshop:Stash", function()
     TriggerEvent("inventory:client:SetCurrentStash", "pawnshopstash")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "pawnshopstash", {
         maxweight = 10000000,
-        slots = 50,
+        slots = 100,
     })
 end)
 
@@ -245,84 +245,6 @@ AddEventHandler("qb-pawnshop:Stash2", function()
     })
 end)
 
-RegisterNetEvent('qb-pawnshop:client:openCraftMenu', function()
-    local craftCategory = {{
-        header = "Craft Category",
-        isMenuHeader = true, -- Set to true to make a nonclickable title
-    },}
-    for i, v in pairs(Config.cfg.crafts) do
-        local tempData= {
-            header = i,
-            txt = i.." Levels",
-			params = {
-                isServer = false,
-                event = "qb-pawnshop:client:openCraftSub",
-                args = {
-                    type = i,
-                }
-            }
-        }
-        table.insert(craftCategory, tempData)
-    end
-    
-    exports['qb-menu']:openMenu(craftCategory)
-end)
-
-RegisterNetEvent('qb-pawnshop:client:craftItem', function(data)
-
-    QBCore.Functions.Progressbar('craft',"Craft "..QBCore.Shared.Items[data.name].label, Config.cfg.modifyTime, false, true, { -- Name | Label | Time | useWhileDead | canCancel
-        disableMovement = true,
-        disableCarMovement = true,
-        disableMouse = false,
-        disableCombat = true,
-    }, {
-        animDict = '"anim@amb@clubhouse@tutorial@bkr_tut_ig3@"@',
-        anim = 'machinic_loop_mechandplayer',
-        flags = 16,
-    }, {}, {}, function() 
-        QBCore.Functions.TriggerCallback('qb-pawnshop:server:craftItem', function(result)
-            if result then
-
-                QBCore.Functions.Notify("Item Craft Sucessfuly", "primary")
-                
-            else
-                QBCore.Functions.Notify("You Dont Have the Material", "error")
-            end
-        end, data)
-        ClearPedTasks(PlayerPedId())
-    end, function() -- Play When Cancel
-        QBCore.Functions.Notify("Cancelled", "error")
-        ClearPedTasks(PlayerPedId())
-    end)
-end)
-
-
-RegisterNetEvent('qb-pawnshop:client:openCraftSub', function(data)
-    local craftSubs = {
-
-    }
-    for i, v in pairs(Config.cfg.crafts[data.type]) do
-        local txt= ""
-        for k, vv in pairs(v.items) do
-            txt =txt..k.." "..vv.." "
-        end
-        local tempData= {
-            header = QBCore.Shared.Items[i].label,
-            txt = txt,
-			params = {
-                isServer = false,
-                event = "qb-pawnshop:client:craftItem",
-                args = {
-                    material = v.items,
-                    name = i
-                }
-            }
-        }
-        table.insert(craftSubs, tempData)
-    end
-    
-    exports['qb-menu']:openMenu(craftSubs)
-end)
 
 -----------------------------------------------------------------------------------------
 -- Target Exports

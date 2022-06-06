@@ -10,8 +10,15 @@ shared_scripts {
 	'locales/en.lua',
 }
 
-server_script 'server/main.lua'
+server_scripts {
+    '@oxmysql/lib/MySQL.lua',
+	'server/main.lua',
+	'server/craft.lua'
+}
 
-client_script 'client/main.lua'
+client_scripts {
+	'client/main.lua',
+	'client/craft.lua'
+}
 
 lua54 'yes'

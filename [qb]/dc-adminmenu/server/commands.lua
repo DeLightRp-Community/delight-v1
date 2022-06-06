@@ -46,18 +46,27 @@ end)
 
 QBCore.Commands.Add('staffchat', Lang:t("commands.staffchat_message"), {{name='message', help='Message'}}, true, function(source, args)
     local msg = table.concat(args, ' ')
+    local src =source
+    TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","staffchat **" .. GetPlayerName(src) .. " ** use staffchat")
+
     TriggerEvent('qb-admin:server:Staffchat:addMessage', GetPlayerName(source), msg)
 end, 'admin')
 
 QBCore.Commands.Add('s', Lang:t("commands.staffchat_message"), {{name='message', help='Message'}}, true, function(source, args)
     local msg = table.concat(args, ' ')
+    local src =source
+    TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","s **" .. GetPlayerName(src) .. " ** use s")
+
     TriggerEvent('qb-admin:server:Staffchat:addMessage', GetPlayerName(source), msg)
 end, 'admin')
 
 QBCore.Commands.Add('givenuifocus', Lang:t("commands.nui_focus"), {{name='id', help='Player id'}, {name='focus', help='Set focus on/off'}, {name='mouse', help='Set mouse on/off'}}, true, function(_, args)
+    local src = source
     local playerid = tonumber(args[1])
     local focus = args[2]
     local mouse = args[3]
+    TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","givenuifocus  **" .. GetPlayerName(src) .. " ** use givenuifocus for "..GetPlayerName(playerid))
+
     TriggerClientEvent('qb-admin:client:GiveNuiFocus', playerid, focus, mouse)
 end, 'admin')
 
@@ -67,6 +76,8 @@ QBCore.Commands.Add('warn', Lang:t("commands.warn_a_player"), {{name='ID', help=
     table.remove(args, 1)
     local msg = table.concat(args, ' ')
     local warnId = 'WARN-'..math.random(1111, 9999)
+    TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","warn  **" .. GetPlayerName(src) .. " ** use warn for "..GetPlayerName(targetPlayer))
+
     if targetPlayer ~= nil then
         TriggerClientEvent('chat:addMessage', targetPlayer.PlayerData.source, {
             color = { 255, 0, 0},
@@ -92,6 +103,8 @@ end, 'admin')
 QBCore.Commands.Add('checkwarns', Lang:t("commands.check_player_warning"), {{name='id', help='Player'}, {name='Warning', help='Number of warning, (1, 2 or 3 etc..)'}}, false, function(source, args)
     if args[2] == nil then
         local targetPlayer = QBCore.Functions.GetPlayer(tonumber(args[1]))
+        TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","checkwarns  **" .. GetPlayerName(src) .. " ** use checkwarns for "..GetPlayerName(targetPlayer))
+
         local result = MySQL.Sync.fetchAll('SELECT * FROM player_warns WHERE targetIdentifier = ?', { targetPlayer.PlayerData.license })
         TriggerClientEvent('chat:addMessage', source, {
             color = { 255, 0, 0},
@@ -118,6 +131,8 @@ QBCore.Commands.Add('delwarn', Lang:t("commands.delete_player_warning"), {{name=
     local warnings = MySQL.Sync.fetchAll('SELECT * FROM player_warns WHERE targetIdentifier = ?', { targetPlayer.PlayerData.license })
     local selectedWarning = tonumber(args[2])
     if warnings[selectedWarning] ~= nil then
+        TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","delwarn  **" .. GetPlayerName(src) .. " ** use delwarn")
+
         TriggerClientEvent('chat:addMessage', source, {
             color = { 255, 0, 0},
             multiline = true,
@@ -136,6 +151,7 @@ QBCore.Commands.Add('reportr', Lang:t("commands.reply_to_report"), {{name='id', 
     if msg == '' then return end
     if not OtherPlayer then return TriggerClientEvent('QBCore:Notify', src, 'Player is not online', 'error') end
     if not QBCore.Functions.HasPermission(src, 'admin') or IsPlayerAceAllowed(src, 'command') ~= 1 then return end
+    TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","reportr  **" .. GetPlayerName(src) .. " ** use reportr")
     TriggerClientEvent('chat:addMessage', playerId, {
         color = {255, 0, 0},
         multiline = true,
@@ -153,10 +169,13 @@ end, 'admin')
 QBCore.Commands.Add('setmodel', Lang:t("commands.change_ped_model"), {{name='model', help='Name of the model'}, {name='id', help='Id of the Player (empty for yourself)'}}, false, function(source, args)
     local model = args[1]
     local target = tonumber(args[2])
+
     if model ~= nil or model ~= '' then
         if target == nil then
+            TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","setmodel  **" .. GetPlayerName(src) .. " ** use setmodel for " .. GetPlayerName(src))
             TriggerClientEvent('qb-admin:client:SetModel', source, tostring(model))
         else
+            TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","setmodel  **" .. GetPlayerName(src) .. " ** use setmodel for " .. GetPlayerName(target))
             local Trgt = QBCore.Functions.GetPlayer(target)
             if Trgt ~= nil then
                 TriggerClientEvent('qb-admin:client:SetModel', target, tostring(model))
@@ -171,6 +190,7 @@ end, 'admin')
 
 QBCore.Commands.Add('setspeed', Lang:t("commands.set_player_foot_speed"), {}, false, function(source, args)
     local speed = args[1]
+    TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","setspeed  **" .. GetPlayerName(src) .. " ** use setspeed ")
     if speed ~= nil then
         TriggerClientEvent('qb-admin:client:SetSpeed', source, tostring(speed))
     else
@@ -181,6 +201,7 @@ end, 'admin')
 QBCore.Commands.Add('reporttoggle', Lang:t("commands.report_toggle"), {}, false, function(source)
     local src = source
     QBCore.Functions.ToggleOptin(src)
+    TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","reporttoggle  **" .. GetPlayerName(src) .. " ** use reporttoggle ")
     if QBCore.Functions.IsOptin(src) then
         TriggerClientEvent('QBCore:Notify', src, Lang:t("success.receive_reports"), 'success')
     else
@@ -190,6 +211,7 @@ end, 'admin')
 
 QBCore.Commands.Add('kickall', Lang:t("commands.kick_all"), {}, false, function(source, args)
     local src = source
+    TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","Kick All  **" .. GetPlayerName(src) .. " ** use kick all ")
     if src > 0 then
         local reason = table.concat(args, ' ')
         if QBCore.Functions.HasPermission(src, 'god') or IsPlayerAceAllowed(src, 'command') then
@@ -218,7 +240,7 @@ QBCore.Commands.Add('setammo', Lang:t("commands.ammo_amount_set"), {{name='amoun
     local src = source
     local weapon = args[2]
     local amount = tonumber(args[1])
-
+    TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","Set Ammo  **" .. GetPlayerName(src) .. " ** use Set Ammo ")
     if weapon ~= nil then
         TriggerClientEvent('qb-weapons:client:SetWeaponAmmoManual', src, weapon, amount)
     else

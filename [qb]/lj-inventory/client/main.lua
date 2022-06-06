@@ -568,6 +568,7 @@ RegisterCommand('inventory', function()
                 local vehicleClass = GetVehicleClass(curVeh)
                 local maxweight = 0
                 local slots = 0
+                print(vehicleClass)
                 if vehicleClass == 0 then
                     maxweight = 100000
                     slots = 30
@@ -596,6 +597,10 @@ RegisterCommand('inventory', function()
                     maxweight = 30000
                     slots = 15
                 elseif vehicleClass == 9 then
+                    maxweight = 450000
+                    slots = 35
+                    slots = 15
+                elseif vehicleClass == 10 then
                     maxweight = 450000
                     slots = 35
                 elseif vehicleClass == 12 then

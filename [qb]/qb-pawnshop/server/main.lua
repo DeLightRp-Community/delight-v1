@@ -70,18 +70,3 @@ RegisterServerEvent("qb-pawnshop:server:Charge", function(citizen, price)
 end) 
 
 
-QBCore.Functions.CreateCallback('qb-pawnshop:server:craftItem', function (source, cb, data)
-    local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    if hasCraftItems(src,data.material, 1) then
-        for k, v in pairs(data.material) do
-            Player.Functions.RemoveItem(k, v)
-        end
-        TriggerClientEvent("inventory:client:ItemBox", source, QBCore.Shared.Items[data["name"]], "add")
-	    TriggerClientEvent('QBCore:Notify', src, QBCore.Shared.Items[data["name"]].label..'craft was succesful !', "success")
-        Player.Functions.AddItem(data["name"], 1)
-        return cb(true)
-    else
-        return cb(false)
-    end
- end)
