@@ -109,17 +109,19 @@ end)
 RegisterNetEvent('qb-pawnshop:craft:disable', function (amount)
     inventoryUnderCraft=true
     craftTimeout=craftTimeout*(amount)
-    -- Wait(craftTimeout)
-    while inventoryUnderCraft do
-        Wait(5000)
-        craftTimeout=craftTimeout-5000
-        print(craftTimeout == 0)
-        if craftTimeout == 0 then
-            inventoryUnderCraft =false
-            craftTimeout =1000
-            break;
-        end
-    end
+    Wait(craftTimeout)
+    inventoryUnderCraft =false
+    craftTimeout =1000
+    -- while inventoryUnderCraft do
+    --     Wait(5000)
+    --     craftTimeout=craftTimeout-5000
+    --     print(craftTimeout == 0)
+    --     if craftTimeout == 0 then
+    --         inventoryUnderCraft =false
+    --         craftTimeout =1000
+    --         break;
+    --     end
+    -- end
 end)
 
 

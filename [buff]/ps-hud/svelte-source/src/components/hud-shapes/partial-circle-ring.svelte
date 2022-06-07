@@ -127,7 +127,7 @@
     {Math.floor($displayNumberTween)}
   </text>
   <text class="vehicle-text" fill="white" x="50%" y="70%" dominant-baseline="middle" text-anchor="middle">
-    {text}
+    KPH
   </text>
   {/if}
   <g >

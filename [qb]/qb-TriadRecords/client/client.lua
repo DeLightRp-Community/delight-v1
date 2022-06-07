@@ -1325,11 +1325,27 @@ function LoadModel(model)
 end
 
 function ChampagneEffect()
-	local Player = PlayerPedId()
-	StartScreenEffect("MinigameEndNeutral", 3.0, 0)
-	SetPedToRagdollWithFall(Player, 2500, 3000, 1, GetEntityForwardVector(Player), 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
-    Citizen.Wait(8000)
-    StopScreenEffect("MinigameEndNeutral")
+	local playerPed = GetPlayerPed(-1)
+  
+	RequestAnimSet("move_m@drunk@moderatedrunk") 
+	while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
+	Citizen.Wait(0)
+	end    	
+	
+	SetTimecycleModifier("spectator5")
+	SetPedMotionBlur(playerPed, true)
+	SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
+	SetPedIsDrunk(playerPed, true)
+
+	--Efects
+	local player = PlayerId()
+	SetRunSprintMultiplierForPlayer(player, 1.2)
+	SetSwimMultiplierForPlayer(player, 1.3)
+
+	Wait(520000)
+
+	SetRunSprintMultiplierForPlayer(player, 1.0)
+	SetSwimMultiplierForPlayer(player, 1.0)
 end
 
 function SpawnPugs()

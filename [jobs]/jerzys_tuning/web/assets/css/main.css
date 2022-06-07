@@ -1,0 +1,1144 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+body {
+  overflow: hidden;
+  background: transparent;
+  font-family: 'Poppins', sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.left_corner_color {
+  fill: var(--accent-color-dark);
+}
+
+.right_corner_color {
+  fill: var(--accent-color-dark);
+}
+
+.jerzySwiper {
+  overflow: hidden;
+}
+
+.jerzySwiper .active .jerzys_tuning_menu_item {
+  background-color: var(--accent-hover);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.431);
+  -webkit-transform: skew(-10deg) rotate(0deg);
+          transform: skew(-10deg) rotate(0deg);
+}
+
+.jerzySwiper .active .jerzys_tuning_menu_item_img_left {
+  position: absolute;
+  left: 0;
+  top: 0px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.jerzySwiper .active .jerzys_tuning_menu_item_img_right {
+  position: absolute;
+  right: 0;
+  bottom: 0px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.arrow {
+  border-radius: 28px;
+  -webkit-backdrop-filter: blur(16px);
+          backdrop-filter: blur(16px);
+  background-color: rgba(0, 0, 0, 0.717);
+  border: 1px solid rgba(255, 255, 255, 0);
+  color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 30px !important;
+  padding: 6px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.arrow:hover {
+  background-color: var(--accent-hover);
+}
+
+.jerzys_tuning_menu_options {
+  position: absolute;
+  z-index: 3;
+  padding-left: 3vh;
+  top: 45%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box {
+  width: auto;
+  min-width: 415px;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_footer {
+  margin-top: 5px;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_header {
+  text-align: center;
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 2.8vh;
+  padding: 5px 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_body {
+  margin-top: 5px;
+  width: 100%;
+  border: 3px solid var(--accent-color);
+  background-color: rgba(17, 25, 40, 0.79);
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_body .active {
+  padding: 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+  background-color: var(--accent-color);
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_body .jerzys_option_ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  max-height: 250px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_body .jerzys_option .noHover {
+  padding: 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_body .jerzys_option .noHover:hover {
+  background-color: var(--accent-hover);
+  -webkit-filter: blur(0);
+          filter: blur(0);
+  -webkit-transform: scale(1) !important;
+          transform: scale(1) !important;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_body .jerzys_option_li {
+  padding: 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_body .jerzys_option_li:hover {
+  background-color: var(--accent-hover);
+  -webkit-filter: blur(0);
+          filter: blur(0);
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_body .jerzys_option_item {
+  font-size: 2vh;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box_body .jerzys_option_price {
+  font-size: 2vh;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box .jerzys_option_btn {
+  background-color: var(--accent-color);
+  color: white;
+  text-align: center;
+  font-size: 2vh;
+  font-weight: bold;
+  padding: 10px 0;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.jerzys_tuning_menu_options .jerzys_tuning_option_box .jerzys_option_btn:hover {
+  background-color: var(--accent-color-dark);
+}
+
+.jerzys_tuning_menu_item {
+  position: relative;
+  text-align: center;
+  width: auto;
+  height: 124px;
+  background-color: rgba(0, 0, 0, 0.608);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+
+.jerzys_tuning_menu_item:first-child {
+  margin-left: 12px;
+}
+
+.jerzys_tuning_menu_item_img_left {
+  position: absolute;
+  left: 0;
+  top: -300px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.jerzys_tuning_menu_item_img_right {
+  position: absolute;
+  right: 0;
+  bottom: -300px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.jerzys_tuning_menu_item:hover {
+  background-color: var(--accent-hover);
+  -webkit-box-shadow: 0 3px 6px var(--accent-hover);
+          box-shadow: 0 3px 6px var(--accent-hover);
+  -webkit-transform: skew(-10deg) rotate(0deg);
+          transform: skew(-10deg) rotate(0deg);
+}
+
+.jerzys_tuning_menu_item:hover .jerzys_tuning_menu_item_img_left {
+  top: 0;
+}
+
+.jerzys_tuning_menu_item:hover .jerzys_tuning_menu_item_img_right {
+  bottom: 0;
+}
+
+.jerzys_tuning_menu_item_heading {
+  font-size: 1.4vw;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.jerzys_tuning_menu_item_heading::first-letter {
+  font-size: 1.9vw;
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+}
+
+.jerzys_tuning_menu_price {
+  position: absolute;
+  padding-right: 3vh;
+  top: 45%;
+  right: 0;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  z-index: 3;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box {
+  width: 354px;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box_footer {
+  margin-top: 5px;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box_header {
+  text-align: center;
+  background-color: var(--accent-color);
+  color: white;
+  font-size: 2.8vh;
+  padding: 5px 0;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box_body {
+  margin-top: 5px;
+  width: 100%;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box_body .jerzys_price_ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box_body .jerzys_price_li {
+  padding: 10px 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  color: white;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+  cursor: pointer;
+  backdrop-filter: blur(8px) saturate(180%);
+  -webkit-backdrop-filter: blur(8px) saturate(180%);
+  background-color: var(--accent-blur-color);
+  margin-bottom: 5px;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box_body .jerzys_price_item {
+  font-size: 2vh;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box_body .jerzys_price_price {
+  font-size: 2vh;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box .jerzys_price_total {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background-color: #202020;
+  color: white;
+  padding: 10px 10px;
+  margin-bottom: 5px;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box .jerzys_price_total_text {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box .jerzys_price_total_price {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box .jerzys_price_btn {
+  background-color: var(--accent-color);
+  color: white;
+  text-align: center;
+  font-size: 2vh;
+  font-weight: bold;
+  padding: 10px 0;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.jerzys_tuning_menu_price .jerzys_tuning_price_box .jerzys_price_btn:hover {
+  background-color: var(--accent-color-dark);
+}
+
+#jerzys_tuning {
+  width: 100%;
+  height: 100vh;
+  /*background-image: url("/assets/img/background.png");*/
+}
+
+#jerzys_tuning .jerzys_tuning_menu {
+  width: 100%;
+  position: absolute;
+  bottom: 2%;
+  padding: 0 3vh;
+}
+
+#jerzys_tuning .jerzys_tuning_menu_box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 300px minmax(0, auto);
+      grid-template-columns: 300px minmax(0, auto);
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#jerzys_tuning .jerzys_tuning_menu_box_right {
+  padding: 0px 35px;
+  position: relative;
+}
+
+#jerzys_tuning .jerzys_tuning_menu_box_right .jerzy-button-next {
+  position: absolute;
+  right: -9px;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+
+#jerzys_tuning .jerzys_tuning_menu_box_right .jerzy-button-next span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#jerzys_tuning .jerzys_tuning_menu_box_right .jerzy-button-prev {
+  position: absolute;
+  top: 50%;
+  left: -9px;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+}
+
+#jerzys_tuning .jerzys_tuning_menu_box_right .jerzy-button-prev span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#jerzys_tuning .jerzys_tuning_menu .logo_text_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: -300px;
+  text-align: center;
+}
+
+#jerzys_tuning .jerzys_tuning_menu .logo_text_box_top {
+  font-size: 45px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: white;
+  font-style: italic;
+}
+
+#jerzys_tuning .jerzys_tuning_menu .logo_text_box_bottom {
+  margin-top: -30px;
+  font-size: 45px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  font-style: italic;
+}
+
+.jerzys_tuning_menu_box_right_return {
+  cursor: pointer;
+  position: absolute;
+  top: -43px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: rgba(0, 0, 0, 0.56);
+  color: white;
+  padding: 5px 10px;
+  gap: 7px;
+  left: 47px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.jerzys_tuning_menu_box_right_return:hover {
+  background-color: var(--accent-hover);
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.431);
+  -webkit-transform: skew(-10deg) rotate(0deg);
+          transform: skew(-10deg) rotate(0deg);
+}
+
+.jerzys_tuning_exit {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 40px;
+  text-transform: uppercase;
+  color: white;
+  font-size: 2.1vh;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.jerzys_tuning_exit span {
+  background-color: var(--accent-color);
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.jerzys_tuning_top {
+  width: 100%;
+  position: absolute;
+  top: 0%;
+  bottom: 0%;
+  height: 148px;
+  background: white;
+  background: -webkit-gradient(linear, left bottom, left top, from(white), color-stop(0%, rgba(0, 0, 0, 0)), color-stop(0%, rgba(0, 0, 0, 0)), to(black));
+  background: linear-gradient(0deg, white 0%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 0%, black 100%);
+  z-index: -2;
+}
+
+.jerzys_tuning_bottom {
+  width: 100%;
+  position: absolute;
+  bottom: 0%;
+  bottom: 0%;
+  height: 148px;
+  background: white;
+  background: -webkit-gradient(linear, left top, left bottom, from(white), color-stop(0%, rgba(0, 0, 0, 0)), color-stop(23%, rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, 0.967)));
+  background: linear-gradient(180deg, white 0%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0) 23%, rgba(0, 0, 0, 0.967) 100%);
+  z-index: -2;
+}
+
+.jerzys_tuning_screen {
+  position: absolute;
+  width: 57%;
+  height: 58%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  border: 0px solid white;
+}
+
+.jerzys_tuning_screen #wheel {
+  top: 75%;
+  left: 60%;
+  -webkit-transition: 2.5s,1s ease;
+  transition: 2.5s,1s ease;
+  -webkit-transition-property: top,left;
+  transition-property: top,left;
+  -webkit-animation: boxShadow 2500ms infinite;
+          animation: boxShadow 2500ms infinite;
+}
+
+.jerzys_tuning_screen #front {
+  left: 18%;
+  top: 60%;
+  -webkit-transition: 2.5s,3s ease;
+  transition: 2.5s,3s ease;
+  -webkit-transition-property: top,left;
+  transition-property: top,left;
+  -webkit-animation: boxShadow 2500ms infinite;
+          animation: boxShadow 2500ms infinite;
+}
+
+.jerzys_tuning_screen #back {
+  right: 16%;
+  top: 28%;
+  -webkit-transition: 2.5s,3s ease;
+  transition: 2.5s,3s ease;
+  -webkit-transition-property: top,right;
+  transition-property: top,right;
+  -webkit-animation: boxShadow 2500ms infinite;
+          animation: boxShadow 2500ms infinite;
+}
+
+.jerzys_tuning_screen #right {
+  top: 44%;
+  right: 25%;
+  -webkit-transition: 2.5s, 3s ease;
+  transition: 2.5s, 3s ease;
+  -webkit-transition-property: top,right;
+  transition-property: top,right;
+  -webkit-animation: boxShadow 2500ms infinite;
+          animation: boxShadow 2500ms infinite;
+}
+
+.jerzys_tuning_screen #left {
+  left: 26%;
+  top: 34%;
+  -webkit-transition: 2.5s, 3s ease;
+  transition: 2.5s, 3s ease;
+  -webkit-transition-property: top,left;
+  transition-property: top,left;
+  -webkit-animation: boxShadow 2500ms infinite;
+          animation: boxShadow 2500ms infinite;
+}
+
+.jerzys_tuning_screen .jerzys_tuning_triggerpoint {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  border: 2px solid rgba(255, 255, 255, 0.369);
+  padding: 2px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+
+.jerzys_tuning_screen .jerzys_tuning_triggerpoint:hover {
+  border-radius: 100%;
+}
+
+.jerzys_tuning_screen .jerzys_tuning_triggerpoint:hover .triggericon {
+  color: white;
+  background-color: var(--accent-color);
+  border-radius: 100%;
+  padding: 4px;
+}
+
+.jerzys_tuning_screen .triggericon {
+  background: #ffffff91;
+  color: transparent;
+  font-size: 17px;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+  padding: 4px;
+}
+
+.fadeUp {
+  -webkit-animation: fadeInUp 1000ms both;
+          animation: fadeInUp 1000ms both;
+}
+
+.fadeInDown {
+  -webkit-animation: pfadeOutDown 1000ms both;
+          animation: pfadeOutDown 1000ms both;
+}
+
+.opacityIn {
+  -webkit-animation: opacity_in 1000ms both;
+          animation: opacity_in 1000ms both;
+}
+
+@-webkit-keyframes boxShadow {
+  0% {
+    -webkit-box-shadow: 0 0 14px var(--accent-color);
+            box-shadow: 0 0 14px var(--accent-color);
+  }
+  50% {
+    -webkit-box-shadow: 0 0 0px var(--accent-color);
+            box-shadow: 0 0 0px var(--accent-color);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 14px var(--accent-color);
+            box-shadow: 0 0 14px var(--accent-color);
+  }
+}
+
+@keyframes boxShadow {
+  0% {
+    -webkit-box-shadow: 0 0 14px var(--accent-color);
+            box-shadow: 0 0 14px var(--accent-color);
+  }
+  50% {
+    -webkit-box-shadow: 0 0 0px var(--accent-color);
+            box-shadow: 0 0 0px var(--accent-color);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 14px var(--accent-color);
+            box-shadow: 0 0 14px var(--accent-color);
+  }
+}
+
+@-webkit-keyframes opacity_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes opacity_in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes pfadeOutDown {
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateY(120%);
+            transform: translateY(120%);
+  }
+}
+
+@keyframes pfadeOutDown {
+  to {
+    opacity: 0.3;
+    -webkit-transform: translateY(120%);
+            transform: translateY(120%);
+  }
+}
+
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+  }
+}
+
+.hide {
+  display: none !important;
+}
+
+#Cameraback #back {
+  opacity: 0;
+}
+
+#Cameraback #front {
+  left: -27%;
+  top: 36%;
+}
+
+#Cameraback #wheel {
+  top: 56%;
+  left: -30%;
+}
+
+#Cameraback #right {
+  top: 25%;
+  right: 50%;
+}
+
+#Cameraback #left {
+  left: -15%;
+  top: 64%;
+}
+
+#Camerawheel #wheel {
+  opacity: 0;
+}
+
+#Camerawheel #back {
+  right: -37%;
+  top: 10%;
+}
+
+#Camerawheel #front {
+  left: 38%;
+  top: 7%;
+}
+
+#Camerawheel #left {
+  left: 60%;
+  top: 10%;
+}
+
+#Camerawheel #right {
+  right: 10%;
+  top: 22%;
+}
+
+#Cameraright #wheel {
+  left: -7%;
+  top: 80%;
+}
+
+#Cameraright #back {
+  right: 0%;
+  top: 30%;
+}
+
+#Cameraright #front {
+  left: 0%;
+  top: 38%;
+}
+
+#Cameraright #left {
+  left: 26%;
+  top: 44%;
+}
+
+#Cameraright #right {
+  opacity: 0;
+}
+
+#Cameraleft #front {
+  left: 96%;
+  top: 40%;
+}
+
+#Cameraleft #back {
+  right: 116%;
+  top: 35%;
+}
+
+#Cameraleft #wheel {
+  top: 75%;
+  left: 120%;
+}
+
+#Cameraleft #right {
+  top: 44%;
+  right: 25%;
+  opacity: 0;
+}
+
+#Cameraleft #left {
+  left: 65%;
+  top: 29%;
+}
+
+.jerzys_color_picker {
+  background: transparent;
+  border: transparent;
+  width: 60px;
+  height: 32px;
+  margin-top: 6px;
+}
+
+.jerzys_price_ul {
+  max-height: 200px;
+  overflow-x: hidden;
+  overflow-y: overlay;
+  padding-right: 3%;
+}
+
+/* Price Scrollbar */
+.jerzys_price_ul::-webkit-scrollbar-thumb {
+  background: black;
+}
+
+.jerzys_price_ul::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(0, 0, 0, 0.329);
+}
+
+/* Price Scrollbar */
+.jerzys_option_ul::-webkit-scrollbar-thumb {
+  background: var(--accent-color-dark);
+}
+
+.jerzys_option_ul::-webkit-scrollbar {
+  width: 8px;
+  background-color: rgba(0, 0, 0, 0.329);
+}
+
+/*****************/
+.jerzys_price_li {
+  position: relative;
+}
+
+.jerzys_price_li .jerzys_option_item {
+  font-size: 20px;
+  text-transform: uppercase;
+  font-weight: 600;
+  min-width: 200px;
+}
+
+.jerzys_price_li .jerzys_option_price {
+  font-size: 20px;
+  width: 91px;
+  text-transform: uppercase;
+  background: transparent;
+  font-weight: 600;
+  padding-left: 6px;
+  color: white;
+  border: 1px solid white;
+}
+
+.jerzys_price_li .jerzys_option_price:focus {
+  outline: 0px solid transparent;
+}
+
+.jerzys_price_li .jerzys_option_price::after {
+  content: '$';
+}
+
+.jerzys_price_li_left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.jerzys_price_li .jerzys_option_item_delete {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 3px;
+  color: #ffffff;
+  background: #ae404b;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+  right: 0px;
+  width: 46px;
+  height: 100%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border: 1px solid #822C2C;
+}
+
+.jerzys_location_name {
+  position: absolute;
+  top: 20px;
+  font-size: 2.9vh;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 800;
+  padding-left: 3vh;
+}
+
+.no-border {
+  border: 0px solid white !important;
+}
+
+.jerzys_tuning_open_text {
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  background: var(--accent-color);
+  border-radius: 100px 100px 100px 100px;
+  padding: 5px;
+  padding-right: 29px;
+  font-size: 2.1vh;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.42);
+}
+
+.jerzys_tuning_open_text .material-icons {
+  background: #00000066;
+  border-radius: 100%;
+  color: white;
+  padding: 9px;
+}
+
+.jerzys_tuning_modal {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.jerzys_tuning_modal .modal-content {
+  border: 1px solid var(--accent-color);
+  -webkit-box-shadow: 0 3px 6px var(--accent-color);
+          box-shadow: 0 3px 6px var(--accent-color);
+  border-radius: 0;
+  background: #111;
+}
+
+.jerzys_tuning_modal .modal-header {
+  background-color: var(--accent-color);
+  color: white;
+  border-radius: 0;
+  border: 0;
+}
+
+.jerzys_tuning_modal .modal-title {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+.jerzys_tuning_modal .form-group-tuner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  color: white;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-style: italic;
+  position: relative;
+  margin-bottom: 23px;
+}
+
+.jerzys_tuning_modal .modal-footer {
+  border: 0;
+}
+
+.jerzys_tuning_modal .form-input {
+  background: transparent;
+  color: white;
+  border: 1px solid aliceblue;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.jerzys_tuning_modal .form-input:focus {
+  outline: 0;
+  -webkit-box-shadow: 0 3px 6px var(--accent-color);
+          box-shadow: 0 3px 6px var(--accent-color);
+}
+
+.jerzys_tuning_modal .form-title {
+  position: absolute;
+  top: -10px;
+  left: 11px;
+  background: #111;
+  padding: 0 10px;
+}
+
+.jerzys_tuning_modal .form_group_tuner_btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 10px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.jerzys_tuning_modal .total_price_title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-weight: bold;
+}
+
+.jerzys_tuning_modal .total_price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  font-size: 1.4rem;
+  color: #22ca22;
+}
+
+.jerzys_tuning_modal .closeModal {
+  color: white;
+  cursor: pointer;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.jerzys_tuning_modal .closeModal:hover {
+  color: grey;
+}
+
+.jerzys_tuning_modal .cstm-btn {
+  background: var(--accent-color);
+  border: 0;
+  color: white;
+  min-width: 162px;
+  padding: 6px 0;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.jerzys_tuning_modal .cstm-primary {
+  background: var(--accent-color) !important;
+  -webkit-transition: 0.3s ease all;
+  transition: 0.3s ease all;
+}
+
+.jerzys_tuning_modal .cstm-primary:hover {
+  scale: 1.1;
+  -webkit-box-shadow: 0 3px 6px var(--accent-color-dark);
+          box-shadow: 0 3px 6px var(--accent-color-dark);
+}
+
+.jerzys_tuning_menu_box_left {
+  width: 300px;
+  height: 130px;
+}
+
+.jerzys_tuning_menu_box_left img {
+  max-width: 80%;
+  max-height: 100%;
+}
+/*# sourceMappingURL=main.css.map */

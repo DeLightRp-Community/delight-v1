@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerzy's Tuning</title>
+    <link rel="stylesheet" href="assets/css/utils/cutom.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
+
+</head>
+<body>
+    <section id="jerzys_tuning" class="hide">
+      <div class="jerzys_location_name hide">
+        
+      </div>
+      <div class="jerzys_tuning_menu_options hide">
+        <div class="jerzys_tuning_option_box">
+          <div class="jerzys_tuning_option_box_header"><!-- Auto generated --></div>
+          <div class="jerzys_tuning_option_box_body">
+            <ul class="jerzys_option_ul">
+              <!-- Auto generated -->
+            </ul>
+          </div>
+         <!--<div class="jerzys_tuning_option_box_footer">
+            <div class="jerzys_option_btn">
+              ADD COMPONENT +
+            </div>
+          </div> -->
+        </div>
+      </div>
+      <div class="jerzys_tuning_menu_price ">
+        <div class="jerzys_tuning_price_box">
+          <div class="jerzys_tuning_price_box_header">Purchase List</div>
+          <div class="jerzys_tuning_price_box_body">
+            <ul class="jerzys_price_ul">
+            </ul>
+          </div>
+          <div class="jerzys_tuning_price_box_footer">
+            <div class="jerzys_price_total">
+              <div class="jerzys_price_total_text">
+                Total:
+              </div>
+              <div class="jerzys_price_total_price" data-price="">
+                0$
+              </div>
+            </div>
+            <div class="jerzys_price_btn" data-bs-toggle="modal" data-bs-target="#toggleBuyMenu">
+             BUY
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="jerzys_tuning_menu hide">
+        <div class="jerzys_tuning_menu_box">
+          <div class="jerzys_tuning_menu_box_left">
+            <img src="./assets/img/logo.png" class="logo_img" style="display: block;" alt="jerzys logo">
+            <div class="logo_text_box" style="display: none;">
+              <div class="logo_text_box_top">Jerzys</div>
+              <div class="logo_text_box_bottom">Tuning</div>
+            </div>
+          </div>
+          <div class="jerzys_tuning_menu_box_right">
+            <div class="jerzys_tuning_menu_box_right_return hide">
+              <span class="material-icons">undo</span>
+              Return back                
+            </div>
+            <div class="swiper jerzySwiper">
+              <div class="swiper-wrapper">
+              <!-- Gets Auto Generated -->
+              </div>
+            </div>
+            <div class="jerzy-button-next">
+              <span class="material-icons arrow">keyboard_arrow_right</span>         
+            </div>
+            <div class="jerzy-button-prev">
+              <span class="material-icons arrow">keyboard_arrow_left</span>                
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="jerzys_tuning_screen hide" data-camera-active="front">
+        <div class="jerzys_tuning_triggerpoint" id="front" data-id="front" data-bs-toggle="tooltip" title="Show the Front" data-bs-placement="bottom">
+          <span class="material-icons-outlined triggericon">
+            visibility
+          </span>            
+        </div>
+        <div class="jerzys_tuning_triggerpoint" id="back" data-id="back" data-bs-toggle="tooltip" title="Show the Back" data-bs-placement="bottom">
+          <span class="material-icons-outlined triggericon">
+            visibility
+          </span>            
+        </div>
+        <div class="jerzys_tuning_triggerpoint" id="wheel" data-id="wheel" data-bs-toggle="tooltip" title="Show Wheels" data-bs-placement="bottom">
+          <span class="material-icons-outlined triggericon">
+            visibility
+          </span>            
+        </div>
+        <div class="jerzys_tuning_triggerpoint" id="right" data-id="right" data-bs-toggle="tooltip" title="Show right" data-bs-placement="bottom">
+          <span class="material-icons-outlined triggericon">
+            visibility
+          </span>            
+        </div>
+        <div class="jerzys_tuning_triggerpoint" id="left" data-id="left" data-bs-toggle="tooltip" title="Show left" data-bs-placement="bottom">
+          <span class="material-icons-outlined triggericon">
+            visibility
+          </span>            
+        </div>
+      </div>
+      <div class="jerzys_tuning_top hide"></div>
+      <div class="jerzys_tuning_bottom hide"></div>
+      <div class="jerzys_tuning_exit hide">
+        <div class="jerzys_exit">Press <span>ESC</span> to leave</div>
+      </div>
+    </section>
+
+    <section id="jerzys_tuning_buying">
+      <div class="modal fade jerzys_tuning_modal" id="toggleBuyMenu" tabindex="-1" aria-labelledby="toggleBuyMenuLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="toggleBuyMenuLabel">Create Payment</h5>
+              <span class="material-icons closeModal" data-bs-dismiss="modal" aria-label="Close">close</span>
+            </div>
+            <div class="modal-body">
+              <div class="form-group-tuner">
+                  <label for="paymentTitle" class="form-title">Title</label>
+                  <input type="text" class="form-input"  id="paymentTitle"  placeholder="Your Title...." required>
+              </div>
+              <div class="form-group-tuner">
+                <label for="paymentId" class="form-title">Payment ID</label>
+                <input type="text" class="form-input" id="paymentId" placeholder="Write ID" required>
+              </div>
+              <div class="form-group-tuner">
+                <div class="total_price_title">
+                  Total Price
+                </div>
+                <div class="total_price">
+                  200$
+                </div>
+              </div>
+              <div class="form_group_tuner_btn">
+                <button type="button" class="cstm-btn cstm-primary" id="sendPayment">Send Payment</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="jerzys_tuning_open">
+      <div class="jerzys_tuning_open_text hide">
+        <span class="material-icons">info_outline</span>
+        Press E to open
+      </div>
+    </section>
+    <input type="hidden" name="tebex" value="https://jerzy.tebex.io/" id="tebex">
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/swiper-bundle.min.js"></script>
+    <script src="./assets/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

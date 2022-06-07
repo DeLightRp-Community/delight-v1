@@ -4,7 +4,7 @@ Config.MaxHeight = 5.0
 Config.MaxLength = 5.0
 Config.DamageNeeded = 100.0
 Config.IdleCamera = true
-Config.EnableProne = true
+Config.EnableProne = false
 Config.JointEffectTime = 60
 Config.RemoveWeaponDrops = true
 Config.RemoveWeaponDropsTimer = 25
@@ -12,55 +12,55 @@ Config.DefaultPrice = 20 -- carwash
 Config.DirtLevel = 0.1 --carwash dirt level
 
 ConsumeablesEat = {
-    ["sandwich"] = math.random(35, 54),
-    ["tosti"] = math.random(40, 50),
-    ["twerks_candy"] = math.random(35, 54),
-    ["snikkel_candy"] = math.random(40, 50),
+    ["sandwich"] = 10,
+    ["tosti"] = 10,
+    ["twerks_candy"] = 5,
+    ["snikkel_candy"] = 5,
 
-    ["apple"] = math.random(10, 20),
-    ["beef"] = math.random(35, 50),
-    ["slicedpie"] = math.random(10, 20),
-    ["corncob"] = math.random(25, 40),
-    ["canofcorn"] = math.random(35, 50),
-    ["grapes"] = math.random(10, 20),
-    ["greenpepper"] = math.random(10, 20),
-    ["chillypepper"] = math.random(10, 20),
-    ["tomato"] = math.random(10, 20),
-    ["tomatopaste"] = math.random(25, 40),
-    ["cooked_bacon"] = math.random(35, 50),
-    ["cooked_sausage"] = math.random(35, 50),
-    ["cooked_pork"] = math.random(35, 50),
-    ["cooked_ham"] = math.random(35, 50),
+    ["apple"] = 5,
+    ["beef"] = 5,
+    ["slicedpie"] = 30,
+    ["corncob"] = 5,
+    ["canofcorn"] =7,
+    ["grapes"] = 5,
+    ["greenpepper"] = 5,
+    ["chillypepper"] = 5,
+    ["tomato"] = 5,
+    ["tomatopaste"] = 7,
+    ["cooked_bacon"] = 15,
+    ["cooked_sausage"] = 15,
+    ["cooked_pork"] = 15,
+    ["cooked_ham"] = 15,
 
-    ["burger-bleeder"] = math.random(35, 54),
-    ["burger-moneyshot"] = math.random(35, 54),
-    ["burger-torpedo"] = math.random(35, 54),
-    ["burger-heartstopper"] = math.random(35, 54),
-    ["burger-meatfree"] = math.random(35, 54),
-    ["burger-fries"] = math.random(35, 54),
+    ["burger-bleeder"] = 40,
+    ["burger-moneyshot"] = 50,
+    ["burger-torpedo"] = 35,
+    ["burger-heartstopper"] = 100,
+    ["burger-meatfree"] = 60,
+    ["burger-fries"] = 30,
 
-    ["cheese-pizza"] = math.random(35, 50),
+    ["cheese-pizza"] = 70,
 }
 
 ConsumeablesDrink = {
-    ["water_bottle"] = math.random(35, 54),
-    ["kurkakola"] = math.random(35, 54),
-    ["coffee"] = math.random(40, 50),
+    ["water_bottle"] = math.random(10, 15),
+    ["kurkakola"] = math.random(15, 20),
+    ["coffee"] = math.random(25, 30),
 
-    ["apple_juice"] = math.random(25, 45),
-    ["grapejuice"] = math.random(25, 45),
+    ["apple_juice"] = math.random(10, 15),
+    ["grapejuice"] = math.random(10, 15),
     ["hotsauce"] = math.random(10, 15),
 
     ["burger-softdrink"] = math.random(40, 50),
     ["burger-mshake"] = math.random(40, 50),
 
-    ["sodacup"] = math.random(20, 40),
+    -- ["sodacup"] = math.random(20, 40),
 }
 
 ConsumeablesAlcohol = {
-    ["whiskey"] = math.random(20, 30),
-    ["beer"] = math.random(30, 40),
-    ["vodka"] = math.random(20, 40),
+    ["whiskey"] = math.random(10, 15),
+    ["beer"] = math.random(20, 25),
+    ["vodka"] = math.random(10, 15),
 }
 
 Config.BlacklistedScenarios = {
