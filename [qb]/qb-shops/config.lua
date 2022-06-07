@@ -154,14 +154,14 @@ Config.Products = {
             type = "item",
             slot = 4,
         },
-        [5] = {
-            name = "phone",
-            price = 1000,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 5,
-        },
+        -- [5] = {
+        --     name = "phone",
+        --     price = 1000,
+        --     amount = 50,
+        --     info = {},
+        --     type = "item",
+        --     slot = 5,
+        -- },
         [6] = {
             name = "binoculars",
             price = 500,
