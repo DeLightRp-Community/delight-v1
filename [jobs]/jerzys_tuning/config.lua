@@ -62,7 +62,7 @@ Config.useMultiPlaces = true -- Use MultiePlaces
 Config.debugPolyZone = false -- If true PolyZone Debug
 
 -- Price Options :
-Config.useQBShared = false -- If false | Then go to line 259 and set your car price
+Config.useQBShared = true -- If false | Then go to line 259 and set your car price
 
 --- ONLY USEABLE IF YOU HAVE useQBShared == TRUE, Keep in mind, you have to have the the vehicles in QB Shared
 Config.variableEnginePrice = false -- If True, it uses QBShared.Vehicle Prices
@@ -139,7 +139,7 @@ if Config.useMultiPlaces then
             },
             management = 'mechanic', -- Which Managment Job should get the Money | Empty if no one gets money
             usePercentage = true, -- If true you need to setup percantage for the one who makes the car
-            percentageForTuner = '10', -- Tuner will get 5% of the total price of tuning
+            percentageForTuner = '30', -- Tuner will get 5% of the total price of tuning
             payment = 'bank' -- Which Payment Method should be Used
         },
         ['bennys-care'] = {
@@ -194,7 +194,7 @@ if Config.useMultiPlaces then
             },
             management = 'mechanic', -- Which Managment Job should get the Money | Empty if no one gets money
             usePercentage = true, -- If true you need to setup percantage for the one who makes the car
-            percentageForTuner = '10', -- Tuner will get 5% of the total price of tuning
+            percentageForTuner = '30', -- Tuner will get 5% of the total price of tuning
             payment = 'bank' -- Which Payment Method should be Used
         },
         ['bennys-tune'] = {
@@ -249,7 +249,7 @@ if Config.useMultiPlaces then
             },
             management = 'mechanic', -- Which Managment Job should get the Money | Empty if no one gets money
             usePercentage = true, -- If true you need to setup percantage for the one who makes the car
-            percentageForTuner = '10', -- Tuner will get 5% of the total price of tuning
+            percentageForTuner = '30', -- Tuner will get 5% of the total price of tuning
             payment = 'bank' -- Which Payment Method should be Used
         },
         -- ['policeMechanic'] = {
@@ -329,10 +329,10 @@ carPrices = {
 menu = {
     care = {
         clean = {
-            {name = 'Clean', price = 200, id= -1, type = 23}
+            {name = 'Clean', price = 50, id= -1, type = 23}
         },
         repair = {
-             {name = 'Repair', price = 1200, id= -1, type = 23}
+             {name = 'Repair', price = 500, id= -1, type = 23}
         }
     },
     motor = {

@@ -20,26 +20,23 @@ local function loadAnimDict(dict)
     end
 end
 
-CreateThread(function()
-    while true do
-        local boxZone = BoxZone:Create(vector3(-623.14, -231.56, 38.06), 20, 20, {
-            name="vangelico",
-            heading=305,
-            -- debugPoly=true,
-            minZ=36.86,
-            maxZ=40.86
-        })
-        boxZone:onPlayerInOut(function(isPointInside)
-            Wait(1000)
-            
-            if isPointInside and isGasing then
-                Damage()
-            else
-                inZone=false
-                exports['qb-core']:HideText("jewe")
-            end
-        end)
-        Citizen.Wait(1000)
+
+
+local boxZone = BoxZone:Create(vector3(-623.14, -231.56, 38.06), 20, 20, {
+    name="vangelico",
+    heading=305,
+    -- debugPoly=true,
+    minZ=36.86,
+    maxZ=40.86
+})
+boxZone:onPlayerInOut(function(isPointInside)
+    Wait(1000)
+    
+    if isPointInside and isGasing then
+        Damage()
+    else
+        inZone=false
+        exports['qb-core']:HideText("jewe")
     end
 end)
 
