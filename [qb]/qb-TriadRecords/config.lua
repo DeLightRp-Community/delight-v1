@@ -476,19 +476,19 @@ Config.Glasses = {
 --Garage
 -------------------
 
-Config.BossVehicle = "baller"
+Config.BossVehicle = "thrax"
 
 --Vehicles, you can add as many as you like.
 Config.Vehicles = {
     [1] = {
         ['vehiclename'] = "Baller", -- Name
         ['vehicle'] = "baller3", -- Model To Spawn
-        ['price'] = 5500, -- Price
+        ['price'] = 1500, -- Price
     }, 
     [2] = {
         ['vehiclename'] = "Pony", -- Name
         ['vehicle'] = "pony", -- Model To Spawn
-        ['price'] = 2500, -- Price
+        ['price'] = 1000, -- Price
     }, 
 }
 

@@ -1283,9 +1283,27 @@ end)
 function AlcoholEffect()
 	TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + Config.Thirst)
 	local Player = PlayerPedId()
-	StartScreenEffect("MinigameEndNeutral", 1.0, 0)
-    Citizen.Wait(5000)
-    StopScreenEffect("MinigameEndNeutral")
+	RequestAnimSet("MOVE_M@DRUNK@SLIGHTLYDRUNK")
+    while not HasAnimSetLoaded("MOVE_M@DRUNK@SLIGHTLYDRUNK") do
+        Citizen.Wait(0)
+    end
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(GetPlayerPed(-1))
+    SetTimecycleModifier("spectator5")
+    SetPedMotionBlur(GetPlayerPed(-1), true)
+    SetPedMovementClipset(GetPlayerPed(-1), "MOVE_M@DRUNK@SLIGHTLYDRUNK", true)
+    SetPedIsDrunk(GetPlayerPed(-1), true)
+    DoScreenFadeIn(1000)
+    Citizen.Wait(60000)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    DoScreenFadeIn(1000)
+    ClearTimecycleModifier()
+    ResetScenarioTypesEnabled()
+    ResetPedMovementClipset(GetPlayerPed(-1), 0)
+    SetPedIsDrunk(GetPlayerPed(-1), false)
+    SetPedMotionBlur(GetPlayerPed(-1), false)
 end
 
 function AnimSet(anim)
@@ -1325,27 +1343,29 @@ function LoadModel(model)
 end
 
 function ChampagneEffect()
-	local playerPed = GetPlayerPed(-1)
-  
-	RequestAnimSet("move_m@drunk@moderatedrunk") 
-	while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
-	Citizen.Wait(0)
-	end    	
-	
-	SetTimecycleModifier("spectator5")
-	SetPedMotionBlur(playerPed, true)
-	SetPedMovementClipset(playerPed, "move_m@drunk@moderatedrunk", true)
-	SetPedIsDrunk(playerPed, true)
-
-	--Efects
-	local player = PlayerId()
-	SetRunSprintMultiplierForPlayer(player, 1.2)
-	SetSwimMultiplierForPlayer(player, 1.3)
-
-	Wait(520000)
-
-	SetRunSprintMultiplierForPlayer(player, 1.0)
-	SetSwimMultiplierForPlayer(player, 1.0)
+	local Player = PlayerPedId()
+	RequestAnimSet("move_m@drunk@moderatedrunk")
+    while not HasAnimSetLoaded("move_m@drunk@moderatedrunk") do
+        Citizen.Wait(0)
+    end
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    ClearPedTasksImmediately(GetPlayerPed(-1))
+    SetTimecycleModifier("spectator5")
+	SetPedToRagdollWithFall(Player, 2500, 3000, 1, GetEntityForwardVector(Player), 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0)
+    SetPedMotionBlur(GetPlayerPed(-1), true)
+    SetPedMovementClipset(GetPlayerPed(-1), "move_m@drunk@moderatedrunk", true)
+    SetPedIsDrunk(GetPlayerPed(-1), true)
+    DoScreenFadeIn(1000)
+    Citizen.Wait(120000)
+    DoScreenFadeOut(1000)
+    Citizen.Wait(1000)
+    DoScreenFadeIn(1000)
+    ClearTimecycleModifier()
+    ResetScenarioTypesEnabled()
+    ResetPedMovementClipset(GetPlayerPed(-1), 0)
+    SetPedIsDrunk(GetPlayerPed(-1), false)
+    SetPedMotionBlur(GetPlayerPed(-1), false)
 end
 
 function SpawnPugs()
