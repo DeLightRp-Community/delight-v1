@@ -3,19 +3,22 @@ Config = {}
 Config.VendingObjects = {
     "prop_vend_soda_01",
     "prop_vend_soda_02",
-    "prop_vend_water_01"
+    "prop_vend_water_01",
+    "prop_vend_snak_01"
 }
 
 Config.BinObjects = {
     "prop_bin_05a",
 }
 
+
+
 Config.CraftingObject = `prop_toolchest_05` -- Only needed if not using target | Line 928 to change Target Models
 
 Config.VendingItem = {
     [1] = {
         name = "kurkakola",
-        price = 4,
+        price = 50,
         amount = 50,
         info = {},
         type = "item",
@@ -23,11 +26,27 @@ Config.VendingItem = {
     },
     [2] = {
         name = "water_bottle",
-        price = 4,
+        price = 40,
         amount = 50,
         info = {},
         type = "item",
         slot = 2,
+    },
+    [3] = {
+        name = "twerks_candy",
+        price = 40,
+        amount = 40,
+        info = {},
+        type = "item",
+        slot = 3,
+    },
+    [4] = {
+        name = "snikkel_candy",
+        price = 40,
+        amount = 40,
+        info = {},
+        type = "item",
+        slot = 4,
     },
 }
 
@@ -323,7 +342,7 @@ Config.AttachmentCrafting = {
     }
 }
 
-MaxInventorySlots = 40
+MaxInventorySlots = 41
 
 BackEngineVehicles = {
     [`ninef`] = true,

@@ -161,4 +161,5 @@ QBShared.Weapons = {
 	[`weapon_roses`] 			= {['name'] = 'weapon_roses', 			['label'] = 'Roses', 				['ammotype'] = nil,				['damagereason'] = 'Melee killed / Whacked / Executed / Beat down / Murdered / Battered'},
 	[`weapon_stampedrifle`] 	= {['name'] = 'weapon_stampedrifle', 	['label'] = 'Stamped Rifle', 		['ammotype'] = 'AMMO_RIFLE',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
 	[`weapon_tacticalcarbine`] 	= {['name'] = 'weapon_tacticalcarbine', ['label'] = 'Tactical Carbine', 	['ammotype'] = 'AMMO_RIFLE',	['damagereason'] = 'Ended / Rifled / Shot down / Floored'},
+	[`weapon_katanas`] 			= {['name'] = 'weapon_katanas', 		['label'] = 'Katanas', 				['ammotype'] = nil,				['damagereason'] = 'Knifed / Stabbed / Eviscerated'},
 }

@@ -472,7 +472,7 @@ Config.JobInteractions = {
             title = 'Emergency button',
             icon = 'bell',
             type = 'client',
-            event = 'police:client:SendPoliceEmergencyAlert',
+            event = 'ps-dispatch:client:officerdown',
             shouldClose = true
         }, {
             id = 'checkvehstatus',

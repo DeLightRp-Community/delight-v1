@@ -115,5 +115,27 @@ QBShared.Gangs = {
 				isboss = true
             },
         },
+	},
+    ['mof'] = {
+		label = 'Mother Of Gangs',
+		grades = {
+            ['0'] = {
+                name = 'Recruit'
+            },
+			['1'] = {
+                name = 'Enforcer'
+            },
+			['2'] = {
+                name = 'Shot Caller'
+            },
+			['3'] = {
+                name = 'Boss',
+				isboss = true
+            },
+            ['4'] = {
+                name = 'God Father',
+				isboss = true
+            },
+        },
 	}
 }

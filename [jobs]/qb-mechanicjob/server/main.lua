@@ -5,6 +5,22 @@ local VehicleDrivingDistance = {}
 
 -- Functions
 
+local function hasCraftItems(source, CostItems, amount)
+	local Player = QBCore.Functions.GetPlayer(source)
+    print(json.encode(CostItems))
+	for k, v in pairs(CostItems) do
+		if Player.Functions.GetItemByName(k) ~= nil then
+			if Player.Functions.GetItemByName(k).amount < (v * amount) then
+				return false
+			end
+		else
+			return false
+		end
+	end
+	return true
+end
+
+
 function IsVehicleOwned(plate)
     local result = MySQL.Sync.fetchScalar('SELECT 1 from player_vehicles WHERE plate = ?', {plate})
     if result then

@@ -1,7 +1,7 @@
 
 
-exports['qb-target']:AddBoxZone("uwu-servico", vector3(-593.99, -1052.34, 22.34), 1, 1.2, {
-    name = "uwu-servico",
+exports['qb-target']:AddBoxZone("Check in", vector3(-593.99, -1052.34, 22.34), 1, 1.2, {
+    name = "Check in",
     heading = 91,
     debugpoly = false,
     minZ=21.0,
@@ -18,7 +18,7 @@ exports['qb-target']:AddBoxZone("uwu-servico", vector3(-593.99, -1052.34, 22.34)
     distance = 1.5
 })
 
-exports['qb-target']:AddBoxZone("uwu-balcao", vector3(-587.59, -1059.67, 22.5), 1.6, 3.6, {
+exports['qb-target']:AddBoxZone("kitchen-counter", vector3(-587.59, -1059.67, 22.5), 1.6, 3.6, {
     name="uwu-balcao",
     heading=89,
     debugpoly = false,
@@ -33,7 +33,7 @@ exports['qb-target']:AddBoxZone("uwu-balcao", vector3(-587.59, -1059.67, 22.5), 
     distance = 3.5
 })
 
-exports['qb-target']:AddBoxZone("uwu-tabuleiro1", vector3(-584.1, -1062.1, 22.6), 0.5, 0.7, {
+exports['qb-target']:AddBoxZone("reseptionCounter", vector3(-584.1, -1062.1, 22.6), 0.5, 0.7, {
     name = "uwu-tabuleiro1",
     heading = 87.8,
     debugpoly = false,
@@ -76,7 +76,7 @@ exports['qb-target']:AddBoxZone("uwu-frigorifico", vector3(-591.05, -1058.69, 22
                 job = "uwu",
             },
             {
-                event = "mt-UwUCafe:client:FrigorificoIngredientes",
+                event = "mt-UwUCafe:client:FrigorificoIngredients",
                 icon = "fas fa-laptop",
                 label = "Ingridents Fridge",
                 job = "uwu",

@@ -44,7 +44,7 @@ Config.BossMenus = {
         vector3(-588.03, -205.63, 38.23),
     },
     ['digitalden'] = {
-        vector3(1135.2, -468.97, 66.49),
+        vector3(1129.38, -471.48, 66.72),
     }
 }
 
@@ -89,7 +89,7 @@ Config.BossMenuZones = {
         { coords = vector3(-588.03, -205.63, 38.23), length = 1, width = 1, heading = 65, minZ = 26.36, maxZ = 30.36 },
     },
     ['digitalden'] = {
-        { coords = vector3(1135.2, -468.97, 66.49), length = 0.5, width = 0.5, heading = 0, minZ = 62.89, maxZ = 66.89 },
+        { coords = vector3(1129.38, -471.48, 66.72), length = 1.0, width = 1.0, heading = 0, minZ = 62.89, maxZ = 66.89 },
     },
 }
 
@@ -107,6 +107,9 @@ Config.GangMenus = {
         vector3(0, 0, 0),
     },
     ['families'] = {
+        vector3(0, 0, 0),
+    },
+    ['mof'] = {
         vector3(0, 0, 0),
     },
 }

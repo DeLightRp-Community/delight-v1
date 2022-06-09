@@ -410,13 +410,13 @@ function getPlayerJobOutfits(clothingRoom)
     local gradeLevel = clothingRoom.isGang and PlayerGang.grade.level or PlayerJob.grade.level
     local jobName = clothingRoom.isGang and PlayerGang.name or PlayerJob.name
 
-    for i = 1, #Config.Outfits[jobName][gender], 1 do
-        for _, v in pairs(Config.Outfits[jobName][gender][i].grades) do
-            if v == gradeLevel then
-                outfits[#outfits+1] = Config.Outfits[jobName][gender][i]
-            end
-        end
-    end
+    -- for i = 1, #Config.Outfits[jobName][gender], 1 do
+    --     for _, v in pairs(Config.Outfits[jobName][gender][i].grades) do
+    --         if v == gradeLevel then
+    --             outfits[#outfits+1] = Config.Outfits[jobName][gender][i]
+    --         end
+    --     end
+    -- end
 
     return outfits
 end

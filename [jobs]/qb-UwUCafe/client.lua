@@ -590,8 +590,8 @@ end)
 RegisterNetEvent('mt-UwUCafe:client:FrigorificoIngredients', function() -- Frigorifico para Ingredients
     TriggerEvent("inventory:client:SetCurrentStash", "FrigorificoUwU2")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "frigorificouwu2", {
-        maxweight = 500000,
-        slots = 40,
+        maxweight = 1000000,
+        slots = 50,
     })
 end)
 

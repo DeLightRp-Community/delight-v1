@@ -1221,24 +1221,24 @@ function optionSwitch(
     $toInv.find("[data-slot=" + $toSlot + "]").removeClass("item-nodrag");
 
     if ($toSlot < 6) {
-        $toInv
-            .find("[data-slot=" + $toSlot + "]")
-            .html(
-                '<div class="item-slot-key"><p>' +
-                $toSlot +
-                '</p></div><div class="item-slot-img"><img src="images/' +
-                fromData.image +
-                '" alt="' +
-                fromData.name +
-                '" /></div><div class="item-slot-amount"><p>' +
-                fromData.amount +
-                '</div><div class="item-slot-name"><p>' +
-                " " +
-                ((fromData.weight * fromData.amount) / 1000).toFixed(1) +
-                '</p></div><div class="item-slot-label"><p>' +
-                fromData.label +
-                "</p></div>"
-            );
+        // $toInv
+        //     .find("[data-slot=" + $toSlot + "]")
+        //     .html(
+        //         '<div class="item-slot-key"><p>' +
+        //         $toSlot +
+        //         '</p></div><div class="item-slot-img"><img src="images/' +
+        //         fromData.image +
+        //         '" alt="' +
+        //         fromData.name +
+        //         '" /></div><div class="item-slot-amount"><p>' +
+        //         fromData.amount +
+        //         '</div><div class="item-slot-name"><p>' +
+        //         " " +
+        //         ((fromData.weight * fromData.amount) / 1000).toFixed(1) +
+        //         '</p></div><div class="item-slot-label"><p>' +
+        //         fromData.label +
+        //         "</p></div>"
+        //     );
     } else {
         $toInv
             .find("[data-slot=" + $toSlot + "]")
@@ -1266,24 +1266,24 @@ function optionSwitch(
     $fromInv.find("[data-slot=" + $fromSlot + "]").data("item", toData);
 
     if ($fromSlot < 6) {
-        $fromInv
-            .find("[data-slot=" + $fromSlot + "]")
-            .html(
-                '<div class="item-slot-key"><p>' +
-                $fromSlot +
-                '</p></div><div class="item-slot-img"><img src="images/' +
-                toData.image +
-                '" alt="' +
-                toData.name +
-                '" /></div><div class="item-slot-amount"><p>' +
-                toData.amount +
-                '</div><div class="item-slot-name"><p>' +
-                " " +
-                ((toData.weight * toData.amount) / 1000).toFixed(1) +
-                '</p></div><div class="item-slot-label"><p>' +
-                toData.label +
-                "</p></div>"
-            );
+        // $fromInv
+        //     .find("[data-slot=" + $fromSlot + "]")
+        //     .html(
+        //         '<div class="item-slot-key"><p>' +
+        //         $fromSlot +
+        //         '</p></div><div class="item-slot-img"><img src="images/' +
+        //         toData.image +
+        //         '" alt="' +
+        //         toData.name +
+        //         '" /></div><div class="item-slot-amount"><p>' +
+        //         toData.amount +
+        //         '</div><div class="item-slot-name"><p>' +
+        //         " " +
+        //         ((toData.weight * toData.amount) / 1000).toFixed(1) +
+        //         '</p></div><div class="item-slot-label"><p>' +
+        //         toData.label +
+        //         "</p></div>"
+        //     );
     } else {
         $fromInv
             .find("[data-slot=" + $fromSlot + "]")

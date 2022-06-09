@@ -466,7 +466,7 @@ local function OfficerDown()
     })
 end exports('OfficerDown', OfficerDown)
 
-RegisterNetEvent("qb-dispatch:client:officerdown", function()
+RegisterNetEvent("ps-dispatch:client:officerdown", function()
     OfficerDown()
 end)    
 

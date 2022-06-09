@@ -250,6 +250,7 @@ QBShared.Items = {
 	['weapon_roses'] 			 = {['name'] = 'weapon_roses', 		 		['label'] = 'Roses', 	        		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_roses.png', 		  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
 	['weapon_stampedrifle']		 = {['name'] = 'weapon_stampedrifle', 		['label'] = 'StampedRifle',		    	['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'weapon_stampedrifle.png', 	  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
 	['weapon_tacticalcarbine']	 = {['name'] = 'weapon_tacticalcarbine', 	['label'] = 'TacticalCarbine',		    ['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_RIFLE',			['image'] = 'weapon_tacticalcarbine.png', ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
+	['weapon_katanas'] 			 = {['name'] = 'weapon_katanas', 		 	['label'] = 'Katanas', 	        		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_katanas.png', 		  ['unique'] = true, 		['useable'] = true, 	['description'] = ''},
 	
 	-- ITEMS
 

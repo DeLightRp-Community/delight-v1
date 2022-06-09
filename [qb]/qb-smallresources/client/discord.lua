@@ -2,11 +2,13 @@
 
 
 -- To Set This Up visit https://forum.cfx.re/t/how-to-updated-discord-rich-presence-custom-image/157686
+local prefApp = GetConvar('prefAppId', 950512623663874048) -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
+-- 950512623663874048
 
 CreateThread(function()
     while true do
         -- This is the Application ID (Replace this with you own)
-	SetDiscordAppId(950512623663874048)
+	SetDiscordAppId(prefApp)
 
         -- Here you will have to put the image name for the "large" icon.
 	SetDiscordRichPresenceAsset('big')
