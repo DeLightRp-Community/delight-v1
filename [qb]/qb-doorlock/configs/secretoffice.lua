@@ -11,7 +11,7 @@ Config.DoorList['secretoffice-garage'] = {
     objName = 531616259,
     locked = true,
     hideLabel = true,
-    items = { ['trojan_usb'] = 1 },
+    authorizedGangs = { ['mof'] = 0 }, -- Gang access (checks for a minimum grade of 0)
     doorRate = 1.0,
 }
 
@@ -22,7 +22,7 @@ Config.DoorList['secretoffice-doubledoor'] = {
         {objName = 2059796542, objYaw = 239.0, objCoords = vec3(563.549012, -2792.628418, 6.437998)},
         {objName = -1854394974, objYaw = 239.0, objCoords = vec3(562.660828, -2794.104736, 6.440020)}
     },
-    items = { ['trojan_usb'] = 1 },
+    authorizedGangs = { ['mof'] = 0 }, -- Gang access (checks for a minimum grade of 0)
     locked = true,
     doorType = 'double',
     doorLabel = 'double door',
@@ -33,7 +33,7 @@ Config.DoorList['secretoffice-doubledoor'] = {
 -- singledoor created by Mosayeb
 Config.DoorList['secretoffice-singledoor'] = {
     doorLabel = 'singledoor',
-    items = { ['trojan_usb'] = 1 },
+    authorizedGangs = { ['mof'] = 0 }, -- Gang access (checks for a minimum grade of 0)
     locked = true,
     doorRate = 1.0,
     hideLabel = true,
@@ -48,7 +48,7 @@ Config.DoorList['secretoffice-singledoor'] = {
 -- guninventory created by Mosayeb
 Config.DoorList['secretoffice-guninventory'] = {
     doorLabel = 'guninventory',
-    items = { ['trojan_usb'] = 1 },
+    authorizedGangs = { ['mof'] = 0 }, -- Gang access (checks for a minimum grade of 0)
     locked = true,
     doorRate = 1.0,
     hideLabel = true,

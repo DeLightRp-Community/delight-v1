@@ -109,6 +109,9 @@ Config.GangMenus = {
     ['families'] = {
         vector3(0, 0, 0),
     },
+    ['mof'] = {
+        vector3(0, 0, 0),
+    },
 }
 
 Config.GangMenuZones = {
