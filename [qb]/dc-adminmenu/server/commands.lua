@@ -172,10 +172,10 @@ QBCore.Commands.Add('setmodel', Lang:t("commands.change_ped_model"), {{name='mod
 
     if model ~= nil or model ~= '' then
         if target == nil then
-            TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","setmodel  **" .. GetPlayerName(src) .. " ** use setmodel for " .. GetPlayerName(src))
+            -- TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","setmodel  **" .. GetPlayerName(src) .. " ** use setmodel for " .. GetPlayerName(src))
             TriggerClientEvent('qb-admin:client:SetModel', source, tostring(model))
         else
-            TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","setmodel  **" .. GetPlayerName(src) .. " ** use setmodel for " .. GetPlayerName(target))
+            -- TriggerEvent("qb-log:server:CreateLog", "adminlog", "Admin Log", "red","setmodel  **" .. GetPlayerName(src) .. " ** use setmodel for " .. GetPlayerName(target))
             local Trgt = QBCore.Functions.GetPlayer(target)
             if Trgt ~= nil then
                 TriggerClientEvent('qb-admin:client:SetModel', target, tostring(model))
