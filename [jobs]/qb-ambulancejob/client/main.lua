@@ -368,21 +368,21 @@ CreateThread(function()
                     type = "client", 
                     event = "hospital:client:openAmbulanceShop",
                 },
-                {
-                    icon = 'fa-solid fa-check',
-                    label = 'Eneble Check In',
-                    type = "server", 
-                    event = "hospital:server:enableCheckin",
-                    canInteract = function(entity)
-                        if IsPedAPlayer(entity) then return false end 
-                        if not isCheckinEnable then
-                            return true
-                        else
-                            return false
-                        end
-                    end,
-                    job = "ambulance"
-                },
+                -- {
+                --     icon = 'fa-solid fa-check',
+                --     label = 'Eneble Check In',
+                --     type = "server", 
+                --     event = "hospital:server:enableCheckin",
+                --     canInteract = function(entity)
+                --         if IsPedAPlayer(entity) then return false end 
+                --         if not isCheckinEnable then
+                --             return true
+                --         else
+                --             return false
+                --         end
+                --     end,
+                --     job = "ambulance"
+                -- },
                 {
                     icon = 'fa-solid fa-xmark',
                     label = 'Disable Check In',
@@ -769,7 +769,6 @@ end)
 
 RegisterNetEvent('hospital:client:SetDoctorCount', function(amount)
     doctorCount = amount
-    print(amount <= Config.MinimalDoctors)
     if amount <= Config.MinimalDoctors then
         isCheckinEnable = true
     else

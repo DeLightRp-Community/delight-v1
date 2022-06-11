@@ -110,14 +110,14 @@ Config.GangMenus = {
         vector3(0, 0, 0),
     },
     ['mof'] = {
-        vector3(0, 0, 0),
+        vector3(543.77, -2782.4, 6.1),
     },
 }
 
 Config.GangMenuZones = {
-    --[[
-    ['gangname'] = {
-        { coords = vector3(0.0, 0.0, 0.0), length = 0.0, width = 0.0, heading = 0.0, minZ = 0.0, maxZ = 0.0 },
+    
+    ['mof'] = {
+        { coords = vector3(543.77, -2782.4, 6.1), length = 1.0, width = 1.0, heading = 244.35, minZ = 5.1, maxZ =  7.1 },
     },
-    ]]
+
 }
