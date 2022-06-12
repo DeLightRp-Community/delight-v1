@@ -163,6 +163,8 @@ RegisterNetEvent('qb-police:server:requestId', function(item, id)
         info.firstname = Player.PlayerData.charinfo.firstname
         info.lastname = Player.PlayerData.charinfo.lastname
         info.birthdate = Player.PlayerData.charinfo.birthdate
+        if not Player.Functions.AddItem(item, 1, nil, info) then return end
+        TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items[item], 'add')
     end
     if not item == "huntlicense" then
         if not Player.Functions.AddItem(item, 1, nil, info) then return end

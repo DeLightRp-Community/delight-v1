@@ -752,7 +752,7 @@ QBCore.Functions.CreateCallback('qb-phone:server:GetCurrentLawyers', function(so
         if Player ~= nil then
             if (Player.PlayerData.job.name == "lawyer" or Player.PlayerData.job.name == "realestate" or
                 Player.PlayerData.job.name == "mechanic" or Player.PlayerData.job.name == "taxi" or
-                Player.PlayerData.job.name == "pawnshop" or Player.PlayerData.job.name == "ambulance") and
+                Player.PlayerData.job.name == "pawnshop" or Player.PlayerData.job.name == "ambulance" or Player.PlayerData.job.name == "burgershot" or Player.PlayerData.job.name == "cardealer") and
                 Player.PlayerData.job.onduty then
                 Lawyers[#Lawyers+1] = {
                     name = Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname,
@@ -1389,10 +1389,20 @@ end)
 
 
 QBCore.Commands.Add("p#", "Provide Phone Number", {}, false, function(source, args)
-	-- local message = table.concat(args, " ")
     local Player = QBCore.Functions.GetPlayer(source)
     local number = Player.PlayerData.charinfo.phone
-	TriggerClientEvent("qb-phone:client-annphonenumber", -1, source, GetPlayerName(source), number)
+    local PlayerPed = GetPlayerPed(source)
+    local PlayerCoords = GetEntityCoords(PlayerPed)
+    for k, v in pairs(QBCore.Functions.GetPlayers()) do
+        local TargetPed = GetPlayerPed(v)
+        local dist = #(PlayerCoords - GetEntityCoords(TargetPed))
+        if dist < 3.0 then
+            TriggerClientEvent('chat:addMessage', v,  {
+                template = '<div class="chat-message" style="background-color: rgba(234, 135, 23, 0.50);">Number : <b>{0}</b></div>',
+                args = {number}
+            })
+        end
+    end
 end)
 
 local CasinoTable = {}

@@ -64,6 +64,7 @@ $('.cityhall-option-block').click(function(e){
     if (blockPage == "identity") {
         $(".identity-page-blocks").html("");
         $.post('https://qb-cityhall/requestLicenses', JSON.stringify({}), function(licenses){
+            // console.log(licenses)
             $.each(licenses, (i, license) => {
                 let elem = `<div class="identity-page-block" data-type="${i}" data-cost="${license.cost}"><p>${license.label}</p></div>`;
                 $(".identity-page-blocks").append(elem);

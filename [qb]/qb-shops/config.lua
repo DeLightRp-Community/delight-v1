@@ -401,7 +401,7 @@ Config.Products = {
         },
         [4] = {
             name = "weapon_pistol",
-            price = 6000,
+            price = 10000,
             amount = 5,
             info = {},
             type = "item",
@@ -410,7 +410,7 @@ Config.Products = {
         },
         [5] = {
             name = "weapon_snspistol",
-            price = 7000,
+            price = 16000,
             amount = 5,
             info = {},
             type = "item",
@@ -419,7 +419,7 @@ Config.Products = {
         },
         [6] = {
             name = "weapon_vintagepistol",
-            price = 8000,
+            price = 20000,
             amount = 5,
             info = {},
             type = "item",

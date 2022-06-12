@@ -108,13 +108,7 @@ end
 
 local function displayNUIText(text)
 	local color = Config.ChangeColor and (closestDoor.data.locked and Config.LockedColor or Config.UnlockedColor) or Config.DefaultColor
-	SendNUIMessage({
-		type = "setDoorText",
-		enable = true,
-		text = text,
-		color = color
-	})
-	Wait(1)
+	exports['qb-core']:DrawText(text, 'left', color)
 end
 
 local function HandleDoorDebug()
@@ -131,11 +125,7 @@ local function HandleDoorDebug()
 end
 
 local function hideNUI()
-	SendNUIMessage({
-		type = "setDoorText",
-		enable = false
-	})
-	Wait(1)
+	exports['qb-core']:HideText("DoorLock")
 end
 
 local function playSound(door, src, enableSounds)
@@ -918,9 +908,13 @@ CreateThread(function()
 								end
 							end
 
-							if displayText ~= "" then displayNUIText(displayText) end
+							if displayText ~= "" then
+								exports['qb-core']:DrawText(displayText, 'left')
+								 displayNUIText(displayText) 
+								end
 						else
 							hideNUI()
+							-- exports['qb-core']:HideText("qb-doorlock")
 							break
 						end
 					end

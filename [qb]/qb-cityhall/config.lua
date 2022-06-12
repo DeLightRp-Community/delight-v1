@@ -4,7 +4,7 @@ Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target in
 
 Config.Cityhalls = {
     { -- Cityhall 1
-        coords = vec3(-550.41, -192.99, 38.22),
+        coords = vec3(-552.5, -202.98, 38.24),
         showBlip = true,
         blipData = {
             sprite = 487,
@@ -14,20 +14,21 @@ Config.Cityhalls = {
             title = "City Services"
         },
         licenses = {
+            ["weaponlicense"] = {
+                label = "Weapon License",
+                cost = 20000,
+                metadata = "weapon"
+            },
             ["id_card"] = {
                 label = "ID Card",
-                cost = 50,
+                cost = 500,
             },
             ["driver_license"] = {
                 label = "Driver License",
-                cost = 50,
+                cost = 500,
                 metadata = "driver"
             },
-            -- ["weaponlicense"] = {
-            --     label = "Weapon License",
-            --     cost = 50,
-            --     metadata = "weapon"
-            -- },
+            
         }
     },
 }
@@ -55,7 +56,7 @@ Config.Peds = {
     -- Cityhall Ped
     {
         model = 'cs_fbisuit_01',
-        coords = vec4(-552.5, -202.98, 38.24, 326.45),
+        coords = vec4(-552.5, -202.98, 37.24, 326.45),
         scenario = 'WORLD_HUMAN_STAND_MOBILE',
         cityhall = true,
         zoneOptions = { -- Used for when UseTarget is false
@@ -67,7 +68,7 @@ Config.Peds = {
     -- Driving School Ped
     {
         model = 'a_m_m_eastsa_02',
-        coords = vec4(240.91, -1379.2, 32.74, 138.96),
+        coords = vec4(240.91, -1379.2, 3.74, 138.96),
         scenario = 'WORLD_HUMAN_STAND_MOBILE',
         drivingschool = true,
         zoneOptions = { -- Used for when UseTarget is false

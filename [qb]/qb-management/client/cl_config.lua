@@ -41,12 +41,13 @@ Config.BossMenus = {
         vector3(167.5, -1314.45, 29.36),
     },
     ['judge'] = {
-        vector3(-588.03, -205.63, 38.23),
+        vector3(-586.82, -204.98, 38.23),
     },
     ['digitalden'] = {
         vector3(1129.38, -471.48, 66.72),
     }
 }
+
 
 Config.BossMenuZones = {
     ['police'] = {
@@ -86,7 +87,7 @@ Config.BossMenuZones = {
         { coords = vector3(167.5, -1314.45, 29.36), length = 1, width = 1, heading = 65, minZ = 26.36, maxZ = 30.36 },
     },
     ['judge'] = {
-        { coords = vector3(-588.03, -205.63, 38.23), length = 1, width = 1, heading = 65, minZ = 26.36, maxZ = 30.36 },
+        { coords = vector3(-586.82, -204.98, 38.23), length = 1, width = 1, heading = 65, minZ = 37.36, maxZ = 39.36 },
     },
     ['digitalden'] = {
         { coords = vector3(1129.38, -471.48, 66.72), length = 1.0, width = 1.0, heading = 0, minZ = 62.89, maxZ = 66.89 },

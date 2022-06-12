@@ -39,11 +39,10 @@ Config.Shops = {
             ['muscle'] = 'Muscle',
             ['compacts'] = 'Compacts',
             ['vans'] = 'Vans',
-            ['cycles'] = 'Bicycles',
             ['super'] = 'Super',
             ['sports'] = 'Sports'
         },
-        ['TestDriveTimeLimit'] = 1.0, -- Time in minutes until the vehicle gets deleted
+        ['TestDriveTimeLimit'] = 3.0, -- Time in minutes until the vehicle gets deleted
         ['Location'] = vector3(-45.67, -1098.34, 26.42), -- Blip Location
         ['ReturnLocation'] = vector3(-44.74, -1082.58, 26.68), -- Location to return vehicle, only enables if the vehicleshop has a job owned
         ['VehicleSpawn'] = vector4(-56.79, -1109.85, 26.43, 71.5), -- Spawn location when vehicle is bought
@@ -241,9 +240,10 @@ Config.Shops = {
         ['blipSprite'] = 226,  -- Blip sprite
         ['blipColor'] = 4,  -- Blip color
         ['Categories'] = { -- Categories available to browse
-            ['motorcycles'] = 'Motorcycles'
+            ['motorcycles'] = 'Motorcycles',
+            ['cycles'] = 'Bicycles',
         },
-        ['TestDriveTimeLimit'] = 0.5, -- Time in minutes until the vehicle gets deleted
+        ['TestDriveTimeLimit'] = 3.0, -- Time in minutes until the vehicle gets deleted
         ['Location'] = vector3(289.77, -1159.8, 29.47), -- Blip Location
         ['ReturnLocation'] = vector3(286.75, -1146.94, 29.29), -- Location to return vehicle, only enables if the vehicleshop has a job owned
         ['VehicleSpawn'] = vector4(273.9, -1160.95, 29.27, 53.16), -- Spawn location when vehicle is bought
