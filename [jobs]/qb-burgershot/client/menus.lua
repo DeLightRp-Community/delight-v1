@@ -22,6 +22,7 @@ exports['qb-target']:AddBoxZone("BurgerShotDuty", vector3(-1187.97, -904.91, 13.
     distance = 1.5
 })
 
+
     exports['qb-target']:AddBoxZone("burger_tray_1", vector3(-1195.29, -892.31, 14.0), 1.05, 1.0, {
         name = "burger_tray_1",
         heading = 35.0,

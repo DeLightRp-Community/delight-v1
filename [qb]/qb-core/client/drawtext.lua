@@ -9,14 +9,16 @@ local function hideText(where)
     
 end
 
-local function drawText(text, position)
+local function drawText(text, position,color)
     if not type(position) == "string" then position = "left" end
+    if not type(color) == "string" then color = "left" end
 
     SendNUIMessage({
         action = 'DRAW_TEXT',
         data = {
             text = text,
-            position = position
+            position = position,
+            color = color
         }
     })
 end

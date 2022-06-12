@@ -1178,6 +1178,16 @@ end)
 
 
 exports['qb-target']:AddBoxZone("mechcraft", vector3(-36.41, -1070.88, 28.4), 3.4, 1, { name="mechcraft", heading=70, minZ=26.0,maxZ=30.0 }, 
-{ options = { {  event = "qb-mechanicjob:client:openCraftMenu", icon = "fas fa-credit-card", label = "Craft Items", job = "mechanic"  }, },
-  distance = 1.0
+{   
+    options = { 
+        {  
+            event = "qb-mechanicjob:client:openCraftMenu",
+            icon = "fas fa-credit-card",
+            label = "Craft Items", 
+            job = {
+                ["mechanic"] = 4,
+            }
+        },
+    },
+    distance = 1.0
 })

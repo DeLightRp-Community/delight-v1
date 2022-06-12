@@ -74,3 +74,35 @@
     left: -100px;
     opacity: 0;
 }
+
+.primary {
+    background-color: #0B5ED7 !important;
+}
+
+.secondary {
+    background-color: #5C636A !important;
+}
+
+.sucess{
+    background-color: #157347 !important;
+}
+
+.danger {
+    background-color: #BB2D3B !important;
+}
+
+.warning {
+    background-color: #FFCA2C !important;
+}
+
+.info {
+    background-color: #31D2F2 !important;
+}
+
+.dark {
+    background-color: #1C1F23 !important;
+}
+
+.light { 
+    background-color: #F9FAFB !important;
+}

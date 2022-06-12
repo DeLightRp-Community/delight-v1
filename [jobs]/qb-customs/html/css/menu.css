@@ -32,7 +32,7 @@
     font-size: 18pt;
     font-weight: 400;
     color: rgb(236, 240, 241);
-    background-color: #dc143c;
+    background-color: #7b43ff;
     border-radius: .6vh;
     margin: 1vh;
     padding: .5vh .5vh .5vh .5vh;
@@ -124,5 +124,5 @@
     margin-top: 1vh;
     border-bottom-left-radius: 1vh;
     border-bottom-right-radius: 1vh;
-    background-color: #dc143c;
+    background-color: #7b43ff;
 }

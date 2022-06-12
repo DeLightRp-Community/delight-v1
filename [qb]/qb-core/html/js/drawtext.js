@@ -1,8 +1,19 @@
 let direction = null;
+let color = null;
 
 const drawText = async (textData) => {
     const text = document.getElementById("text");
-    let {position} = textData;
+    let {position, color} = textData;
+    removeClass(text, "primary");
+    removeClass(text, "secondary");
+    removeClass(text, "sucess");
+    removeClass(text, "danger");
+    removeClass(text, "warning");
+    removeClass(text, "info");
+    removeClass(text, "light");
+    removeClass(text, "dark");
+    addClass(text, color);
+    color = color
     switch (textData.position) {
         case "left":
             addClass(text, position);

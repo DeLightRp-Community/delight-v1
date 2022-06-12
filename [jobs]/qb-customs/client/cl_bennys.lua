@@ -770,7 +770,7 @@ function EnterLocation(override)
         radialMenuItemId = nil
     end
 
-    exports['qb-core']:HideText()
+    exports['qb-core']:HideText("benny")
 
     local plyPed = PlayerPedId()
     local plyVeh = GetVehiclePedIsIn(plyPed, false)
@@ -939,13 +939,14 @@ CreateThread(function()
             local _name = location.."-customs-"..i
             local newSpot = BoxZone:Create(spot.coords, spot.length, spot.width, {
                 name = _name,
-                -- debugPoly = true,
+                debugPoly = false,
                 heading = spot.heading,
                 minZ = spot.minZ,
                 maxZ = spot.maxZ,
             })
 
             newSpot:onPlayerInOut(function(isPointInside, _)
+                print(isPointInside)
                 if isPointInside then
                     CustomsData = {
                         ['location'] = location,
@@ -957,13 +958,14 @@ CreateThread(function()
                     SetupInteraction()
                     CheckForGhostVehicle()
                 elseif CustomsData['location'] == location and CustomsData['spot'] == _name then
+                    exports['qb-core']:HideText("benny")
                     CustomsData = {}
                     if Config.UseRadial then
                         exports['qb-radialmenu']:RemoveOption(radialMenuItemId)
                         radialMenuItemId = nil
                     end
 
-                    exports['qb-core']:HideText()
+                    
                 end
             end)
         end
