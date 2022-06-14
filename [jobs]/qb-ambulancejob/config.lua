@@ -11,8 +11,8 @@ Config.Locations = {
 	    [2] = vector4(-256.67, 6331.46, 32.43, 309.72), -- paleto
     },
     ["duty"] = {
-        [1] = vector3(311.91, -593.44, 44.09),
-        [2] = vector3(-267.19, 6320.68, 33.24),
+        -- [1] = vector3(311.91, -593.44, 44.09),
+        -- [2] = vector3(-267.19, 6320.68, 33.24),
     },
     ["vehicle"] = {
         [1] = vector4(1, 1, 1, 1),
@@ -113,16 +113,16 @@ Config.Items = {
     slots = 15,
     items = {
         [1] = {
-            name = "radio",
+            name = "bandage",
             price = 0,
-            amount = 50,
+            amount = 20,
             info = {},
             type = "item",
             slot = 1,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
         },
         [2] = {
-            name = "bandage",
+            name = "radio",
             price = 0,
             amount = 50,
             info = {},

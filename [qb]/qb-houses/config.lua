@@ -574,7 +574,11 @@ Config.Furniture = {
 			[55] = { ["object"] = "apa_mp_h_str_sideboardl_14", ["price"] = 750, ["label"] = "cabinet modern 5" },
 			[56] = { ["object"] = "apa_mp_h_str_sideboardm_02", ["price"] = 750, ["label"] = "cabinet modern 6" },
 			[57] = { ["object"] = "bkr_prop_biker_garage_locker_01", ["price"] = 750, ["label"] = "Biker Locker" },
-			[58] = { ["object"] = "gr_prop_gr_bench_04b", ["price"] = 750, ["label"] = "Biker Bench" }
+			[58] = { ["object"] = "gr_prop_gr_bench_04b", ["price"] = 750, ["label"] = "Biker Bench" },
+			-- [59] = { ["object"] = "prop_tool_bench02", ["price"] = 50000, ["label"] = "Crafting Bench Level 1" },
+			-- [60] = { ["object"] = "gr_prop_gr_bench_04b", ["price"] = 50000, ["label"] = "Crafting Bench Level 2" },
+			-- [61] = { ["object"] = "imp_prop_impexp_mechbench", ["price"] = 50000, ["label"] = "Crafting Bench Level 3" },
+			-- [62] = { ["object"] = "gr_prop_gr_bench_01b", ["price"] = 50000, ["label"] = "Crafting Bench Level 4" },
 		},
 	},
 	["electronics"] = {

@@ -2,7 +2,7 @@ Config = {}
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true' -- Use qb-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
 
 Config.SellCasinoChips = {
-    coords = vector4(950.37, 34.72, 71.87, 33.82),
+    coords = vector4(990.1, 30.35, 71.47, 81.2),
     radius = 1.5,
     ped = 's_m_y_casino_01'
 }
@@ -704,6 +704,20 @@ Config.Locations = {
         ["blipcolor"] = 0
     },
 
+    ["247supermarket10"] = {
+        ["label"] = "24/7 Supermarket",
+        ["coords"] = vector4(812.75, -782.05, 26.17, 269.17),
+        ["ped"] = 'mp_m_shopkeep_01',
+        ["scenario"] = "WORLD_HUMAN_STAND_MOBILE",
+        ["radius"] = 1.5,
+        ["targetIcon"] = "fas fa-shopping-basket",
+        ["targetLabel"] = "Open Shop",
+        ["products"] = Config.Products["normal"],
+        ["showblip"] = true,
+        ["blipsprite"] = 52,
+        ["blipcolor"] = 0
+    },
+
     -- LTD Gasoline Locations
     ["ltdgasoline"] = {
         ["label"] = "LTD Gasoline",
@@ -1048,7 +1062,7 @@ Config.Locations = {
     -- Casino Locations
     ["casino"] = {
         ["label"] = "Diamond Casino",
-        ["coords"] = vector4(949.29, 32.13, 71.95, 79.54),
+        ["coords"] = vector4(990.77, 31.58, 71.47, 50.83),
         ["ped"] = 'csb_tomcasino',
         ["scenario"] = "WORLD_HUMAN_STAND_MOBILE",
         ["radius"] = 1.5,

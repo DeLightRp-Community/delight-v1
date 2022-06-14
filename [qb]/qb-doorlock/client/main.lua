@@ -293,7 +293,7 @@ function openDoorAnim()
 end
 
 local function lockpickFinish()
-	if exports['tnj-buffs']:HasBuff("hacking") then
+	if exports['ps-buffs']:HasBuff("hacking") then
 		exports["memorygame"]:thermiteminigame(1, 3, 3, 10,
     function() -- success
         QBCore.Functions.Notify(Lang:t("success.lockpick_success"), 'success', 2500)

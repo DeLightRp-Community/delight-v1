@@ -3255,6 +3255,13 @@ $(document).ready(() => {
         } else if (canRespond == false) {
           args = [
             {
+              className: "respond-call",
+              icon: "fas fa-reply",
+              text: "Respond to Call",
+              info: callId,
+              status: "",
+            },
+            {
               className: "attached-units",
               icon: "fas fa-link",
               text: "Attached Units",

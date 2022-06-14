@@ -347,7 +347,7 @@ local function CreateGarageZone(zone, garageName)
     zone:onPlayerInOut(function(isPointInside)
         if isPointInside and IsAuthorizedToAccessGarage(garageName) then
             CurrentGarage = garageName
-            exports['qb-core']:DrawText(Garages[CurrentGarage]['drawText'], DrawTextPosition)
+            exports['qb-core']:DrawText(Garages[CurrentGarage]['drawText'], DrawTextPosition, 'info')
         else
             CurrentGarage = nil
             if MenuItemId ~= nil then

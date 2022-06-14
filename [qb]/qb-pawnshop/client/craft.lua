@@ -75,7 +75,7 @@ RegisterNetEvent('qb-pawnshop:client:openCraftSub', function(data)
     		TriggerServerEvent("inventory:server:OpenInventory", "stash", "pawnshopcraft", {
         		maxweight = 100000,
         		slots = 1,
-   			})
+   		})
         else
             QBCore.Functions.Notify("Craft in progress please wait for around "..craftTimeout/1000 .." Second", "error")
 

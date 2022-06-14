@@ -1168,20 +1168,24 @@ RegisterNetEvent('mdt:server:refreshDispatchMsgs', function()
 	end
 end)
 
+local police = true
+
 RegisterNetEvent('mdt:server:getCallResponses', function(callid)
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
-	if IsPolice(Player.PlayerData.job.name) then
+	if police == true then
 		local calls = exports['ps-dispatch']:GetDispatchCalls()
 		TriggerClientEvent('mdt:client:getCallResponses', src, calls[callid]['responses'], callid)
 	end
 end)
 
+local police = true
+
 RegisterNetEvent('mdt:server:sendCallResponse', function(message, time, callid)
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
 	local name = Player.PlayerData.charinfo.firstname.. " "..Player.PlayerData.charinfo.lastname
-	if IsPolice(Player.PlayerData.job.name) then
+	if police == true then
 		TriggerEvent('dispatch:sendCallResponse', src, callid, message, time, function(isGood)
 			if isGood then
 				TriggerClientEvent('mdt:client:sendCallResponse', -1, message, time, callid, name)

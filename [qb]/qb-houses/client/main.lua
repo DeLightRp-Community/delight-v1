@@ -1561,3 +1561,80 @@ RegisterCommand('getoffset', function()
         print('Z: '..zdist)
     end
 end)
+
+RegisterNetEvent('qb-house:ToggleDuty', function()
+    onDuty = not onDuty
+    TriggerServerEvent("QBCore:ToggleDuty")
+end)
+
+
+CreateThread(function()
+    exports['qb-target']:AddBoxZone("realestate", vector3(-716.2, 261.19, 84.14), 0.5, 0.5, {
+        name="realestate",
+        heading=0,
+        --debugPoly=true,
+        minZ=80.94,
+        maxZ=84.94,
+    }, {
+        options = {
+            {
+                event = "qb-house:ToggleDuty",
+                icon = "far fa-clipboard",
+                label = "Toggle Duty",
+                job = "realestate",
+            },
+            {
+                event = "qb-bossmenu:client:OpenMenu",
+                icon = "fas fa-sign-in-alt",
+                label = "Boss Menu",
+                job = "realestate",
+            },
+        },
+        distance = 2.5
+    })
+    exports['qb-target']:AddBoxZone("stashsgdsgsdgs", vector3(-715.68, 266.97, 84.1), 2.4, 0.5, {
+        name="barbod",
+        heading=25,
+        --debugPoly=true,
+        minZ=81.3,
+        maxZ=85.3,
+    }, {
+        options = {
+            {
+                event = "qb-house:stash",
+                icon = "far fa-box",
+                label = "Stash",
+                job = "realestate",
+            },
+        },
+        distance = 2.5
+    })
+end)
+
+RegisterNetEvent('qb-house:stash', function()
+    TriggerEvent("inventory:client:SetCurrentStash", "housestash")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "housestash", {
+        maxweight = 2000000,
+        slots = 350,
+    })
+end)
+
+local blips = {
+
+    {title="RealeState", colour=11, id=40, x = -704.61, y = 269.98, z = 83.15},
+}
+
+Citizen.CreateThread(function()
+
+    for _, info in pairs(blips) do
+      info.blip = AddBlipForCoord(info.x, info.y, info.z)
+      SetBlipSprite(info.blip, info.id)
+      SetBlipDisplay(info.blip, 4)
+      SetBlipScale(info.blip, 0.8)
+      SetBlipColour(info.blip, info.colour)
+      SetBlipAsShortRange(info.blip, true)
+	  BeginTextCommandSetBlipName("STRING")
+      AddTextComponentString(info.title)
+      EndTextCommandSetBlipName(info.blip)
+    end
+end)
