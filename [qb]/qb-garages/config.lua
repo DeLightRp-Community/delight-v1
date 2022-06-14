@@ -141,6 +141,33 @@ Garages = {
             vector4(269.97, -322.62, 44.5, 248.07),
         }
     },
+    ['atousgarage'] = {
+        ['Zone'] = {
+            ['Shape'] = {
+                vector2(807.35607910156, -825.50067138672),
+                vector2(807.3558959961, -832.12878417968),
+                vector2(820.8471069336, -832.21411132812),
+                vector2(820.77911376954, -825.40588378906)
+            },
+            ['minZ'] = 26.18,  -- min height of the parking zone
+            ['maxZ'] = 26.24,  -- max height of the parking zone
+        },
+        label = 'Atous Garage',
+        showBlip = true,
+        blipcoords = vector3(341.7, -623.33, 29.29),
+        blipName = 'Public Parking',
+        blipNumber = 357,
+        type = 'public',
+        vehicleCategories = {'car', 'motorcycle', 'other'},
+        drawText = 'Parking',
+        debug = false,
+        ['ParkingSpots'] = {
+            vector4(818.97, -827.66, 26.27, 176.36),
+            vector4(815.84, -827.98, 26.19, 177.17),
+            vector4(812.49, -827.89, 26.19, 180.26),
+            vector4(809.34, -828.01, 26.19, 175.42),
+        }
+    },
     ['mirrorpark'] = {
         ['Zone'] = {
             ['Shape'] = {

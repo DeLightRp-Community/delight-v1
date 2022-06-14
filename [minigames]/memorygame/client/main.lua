@@ -37,7 +37,7 @@ exports('thermiteminigame', function(correctBlocks, incorrectBlocks, timetoShow,
     failCb = fail
     -- exports['exo-inventory']:ToggleHotBar(false) Toggle so that inventory doesnt work.. this was something I made on my own server.. 
     SetNuiFocus(true, true)
-    if exports['tnj-buffs']:HasBuff("intelligence") then
+    if exports['ps-buffs']:HasBuff("intelligence") then
         SendNUIMessage({
             action = "Start",
             correct = correctBlocks - 3,
@@ -68,7 +68,7 @@ end)
 
 RegisterCommand('buff', function(source, args)
     -- Please check the parameters below for exports
-    exports['tnj-buffs']:AddBuff("intelligence", 150000)
+    exports['ps-buffs']:AddBuff("intelligence", 150000)
     
 end)
 

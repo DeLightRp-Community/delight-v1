@@ -505,9 +505,6 @@ end)
 
 RegisterNetEvent('inventory:client:DropItemAnim', function()
     local ped = PlayerPedId()
-    SendNUIMessage({
-        action = "close",
-    })
     RequestAnimDict("pickup_object")
     while not HasAnimDictLoaded("pickup_object") do
         Wait(7)
@@ -941,8 +938,8 @@ end)]]--
     
     local toolBoxModels = {
         `prop_toolchest_05`,
-        `prop_tool_bench02_ld`,
-        `prop_tool_bench02`,
+        -- `prop_tool_bench02_ld`,
+        -- `prop_tool_bench02`,
         `prop_toolchest_02`,
         `prop_toolchest_03`,
         `prop_toolchest_03_l2`,

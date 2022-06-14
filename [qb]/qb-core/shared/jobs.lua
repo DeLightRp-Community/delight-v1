@@ -306,6 +306,34 @@ QBShared.Jobs = {
             },
         },
 	},
+    ['ottos'] = {
+		label = 'Ottos Repair',
+		defaultDuty = true,
+		offDutyPay = false,
+		grades = {
+            ['0'] = {
+                name = "Recruit",
+                payment = 300
+            },
+			['1'] = {
+                name = "Novice",
+                payment = 350
+            },
+			['2'] = {
+                name = "Experienced",
+                payment = 400
+            },
+			['3'] = {
+                name = "Advanced",
+                payment = 450
+            },
+			['4'] = {
+                name = "Manager",
+				isboss = true,
+                payment = 500
+            },
+        },
+	},
     ['tuner'] = {
 		label = 'Tuner',
 		defaultDuty = true,
@@ -521,9 +549,13 @@ QBShared.Jobs = {
                 payment = 300
             },
             ['1'] = {
+                name = 'Pizza Flipper',
+                payment = 150
+            },
+            ['2'] = {
                 name = 'Manger',
                 isboss = true,
-                payment = 500  
+                payment = 300 
             },
         },
 	},

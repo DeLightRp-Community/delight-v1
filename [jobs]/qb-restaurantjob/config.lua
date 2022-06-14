@@ -111,7 +111,7 @@ Cheese = {
 
 Config.Items = {
     label = "Shop",
-        slots = 7,
+        slots = 8,
         items = {
             [1] = {
                 name = "mushrooms",
@@ -155,6 +155,14 @@ Config.Items = {
             },
             [6] = {
                 name = "flour",
+                price = 6,
+                amount = 50,
+                info = {},
+                type = "item",
+                slot = 6,
+            },
+            [7] = {
+                name = "cheese",
                 price = 6,
                 amount = 50,
                 info = {},

@@ -808,7 +808,7 @@ RegisterNetEvent('mt-UwUCafe:client:BeberCafe2', function() -- Comer panqueca
     }, {}, {}, {}, function()
         TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + math.random(30, 50))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        exports['tnj-buffs']:StaminaBuffEffect(15000, 1.4)
+        exports['ps-buffs']:StaminaBuffEffect(15000, 1.4)
         
     end)
 end)

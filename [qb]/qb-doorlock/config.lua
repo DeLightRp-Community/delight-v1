@@ -13,8 +13,8 @@ Config.PersistentSaveInternal = 60000 -- How often door states are saved to the 
 
 Config.ChangeColor = true -- Change the color of the box of the popup text based on if it is locked or not
 Config.DefaultColor = 'primary' -- The default color of the box of the popup text if Config.ChangeColor is false
-Config.LockedColor = 'sucess' -- The color of the box of the popup text if Config.ChangeColor is true and the door is locked
-Config.UnlockedColor = 'danger' -- The color of the box of the popup text if Config.ChangeColor is true and the door is unlocked
+Config.LockedColor = 'danger' -- The color of the box of the popup text if Config.ChangeColor is true and the door is locked
+Config.UnlockedColor = 'sucess' -- The color of the box of the popup text if Config.ChangeColor is true and the door is unlocked
 Config.UseDoorLabelText = false -- Will use the LABEL field as the nui text instead of locked/unlocked
 Config.DoorDebug = false -- Enable DRAWTEXT in the world at the coords where the door 'center' is
 Config.RemoteTriggerDistance = 15.0 -- This is how far from your camera the raycast will go to try to hit something solid
