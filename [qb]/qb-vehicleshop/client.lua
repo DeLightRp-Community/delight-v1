@@ -474,64 +474,33 @@ RegisterNetEvent('qb-vehicleshop:client:vehCategories', function()
     exports['qb-menu']:openMenu(categoryMenu)
 end)
 
--- RegisterNetEvent('qb-vehicleshop:client:openVehCats', function(data)
---     local vehicleMenu = {
---         {
---             header = '< Go Back',
---             params = {
---                 event = 'qb-vehicleshop:client:vehCategories'
---             }
---         }
---     }
---     for k,v in pairs(QBCore.Shared.Vehicles) do
---         if QBCore.Shared.Vehicles[k]["category"] == data.catName and QBCore.Shared.Vehicles[k]["shop"] == getShopInsideOf() then
---             vehicleMenu[#vehicleMenu + 1] = {
---                 header = v.name,
---                 txt = 'Price: $'..v.price,
---                 params = {
---                     isServer = true,
---                     event = 'qb-vehicleshop:server:swapVehicle',
---                     args = {
---                         toVehicle = v.model,
---                         ClosestVehicle = ClosestVehicle,
---                         ClosestShop = getShopInsideOf()
---                     }
---                 }
---             }
---         end
---     end
---     exports['qb-menu']:openMenu(vehicleMenu)
--- end)
-
 RegisterNetEvent('qb-vehicleshop:client:openVehCats', function(data)
-    local vehMenu = {
+    local vehicleMenu = {
         {
             header = '< Go Back',
-            icon = "fa-solid fa-angle-left",
             params = {
                 event = 'qb-vehicleshop:client:vehCategories'
             }
         }
     }
-    for k, v in pairs(QBCore.Shared.Vehicles) do
-        if QBCore.Shared.Vehicles[k]["category"] == data.catName and QBCore.Shared.Vehicles[k]["shop"] == insideShop then
-            vehMenu[#vehMenu + 1] = {
+    for k,v in pairs(QBCore.Shared.Vehicles) do
+        if QBCore.Shared.Vehicles[k]["category"] == data.catName and QBCore.Shared.Vehicles[k]["shop"] == getShopInsideOf() then
+            vehicleMenu[#vehicleMenu + 1] = {
                 header = v.name,
                 txt = 'Price: $'..v.price,
-                icon = "fa-solid fa-car-side",
                 params = {
                     isServer = true,
                     event = 'qb-vehicleshop:server:swapVehicle',
                     args = {
                         toVehicle = v.model,
                         ClosestVehicle = ClosestVehicle,
-                        ClosestShop = insideShop
+                        ClosestShop = getShopInsideOf()
                     }
                 }
             }
         end
     end
-    exports['qb-menu']:openMenu(vehMenu)
+    exports['qb-menu']:openMenu(vehicleMenu)
 end)
 
 RegisterNetEvent('qb-vehicleshop:client:openFinance', function(data)
