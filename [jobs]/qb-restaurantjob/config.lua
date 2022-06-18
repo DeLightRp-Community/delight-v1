@@ -5,11 +5,12 @@ Config.Job = "pizza"
 Config.FolderName = "qb-restaurantjob"
 
 Config.Locations = {
-    [1] = {coords = vector3(813.7376, -749.700, 27.529), text = "Drink Station", config = Drink},
-    [2] = {coords = vector3(809.89, -761.22, 26.78), text = "Prep Station", config = Prep},
-    [3] = {coords = vector3(806.64, -757.7, 26.78), text = "Dough Station", config = Dough},
-    [4] = {coords = vector3(806.21, -763.18, 26.78), text = "Oven", config = Oven},
-    [5] = {coords = vector3(814.72, -760.01, 22.3), text = "Cheese", config = Cheese},
+    --[1] = {coords = vector3(813.7376, -749.700, 27.529), text = "Drink Station", config = Drink},
+    [1] = {coords = vector3(809.89, -761.22, 26.78), text = "Prep Station", config = Prep},
+    [2] = {coords = vector3(806.64, -757.7, 26.78), text = "Dough Station", config = Dough},
+    [3] = {coords = vector3(806.21, -763.18, 26.78), text = "Oven", config = Oven},
+    [4] = {coords = vector3(814.72, -760.01, 22.3), text = "Cheese", config = Cheese},
+    [5] = {coords = vector3(807.66, -761.22, 26.78), text = "fries", config = fries},
 }
 
 
@@ -17,7 +18,7 @@ Config.JobStash = {
     [1] =  {coords = vector3(803.23, -757.42, 26.78), name = 'Generic Restaurant Name', size = 4000000, slots = 100},
 }
 
-Drink = {
+--[[Drink = {
     [1] = {
         label = "Beer", 
         description = "Beer Bottle", 
@@ -28,7 +29,17 @@ Drink = {
         dictionary = 'amb@prop_human_bbq@male@idle_a', --dictionary name for animation
         animname = "idle_b", --animation name
     },
-}
+    [2] = {
+        label = "cola", 
+        description = "make cola", 
+        item = "kurkakola", --item that will be given
+        required = {}, -- required items to make (empty if no items required)
+        progressbar = "makeing", -- text to display on progressbar
+        progresstime = 5000, -- time required to make in milliseconds
+        dictionary = 'amb@prop_human_bbq@male@idle_a', --dictionary name for animation
+        animname = "idle_b", --animation name
+    },
+}]]
 
 Prep = {
     [1] = {
@@ -79,6 +90,21 @@ Oven = {
     },
 }
 
+fries = {
+    [1] = {
+        label = "Make Dough", 
+        description = "pizza-potato = 1 ", 
+        item = "burger-fries", --item that will be given
+        required = {
+            [1] = {itemName = "burger-potato", amount = 1},
+        }, -- required items to make
+        progressbar = "Making fries", -- text to display on progressbar
+        progresstime = 10000, -- in milliseconds
+        dictionary = "mini@repair", --dictionary name for animation
+        animname = "fixing_a_player", --animation name
+    },
+}
+
 Dough = {
     [1] = {
         label = "Make Dough", 
@@ -111,7 +137,7 @@ Cheese = {
 
 Config.Items = {
     label = "Shop",
-        slots = 8,
+        slots = 9,
         items = {
             [1] = {
                 name = "mushrooms",
@@ -131,8 +157,8 @@ Config.Items = {
             },
             [3] = {
                 name = "burger-tomato",
-                price = 5,
-                amount = 5,
+                price = 2,
+                amount = 50,
                 info = {},
                 type = "item",
                 slot = 3,
@@ -148,7 +174,7 @@ Config.Items = {
             [5] = {
                 name = "salt",
                 price = 2,
-                amount = 5,
+                amount = 50,
                 info = {},
                 type = "item",
                 slot = 5,
@@ -167,7 +193,23 @@ Config.Items = {
                 amount = 50,
                 info = {},
                 type = "item",
-                slot = 6,
+                slot = 7,
+            },
+            [8] = {
+                name = "burger-potato",
+                price = 6,
+                amount = 50,
+                info = {},
+                type = "item",
+                slot = 8,
+            },
+            [9] = {
+                name = "burger-mshakeformula",
+                price = 6,
+                amount = 50,
+                info = {},
+                type = "item",
+                slot = 9,
             },
         }
     }

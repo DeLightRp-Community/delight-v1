@@ -294,7 +294,7 @@ RegisterNetEvent('qb-storerobbery:client:safe', function(currentSafe)
                         end
                         if copsCalled == false then
                             --TriggerEvent('dispatch:storeRobbery', 'Store Robbery: Safe Cracking In Progress')
-                            exports['ps-dispatch']:StoreSafeRobbery(v.camId)
+                            exports['ps-dispatch']:StoreSafeRobbery(currentSafe)
                             copsCalled = true
                         end
                     end
@@ -375,8 +375,8 @@ RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
                         -- TriggerServerEvent("qb-storerobbery:server:callCops", "cashier", currentRegister, streetLabel, pos)
                         -- copsCalled = true
                     end
-                    local time = math.random(10,13)
-                    local circles = math.random(2,3)
+                    local time = math.random(1,2)
+                    local circles = math.random(4,5)
                     local success = exports['qb-lock']:StartLockPickCircle(circles, time, success)
                     if success then
                         TriggerEvent('qb-storerobbery:success')
@@ -402,7 +402,7 @@ RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
                         -- TriggerServerEvent("qb-storerobbery:server:callCops", "cashier", currentRegister, streetLabel, pos)
                         -- copsCalled = true
                     end
-                    local time = math.random(7,10)
+                    local time = math.random(1,2)
                     local circles = math.random(4,5)
                     local success = exports['qb-lock']:StartLockPickCircle(circles, time, success)
                     if success then

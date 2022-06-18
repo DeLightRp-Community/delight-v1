@@ -26,6 +26,7 @@ Config.Shops = {
             ['size'] = 2.75, -- size of the vehicles zones
         },
         ['Job'] = 'cardealer', -- Name of job or none
+        ['Rank'] = 1,
         ['ShopLabel'] = 'Premium Deluxe Motorsport', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 326,  -- Blip sprite
@@ -93,6 +94,7 @@ Config.Shops = {
             ['size'] = 2.75, -- size of the vehicles zones
         },
         ['Job'] = 'cardealer', -- Name of job or none
+        ['Rank'] = 1,
         ['ShopLabel'] = 'Luxury Vehicle Shop',
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 326,  -- Blip sprite
@@ -124,7 +126,7 @@ Config.Shops = {
         }
     }, -- Add your next table under this comma
     ['boats'] = {
-        ['Type'] = 'managed',  -- no player interaction is required to purchase a vehicle
+        ['Type'] = 'free-use',  -- no player interaction is required to purchase a vehicle
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the shop
                 vector2(-729.39, -1315.84),
@@ -137,6 +139,8 @@ Config.Shops = {
             ['size'] = 6.2, -- size of the vehicles zones
         },
         ['Job'] = 'none', -- Name of job or none
+        ['OpenFinanceF'] = false,
+        ['TestDriveF'] = true,
         ['ShopLabel'] = 'Marina Shop', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 410,  -- Blip sprite
@@ -172,7 +176,7 @@ Config.Shops = {
         },
     },
     ['air'] = { 
-        ['Type'] = 'managed',  -- no player interaction is required to purchase a vehicle
+        ['Type'] = 'free-use',  -- no player interaction is required to purchase a vehicle
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the shop
                 vector2(-1607.58, -3141.7),
@@ -185,6 +189,8 @@ Config.Shops = {
             ['size'] = 7.0, -- size of the vehicles zones
         },
         ['Job'] = 'none', -- Name of job or none
+        ['OpenFinanceF'] = false,
+        ['TestDriveF'] = true,
         ['ShopLabel'] = 'Air Shop', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 251,  -- Blip sprite
@@ -235,6 +241,7 @@ Config.Shops = {
             ['size'] = 2.75, -- size of the vehicles zones
         },
         ['Job'] = 'sandersmotor', -- Name of job or none
+        ['Rank'] = 1,
         ['ShopLabel'] = 'Sanders Motor', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 226,  -- Blip sprite
@@ -299,6 +306,8 @@ Config.Shops = {
             ['size'] = 2.7, -- size of the vehicles zones
         },
         ['Job'] = 'police', -- Name of job or none
+        ['OpenFinanceF'] = false,
+        ['TestDriveF'] = false,
         ['ShopLabel'] = 'police car', -- Blip name
         ['showBlip'] = false,  -- true or false
         ['blipSprite'] = 226,  -- Blip sprite
@@ -306,7 +315,7 @@ Config.Shops = {
         ['Categories'] = { -- Categories available to browse
             ['policecar'] = 'Police Car'
         },
-        ['TestDriveTimeLimit'] = 0, -- Time in minutes until the vehicle gets deleted
+        ['TestDriveTimeLimit'] = 1.5, -- Time in minutes until the vehicle gets deleted
         ['Location'] = vector3(425.8, -994.32, 25.7), -- Blip Location
         ['ReturnLocation'] = vector3(425.8, -994.32, 25.7), -- Location to return vehicle, only enables if the vehicleshop has a job owned
         ['VehicleSpawn'] = vector4(425.8, -994.32, 25.7, 269.57), -- Spawn location when vehicle is bought
@@ -332,6 +341,8 @@ Config.Shops = {
             ['size'] = 2.7, -- size of the vehicles zones
         },
         ['Job'] = 'ambulance', -- Name of job or none
+        ['OpenFinanceF'] = false,
+        ['TestDriveF'] = false,
         ['ShopLabel'] = 'Medic car', -- Blip name
         ['showBlip'] = false,  -- true or false
         ['blipSprite'] = 226,  -- Blip sprite
@@ -339,7 +350,7 @@ Config.Shops = {
         ['Categories'] = { -- Categories available to browse
             ['mediccar'] = 'Medic Car'
         },
-        ['TestDriveTimeLimit'] = 0, -- Time in minutes until the vehicle gets deleted
+        ['TestDriveTimeLimit'] = 1.5, -- Time in minutes until the vehicle gets deleted
         ['Location'] = vector3(321.43, -565.36, 28.8), -- Blip Location
         ['ReturnLocation'] = vector3(321.43, -565.36, 28.8), -- Location to return vehicle, only enables if the vehicleshop has a job owned
         ['VehicleSpawn'] = vector4(321.43, -565.36, 28.8, 249.07), -- Spawn location when vehicle is bought

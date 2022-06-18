@@ -35,24 +35,24 @@ RegisterNetEvent('qb-storerobbery:server:takeMoney', function(register, isDone)
 	local Player = QBCore.Functions.GetPlayer(src)
 	-- Add some stuff if you want, this here above the if statement will trigger every 2 seconds of the animation when robbing a cash register.
     if isDone then
-	local bags = math.random(1,3)
+	local bags = 1
 	local info = {
-		worth = math.random(cashA, cashB)
+		worth = 400
 	}
 	Player.Functions.AddItem('markedbills', bags, false, info)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
         if math.random(1, 100) <= 10 then
-            local code = SafeCodes[Config.Registers[register].safeKey]
-            local info = {}
-            if Config.Safes[Config.Registers[register].safeKey].type == "keypad" then
-                info = {
-                    label = "Safe Code: "..tostring(code)
-                }
-            else
-                info = {
-                    label = "Safe Code: "..tostring(math.floor((code[1] % 360) / 3.60)).."-"..tostring(math.floor((code[2] % 360) / 3.60)).."-"..tostring(math.floor((code[3] % 360) / 3.60)).."-"..tostring(math.floor((code[4] % 360) / 3.60)).."-"..tostring(math.floor((code[5] % 360) / 3.60))
-                }
-            end
+            -- local code = SafeCodes[Config.Registers[register].safeKey]
+            -- local info = {}
+            -- if Config.Safes[Config.Registers[register].safeKey].type == "keypad" then
+            --     info = {
+            --         label = "Safe Code: "..tostring(code)
+            --     }
+            -- else
+            --     info = {
+            --         label = "Safe Code: "..tostring(math.floor((code[1] % 360) / 3.60)).."-"..tostring(math.floor((code[2] % 360) / 3.60)).."-"..tostring(math.floor((code[3] % 360) / 3.60)).."-"..tostring(math.floor((code[4] % 360) / 3.60)).."-"..tostring(math.floor((code[5] % 360) / 3.60))
+            --     }
+            -- end
         end
     end
 end)
@@ -76,13 +76,16 @@ end)
 RegisterNetEvent('qb-storerobbery:server:SafeReward', function(safe)
     local src = source
 	local Player = QBCore.Functions.GetPlayer(src)
-	local bags = math.random(3,10)
-    local chance = math.random(1, 5)
-	Player.Functions.AddItem('markedbills', bags, false)
+	local bags = math.random(3, 6)
+    local chance = math.random(0, 100)
+	local info = {
+		worth = 1000
+	}
+	Player.Functions.AddItem('markedbills', bags, false, info)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
-    if chance == 1 then
-    Player.Functions.AddItem('vpn', bags, false)
-	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['vpn'], "add")
+    if chance >= 70 then
+    Player.Functions.AddItem('tcard', bags, false)
+	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['tcard'], "add")
     end
 end)
 

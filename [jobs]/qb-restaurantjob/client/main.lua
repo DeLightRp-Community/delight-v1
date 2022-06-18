@@ -104,24 +104,24 @@ RegisterNetEvent('qb-resturant:OrderMenu', function(data)
    })
 end)
 
-    exports["qb-target"]:AddBoxZone("yakhchal", vector3(805.68, -761.3, 26.78), 0.8, 1, {
-        name = "yakhchal",
-        heading = 350.0,
-        debugPoly = false,
-        minZ=24.38,
-        maxZ=28.38
-    }, {
-        options = {
-            {
-                type = "client",
-                event = "qb-resturant:OrderMenu",
-                icon = "fas fa-vials",
-                label = "Fridge & Storage",
-                job = "pizza",
-            },
+exports["qb-target"]:AddBoxZone("yakhchal", vector3(805.68, -761.3, 26.78), 0.8, 1, {
+    name = "yakhchal",
+    heading = 350.0,
+    debugPoly = false,
+    minZ=24.38,
+    maxZ=28.38
+}, {
+    options = {
+        {
+            type = "client",
+            event = "qb-resturant:OrderMenu",
+            icon = "fas fa-vials",
+            label = "Fridge & Storage",
+            job = "pizza",
         },
-    distance = 2.5
-    })
+    },
+distance = 2.5
+})
 
 
 --Oven station--
@@ -258,3 +258,160 @@ function LoadAnim(dict)
         Citizen.Wait(5)
     end
 end
+-- 
+
+RegisterNetEvent('qb-resturant:DrinkMenu', function(data)
+
+    exports['qb-menu']:openMenu({
+       {
+           header = "Prep Station",
+           isMenuHeader = true, -- Set to true to make a nonclickable title
+       },
+
+       {
+           header = "Beer",
+           txt = "Beer Bottle",
+           params = {
+               event = "qb-resturant:client:BeerBottle", 
+               args = {
+                   number = 0,
+               }
+           }
+       },
+       {
+           header = "cola",
+           txt = "make cola",
+           params = {
+               event = "qb-resturant:client:makecola",
+               args = {
+                   number = 1,
+               }
+           }
+       },
+
+       {
+           header = "close",
+           txt = "",
+           params = {
+               event = "",
+               args = {
+                   number = 2,
+               }
+           }
+       },
+   })
+end)
+
+RegisterNetEvent('qb-resturant:MilkshakeMenu', function(data)
+
+    exports['qb-menu']:openMenu({
+       {
+           header = "Milkshake Menu",
+           isMenuHeader = true, -- Set to true to make a nonclickable title
+       },
+       {
+        header = "Milkshake",
+        txt = "Milkshake Formula",
+        params = {
+            event = "qb-resturant:mShake",
+            args = {
+                number = 1,
+            }
+        }
+        },
+       {
+           header = "close",
+           txt = "",
+           params = {
+               event = "",
+               args = {
+                   number = 1,
+               }
+           }
+       },
+   })
+end)
+
+
+RegisterNetEvent('qb-resturant:client:BeerBottle', function()
+    QBCore.Functions.Progressbar("beer_bot", "Makeing", 3000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+		disableMouse = false,
+		disableCombat = true,
+    }, {
+		animDict = "amb@prop_human_bbq@male@idle_a",
+		anim = "idle_b",
+		flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        TriggerServerEvent("QBCore:Server:AddItem", "Beer", 1)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["Beer"], "add")
+    end, function() -- Cancel
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        QBCore.Functions.Notify("Failed", "error")
+    end)
+end)
+
+RegisterNetEvent('qb-resturant:client:makecola', function()
+    QBCore.Functions.Progressbar("cola_bot", "Makeing", 3000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+		disableMouse = false,
+		disableCombat = true,
+    }, {
+		animDict = "amb@prop_human_bbq@male@idle_a",
+		anim = "idle_b",
+		flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        TriggerServerEvent("QBCore:Server:AddItem", "kurkakola", 1)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["kurkakola"], "add")
+    end, function() -- Cancel
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        QBCore.Functions.Notify("Failed", "error")
+    end)
+end)
+
+RegisterNetEvent("qb-resturant:mShake")
+AddEventHandler("qb-resturant:mShake", function()
+    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+        if HasItem then
+           MakeMSShake()
+        else
+            QBCore.Functions.Notify("You don't have any Milkshake Formula..", "error")
+        end
+    end, 'burger-mshakeformula')
+end)
+
+function MakeMSShake()
+    TriggerServerEvent('QBCore:Server:RemoveItem', "burger-mshakeformula", 1)
+    QBCore.Functions.Progressbar("milk_bot", "Makeing", 3000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+		disableMouse = false,
+		disableCombat = true,
+    }, {
+		animDict = "amb@prop_human_bbq@male@idle_a",
+		anim = "idle_b",
+		flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        TriggerServerEvent('QBCore:Server:AddItem', "burger-mshake", 1)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["burger-mshake"], "add")
+        QBCore.Functions.Notify("You made a Milkshake", "success")
+    end, function() -- Cancel
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        QBCore.Functions.Notify("Failed", "error")    
+    end)
+end  
+
+exports['qb-target']:AddBoxZone("drinkmenu", vector3(813.91, -749.33, 26.78), 1.1, 1.1, { name="DrinkMenu", heading=345, minZ=24.58,maxZ=28.58 }, 
+{ options = { {  event = "qb-resturant:DrinkMenu", icon = "fas fa-credit-card", label = "Drink Station", job = "pizza"  }, },
+  distance = 1.0
+})
+
+exports['qb-target']:AddBoxZone("milkmenu", vector3(811.41, -764.74, 26.78), 1.6, 1, { name="milkMenu", heading=345, minZ=24.58,maxZ=28.58 }, 
+{ options = { {  event = "qb-resturant:MilkshakeMenu", icon = "fas fa-credit-card", label = "Milkshake Drinks", job = "pizza"  }, },
+  distance = 1.0
+})

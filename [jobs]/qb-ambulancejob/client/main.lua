@@ -337,37 +337,37 @@ end
 
 local isCheckinEnable=true
 
-CreateThread(function()
-    local model = `s_m_m_doctor_01`
-    for k, v in pairs(Config.Locations["checking"]) do
-        exports['qb-target']:SpawnPed({
-            model = model, 
-            coords = v, 
-            minusOne = true,
-            freeze = true, 
-            invincible = true,
-            blockevents = true,
-            animDict = 'abigail_mcs_1_concat-0',
-            anim = 'csb_abigail_dual-0',
-            flag = 1, 
-            scenario = 'world_human_clipboard', 
-            target = {
-              useModel = false,
-              options = {
-                {
-                  icon = 'fa-solid fa-clipboard',
-                  label = 'Check-in',
-                  action = function(entity)
-                    if IsPedAPlayer(entity) then return false end
-                    TriggerEvent('qb-ambulancejob:checkin')
-                  end,
-                },
-                {
-                    icon = 'fa-solid fa-prescription-bottle-medical',
-                    label = 'Pharmecy',
-                    type = "client", 
-                    event = "hospital:client:openAmbulanceShop",
-                },
+-- CreateThread(function()
+--     local model = `s_m_m_doctor_01`
+--     for k, v in pairs(Config.Locations["checking"]) do
+--         exports['qb-target']:SpawnPed({
+--             model = model, 
+--             coords = v, 
+--             minusOne = true,
+--             freeze = true, 
+--             invincible = true,
+--             blockevents = true,
+--             animDict = 'abigail_mcs_1_concat-0',
+--             anim = 'csb_abigail_dual-0',
+--             flag = 1, 
+--             scenario = 'world_human_clipboard', 
+--             target = {
+--               useModel = false,
+--               options = {
+--                 {
+--                   icon = 'fa-solid fa-clipboard',
+--                   label = 'Check-in',
+--                   action = function(entity)
+--                     if IsPedAPlayer(entity) then return false end
+--                     TriggerEvent('qb-ambulancejob:checkin')
+--                   end,
+--                 },
+--                 {
+--                     icon = 'fa-solid fa-prescription-bottle-medical',
+--                     label = 'Pharmecy',
+--                     type = "client", 
+--                     event = "hospital:client:openAmbulanceShop",
+--                 },
                 -- {
                 --     icon = 'fa-solid fa-check',
                 --     label = 'Eneble Check In',
@@ -383,28 +383,76 @@ CreateThread(function()
                 --     end,
                 --     job = "ambulance"
                 -- },
-                {
-                    icon = 'fa-solid fa-xmark',
-                    label = 'Disable Check In',
-                    type = "server", 
-                    event = "hospital:server:disableCheckin",
-                    canInteract = function(entity)
-                        if IsPedAPlayer(entity) then return false end 
-                        if isCheckinEnable then
-                            return true
-                        else
-                            return false
-                        end
-                    end,
-                    job = "ambulance"
-                },
+--                 {
+--                     icon = 'fa-solid fa-xmark',
+--                     label = 'Disable Check In',
+--                     type = "server", 
+--                     event = "hospital:server:disableCheckin",
+--                     canInteract = function(entity)
+--                         if IsPedAPlayer(entity) then return false end 
+--                         if isCheckinEnable then
+--                             return true
+--                         else
+--                             return false
+--                         end
+--                     end,
+--                     job = "ambulance"
+--                 },
                 
-              },
-              distance = 4.5,
+--               },
+--               distance = 4.5,
+--             },
+--           })
+--     end
+--   end)
+
+CreateThread(function()
+    for k, v in pairs(Config.Locations["checking"]) do
+        exports['qb-target']:AddBoxZone("checking"..k, vector3(v.x, v.y, v.z), 1.5, 2, {
+            name = "checking"..k,
+            heading = -72,
+            debugPoly = false,
+            minZ = v.z - 1,
+            maxZ = v.z + 1,
+        }, {
+            options = {
+                {
+                    type = "client",
+                    icon = "fa fa-clipboard",
+                    event = "qb-ambulancejob:checkin",
+                    label = "Check In",
+                },
+                {
+                    type = "client",
+                    icon = "fas fa-shopping-basket",
+                    event = "qb-ambulancejob:shop",
+                    label = "Pharmacy",
+                },
             },
-          })
+            distance = 1.5
+        })
     end
-  end)
+
+    for k, v in pairs(Config.Locations["beds"]) do
+        exports['qb-target']:AddBoxZone("beds"..k,  v.coords, 2.5, 2.3, {
+            name = "beds"..k,
+            heading = -20,
+            debugPoly = false,
+            minZ = v.coords.z - 1,
+            maxZ = v.coords.z + 1,
+        }, {
+            options = {
+                {
+                    type = "client",
+                    event = "qb-ambulancejob:beds",
+                    icon = "fas fa-bed",
+                    label = "Layin Bed",
+                }
+            },
+            distance = 1.5
+        })
+    end
+end)
 
   RegisterNetEvent('hospital:client:openAmbulanceShop', function()
     print(json.encode(Config.Items.shopItem))
