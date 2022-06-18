@@ -295,7 +295,7 @@ function createManagedShop(shopShape, name)
                             header = 'Test Drive',
                             txt = 'Allow player for test drive',
                             params = {
-                                event = 'qb-vehicleshop:client:openIdMenu',
+                                event = 'qb-vehicleshop:client:testopenIdMenu',
                                 args = {
                                     vehicle = Config.Shops[closestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle,
                                     type = 'testDrive'
@@ -306,7 +306,7 @@ function createManagedShop(shopShape, name)
                             header = "Sell Vehicle",
                             txt = 'Sell vehicle to Player',
                             params = {
-                                event = 'qb-vehicleshop:client:openIdMenu',
+                                event = 'qb-vehicleshop:client:sellopenIdMenu',
                                 args = {
                                     vehicle = Config.Shops[closestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle,
                                     type = 'sellVehicle'
@@ -361,47 +361,51 @@ RegisterNetEvent('qb-vehicleshop:client:showVehOptions', function()
 end)
 
 RegisterNetEvent('qb-vehicleshop:client:TestDrive', function()
-    if not inTestDrive and ClosestVehicle ~= 0 then
-        inTestDrive = true
-        local prevCoords = GetEntityCoords(PlayerPedId())
-        if Config.Shops[getShopInsideOf()]["TestDriveTimeLimit"]>0 then
-            QBCore.Functions.SpawnVehicle(Config.Shops[getShopInsideOf()]["ShowroomVehicles"][ClosestVehicle].chosenVehicle, function(veh)
-                local closestShop = getShopInsideOf()
-                TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-                exports['LegacyFuel']:SetFuel(veh, 100)
-                SetVehicleNumberPlateText(veh, 'TESTDRIVE')
-                SetEntityAsMissionEntity(veh, true, true)
-                SetEntityHeading(veh, Config.Shops[closestShop]["VehicleSpawn"].w)
-                TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh))
-                TriggerServerEvent('qb-vehicletuning:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
-                testDriveVeh = veh
-                QBCore.Functions.Notify('You have '..Config.Shops[closestShop]["TestDriveTimeLimit"]..' minutes remaining')
-                SetTimeout(Config.Shops[closestShop]["TestDriveTimeLimit"] * 60000, function()
-                    if testDriveVeh ~= 0 then
-                        testDriveVeh = 0
-                        inTestDrive = false
-                        QBCore.Functions.DeleteVehicle(veh)
-                        SetEntityCoords(PlayerPedId(), prevCoords)
-                        QBCore.Functions.Notify('Vehicle test drive complete')
-                    end
-                end)
-            end, Config.Shops[getShopInsideOf()]["VehicleSpawn"], false)
-        else
-            QBCore.Functions.Notify('Test Drive is Not Available')
+    if not Config.Shops[getShopInsideOf()]["TestDriveF"] then
+        QBCore.Functions.Notify('You Cant Do This', 'error', 5000)
+    else    
+        if not inTestDrive and ClosestVehicle ~= 0 then
+            inTestDrive = true
+            local prevCoords = GetEntityCoords(PlayerPedId())
+            if Config.Shops[getShopInsideOf()]["TestDriveTimeLimit"]>0 then
+                QBCore.Functions.SpawnVehicle(Config.Shops[getShopInsideOf()]["ShowroomVehicles"][ClosestVehicle].chosenVehicle, function(veh)
+                    local closestShop = getShopInsideOf()
+                    TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+                    exports['LegacyFuel']:SetFuel(veh, 100)
+                    SetVehicleNumberPlateText(veh, 'TESTDRIVE')
+                    SetEntityAsMissionEntity(veh, true, true)
+                    SetEntityHeading(veh, Config.Shops[closestShop]["VehicleSpawn"].w)
+                    TriggerEvent('vehiclekeys:client:SetOwner', QBCore.Functions.GetPlate(veh))
+                    TriggerServerEvent('qb-vehicletuning:server:SaveVehicleProps', QBCore.Functions.GetVehicleProperties(veh))
+                    testDriveVeh = veh
+                    QBCore.Functions.Notify('You have '..Config.Shops[closestShop]["TestDriveTimeLimit"]..' minutes remaining')
+                    SetTimeout(Config.Shops[closestShop]["TestDriveTimeLimit"] * 60000, function()
+                        if testDriveVeh ~= 0 then
+                            testDriveVeh = 0
+                            inTestDrive = false
+                            QBCore.Functions.DeleteVehicle(veh)
+                            SetEntityCoords(PlayerPedId(), prevCoords)
+                            QBCore.Functions.Notify('Vehicle test drive complete')
+                        end
+                    end)
+                end, Config.Shops[getShopInsideOf()]["VehicleSpawn"], false)
+            else
+                QBCore.Functions.Notify('Test Drive is Not Available')
+            end
+            createTestDriveReturn()
+            startTestDriveTimer(Config.Shops[getShopInsideOf()]["TestDriveTimeLimit"] * 60)
+        elseif inTestDrive and closestVehicle and testDriveVeh ~= 0 then 
+
+            QBCore.Functions.Notify('Already in test drive', 'error')
+
+        
+            testDriveVeh = 0
+            inTestDrive = false
+            QBCore.Functions.DeleteVehicle(veh)
+            SetEntityCoords(PlayerPedId(), prevCoords)
+            QBCore.Functions.Notify('Vehicle test drive complete')
         end
-        createTestDriveReturn()
-        startTestDriveTimer(Config.Shops[getShopInsideOf()]["TestDriveTimeLimit"] * 60)
-    elseif inTestDrive and closestVehicle and testDriveVeh ~= 0 then 
-
-        QBCore.Functions.Notify('Already in test drive', 'error')
-
-     
-        testDriveVeh = 0
-        inTestDrive = false
-        QBCore.Functions.DeleteVehicle(veh)
-        SetEntityCoords(PlayerPedId(), prevCoords)
-        QBCore.Functions.Notify('Vehicle test drive complete')
-    end
+    end    
 end)
 
 RegisterNetEvent('qb-vehicleshop:client:customTestDrive', function(data)
@@ -504,28 +508,32 @@ RegisterNetEvent('qb-vehicleshop:client:openVehCats', function(data)
 end)
 
 RegisterNetEvent('qb-vehicleshop:client:openFinance', function(data)
-    local dialog = exports['qb-input']:ShowInput({
-        header = getVehBrand():upper()..' '..data.buyVehicle:upper()..' - $'..data.price,
-        submitText = "Submit",
-        inputs = {
-            {
-                type = 'number',
-                isRequired = true,
-                name = 'downPayment',
-                text = 'Down Payment Amount - Min '..Config.MinimumDown..'%'
-            },
-            {
-                type = 'number',
-                isRequired = true,
-                name = 'paymentAmount',
-                text = 'Total Payments - Max '..Config.MaximumPayments
+    if not Config.Shops[getShopInsideOf()]["OpenFinanceF"] then
+        QBCore.Functions.Notify('You Cant Do This', 'error', 5000)
+    else
+        local dialog = exports['qb-input']:ShowInput({
+            header = getVehBrand():upper()..' '..data.buyVehicle:upper()..' - $'..data.price,
+            submitText = "Submit",
+            inputs = {
+                {
+                    type = 'number',
+                    isRequired = true,
+                    name = 'downPayment',
+                    text = 'Down Payment Amount - Min '..Config.MinimumDown..'%'
+                },
+                {
+                    type = 'number',
+                    isRequired = true,
+                    name = 'paymentAmount',
+                    text = 'Total Payments - Max '..Config.MaximumPayments
+                }
             }
-        }
-    })
-    if dialog then
-        if not dialog.downPayment or not dialog.paymentAmount then return end
-        TriggerServerEvent('qb-vehicleshop:server:financeVehicle', dialog.downPayment, dialog.paymentAmount, data.buyVehicle)
-    end
+        })
+        if dialog then
+            if not dialog.downPayment or not dialog.paymentAmount then return end
+            TriggerServerEvent('qb-vehicleshop:server:financeVehicle', dialog.downPayment, dialog.paymentAmount, data.buyVehicle)
+        end
+    end    
 end)
 
 RegisterNetEvent('qb-vehicleshop:client:openCustomFinance', function(data)
@@ -697,10 +705,32 @@ RegisterNetEvent('qb-vehicleshop:client:financePayment', function(data)
     end
 end)
 
-RegisterNetEvent('qb-vehicleshop:client:openIdMenu', function(data)
+RegisterNetEvent('qb-vehicleshop:client:testopenIdMenu', function(data)
+    local dialog = exports['qb-input']:ShowInput({
+        header = QBCore.Shared.Vehicles[data.vehicle]["name"],
+        submitText = "Submit",
+        inputs = {
+            {
+                text = "Server ID (#)",
+                name = "playerid",
+                type = "number",
+                isRequired = true
+            }
+        }
+    })
+    if dialog then
+        if not dialog.playerid then return end
+        if data.type == 'testDrive' then
+            TriggerServerEvent('qb-vehicleshop:server:customTestDrive', data.vehicle, dialog.playerid)
+        end
+    end
+end)
+
+RegisterNetEvent('qb-vehicleshop:client:sellopenIdMenu', function(data)
     local src = source
     local Player = QBCore.Functions.GetPlayerData()
-    if Player.job.name == "cardealer" and Player.job.grade.level >= 1 then
+    local insideShop = getShopInsideOf()
+    if (PlayerData.job.name == Config.Shops[insideShop]['Job'] or Config.Shops[insideShop]['Job'] == 'none') and (Player.job.grade.level >= Config.Shops[insideShop]['Rank'] or Config.Shops[insideShop]['Rank'] == '0') then
         local dialog = exports['qb-input']:ShowInput({
             header = QBCore.Shared.Vehicles[data.vehicle]["name"],
             submitText = "Submit",
@@ -715,15 +745,13 @@ RegisterNetEvent('qb-vehicleshop:client:openIdMenu', function(data)
         })
         if dialog then
             if not dialog.playerid then return end
-            if data.type == 'testDrive' then
-                TriggerServerEvent('qb-vehicleshop:server:customTestDrive', data.vehicle, dialog.playerid)
-            elseif data.type == 'sellVehicle' then
+            if data.type == 'sellVehicle' then
                 TriggerServerEvent('qb-vehicleshop:server:sellShowroomVehicle', data.vehicle, dialog.playerid)
             end
         end
     else
-        QBCore.Functions.Notify('You Cant Do This', 'error', 5000)
-    end
+        QBCore.Functions.Notify('You Cant Do This', 'error', 5000)    
+    end    
 end)
 
 -- Threads
