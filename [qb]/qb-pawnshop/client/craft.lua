@@ -52,8 +52,21 @@ RegisterNetEvent('qb-pawnshop:client:craftAmountItem', function(data)
 end)
 
 RegisterNetEvent('qb-pawnshop:client:craftItem', function(data)
-
+    -- qb-pawnshop:server:craftLiggalItem
     QBCore.Functions.TriggerCallback('qb-pawnshop:server:craftItem', function(result)
+        if result then
+
+            QBCore.Functions.Notify("Item Crafting Start", "primary")
+            
+        else
+            QBCore.Functions.Notify("Item Crafting Failed", "error")
+        end
+    end, data)
+end)
+RegisterNetEvent('qb-pawnshop:client:craftIlligalItem', function(data)
+    -- qb-pawnshop:server:craftiLiggalItem
+    print("Hello")
+    QBCore.Functions.TriggerCallback('qb-pawnshop:server:craftiLiggalItem', function(result)
         if result then
 
             QBCore.Functions.Notify("Item Crafting Start", "primary")
@@ -91,7 +104,7 @@ RegisterNetEvent('qb-pawnshop:client:openCraftSub', function(data)
 				txt = txt,
 				params = {
 					isServer = false,
-					event = "qb-pawnshop:client:craftItem",
+					event = "qb-pawnshop:client:craftIlligalItem",
 					args = {
 						material = v.items,
 						name = i
@@ -107,6 +120,9 @@ RegisterNetEvent('qb-pawnshop:client:openCraftSub', function(data)
 end)
 
 RegisterNetEvent('qb-pawnshop:craft:disable', function (amount)
+    if amount == nil then
+        amount = 1000
+    end
     inventoryUnderCraft=true
     craftTimeout=craftTimeout*(amount)
     Wait(craftTimeout)
@@ -126,7 +142,6 @@ end)
 
 
 RegisterNetEvent('qb-pawnshop:carf:choose', function(data)
-    -- print(json.encode(data))
     local craftSubs = {}
     for i, v in pairs(Config.cfg.crafts.Material) do
         local txt= ""

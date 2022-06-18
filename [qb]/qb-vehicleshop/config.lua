@@ -126,7 +126,7 @@ Config.Shops = {
         }
     }, -- Add your next table under this comma
     ['boats'] = {
-        ['Type'] = 'managed',  -- no player interaction is required to purchase a vehicle
+        ['Type'] = 'free-use',  -- no player interaction is required to purchase a vehicle
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the shop
                 vector2(-729.39, -1315.84),
@@ -138,8 +138,14 @@ Config.Shops = {
             ['maxZ'] = 5.0,  -- max height of the shop zone
             ['size'] = 6.2, -- size of the vehicles zones
         },
+<<<<<<< HEAD
         ['Job'] = 'boatdealer', -- Name of job or none
         ['Rank'] = 1,
+=======
+        ['Job'] = 'none', -- Name of job or none
+        ['OpenFinanceF'] = false,
+        ['TestDriveF'] = true,
+>>>>>>> c7c385c55245c47d5168e3b0835f769344b8bdd4
         ['ShopLabel'] = 'Marina Shop', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 410,  -- Blip sprite
@@ -175,7 +181,7 @@ Config.Shops = {
         },
     },
     ['air'] = { 
-        ['Type'] = 'managed',  -- no player interaction is required to purchase a vehicle
+        ['Type'] = 'free-use',  -- no player interaction is required to purchase a vehicle
         ['Zone'] = {
             ['Shape'] = { --polygon that surrounds the shop
                 vector2(-1607.58, -3141.7),
@@ -187,8 +193,14 @@ Config.Shops = {
             ['maxZ'] = 5.0,  -- max height of the shop zone
             ['size'] = 7.0, -- size of the vehicles zones
         },
+<<<<<<< HEAD
         ['Job'] = 'aridealer', -- Name of job or none
         ['Rank'] = 1,
+=======
+        ['Job'] = 'none', -- Name of job or none
+        ['OpenFinanceF'] = false,
+        ['TestDriveF'] = true,
+>>>>>>> c7c385c55245c47d5168e3b0835f769344b8bdd4
         ['ShopLabel'] = 'Air Shop', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 251,  -- Blip sprite

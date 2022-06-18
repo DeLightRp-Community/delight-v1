@@ -115,7 +115,7 @@ QBCore.Functions.CreateCallback('re2-tunerjob:server:craftItem', function (sourc
     else
         return cb(false)
     end
- end)
+end)
 
 RegisterNetEvent('', function()
 	local src = source

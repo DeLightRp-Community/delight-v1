@@ -501,7 +501,7 @@ QBShared.Items = {
 
 	['c4_bomb'] 					= {['name'] = 'c4_bomb', 						['label'] = 'C4 Explosive', 			['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'weapon_stickybomb.png',	['ammotype'] = nil,		['unique'] = true, 		['useable'] = false, 		['description'] = 'A high-yield, timed explosive charge..'},
 
-	['safe_cracker'] 				= {['name'] = 'safe_cracker', 					['label'] = 'Safe Cracker', 			['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'safe_cracker.png',			['ammotype'] = nil,		['unique'] = true, 		['useable'] = false, 		['description'] = '?????'},
+	['safe_cracker'] 				= {['name'] = 'safe_cracker', 					['label'] = 'Safe Cracker', 			['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'safecracker.png',			['ammotype'] = nil,		['unique'] = true, 		['useable'] = false, 		['description'] = '?????'},
 
 	["dslrcamera"]					= { ["name"] = "dslrcamera", 					["label"] = "PD Camera", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "dslrcamera.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "DSLR Camera, with cloud uplink.. cool right?"},
 	

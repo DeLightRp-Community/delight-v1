@@ -19,13 +19,6 @@ RegisterNetEvent('QBCore:Client:OnJobUpdate', function(JobInfo)
     onDuty = PlayerJob.onduty
 end)
 
-RegisterNetEvent('QBCore:Client:SetDuty', function(duty)
-    local PlayerData = QBCore.Functions.GetPlayerData()
-    if PlayerData.job.name == 'uwu' then
-    	onDuty = duty
-    end
-end)
-
 RegisterNetEvent("mt-UwUCafe:client:Servico", function()
     TriggerServerEvent("QBCore:ToggleDuty")
 end)
@@ -34,15 +27,29 @@ end)
 ----- Blip no mapa --------------
 
 Citizen.CreateThread(function()
-    uwu = AddBlipForCoord(vector3(-582.49, -1062.94, 22.35))
-    SetBlipSprite (uwu, 671)
-    SetBlipDisplay(uwu, 4)
-    SetBlipScale  (uwu, 1.00)
-    SetBlipAsShortRange(uwu, true)
-    SetBlipColour(uwu, 34)
-    BeginTextCommandSetBlipName('STRING')
-    AddTextComponentSubstringPlayerName('UwU Cafe')
-    EndTextCommandSetBlipName(uwu)
+    local blip = AddBlipForCoord(462.2, -693.88, 26.44)
+    
+    SetBlipSprite (blip, 59)
+    SetBlipDisplay(blip, 4)
+    SetBlipScale  (blip, 0.7)
+    SetBlipColour (blip, 2)
+    SetBlipAsShortRange(blip, true)
+
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString('UwU Shop')
+    EndTextCommandSetBlipName(blip)
+
+    local blip = AddBlipForCoord(-582.49, -1062.94, 22.35)
+    
+    SetBlipSprite (blip, 621)
+    SetBlipDisplay(blip, 4)
+    SetBlipScale  (blip, 0.9)
+    SetBlipColour (blip, 34)
+    SetBlipAsShortRange(blip, true)
+
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString('UwU Cafe')
+    EndTextCommandSetBlipName(blip)
 end)
 
 --------------------
@@ -590,8 +597,8 @@ end)
 RegisterNetEvent('mt-UwUCafe:client:FrigorificoIngredients', function() -- Frigorifico para Ingredients
     TriggerEvent("inventory:client:SetCurrentStash", "FrigorificoUwU2")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "frigorificouwu2", {
-        maxweight = 1000000,
-        slots = 50,
+        maxweight = 500000,
+        slots = 40,
     })
 end)
 
@@ -798,21 +805,6 @@ RegisterNetEvent('mt-UwUCafe:client:BeberCafe', function() -- Comer panqueca
     end)
 end)
 
-RegisterNetEvent('mt-UwUCafe:client:BeberCafe2', function() -- Comer panqueca
-    TriggerEvent('animations:client:EmoteCommandStart', {"coffee"})
-    QBCore.Functions.Progressbar('beber_cafe', 'DRINKING A COFFEE...', 5000, false, true, {
-        disableMovement = false,
-        disableCarMovement = false,
-        disableMouse = false,
-        disableCombat = true,
-    }, {}, {}, {}, function()
-        TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + math.random(30, 50))
-        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        exports['ps-buffs']:StaminaBuffEffect(15000, 1.4)
-        
-    end)
-end)
-
 RegisterNetEvent('mt-UwUCafe:client:BeberLatte', function() -- Comer panqueca
     TriggerEvent('animations:client:EmoteCommandStart', {"coffee"})
     QBCore.Functions.Progressbar('beber_latte', 'DRINKING A LATTE...', 5000, false, true, {
@@ -849,23 +841,6 @@ Citizen.CreateThread(function()
         TaskStartScenarioInPlace(IngredientsProcPed, "WORLD_HUMAN_STAND_MOBILE_UPRIGHT", 0, true) 
         end
     end
-end)
-
-Citizen.CreateThread(function()
-    local PlayerData = QBCore.Functions.GetPlayerData()
-    if Config.UsarPed == true then
-        if PlayerData.job.name == "uwu" then
-            blip = AddBlipForCoord(vector3(462.2, -693.88, 26.44))
-            SetBlipSprite (blip, 480)
-            SetBlipDisplay(blip, 4)
-            SetBlipScale  (blip, 1.00)
-            SetBlipAsShortRange(blip, true)
-            SetBlipColour(blip, 2)
-            BeginTextCommandSetBlipName('STRING')
-            AddTextComponentSubstringPlayerName('Ingredients Seller')
-            EndTextCommandSetBlipName(blip)
-        end    
-    end    
 end)
 
 Citizen.CreateThread(function ()

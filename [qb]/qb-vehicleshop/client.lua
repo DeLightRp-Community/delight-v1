@@ -705,6 +705,61 @@ RegisterNetEvent('qb-vehicleshop:client:financePayment', function(data)
     end
 end)
 
+<<<<<<< HEAD
+RegisterNetEvent('qb-vehicleshop:client:testopenIdMenu', function(data)
+    local dialog = exports['qb-input']:ShowInput({
+        header = QBCore.Shared.Vehicles[data.vehicle]["name"],
+        submitText = "Submit",
+        inputs = {
+            {
+                text = "Server ID (#)",
+                name = "playerid",
+                type = "number",
+                isRequired = true
+            }
+        }
+    })
+    if dialog then
+        if not dialog.playerid then return end
+        if data.type == 'testDrive' then
+            TriggerServerEvent('qb-vehicleshop:server:customTestDrive', data.vehicle, dialog.playerid)
+        end
+    end
+end)
+
+RegisterNetEvent('qb-vehicleshop:client:sellopenIdMenu', function(data)
+=======
+--[[RegisterNetEvent('qb-vehicleshop:client:openIdMenu', function(data)
+>>>>>>> c7c385c55245c47d5168e3b0835f769344b8bdd4
+    local src = source
+    local Player = QBCore.Functions.GetPlayerData()
+    local insideShop = getShopInsideOf()
+    if (PlayerData.job.name == Config.Shops[insideShop]['Job'] or Config.Shops[insideShop]['Job'] == 'none') and (Player.job.grade.level >= Config.Shops[insideShop]['Rank'] or Config.Shops[insideShop]['Rank'] == '0') then
+        local dialog = exports['qb-input']:ShowInput({
+            header = QBCore.Shared.Vehicles[data.vehicle]["name"],
+            submitText = "Submit",
+            inputs = {
+                {
+                    text = "Server ID (#)",
+                    name = "playerid",
+                    type = "number",
+                    isRequired = true
+                }
+            }
+        })
+        if dialog then
+            if not dialog.playerid then return end
+            if data.type == 'sellVehicle' then
+                TriggerServerEvent('qb-vehicleshop:server:sellShowroomVehicle', data.vehicle, dialog.playerid)
+            end
+        end
+    else
+<<<<<<< HEAD
+=======
+        QBCore.Functions.Notify('You Cant Do This', 'error', 5000)
+    end
+end)]]
+
 RegisterNetEvent('qb-vehicleshop:client:testopenIdMenu', function(data)
     local dialog = exports['qb-input']:ShowInput({
         header = QBCore.Shared.Vehicles[data.vehicle]["name"],
@@ -750,6 +805,7 @@ RegisterNetEvent('qb-vehicleshop:client:sellopenIdMenu', function(data)
             end
         end
     else
+>>>>>>> c7c385c55245c47d5168e3b0835f769344b8bdd4
         QBCore.Functions.Notify('You Cant Do This', 'error', 5000)    
     end    
 end)
