@@ -11,6 +11,7 @@ Config.Locations = {
     [3] = {coords = vector3(806.21, -763.18, 26.78), text = "Oven", config = Oven},
     [4] = {coords = vector3(814.72, -760.01, 22.3), text = "Cheese", config = Cheese},
     [5] = {coords = vector3(807.66, -761.22, 26.78), text = "fries", config = fries},
+    [6] = {coords = vector3(802.23, -756.91, 26.78), text = "specialp", config = specialp},
 }
 
 
@@ -52,6 +53,24 @@ Prep = {
             [3] = {itemName = "burger-tomato", amount = 4},
         },
         progressbar = "Making Pizza Sauce", -- text to display on progressbar
+        progresstime = 10000, -- in milliseconds
+        dictionary = "mini@repair", --dictionary name for animation
+        animname = "fixing_a_player", --animation name
+    },
+}
+
+specialp = {
+    [1] = {
+        label = "Make special pizza", 
+        description = "coca_leaf = 1 | tomato = 1 | dough = 1 | mushrooms = 1", 
+        item = "specialp", --item that will be given
+        required = {
+            [1] = {itemName = "coca_leaf", amount = 1},
+            [2] = {itemName = "pizza-dough", amount = 1},
+            [3] = {itemName = "burger-tomato", amount = 1},
+            [4] = {itemName = "mushrooms", amount = 1},
+        },
+        progressbar = "Making special pizza", -- text to display on progressbar
         progresstime = 10000, -- in milliseconds
         dictionary = "mini@repair", --dictionary name for animation
         animname = "fixing_a_player", --animation name

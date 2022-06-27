@@ -1,80 +1,93 @@
 local QBCore = exports['qb-core']:GetCoreObject()
+local Cooldown = false
+MarkedMin = 25000
+MarkedMax = 50000
 
-QBCore.Functions.CreateCallback('qb-bobcat:server:getCops', function(source, cb)
-	local cops = 0
-    for k, v in pairs(QBCore.Functions.GetPlayers()) do
-        local Player = QBCore.Functions.GetPlayer(v)
-        if Player ~= nil then 
-            if (Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty) then
-                cops = cops + 1
-            end
-        end
-	end
-	cb(cops)
-end)
-
-RegisterServerEvent("qb-particleserver")
-AddEventHandler("qb-particleserver", function(method)
-    TriggerClientEvent("qb-ptfxparticle", -1, method)
-end)
-
-RegisterServerEvent("qb-particleserversec")
-AddEventHandler("qb-particleserversec", function(method)
-    TriggerClientEvent("qb-ptfxparticlesec", -1, method)
-end)
-
-
-QBCore.Functions.CreateUseableItem("yellow_laptop", function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-        TriggerClientEvent("qb-bobcatthirddoor", source)
-		--TriggerClientEvent('QBCore:Notify', source, "Door Unlocked.", "success")
-end)
-
-QBCore.Functions.CreateUseableItem("thermitec", function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-	if Player.Functions.GetItemByName('lighter') ~= nil then
-        TriggerClientEvent("qb-minigamedoor2", source)
-    else
-        TriggerClientEvent('QBCore:Notify', source, "You are missing something to light the thermite..", "error")
-    end
-end)
-
-QBCore.Functions.CreateUseableItem("thermite", function(source, item)
-    local Player = QBCore.Functions.GetPlayer(source)
-	if Player.Functions.GetItemByName('lighter') ~= nil then
-        TriggerClientEvent("qb-firstdoor", source)
-        TriggerClientEvent("qb-seconddoor", source)
-        
-    else
-        TriggerClientEvent('QBCore:Notify', source, "You are missing something to light the thermite..", "error")
-    end
-end)
-
-
-local ItemTable = {
-    "weapon_combatpistol",
-    "weapon_assaultrifle_mk2",
-    "weapon_smg",
-    "weapon_heavypistol",
-    "weapon_carbinerifle",
-    "weapon_machinepistol",
-    "weapon_pistol_mk2",
-}
-
-RegisterServerEvent("qb-bobcat:server:loot")
-AddEventHandler("qb-bobcat:server:loot", function()
+RegisterServerEvent("gc-bobcatheist:successthermite") 
+AddEventHandler("gc-bobcatheist:successthermite", function()
     local src = source
-    local Player = QBCore.Functions.GetPlayer(src)
-    for i = 1, math.random(1, 8), 1 do
-        local randItem = ItemTable[math.random(1, #ItemTable)]
-        Player.Functions.AddItem(randItem, 1)
-        TriggerClientEvent('qb-inventory:client:ItemBox', src, QBCore.Shared.Items[randItem], 'add')
-        Citizen.Wait(500)
-    end
-end)	
-
-RegisterServerEvent('qb-pedcreate') -- dunno whats that
-AddEventHandler('qb-pedcreate', function()
-    TriggerClientEvent("qb-createped")
+    local player = QBCore.Functions.GetPlayer(src)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['thermite'], 'remove')
+    player.Functions.RemoveItem("thermite", 1)
 end)
 
+RegisterServerEvent('gc-bobcatheist:server:cooldown')
+AddEventHandler('gc-bobcatheist:server:cooldown', function()
+    Cooldown = true
+    local timer = 60000 * 60000
+    while timer > 0 do
+        Wait(1000)
+        timer = timer - 1000
+        if timer == 0 then
+            Cooldown = false
+        end
+    end
+end)
+
+QBCore.Functions.CreateCallback("gc-bobcatheist:Cooldown", function(source, cb)
+    if Cooldown then
+        cb(true)
+    else
+        cb(false)
+    end
+end)
+
+QBCore.Functions.CreateCallback('gc-bobcatheist:server:getCops', function(source, cb)
+    local amount = 0
+    for k, v in pairs(QBCore.Functions.GetQBPlayers()) do
+        if v.PlayerData.job.name == 'police' then
+            amount = amount + 1
+        end
+    end
+    cb(amount)
+end)
+
+
+RegisterServerEvent('gc-bobcatheist:server:ThermitePtfx', function(coords)
+    TriggerClientEvent('gc-bobcatheist:client:ThermitePtfx', -1, coords)
+end)
+
+RegisterServerEvent("gc-bobcatheist:success") 
+AddEventHandler("gc-bobcatheist:success", function()
+    local src = source
+    local player = QBCore.Functions.GetPlayer(src)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['security_card_01'], 'remove')
+    player.Functions.RemoveItem("security_card_01", 1)
+end)
+
+RegisterNetEvent('gc-bobcatheist:server:CartItem', function(type)
+    local src = source
+    local player = QBCore.Functions.GetPlayer(src)
+    local bags = math.random(1, 3)
+    local info = {
+        worth = math.random(MarkedMin, MarkedMax)
+    }
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
+    player.Functions.AddItem('markedbills', 5, false, info)
+end)
+
+RegisterNetEvent('gc-bobcatheist:server:LockerItem', function(type)
+    local src = source
+    local player = QBCore.Functions.GetPlayer(src)
+    local bags = math.random(2, 4)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['weapon_combatmg'], "add")
+    player.Functions.AddItem('weapon_combatmg', bags, false)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['mg_ammo'], "add")
+    player.Functions.AddItem('mg_ammo', 10, false)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['weapon_assaultrifle'], "add")
+    player.Functions.AddItem('weapon_assaultrifle', bags, false)
+    TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['rifle_ammo'], "add")
+    player.Functions.AddItem('rifle_ammo', 10, false)
+end)
+
+RegisterNetEvent('gc-bobcatheist:server:vaultsync', function()
+    TriggerClientEvent('gc-bobcatheist:client:vaultsync', -1)
+end)
+
+RegisterNetEvent('sync', function(status)
+    if status == true then
+        return
+    elseif status == false then
+        TriggerClientEvent('bomb-anim')
+    end
+end)

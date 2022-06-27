@@ -415,3 +415,18 @@ exports['qb-target']:AddBoxZone("milkmenu", vector3(811.41, -764.74, 26.78), 1.6
 { options = { {  event = "qb-resturant:MilkshakeMenu", icon = "fas fa-credit-card", label = "Milkshake Drinks", job = "pizza"  }, },
   distance = 1.0
 })
+
+RegisterNetEvent('qb-resturant:client:specialp', function()
+    TriggerEvent('animations:client:EmoteCommandStart', {"uwusandy"})
+    QBCore.Functions.Progressbar('specialp_cupcake', 'EATING A CUPCAKE...', 5000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+        disableMouse = false,
+        disableCombat = true,
+    }, {}, {}, {}, function()
+        exports['ps-buffs']:AddBuff("intelligence", 150000)
+        TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(40, 70))
+        TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
+        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+    end)
+end)
