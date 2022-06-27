@@ -27,6 +27,13 @@ Config.Buffs = {
         progressColor = "#FFD700",
         type = 'buff'
     },
+    ['specialp'] = {
+        iconColor = "#ffffff",
+        iconName = 'lightbulb',
+        maxTime = 3600000,
+        progressColor = "#FFD700",
+        type = 'buff'
+    },
     ['luck'] = {
         iconColor = "#ffffff",
         iconName = 'dollarsign',

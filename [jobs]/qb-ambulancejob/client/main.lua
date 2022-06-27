@@ -425,7 +425,7 @@ CreateThread(function()
                 {
                     type = "client",
                     icon = "fas fa-shopping-basket",
-                    event = "qb-ambulancejob:shop",
+                    event = "hospital:client:openAmbulanceShop",
                     label = "Pharmacy",
                 },
             },

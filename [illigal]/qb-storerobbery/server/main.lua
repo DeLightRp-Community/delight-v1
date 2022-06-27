@@ -41,6 +41,7 @@ RegisterNetEvent('qb-storerobbery:server:takeMoney', function(register, isDone)
 	}
 	Player.Functions.AddItem('markedbills', bags, false, info)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
+    TriggerEvent("qb-log:server:CreateLog", "storerobbery", "Shop Robbery", "green", "**".. GetPlayerName(src) .. "** Robbed A Shop")
         if math.random(1, 100) <= 10 then
             -- local code = SafeCodes[Config.Registers[register].safeKey]
             -- local info = {}
@@ -88,6 +89,7 @@ RegisterNetEvent('qb-storerobbery:server:SafeReward', function(safe)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['tcard'], "add")
     end
 end)
+
 
 
 RegisterNetEvent('qb-storerobbery:server:callCops', function(type, safe, streetLabel, coords)

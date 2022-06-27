@@ -35,6 +35,7 @@ Locales = {
         ['storerobbery'] = "Store Robbery",
         ['fleecabank'] = "Fleeca Bank Robbery",
         ['paletobank'] = "Paleto Bank Robbery",
+        ['bobcat'] = "Bobcat Robbery",
         ['pacificbank'] = "Pacific Bank Robbery",
         ['prisonbreak'] = "Prison Break In Progress",
         ['vangelico'] = "Vangelico Robbery",

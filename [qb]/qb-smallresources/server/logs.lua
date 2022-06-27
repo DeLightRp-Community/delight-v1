@@ -20,8 +20,6 @@ local Webhooks = {
     ["police_armoury"] = 'https://discord.com/api/webhooks/974988423519686696/8AUjHXhOWlrB9K74k6c_VdA7TMVGBWsrM4KpLpkuwkDGYmwnh7E2K_BF39mJ4oz6I_uV',
     ["ambulance_armoury"] = 'https://discord.com/api/webhooks/975006468300500992/PVBQWt7KQlHuj_6_MDB0Hb64Hb1ZNUYSD7DhirAJuq2EGneIXXy7HZz-ae9k-cgOKct7',
     ['dealers'] = 'https://discord.com/api/webhooks/978211459312021514/6ZP3kHSvPJHTnA64H9jvpMbLa2uzYweB5tX6s4qkHPMcJc6obeRSaleBMfvUMytl6Y_X',
-    ['storerobbery'] = 'https://discord.com/api/webhooks/978211513506619393/P2z35Yw2w04rX8zG3xObGnrvhoO3OIhbbz3Ng5uYPafyXwWar2iHdVzMDeXEyIgqsS_U',
-    ['bankrobbery'] = 'https://discord.com/api/webhooks/978211669752832020/SGmlwMlSw0dXpp61TuSmAVHFcflUhNwteDonocAZTIfipZrQNw3xAi5Nek0coEtLl4cU',
     ['powerplants'] = 'https://discord.com/api/webhooks/978211756096749578/KjnQXEluerSm5sFF8O8n5zJjFGDbZI5P9OADimU4a7LjqHkOwDcm-dOfGY9tVbKSGtbY',
     ['death'] = 'https://discord.com/api/webhooks/978211831661330482/LoKhJpYbIzUiiDVXMbk-roi7Mmdjgf1m1IVRhslvtSrahhkNi3CdorBF42_4oZIB9ndh',
     ['joinleave'] = 'https://discord.com/api/webhooks/978211901341335592/3Jl26Q2BC55YBiRhm0PPt1kp9XhvsxtUFa6ctHn40B73TeActm1UL5LAY9m-T52WhVYc',
@@ -51,7 +49,11 @@ local Webhooks = {
     ["ambulance_shiftlog"]= 'https://discord.com/api/webhooks/975265685267697744/Dznfpa-TVg-QQtnWzzSI5ljwloNsYwZbpmnypgWIq93bzsfs3v1EOrr4XgW55oboCDiJ',
     ["taxi_shiftlog"]= 'https://discord.com/api/webhooks/975265817702826014/QTXz3NEImrZNvPde2ZzhEYgG4csFbSuivXPDA0EES5x0jAOCVz0Vb4iYtivAAvou72xf',
     ["mechanic_shiftlog"]= 'https://discord.com/api/webhooks/975265817702826014/QTXz3NEImrZNvPde2ZzhEYgG4csFbSuivXPDA0EES5x0jAOCVz0Vb4iYtivAAvou72xf',
-    ["adminlog"] = 'https://discord.com/api/webhooks/983413654068277318/S7gT-ziQkUKjTJq0ckG3cu4uv9QykmwL7-YSyu5FUd8StSrm5fqza8LKqwED0eC6ihKA'
+    ["adminlog"] = 'https://discord.com/api/webhooks/983413654068277318/S7gT-ziQkUKjTJq0ckG3cu4uv9QykmwL7-YSyu5FUd8StSrm5fqza8LKqwED0eC6ihKA',
+    --robberys
+    ["truckrobbery"]= 'https://discord.com/api/webhooks/987986835114426388/zCis6idsMN5rFR7MYSUyp86JwrY9CBSD4IR24o2U0o8lafJlFNeDEKq3MV69Eq6IvkzS',
+    ['storerobbery'] = 'https://discord.com/api/webhooks/987977180883591198/VrKGCE1J2XeLKwMiitC2L4rc-4tqY64rskfr5HJjS44Rb2VmKcLPAlvZghD8a4z4r8v4',
+    ['bankrobbery'] = 'https://discord.com/api/webhooks/978211669752832020/SGmlwMlSw0dXpp61TuSmAVHFcflUhNwteDonocAZTIfipZrQNw3xAi5Nek0coEtLl4cU'
 }
 
 local Colors = { -- https://www.spycolor.com/

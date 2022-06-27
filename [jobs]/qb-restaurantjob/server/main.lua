@@ -42,3 +42,11 @@ AddEventHandler(Config.FolderName..":server:cook", function(items, giveitem)
         TriggerClientEvent('QBCore:Notify', source, "Looks like you dropped some items!", "error")
     end
 end)
+
+QBCore.Functions.CreateUseableItem("specialp", function(source, item)
+    local Player = QBCore.Functions.GetPlayer(source)
+	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
+        TriggerClientEvent('qb-resturant:client:specialp', source)
+        Player.Functions.RemoveItem('specialp', 1)
+    end
+end)

@@ -508,6 +508,7 @@ RegisterNetEvent('qb-storerobbery:success', function()
             openingDoor = false
             ClearPedTasks(PlayerPedId())
             TriggerServerEvent('qb-storerobbery:server:takeMoney', currentRegister, true)
+            QBCore.Functions.Notify('You Got 5 Point From This', 'primary', 7500)
             currentRegister = 0
         end, function() -- Cancel
             openingDoor = false

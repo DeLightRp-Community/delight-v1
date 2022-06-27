@@ -1,13 +1,16 @@
 fx_version 'cerulean'
 game 'gta5'
 
-version '1.0.0'
+client_scripts {
+    'bobcat.lua',
+}
+
+shared_scripts {
+    'config.lua',
+}
 
 server_scripts {
-	'server.lua',
+    'server.lua',
 }
 
-client_scripts {
-	'client.lua',
-	'config.lua',
-}
+lua54 'yes'

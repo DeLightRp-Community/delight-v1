@@ -354,6 +354,11 @@ local function SaveOwnedGloveboxItems(plate, items)
 	end
 end
 
+RegisterNetEvent('inventory:server:addGloveboxItems', function(plate, items)
+    Gloveboxes[plate] = {}
+    Gloveboxes[plate].items = items
+end)
+
 local function AddToGlovebox(plate, slot, otherslot, itemName, amount, info, created)
 	local amount = tonumber(amount)
 	local ItemData = QBCore.Shared.Items[itemName]

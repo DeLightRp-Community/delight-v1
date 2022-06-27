@@ -1,7 +1,7 @@
 
 
 -- 1 created by hkari
-Config.DoorList['bobcat-1'] = {
+Config.DoorList['bobcatfirst'] = {
     authorizedJobs = { ['police'] = 0 },
     doorType = 'double',
     distance = 3,
@@ -15,7 +15,7 @@ Config.DoorList['bobcat-1'] = {
 }
 
 -- 2 created by hkari
-Config.DoorList['bobcat-2'] = {
+Config.DoorList['bobcatsecond'] = {
     doorType = 'door',
     objCoords = vec3(881.617066, -2264.669434, 32.591564),
     authorizedJobs = { ['police'] = 0 },
@@ -29,7 +29,7 @@ Config.DoorList['bobcat-2'] = {
 }
 
 -- 3 created by hkari
-Config.DoorList['bobcat-3'] = {
+Config.DoorList['bobcatthird'] = {
     authorizedJobs = { ['police'] = 0 },
     doorType = 'double',
     distance = 3,
