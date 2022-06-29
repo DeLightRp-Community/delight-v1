@@ -4196,6 +4196,15 @@ QBShared.Vehicles = {
 		["hash"] = `emsnspeedo`,
 		["shop"] = "mediccars",
 	},
+	["dodgeEMS"] = {
+		["name"] = "Medic Dodge",
+		["brand"] = "Medic",
+		["model"] = "dodgeEMS",
+		["price"] = 20000,
+		["category"] = "mediccar",
+		["hash"] = `dodgeEMS`,
+		["shop"] = "mediccars",
+	},
 }
 
 for k,v in pairs(QBShared.Vehicles) do

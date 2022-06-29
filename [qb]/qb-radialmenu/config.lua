@@ -365,13 +365,6 @@ Config.JobInteractions = {
             event = 'hospital:client:TreatWounds',
             shouldClose = true
         }, {
-            id = 'emergencybutton2',
-            title = 'Emergency button',
-            icon = 'bell',
-            type = 'client',
-            event = 'police:client:SendPoliceEmergencyAlert',
-            shouldClose = true
-        }, {
             id = 'escort',
             title = 'Escort',
             icon = 'user-friends',

@@ -1017,7 +1017,7 @@ end)
 
 RegisterNetEvent('qb-ambulancejob:beds', function()
     if GetAvailableBed(closestBed) then
-        TriggerServerEvent("hospital:server:SendToBed", closestBed, false)
+        TriggerServerEvent("hospital:server:SendTosBed", closestBed, false)
     else
         QBCore.Functions.Notify(Lang:t('error.beds_taken'), "error")
     end

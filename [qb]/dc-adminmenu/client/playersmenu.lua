@@ -152,7 +152,7 @@ KickMenu:AddButton({
     description = Lang:t("desc.confirm_kick"),
     select = function()
         if kickreason ~= 'Unknown' then
-            TriggerServerEvent('qb-admin:server:kick', PlayerDetails, kickreason)
+            TriggerServerEvent('qb-admin:server:kick', SelectedPlayer, kickreason)
             kickreason = 'Unknown'
         else
             QBCore.Functions.Notify(Lang:t("error.missing_reason"), 'error')

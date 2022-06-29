@@ -38,6 +38,13 @@ RegisterNetEvent('hospital:server:SendToBed', function(bedId, isRevive)
 	TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 end)
 
+RegisterNetEvent('hospital:server:SendTosBed', function(bedId, isRevive)
+	local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+	TriggerClientEvent('hospital:client:SendToBed', src, bedId, Config.Locations["beds"][bedId], isRevive)
+	TriggerClientEvent('hospital:client:SetBed', -1, bedId, true)
+end)
+
 RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 	local src = source
 	local Player = QBCore.Functions.GetPlayer(src)

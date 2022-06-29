@@ -129,6 +129,7 @@ RegisterNetEvent('hospital:client:UsePainkillers', function()
         StopAnimTask(ped, "mp_suicide", "pill", 1.0)
         TriggerServerEvent("QBCore:Server:RemoveItem", "painkillers", 1)
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["painkillers"], "remove")
+        TriggerServerEvent('hud:server:RelieveStress', math.random(20, 30))
         onPainKillers = true
         if painkillerAmount < 3 then
             painkillerAmount = painkillerAmount + 1

@@ -9,7 +9,7 @@ onDuty = false
 local DutyBlips = {}
 
 -- Functions
-local function CreateDutyBlips(playerId, playerLabel, playerJob, playerLocation)
+--[[local function CreateDutyBlips(playerId, playerLabel, playerJob, playerLocation)
     local ped = GetPlayerPed(playerId)
     local blip = GetBlipFromEntity(ped)
     if not DoesBlipExist(blip) then
@@ -25,7 +25,7 @@ local function CreateDutyBlips(playerId, playerLabel, playerJob, playerLocation)
         if playerJob == "police" then
             SetBlipColour(blip, 38)
         else
-            SetBlipColour(blip, 5)
+            SetBlipColour(blip, 1)
         end
         SetBlipAsShortRange(blip, true)
         BeginTextCommandSetBlipName('STRING')
@@ -38,7 +38,7 @@ local function CreateDutyBlips(playerId, playerLabel, playerJob, playerLocation)
         -- Ensure we remove our own blip.
         RemoveBlip(blip)
     end
-end
+end]]
 
 -- Events
 AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
@@ -136,7 +136,7 @@ RegisterNetEvent('police:client:sendBillingMail', function(amount)
     end)
 end)
 
-RegisterNetEvent('police:client:UpdateBlips', function(players)
+--[[RegisterNetEvent('police:client:UpdateBlips', function(players)
     if PlayerJob and (PlayerJob.name == 'police' or PlayerJob.name == 'ambulance') and
         onDuty then
         if DutyBlips then
@@ -153,7 +153,7 @@ RegisterNetEvent('police:client:UpdateBlips', function(players)
             end
         end
     end
-end)
+end)]]
 
 RegisterNetEvent('police:client:policeAlert', function(coords, text)
     local street1, street2 = GetStreetNameAtCoord(coords.x, coords.y, coords.z)

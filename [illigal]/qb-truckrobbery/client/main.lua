@@ -152,11 +152,11 @@ function deletebase()
     end
 end
 
-RegisterNetEvent("qb-truckrobbery:notif")
+--[[RegisterNetEvent("qb-truckrobbery:notif")
 AddEventHandler("qb-truckrobbery:notif", function()
 	
     TriggerEvent("qb-armoredtruckheist:client:robberyCall")
-end)
+end)]]
 
 RegisterNetEvent("qb-truckrobbery:notif2")
 AddEventHandler("qb-truckrobbery:notif2", function()
@@ -239,14 +239,14 @@ AddEventHandler('qb-armoredtruckheist:client:911alert', function()
 		end
 		exports['ps-dispatch']:VanRobbery()
 
-			TriggerServerEvent("qb-armoredtruckheist:server:callCops", streetLabel, transCoords)
+			--TriggerServerEvent("qb-armoredtruckheist:server:callCops", streetLabel, transCoords)
 
 		PlaySoundFrontend(-1, "Mission_Pass_Notify", "DLC_HEISTS_GENERAL_FRONTEND_SOUNDS", 0)
 		PoliceAlert = 1
 	end
 end)
 
-RegisterNetEvent('qb-armoredtruckheist:client:robberyCall')
+--[[RegisterNetEvent('qb-armoredtruckheist:client:robberyCall')
 AddEventHandler('qb-armoredtruckheist:client:robberyCall', function(streetLabel, coords)
     if PlayerJob.name == "police" then
         local store = "Armored Truck"
@@ -276,7 +276,7 @@ AddEventHandler('qb-armoredtruckheist:client:robberyCall', function(streetLabel,
             end
         end
     end
-end)
+end)]]
 
 function MissionNotification()
 	Citizen.Wait(2000)

@@ -78,7 +78,7 @@ Config.Locals = {
     },
 
     BossStashTarget = {
-        Label = "Open Boss Stash",
+        Label = "Open Stash",
         Icon = "fa fa-box"
     },
 

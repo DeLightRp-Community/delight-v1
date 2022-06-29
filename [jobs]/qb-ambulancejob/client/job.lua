@@ -401,23 +401,62 @@ local function EMSHelicopter(k)
                     if IsPedInAnyVehicle(ped, false) then
                         QBCore.Functions.DeleteVehicle(GetVehiclePedIsIn(ped))
                     else
-                        currentHelictoper = k
-                        local coords = Config.Locations["helicopter"][currentHelictoper]
-                        QBCore.Functions.SpawnVehicle(Config.Helicopter, function(veh)
-                            SetVehicleNumberPlateText(veh, Lang:t('info.heli_plate')..tostring(math.random(1000, 9999)))
-                            SetEntityHeading(veh, coords.w)
-                            SetVehicleLivery(veh, 1) -- Ambulance Livery
-                            exports['LegacyFuel']:SetFuel(veh, 100.0)
-                            TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-                            TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
-                            SetVehicleEngineOn(veh, true, true)
-                        end, coords, true)
+                        exports['qb-menu']:openMenu({
+                            {
+                                header = "Helicopter",
+                                isMenuHeader = true,
+                            },
+                            {
+                                header = "Heli", 
+                                txt = "Medical helicopter",
+                                params = {
+                                    event = "qb-ambulance:client:Medical",
+                                    args = 1
+                                }
+                            },
+                            {
+                                header = "uscg", 
+                                txt = "uscg Helicopter",
+                                params = {
+                                    event = "qb-ambulance:client:uscg",
+                                    args = 2
+                                }
+                            },
+                        })
                     end
                 end
             Wait(1)
         end
     end)
 end
+
+RegisterNetEvent('qb-ambulance:client:Medical', function(k)
+    currentHelictoper = k
+    local coords = Config.Locations["helicopter"][currentHelictoper]
+    QBCore.Functions.SpawnVehicle(Config.Helicopter, function(veh)
+        SetVehicleNumberPlateText(veh, Lang:t('info.heli_plate')..tostring(math.random(1000, 9999)))
+        SetEntityHeading(veh, coords.w)
+        SetVehicleLivery(veh, 1) -- Ambulance Livery
+        exports['LegacyFuel']:SetFuel(veh, 100.0)
+        TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+        SetVehicleEngineOn(veh, true, true)
+    end, coords, true)
+end)
+
+RegisterNetEvent('qb-ambulance:client:uscg', function(k)
+    currentHelictoper = k
+    local coords = Config.Locations["helicopter"][currentHelictoper]
+    QBCore.Functions.SpawnVehicle(Config.Heliccopter, function(veh)
+        SetVehicleNumberPlateText(veh, Lang:t('info.heli_plate')..tostring(math.random(1000, 9999)))
+        SetEntityHeading(veh, coords.w)
+        SetVehicleLivery(veh, 1) -- Ambulance Livery
+        exports['LegacyFuel']:SetFuel(veh, 100.0)
+        TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+        SetVehicleEngineOn(veh, true, true)
+    end, coords, true)
+end)
 
 RegisterNetEvent('EMSToggle:Duty', function()
     onDuty = not onDuty

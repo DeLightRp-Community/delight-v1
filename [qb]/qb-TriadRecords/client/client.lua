@@ -1609,7 +1609,7 @@ CreateThread(function()
 				icon = Config.Locals["BossStashTarget"]["Icon"],
 				label = Config.Locals["BossStashTarget"]["Label"],
 				canInteract = function()
-				 	if PlayerJob.isboss and PlayerJob.name == Config.Job then
+				 	if PlayerJob.name == Config.Job then --PlayerJob.isboss and 
 				 		return true
 				 	else
 				 		return false

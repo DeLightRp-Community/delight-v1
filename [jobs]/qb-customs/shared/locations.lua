@@ -147,8 +147,8 @@ Vehicle Classes:
              enabled = true,
          },
          categories = {
-             mods = true,
-             turbo = true,
+             --mods = true,
+             --turbo = true,
              repair = true,
              respray = true,
              liveries = true,

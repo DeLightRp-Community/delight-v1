@@ -8,7 +8,7 @@ local Objects = {}
 local QBCore = exports['qb-core']:GetCoreObject()
 
 -- Functions
-local function UpdateBlips()
+--[[local function UpdateBlips()
     local dutyPlayers = {}
     local players = QBCore.Functions.GetQBPlayers()
     for k, v in pairs(players) do
@@ -29,7 +29,7 @@ local function UpdateBlips()
         end
     end
     TriggerClientEvent("police:client:UpdateBlips", -1, dutyPlayers)
-end
+end]]
 
 local function CreateBloodId()
     if BloodDrops then
@@ -1083,12 +1083,12 @@ CreateThread(function()
     end
 end)
 
-CreateThread(function()
+--[[CreateThread(function()
     while true do
         Wait(5000)
         UpdateBlips()
     end
-end)
+end)]]
 
 ---------------------- division ----------------------
 

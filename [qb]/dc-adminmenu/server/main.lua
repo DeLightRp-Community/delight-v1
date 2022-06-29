@@ -232,7 +232,7 @@ RegisterNetEvent('qb-admin:server:kick', function(player, reason)
     local src = source
     local target = player.id
     
-    if not (QBCore.Functions.HasPermission(src, events['kick'])) then return end
+    if not (QBCore.Functions.HasPermission(src, events['kick']) or HasPermission(src, events['kick'])) then NoPerms(src) return end
     if PermOrder(src) > PermOrder(target) then return end
     
     TriggerEvent('qb-log:server:CreateLog', 'bans', 'Player Kicked', 'red', string.format('%s was kicked by %s for %s', GetPlayerName(target), GetPlayerName(src), reason), true)

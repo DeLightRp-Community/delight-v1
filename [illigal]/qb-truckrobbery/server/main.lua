@@ -37,14 +37,14 @@ TriggerClientEvent('QBCore:Notify', src, 'Someone is already carrying out this m
 end
 end)
 
-RegisterServerEvent('qb-armoredtruckheist:server:callCops')
+--[[RegisterServerEvent('qb-armoredtruckheist:server:callCops')
 AddEventHandler('qb-armoredtruckheist:server:callCops', function(streetLabel, coords)
     local place = "Armored Truck"
     local msg = "The Alram has been activated from a "..place.. " at " ..streetLabel
 
     TriggerClientEvent("qb-armoredtruckheist:client:robberyCall", -1, streetLabel, coords)
 
-end)
+end)]]
 
 function OdpalTimer()
 ActiveMission = 1

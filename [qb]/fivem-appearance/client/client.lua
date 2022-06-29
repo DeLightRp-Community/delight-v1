@@ -664,7 +664,10 @@ function SetupTargets()
             options = {
                 {
                     type = "client",
-                    action = action,
+                    action = function(entity) -- This is the action it has to perform, this REPLACES the event and this is OPTIONAL
+                        if IsPedAPlayer(entity) then return false end
+                        TriggerEvent("fivem-appearance:client:openClothingShopMenu")
+                      end,
                     icon = "fas fa-sign-in-alt",
                     label = "Clothing",
                     job = v.requiredJob

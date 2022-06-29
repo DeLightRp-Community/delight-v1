@@ -470,6 +470,66 @@ RegisterNetEvent("ps-dispatch:client:officerdown", function()
     OfficerDown()
 end)    
 
+local function EMSSDown()
+    local plyData = QBCore.Functions.GetPlayerData()
+    local currentPos = GetEntityCoords(PlayerPedId())
+    local locationInfo = getStreetandZone(currentPos)
+    local callsign = QBCore.Functions.GetPlayerData().metadata["callsign"]
+    TriggerServerEvent("dispatch:server:notify",{
+        dispatchcodename = "emssdown", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+        dispatchCode = "10-12",
+        firstStreet = locationInfo,
+        name = "EMS - " ..plyData.charinfo.firstname:sub(1,1):upper()..plyData.charinfo.firstname:sub(2).. " ".. plyData.charinfo.lastname:sub(1,1):upper()..plyData.charinfo.lastname:sub(2),
+        model = nil,
+        plate = nil,
+        callsign = callsign,
+        priority = 1, -- priority
+        firstColor = nil,
+        automaticGunfire = false,
+        origin = {
+            x = currentPos.x,
+            y = currentPos.y,
+            z = currentPos.z
+        },
+        dispatchMessage = _U('emssdown'), -- message
+        job = {"ambulance"} -- jobs that will get the alerts
+    })
+end exports('EMSSDown', EMSSDown)
+
+RegisterNetEvent("ps-dispatch:client:EMSSDown", function()
+    EMSSDown()
+end)  
+
+local function USCGSDown()
+    local plyData = QBCore.Functions.GetPlayerData()
+    local currentPos = GetEntityCoords(PlayerPedId())
+    local locationInfo = getStreetandZone(currentPos)
+    local callsign = QBCore.Functions.GetPlayerData().metadata["callsign"]
+    TriggerServerEvent("dispatch:server:notify",{
+        dispatchcodename = "uscgsdown", -- has to match the codes in sv_dispatchcodes.lua so that it generates the right blip
+        dispatchCode = "10-12",
+        firstStreet = locationInfo,
+        name = "USCG - " ..plyData.charinfo.firstname:sub(1,1):upper()..plyData.charinfo.firstname:sub(2).. " ".. plyData.charinfo.lastname:sub(1,1):upper()..plyData.charinfo.lastname:sub(2),
+        model = nil,
+        plate = nil,
+        callsign = callsign,
+        priority = 1, -- priority
+        firstColor = nil,
+        automaticGunfire = false,
+        origin = {
+            x = currentPos.x,
+            y = currentPos.y,
+            z = currentPos.z
+        },
+        dispatchMessage = _U('uscgsdown'), -- message
+        job = {"ambulance", "police"} -- jobs that will get the alerts
+    })
+end exports('USCGSDown', USCGSDown)
+
+RegisterNetEvent("ps-dispatch:client:USCGSDown", function()
+    USCGSDown()
+end) 
+
 local function ShotFire()
     local plyData = QBCore.Functions.GetPlayerData()
     local currentPos = GetEntityCoords(PlayerPedId())

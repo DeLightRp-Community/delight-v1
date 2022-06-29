@@ -84,8 +84,8 @@ RegisterNetEvent('qb-storerobbery:server:SafeReward', function(safe)
 	}
 	Player.Functions.AddItem('markedbills', bags, false, info)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['markedbills'], "add")
-    if chance >= 70 then
-    Player.Functions.AddItem('tcard', bags, false)
+    if chance >= 50 then
+    Player.Functions.AddItem('tcard', 1, false)
 	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['tcard'], "add")
     end
 end)

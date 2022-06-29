@@ -2,7 +2,7 @@ Config = {}
 
 Config.UseTarget = GetConvar('UseTarget', false)
 
-Config.MinimalDoctors = 2
+Config.MinimalDoctors = 4
 Config.WipeInventoryOnRespawn = true
 
 Config.Locations = {
@@ -39,6 +39,10 @@ Config.Locations = {
         [6] = {coords = vector4(-250.96, 6310.42, 33.34, 323.99), taken = false, model = 2117668672}, --Paleto Bay
         [7] = {coords = vector4(-252.61, 6312.13, 33.34, 316.18), taken = false, model = 1631638868}, 
         [8] = {coords = vector4(-254.42, 6313.71, 33.34, 316.06), taken = false, model = 1631638868}, 
+
+        [9] = {coords = vector4(366.46, -581.58, 44.21, 66.75), taken = false, model = 1631638868},
+        [10] = {coords = vector4(363.75, -589.06, 44.21, 68.71), taken = false, model = 1631638868},
+        [11] = {coords = vector4(364.93, -585.9, 44.21, 71.18), taken = false, model = 1631638868},
        --[8] = {coords = vector4(363.82, -589.09, 43.28, 68.5), taken = false, model = 1631638868},
     }, 
     ["stations"] = {
@@ -106,7 +110,8 @@ Config.AuthorizedVehicles = {
 }
 
 
-Config.Helicopter = "polmav"
+Config.Helicopter = "emsaw139"
+Config.Heliccopter = "JAYHAWK"
 
 Config.Items = {
     label = Lang:t('info.safe'),
@@ -128,7 +133,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 2,
-            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+            authorizedJobGrades = {7, 8, 9, 10, 11}
         },
         [3] = {
             name = "painkillers",
@@ -174,6 +179,33 @@ Config.Items = {
             type = "item",
             slot = 7,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}
+        },
+        [8] = {
+            name = "signalradar",
+            price = 10,
+            amount = 1,
+            info = {},
+            type = "item",
+            slot = 8,
+            authorizedJobGrades = {7, 8, 9, 10, 11}
+        },
+        [9] = {
+            name = "printer_ink",
+            price = 20,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 9,
+            authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11}
+        },
+        [10] = {
+            name = "printer_paper",
+            price = 20,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 10,
+            authorizedJobGrades = {4, 5, 6, 7, 8, 9, 10, 11}
         },
     },
 }
