@@ -419,7 +419,7 @@ local function EMSHelicopter(k)
                                 txt = "uscg Helicopter",
                                 params = {
                                     event = "qb-ambulance:client:uscg",
-                                    args = 2
+                                    args = 1
                                 }
                             },
                         })
@@ -431,6 +431,7 @@ local function EMSHelicopter(k)
 end
 
 RegisterNetEvent('qb-ambulance:client:Medical', function(k)
+    local ped = PlayerPedId()
     currentHelictoper = k
     local coords = Config.Locations["helicopter"][currentHelictoper]
     QBCore.Functions.SpawnVehicle(Config.Helicopter, function(veh)
@@ -445,12 +446,13 @@ RegisterNetEvent('qb-ambulance:client:Medical', function(k)
 end)
 
 RegisterNetEvent('qb-ambulance:client:uscg', function(k)
+    local ped = PlayerPedId()
     currentHelictoper = k
     local coords = Config.Locations["helicopter"][currentHelictoper]
     QBCore.Functions.SpawnVehicle(Config.Heliccopter, function(veh)
         SetVehicleNumberPlateText(veh, Lang:t('info.heli_plate')..tostring(math.random(1000, 9999)))
         SetEntityHeading(veh, coords.w)
-        SetVehicleLivery(veh, 1) -- Ambulance Livery
+        SetVehicleLivery(veh, 2) -- Ambulance Livery
         exports['LegacyFuel']:SetFuel(veh, 100.0)
         TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))

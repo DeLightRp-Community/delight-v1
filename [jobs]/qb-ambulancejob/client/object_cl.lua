@@ -68,11 +68,16 @@ CreateThread(function()
     })
 end)
 
+local objectdeleter = {
+    "prop_tool_pickaxe",
+    "prop_npc_phone_02"
+}
+
 RegisterCommand('rprop', function(source)
     local player = PlayerId()
     local plyPed = GetPlayerPed(player)
     local plyPos = GetEntityCoords(plyPed, false)
-    local propdelsp = GetClosestObjectOfType(plyPos.x, plyPos.y, plyPos.z - 2.0, 200.0, GetHashKey("prop_tool_pickaxe"), false, 0, 0)
+    local propdelsp = GetClosestObjectOfType(plyPos.x, plyPos.y, plyPos.z - 2.0, 200.0, GetHashKey(objectdeleter), false, 0, 0)
     if propdelsp ~= 0 then
         SetEntityAsMissionEntity(propdelsp, true, true)
         DeleteObject(propdelsp)

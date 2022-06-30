@@ -260,12 +260,8 @@ local function selectOption(t, t2)
     return false
 end
 
-local function IsPolice()
-    return PlayerData.job.name == "police"
-end
-
-local function IsEMS()
-    return PlayerData.job.name == "ambulance"
+local function IsPoliceOrEMS()
+    return (PlayerData.job.name == "police" or PlayerData.job.name == "ambulance")
 end
 
 local function IsDowned()
@@ -274,8 +270,7 @@ end
 
 local function SetupRadialMenu()
     FinalMenuItems = {}
-    if (IsDowned() and IsPolice()) then
-        QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+    if (IsDowned() and IsPoliceOrEMS()) then
             FinalMenuItems = {
                 [1] = {
                     id = 'emergencybutton1',
@@ -285,24 +280,7 @@ local function SetupRadialMenu()
                     event = 'ps-dispatch:client:officerdown',
                     shouldClose = true,
                 },
-            }
-        end, "signalradar")    
-    else
-        SetupSubItems()
-        FinalMenuItems = deepcopy(Config.MenuItems)
-        for _, v in pairs(DynamicMenuItems) do
-            FinalMenuItems[#FinalMenuItems+1] = v
-        end
-
-    end
-end
-
-local function SetupsRadialMenu()
-    FinalMenuItems = {}
-    if (IsDowned() and IsEMS()) then
-        QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
-            FinalMenuItems = {
-                [1] = {
+                [2] = {
                     id = 'emergencybutton2',
                     title = 'EMS Down',
                     icon = 'exclamation-circle',
@@ -310,24 +288,7 @@ local function SetupsRadialMenu()
                     event = 'ps-dispatch:client:EMSSDown',
                     shouldClose = true,
                 },
-            }
-        end, "signalradar")     
-    else
-        SetupSubItems()
-        FinalMenuItems = deepcopy(Config.MenuItems)
-        for _, v in pairs(DynamicMenuItems) do
-            FinalMenuItems[#FinalMenuItems+1] = v
-        end
-
-    end
-end
-
-local function SetupssRadialMenu()
-    FinalMenuItems = {}
-    if (IsDowned() and IsEMS()) then
-        QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
-            FinalMenuItems = {
-                [1] = {
+                [3] = {
                     id = 'emergencybutton3',
                     title = 'USCG Down',
                     icon = 'exclamation-circle',
@@ -335,8 +296,7 @@ local function SetupssRadialMenu()
                     event = 'ps-dispatch:client:USCGSDown',
                     shouldClose = true,
                 },
-            }
-        end, "signalradar")     
+            }   
     else
         SetupSubItems()
         FinalMenuItems = deepcopy(Config.MenuItems)
@@ -353,8 +313,6 @@ local function setRadialState(bool, sendMessage, delay)
     if bool then
         TriggerEvent('qb-radialmenu:client:onRadialmenuOpen')
         SetupRadialMenu()
-        SetupsRadialMenu()
-        SetupssRadialMenu()
     else
         TriggerEvent('qb-radialmenu:client:onRadialmenuClose')
     end
