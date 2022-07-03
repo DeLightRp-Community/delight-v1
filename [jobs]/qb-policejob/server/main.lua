@@ -1161,3 +1161,14 @@ RegisterNetEvent('qb-policejob:server:useSmartWatch', function(data)
     local src = source
     TriggerClientEvent('hud:client:showMap',src,{checked = data})
 end)
+
+
+RegisterServerEvent('police:remmaskGranted')
+AddEventHandler('police:remmaskGranted', function(targetplayer)
+    TriggerClientEvent('police:remmaskAccepted', targetplayer)
+end)
+
+RegisterNetEvent("facewear:adjust")
+AddEventHandler("facewear:adjust", function(pTargetId, pType, pShouldRemove)
+    TriggerClientEvent("facewear:adjust", pTargetId, pType, pShouldRemove)
+end)

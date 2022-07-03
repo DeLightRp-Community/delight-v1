@@ -1709,3 +1709,24 @@ RegisterNetEvent('qb-phone:server:GetLSBNchats', function()
     local src = source
     TriggerClientEvent('qb-phone:LSBN-reafy-for-add', src, LSBNTable, false, nil)
 end)
+
+QBCore.Functions.CreateCallback('qb-billing:server:checkFines', function(source, cb, target)
+    local Player = QBCore.Functions.GetPlayer(target)
+    if Player then
+        local Cid = Player.PlayerData.citizenid
+        MySQL.Async.fetchAll('SELECT amount, id, society, sender FROM phone_invoices WHERE citizenid = ?', {Cid}, function(invoices)
+            cb(invoices, Cid)
+        end)
+    else
+        cb({})
+    end
+end)
+
+QBCore.Commands.Add('checkfine', 'Check Invoice', {}, false, function(source, _)
+    local Player = QBCore.Functions.GetPlayer(source)
+    if Player.PlayerData.job.name == 'police' or Player.PlayerData.job.name == 'ambulance' or Player.PlayerData.job.name == 'mechanic' then
+        TriggerClientEvent('qb-billing:client:checkFines',source)
+    else
+        TriggerClientEvent('QBCore:Notify', source, 'You are not a Service Worker')
+    end
+end)

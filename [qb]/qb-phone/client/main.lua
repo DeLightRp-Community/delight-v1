@@ -2486,4 +2486,42 @@ local function GetGroupCSNs(Data)
     return gData
 end
 
+RegisterNetEvent('qb-billing:client:checkFines', function()
+    local player, distance = QBCore.Functions.GetClosestPlayer()
+    if player ~= -1 and distance < 2.5 then
+        local PlayerId = GetPlayerServerId(player)
+        QBCore.Functions.TriggerCallback('qb-billing:server:checkFines', function(invoices, Cid)
+            local InvoiceShow = {
+                {
+                    header = 'Unpaid Invoices | ID: ' .. PlayerId,
+                    isMenuHeader = true,
+                    icon = 'fas fa-file-invoice-dollar',
+                },
+                {
+                    header = 'Citizen ID: ' .. Cid,
+                    isMenuHeader = true,
+                    icon = 'fas fa-id-card-clip',
+                },
+            }
+            for _, v in ipairs(invoices) do
+                InvoiceShow[#InvoiceShow + 1] = {
+                    header = 'Amount: ' .. v.amount,
+                    icon = 'fas fa-dollar-sign',
+                    txt = 'Sender: ' .. v.sender .. ' | Society: ' .. v.society,
+                    params = { event = 'qb-billing:open:invoiceMainmenu', } --You can trigger to go back in main menu
+                }
+            end
+            InvoiceShow[#InvoiceShow + 1] = {
+                header = 'Close',
+                icon   = 'fa-solid fa-circle-xmark',
+                txt    = '',
+                params = { event = 'qb-menu:closeMenu', }
+            }
+            exports['qb-menu']:openMenu(InvoiceShow)
+        end, PlayerId)
+    else
+        QBCore.Functions.Notify('No one around!', 'error')
+    end
+end)
+
 exports('GetGroupCSNs', GetGroupCSNs)

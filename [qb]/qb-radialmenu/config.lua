@@ -78,7 +78,15 @@ Config.MenuItems = {
                         type = 'client',
                         event = 'police:client:EscortPlayer',
                         shouldClose = true
-                    }, {
+                    }, 
+                    {
+                        id = 'remask',
+                        title = 'remask',
+                        icon = 'user-friends',
+                        type = 'client',
+                        event = 'police:remmask',
+                        shouldClose = true
+                    },{
                         id = 'escort554',
                         title = 'Hostage',
                         icon = 'child',

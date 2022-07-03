@@ -13,3 +13,4 @@ Config.DoorList['police-parkingdoor'] = {
     doorLabel = 'parkingdoor',
     locked = true,
 }
+

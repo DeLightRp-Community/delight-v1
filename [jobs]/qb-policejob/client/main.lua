@@ -240,7 +240,7 @@ end)
 
 RegisterNetEvent('police:remmask')
 AddEventHandler('police:remmask', function(t)
-	t, distance = GetClosestPlayer()
+	t, distance = QBCore.Functions.GetClosestPlayer()
 	if (distance ~= -1 and distance < 5) then
 		if isOppositeDir(GetEntityHeading(t),GetEntityHeading(PlayerPedId())) and not IsPedInVehicle(t,GetVehiclePedIsIn(t, false),false) then
 			TriggerServerEvent("police:remmaskGranted", GetPlayerServerId(t))
@@ -268,4 +268,31 @@ RegisterNetEvent('qb-smallrecources:useSmartWatch', function()
         TriggerServerEvent("qb-policejob:server:useSmartWatch", showWatch)  
     end
     showWatch= not showWatch
+end)
+
+RegisterNetEvent('qb-police:remmask')
+AddEventHandler('qb-police:remmask', function(t)
+    t, distance = GetClosestPlayer()
+    if (distance ~= -1 and distance < 5) then
+        if not IsPedInVehicle(t,GetVehiclePedIsIn(t, false),false) then
+            TriggerServerEvent("police:remmaskGranted", GetPlayerServerId(t))
+            AnimSet = "mp_missheist_ornatebank"
+            AnimationOn = "stand_cash_in_bag_intro"
+            AnimationOff = "stand_cash_in_bag_intro"
+            loadAnimDict( AnimSet )
+            TaskPlayAnim( PlayerPedId(), AnimSet, AnimationOn, 8.0, -8, -1, 49, 0, 0, 0, 0 )
+            Citizen.Wait(500)
+            ClearPedTasks(PlayerPedId())                        
+        end
+    else
+        QBCore.Functions.Notify("No player near you (maybe get closer)!")
+    end
+end)
+
+RegisterNetEvent('police:remmaskAccepted')
+AddEventHandler('police:remmaskAccepted', function()
+    TriggerEvent("facewear:adjust", 1, true)
+    TriggerEvent("facewear:adjust", 3, true)
+    TriggerEvent("facewear:adjust", 4, true)
+    TriggerEvent("facewear:adjust", 2, true)
 end)
