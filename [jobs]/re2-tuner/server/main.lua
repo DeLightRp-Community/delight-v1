@@ -127,3 +127,11 @@ RegisterNetEvent('', function()
 	TriggerClientEvent("inventory:client:ItemBox", source, QBCore.Shared.Items['hydrochloric_acid'], "add")
 	TriggerClientEvent('QBCore:Notify', src, 'Hydrochloric acid process was succesful !', "success")
 end)
+
+
+RegisterNetEvent('re2-tuner:RefillNitro:server', function(data)
+    local src = source
+	local Player = QBCore.Functions.GetPlayer(src)
+    Player.Functions.AddItem('nitrous', 1, false)
+	TriggerClientEvent('inventory:client:ItemBox', src, QBCore.Shared.Items['nitrous'], "add")
+end)

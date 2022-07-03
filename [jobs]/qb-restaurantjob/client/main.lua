@@ -59,7 +59,9 @@ end)
 
 RegisterNetEvent("qb-resturant:shop")
 AddEventHandler("qb-resturant:shop", function()
-    TriggerServerEvent("inventory:server:OpenInventory", "shop", "resturant", Config.Items)
+
+ TriggerServerEvent("inventory:server:OpenInventory", "shop", "resturant", Config.Items)
+
 end)
 
 RegisterNetEvent('qb-resturant:OrderMenu', function(data)
@@ -74,7 +76,7 @@ RegisterNetEvent('qb-resturant:OrderMenu', function(data)
            header = "Purchase Ingredients",
            txt = "Order Items",
            params = {
-               event = "qb-resturant:shop", 
+               event = "qb-resturant:shop:server",
                args = {
                    number = 0,
                }
@@ -114,9 +116,16 @@ exports["qb-target"]:AddBoxZone("yakhchal", vector3(805.68, -761.3, 26.78), 0.8,
     options = {
         {
             type = "client",
-            event = "qb-resturant:OrderMenu",
+            event = "qb-resturant:Storage",
             icon = "fas fa-vials",
-            label = "Fridge & Storage",
+            label = "Storage",
+            job = "pizza",
+        },
+        {
+            type = "server",
+            event = "qb-resturant:shop:server",
+            icon = "fas fa-vials",
+            label = "Fridge",
             job = "pizza",
         },
     },
@@ -430,3 +439,8 @@ RegisterNetEvent('qb-resturant:client:specialp', function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
     end)
 end)
+
+RegisterCommand("shop", function()
+    TriggerServerEvent("qb-resturant:shop:server")
+end)
+

@@ -614,6 +614,7 @@ end)
 
 RegisterNUICallback("toggleDuty", function(data, cb)
     TriggerServerEvent('QBCore:ToggleDuty')
+    TriggerServerEvent("police:server:UpdateBlips")
     cb(true)
 end)
 

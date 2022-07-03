@@ -704,6 +704,7 @@ RegisterNUICallback('PayInvoice', function(data, cb)
         if CanPay then PhoneData.Invoices = Invoices end
         cb(CanPay)
     end, society, amount, invoiceId, senderCitizenId)
+    exports['qb-management']:AddMoney(player.PlayerData.job.name, amount)
     TriggerServerEvent('qb-phone:server:BillingEmail', data, true)
 end)
 

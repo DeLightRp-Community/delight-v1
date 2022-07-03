@@ -454,6 +454,32 @@ CreateThread(function()
     end
 end)
 
+RegisterNetEvent("qb-ambulance:tray")
+AddEventHandler("qb-ambulance:tray", function()
+    TriggerEvent("inventory:client:SetCurrentStash", "medictray")
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "medictray", {
+        maxweight = 100000,
+        slots = 6,
+    })
+end)
+
+exports['qb-target']:AddBoxZone("md_stash", vector3(312.02, -593.41, 43.28), 1.7, 0.5, {
+    name="md stash",
+    heading=72,
+    debugPoly=false,
+    minZ=39.48,
+    maxZ=43.48
+}, {
+    options = {
+        {
+        event = "qb-ambulance:tray",
+        icon = "far fa-clipboard",
+        label = "counter",
+        },
+    },
+    distance = 3.5
+})
+
   RegisterNetEvent('hospital:client:openAmbulanceShop', function()
     print(json.encode(Config.Items.shopItem))
     local data = {

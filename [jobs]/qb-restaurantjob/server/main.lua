@@ -50,3 +50,18 @@ QBCore.Functions.CreateUseableItem("specialp", function(source, item)
         Player.Functions.RemoveItem('specialp', 1)
     end
 end)
+
+RegisterNetEvent('qb-resturant:shop:server', function()
+    
+	local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.PlayerData.job.name == "pizza" and Player.PlayerData.job.grade.level >= 1 then
+        
+        TriggerClientEvent('qb-resturant:shop', src)
+
+    else
+        TriggerClientEvent('QBCore:Notify', source, "Looks like you Cant Access this part", "error")
+    end
+end)
+
+

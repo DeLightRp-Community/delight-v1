@@ -87,7 +87,7 @@ Config.DoorList['ambulance-wardAtoWardB'] = {
 -- mainhalldoor created by hkari
 Config.DoorList['ambulance-mainhalldoor'] = {
     distance = 3,
-    authorizedJobs = { ['ambulance'] = 0 },
+    authorizedJobs = { ['ambulance'] = 0,['police']=0 },
     doors = {
         {objName = -434783486, objYaw = 340.00003051758, objCoords = vec3(324.236022, -589.226196, 43.433910)},
         {objName = -1700911976, objYaw = 340.00003051758, objCoords = vec3(326.654998, -590.106628, 43.433910)}
@@ -113,23 +113,12 @@ Config.DoorList['ambulance-adminstaration'] = {
 }
 
 -- wardC created by hkari
-Config.DoorList['ambulance-wardC'] = {
-    distance = 3,
-    authorizedJobs = { ['ambulance'] = 0 },
-    doors = {
-        {objName = -1700911976, objYaw = 249.98275756836, objCoords = vec3(348.433320, -588.744996, 43.433910)},
-        {objName = -434783486, objYaw = 249.98275756836, objCoords = vec3(349.313752, -586.325988, 43.433910)}
-    },
-    doorType = 'double',
-    doorLabel = 'wardC',
-    locked = false,
-    doorRate = 1.0,
-}
+
 
 -- wardD created by hkari
 Config.DoorList['ambulance-wardD'] = {
     distance = 3,
-    authorizedJobs = { ['ambulance'] = 0 },
+    authorizedJobs = { ['ambulance'] = 0,['police']=0 },
     doors = {
         {objName = -1700911976, objYaw = 249.98275756836, objCoords = vec3(327.256012, -595.195008, 43.433910)},
         {objName = -434783486, objYaw = 249.98275756836, objCoords = vec3(328.136444, -592.776062, 43.433910)}
@@ -250,4 +239,18 @@ Config.DoorList['ambulance-printer'] = {
     locked = true,
     authorizedJobs = { ['ambulance'] = 0 },
     objYaw = 340.00003051758,
+}
+
+-- ambulance-wardC created by Reza_Rashel
+Config.DoorList['ambulance-ambulance-wardC'] = {
+    doorLabel = 'ambulance-wardC',
+    authorizedJobs = { ['ambulance'] = 0,['police']=0 },
+    distance = 2,
+    doorType = 'double',
+    doors = {
+        {objName = -434783486, objYaw = 249.98275756836, objCoords = vec3(349.313752, -586.325988, 43.433910)},
+        {objName = -1700911976, objYaw = 249.98275756836, objCoords = vec3(348.433320, -588.744996, 43.433910)}
+    },
+    doorRate = 1.0,
+    locked = false,
 }

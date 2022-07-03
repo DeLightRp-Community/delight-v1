@@ -92,6 +92,9 @@ Config.BossMenuZones = {
     ['digitalden'] = {
         { coords = vector3(1130.09, -470.79, 66.72), length = 1.0, width = 1.0, heading = 0, minZ = 63.32, maxZ = 67.32 },
     },
+    ['tuner'] = {
+        { coords = vector3(125.43, -3007.19, 7.86), length = 1.0, width = 1.0, heading = 0, minZ = 6.32, maxZ = 7.32 },
+    },
 }
 
 Config.GangMenus = {

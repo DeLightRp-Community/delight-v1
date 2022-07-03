@@ -9,19 +9,23 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
+		
+	
 		Citizen.Wait(0)
 		local playerPed = PlayerPedId()
 
 		if sitting then
-			helpText(Config.GetUpText)
+			exports['qb-core']:DrawText('[E] To Stand Up', 'left')
 		end
 
 		if sitting and not IsPedUsingScenario(playerPed, currentScenario) then
+			exports['qb-core']:HideText("sit-up")
 			wakeup()
 		end
 
 		if IsControlPressed(0, Config.GetUpKey) and IsInputDisabled(0) and IsPedOnFoot(playerPed) then
 			if sitting then
+				exports['qb-core']:HideText("sit-up")
 				wakeup()
 			end			
 		end
@@ -42,7 +46,6 @@ Citizen.CreateThread(function()
                 event = "qb-Sit:Sit",
                 icon = "fas fa-chair",
                 label = "Use",
-				entity = entity
             },
         },
         job = {"all"},
@@ -63,7 +66,7 @@ RegisterNetEvent("qb-Sit:Sit", function(data)
 
 	local object, distance = data.entity, #(GetEntityCoords(playerPed) - GetEntityCoords(data.entity))
 
-	if distance and distance < 1.4 then
+	if distance and distance < 2.4 then
 		local hash = GetEntityModel(object)
 
 		for k,v in pairs(Config.Sitable) do
@@ -95,9 +98,10 @@ function wakeup()
 end
 
 function sit(object, modelName, data)
-	if not HasEntityClearLosToEntity(PlayerPedId(), object, 17) then
-		return
-	end
+	-- if not HasEntityClearLosToEntity(PlayerPedId(), object, 17) then
+	-- 	return
+	-- 	print("reza gayid amir av ro")
+	-- end
 	disableControls = true
 	currentObj = object
 	FreezeEntityPosition(object, true)
@@ -106,11 +110,12 @@ function sit(object, modelName, data)
 	local pos = GetEntityCoords(object)
 	local playerPos = GetEntityCoords(PlayerPedId())
 	local objectCoords = pos.x .. pos.y .. pos.z
-
+	
 	QBCore.Functions.TriggerCallback('qb-sit:getPlace', function(occupied)
 		if occupied then
 			QBCore.Functions.Notify('Chair is being used.', 'error')
 		else
+			
 			local playerPed = PlayerPedId()
 			lastPos, currentSitCoords = GetEntityCoords(playerPed), objectCoords
 

@@ -9,5 +9,6 @@ Config.Vehicles = {
     ["npolstang"] = "6",
     ["npolchal"] = "7",
     ["npolmm"] = "8",
+    ["npolexp"] = "9",
 
 }

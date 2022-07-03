@@ -4,6 +4,10 @@ Config.Job = "pizza"
 
 Config.FolderName = "qb-restaurantjob"
 
+Config.GaragePedLocations = {
+    {coords = vector4(800.74, -738.71, 27.66, 2.79)},
+}
+
 Config.Locations = {
     --[1] = {coords = vector3(813.7376, -749.700, 27.529), text = "Drink Station", config = Drink},
     [1] = {coords = vector3(809.89, -761.22, 26.78), text = "Prep Station", config = Prep},
@@ -71,7 +75,7 @@ specialp = {
             [4] = {itemName = "mushrooms", amount = 1},
         },
         progressbar = "Making special pizza", -- text to display on progressbar
-        progresstime = 10000, -- in milliseconds
+        progresstime = 15000, -- in milliseconds
         dictionary = "mini@repair", --dictionary name for animation
         animname = "fixing_a_player", --animation name
     },
@@ -88,7 +92,7 @@ Oven = {
             [3] = {itemName = "cheese", amount = 4},
         }, -- required items to make
         progressbar = "Making Cheese Pizza", -- text to display on progressbar
-        progresstime = 15000, -- in milliseconds
+        progresstime = 10000, -- in milliseconds
         dictionary = "anim@mp_player_intmenu@key_fob@", --dictionary name for animation
         animname = "fob_click", --animation name
     },
@@ -103,7 +107,7 @@ Oven = {
             [3] = {itemName = "cheese", amount = 2},
         }, -- required items to make
         progressbar = "Making Cheese Pizza", -- text to display on progressbar
-        progresstime = 15000, -- in milliseconds
+        progresstime = 10000, -- in milliseconds
         dictionary = "anim@mp_player_intmenu@key_fob@", --dictionary name for animation
         animname = "fob_click", --animation name
     },
@@ -118,7 +122,7 @@ fries = {
             [1] = {itemName = "burger-potato", amount = 1},
         }, -- required items to make
         progressbar = "Making fries", -- text to display on progressbar
-        progresstime = 10000, -- in milliseconds
+        progresstime = 4000, -- in milliseconds
         dictionary = "mini@repair", --dictionary name for animation
         animname = "fixing_a_player", --animation name
     },
@@ -135,7 +139,7 @@ Dough = {
             [3] = {itemName = "flour", amount = 2},
         }, -- required items to make
         progressbar = "Making Pizza Dough", -- text to display on progressbar
-        progresstime = 10000, -- in milliseconds
+        progresstime = 4000, -- in milliseconds
         dictionary = "mini@repair", --dictionary name for animation
         animname = "fixing_a_player", --animation name
     },
@@ -148,7 +152,7 @@ Cheese = {
         item = "cheese", --item that will be given
         required = {}, -- required items to make
         progressbar = "Grabbing Cheese", -- text to display on progressbar
-        progresstime = 10000, -- in milliseconds
+        progresstime = 4000, -- in milliseconds
         dictionary = "mini@repair", --dictionary name for animation
         animname = "fixing_a_player", --animation name
     }
@@ -176,7 +180,7 @@ Config.Items = {
             },
             [3] = {
                 name = "burger-tomato",
-                price = 2,
+                price = 10,
                 amount = 50,
                 info = {},
                 type = "item",
@@ -216,7 +220,7 @@ Config.Items = {
             },
             [8] = {
                 name = "burger-potato",
-                price = 6,
+                price = 20,
                 amount = 50,
                 info = {},
                 type = "item",
@@ -224,7 +228,7 @@ Config.Items = {
             },
             [9] = {
                 name = "burger-mshakeformula",
-                price = 6,
+                price = 10,
                 amount = 50,
                 info = {},
                 type = "item",

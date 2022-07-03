@@ -205,6 +205,25 @@ exports['qb-target']:AddBoxZone("tunerMaterialStorage", vector3(121.0, -3027.85,
     distance = 2.5
 })
 
+exports['qb-target']:AddBoxZone("nitro", vector3(136.69, -3051.37, 7.04), 1, 1, {
+    name = 'nitro',
+    debugPoly = false,
+    heading =0,
+    minZ=3.84,
+    maxZ=7.84,
+    }, {
+        options = {
+            {
+                icon = 'fas fa-boxes',
+                label = 'Refill Nitro',
+                action = function()
+                    TriggerEvent("re2-tuner:NitroRefill")
+                end,
+                job = 'tuner',
+            },
+    },
+    distance = 2.5
+})
 
 local toolBoxModels = {
     `imp_prop_impexp_radiator_02`,
@@ -230,7 +249,21 @@ exports['qb-target']:AddTargetModel(toolBoxModels, {
     distance = 1.0
 })
 
-
+exports['qb-target']:AddBoxZone("change_clothesT", vector3(152.13, -3014.01, 7.04), 1.6, 1, {
+    name="change_clothesT",
+    heading=0,
+    debugpoly = false,
+}, {
+    options = {
+        {
+        event = "fivem-appearance:client:changeOutfitMenu",
+        icon = "far fa-tshirt",
+        label = "Change Clothes",
+        job = 'tuner',
+        },
+    },
+    distance = 1.5
+})
 
 
 
@@ -554,6 +587,23 @@ RegisterNetEvent('re2-tunerjob:modify:upgrade', function(data)
             Wait(mdfTime+400)
         end
     end
+end)
+
+RegisterNetEvent('re2-tuner:NitroRefill', function ()
+    QBCore.Functions.Progressbar("search_register", "Refilling Nitro...", 5000, false, true, {
+        disableMovement = true,
+        disableCarMovement = true,
+        disableMouse = false,
+        disableCombat = true,
+    }, {
+		animDict = 'mp_arresting',
+		anim = 'a_uncuff',
+		flags = 16,
+    }, {}, {}, function() -- Done
+		TriggerServerEvent("re2-tuner:RefillNitro:server")
+    end, function() -- Cancel
+        QBCore.Functions.Notify("Cancelled", 'error')
+    end)
 end)
 
 RegisterNetEvent('re2-tuner:client:show-image', function(url)

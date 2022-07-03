@@ -91,23 +91,6 @@ exports['qb-target']:AddBoxZone("burger_tray_4", vector3(810.89, -752.7, 26.78),
     distance = 3.5
 })
 
-exports['qb-target']:AddBoxZone("md stash", vector3(312.02, -593.41, 43.28), 1.7, 0.5, {
-    name="md stash",
-    heading=72,
-    debugPoly=false,
-    minZ=39.48,
-    maxZ=43.48
-}, {
-    options = {
-        {
-        event = "qb-burgershot:Tray5",
-        icon = "far fa-clipboard",
-        label = "counter",
-        },
-    },
-    distance = 3.5
-})
-
 exports['qb-target']:AddBoxZone("burgershotcooker2 ", vector3(-1202.94, -897.38, 14.0), 1.7, 1, {
     name="burgershotcooker2 ",
     heading=34,

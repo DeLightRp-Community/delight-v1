@@ -82,7 +82,37 @@ Config.TargetBones = {
 }
 
 Config.TargetModels = {
+	["burgershotgarage"] = {
+		models = {
+			"ig_floyd"
+		},
+		options = {
+			{
+				type = "client",
+				event = "garage:BurgerShotGarage",
+				icon = "fas fa-car",
+				label = "BurgerShot Garage",
+				job = "burgershot",
+			}
+		},
+		distance = 2.5,
+	},
 
+	["pizzagarage"] = {
+		models = {
+			"ig_floyd"
+		},
+		options = {
+			{
+				type = "client",
+				event = "garage:resturantGarage",
+				icon = "fas fa-car",
+				label = "Pizza Shop Garage",
+				job = "pizza",
+			}
+		},
+		distance = 2.5,
+	},
 }
 
 Config.GlobalPedOptions = {

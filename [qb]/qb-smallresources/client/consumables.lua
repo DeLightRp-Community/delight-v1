@@ -367,6 +367,27 @@ RegisterNetEvent('consumables:client:meth', function()
 	end)
 end)
 
+RegisterNetEvent('consumables:client:adrenaline', function()
+    QBCore.Functions.Progressbar("snort_adrenaline", "Injecting Adrenaline", 1500, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+        disableMouse = false,
+        disableCombat = true,
+    }, {
+        animDict = "switch@trevor@trev_smoking_meth",
+        anim = "trev_smoking_meth_loop",
+        flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(PlayerPedId(), "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
+        TriggerServerEvent("QBCore:Server:RemoveItem", "adrenaline", 1)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["adrenaline"], "remove")
+        exports['ps-buffs']:StaminaBuffEffect(15000, 1.4)
+    end, function() -- Cancel
+        StopAnimTask(PlayerPedId(), "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
+        QBCore.Functions.Notify("Canceled..", "error")
+	end)
+end)
+
 RegisterNetEvent('consumables:client:UseJoint', function()
     QBCore.Functions.Progressbar("smoke_joint", "Lighting joint..", 1500, false, true, {
         disableMovement = false,
@@ -543,6 +564,24 @@ AddEventHandler("consumables:client:Eat", function(itemName)
         TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items[itemName], "remove")
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
         TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + Consumeables[itemName])
+        TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
+    end)
+end)
+
+
+RegisterNetEvent("consumables:client:moneyshot")
+AddEventHandler("consumables:client:moneyshot", function(itemName)
+    TriggerEvent('animations:client:EmoteCommandStart', {"eat"})
+    QBCore.Functions.Progressbar("eat_something2", "Eating..", 5000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+		disableMouse = false,
+		disableCombat = true,
+    }, {}, {}, {}, function() -- Done
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items[itemName], "remove")
+        TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + ConsumeablesEat[itemName])
+        exports['ps-buffs']:AddBuff("luck", 550000)
         TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
     end)
 end)

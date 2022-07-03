@@ -1,6 +1,5 @@
 local function hideText(where)
     Wait(1000)
-    print(where)
     if where~=nil then
         SendNUIMessage({
             action = 'HIDE_TEXT',

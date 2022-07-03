@@ -138,20 +138,31 @@ Config.DurabilityMultiplier = {
 	['weapon_hazardcan'] 			= 0.15,
     ['weapon_fertilizercan'] 		= 0.15,
 
-    -- Custom Weapns Passion
-    ['weapon_beanbag'] 				 = 0.15,
-    ['weapon_bonesaw'] 				 = 0.15,
-    ['weapon_dildo'] 				 = 0.15,
-    ['weapon_fork'] 				 = 0.15,
-    ['weapon_gitar'] 				 = 0.15,
-    ['weapon_katana'] 				 = 0.15,
-    ['weapon_kiketsusword'] 		 = 0.15,
-    ['weapon_kiritosword'] 		     = 0.15,
-    ['weapon_lucille'] 		         = 0.15,
-    ['weapon_ramboknife'] 		     = 0.15,
-    ['weapon_roses'] 		         = 0.15,
-    ['weapon_stampedrifle'] 		 = 0.15,
-    ['weapon_tacticalcarbine'] 		 = 0.15,
+    --Custom Weapons
+    ['weapon_ak47'] 			= 0.15,
+    ['weapon_de'] 	                = 0.15,
+    ['weapon_fnx45'] 			= 0.15,
+    ['weapon_glock17'] 		        = 0.15,
+    ['weapon_m4'] 			= 0.15,
+    ['weapon_hk416'] 			= 0.15,
+    ['weapon_mk14'] 			= 0.15,
+    ['weapon_m110'] 			= 0.15,
+    ['weapon_huntingrifle'] 	        = 0.20,
+    ['weapon_ar15'] 			= 0.15,
+    ['weapon_m9'] 	                = 0.15,
+    ['weapon_m70'] 			= 0.15,
+    ['weapon_m1911'] 		        = 0.15,
+    ['weapon_mac10'] 			= 0.15,
+    ['weapon_uzi'] 	                = 0.15,
+    ['weapon_mp9'] 	                = 0.15,
+    ['weapon_mossberg'] 		= 0.15,
+    ['weapon_remington'] 		= 0.15,
+    ['weapon_scarh'] 			= 0.15,
+    ['weapon_shiv'] 	                = 0.15,
+    ['weapon_katana'] 	                = 0.15,
+    ['weapon_sledgehammer'] 	        = 0.15,
+
+
 }
 
 Config.WeaponRepairPoints = {

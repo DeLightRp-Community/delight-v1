@@ -115,6 +115,11 @@ QBCore.Functions.CreateUseableItem("meth", function(source, item)
     TriggerClientEvent("consumables:client:meth", src)
 end)
 
+QBCore.Functions.CreateUseableItem("adrenaline", function(source, item)
+    local src = source
+    TriggerClientEvent("consumables:client:adrenaline", src)
+end)
+
 QBCore.Functions.CreateUseableItem("heroin", function(source, item)
     local src = source
     TriggerClientEvent("consumables:client:heroin", src)
@@ -246,7 +251,7 @@ end)
 QBCore.Functions.CreateUseableItem("burger-moneyshot", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
 	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
-        TriggerClientEvent("consumables:client:Eat", source, item.name)
+        TriggerClientEvent("consumables:client:moneyshot", source, item.name)
     end
 end)
 

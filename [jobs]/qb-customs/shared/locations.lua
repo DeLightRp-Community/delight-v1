@@ -84,6 +84,7 @@ Vehicle Classes:
             xenons = true,
             horn = true,
             cosmetics = true,
+            
         },
         drawtextui = {
             text = "Bennys Motorworks"
@@ -127,6 +128,7 @@ Vehicle Classes:
             xenons = true,
             horn = true,
             cosmetics = true,
+            
         },
         drawtextui = {
             text = "Bennys Motorworks"
@@ -156,6 +158,7 @@ Vehicle Classes:
               extras = true,
               plate = true,
               cosmetics = true,
+              wheels = true,
          },
          drawtextui = {
              text = "MRPD Motorworks",
@@ -181,6 +184,7 @@ Vehicle Classes:
              respray = true,
              liveries = true,
              tint = true,
+             wheels = true,
              -- extras = true,
              -- plate = true,
              -- cosmetics = true,
