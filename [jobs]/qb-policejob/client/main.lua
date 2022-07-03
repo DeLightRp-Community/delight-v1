@@ -256,3 +256,16 @@ AddEventHandler('police:remmask', function(t)
 		TriggerEvent("DoLongHudText", "No player near you (maybe get closer)!",2)
 	end
 end)
+
+
+
+local showWatch = false
+RegisterNetEvent('qb-smallrecources:useSmartWatch', function()
+    QBCore.Functions.Notify("You are Using Your Smart Watch")
+	if showWatch then
+        TriggerServerEvent("qb-policejob:server:useSmartWatch", showWatch)
+    else
+        TriggerServerEvent("qb-policejob:server:useSmartWatch", showWatch)  
+    end
+    showWatch= not showWatch
+end)

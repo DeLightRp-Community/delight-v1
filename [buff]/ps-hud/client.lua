@@ -398,6 +398,17 @@ RegisterNUICallback('HideMap', function(data, cb)
     TriggerEvent("hud:client:playHudChecklistSound")
 end)
 
+
+RegisterNetEvent('hud:client:showMap', function(data)
+
+    if data.checked then
+        Menu.isOutMapChecked = true
+    else
+        Menu.isOutMapChecked = false
+    end
+    TriggerEvent("hud:client:playHudChecklistSound")
+end)
+
 RegisterNetEvent("hud:client:LoadMap", function()
     Wait(50)
     -- Credit to Dalrae for the solve.

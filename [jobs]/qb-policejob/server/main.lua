@@ -1147,3 +1147,17 @@ RegisterServerEvent('police:remmaskGranted') -- that is np's code ((pooria))
 AddEventHandler('police:remmaskGranted', function(targetplayer)
     TriggerClientEvent('police:remmaskAccepted', targetplayer)
 end)
+
+
+
+QBCore.Functions.CreateUseableItem("smartwatch", function(source)
+    local src = source
+
+    TriggerClientEvent('qb-smallrecources:useSmartWatch', src)
+
+end)
+
+RegisterNetEvent('qb-policejob:server:useSmartWatch', function(data)
+    local src = source
+    TriggerClientEvent('hud:client:showMap',src,{checked = data})
+end)

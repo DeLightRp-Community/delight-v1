@@ -923,6 +923,9 @@ QBShared.Items = {
     ['tire']                    = {['name'] = 'tire',                       ['label'] = 'Tire',           			  ['weight'] = 1000,      ['type'] = 'item',      ['image'] = 'tire.png',              		['unique'] = false,     ['useable'] = true,     ['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = ''},
     ['stancerkit']              = {['name'] = 'stancerkit',                 ['label'] = 'Stancer Kit',          	  ['weight'] = 1000,      ['type'] = 'item',      ['image'] = 'stancerkit.png',             ['unique'] = false,     ['useable'] = true,     ['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = ''},
 	['signalradar']             = {['name'] = 'signalradar',                ['label'] = 'Signal Radar',          	  ['weight'] = 1000,      ['type'] = 'item',      ['image'] = 'signalradar.png',            ['unique'] = false,     ['useable'] = true,     ['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Signal Radar'},
-	['adrenaline']             	= {['name'] = 'adrenaline',                	['label'] = 'Adrenaline',          	  	  ['weight'] = 1000,      ['type'] = 'item',      ['image'] = 'Adrenaline.png',            ['unique'] = false,     ['useable'] = true,     ['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Adrenaline'},
+	['adrenaline']             	= {['name'] = 'adrenaline',                	['label'] = 'Adrenaline',          	  	  ['weight'] = 1000,      ['type'] = 'item',      ['image'] = 'Adrenaline.png',            	['unique'] = false,     ['useable'] = true,      ['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Adrenaline'},
+
+	['smartwatch']             = {['name'] = 'smartwatch',                ['label'] = 'Smart Watch',          	  	  ['weight'] = 5000,      ['type'] = 'item',      ['image'] = 'smartwatch.png',            	['unique'] = true,     	['useable'] = true,     ['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Smart Watch to See Where you are'},
+
 
 }

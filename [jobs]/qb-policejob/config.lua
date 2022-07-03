@@ -17,7 +17,7 @@ Config.LicenseRank = 2
 Config.UseTarget = GetConvar('UseTarget', 'false') == 'true'
 Config.Locations = {
     ["duty"] = {
-        -- [1] = vector3(441.91, -982.05, 30.88)
+        [1] = vector3(441.91, -982.05, 30.88)
     },
     ["vehicle"] = {
         [1] = vector4(0, 0, 0, 0),

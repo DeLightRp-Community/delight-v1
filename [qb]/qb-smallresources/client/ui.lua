@@ -31,3 +31,7 @@ RegisterCommand("anim-r", function()
     exports['qb-core']:HideText()
     
 end)
+
+
+
+

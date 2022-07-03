@@ -605,7 +605,21 @@ if Config.UseTarget then
             distance = 1.5
         })
     end
-
+    -- Vest location
+    local models = {
+        'prop_armour_pickup',
+      }
+      exports['qb-target']:AddTargetModel(models, { -- This defines the models, can be a string or a table
+        options = { 
+          { 
+            type = "clienta", 
+            event = "consumables:client:UseHeavyArmor",
+            label = 'Pickup Vest',
+            job = 'police',
+          }
+        },
+        distance = 2.5,
+      })
 else
     -- Toggle Duty
     local dutyZones = {}
