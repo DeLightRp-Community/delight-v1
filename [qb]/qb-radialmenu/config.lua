@@ -454,7 +454,14 @@ Config.JobInteractions = {
             type = 'client',
             event = 'mdt:client:fullmenuradila',
             shouldClose = true
-        }, {
+        },{
+            id = 'takeoffmask',
+            title = 'Mask',
+            icon = 'mask',
+            type = 'client',
+            event = 'police:client:takeoffmask',
+            shouldClose = true
+        },{
             id = 'officerdown',
             title = 'Officer Down',
             icon = 'bell',

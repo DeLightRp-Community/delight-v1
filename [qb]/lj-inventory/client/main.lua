@@ -925,6 +925,8 @@ end)]]--
         local crafting = {}
         crafting.label = "Crafting"
         crafting.items = GetThresholdItems()
+        local ped = PlayerPedId()
+        ClearPedTasks(ped)
         TriggerServerEvent("inventory:server:OpenInventory", "crafting", math.random(1, 99), crafting)
     end)
     
