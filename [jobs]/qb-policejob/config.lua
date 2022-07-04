@@ -527,6 +527,15 @@ Config.Items = {
             slot = 32,
             authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11}
         },
+        [33] = {
+            name = "smartwatch",
+            price = 10000,
+            amount = 1,
+            info = {},
+            type = "item",
+            slot = 33,
+            authorizedJobGrades = {5, 6, 7, 8, 9, 10, 11}
+        },
     }
 }
 
