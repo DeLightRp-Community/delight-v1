@@ -52,6 +52,7 @@ local bones = {
               return false
           end
         end,
+        job = 'tuner',
       }
     },
     distance = 2.5,
@@ -61,7 +62,7 @@ RegisterNetEvent('re2-tunerjob:client:openTunerStash', function()
     local closestVehicle = getNearestVeh()
     local plate=GetVehicleNumberPlateText(closestVehicle)
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "tunerStash_"..plate, {
-        maxweight = 1000,
+        maxweight = 10000,
         slots = 5,
     })
     TriggerEvent("inventory:client:SetCurrentStash", "tunerStash_"..plate)

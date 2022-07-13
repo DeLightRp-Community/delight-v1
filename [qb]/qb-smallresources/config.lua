@@ -38,7 +38,20 @@ ConsumeablesEat = {
     ["burger-heartstopper"] = 100,
     ["burger-meatfree"] = 60,
     ["burger-fries"] = 30,
-
+    --uwu
+    ["cupcake-morango"] = 70,
+    ["cupcake-chocolate"] = 70,
+    ["cupcake-limao"] = 50,
+    ["gelado-morango"] = 30,
+    ["gelado-chocolate"] = 30,
+    ["gelado-baunilha"] = 30,
+    ["panqueca-nutela"] = 100,
+    ["ppanqueca-oreo"] = 100,
+    ["muffin-chocolate"] = 50,
+    ["pastel-frango"] = 50,
+    ["waffle-nutela"] = 50,
+    
+    --pizza 
     ["cheese-pizza"] = 70,
 }
 
@@ -55,6 +68,16 @@ ConsumeablesDrink = {
     ["burger-mshake"] = math.random(40, 50),
 
     -- ["sodacup"] = math.random(20, 40),
+    --uwu
+    ["cafe-uwuu"] = 100,
+    ["latte-uwu"] = 30,
+    ["bubble-amora"] = 60,
+    ["bubble-menta"] = 60,
+    ["bubble-morango"] = 60,
+    ["milkshake-morango"] = 40,
+    ["milkshake-chocolate"] = 40,
+   
+    
 }
 
 ConsumeablesAlcohol = {

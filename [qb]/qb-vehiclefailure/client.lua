@@ -255,13 +255,17 @@ local function tireBurstLottery()
 		tireBurstLuckyNumber = math.random(tireBurstMaxNumber)			-- Select a new number to hit, just in case some numbers occur more often than others
 	end
 end
-
 -- Events
 
 RegisterNetEvent('qb-vehiclefailure:client:RepairVehicle', function()
 	local vehicle = QBCore.Functions.GetClosestVehicle()
 	local engineHealth = GetVehicleEngineHealth(vehicle) --This is to prevent people from "repairing" a vehicle and setting engine health lower than what the vehicles engine health was before repairing.
+	local time = 20
+    local circles = 5
+    local success = exports['qb-lock']:StartLockPickCircle(circles, time, success)
+	
 	if vehicle ~= nil and vehicle ~= 0 and engineHealth < 500 then
+		if success then
 		local ped = PlayerPedId()
 		local pos = GetEntityCoords(ped)
 		local vehpos = GetEntityCoords(vehicle)
@@ -282,11 +286,14 @@ RegisterNetEvent('qb-vehiclefailure:client:RepairVehicle', function()
        			QBCore.Functions.Notify(Lang:t("error.inside_veh"), "error")
       		end
 		end
+
+		else
+			QBCore.Functions.Notify(("Try Agian"), "error")
+		end
+		
   	else
 		if vehicle == nil or vehicle == 0 then
 			QBCore.Functions.Notify(Lang:t("error.not_near_veh"), "error")
-		else
-			QBCore.Functions.Notify(Lang:t("error.healthy_veh"), "error")
 		end
 	end
 end)

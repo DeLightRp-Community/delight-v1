@@ -104,7 +104,7 @@ RegisterNetEvent('mt-UwUCafe:client:MenuComidas', function() -- Menu para fazer 
             }
         },
         {
-            header = "Canilla Ice Cream",
+            header = "Vanilla Ice Cream",
             txt = "Ingredients: <br> - 1 Cream <br> - 1 Condensed milk <br> - 1 Extrato de baunilha",
             params = {
                 event = "mt-UwUCafe:client:FazerGeladoBaunilha",
@@ -229,112 +229,112 @@ RegisterNetEvent('mt-UwUCafe:client:MenuLoja', function() -- Menu para o vendedo
         },
         {
             header = "Milk",
-            txt = "Price: 10x per 20$",
+            txt = "Price: 10x per 200$",
             params = {
                 event = "mt-UwUCafe:client:ComprarLeite",
             }
         },
         {
             header = "Buter",
-            txt = "Price: 10x per 20$",
+            txt = "Price: 10x per 200$",
             params = {
                 event = "mt-UwUCafe:client:ComprarManteiga",
             }
         },
         {
             header = "Flouer",
-            txt = "Price: 10x per 20$",
+            txt = "Price: 10x per 200$",
             params = {
                 event = "mt-UwUCafe:client:ComprarFarinha",
             }
         },
         {
             header = "Straberry Package",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarMorangos",
             }
         },
         {
             header = "Chocolat",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarChocolate",
             }
         },
         {
             header = "Limão",
-            txt = "Price: 10x per 30$",
+            txt = "Price: 10x per 300$",
             params = {
                 event = "mt-UwUCafe:client:ComprarLimao",
             }
         },
         {
             header = "Cream",
-            txt = "Price: 10x v 50$",
+            txt = "Price: 10x v 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarNatas",
             }
         },
         {
             header = "Condensed milk",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarCondensado",
             }
         },
         {
             header = "Extrato de baunilha",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarBaunilha",
             }
         },
         {
             header = "Pacote de açucar",
-            txt = "Price: 10x per 20$",
+            txt = "Price: 10x per 200$",
             params = {
                 event = "mt-UwUCafe:client:ComprarAcucar",
             }
         },
         {
             header = "Frasco de nutela",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarNutela",
             }
         },
         {
             header = "Pacote de oreo",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarOreo",
             }
         },
         {
             header = "Coffee beans",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarCafe",
             }
         },
         {
             header = "Extrato de menta",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarMenta",
             }
         },
         {
             header = "Caixa de amoras",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarAmoras",
             }
         },
         {
             header = "Frango",
-            txt = "Price: 10x per 50$",
+            txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarFrango",
             }
@@ -589,7 +589,7 @@ end)
 RegisterNetEvent('mt-UwUCafe:client:FrigorificoComida', function() -- Frigorifico para comida (feita)
     TriggerEvent("inventory:client:SetCurrentStash", "frigorificouwu")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "frigorificouwu", {
-        maxweight = 250000,
+        maxweight = 1000000,
         slots = 40,
     })
 end)
@@ -605,7 +605,7 @@ end)
 RegisterNetEvent('mt-UwUCafe:client:Balcao', function() -- Frigorifico para comida (feita)
     TriggerEvent("inventory:client:SetCurrentStash", "balcaouwu")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "balcaouwu", {
-        maxweight = 10000,
+        maxweight = 100000,
         slots = 40,
     })
 end)
@@ -613,7 +613,7 @@ end)
 RegisterNetEvent('mt-UwUCafe:client:Tabuleiro1', function() -- tabuleiro1
     TriggerEvent("inventory:client:SetCurrentStash", "TabuleiroUwU1")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "TabuleiroUwU1", {
-        maxweight = 20000,
+        maxweight = 100000,
         slots = 10,
     })
 end)
@@ -621,7 +621,7 @@ end)
 RegisterNetEvent('mt-UwUCafe:client:Tabuleiro2', function() -- tabuleiro2
     TriggerEvent("inventory:client:SetCurrentStash", "TabuleiroUwU2")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "TabuleiroUwU2", {
-        maxweight = 20000,
+        maxweight = 100000,
         slots = 10,
     })
 end)
@@ -853,9 +853,9 @@ Citizen.CreateThread(function ()
         options = {
             {
                 type = "Client",
-                event = "mt-UwUCafe:client:MenuLoja",
+                event = "qb-uwu:shop:server",
                 icon = "fas fa-shopping-bag",
-                label = 'Talk with employee'
+                label = 'Talk with employee(Boss Only)'
             },
         },
         distance = 2.5
@@ -1154,49 +1154,49 @@ RegisterNetEvent('mt-UwUCafe:client:EmentaBebidas', function()
         },
         {
             header = "Latte",
-            txt = "Price: 25$",
+            txt = "Price: 150$",
             params = {
                 event = "mt-UwUCafe:client:EmentaBebidas",
             }
         },
         {
             header = "Coffee",
-            txt = "Price: 20$",
+            txt = "Price: 300$",
             params = {
                 event = "mt-UwUCafe:client:EmentaBebidas",
             }
         },
         {
             header = "Blackberry Bubble Tea",
-            txt = "Price: 25$",
+            txt = "Price: 200$",
             params = {
                 event = "mt-UwUCafe:client:EmentaBebidas",
             }
         },
         {
             header = "Mint Bubble Tea",
-            txt = "Price: 25$",
+            txt = "Price: 200$",
             params = {
                 event = "mt-UwUCafe:client:EmentaBebidas",
             }
         },
         {
             header = "Straberry Bubble Tea",
-            txt = "Price: 25$",
+            txt = "Price: 200$",
             params = {
                 event = "mt-UwUCafe:client:EmentaBebidas",
             }
         },
         {
             header = "Straberry Milkshake",
-            txt = "Price: 25$",
+            txt = "Price: 160$",
             params = {
                 event = "mt-UwUCafe:client:EmentaBebidas",
             }
         },
         {
             header = "Chocolat Milkshake",
-            txt = "Price: 25$",
+            txt = "Price: 160$",
             params = {
                 event = "mt-UwUCafe:client:EmentaBebidas",
             }
@@ -1219,77 +1219,77 @@ RegisterNetEvent('mt-UwUCafe:client:EmentaComidas', function()
         },
         {
             header = "Straberry Cupcake",
-            txt = "Price: 50$",
+            txt = "Price: 400$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Chocolat Cupcake",
-            txt = "Price: 50$",
+            txt = "Price: 400$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Limon Cupcake",
-            txt = "Price: 50$",
+            txt = "Price: 350$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Straberry Ice Cream",
-            txt = "Price: 40$",
+            txt = "Price: 310$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Vanilla Ice Cream",
-            txt = "Price: 40$",
+            txt = "Price: 310$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Chocolat Ice Cream",
-            txt = "Price: 40$",
+            txt = "Price: 310$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Nutela Pancake",
-            txt = "Price: 50$",
+            txt = "Price: 500$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Oreo Pancake",
-            txt = "Price: 50$",
+            txt = "Price: 500$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Chocolat Muffin",
-            txt = "Price: 50$",
+            txt = "Price: 350$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Chicken Pastel",
-            txt = "Price: 50$",
+            txt = "Price: 350$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
         },
         {
             header = "Nutela Waffle",
-            txt = "Price: 50$",
+            txt = "Price: 350$",
             params = {
                 event = "mt-UwUCafe:client:EmentaComidas",
             }
