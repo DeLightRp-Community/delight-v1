@@ -10,6 +10,14 @@ shared_scripts {
 	'config.lua'
 }
 
+ui_page "html/index.html"
+files {
+    "html/*.html",
+    "html/*.css",
+    "html/*.js",
+}
+
+
 client_scripts {
 	'client/main.lua',
 	'client/wounding.lua',
@@ -17,15 +25,18 @@ client_scripts {
 	'client/job.lua',
 	'client/dead.lua',
 	'client/object_cl.lua',
+	'client/mlist.lua',
 	'@PolyZone/client.lua',
 	'@PolyZone/BoxZone.lua',
-	'@PolyZone/ComboZone.lua'
+	'@PolyZone/ComboZone.lua',
+	
 }
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
     'server/main.lua',
-	'server/object_sv.lua'
+	'server/object_sv.lua',
+	'server/mlist.lua'
 }
 
 lua54 'yes'

@@ -323,7 +323,7 @@ end
 RegisterNetEvent('qb-ambulancejob:stash', function()
     if onDuty then
         TriggerServerEvent("inventory:server:OpenInventory", "stash", "ambulancestash_"..QBCore.Functions.GetPlayerData().citizenid,{
-            maxweight = 100000,
+            maxweight = 200000,
             slots = 30,
         })
         TriggerEvent("inventory:client:SetCurrentStash", "ambulancestash_"..QBCore.Functions.GetPlayerData().citizenid)

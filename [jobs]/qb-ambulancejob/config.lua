@@ -11,8 +11,8 @@ Config.Locations = {
 	    [2] = vector4(-256.67, 6331.46, 32.43, 309.72), -- paleto
     },
     ["duty"] = {
-        -- [1] = vector3(311.91, -593.44, 44.09),
-        -- [2] = vector3(-267.19, 6320.68, 33.24),
+        [1] = vector3(309.28, -593.28, 43.28),
+        [2] = vector3(-267.19, 6320.68, 33.24),
     },
     ["vehicle"] = {
         [1] = vector4(1, 1, 1, 1),
@@ -692,3 +692,29 @@ Config.VehicleSettings = {
 Config.Objects = {
     ["tent"] = {model = `prop_gazebo_03`, freeze = true},
 }
+
+
+
+-- LSPD Command Callsigns --
+Config.Command_Min = '200'
+Config.Command_Max = '220'
+
+-- LSPD Detective Callsigns --
+Config.Detective_Min = '300'
+Config.Detective_Max = '330'
+
+-- S.W.A.T Callsigns --
+Config.Swat_Min = '350'
+Config.Swat_Max = '360'
+
+-- BCSO Sheriffs Callsigns --
+Config.Bcso_Min = '400'
+Config.Bcso_Max = '430'
+
+-- SASP Troopers Callsigns --
+Config.Troopers_Min = '450'
+Config.Troopers_Max = '470'
+
+-- SASPR Rangers Callsigns --
+Config.Rangers_Min = '500'
+Config.Rangers_Max = '550'

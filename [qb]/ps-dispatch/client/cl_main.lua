@@ -177,7 +177,7 @@ end
 
 local function CheckOnDuty()
 	if Config.OnDutyOnly then
-		return PlayerJob.onduty
+		return QBCore.Functions.GetPlayerData().job.onduty
 	end
 	return true
 end
@@ -208,6 +208,7 @@ end)
 
 RegisterNetEvent('dispatch:clNotify', function(sNotificationData, sNotificationId, sender)
     if sNotificationData ~= nil and isLoggedIn then
+		-- print(CheckOnDuty())
 		if IsValidJob(sNotificationData['job']) and CheckOnDuty() then
             if not disableNotis then
 				if sNotificationData.origin ~= nil then
