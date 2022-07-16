@@ -12,8 +12,9 @@ local QBCore = exports['qb-core']:GetCoreObject()
 local function UpdateBlips()
     local dutyPlayers = {}
     local players = QBCore.Functions.GetQBPlayers()
+    
     for k, v in pairs(players) do
-        
+        -- print(json.encode(v.Functions.GetItemByName('signalradar'))) 
         if (v.PlayerData.job.name == "police" or v.PlayerData.job.name == "ambulance") and v.PlayerData.job.onduty and v.Functions.GetItemByName('signalradar') ~= nil then
             local coords = GetEntityCoords(GetPlayerPed(v.PlayerData.source))
             local heading = GetEntityHeading(GetPlayerPed(v.PlayerData.source))
