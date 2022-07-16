@@ -137,7 +137,7 @@ RegisterNetEvent('police:client:sendBillingMail', function(amount)
 end)
 
 RegisterNetEvent('police:client:UpdateBlips', function(players)
-    print(json.encode(players))
+    -- print(json.encode(players))
     if PlayerJob and (PlayerJob.name == 'police' or PlayerJob.name == 'ambulance') and
         onDuty then
         if DutyBlips then
