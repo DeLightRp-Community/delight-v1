@@ -33,13 +33,14 @@ Citizen.CreateThread(function()
 end)
 
 Citizen.CreateThread(function()
-	local Sitables = {}
+	local Sitables = {-1120527678}
 
 	for _, v in pairs(Config.Interactables) do
 		local model = GetHashKey(v)
 		table.insert(Sitables, model)
 	end
 	Citizen.Wait(100)
+	
 	exports['qb-target']:AddTargetModel(Sitables, {
         options = {
             {
