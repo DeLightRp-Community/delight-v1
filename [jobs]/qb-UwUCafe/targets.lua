@@ -173,11 +173,105 @@ Citizen.CreateThread(function()
     }, {
         options = {
             {
-            event = "fivem-appearance:pickNewOutfit",
+            event = "fivem-appearance:client:changeOutfitMenu",
             icon = "far fa-tshirt",
-            label = "Change Clothes",
+            label = "Change Outfit",
             },
         },
         distance = 1.5
     })
+
+    exports['qb-target']:AddBoxZone("uwu-storage", vector3(-588.12, -1067.09, 22.34), 3, 1, {
+        name="uwu-roupas",
+        heading=0,
+        debugpoly = false,
+    }, {
+        options = {
+            {
+            type = "server",            
+            event = "mt-UwUCafe:server:FrigorificoIngredients",
+            icon = "far fa-tshirt",
+            label = "Storage(Boss Only)",
+            },
+        },
+        distance = 1.5
+    })
+
+    exports['qb-target']:AddBoxZone("uwu-miz", vector3(-578.54, -1051.1, 22.35), 0.5, 0.5, {
+        name="uwu-miz",
+        heading=0,
+        debugpoly = false,
+    }, {
+        options = {
+            {
+            type = "client",            
+            event = "mt-UwUCafe:client:miz",
+            icon = "far fa-table",
+            label = "UWU Miz",
+            },
+        },
+        distance = 1.5
+    })
+
+    exports['qb-target']:AddBoxZone("uwu-miz2", vector3(-586.82, -1066.2, 22.34), 4, 0.5, {
+        name="uwu-miz2",
+        heading=0,
+        debugpoly = true,
+    }, {
+        options = {
+            {
+            type = "client",            
+            event = "mt-UwUCafe:client:miz2",
+            icon = "far fa-table",
+            label = "UWU Miz",
+            },
+        },
+        distance = 1.5
+    })
+
+    exports['qb-target']:AddCircleZone("uwu-miz3", vector3(-586.82, -1066.2, 22.34), 1.0, {
+        name="uwu-miz3",
+        heading=0,
+        debugpoly = false,
+    }, {
+        options = {
+            {   
+            event = "mt-UwUCafe:client:miz3",
+            icon = "far fa-table",
+            label = "UWU Miz",
+            },
+        },
+        distance = 2.5
+    })
+
+    exports['qb-target']:AddCircleZone("uwu-miz4", vector3(-586.82, -1066.2, 22.34), 1.0, {
+        name="uwu-miz4",
+        heading=0,
+        debugpoly = false,
+    }, {
+        options = {
+            {         
+            event = "mt-UwUCafe:client:miz4",
+            icon = "far fa-table",
+            label = "UWU Miz",
+            },
+        },
+        distance = 2.5
+    })
+
+    exports['qb-target']:AddCircleZone("uwu-miz5", vector3(-586.82, -1066.2, 22.34), 1.0,{
+        name="uwu-miz5",
+        heading=0,
+        debugpoly = true,
+    }, {
+        options = {
+            {          
+            event = "mt-UwUCafe:client:miz5",
+            icon = "far fa-table",
+            label = "UWU Miz",
+            },
+        },
+        distance = 2.5
+    })
+
 end)

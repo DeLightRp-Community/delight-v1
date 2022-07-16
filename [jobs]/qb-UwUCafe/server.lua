@@ -16,7 +16,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerCupcakeMorango', function()
         Player.Functions.RemoveItem('barra-manteiga', 2)
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('caixa-morangos', 2)
-        Player.Functions.AddItem('cupcake-morango', 2)
+        Player.Functions.AddItem('cupcake-morango', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["cupcake-morango"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -36,8 +36,8 @@ RegisterNetEvent('mt-UwUCafe:server:FazerCupcakeLimao', function()
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('barra-manteiga', 2)
         Player.Functions.RemoveItem('pacote-farinha', 2)
-        Player.Functions.RemoveItem('limao', 2
-        Player.Functions.AddItem('cupcake-limao', 2)
+        Player.Functions.RemoveItem('limao', 2)
+        Player.Functions.AddItem('cupcake-limao', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["cupcake-limao"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -58,7 +58,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerCupcakeChocolate', function()
         Player.Functions.RemoveItem('barra-manteiga', 2)
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('barra-chocolate', 2)
-        Player.Functions.AddItem('cupcake-chocolate', 2)
+        Player.Functions.AddItem('cupcake-chocolate', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["cupcake-chocolate"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -77,7 +77,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerGeladoMorango', function()
         Player.Functions.RemoveItem('pacote-natas', 2)
         Player.Functions.RemoveItem('leite-condensado', 2)
         Player.Functions.RemoveItem('caixa-morangos', 2)
-        Player.Functions.AddItem('gelado-morango', 2)
+        Player.Functions.AddItem('gelado-morango', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["gelado-morango"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -96,7 +96,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerGeladoChocolate', function()
         Player.Functions.RemoveItem('pacote-natas', 2)
         Player.Functions.RemoveItem('leite-condensado', 2)
         Player.Functions.RemoveItem('barra-chocolate', 2)
-        Player.Functions.AddItem('gelado-chocolate', 2)
+        Player.Functions.AddItem('gelado-chocolate', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["gelado-chocolate"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -115,7 +115,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerGeladoBaunilha', function()
         Player.Functions.RemoveItem('pacote-natas', 2)
         Player.Functions.RemoveItem('leite-condensado', 2)
         Player.Functions.RemoveItem('extrato-baunilha', 2)
-        Player.Functions.AddItem('gelado-baunilha', 2)
+        Player.Functions.AddItem('gelado-baunilha', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["gelado-baunilha"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -136,7 +136,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerPanquencaNutela', function()
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('pacote-acucar', 2)
         Player.Functions.RemoveItem('frasco-nutela', 2)
-        Player.Functions.AddItem('panqueca-nutela', 2)
+        Player.Functions.AddItem('panqueca-nutela', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["panqueca-nutela"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -157,7 +157,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerPanquencaOreo', function()
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('pacote-acucar', 2)
         Player.Functions.RemoveItem('pacote-oreo', 2)
-        Player.Functions.AddItem('panqueca-oreo', 2)
+        Player.Functions.AddItem('panqueca-oreo', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["panqueca-oreo"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -176,7 +176,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerMuffinChocolate', function()
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('barra-chocolate', 2)
-        Player.Functions.AddItem('muffin-chocolate', 2)
+        Player.Functions.AddItem('muffin-chocolate', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["muffin-chocolate"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -195,7 +195,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerWaffleNutela', function()
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('frasco-nutela', 2)
-        Player.Functions.AddItem('waffle-nutela', 2)
+        Player.Functions.AddItem('waffle-nutela', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["waffle-nutela"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -214,7 +214,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerPastelFrango', function()
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('barra-manteiga', 2)
         Player.Functions.RemoveItem('frango', 2)
-        Player.Functions.AddItem('pastel-frango', 2)
+        Player.Functions.AddItem('pastel-frango', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["pastel-frango"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -234,7 +234,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerCafe', function()
 
         Player.Functions.RemoveItem('water_bottle', 2)
         Player.Functions.RemoveItem('graos-cafe', 2)
-        Player.Functions.AddItem('cafe-uwu', 2)
+        Player.Functions.AddItem('cafe-uwu', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["cafe-uwu"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -251,7 +251,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerLatte', function()
 
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('graos-cafe', 2)
-        Player.Functions.AddItem('latte-uwu', 2)
+        Player.Functions.AddItem('latte-uwu', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["latte-uwu"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -268,7 +268,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerBubbleTeaAmora', function()
 
         Player.Functions.RemoveItem('water_bottle', 2)
         Player.Functions.RemoveItem('caixa-amoras', 2)
-        Player.Functions.AddItem('bubble-amora', 2)
+        Player.Functions.AddItem('bubble-amora', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["bubble-amora"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -285,7 +285,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerBubbleTeaMorango', function()
 
         Player.Functions.RemoveItem('water_bottle', 2)
         Player.Functions.RemoveItem('caixa-morangos', 2)
-        Player.Functions.AddItem('bubble-morango', 2)
+        Player.Functions.AddItem('bubble-morango', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["bubble-morango"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -302,7 +302,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerBubbleTeaMenta', function()
 
         Player.Functions.RemoveItem('water_bottle', 2)
         Player.Functions.RemoveItem('extrato-menta', 2)
-        Player.Functions.AddItem('bubble-menta', 2)
+        Player.Functions.AddItem('bubble-menta', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["bubble-menta"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -319,7 +319,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerMilkshakeChocolate', function()
 
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('barra-chocolate', 2)
-        Player.Functions.AddItem('milkshake-chocolate', 2)
+        Player.Functions.AddItem('milkshake-chocolate', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["milkshake-chocolate"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -336,7 +336,7 @@ RegisterNetEvent('mt-UwUCafe:server:FazerMilkshakeMorango', function()
 
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('caixa-morangos', 2)
-        Player.Functions.AddItem('milkshake-morango', 2)
+        Player.Functions.AddItem('milkshake-morango', 1)
         TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items["milkshake-morango"], "add")
     else
         TriggerClientEvent('QBCore:Notify', src, 'You do not have the rigth items...', 'error')
@@ -567,3 +567,18 @@ RegisterNetEvent('qb-uwu:shop:server', function()
         TriggerClientEvent('QBCore:Notify', source, "Looks like you Cant Access this part", "error")
     end
 end)
+
+RegisterNetEvent('mt-UwUCafe:server:FrigorificoIngredients', function()
+    
+	local src = source
+    local Player = QBCore.Functions.GetPlayer(src)
+    if Player.PlayerData.job.name == "uwu" and Player.PlayerData.job.grade.level == 4 then
+        
+        TriggerClientEvent('mt-UwUCafe:client:FrigorificoIngredients', src)
+
+    else
+        TriggerClientEvent('QBCore:Notify', source, "Looks like you Cant Access this part", "error")
+    end
+end)
+
+
