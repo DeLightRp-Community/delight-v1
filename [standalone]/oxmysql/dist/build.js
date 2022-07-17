@@ -21478,7 +21478,7 @@ var init_update = __esm({
           const latestVersion = release.tag_name.match(/(\d)\.(\d+)\.(\d+)/);
           if (!latestVersion)
             return;
-          if (currentVersion[0] === latestVersion[0])
+          if (currentVersion[0] === latestVersion[0] || currentVersion[0] > latestVersion[0])
             return;
           const updateMessage = currentVersion[3] < latestVersion[3] ? "patch" : currentVersion[2] < latestVersion[2] ? "an update" : "a major update";
           console.log(`^3There is ${updateMessage} available for oxmysql - please update to the latest release (current version: ${currentVersion[0]})\r
@@ -21558,7 +21558,8 @@ var serverReady = false;
 setTimeout(() => {
   pool = (0, import_mysql2.createPool)(__spreadProps(__spreadValues({
     connectTimeout: 6e4,
-    trace: false
+    trace: false,
+    supportBigNumbers: true
   }, connectionOptions), {
     typeCast
   }));
@@ -21728,7 +21729,7 @@ var scheduleTick = async () => {
 };
 
 // src/database/rawQuery.ts
-var rawQuery = async (type, invokingResource, query, parameters, cb) => {
+var rawQuery = async (type, invokingResource, query, parameters, cb, throwError) => {
   await scheduleTick();
   [query, parameters, cb] = parseArguments(invokingResource, query, parameters, cb);
   return await new Promise((resolve, reject) => {
@@ -21736,15 +21737,33 @@ var rawQuery = async (type, invokingResource, query, parameters, cb) => {
       if (err)
         return reject(err);
       logQuery(invokingResource, query, executionTime, parameters);
-      try {
-        resolve(cb ? cb(parseResponse(type, result)) : null);
-      } catch (err2) {
-      }
+      resolve(cb ? parseResponse(type, result) : null);
     });
+  }).then(async (result) => {
+    if (cb)
+      try {
+        await cb(result);
+      } catch (err) {
+        if (typeof err === "string") {
+          if (err.includes("SCRIPT ERROR:"))
+            return console.log(err);
+          console.log(`^1SCRIPT ERROR in invoking resource ${invokingResource}: ${err}^0`);
+        }
+      }
   }).catch((err) => {
-    throw new Error(`${invokingResource} was unable to execute a query!
+    const error = `${invokingResource} was unable to execute a query!
 ${err.message}
-${`${query} ${JSON.stringify(parameters)}`}`);
+${`${query} ${JSON.stringify(parameters)}`}`;
+    TriggerEvent("oxmysql:error", {
+      query,
+      parameters,
+      message: err.message,
+      err,
+      resource: invokingResource
+    });
+    if (cb && throwError)
+      return cb(null, error);
+    throw new Error(error);
   });
 };
 
@@ -21759,7 +21778,7 @@ var parseTransaction = (invokingResource, queries, parameters, cb) => {
     cb = parameters;
   if (parameters === null || parameters === void 0 || typeof parameters === "function")
     parameters = [];
-  if (queries[0][0]) {
+  if (Array.isArray(queries[0])) {
     const transactions2 = queries.map((query) => {
       if (typeof query[1] !== "object")
         throw new Error(`Transaction parameters must be array or object, received '${typeof query[1]}'.`);
@@ -21793,16 +21812,29 @@ var rawTransaction = async (invokingResource, queries, parameters, callback) => 
     response = true;
   } catch (e2) {
     await connection.rollback();
+    const transactionErrorMessage = e2.sql || transactionError(transactions, parameters);
     console.error(`${invokingResource} was unable to execute a transaction!
 ${e2.message}
-${e2.sql || `${transactionError(transactions, parameters)}`}^0`);
+${transactionErrorMessage}^0`);
+    TriggerEvent("oxmysql:transaction-error", {
+      query: transactionErrorMessage,
+      parameters,
+      message: e2.message,
+      err: e2,
+      resource: invokingResource
+    });
   } finally {
     connection.release();
   }
   if (cb)
     try {
       cb(response);
-    } catch {
+    } catch (err) {
+      if (typeof err === "string") {
+        if (err.includes("SCRIPT ERROR:"))
+          return console.log(err);
+        console.log(`^1SCRIPT ERROR in invoking resource ${invokingResource}: ${err}^0`);
+      }
     }
 };
 
@@ -21849,89 +21881,120 @@ var parseValues = (placeholders, parameters) => {
 };
 
 // src/database/rawExecute.ts
-var rawExecute = async (invokingResource, query, parameters, cb) => {
+var rawExecute = async (invokingResource, query, parameters, cb, throwError) => {
   const type = executeType(query);
   parameters = parseExecute(parameters);
-  const response = [];
-  let single;
+  let response = [];
   if (!parameters.every(Array.isArray))
     parameters = [[...parameters]];
   await scheduleTick();
-  const connection = await pool.promise().getConnection();
-  try {
-    const placeholders = query.split("?").length - 1;
-    for (let values of parameters) {
-      const executionTime = process.hrtime();
-      values = parseValues(placeholders, values);
-      const [results, _] = await connection.execute(query, values);
-      if (cb) {
-        if (results.length > 1) {
-          for (const value of results) {
-            response.push(parseResponse(type, value));
+  return await new Promise((resolve, reject) => {
+    pool.getConnection((err, connection) => {
+      if (err)
+        return reject(err.message);
+      if (parameters.length === 0)
+        return reject(`Query received no parameters.`);
+      const placeholders = query.split("?").length - 1;
+      parameters.forEach((values, index) => {
+        const executionTime = process.hrtime();
+        values = parseValues(placeholders, values);
+        connection.execute(query, values, (err2, results) => {
+          if (err2) {
+            connection.release();
+            return reject(err2.message);
           }
-        } else
-          response.push(parseResponse(type, results));
-      }
-      logQuery(invokingResource, query, process.hrtime(executionTime)[1] / 1e6, values);
-    }
-    single = response.length === 1;
-  } catch (err) {
-    throw new Error(`${invokingResource} was unable to execute a query!
-	${err.message}
-	${err.sql}`);
-  } finally {
-    connection.release();
-  }
-  try {
-    if (cb) {
-      if (single) {
-        if (type === null) {
-          if (response[0][0] && Object.keys(response[0][0]).length === 1)
-            cb(Object.values(response[0][0])[0]);
-          else
-            cb(response[0][0]);
-        } else {
-          cb(response[0]);
+          if (cb) {
+            if (results.length > 1) {
+              for (const value of results) {
+                response.push(parseResponse(type, value));
+              }
+            } else
+              response.push(parseResponse(type, results));
+          }
+          logQuery(invokingResource, query, process.hrtime(executionTime)[1] / 1e6, values);
+          if (index === parameters.length - 1) {
+            connection.release();
+            if (cb) {
+              if (response.length === 1) {
+                if (type === null) {
+                  if (response[0][0] && Object.keys(response[0][0]).length === 1)
+                    resolve(Object.values(response[0][0])[0]);
+                  else
+                    resolve(response[0][0]);
+                } else {
+                  resolve(response[0]);
+                }
+              } else {
+                resolve(response);
+              }
+            }
+          }
+        });
+      });
+    });
+  }).then(async (response2) => {
+    if (cb)
+      try {
+        await cb(response2);
+      } catch (err) {
+        if (typeof err === "string") {
+          if (err.includes("SCRIPT ERROR:"))
+            return console.log(err);
+          console.log(`^1SCRIPT ERROR in invoking resource ${invokingResource}: ${err}^0`);
         }
-      } else {
-        cb(response);
       }
-    }
-  } catch (err) {
-  }
+  }).catch((err) => {
+    const error = `${invokingResource} was unable to execute a query!
+${err}
+${`${query}`}`;
+    TriggerEvent("oxmysql:error", {
+      query,
+      parameters,
+      message: err.message,
+      err,
+      resource: invokingResource
+    });
+    if (cb && throwError)
+      return cb(null, error);
+    throw new Error(error);
+  });
 };
 
 // src/index.ts
 Promise.resolve().then(() => init_update());
 var MySQL = {};
-MySQL.query = (query, parameters, cb, invokingResource = GetInvokingResource()) => {
-  rawQuery(null, invokingResource, query, parameters, cb);
+MySQL.query = (query, parameters, cb, invokingResource = GetInvokingResource(), throwError) => {
+  rawQuery(null, invokingResource, query, parameters, cb, throwError);
 };
-MySQL.single = (query, parameters, cb, invokingResource = GetInvokingResource()) => {
-  rawQuery("single", invokingResource, query, parameters, cb);
+MySQL.single = (query, parameters, cb, invokingResource = GetInvokingResource(), throwError) => {
+  rawQuery("single", invokingResource, query, parameters, cb, throwError);
 };
-MySQL.scalar = (query, parameters, cb, invokingResource = GetInvokingResource()) => {
-  rawQuery("scalar", invokingResource, query, parameters, cb);
+MySQL.scalar = (query, parameters, cb, invokingResource = GetInvokingResource(), throwError) => {
+  rawQuery("scalar", invokingResource, query, parameters, cb, throwError);
 };
-MySQL.update = (query, parameters, cb, invokingResource = GetInvokingResource()) => {
-  rawQuery("update", invokingResource, query, parameters, cb);
+MySQL.update = (query, parameters, cb, invokingResource = GetInvokingResource(), throwError) => {
+  rawQuery("update", invokingResource, query, parameters, cb, throwError);
 };
-MySQL.insert = (query, parameters, cb, invokingResource = GetInvokingResource()) => {
-  rawQuery("insert", invokingResource, query, parameters, cb);
+MySQL.insert = (query, parameters, cb, invokingResource = GetInvokingResource(), throwError) => {
+  rawQuery("insert", invokingResource, query, parameters, cb, throwError);
 };
 MySQL.transaction = (queries, parameters, cb, invokingResource = GetInvokingResource()) => {
   rawTransaction(invokingResource, queries, parameters, cb);
 };
-MySQL.prepare = (query, parameters, cb, invokingResource = GetInvokingResource()) => {
-  rawExecute(invokingResource, query, parameters, cb);
+MySQL.prepare = (query, parameters, cb, invokingResource = GetInvokingResource(), throwError) => {
+  rawExecute(invokingResource, query, parameters, cb, throwError);
 };
 MySQL.execute = MySQL.query;
 MySQL.fetch = MySQL.query;
 for (const key in MySQL) {
   global.exports(key, MySQL[key]);
   const exp = (query, parameters, invokingResource = GetInvokingResource()) => {
-    return new Promise((resolve) => {
-      MySQL[key](query, parameters, resolve, invokingResource);
+    return new Promise((resolve, reject) => {
+      MySQL[key](query, parameters, (result, err) => {
+        if (err)
+          return reject(new Error(err));
+        resolve(result);
+      }, invokingResource, true);
     });
   };
   global.exports(`${key}_async`, exp);
