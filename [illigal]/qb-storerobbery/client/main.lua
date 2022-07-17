@@ -295,6 +295,7 @@ RegisterNetEvent('qb-storerobbery:client:safe', function(currentSafe)
                         if copsCalled == false then
                             --TriggerEvent('dispatch:storeRobbery', 'Store Robbery: Safe Cracking In Progress')
                             exports['ps-dispatch']:StoreSafeRobbery(currentSafe)
+                            TriggerServerEvent("qb-storerobbery:server:callCops", "safe", currentSafe)
                             copsCalled = true
                         end
                     end
@@ -365,6 +366,7 @@ RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
                     end
                     if not copsCalled then
                         exports['ps-dispatch']:StoreRobbery(v.camId)
+                        TriggerServerEvent("qb-storerobbery:server:callCops", "cashier", currentRegister)
 			            -- local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)
                         -- local street1 = GetStreetNameFromHashKey(s1)
                         -- local street2 = GetStreetNameFromHashKey(s2)
@@ -392,6 +394,7 @@ RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
 
                     if not copsCalled then
                         exports['ps-dispatch']:StoreRobbery(v.camId)
+                        TriggerServerEvent("qb-storerobbery:server:callCops", "cashier", currentRegister)
 			            -- local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)
                         -- local street1 = GetStreetNameFromHashKey(s1)
                         -- local street2 = GetStreetNameFromHashKey(s2)

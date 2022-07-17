@@ -83,7 +83,7 @@ RegisterNetEvent('evidence:client:OpenEidenceCase', function(case)
 		if (GetDistanceBetweenCoords(pos, v.x, v.y, v.z, true) < 2) then
 					notfound = false
 					TriggerServerEvent("inventory:server:OpenInventory", "stash", "case_evidence_"..case , {
-						maxweight = 80000,
+						maxweight = 1500000,
 						slots = 500,
 					})
 					TriggerEvent("inventory:client:SetCurrentStash", "case_evidence_"..case)

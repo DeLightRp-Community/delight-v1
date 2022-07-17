@@ -467,7 +467,7 @@ function Hotwire()
         local hotwireTime = math.random(17000, 20000)
         SetVehicleAlarm(vehicle, true)
         SetVehicleAlarmTimeLeft(vehicle, hotwireTime)
-        PoliceCall()
+        exports['ps-dispatch']:VehicleTheft()
         QBCore.Functions.Progressbar("hotwire_vehicle", "Engaging the ignition switch", hotwireTime, false, true, {
             disableMovement = true,
             disableCarMovement = true,
@@ -505,9 +505,8 @@ function Search()
         local vehicle = GetVehiclePedIsIn(PlayerPedId(), true)
         IsHotwiring = true
         local hotwireTime = math.random(5000, 9000)
-        SetVehicleAlarm(vehicle, true)
-        SetVehicleAlarmTimeLeft(vehicle, hotwireTime)
-        PoliceCall()
+        -- SetVehicleAlarm(vehicle, true)
+        -- SetVehicleAlarmTimeLeft(vehicle, hotwireTime)
         QBCore.Functions.Progressbar("search_vehicle", "searching for keys...", hotwireTime, false, true, {
             disableMovement = true,
             disableCarMovement = true,

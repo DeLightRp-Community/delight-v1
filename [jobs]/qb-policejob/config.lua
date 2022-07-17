@@ -57,7 +57,7 @@ Config.Locations = {
 
 Config.ArmoryWhitelist = {}
 
-Config.PoliceHelicopter = "POLMAV"
+Config.PoliceHelicopter = "polas350"
 Config.PoliceBoat = "predator"
 
 Config.SecurityCameras = {

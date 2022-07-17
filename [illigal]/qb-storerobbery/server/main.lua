@@ -93,7 +93,7 @@ end)
 
 
 RegisterNetEvent('qb-storerobbery:server:callCops', function(type, safe, streetLabel, coords)
-    local cameraId = 4
+    local cameraId
     if type == "safe" then
         cameraId = Config.Safes[safe].camId
     else
@@ -101,8 +101,7 @@ RegisterNetEvent('qb-storerobbery:server:callCops', function(type, safe, streetL
     end
     local alertData = {
         title = "10-33 | Shop Robbery",
-        coords = {x = coords.x, y = coords.y, z = coords.z},
-        description = "Someone Is Trying To Rob A Store At "..streetLabel.." (CAMERA ID: "..cameraId..")"
+        description = "Someone Is Trying To Rob A Store At (CAMERA ID: "..cameraId..")"
     }
     TriggerClientEvent("qb-storerobbery:client:robberyCall", -1, type, safe, streetLabel, coords)
     TriggerClientEvent("qb-phone:client:addPoliceAlert", -1, alertData)

@@ -283,7 +283,7 @@ function MissionNotification()
 	TriggerServerEvent('qb-phone:server:sendNewMail', {
 	sender = "The Cartel",
 	subject = "New Target",
-	message = "just sent you location ... dont fuck up",
+	message = "just sent you location ... dont fuck it up",
 	})
 	Citizen.Wait(3000)
 end
@@ -477,8 +477,6 @@ function CheckVehicleInformation()
 				RemoveBlip(TruckBlip)
 				TriggerServerEvent("QBCore:Server:RemoveItem", "tcard", 1)
 				TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["tcard"], "remove")
-				TriggerServerEvent("QBCore:Server:RemoveItem", "electronickit", 1)
-					TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["electronickit"], "remove")
 			else
 				QBCore.Functions.Notify('Get out of the water', "error")
 			end

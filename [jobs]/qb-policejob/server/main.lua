@@ -5,23 +5,45 @@ local Casings = {}
 local BloodDrops = {}
 local FingerDrops = {}
 local Objects = {}
+local CallSignsPolice = {}
+local CallSignsMedic = {}
 local QBCore = exports['qb-core']:GetCoreObject()
 
+local function UpdataCallSigns()
 
+    local resultPolice = json.decode(LoadResourceFile("qb-activeofficers", "callsigns.json"))
+
+        if resultPolice then
+            
+            CallSignsPolice = resultPolice
+        end
+        local resultMedic = json.decode(LoadResourceFile("qb-ambulancejob", "callsigns.json"))
+
+        if resultMedic then
+            CallSignsMedic = resultMedic
+        end
+end
 -- Functions
 local function UpdateBlips()
     local dutyPlayers = {}
     local players = QBCore.Functions.GetQBPlayers()
     
     for k, v in pairs(players) do
-        -- print(json.encode(v.Functions.GetItemByName('signalradar'))) 
-        if (v.PlayerData.job.name == "police" or v.PlayerData.job.name == "ambulance") and v.PlayerData.job.onduty and v.Functions.GetItemByName('signalradar') ~= nil then
+        if (v.PlayerData.job.name == "police" or v.PlayerData.job.name == "ambulance") and v.Functions.GetItemByName('signalradar') ~= nil then
+            local callSign ="NO TAG"
+            if v.PlayerData.job.name == "ambulance" then
+                callSign = CallSignsMedic[v.PlayerData.license] ~= nil and CallSignsMedic[v.PlayerData.license] or "NO TAG"
+            else
+                callSign = CallSignsPolice[v.PlayerData.license] ~= nil and CallSignsPolice[v.PlayerData.license] or "NO TAG"
+            end
             local coords = GetEntityCoords(GetPlayerPed(v.PlayerData.source))
             local heading = GetEntityHeading(GetPlayerPed(v.PlayerData.source))
+            print(callSign)
             dutyPlayers[#dutyPlayers+1] = {
                 source = v.PlayerData.source,
-                label = v.PlayerData.metadata["callsign"],
+                label = v.PlayerData.charinfo.firstname..' '..v.PlayerData.charinfo.lastname..' | '..v.PlayerData.job.grade.name.." | "..callSign,
                 job = v.PlayerData.job.name,
+                grade = v.PlayerData.job.grade,
                 location = {
                     x = coords.x,
                     y = coords.y,
@@ -119,6 +141,7 @@ end
         end
     end
 end)]]
+
 
 QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)
     local src = source
@@ -1077,6 +1100,7 @@ RegisterNetEvent('police:server:SyncSpikes', function(table)
     TriggerClientEvent('police:client:SyncSpikes', -1, table)
 end)
 
+
 -- Threads
 CreateThread(function()
     while true do
@@ -1090,6 +1114,7 @@ CreateThread(function()
     while true do
         Wait(5000)
         UpdateBlips()
+        UpdataCallSigns()
     end
 end)
 
@@ -1144,11 +1169,15 @@ QBCore.Commands.Add("division", "Division (Police Only)", {{name="ID", help="ID 
 	end
 end)   
 
+RegisterNetEvent("facewear:adjust")
+AddEventHandler("facewear:adjust", function(pTargetId, pType, pShouldRemove)
+    TriggerClientEvent("facewear:adjust", pTargetId, pType, pShouldRemove)
+end)
 
-
-RegisterServerEvent('police:remmaskGranted') -- that is np's code ((pooria))
-AddEventHandler('police:remmaskGranted', function(targetplayer)
-    TriggerClientEvent('police:remmaskAccepted', targetplayer)
+RegisterServerEvent('police:remmaskGranted') -- that is np's code ((Apple_Lua))
+AddEventHandler('police:remmaskGranted', function(Player)
+    local Player = QBCore.Functions.GetPlayer(d)
+    TriggerClientEvent('police:remmaskAccepted', Player)
 end)
 
 
@@ -1165,13 +1194,3 @@ RegisterNetEvent('qb-policejob:server:useSmartWatch', function(data)
     TriggerClientEvent('hud:client:showMap',src,{checked = data})
 end)
 
-
-RegisterServerEvent('police:remmaskGranted')
-AddEventHandler('police:remmaskGranted', function(targetplayer)
-    TriggerClientEvent('police:remmaskAccepted', targetplayer)
-end)
-
-RegisterNetEvent("facewear:adjust")
-AddEventHandler("facewear:adjust", function(pTargetId, pType, pShouldRemove)
-    TriggerClientEvent("facewear:adjust", pTargetId, pType, pShouldRemove)
-end)

@@ -945,13 +945,83 @@ CreateThread(function ()
         if inHelicopter and PlayerJob.name == "police" and PlayerData.metadata["division"] == "xray" then
             if onDuty then sleep = 5 end
             if IsControlJustReleased(0, 38) then
-                TriggerEvent("qb-police:client:spawnHelicopter")
+                PoliceHelicopter(k)
             end
         else
             sleep = 1000
         end
         Wait(sleep)
     end
+end)
+
+local CheckHeli = false
+function PoliceHelicopter(k)
+    CheckHeli = true
+    CreateThread(function()
+        while CheckHeli do
+                exports['qb-core']:KeyPressed(38)
+                CheckHeli = false
+                local ped = PlayerPedId()
+                    if IsPedInAnyVehicle(ped, false) then
+                        QBCore.Functions.DeleteVehicle(GetVehiclePedIsIn(ped))
+                    else
+                        exports['qb-menu']:openMenu({
+                            {
+                                header = "Helicopter",
+                                isMenuHeader = true,
+                            },
+                            {
+                                header = "BCSO", 
+                                txt = "BCSO helicopter",
+                                params = {
+                                    event = "qb-police:client:xray",
+                                    args = 1
+                                }
+                            },
+                            {
+                                header = "Sasp", 
+                                txt = "Sasp Helicopter",
+                                params = {
+                                    event = "qb-police:client:sasp",
+                                    args = 1
+                                }
+                            },
+                        })
+                    end
+            
+            Wait(1)
+        end
+    end)
+end
+
+RegisterNetEvent('qb-police:client:xray', function(k)
+    local ped = PlayerPedId()
+    currentHelictoper = k
+    local coords = Config.Locations["helicopter"][currentHelictoper]
+    QBCore.Functions.SpawnVehicle(Config.PoliceHelicopter, function(veh)
+        SetVehicleNumberPlateText(veh, Lang:t('info.heli_plate')..tostring(math.random(1000, 9999)))
+        SetEntityHeading(veh, coords.w)
+        SetVehicleLivery(veh, 1) -- Ambulance Livery
+        exports['LegacyFuel']:SetFuel(veh, 100.0)
+        TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+        SetVehicleEngineOn(veh, true, true)
+    end, coords, true)
+end)
+
+RegisterNetEvent('qb-police:client:sasp', function(k)
+    local ped = PlayerPedId()
+    currentHelictoper = k
+    local coords = Config.Locations["helicopter"][currentHelictoper]
+    QBCore.Functions.SpawnVehicle(Config.PoliceHelicopter, function(veh)
+        SetVehicleNumberPlateText(veh, Lang:t('info.heli_plate')..tostring(math.random(1000, 9999)))
+        SetEntityHeading(veh, coords.w)
+        SetVehicleLivery(veh, 2) -- Ambulance Livery
+        exports['LegacyFuel']:SetFuel(veh, 100.0)
+        TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+        SetVehicleEngineOn(veh, true, true)
+    end, coords, true)
 end)
 
 -- Boat Thread

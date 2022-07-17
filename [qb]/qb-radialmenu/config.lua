@@ -459,7 +459,7 @@ Config.JobInteractions = {
             title = 'Mask',
             icon = 'mask',
             type = 'client',
-            event = 'police:client:takeoffmask',
+            event = 'police:remmaskAccepted',
             shouldClose = true
         },{
             id = 'officerdown',

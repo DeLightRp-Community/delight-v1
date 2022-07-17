@@ -229,13 +229,14 @@ Citizen.CreateThread(function()
         distance = 1.5
     })
 
-    exports['qb-target']:AddCircleZone("uwu-miz3", vector3(-586.82, -1066.2, 22.34), 1.0, {
+    exports['qb-target']:AddBoxZone("uwu-miz3", vector3(-586.39, -1076.03, 22.33), 2.2, 2, {
         name="uwu-miz3",
         heading=0,
-        debugpoly = false,
+        debugpoly = true,
     }, {
         options = {
-            {   
+            {
+            type = "client",            
             event = "mt-UwUCafe:client:miz3",
             icon = "far fa-table",
             label = "UWU Miz",
@@ -244,13 +245,14 @@ Citizen.CreateThread(function()
         distance = 2.5
     })
 
-    exports['qb-target']:AddCircleZone("uwu-miz4", vector3(-586.82, -1066.2, 22.34), 1.0, {
+    exports['qb-target']:AddBoxZone("uwu-miz4", vector3(-591.24, -1080.2, 22.33), 2.2, 2, {
         name="uwu-miz4",
         heading=0,
-        debugpoly = false,
+        debugpoly = true,
     }, {
         options = {
-            {         
+            {
+            type = "client",            
             event = "mt-UwUCafe:client:miz4",
             icon = "far fa-table",
             label = "UWU Miz",
@@ -259,13 +261,14 @@ Citizen.CreateThread(function()
         distance = 2.5
     })
 
-    exports['qb-target']:AddCircleZone("uwu-miz5", vector3(-586.82, -1066.2, 22.34), 1.0,{
+    exports['qb-target']:AddBoxZone("uwu-miz5", vector3(-586.4, -1081.66, 22.33), 2.2, 2, {
         name="uwu-miz5",
         heading=0,
         debugpoly = true,
     }, {
         options = {
-            {          
+            {
+            type = "client",            
             event = "mt-UwUCafe:client:miz5",
             icon = "far fa-table",
             label = "UWU Miz",

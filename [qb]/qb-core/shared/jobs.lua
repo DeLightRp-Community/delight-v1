@@ -17,6 +17,7 @@ QBShared.Jobs = {
 		defaultDuty = true,
 		offDutyPay = false,
 		grades = {
+            -- LSPD Ranks : start
             ['0'] = {
                 name = "Recruit",
                 payment = 700
@@ -25,47 +26,173 @@ QBShared.Jobs = {
                 name = "Cadet",
                 payment = 1000
             },
-			['2'] = {
+            ['2'] = {
                 name = "Solo Cadet",
                 payment = 1100
             },
-			['3'] = {
+            ['3'] = {
                 name = "Officer",
                 payment = 1150
             },
-			['4'] = {
+            ['4'] = {
                 name = "Senior Officer",
                 payment = 1200
             },
-			['5'] = {
+            ['5'] = {
                 name = "Corporal",
                 payment = 1275
             },
-			['6'] = {
-                name = "Sergeant",
+            ['6'] = {
+                name = "Sergeant II",
                 payment = 1350
             },
-			['7'] = {
-                name = "Sergeant O",
+            ['7'] = {
+                name = "Sergeant I",
+                payment = 1400
+            },
+            ['8'] = {
+                name = "Lieutenant",
                 payment = 1500
             },
-			['8'] = {
-                name = "Lieutenant",
+            ['9'] = {
+                name = "Captain",
+                payment = 1600
+            },
+            ['10'] = {
+                name = "Assistant Chief",
                 payment = 1700
             },
-			['9'] = {
-                name = "Captain",
+            ['11'] = {
+                name = "Chief of Police",
+                isboss = true,
                 payment = 1800
             },
-			['10'] = {
-                name = "Ast. Chief",
-				isboss = true,
-                payment = 1900
+            -- LSPD Ranks : end
+            -- BCSO Ranks : start
+            ['12'] = {
+                name = "Cadet (BCSO)",
+                payment = 1000
             },
-			['11'] = {
-                name = "Chief of Police",
-				isboss = true,
-                payment = 2000
+            ['13'] = {
+                name = "Solo Cadet (BCSO)",
+                payment = 1100
+            },
+            ['14'] = {
+                name = "Deputy",
+                payment = 1150
+            },
+            ['15'] = {
+                name = "Senior Deputy",
+                payment = 1200
+            },
+            ['16'] = {
+                name = "Corporal (BCSO)",
+                payment = 1200
+            },
+            ['17'] = {
+                name = "Sergeant II (BCSO)",
+                payment = 1350
+            },
+            ['18'] = {
+                name = "Sergeant I (BCSO)",
+                payment = 1400
+            },
+            ['19'] = {
+                name = "Lieutenant (BCSO)",
+                payment = 1500
+            },
+            ['20'] = {
+                name = "Captain (BCSO)",
+                payment = 1600,
+                isboss = true,
+            },
+            ['21'] = {
+                name = "Undersheriff",
+                payment = 1700,
+                isboss = true,
+            },
+            ['22'] = {
+                name = "Sheriff",
+                payment = 1800,
+                isboss = true,
+            },
+            -- BCSO Ranks : end
+            -- Ranger Ranks : start
+            ['23'] = {
+                name = "Junior Ranger",
+                payment = 1100
+            },
+            ['24'] = {
+                name = "Ranger",
+                payment = 1150
+            },
+            ['25'] = {
+                name = "Senior Ranger",
+                payment = 1200
+            },
+            ['26'] = {
+                name = "Corporal Ranger",
+                payment = 1275
+            },
+            ['27'] = {
+                name = "Sergeant II Ranger",
+                payment = 1350
+            },
+            ['28'] = {
+                name = "Sergeant I Ranger",
+                payment = 1400
+            },
+            ['29'] = {
+                name = "Lieutenant Ranger",
+                payment = 1500
+            },
+            ['30'] = {
+                name = "Assistant Game Warden",
+                payment = 1600,
+                isboss = true,
+            },
+            ['31'] = {
+                name = "Game Warden",
+                payment = 1700,
+                isboss = true,
+            },
+            -- Ranger Ranks : end
+            -- Trooper Ranks : start
+            ['32'] = {
+                name = "Senior Trooper",
+                payment = 1200,
+            },
+            ['33'] = {
+                name = "Corporal Trooper",
+                payment = 1275,
+            },
+            ['34'] = {
+                name = "Sergeant Trooper II",
+                payment = 1350,
+            },
+            ['35'] = {
+                name = "Sergeant Trooper I",
+                payment = 1400,
+            },
+            ['36'] = {
+                name = "Lieutenant Trooper",
+                payment = 1500,
+            },
+            ['37'] = {
+                name = "Second In Command (Boss)",
+                isboss = true,
+                payment = 1600,
+            },
+            ['38'] = {
+                name = "Chief of SASP",
+                isboss = true,
+                payment = 1700,
+            },
+            -- Trooper Ranks : END
+            ['39'] = {
+                name = "Commissioner",
+                isboss = true,
+                payment = 2000,
             },
         },
 	},

@@ -105,21 +105,21 @@ RegisterNetEvent('mt-UwUCafe:client:MenuComidas', function() -- Menu para fazer 
         },
         {
             header = "Vanilla Ice Cream",
-            txt = "Ingredients: <br> - 1 Cream <br> - 1 Condensed milk <br> - 1 Extrato de baunilha",
+            txt = "Ingredients: <br> - 1 Cream <br> - 1 Condensed milk <br> - 1 Vanilla extract",
             params = {
                 event = "mt-UwUCafe:client:FazerGeladoBaunilha",
             }
         },
         {
             header = "Nutela Pancake",
-            txt = "Ingredients: <br> - 1 Flouer <br> - 1 Milk <br> - 1 Pacote de açucar <br> - 1 Nutela",
+            txt = "Ingredients: <br> - 1 Flouer <br> - 1 Milk <br> - 1 Sugar pack <br> - 1 Nutela",
             params = {
                 event = "mt-UwUCafe:client:FazerPanquencaNutela",
             }
         },
         {
             header = "Oreo Pancake",
-            txt = "Ingredients: <br> - 1 Flouer <br> - 1 Milk <br> - 1 Pacote de açucar <br> - 1 Oreo",
+            txt = "Ingredients: <br> - 1 Flouer <br> - 1 Milk <br> - 1 Sugar pack <br> - 1 Oreo",
             params = {
                 event = "mt-UwUCafe:client:FazerPanquencaOreo",
             }
@@ -177,7 +177,7 @@ RegisterNetEvent('mt-UwUCafe:client:MenuBebidas', function() -- Menu para fazer 
         },
         {
             header = "Blackberry Bubble Tea",
-            txt = "Ingredients: <br> - 1 Caixa de amoras <br> - 1 Water Bottle",
+            txt = "Ingredients: <br> - 1 box of blackberries <br> - 1 Water Bottle",
             params = {
                 event = "mt-UwUCafe:client:FazerBubbleTeaAmora",
             }
@@ -263,7 +263,7 @@ RegisterNetEvent('mt-UwUCafe:client:MenuLoja', function() -- Menu para o vendedo
             }
         },
         {
-            header = "Limão",
+            header = "Lemon",
             txt = "Price: 10x per 300$",
             params = {
                 event = "mt-UwUCafe:client:ComprarLimao",
@@ -284,28 +284,28 @@ RegisterNetEvent('mt-UwUCafe:client:MenuLoja', function() -- Menu para o vendedo
             }
         },
         {
-            header = "Extrato de baunilha",
+            header = "Vanilla extract",
             txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarBaunilha",
             }
         },
         {
-            header = "Pacote de açucar",
+            header = "Sugar pack",
             txt = "Price: 10x per 200$",
             params = {
                 event = "mt-UwUCafe:client:ComprarAcucar",
             }
         },
         {
-            header = "Frasco de nutela",
+            header = "nutella bottle",
             txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarNutela",
             }
         },
         {
-            header = "Pacote de oreo",
+            header = "oreo pack",
             txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarOreo",
@@ -319,14 +319,14 @@ RegisterNetEvent('mt-UwUCafe:client:MenuLoja', function() -- Menu para o vendedo
             }
         },
         {
-            header = "Extrato de menta",
+            header = "mint extract",
             txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarMenta",
             }
         },
         {
-            header = "Caixa de amoras",
+            header = "box of blackberries",
             txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarAmoras",
@@ -793,7 +793,7 @@ end)
 
 RegisterNetEvent('mt-UwUCafe:client:ComerPanqueca', function() -- Comer panqueca
     TriggerEvent('animations:client:EmoteCommandStart', {"sandwich"})
-    QBCore.Functions.Progressbar('comer_panqueca', 'DRINKING A PANCAKE...', 5000, false, true, {
+    QBCore.Functions.Progressbar('comer_panqueca', 'eating A PANCAKE...', 5000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
@@ -801,6 +801,7 @@ RegisterNetEvent('mt-UwUCafe:client:ComerPanqueca', function() -- Comer panqueca
     }, {}, {}, {}, function()
         TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(30, 60))
         TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
+        exports['ps-buffs']:StaminaBuffEffect(60000, 1.4)
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
     end)
 end)
@@ -841,7 +842,7 @@ RegisterNetEvent('mt-UwUCafe:client:BeberCafe', function() -- Comer panqueca
     }, {}, {}, {}, function()
         TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + math.random(30, 50))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('hud:server:RelieveStress', math.random(20, 40))
+        TriggerServerEvent('hud:server:RelieveStress', 30)
     end)
 end)
 

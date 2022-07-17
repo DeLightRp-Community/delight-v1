@@ -53,7 +53,8 @@ local Webhooks = {
     --robberys
     ["truckrobbery"]= 'https://discord.com/api/webhooks/987986835114426388/zCis6idsMN5rFR7MYSUyp86JwrY9CBSD4IR24o2U0o8lafJlFNeDEKq3MV69Eq6IvkzS',
     ['storerobbery'] = 'https://discord.com/api/webhooks/987977180883591198/VrKGCE1J2XeLKwMiitC2L4rc-4tqY64rskfr5HJjS44Rb2VmKcLPAlvZghD8a4z4r8v4',
-    ['bankrobbery'] = 'https://discord.com/api/webhooks/978211669752832020/SGmlwMlSw0dXpp61TuSmAVHFcflUhNwteDonocAZTIfipZrQNw3xAi5Nek0coEtLl4cU'
+    ['bankrobbery'] = 'https://discord.com/api/webhooks/978211669752832020/SGmlwMlSw0dXpp61TuSmAVHFcflUhNwteDonocAZTIfipZrQNw3xAi5Nek0coEtLl4cU',
+    ['repairgun'] = 'https://discord.com/api/webhooks/978211669752832020/SGmlwMlSw0dXpp61TuSmAVHFcflUhNwteDonocAZTIfipZrQNw3xAi5Nek0coEtLl4cU',
 }
 
 local Colors = { -- https://www.spycolor.com/
