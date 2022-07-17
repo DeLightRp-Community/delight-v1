@@ -362,7 +362,10 @@ end)
 RegisterNetEvent('qb-ambulance:client:openMedicalBag', function(bagID)
     if onDuty then
         -- TriggerServerEvent("inventory:server:OpenInventory", "shop", "hospital", Config.Items)
-        TriggerServerEvent("inventory:server:OpenInventory", "stash", "medicalBag_"..bagID)
+        TriggerServerEvent("inventory:server:OpenInventory", "stash", "medicalBag_"..bagID,{
+            maxweight = 50000,
+            slots = 5,
+        })
         TriggerEvent("inventory:client:SetCurrentStash", "medicalBag_"..bagID)
     end
 end)
