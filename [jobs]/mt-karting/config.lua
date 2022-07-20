@@ -1,5 +1,5 @@
 Config = {
-    ['Vehicle'] = 'veto',
+    ['Vehicle'] = 't',
     ['Locations'] = {
         ['Ped'] = vector4(-161.24, -2130.47, 15.71, 204.79),
         ['PedTarget'] = vector3(-161.24, -2130.47, 16.71),
