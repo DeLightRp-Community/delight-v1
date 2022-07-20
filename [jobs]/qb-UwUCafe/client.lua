@@ -333,7 +333,7 @@ RegisterNetEvent('mt-UwUCafe:client:MenuLoja', function() -- Menu para o vendedo
             }
         },
         {
-            header = "Frango",
+            header = "Chicken",
             txt = "Price: 10x per 500$",
             params = {
                 event = "mt-UwUCafe:client:ComprarFrango",

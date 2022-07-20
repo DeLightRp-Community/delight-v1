@@ -49,7 +49,7 @@ const DiscordGodRoleId = "975100588394151976";
 // DISCORD BOT STATUS
 const EnableBotStatusMessages = true;
 const BotStatusMessages = [
-    "{DelightRP}",
+    "DelightRP",
     "Specting Players",
 ];
 

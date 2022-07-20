@@ -38,7 +38,6 @@ local function UpdateBlips()
             end
             local coords = GetEntityCoords(GetPlayerPed(v.PlayerData.source))
             local heading = GetEntityHeading(GetPlayerPed(v.PlayerData.source))
-            print(callSign)
             dutyPlayers[#dutyPlayers+1] = {
                 source = v.PlayerData.source,
                 label = v.PlayerData.charinfo.firstname..' '..v.PlayerData.charinfo.lastname..' | '..v.PlayerData.job.grade.name.." | "..callSign,

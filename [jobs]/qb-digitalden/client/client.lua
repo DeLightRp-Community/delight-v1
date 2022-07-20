@@ -1,13 +1,13 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 --Blip Creation 
 
-Citizen.CreateThread(function(1133.59, -471.55, 66.72)
-    DigitalDen = AddBlipForCoord()
-    SetBlipSprite (DigitalDen, 521)
+Citizen.CreateThread(function()
+    DigitalDen = AddBlipForCoord(1132.19, -472.15, 66.48)
+    SetBlipSprite (DigitalDen, 107)
     SetBlipDisplay(DigitalDen, 4)
-    SetBlipScale  (DigitalDen, 0.5)
+    SetBlipScale(DigitalDen, 1.5)
     SetBlipAsShortRange(DigitalDen, true)
-    SetBlipColour(DigitalDen, 27)
+    SetBlipColour(DigitalDen, 3)
     BeginTextCommandSetBlipName("STRING")
     AddTextComponentSubstringPlayerName("DigitalDen")
     EndTextCommandSetBlipName(DigitalDen)

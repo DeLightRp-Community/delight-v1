@@ -46,7 +46,7 @@ ConsumeablesEat = {
     ["gelado-chocolate"] = 30,
     ["gelado-baunilha"] = 30,
     ["panqueca-nutela"] = 100,
-    ["ppanqueca-oreo"] = 100,
+    ["panqueca-oreo"] = 100,
     ["muffin-chocolate"] = 50,
     ["pastel-frango"] = 50,
     ["waffle-nutela"] = 50,
@@ -70,6 +70,7 @@ ConsumeablesDrink = {
     -- ["sodacup"] = math.random(20, 40),
     --uwu
     ["cafe-uwuu"] = 100,
+    ["cafe-uwu"] = 100,
     ["latte-uwu"] = 30,
     ["bubble-amora"] = 60,
     ["bubble-menta"] = 60,
