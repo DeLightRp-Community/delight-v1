@@ -27,6 +27,7 @@ Config.Shops = {
         },
         ['Job'] = 'cardealer', -- Name of job or none
         ['Rank'] = 2,
+        ['OpenFinanceF'] = false,
         ['ShopLabel'] = 'Premium Deluxe Motorsport', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 326,  -- Blip sprite
@@ -95,6 +96,7 @@ Config.Shops = {
         },
         ['Job'] = 'cardealer', -- Name of job or none
         ['Rank'] = 2,
+        ['OpenFinanceF'] = false,
         ['ShopLabel'] = 'Luxury Vehicle Shop',
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 326,  -- Blip sprite
@@ -140,6 +142,7 @@ Config.Shops = {
         },
         ['Job'] = 'boatdealer', -- Name of job or none
         ['Rank'] = 1,
+        ['OpenFinanceF'] = false,
         ['ShopLabel'] = 'Marina Shop', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 410,  -- Blip sprite
@@ -189,6 +192,7 @@ Config.Shops = {
         },
         ['Job'] = 'aridealer', -- Name of job or none
         ['Rank'] = 1,
+        ['OpenFinanceF'] = false,
         ['ShopLabel'] = 'Air Shop', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 251,  -- Blip sprite
@@ -240,6 +244,7 @@ Config.Shops = {
         },
         ['Job'] = 'sandersmotor', -- Name of job or none
         ['Rank'] = 1,
+        ['OpenFinanceF'] = false,
         ['ShopLabel'] = 'Sanders Motor', -- Blip name
         ['showBlip'] = true,  -- true or false
         ['blipSprite'] = 226,  -- Blip sprite
