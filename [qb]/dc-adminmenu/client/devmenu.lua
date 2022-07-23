@@ -93,69 +93,61 @@ local function ToggleVehicleDeveloperMode()
     end)
 end
 
-local DevMenuButton1 = DevMenu:AddButton({
+DevMenu:AddButton({
     icon = '📋',
     label = Lang:t("menu.copy_vector3"),
     value = 'coords',
-    description = Lang:t("desc.vector3_desc")
+    description = Lang:t("desc.vector3_desc"),
+    select = function()
+        CopyToClipboard('coords3')
+    end
 })
-DevMenuButton1:On("select", function()
-    CopyToClipboard('coords3')
-end)
 
-local DevMenuButton2 = DevMenu:AddButton({
+DevMenu:AddButton({
     icon = '📋',
     label = Lang:t("menu.copy_vector4"),
     value = 'coords',
-    description = Lang:t("desc.vector4_desc")
+    description = Lang:t("desc.vector4_desc"),
+    select = function()
+        CopyToClipboard('coords4')
+    end
 })
-DevMenuButton2:On("select", function()
-    CopyToClipboard('coords4')
-end)
 
-local DevMenuButton3 = DevMenu:AddCheckbox({
-    icon = '📍',
-    label = Lang:t("menu.display_coords"),
-    value = nil,
-    description = Lang:t("desc.display_coords_desc")
-})
-DevMenuButton3:On('change', function()
-    ToggleShowCoordinates()
-end)
-
-local DevMenuButton4 = DevMenu:AddButton({
+DevMenu:AddButton({
     icon = '📋',
     label = Lang:t("menu.copy_heading"),
     value = 'heading',
-    description = Lang:t("desc.copy_heading_desc")
+    description = Lang:t("desc.copy_heading_desc"),
+    select = function()
+        CopyToClipboard('heading')
+    end
 })
-DevMenuButton4:On("select", function()
-    CopyToClipboard('heading')
-end)
 
-local DevMenuButton5 = DevMenu:AddButton({
+DevMenu:AddCheckbox({
+    icon = '📍',
+    label = Lang:t("menu.display_coords"),
+    description = Lang:t("desc.display_coords_desc"),
+    onchange = function()
+        TriggerServerEvent('QBCore:CallCommand', 'coords')
+    end
+})
+
+DevMenu:AddButton({
     icon = '🚘',
     label = Lang:t("menu.vehicle_dev_mode"),
-    value = nil,
-    description = Lang:t("desc.vehicle_dev_mode_desc")
+    description = Lang:t("desc.vehicle_dev_mode_desc"),
+    select = function()
+        ToggleVehicleDeveloperMode()
+    end
 })
-DevMenuButton5:On('select', function()
-    ToggleVehicleDeveloperMode()
-end)
 
-local DevMenuButton6 = DevMenu:AddCheckbox({
-    icon = '⚫',
-    label = Lang:t("menu.hud_dev_mode"),
-    value = DevMenu,
-    description = Lang:t("desc.hud_dev_mode_desc")
-})
-local dev = false
-DevMenuButton6:On('change', function()
-    dev = not dev
+local Dev = false
+local function ToggleDevMode()
+    Dev = not Dev
     TriggerEvent('qb-admin:client:ToggleDevmode')
-    if dev then
+    if Dev then
         SetPlayerInvincible(PlayerId(), true)
-        while dev do
+        while Dev do
             TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + 10)
             TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + 10)
             TriggerServerEvent('hud:server:RelieveStress', 20)
@@ -163,28 +155,34 @@ DevMenuButton6:On('change', function()
         end
         SetPlayerInvincible(PlayerId(), false)
     end
-end)
+end
+DevMenu:AddCheckbox({
+    icon = '⚫',
+    label = Lang:t("menu.hud_dev_mode"),
+    description = Lang:t("desc.hud_dev_mode_desc"),
+    onchange = function()
+        ToggleDevMode()
+    end
+})
 
-local DevMenuButton7 = DevMenu:AddCheckbox({
+local deleteLazer = false
+DevMenu:AddCheckbox({
     icon = '🔫',
     label = Lang:t("menu.delete_laser"),
-    value = DevMenu,
-    description = Lang:t("desc.delete_laser_desc")
+    description = Lang:t("desc.delete_laser_desc"),
+    onchange = function()
+        deleteLazer = not deleteLazer
+    end
 })
-local deleteLazer = false
-DevMenuButton7:On('change', function()
-    deleteLazer = not deleteLazer
-end)
 
-local DevMenuButton8 = DevMenu:AddCheckbox({
+DevMenu:AddCheckbox({
     icon = '🎥',
     label = Lang:t("menu.noclip"),
-    value = DevMenu,
-    description = Lang:t("desc.noclip_desc")
+    description = Lang:t("desc.noclip_desc"),
+    onchange = function()
+        TriggerServerEvent('QBCore:CallCommand', 'noclip')
+    end
 })
-DevMenuButton8:On('change', function()
-    toggleNoClipMode()
-end)
 
 -- Delete Lazer
 local function RotationToDirection(rotation)

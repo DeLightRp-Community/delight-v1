@@ -1,90 +1,91 @@
-local SelfMenuButton1 = SelfMenu:AddCheckbox({
+SelfMenu:AddCheckbox({
     icon = '🎥',
     label = Lang:t("menu.noclip"),
-    description = Lang:t("desc.noclip_desc")
+    description = Lang:t("desc.noclip_desc"),
+    onchange = function()
+        TriggerServerEvent('QBCore:CallCommand', 'noclip')
+    end
 })
-SelfMenuButton1:On('change', function()
-    toggleNoClipMode()
-end)
 
-local SelfMenuButton2 = SelfMenu:AddButton({
+SelfMenu:AddButton({
     icon = '🏥',
     label = Lang:t("menu.revive"),
-    description = Lang:t("desc.revive_desc")
+    description = Lang:t("desc.revive_desc"),
+    select = function()
+        TriggerEvent('hospital:client:Revive')
+        TriggerServerEvent('qb-log:server:CreateLog', 'admin', 'Admin menu', 'pink', string.format("**%s** (CitizenID: %s | ID: %s) - Revived himself",
+        GetPlayerName(PlayerId()), Admin.citizenid, Admin.source))
+    end
 })
-SelfMenuButton2:On('select', function()
-    TriggerEvent('hospital:client:Revive')
-    TriggerServerEvent('qb-log:server:CreateLog', 'admin', 'Admin menu', 'pink', string.format("**%s** (CitizenID: %s | ID: %s) - Revived himself",
-    GetPlayerName(PlayerId()), Admin.citizenid, Admin.source))
-end)
 
-local SelfMenuButton3 = SelfMenu:AddCheckbox({
+local Invisible = false
+local function ToggleInvisible()
+    Invisible = not Invisible
+    TriggerServerEvent('qb-log:server:CreateLog', 'admin', 'Admin menu', 'pink', string.format("**%s** (CitizenID: %s | ID: %s) - Set Invisible to **%s**",
+    GetPlayerName(PlayerId()), Admin.citizenid, Admin.source, Invisible))
+    if not Invisible then return end
+    while Invisible do
+        Wait(0)
+        SetEntityVisible(PlayerPedId(), false, 0)
+    end
+    SetEntityVisible(PlayerPedId(), true, 0)
+end
+SelfMenu:AddCheckbox({
     icon = '👻',
     label = Lang:t("menu.invisible"),
-    description = Lang:t("desc.invisible_desc")
-})
-local invisible = false
-SelfMenuButton3:On('change', function()
-    invisible = not invisible
-    TriggerServerEvent('qb-log:server:CreateLog', 'admin', 'Admin menu', 'pink', string.format("**%s** (CitizenID: %s | ID: %s) - Set Invisible to **%s**",
-    GetPlayerName(PlayerId()), Admin.citizenid, Admin.source, invisible))
-    if invisible then
-        while invisible do
-            Wait(0)
-            SetEntityVisible(PlayerPedId(), false, 0)
-        end
-        SetEntityVisible(PlayerPedId(), true, 0)
+    description = Lang:t("desc.invisible_desc"),
+    onchange = function()
+        ToggleInvisible()
     end
-end)
+})
 
-local SelfMenuButton4 = SelfMenu:AddCheckbox({
+local Godmode = false
+local function ToggleGodmode()
+    Godmode = not Godmode
+    local Player = PlayerId()
+    TriggerServerEvent('qb-log:server:CreateLog', 'admin', 'Admin menu', 'pink', string.format("**%s** (CitizenID: %s | ID: %s) - Set Godmode to **%s**",
+    GetPlayerName(Player), Admin.citizenid, Admin.source, Godmode))
+    if Godmode then SetPlayerInvincible(Player, true)
+    else SetPlayerInvincible(Player, false) end
+end
+SelfMenu:AddCheckbox({
     icon = '⚡',
     label = Lang:t("menu.god"),
-    description = Lang:t("desc.god_desc")
+    description = Lang:t("desc.god_desc"),
+    onchange = function()
+        ToggleGodmode()
+    end
 })
-local godmode = false
-SelfMenuButton4:On('change', function()
-    godmode = not godmode
-    TriggerServerEvent('qb-log:server:CreateLog', 'admin', 'Admin menu', 'pink', string.format("**%s** (CitizenID: %s | ID: %s) - Set Godmode to **%s**",
-    GetPlayerName(PlayerId()), Admin.citizenid, Admin.source, godmode))
-    if godmode then SetPlayerInvincible(PlayerId(), true)
-    else SetPlayerInvincible(PlayerId(), false) end
-end)
 
-local SelfMenuButton5 = SelfMenu:AddCheckbox({
+SelfMenu:AddCheckbox({
     icon = '📋',
     label = Lang:t("menu.names"),
-    description = Lang:t("desc.names_desc")
+    description = Lang:t("desc.names_desc"),
+    onchange = function()
+        TriggerServerEvent('QBCore:CallCommand', 'names')
+    end
 })
-SelfMenuButton5:On('change', function()
-    TriggerEvent('qb-admin:client:toggleNames')
-end)
 
-local SelfMenuButton6 = SelfMenu:AddCheckbox({
+SelfMenu:AddCheckbox({
     icon = '📍',
     label = Lang:t("menu.blips"),
-    description = Lang:t("desc.blips_desc")
+    description = Lang:t("desc.blips_desc"),
+    onchange = function()
+        TriggerServerEvent('QBCore:CallCommand', 'blips')
+    end
 })
-SelfMenuButton6:On('change', function()
-    TriggerEvent('qb-admin:client:toggleBlips')
-end)
 
-local SelfMenuButton7 = SelfMenu:AddCheckbox({
-    icon = '🚔',
-    label = Lang:t("menu.vehicle_godmode"),
-    description = Lang:t("desc.vehicle_godmode")
-})
-local vehiclegodmode = false
-SelfMenuButton7:On('change', function()
-    vehiclegodmode = not vehiclegodmode
+local VehicleGodmode = false
+local function ToggleVehicleGodmode()
+    VehicleGodmode = not VehicleGodmode
     TriggerServerEvent('qb-log:server:CreateLog', 'admin', 'Admin menu', 'pink', string.format("**%s** (CitizenID: %s | ID: %s) - Set VehicleGodmode to **%s**",
-    GetPlayerName(PlayerId()), Admin.citizenid, Admin.source, vehiclegodmode))
+    GetPlayerName(PlayerId()), Admin.citizenid, Admin.source, VehicleGodmode))
     local ped = PlayerPedId()
     local vehicle = GetVehiclePedIsIn(ped, false)
-    if vehiclegodmode then
+    if VehicleGodmode then
         SetEntityInvincible(vehicle, true)
         SetEntityCanBeDamaged(vehicle, false)
-        while vehiclegodmode do
+        while VehicleGodmode do
             vehicle = GetVehiclePedIsIn(ped, false)
             SetVehicleBodyHealth(vehicle, 1000.0)
             SetVehicleFixed(vehicle)
@@ -95,7 +96,15 @@ SelfMenuButton7:On('change', function()
         SetEntityInvincible(vehicle, false)
         SetEntityCanBeDamaged(vehicle, true)
     end
-end)
+end
+SelfMenu:AddCheckbox({
+    icon = '🚔',
+    label = Lang:t("menu.vehicle_godmode"),
+    description = Lang:t("desc.vehicle_godmode"),
+    onchange = function()
+        ToggleVehicleGodmode()
+    end
+})
 
 SelfMenu:AddSlider({
     icon = '👷‍♀️',
@@ -133,30 +142,33 @@ SelfMenu:AddSlider({
     end
 })
 
-local SelfMenuButton9 = SelfMenu:AddCheckbox({
-    icon = '🎯',
-    label = Lang:t("menu.ammo"),
-    description = Lang:t("desc.ammo")
-})
-local infiniteammo = false
-SelfMenuButton9:On('change', function()
-    infiniteammo = not infiniteammo
-    TriggerServerEvent('qb-log:server:CreateLog', 'admin', 'Admin menu', 'pink', string.format("**%s** (CitizenID: %s | ID: %s) - Set InfiniteAmmo to **%s**",
-    GetPlayerName(PlayerId()), Admin.citizenid, Admin.source, infiniteammo))
-    local ped = PlayerPedId()
-    local weapon = GetSelectedPedWeapon(ped)
-    if infiniteammo then
-        if GetAmmoInPedWeapon(ped, weapon) < 6 then SetAmmoInClip(ped, weapon, 10) Wait(50) end
-        while infiniteammo do
-            weapon = GetSelectedPedWeapon(ped)
-            SetPedInfiniteAmmo(ped, true, weapon)
-            RefillAmmoInstantly(ped)
-            Wait(250)
-        end
-    else
-        SetPedInfiniteAmmo(ped, false, weapon)
-    end
-end)
+-- local InfiniteAmmo = false
+-- local function ToggleInfiniteammo()
+--     InfiniteAmmo = not InfiniteAmmo
+--     TriggerServerEvent('qb-log:server:CreateLog', 'admin', 'Admin menu', 'pink', string.format("**%s** (CitizenID: %s | ID: %s) - Set InfiniteAmmo to **%s**",
+--     GetPlayerName(PlayerId()), Admin.citizenid, Admin.source, InfiniteAmmo))
+--     local ped = PlayerPedId()
+--     local weapon = GetSelectedPedWeapon(ped)
+--     if InfiniteAmmo then
+--         if GetAmmoInPedWeapon(ped, weapon) < 6 then SetAmmoInClip(ped, weapon, 10) Wait(50) end
+--         while InfiniteAmmo do
+--             weapon = GetSelectedPedWeapon(ped)
+--             SetPedInfiniteAmmo(ped, true, weapon)
+--             RefillAmmoInstantly(ped)
+--             Wait(250)
+--         end
+--     else
+--         SetPedInfiniteAmmo(ped, false, weapon)
+--     end
+-- end
+-- SelfMenu:AddCheckbox({
+--     icon = '🎯',
+--     label = Lang:t("menu.ammo"),
+--     description = Lang:t("desc.ammo"),
+--     onchange = function()
+--         ToggleInfiniteammo()
+--     end
+-- })
 
 SelfMenu:AddSlider({
     icon = '🔫',

@@ -18,11 +18,23 @@ end
 function GetAccount(account)
 	return Accounts[account] or 0
 end
-
-function AddMoney(account, amount)
+RegisterNetEvent("qb-bossmenu:server:addMoney", function(account,amount)
+	-- print(amount)
 	if not Accounts[account] then
 		Accounts[account] = 0
 	end
+	-- print(amount)
+
+	Accounts[account] = Accounts[account] + amount
+	MySQL.Async.execute('UPDATE management_funds SET amount = ? WHERE job_name = ? and type = "boss"', { Accounts[account], account })
+end)
+
+function AddMoney(account, amount)
+	print(amount)
+	if not Accounts[account] then
+		Accounts[account] = 0
+	end
+	print(amount)
 
 	Accounts[account] = Accounts[account] + amount
 	MySQL.Async.execute('UPDATE management_funds SET amount = ? WHERE job_name = ? and type = "boss"', { Accounts[account], account })

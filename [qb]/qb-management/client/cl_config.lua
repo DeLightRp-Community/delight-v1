@@ -35,7 +35,7 @@ Config.BossMenus = {
         vector3(-817.12, -699.44, 32.14),
     },
     ['uwu'] = {
-        vector3(-577.57, -1067.57, 26.61),
+        vector3(-578.87, -1067.49, 26.61),
     },
     ['pizza'] = {
         vector3(797.12, -751.6, 31.27),
@@ -81,7 +81,7 @@ Config.BossMenuZones = {
         { coords = vector3(-817.12, -699.44, 32.14), length = 1, width = 1, heading = 0, minZ = 28.74, maxZ = 32.74 },
     },
     ['uwu'] = {
-        { coords = vector3(-596.14, -1052.56, 22.34), length = 1, width = 1, heading = 0, minZ = 19.14, maxZ = 23.14 },
+        { coords = vector3(-578.87, -1067.49, 26.61), length = 1, width = 1, heading = 0, minZ = 26.0, maxZ = 28 },
     },
     ['pizza'] = {
         { coords = vector3(797.12, -751.6, 31.27), length = 1, width = 1, heading = 0, minZ = 27.87, maxZ = 31.87 },

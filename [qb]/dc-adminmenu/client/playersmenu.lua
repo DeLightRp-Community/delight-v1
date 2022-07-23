@@ -113,7 +113,7 @@ BanMenu:AddButton({
     description = Lang:t("desc.confirm_ban"),
     select = function()
         if banreason ~= 'Unknown' and banlength ~= nil then
-            TriggerServerEvent('qb-admin:server:ban', PlayerDetails, banlength, banreason)
+            TriggerServerEvent('qb-admin:server:ban', SelectedPlayer, banlength, banreason)
             banreason = 'Unknown'
             banlength = nil
         else
@@ -161,41 +161,54 @@ KickMenu:AddButton({
 })
 
 PermsMenu:AddSlider({
-    icon = '',
     label = 'Group',
-    value = 'user',
     values = {{
         label = 'Remove',
-        value = 'user',
-        description = 'Group'
+        value = 'user'
+    }, {
+        label = 'Mod',
+        value = 'mod'
     }, {
         label = 'Admin',
-        value = 'admin',
-        description = 'Group'
+        value = 'admin'
     }, {
         label = 'God',
-        value = 'god',
-        description = 'Group'
+        value = 'god'
     }},
-    change = function(_, newValue)
-        local vcal = newValue
-        if vcal == 1 then
-            selectedgroup = {rank = "user", label = "User"}
-        elseif vcal == 2 then
-            selectedgroup = {rank = "AdminmenuAdmin", label = "Admin"}
-        elseif vcal == 3 then
-            selectedgroup = {rank = "AdminmenuGod", label = "God"}
+    onselect = function(_, newValue)
+        selectedgroup = newValue
+    end
+})
+PermsMenu:AddButton({
+    label = 'Add on player (license)',
+    description = 'This will affect the player on each and every character they use',
+    select = function()
+        if selectedgroup then
+            TriggerServerEvent('qb-admin:server:setPermissions', SelectedPlayer.id, selectedgroup, true)
+            selectedgroup = nil
+        else
+            QBCore.Functions.Notify(Lang:t("error.changed_perm_failed"), 'error')
         end
     end
 })
 PermsMenu:AddButton({
-    icon = '',
-    label = Lang:t("info.confirm"),
-    value = "giveperms",
-    description = 'Give the permission group',
+    label = 'Add on character (citizenid)',
+    description = 'This will only affect this player\'s current character',
     select = function()
         if selectedgroup then
-            TriggerServerEvent('qb-admin:server:setPermissions', PlayerDetails.id, selectedgroup)
+            TriggerServerEvent('qb-admin:server:setPermissions', SelectedPlayer.id, selectedgroup, false)
+            selectedgroup = nil
+        else
+            QBCore.Functions.Notify(Lang:t("error.changed_perm_failed"), 'error')
+        end
+    end
+})
+PermsMenu:AddButton({
+    label = 'Update permissions',
+    description = 'This will only affect this person\'s permission',
+    select = function()
+        if selectedgroup then
+            TriggerServerEvent('qb-admin:server:updatePermissions', SelectedPlayer.id, selectedgroup, false)
             selectedgroup = nil
         else
             QBCore.Functions.Notify(Lang:t("error.changed_perm_failed"), 'error')
@@ -206,7 +219,6 @@ PermsMenu:AddButton({
 GiveItemMenu:AddSlider({
     icon = '',
     label = Lang:t("info.item"),
-    value = "reason",
     values = {{
         label = Lang:t("menu.item_list"),
         value = '',
@@ -288,7 +300,7 @@ GiveItemMenu:AddButton({
     description = Lang:t("desc.confirm_kick"),
     select = function()
         if itemname ~= 'Unknown' and itemamount ~= 0 then
-            TriggerServerEvent('QBCore:CallCommand', "giveitem", {PlayerDetails.id, itemname, itemamount})
+            TriggerServerEvent('QBCore:CallCommand', "giveitem", {SelectedPlayer.id, itemname, itemamount})
             itemname = 'Unknown'
             itemamount = 0
         else
@@ -457,7 +469,7 @@ SoundMenu:AddButton({
     description = Lang:t("desc.confirm_play"),
     select = function()
         if soundname ~= 'Unknown' and soundvolume ~= 0 then
-            TriggerServerEvent('InteractSound_SV:PlayOnOne', PlayerDetails.id, soundname, soundvolume)
+            TriggerServerEvent('InteractSound_SV:PlayOnOne', SelectedPlayer.id, soundname, soundvolume)
         else
             QBCore.Functions.Notify(Lang:t("error.give_item"), 'error')
         end
@@ -470,7 +482,7 @@ SoundMenu:AddButton({
     description = Lang:t("desc.confirm_play_radius"),
     select = function()
         if soundname ~= 'Unknown' and soundvolume ~= 0 and soundrange ~= 0 then
-            TriggerServerEvent('qb-admin:server:playsound', PlayerDetails.id, soundname, soundvolume, soundrange)
+            TriggerServerEvent('qb-admin:server:playsound', SelectedPlayer.id, soundname, soundvolume, soundrange)
         else
             QBCore.Functions.Notify(Lang:t("error.give_item"), 'error')
         end
@@ -493,43 +505,43 @@ function OpenPlayerMenus()
                 icon = '💀',
                 label = Lang:t("menu.kill"),
                 value = "kill",
-                description = Lang:t("menu.kill").. " " .. PlayerDetails.name
+                description = Lang:t("menu.kill").. " " .. SelectedPlayer.name
             },
             [2] = {
                 icon = '🏥',
                 label = Lang:t("menu.revive"),
                 value = "revive",
-                description = Lang:t("menu.revive") .. " " .. PlayerDetails.name
+                description = Lang:t("menu.revive") .. " " .. SelectedPlayer.name
             },
             [3] = {
                 icon = '🥶',
                 label = Lang:t("menu.freeze"),
                 value = "freeze",
-                description = Lang:t("menu.freeze") .. " " .. PlayerDetails.name
+                description = Lang:t("menu.freeze") .. " " .. SelectedPlayer.name
             },
             [4] = {
                 icon = '👀',
                 label = Lang:t("menu.spectate"),
                 value = "spectate",
-                description = Lang:t("menu.spectate") .. " " .. PlayerDetails.name
+                description = Lang:t("menu.spectate") .. " " .. SelectedPlayer.name
             },
             [5] = {
                 icon = '➡️',
                 label = Lang:t("info.goto"),
                 value = "goto",
-                description = Lang:t("info.goto") .. " " .. PlayerDetails.name .. Lang:t("info.position")
+                description = Lang:t("info.goto") .. " " .. SelectedPlayer.name .. Lang:t("info.position")
             },
             [6] = {
                 icon = '⬅️',
                 label = Lang:t("menu.bring"),
                 value = "bring",
-                description = Lang:t("menu.bring") .. " " .. PlayerDetails.name .. " " .. Lang:t("info.your_position")
+                description = Lang:t("menu.bring") .. " " .. SelectedPlayer.name .. " " .. Lang:t("info.your_position")
             },
             [7] = {
                 icon = '🚗',
                 label = Lang:t("menu.sit_in_vehicle"),
                 value = "intovehicle",
-                description = Lang:t("desc.sit_in_veh_desc") .. " " .. PlayerDetails.name .. " " .. Lang:t("desc.sit_in_veh_desc2")
+                description = Lang:t("desc.sit_in_veh_desc") .. " " .. SelectedPlayer.name .. " " .. Lang:t("desc.sit_in_veh_desc2")
             }
         }
         for _, v in ipairs(elements) do
@@ -540,7 +552,7 @@ function OpenPlayerMenus()
                 description = v.description,
                 select = function(btn)
                     local values = btn.Value
-                    TriggerServerEvent('qb-admin:server:'..values, PlayerDetails)
+                    TriggerServerEvent('qb-admin:server:'..values, SelectedPlayer)
                 end
             })
         end
@@ -563,7 +575,7 @@ function OpenPlayerMenus()
                     }
                 })
                 if dialog then
-                    TriggerServerEvent('qb-admin:server:routingbucket', PlayerDetails, dialog.bucket)
+                    TriggerServerEvent('qb-admin:server:routingbucket', SelectedPlayer, dialog.bucket)
                 end
             end
         })
@@ -582,19 +594,19 @@ function OpenPlayerMenus()
                 icon = '🥾',
                 label = Lang:t("menu.kick"),
                 value = "kick",
-                description = Lang:t("menu.kick") .. " " .. PlayerDetails.name .. " " .. Lang:t("info.reason")
+                description = Lang:t("menu.kick") .. " " .. SelectedPlayer.name .. " " .. Lang:t("info.reason")
             },
             [2] = {
                 icon = '🚫',
                 label = Lang:t("menu.ban"),
                 value = "ban",
-                description = Lang:t("menu.ban") .. " " .. PlayerDetails.name .. " " .. Lang:t("info.reason")
+                description = Lang:t("menu.ban") .. " " .. SelectedPlayer.name .. " " .. Lang:t("info.reason")
             },
             [3] = {
                 icon = '🎟️',
                 label = Lang:t("menu.permissions"),
                 value = "perms",
-                description = Lang:t("info.give") .. " " .. PlayerDetails.name .. " " .. Lang:t("menu.permissions")
+                description = Lang:t("info.give") .. " " .. SelectedPlayer.name .. " " .. Lang:t("menu.permissions")
             }
         }
         for _, v in ipairs(elements) do
@@ -630,25 +642,25 @@ function OpenPlayerMenus()
                 icon = '🎒',
                 label = Lang:t("menu.open_inv"),
                 value = "inventory",
-                description = Lang:t("info.open") .. " " .. PlayerDetails.name .. Lang:t("info.inventories")
+                description = Lang:t("info.open") .. " " .. SelectedPlayer.name .. Lang:t("info.inventories")
             },
             [2] = {
                 icon = '👕',
                 label = Lang:t("menu.give_clothing_menu"),
                 value = "cloth",
-                description = Lang:t("desc.clothing_menu_desc") .. " " .. PlayerDetails.name
+                description = Lang:t("desc.clothing_menu_desc") .. " " .. SelectedPlayer.name
             },
             [3] = {
                 icon = '🏒',
                 label = Lang:t("menu.give_item_menu"),
                 value = "giveitem",
-                description = Lang:t("desc.give_item_menu_desc") .. " " .. PlayerDetails.name
+                description = Lang:t("desc.give_item_menu_desc") .. " " .. SelectedPlayer.name
             },
             [4] = {
                 icon = '🎵',
                 label = Lang:t("menu.play_sound"),
                 value = "sound",
-                description = Lang:t("desc.play_sound") .. " " .. PlayerDetails.name
+                description = Lang:t("desc.play_sound") .. " " .. SelectedPlayer.name
             },
             [5] = {
                 icon = '🔇',
@@ -666,15 +678,15 @@ function OpenPlayerMenus()
                 select = function(btn)
                     local values = btn.Value
                     if values == 'inventory' then
-                        TriggerEvent('qb-admin:client:inventory', PlayerDetails.id)
+                        TriggerEvent('qb-admin:client:inventory', SelectedPlayer.id)
                     elseif values == 'giveitem' then
                         MenuV:OpenMenu(GiveItemMenu)
                     elseif values == 'sound' then
                         MenuV:OpenMenu(SoundMenu)
                     elseif values == 'mute' then
-                        exports['pma-voice']:toggleMutePlayer(PlayerDetails.id)
+                        exports['pma-voice']:toggleMutePlayer(SelectedPlayer.id)
                     else
-                        TriggerServerEvent('qb-admin:server:'..values, PlayerDetails)
+                        TriggerServerEvent('qb-admin:server:'..values, SelectedPlayer)
                     end
                 end
             })
@@ -713,73 +725,73 @@ function OpenPlayerMenus()
                 description = Lang:t("desc.give_weapons")
             }},
             select = function(_, newValue)
-                TriggerServerEvent('qb-admin:server:giveallweapons', newValue, PlayerDetails.id)
+                TriggerServerEvent('qb-admin:server:giveallweapons', newValue, SelectedPlayer.id)
             end
         })
     end)
     local elements = {
         [1] = {
-            label = Lang:t("label.name").. ': ' ..PlayerDetails.name,
+            label = Lang:t("label.name").. ': ' ..SelectedPlayer.name,
             description = Lang:t("desc.player_info"),
             value = 'name'
         },
         [2] = {
-            label = Lang:t("label.food").. ': ' ..PlayerDetails.food.. '%',
+            label = Lang:t("label.food").. ': ' ..SelectedPlayer.food.. '%',
             description = Lang:t("desc.player_info"),
             value = 'food'
         },
         [3] = {
-            label = Lang:t("label.water").. ': ' ..PlayerDetails.water.. '%',
+            label = Lang:t("label.water").. ': ' ..SelectedPlayer.water.. '%',
             description = Lang:t("desc.player_info"),
             value = 'water'
         },
         [4] = {
-            label = Lang:t("label.stress").. ': ' ..PlayerDetails.stress.. '%',
+            label = Lang:t("label.stress").. ': ' ..SelectedPlayer.stress.. '%',
             description = Lang:t("desc.player_info"),
             value = 'stress'
         },
         [5] = {
-            label = Lang:t("label.armor").. ': ' ..PlayerDetails.armor.. '%',
+            label = Lang:t("label.armor").. ': ' ..SelectedPlayer.armor.. '%',
             description = Lang:t("desc.player_info"),
             value = 'armor'
         },
         [6] = {
-            label = Lang:t("label.phone").. ': ' ..PlayerDetails.phone,
+            label = Lang:t("label.phone").. ': ' ..SelectedPlayer.phone,
             description = Lang:t("desc.player_info"),
             value = 'phone'
         },
         [7] = {
-            label = Lang:t("label.craftingrep").. ': ' ..PlayerDetails.craftingrep,
+            label = Lang:t("label.craftingrep").. ': ' ..SelectedPlayer.craftingrep,
             description = Lang:t("desc.player_info"),
             value = 'craftingrep'
         },
         [8] = {
-            label = Lang:t("label.dealerrep").. ': ' ..PlayerDetails.dealerrep,
+            label = Lang:t("label.dealerrep").. ': ' ..SelectedPlayer.dealerrep,
             description = Lang:t("desc.player_info"),
             value = 'dealerrep'
         },
         [9] = {
-            label = Lang:t("label.cash").. ': ' ..PlayerDetails.cash.. '$',
+            label = Lang:t("label.cash").. ': ' ..SelectedPlayer.cash.. '$',
             description = Lang:t("desc.player_info"),
             value = 'cash'
         },
         [10] = {
-            label = Lang:t("label.bank").. ': ' ..PlayerDetails.bank.. '$',
+            label = Lang:t("label.bank").. ': ' ..SelectedPlayer.bank.. '$',
             description = Lang:t("desc.player_info"),
             value = 'bank'
         },
         [11] = {
-            label = Lang:t("label.job").. ': ' ..PlayerDetails.job,
+            label = Lang:t("label.job").. ': ' ..SelectedPlayer.job,
             description = Lang:t("desc.player_info"),
             value = 'job'
         },
         [12] = {
-            label = Lang:t("label.gang").. ': ' ..PlayerDetails.gang,
+            label = Lang:t("label.gang").. ': ' ..SelectedPlayer.gang,
             description = Lang:t("desc.player_info"),
             value = 'gang'
         },
         [13] = {
-            label = Lang:t("label.radio").. ': ' ..Player(PlayerDetails.id).state['radioChannel'] or 0,
+            label = Lang:t("label.radio").. ': ' ..Player(SelectedPlayer.id).state['radioChannel'] or 0,
             description = Lang:t("desc.player_info"),
             value = 'radio'
         },
@@ -804,14 +816,14 @@ function OpenPlayerMenus()
                     }
                 })
                 if dialog then
-                    TriggerServerEvent('qb-admin:server:'..values, PlayerDetails, dialog.data)
+                    TriggerServerEvent('qb-admin:server:'..values, SelectedPlayer, dialog.data)
                 end
                 Wait(50)
                 QBCore.Functions.TriggerCallback('qb-adminmenu:callback:getplayer', function(player)
-                    PlayerDetails = player
+                    SelectedPlayer = player
                     PlayerDetailMenu:Close()
                     OpenPlayerMenus()
-                end, PlayerDetails.id)
+                end, SelectedPlayer.id)
             end
         })
     end

@@ -155,17 +155,6 @@ RegisterNetEvent('hospital:server:AddDoctor', function(job)
 		TriggerClientEvent("hospital:client:SetDoctorCount", -1, doctorCount)
 	end
 end)
-local doctorTempCount = 0
-RegisterNetEvent('hospital:server:enableCheckin', function()
-	doctorTempCount = doctorCount
-	print("Abol")
-	TriggerClientEvent("hospital:client:SetDoctorCount", -1, 0)
-end)
-RegisterNetEvent('hospital:server:disableCheckin', function()
-	print("ghasem")
-	TriggerClientEvent("hospital:client:SetDoctorCount", -1, doctorTempCount)
-	doctorTempCount = 0
-end)
 
 RegisterNetEvent('hospital:server:RemoveDoctor', function(job)
 	if job == 'ambulance' then
@@ -328,63 +317,6 @@ QBCore.Commands.Add("revivep", Lang:t('info.revive_player'), {}, false, function
 		TriggerClientEvent('QBCore:Notify', src, Lang:t('error.not_ems'), "error")
 	end
 end)
-
-QBCore.Commands.Add("revive", Lang:t('info.revive_player_a'), {{name = "id", help = Lang:t('info.player_id')}}, false, function(source, args)
-	local src = source
-	if args[1] then
-		local Player = QBCore.Functions.GetPlayer(tonumber(args[1]))
-		if Player then
-			TriggerClientEvent('hospital:client:Revive', Player.PlayerData.source)
-		else
-			TriggerClientEvent('QBCore:Notify', src, Lang:t('error.not_online'), "error")
-		end
-	else
-		TriggerClientEvent('hospital:client:Revive', src)
-	end
-end, "admin")
-
-QBCore.Commands.Add("setpain", Lang:t('info.pain_level'), {{name = "id", help = Lang:t('info.player_id')}}, false, function(source, args)
-	local src = source
-	if args[1] then
-		local Player = QBCore.Functions.GetPlayer(tonumber(args[1]))
-		if Player then
-			TriggerClientEvent('hospital:client:SetPain', Player.PlayerData.source)
-		else
-			TriggerClientEvent('QBCore:Notify', src, Lang:t('error.not_online'), "error")
-		end
-	else
-		TriggerClientEvent('hospital:client:SetPain', src)
-	end
-end, "admin")
-
-QBCore.Commands.Add("kill", Lang:t('info.kill'), {{name = "id", help = Lang:t('info.player_id')}}, false, function(source, args)
-	local src = source
-	if args[1] then
-		local Player = QBCore.Functions.GetPlayer(tonumber(args[1]))
-		if Player then
-			TriggerClientEvent('hospital:client:KillPlayer', Player.PlayerData.source)
-		else
-			TriggerClientEvent('QBCore:Notify', src, Lang:t('error.not_online'), "error")
-		end
-	else
-		TriggerClientEvent('hospital:client:KillPlayer', src)
-	end
-end, "admin")
-
-QBCore.Commands.Add('aheal', Lang:t('info.heal_player_a'), {{name = 'id', help = Lang:t('info.player_id')}}, false, function(source, args)
-	local src = source
-	if args[1] then
-		local Player = QBCore.Functions.GetPlayer(tonumber(args[1]))
-		if Player then
-			TriggerClientEvent('hospital:client:adminHeal', Player.PlayerData.source)
-		else
-			TriggerClientEvent('QBCore:Notify', src, Lang:t('error.not_online'), "error")
-		end
-	else
-		TriggerClientEvent('hospital:client:adminHeal', src)
-	end
-end, 'admin')
-
 -- Items
 
 QBCore.Functions.CreateUseableItem("ifaks", function(source, item)

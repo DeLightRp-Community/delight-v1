@@ -693,18 +693,27 @@ RegisterNUICallback('ClearAlerts', function(data, cb)
     end
 end)
 
+
+local function round(num, numDecimalPlaces)
+    if numDecimalPlaces and numDecimalPlaces > 0 then
+        local mult = 10 ^ numDecimalPlaces
+        return math.floor(num * mult + 0.5) / mult
+    end
+    return math.floor(num + 0.5)
+end
 RegisterNUICallback('PayInvoice', function(data, cb)
     local sender = data.sender
     local senderCitizenId = data.senderCitizenId
     local society = data.society
     local amount = data.amount
     local invoiceId = data.invoiceId
-
+    local commission = round(amount * Config.BillingCommissions[society])
     QBCore.Functions.TriggerCallback('qb-phone:server:PayInvoice', function(CanPay, Invoices)
         if CanPay then PhoneData.Invoices = Invoices end
         cb(CanPay)
     end, society, amount, invoiceId, senderCitizenId)
-    exports['qb-management']:AddMoney(player.PlayerData.job.name, amount)
+    -- exports['qb-management']:AddMoney(society, amount)
+    TriggerServerEvent('qb-bossmenu:server:addMoney', society, amount - commission)
     TriggerServerEvent('qb-phone:server:BillingEmail', data, true)
 end)
 
