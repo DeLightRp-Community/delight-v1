@@ -410,30 +410,32 @@ end)
 RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
     local ped = PlayerPedId()
     if not isHandcuffed then
-        	local circles = 1
-            local time = 5
-            local success = exports['qb-lock']:StartLockPickCircle(circles, time)
-            if success then
-                -- print("win")
-            else
-                isHandcuffed = true
-                TriggerServerEvent("police:server:SetHandcuffStatus", true)
-                ClearPedTasksImmediately(ped)
-                if GetSelectedPedWeapon(ped) ~= `WEAPON_UNARMED` then
-                    SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
-                end
-                if not isSoftcuff then
-                    cuffType = 16
-                    GetCuffedAnimation(playerId)
-                    QBCore.Functions.Notify(Lang:t("info.cuff"), 'primary')
-                else
-                    
-
-                    cuffType = 49
-                    GetCuffedAnimation(playerId)
-                    QBCore.Functions.Notify(Lang:t("info.cuffed_walk"), 'primary')
-                end
+        FreezeEntityPosition(ped,true)
+        local circles = 1
+        local time = 5
+        local success = exports['qb-lock']:StartLockPickCircle(circles, time)
+        if success then
+            -- print("win")
+            FreezeEntityPosition(ped,false)
+        else
+            FreezeEntityPosition(ped,false)
+            isHandcuffed = true
+            TriggerServerEvent("police:server:SetHandcuffStatus", true)
+            ClearPedTasksImmediately(ped)
+            if GetSelectedPedWeapon(ped) ~= `WEAPON_UNARMED` then
+                SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
             end
+            if not isSoftcuff then
+                cuffType = 16
+                GetCuffedAnimation(playerId)
+                QBCore.Functions.Notify(Lang:t("info.cuff"), 'primary')
+            else
+                
+                cuffType = 49
+                GetCuffedAnimation(playerId)
+                QBCore.Functions.Notify(Lang:t("info.cuffed_walk"), 'primary')
+            end
+        end
         
     else
         isHandcuffed = false
