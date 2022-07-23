@@ -669,19 +669,43 @@ else
     end)
 end
 
+local inHeliMRPD = false
+local inHeliSandy = false
+
+local LSPDMRPDHeliBOX = BoxZone:Create(vector3(449.5, -980.9, 43.69), 10, 10, {
+    name="Heli Location",
+    heading=0,
+    -- debugPoly=true,
+    minZ=42.69,
+    maxZ=47.69
+  })
+LSPDMRPDHeliBOX:onPlayerInOut(function(isPointInside, point)
+    inHeliMRPD = isPointInside
+end)
+
+local LSPDSANDYHEliBOX = BoxZone:Create(vector3(-475.48, 5988.16, 31.34), 20, 20, {
+    name="police sandy heli",
+    heading=315,
+    -- debugPoly=true,
+    minZ=30.34,
+    maxZ=34.34
+  }) 
+
+LSPDSANDYHEliBOX:onPlayerInOut(function(isPointInside, point)
+    inHeliSandy = isPointInside
+end)
 
 RegisterNetEvent('qb-police:client:changeLivery', function(id)
-
-    local playerInVehicle =GetVehiclePedIsIn(PlayerPedId(), false)
-    if playerInVehicle > 0 then
-        local vehicle =GetDisplayNameFromVehicleModel(GetEntityModel(playerInVehicle))
-        if vehicle=="POLAS350" then
-            local Veh = GetVehiclePedIsIn(GetPlayerPed(-1))
-	        SetVehicleLivery(Veh,id) --CHANGE livery(id)
-
+    if inHeliMRPD or inHeliSandy then
+        local playerInVehicle =GetVehiclePedIsIn(PlayerPedId(), false)
+        if playerInVehicle > 0 then
+            local vehicle =GetDisplayNameFromVehicleModel(GetEntityModel(playerInVehicle))
+            if vehicle=="POLAS350" then
+                local Veh = GetVehiclePedIsIn(GetPlayerPed(-1))
+                SetVehicleLivery(Veh,id) --CHANGE livery(id)
+            end
         end
     end
-    print()
 end)
 
 CreateThread(function()

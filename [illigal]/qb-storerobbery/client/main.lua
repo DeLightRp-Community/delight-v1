@@ -377,7 +377,7 @@ RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
                         -- TriggerServerEvent("qb-storerobbery:server:callCops", "cashier", currentRegister, streetLabel, pos)
                         -- copsCalled = true
                     end
-                    local time = math.random(1,2)
+                    local time = math.random(7,10)
                     local circles = math.random(4,5)
                     local success = exports['qb-lock']:StartLockPickCircle(circles, time, success)
                     if success then
@@ -405,7 +405,7 @@ RegisterNetEvent('qb-storerobbery:UseLockpick', function(isAdvanced)
                         -- TriggerServerEvent("qb-storerobbery:server:callCops", "cashier", currentRegister, streetLabel, pos)
                         -- copsCalled = true
                     end
-                    local time = math.random(1,2)
+                    local time = math.random(5,7)
                     local circles = math.random(4,5)
                     local success = exports['qb-lock']:StartLockPickCircle(circles, time, success)
                     if success then
