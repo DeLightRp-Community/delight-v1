@@ -85,32 +85,32 @@ Config.Animals = { {
     -- IMPORTANT: script will skip duplicate loots and only use one of them (first one)
     -- script will skip other prices and only uses the first seen value.
     -- IMPORTANT: if you leave the price with nil value players can't sell those items to Vendor.
-    Loots = { { "meatdeer", 100, 200 },}
+    Loots = { { "meatdeer", 100, 100 },}
 }, {
     model = "a_c_pig",
     spwanRarity = { 0, 0 },
     hash = -1323586730,
-    Loots = { { "meatpig", 100, 120 },}
+    Loots = { { "meatpig", 100, 100 },}
 }, {
     model = "a_c_boar",
     spwanRarity = { 0, 50 },
     hash = -832573324,
-    Loots = { { "meatpig", 100, 200},}
+    Loots = { { "meatpig", 100, 100},}
 }, {
     model = "a_c_mtlion",
     spwanRarity = { 0, 10 },
     hash = 307287994,
-    Loots = { { "meatlion", 100, 300 },}
+    Loots = { { "meatlion", 100, 100 },}
 }, {
     model = "a_c_cow",
     spwanRarity = { 0, 0 },
     hash = -50684386,
-    Loots = { { "meatcow", 100, 80 },}
+    Loots = { { "meatcow", 100, 100 },}
 }, {
     model = "a_c_coyote",
     spwanRarity = { 0, 20 },
     hash = 1682622302,
-    Loots = { { "meatcoyote", 100, 250 },}
+    Loots = { { "meatcoyote", 100, 100 },}
 }, {
     model = "a_c_rabbit_01",
     spwanRarity = { 30, 0 },
@@ -120,12 +120,12 @@ Config.Animals = { {
     model = "a_c_pigeon",
     spwanRarity = { 0, 0 },
     hash = 111281960,
-    Loots = { { "meatbird", 100, 90 },}
+    Loots = { { "meatbird", 100, 100 },}
 }, {
     model = "a_c_seagull",
     spwanRarity = { 0, 0 },
     hash = -745300483,
-    Loots = { { "meatbird", 100, 90 },}
+    Loots = { { "meatbird", 100, 100 },}
 } }
 
 Config.HuntingArea = { {

@@ -25,3 +25,16 @@ end)
 QBCore.Commands.Add("putintrunk", Lang:t("general.putintrunk_command_desc"), {}, false, function(source)
     TriggerClientEvent('qb-trunk:server:KidnapTrunk', source)
 end)
+
+RegisterNetEvent('qb-radialmenu:player:removeMask', function(id)
+    local src = source
+    local EscortPlayer = QBCore.Functions.GetPlayer(id)
+    if EscortPlayer then
+        if EscortPlayer.PlayerData.metadata["ishandcuffed"] or EscortPlayer.PlayerData.metadata["isdead"] or EscortPlayer.PlayerData.metadata["inlaststand"] then
+            TriggerClientEvent("qb-radialmenu:player:client:removePlayerMask", EscortPlayer.PlayerData.source)
+        else
+            TriggerClientEvent('QBCore:Notify', src, "Civilian isn\'t cuffed or dead", 'error')
+        end
+    end
+    
+end)

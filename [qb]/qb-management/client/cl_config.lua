@@ -98,6 +98,9 @@ Config.BossMenuZones = {
     ['tuner'] = {
         { coords = vector3(125.43, -3007.19, 7.86), length = 1.0, width = 1.0, heading = 0, minZ = 6.32, maxZ = 7.32 },
     },
+    ['nightclub'] = {
+        { coords = vector3(406.64, 242.85, 92.05), length = 1.0, width = 2.0, heading = 255, minZ = 89.45, maxZ = 93.05 },
+    },
 }
 
 Config.GangMenus = {

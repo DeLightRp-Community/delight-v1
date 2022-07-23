@@ -131,15 +131,17 @@ local function DnaHash(s)
 end
 
 -- Commands
---[[QBCore.Commands.Add("spikestrip", Lang:t("commands.place_spike"), {}, false, function(source)
+QBCore.Commands.Add("livery", "Heli Livery", {{name = "id", help = "0 = LSPD , 1 = BCSO , 2 = SASPD"}}, false, function(source,args)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
     if Player then
         if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
-            TriggerClientEvent('police:client:SpawnSpikeStrip', src)
+            local livery = tonumber(args[1])
+            -- print(json.encode(args))
+            TriggerClientEvent('qb-police:client:changeLivery', src,livery)
         end
     end
-end)]]
+end)
 
 
 QBCore.Commands.Add("grantlicense", Lang:t("commands.license_grant"), {{name = "id", help = Lang:t('info.player_id')}, {name = "license", help = Lang:t('info.license_type')}}, true, function(source, args)
@@ -572,7 +574,7 @@ QBCore.Functions.CreateUseableItem("handcuffs", function(source, item)
      local src = source
      local Player = QBCore.Functions.GetPlayer(src)
      if Player.Functions.GetItemByName(item.name) then
-         TriggerClientEvent("police:client:CuffPlayer" , src)
+         TriggerClientEvent("police:client:CuffPlayerSoft" , src)
      end
  end)
 

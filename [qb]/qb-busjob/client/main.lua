@@ -152,20 +152,28 @@ end
 
 RegisterNetEvent("qb-busjob:client:TakeVehicle", function(data)
     local coords = Config.Location
+    local vehicle = GetClosestVehicle(GetEntityCoords(PlayerPedId(), true), 1.0 , 0 , 12294)
     if(BusData.Active) then
         QBCore.Functions.Notify(Lang:t('error.one_bus_active'), 'error')
         return
     else
-    QBCore.Functions.SpawnVehicle(data.model, function(veh)
-        SetVehicleNumberPlateText(veh, Lang:t('info.bus_plate')..tostring(math.random(1000, 9999)))
-        exports['LegacyFuel']:SetFuel(veh, 100.0)
-        closeMenuFull()
-        TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
-        SetVehicleEngineOn(veh, true, true)
-    end, coords, true)
-    Wait(1000)
-    TriggerEvent('qb-busjob:client:DoBusNpc')
+        if vehicle ~= -713569950 then
+            print(vehicle)
+            QBCore.Functions.SpawnVehicle(data.model, function(veh)
+                SetVehicleNumberPlateText(veh, Lang:t('info.bus_plate')..tostring(math.random(1000, 9999)))
+                exports['LegacyFuel']:SetFuel(veh, 100.0)
+                closeMenuFull()
+                TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+                TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+                SetVehicleEngineOn(veh, true, true)
+            end, coords, true)
+            Wait(1000)
+            TriggerEvent('qb-busjob:client:DoBusNpc')
+        else
+            QBCore.Functions.DeleteVehicle(vehicle)
+            print(vehicle)
+            print("wtf?")
+        end
     end
 end)
 

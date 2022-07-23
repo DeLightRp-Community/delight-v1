@@ -100,7 +100,7 @@ VehicleMenuButton5:On('Select', function()
             cosmetics = true,
         },
     }
-    TriggerEvent('qb-customs:client:EnterCustoms', override)
+    TriggerEvent('qb-customs:client:EnterCustoms')
     MenuV:CloseAll()
 end)
 

@@ -234,6 +234,7 @@ RegisterNetEvent('police:client:PutPlayerInVehicle', function()
     end
 end)
 
+
 RegisterNetEvent('police:client:SetPlayerOutVehicle', function()
     local player, distance = QBCore.Functions.GetClosestPlayer()
     if player ~= -1 and distance < 2.5 then
@@ -294,6 +295,18 @@ RegisterNetEvent('police:client:CuffPlayerSoft', function()
         end, Config.HandCuffItem)
     else
         Wait(2000)
+    end
+end)
+RegisterNetEvent('qb-police:dodge', function(success)
+    local time = math.random(1,2)
+    local circles = 1
+    local success = exports['qb-lock']:StartLockPickCircle(circles, time)
+    local player, distance = QBCore.Functions.GetClosestPlayer()
+    local playerId = GetPlayerServerId(player)
+    if success then
+        print("nice")
+    else
+        TriggerServerEvent("police:server:CuffPlayer", playerId, true)
     end
 end)
 

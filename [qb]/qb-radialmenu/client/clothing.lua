@@ -882,6 +882,46 @@ end
 
 RegisterNetEvent('qb-radialmenu:ToggleClothing', ToggleClothing)
 
+-- 
+RegisterNetEvent('qb-radialmenu:player:client:removePlayerMask', function ()
+	ToggleClothing("Mask")
+end)
+local function GetClosestPlayer()
+    local closestPlayers = QBCore.Functions.GetPlayersFromCoords()
+    local closestDistance = -1
+    local closestPlayer = -1
+    local coords = GetEntityCoords(PlayerPedId())
+	-- print(json.encode(closestPlayers))
+    for i=1, #closestPlayers, 1 do
+        if closestPlayers[i] ~= PlayerId() then
+            local pos = GetEntityCoords(GetPlayerPed(closestPlayers[i]))
+            local distance = #(pos - coords)
+
+            if closestDistance == -1 or closestDistance > distance then
+                closestPlayer = closestPlayers[i]
+                closestDistance = distance
+            end
+        end
+	end
+	return closestPlayer, closestDistance
+end
+
+function takePlayerMask()
+	local PlayerData = QBCore.Functions.GetPlayerData()
+	local handcuff = PlayerData.metadata.ishandcuffed
+	local player, distance = QBCore.Functions.GetClosestPlayer()
+    if player ~= -1 and distance < 1.0 then
+        local playerId = GetPlayerServerId(player)
+        if not handcuff then
+            TriggerServerEvent("qb-radialmenu:player:removeMask", playerId)
+        end
+    else
+        QBCore.Functions.Notify("Get Closer to Player", "error")
+    end
+end
+
+RegisterNetEvent('qb-radialmenu:playermask', takePlayerMask)
+
 function ToggleProps(whic)
 	local which = whic
 	if type(whic) == "table" then

@@ -562,23 +562,23 @@ RegisterNetEvent('qb-police:client:spawnHelicopter', function(k)
         end, coords, true)
     end
 end)
-RegisterNetEvent('qb-police:client:spawnBoat', function(k)
+RegisterNetEvent('qb-police:client:spawnBoat', function()
     if IsPedInAnyVehicle(PlayerPedId(), false) then
         QBCore.Functions.DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
     else
-        local coords = Config.Locations["boat"][k]
+        local coords = vector4(-775.53, -1428.51, 0.27, 136.17)
         if not coords then coords = GetEntityCoords(PlayerPedId()) end
         QBCore.Functions.SpawnVehicle(Config.PoliceBoat, function(veh)
             SetVehicleLivery(veh , 0)
             SetVehicleMod(veh, 0, 48)
             SetVehicleNumberPlateText(veh, "Boat"..tostring(math.random(1000, 9999)))
-            SetEntityHeading(veh, Config.Locations["boat"][k].w)
+            --SetEntityHeading(veh, Config.Locations["boat"][k].w)
             exports['LegacyFuel']:SetFuel(veh, 100.0)
             closeMenuFull()
             TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
             TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
             SetVehicleEngineOn(veh, true, true)
-        end, Config.Locations["boat"][k], true)
+        end, vector4(-775.53, -1428.51, 0.27, 320.6), true)
     end
 end)
 
@@ -669,6 +669,21 @@ else
     end)
 end
 
+
+RegisterNetEvent('qb-police:client:changeLivery', function(id)
+
+    local playerInVehicle =GetVehiclePedIsIn(PlayerPedId(), false)
+    if playerInVehicle > 0 then
+        local vehicle =GetDisplayNameFromVehicleModel(GetEntityModel(playerInVehicle))
+        if vehicle=="POLAS350" then
+            local Veh = GetVehiclePedIsIn(GetPlayerPed(-1))
+	        SetVehicleLivery(Veh,id) --CHANGE livery(id)
+
+        end
+    end
+    print()
+end)
+
 CreateThread(function()
     -- Helicopter
     local helicopterZones = {}
@@ -702,12 +717,12 @@ CreateThread(function()
     end)
 
 -- Boat
-    local boatZones = {}
+    --[[local boatZones = {}
     for k, v in pairs(Config.Locations["boat"]) do
         boatZones[#boatZones+1] = BoxZone:Create(
             vector3(vector3(v.x, v.y, v.z)), 10, 10, {
             name="box_zone",
-            debugPoly = false,
+            debugPoly = true,
             minZ = v.z - 1,
             maxZ = v.z + 1,
         })
@@ -728,7 +743,7 @@ CreateThread(function()
             inBoat = false
             exports['qb-core']:HideText()
         end
-    end)
+    end)]]
     -- Police Impound
     local impoundZones = {}
     for k, v in pairs(Config.Locations["impound"]) do
@@ -936,6 +951,45 @@ exports['qb-target']:SpawnPed({
     },
 })
 
+
+exports['qb-target']:SpawnPed({
+    model = 'mp_m_boatstaff_01',
+    coords = vector4(-773.5, -1430.62, 1.6, 233.78),
+    minusOne = true, 
+    freeze = true,
+    invincible = true, 
+    blockevents = true,
+    animDict = 'abigail_mcs_1_concat-0', 
+    anim = 'csb_abigail_dual-0',
+    flag = 1,
+    scenario = 'WORLD_HUMAN_STAND_IMPATIENT', 
+    target = { 
+      useModel = false, 
+      options = {
+        { 
+          num = 1, 
+          type = "client", 
+          label = 'Police Boat/Store',
+          event = "qb-police:client:spawnBoat",
+          canInteract = function(entity) 
+            if IsPedAPlayer(entity) then return false end 
+            print(onDuty)
+            if onDuty then
+                return true
+            else
+                return false
+            end
+            
+          end,
+          icon = "fas fa-boat",
+          job = 'police', 
+        }
+      },
+      distance = 5.5,
+    },
+})
+
+
 -- Helicopter Thread
 CreateThread(function ()
     Wait(1000)
@@ -1025,10 +1079,10 @@ RegisterNetEvent('qb-police:client:sasp', function(k)
 end)
 
 -- Boat Thread
-CreateThread(function ()
-    Wait(1000)
+--[[CreateThread(function ()
+    Wait(5000)
     while true do
-        local sleep = 1000
+        local sleep = 5000
         local PlayerData = QBCore.Functions.GetPlayerData()
         if inBoat and PlayerJob.name == "police" then
             if onDuty then sleep = 5 end
@@ -1036,11 +1090,12 @@ CreateThread(function ()
                 TriggerEvent("qb-police:client:spawnBoat")
             end
         else
-            sleep = 1000
+            sleep = 5000
         end
         Wait(sleep)
     end
-end)
+end)]]
+
 
 -- Police Impound Thread
 CreateThread(function ()
