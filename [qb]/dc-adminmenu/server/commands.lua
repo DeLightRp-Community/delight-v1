@@ -489,3 +489,6 @@ QBCore.Commands.Add('aheal', Lang:t('info.heal_player_a'), {{name = 'id', help =
 	end
 end)
 
+-- Inventory
+
+

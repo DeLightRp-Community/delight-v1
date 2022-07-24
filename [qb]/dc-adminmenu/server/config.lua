@@ -45,10 +45,11 @@ commands = {
     ['kickall'] = 'god',
     ['tp'] = 'admin',
     ['car'] = 'admin',
-    ['money'] = 'admin',
+    ['money'] = 'god',
     ['inv'] = 'admin',
     ['job'] = 'admin',
-    ['medical'] = 'admin'
+    ['medical'] = 'admin',
+    ['spawnVehicle'] = 'mod',
 }
 
 --- Permission hierarchy order from top to bottom.

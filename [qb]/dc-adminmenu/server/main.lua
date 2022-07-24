@@ -30,6 +30,8 @@ function NoPerms(source)
     TriggerClientEvent('QBCore:Notify', source, Lang:t('error.no_permissions'), 'error')
 end
 
+exports("NoPerms", NoPerms);
+
 function RemovePermission(TargetSource, SenderSource)
     local result = MySQL.single.await('SELECT * FROM adminmenu WHERE license = ? or citizenid = ?', {QBCore.Functions.GetIdentifier(TargetSource, 'license'), QBCore.Functions.GetPlayer(TargetSource).PlayerData.citizenid})
     if not result then return TriggerClientEvent('QBCore:Notify', SenderSource, Lang:t('error.has_no_permissions', {player = GetPlayerName(TargetSource)}), 'error') end
@@ -71,6 +73,8 @@ function HasPermission(TargetSource, RequiredPermission)
     end
     return nil
 end
+
+exports("HasPermission", HasPermission);
 
 local function types(args)
     local argType = type(args[1])
