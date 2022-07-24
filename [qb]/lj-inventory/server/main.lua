@@ -1548,6 +1548,8 @@ end)
 -- command
 
 QBCore.Commands.Add("resetinv", "Reset Inventory (Admin Only)", {{name="type", help="stash/trunk/glovebox"},{name="id/plate", help="ID of stash or license plate"}}, true, function(source, args)
+	local src = source
+	if not (exports['dc-adminmenu']:HasPermission(src, 'admin')) then exports['dc-adminmenu']:NoPerms(src) return end
 	local invType = args[1]:lower()
 	table.remove(args, 1)
 	local invId = table.concat(args, " ")
@@ -1556,13 +1558,18 @@ QBCore.Commands.Add("resetinv", "Reset Inventory (Admin Only)", {{name="type", h
 			if Trunks[invId] ~= nil then
 				Trunks[invId].isOpen = false
 			end
+			TriggerEvent('qb-log:server:CreateLog', 'admin', 'RESETINV', 'red', '**'..GetPlayerName(src)..'** Reset Inventory'..args[1]..' For Plate '..args[2], false)
 		elseif invType == "glovebox" then
 			if Gloveboxes[invId] ~= nil then
 				Gloveboxes[invId].isOpen = false
 			end
+			TriggerEvent('qb-log:server:CreateLog', 'admin', 'RESETINV', 'red', '**'..GetPlayerName(src)..'** Reset Inventory'..args[1]..' For Plate '..args[2], false)
+
 		elseif invType == "stash" then
 			if Stashes[invId] ~= nil then
 				Stashes[invId].isOpen = false
+				TriggerEvent('qb-log:server:CreateLog', 'admin', 'RESETINV', 'red', '**'..GetPlayerName(src)..'** Reset Inventory'..args[1]..' For '..GetPlayerName(tonumber(args[2])), false)
+
 			end
 		else
 			TriggerClientEvent('QBCore:Notify', source,  "Not a valid type..", "error")
@@ -1570,13 +1577,17 @@ QBCore.Commands.Add("resetinv", "Reset Inventory (Admin Only)", {{name="type", h
 	else
 		TriggerClientEvent('QBCore:Notify', source,  "Arguments not filled out correctly..", "error")
 	end
-end, "admin")
+end)
 
 QBCore.Commands.Add("rob", "Rob Player", {}, false, function(source, args)
 	TriggerClientEvent("police:client:RobPlayer", source)
 end)
 
+
+
 QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="Player ID"},{name="item", help="Name of the item (not a label)"}, {name="amount", help="Amount of items"}}, true, function(source, args)
+	local src = source
+	if not (exports['dc-adminmenu']:HasPermission(src, 'admin')) then exports['dc-adminmenu']:NoPerms(src) return end
 	local Player = QBCore.Functions.GetPlayer(tonumber(args[1]))
 	local amount = tonumber(args[3])
 	local itemData = QBCore.Shared.Items[tostring(args[2]):lower()]
@@ -1627,6 +1638,8 @@ QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="
 				end
 
 				if Player.Functions.AddItem(itemData["name"], amount, false, info) then
+					TriggerEvent('qb-log:server:CreateLog', 'admin', 'GIVEITEM', 'red', '**'..GetPlayerName(src)..'** Give Item '..itemData["name"]..' '..amount..' For '..GetPlayerName(tonumber(args[1])), false)
+
 					TriggerClientEvent('QBCore:Notify', source, "You Have Given " ..GetPlayerName(tonumber(args[1])).." "..amount.." "..itemData["name"].. "", "success")
 				else
 					TriggerClientEvent('QBCore:Notify', source,  "Can't give item!", "error")
@@ -1640,9 +1653,11 @@ QBCore.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", help="
 	else
 		TriggerClientEvent('QBCore:Notify', source,  "Player Is Not Online", "error")
 	end
-end, "admin")
+end)
 
 QBCore.Commands.Add("randomitems", "Give Random Items (God Only)", {}, false, function(source, args)
+	local src = source
+	if not (exports['dc-adminmenu']:HasPermission(src, 'god')) then exports['dc-adminmenu']:NoPerms(src) return end
 	local Player = QBCore.Functions.GetPlayer(source)
 	local filteredItems = {}
 	for k, v in pairs(QBCore.Shared.Items) do
@@ -1657,11 +1672,12 @@ QBCore.Commands.Add("randomitems", "Give Random Items (God Only)", {}, false, fu
 			amount = 1
 		end
 		if Player.Functions.AddItem(randitem["name"], amount) then
+			TriggerEvent('qb-log:server:CreateLog', 'admin', 'RANDOMITEMS', 'red', '**'..GetPlayerName(src)..'** Give Random Item '..randitem["name"]..' '..amount, false)
 			TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[randitem["name"]], 'add')
             Wait(500)
 		end
 	end
-end, "god")
+end)
 
 -- item
 
