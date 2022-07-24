@@ -1036,6 +1036,10 @@ RegisterNetEvent('police:server:UpdateCurrentCops', function()
     for k, v in pairs(players) do
         if v.PlayerData.job.name == "police" and v.PlayerData.job.onduty then
             amount = amount + 1
+            print("ziyad:",amount)
+        elseif v.PlayerData.job.name == "police" and not v.PlayerData.job.onduty then
+            amount = amount - 1
+            print("kam:",amount)
         end
     end
     TriggerClientEvent("police:SetCopCount", -1, amount)

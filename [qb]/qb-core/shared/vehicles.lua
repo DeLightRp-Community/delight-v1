@@ -4196,13 +4196,13 @@ QBShared.Vehicles = {
 		["hash"] = `emsnspeedo`,
 		["shop"] = "mediccars",
 	},
-	["dodgeEMS"] = {
+	["fddurango"] = {
 		["name"] = "Medic Dodge",
 		["brand"] = "Medic",
-		["model"] = "dodgeEMS",
+		["model"] = "fddurango",
 		["price"] = 20000,
 		["category"] = "mediccar",
-		["hash"] = `dodgeEMS`,
+		["hash"] = `fddurango`,
 		["shop"] = "mediccars",
 	},
 }

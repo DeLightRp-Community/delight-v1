@@ -137,6 +137,8 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
 
             if PlayerJob.name == 'ambulance' and onDuty then
                 TriggerServerEvent("hospital:server:AddDoctor", PlayerJob.name)
+            elseif not onDuty then
+                TriggerServerEvent("hospital:server:RemoveDoctor", PlayerJob.name)
             end
         end)
     end)
@@ -425,6 +427,15 @@ local function EMSHelicopter(k)
                                     args = 1
                                 }
                             },
+
+                            {
+                                header = "polmav", 
+                                txt = "polmav Helicopter",
+                                params = {
+                                    event = "qb-ambulance:client:polmav",
+                                    args = 1
+                                }
+                            },
                         })
                     end
                 end
@@ -463,10 +474,32 @@ RegisterNetEvent('qb-ambulance:client:uscg', function(k)
     end, coords, true)
 end)
 
+RegisterNetEvent('qb-ambulance:client:polmav', function(k)
+    local ped = PlayerPedId()
+    currentHelictoper = k
+    local coords = Config.Locations["helicopter"][currentHelictoper]
+    QBCore.Functions.SpawnVehicle("polmav", function(veh)
+        SetVehicleNumberPlateText(veh, Lang:t('info.heli_plate')..tostring(math.random(1000, 9999)))
+        SetEntityHeading(veh, coords.w)
+        SetVehicleLivery(veh, 2) -- Ambulance Livery
+        exports['LegacyFuel']:SetFuel(veh, 100.0)
+        TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+        TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
+        SetVehicleEngineOn(veh, true, true)
+    end, coords, true)
+end)
+
 RegisterNetEvent('EMSToggle:Duty', function()
     onDuty = not onDuty
+    
     TriggerServerEvent("QBCore:ToggleDuty")
     TriggerServerEvent("police:server:UpdateBlips")
+    if onDuty then
+        TriggerServerEvent("hospital:server:AddDoctor", PlayerJob.name)
+    else
+        TriggerServerEvent("hospital:server:RemoveDoctor", PlayerJob.name)
+    end
+    
 end)
 
 CreateThread(function()

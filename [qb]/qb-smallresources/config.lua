@@ -152,7 +152,7 @@ Config.BlacklistedVehs = {
     [`deluxo`] = true,
     [`besra`] = true,
     [`annihilator2`] = true,
-    ['policeb'] = true,
+    [`policeb`] = true,
 }
 
 Config.BlacklistedPeds = {
