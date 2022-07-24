@@ -80,11 +80,11 @@ Config.MenuItems = {
                         shouldClose = true
                     }, 
                     {
-                        id = 'remask',
-                        title = 'remask',
+                        id = 'PLAYERMASK',
+                        title = 'Player Mask',
                         icon = 'user-friends',
                         type = 'client',
-                        event = 'police:remmask',
+                        event = 'qb-radialmenu:playermask',
                         shouldClose = true
                     },{
                         id = 'escort554',
@@ -741,6 +741,13 @@ Config.Commands = {
         Desc = "Take your mask off/on",
         Button = 6,
         Name = "Mask"
+    },
+    ["playermask"] = {
+        Func = function() takePlayerMask() end,
+        Sprite = "Player Mask",
+        Desc = "Take Player Mask Off/On",
+        Button = 6,
+        Name = "Player Mask"
     }
 }
 

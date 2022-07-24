@@ -18,3 +18,5 @@ Config.Gatos = { -- locations de spawn dos gatos
     ['cat11'] = {['coords'] = vector4(-581.1, -1063.61, 22.79, 219.69),['sitting'] = false},
     ['cat12'] = {['coords'] = vector4(-572.98, -1057.41, 24.5, 88.18),['sitting'] = true}
 }
+
+

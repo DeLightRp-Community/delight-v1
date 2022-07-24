@@ -335,7 +335,6 @@ local function IsInDamageList(damage)
     return retval
 end
 
-local isCheckinEnable=true
 
 -- CreateThread(function()
 --     local model = `s_m_m_doctor_01`
@@ -843,11 +842,6 @@ end)
 
 RegisterNetEvent('hospital:client:SetDoctorCount', function(amount)
     doctorCount = amount
-    if amount <= Config.MinimalDoctors then
-        isCheckinEnable = true
-    else
-        isCheckinEnable = false
-    end
 end)
 
 RegisterNetEvent('hospital:client:adminHeal', function()

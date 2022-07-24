@@ -58,22 +58,14 @@ Config.Products = {
             slot = 6,
         },
         [7] = {
-            name = "beer",
+            name = "lighter",
             price = 50,
             amount = 50,
             info = {},
             type = "item",
             slot = 7,
         },
-        [11] = {
-            name = "lighter",
-            price = 50,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 11,
-        },
-        [13] = {
+        [8] = {
             name = "redwoodcigs",
             price = 200,
             amount = 5000,
@@ -81,35 +73,11 @@ Config.Products = {
                 uses = 20
             },
             type = "item",
-            slot = 13,
+            slot = 8,
         },
     },
     ["liquor"] = {
         [1] = {
-            name = "beer",
-            price = 50,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 1,
-        },
-        [2] = {
-            name = "whiskey",
-            price = 60,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 2,
-        },
-        [3] = {
-            name = "vodka",
-            price = 60,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 3,
-        },
-        [4] = {
             name = "redwoodcigs",
             price = 200,
             amount = 5000,
@@ -117,7 +85,7 @@ Config.Products = {
                 uses = 20
             },
             type = "item",
-            slot = 4,
+            slot = 1,
         },
     },
     ["hardware"] = {
@@ -572,6 +540,45 @@ Config.Products = {
             info = {},
             type = 'item',
             slot = 4
+        }
+    },
+
+    ["nightclub"] = {
+        [1] = {
+            name = 'beer',
+            price = 20,
+            amount = 100,
+            info = {},
+            type = 'hunting',
+            slot = 1,
+            requiredJob = { "nightclub"}
+        },
+        [2] = {
+            name = 'whiskey',
+            price = 100,
+            amount = 500,
+            info = {},
+            type = 'hunting',
+            slot = 2,
+            requiredJob = { "nightclub"}
+        },
+        [3] = {
+            name = 'vodka',
+            price = 50,
+            amount = 1000,
+            info = {},
+            type = 'item',
+            slot = 3,
+            requiredJob = { "nightclub"}
+        },
+        [4] = {
+            name = 'wine',
+            price = 20,
+            amount = 500,
+            info = {},
+            type = 'item',
+            slot = 4,
+            requiredJob = { "nightclub"}
         }
     },
 }
@@ -1158,6 +1165,20 @@ Config.Locations = {
         ["targetLabel"] = "Open Hunting Shop",
         ["products"] = Config.Products["huntingshop"],
         ["showblip"] = true,
+        ["blipsprite"] = 626,
+        ["blipcolor"] = 1
+    },
+
+    ["nightclub"] = {
+        ["label"] = "Night Club",
+        ["coords"] = vector4(358.09, 280.79, 94.19, 254.43),
+        ["ped"] = 's_m_y_barman_01',
+        ["scenario"] = "WORLD_HUMAN_COP_IDLES",
+        ["radius"] = 1.5,
+        ["targetIcon"] = "fas fa-gun",
+        ["targetLabel"] = "Open Night Shop",
+        ["products"] = Config.Products["nightclub"],
+        ["showblip"] = false,
         ["blipsprite"] = 626,
         ["blipcolor"] = 1
     },

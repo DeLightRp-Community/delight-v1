@@ -34,22 +34,20 @@ end
 local bones = {
     'bonnet'
   }
-  exports['qb-target']:AddTargetBone(bones, { 
+  exports['qb-target']:AddGlobalVehicle({ 
     options = { 
       { 
         label = 'Mechanic',
-        targeticon = 'fas fa-cogs', 
         action = function(entity) 
           if IsPedAPlayer(entity) then return false end
           TriggerEvent('re2-tunerjob:client:openTunerStash')
         end,
-        canInteract = function(entity, distance, data)
-          local ped = PlayerPedId()
-          local closestVehicle = getNearestVeh()
-          if GetVehicleDoorAngleRatio(closestVehicle, 4) > 0 then
-              return true
+        canInteract = function(entity)
+          local doorlock = GetVehicleDoorLockStatus(entity)
+          if doorlock==1 then
+            return true
           else
-              return false
+            return false
           end
         end,
         job = 'tuner',
@@ -374,7 +372,24 @@ RegisterNetEvent('re2-tunerjob:modify:upgrade', function(data)
                     local vehicle = QBCore.Functions.GetVehicleProperties(vehicle)
                     saveVehicle()
                 end)
-                 
+            elseif v.name== "engine5" then
+                QBCore.Functions.Progressbar("tuner_engine", "Check / Change "..v.label, mdfTime, false, true, {
+                    disableMovement = true,
+                    disableCarMovement = true,
+                    disableMouse = false,
+                    disableCombat = true,
+                }, {
+                    animDict = "mini@repair",
+                    anim = "fixing_a_player",
+                    flags = 16,
+                }, {}, {}, function() -- Done
+                    ClearPedTasksImmediately(PlayerPedId())
+                    SetVehicleModKit(vehicle, 0)
+                    SetVehicleMod(vehicle, 11, 4, true) -- engine 5
+                    
+                    local vehicle = QBCore.Functions.GetVehicleProperties(vehicle)
+                    saveVehicle()
+                end)
             elseif v.name== "brake1" then
                 QBCore.Functions.Progressbar("tuner_engine", "Check / Change "..v.label, mdfTime, false, true, {
                     disableMovement = true,

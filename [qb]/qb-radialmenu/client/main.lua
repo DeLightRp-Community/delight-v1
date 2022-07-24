@@ -213,7 +213,6 @@ local function SetupRadioMenu()
 
     local player = QBCore.Functions.GetPlayerData()
     local jobName = player.job.name
-    -- print(json.encode(player.job))
     if (jobName == "police" or jobName == "ambulance") and player.job.onduty then
         QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
             if HasItem then

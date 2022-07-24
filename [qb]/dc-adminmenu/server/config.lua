@@ -7,8 +7,8 @@ Linux = false -- Wether or not if you use linux. Very important!
 --- Who should be able to trigger each NetEvent on the server side?
 events = {
     ['kill'] = 'god',
-    ['revive'] = 'god',
-    ['freeze'] = 'admin',
+    ['revive'] = 'admin',
+    ['freeze'] = 'mod',
     ['spectate'] = 'admin',
     ['goto'] = 'admin',
     ['bring'] = 'admin',
@@ -16,26 +16,47 @@ events = {
     ['kick'] = 'admin',
     ['ban'] = 'god',
     ['setPermissions'] = 'god',
-    ['cloth'] = 'admin',
+    ['cloth'] = 'mod',
     ['spawnVehicle'] = 'admin',
     ['savecar'] = 'god',
     ['platecar'] = 'admin',
     ['playsound'] = 'admin',
-    ['usemenu'] = 'admin',
+    ['usemenu'] = 'mod',
     ['routingbucket'] = 'admin',
     ['getradiolist'] = 'admin',
     ['playerinformation'] = 'god',
     ['giveallweapons'] = 'god',
+    ['reports'] = 'mod',
+    ['staffchat'] = 'mod',
 }
 
---- Permission hierarchy order from top to bottom. Important for the PermOrder function.
+--- Who should be able to trigger each command on the server side?
+commands = {
+    ['blips'] = 'admin',
+    ['names'] = 'mod',
+    ['coords'] = 'admin',
+    ['noclip'] = 'admin',
+    ['announce'] = 'god',
+    ['staffchat'] = 'mod',
+    ['warn'] = 'mod',
+    ['delwarn'] = 'admin',
+    ['setmodel'] = 'admin',
+    ['setammo'] = 'god',
+    ['kickall'] = 'god',
+    ['tp'] = 'admin',
+    ['car'] = 'admin',
+    ['money'] = 'admin',
+    ['inv'] = 'admin',
+    ['job'] = 'admin',
+    ['medical'] = 'admin'
+}
+
+--- Permission hierarchy order from top to bottom.
 PermissionOrder = {
     'god',
     'admin',
+    'mod'
 }
-
---- Changes the behaviour of the PermOrder function. If set to true it means you still use the database permission system.
-OldPermissionSystem = false
 
 --- Decides which guns to give when doing "Give All Weapons" tab.
 Weaponlist = {

@@ -572,7 +572,7 @@ QBCore.Functions.CreateUseableItem("handcuffs", function(source, item)
      local src = source
      local Player = QBCore.Functions.GetPlayer(src)
      if Player.Functions.GetItemByName(item.name) then
-         TriggerClientEvent("police:client:CuffPlayer" , src)
+         TriggerClientEvent("police:client:CuffPlayerSoft" , src)
      end
  end)
 
@@ -1036,6 +1036,10 @@ RegisterNetEvent('police:server:UpdateCurrentCops', function()
     for k, v in pairs(players) do
         if v.PlayerData.job.name == "police" and v.PlayerData.job.onduty then
             amount = amount + 1
+            print("ziyad:",amount)
+        elseif v.PlayerData.job.name == "police" and not v.PlayerData.job.onduty then
+            amount = amount - 1
+            print("kam:",amount)
         end
     end
     TriggerClientEvent("police:SetCopCount", -1, amount)

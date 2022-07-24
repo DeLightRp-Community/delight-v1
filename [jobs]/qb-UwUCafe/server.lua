@@ -5,12 +5,12 @@ local QBCore = exports['qb-core']:GetCoreObject()
 RegisterNetEvent('mt-UwUCafe:server:FazerCupcakeMorango', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local barramanteiga = Player.Functions.GetItemByName('barra-manteiga')
-    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha')
-    local caixamorangos = Player.Functions.GetItemByName('caixa-morangos')
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local barramanteiga = Player.Functions.GetItemByName('barra-manteiga').amount
+    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha').amount
+    local caixamorangos = Player.Functions.GetItemByName('caixa-morangos').amount
 
-    if pacoteleite ~= nil and barramanteiga ~= nil and pacotefarinha ~= nil and caixamorangos ~= nil then
+    if pacoteleite ~=nil and barramanteiga ~=nil and pacotefarinha ~=nil and caixamorangos ~=nil and pacoteleite >=2 and barramanteiga >=2 and pacotefarinha >=2 and caixamorangos >=2 then
 
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('barra-manteiga', 2)
@@ -26,12 +26,12 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerCupcakeLimao', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local barramanteiga = Player.Functions.GetItemByName('barra-manteiga')
-    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha')
-    local limao = Player.Functions.GetItemByName('limao')
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local barramanteiga = Player.Functions.GetItemByName('barra-manteiga').amount
+    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha').amount
+    local limao = Player.Functions.GetItemByName('limao').amount
 
-    if pacoteleite ~= nil and barramanteiga ~= nil and pacotefarinha ~= nil and limao ~= nil then
+    if pacoteleite ~=nil and barramanteiga ~=nil and pacotefarinha ~=nil and caixamorangos ~=nil and limo ~=nil and pacoteleite >=2 and barramanteiga >=2 and pacotefarinha >=2 and limao >=2 then
 
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('barra-manteiga', 2)
@@ -47,12 +47,12 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerCupcakeChocolate', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local barramanteiga = Player.Functions.GetItemByName('barra-manteiga')
-    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha')
-    local barrachocolate = Player.Functions.GetItemByName('barra-chocolate')
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local barramanteiga = Player.Functions.GetItemByName('barra-manteiga').amount
+    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha').amount
+    local barrachocolate = Player.Functions.GetItemByName('barra-chocolate').amount
 
-    if pacoteleite ~= nil and barramanteiga ~= nil and pacotefarinha ~= nil and barrachocolate ~= nil then
+    if pacoteleite ~=nil and barramanteiga ~=nil and pacotefarinha ~=nil and barrachocolate ~=nil  and pacoteleite >=2 and barramanteiga >=2 and pacotefarinha >=2 and barrachocolate >=2 then
 
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('barra-manteiga', 2)
@@ -68,11 +68,11 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerGeladoMorango', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacotenatas = Player.Functions.GetItemByName('pacote-natas')
-    local leitecondensado = Player.Functions.GetItemByName('leite-condensado')
-    local caixamorangos = Player.Functions.GetItemByName('caixa-morangos')
+    local pacotenatas = Player.Functions.GetItemByName('pacote-natas').amount
+    local leitecondensado = Player.Functions.GetItemByName('leite-condensado').amount
+    local caixamorangos = Player.Functions.GetItemByName('caixa-morangos').amount
 
-    if pacotenatas ~= nil and leitecondensado ~= nil and caixamorangos ~= nil then
+    if pacotenatas ~=nil and leitecondensado ~=nil and caixamorangos ~=nil  and pacotenatas >=2 and leitecondensado >=2 and caixamorangos >=2 then
 
         Player.Functions.RemoveItem('pacote-natas', 2)
         Player.Functions.RemoveItem('leite-condensado', 2)
@@ -87,11 +87,11 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerGeladoChocolate', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacotenatas = Player.Functions.GetItemByName('pacote-natas')
-    local leitecondensado = Player.Functions.GetItemByName('leite-condensado')
-    local barrachocolate = Player.Functions.GetItemByName('barra-chocolate')
+    local pacotenatas = Player.Functions.GetItemByName('pacote-natas').amount
+    local leitecondensado = Player.Functions.GetItemByName('leite-condensado').amount
+    local barrachocolate = Player.Functions.GetItemByName('barra-chocolate').amount
 
-    if pacotenatas ~= nil and leitecondensado ~= nil and barrachocolate ~= nil then
+    if pacotenatas ~=nil and leitecondensado ~=nil and barrachocolate ~=nil and pacotenatas >=2 and leitecondensado >=2 and barrachocolate >=2 then
 
         Player.Functions.RemoveItem('pacote-natas', 2)
         Player.Functions.RemoveItem('leite-condensado', 2)
@@ -106,11 +106,11 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerGeladoBaunilha', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacotenatas = Player.Functions.GetItemByName('pacote-natas')
-    local leitecondensado = Player.Functions.GetItemByName('leite-condensado')
-    local extratobaunilha = Player.Functions.GetItemByName('extrato-baunilha')
+    local pacotenatas = Player.Functions.GetItemByName('pacote-natas').amount
+    local leitecondensado = Player.Functions.GetItemByName('leite-condensado').amount
+    local extratobaunilha = Player.Functions.GetItemByName('extrato-baunilha').amount
 
-    if pacotenatas ~= nil and leitecondensado ~= nil and extratobaunilha ~= nil then
+    if pacotenatas ~=nil and leitecondensado ~=nil and extratobaunilha ~=nil and pacotenatas >=2 and leitecondensado >=2 and extratobaunilha >=2 then
 
         Player.Functions.RemoveItem('pacote-natas', 2)
         Player.Functions.RemoveItem('leite-condensado', 2)
@@ -125,12 +125,12 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerPanquencaNutela', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha')
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local pacoteacucar = Player.Functions.GetItemByName('pacote-acucar')
-    local frasconutela = Player.Functions.GetItemByName('frasco-nutela')
+    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha').amount
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local pacoteacucar = Player.Functions.GetItemByName('pacote-acucar').amount
+    local frasconutela = Player.Functions.GetItemByName('frasco-nutela').amount
 
-    if pacotefarinha ~= nil and pacoteleite ~= nil and pacoteacucar ~= nil and frasconutela ~= nil then
+    if pacotefarinha~=nil and pacoteleite ~=nil and pacoteacucar ~=nil and frasconutela ~=nil and pacotefarinha >=2 and pacoteleite >=2 and pacoteacucar >=2 and frasconutela >=2 then
 
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('pacote-leite', 2)
@@ -146,12 +146,12 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerPanquencaOreo', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha')
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local pacoteacucar = Player.Functions.GetItemByName('pacote-acucar')
-    local pacoteoreo = Player.Functions.GetItemByName('pacote-oreo')
+    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha').amount
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local pacoteacucar = Player.Functions.GetItemByName('pacote-acucar').amount
+    local pacoteoreo = Player.Functions.GetItemByName('pacote-oreo').amount
 
-    if pacotefarinha ~= nil and pacoteleite ~= nil and pacoteacucar ~= nil and pacoteoreo ~= nil then
+    if pacotefarinha~=nil and pacoteleite ~=nil and pacoteacucar ~=nil and pacoteoreo ~=nil and pacotefarinha >=2 and pacoteleite >=2 and pacoteacucar >=2 and pacoteoreo >=2 then
 
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('pacote-leite', 2)
@@ -167,11 +167,11 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerMuffinChocolate', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha')
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local barrachocolate = Player.Functions.GetItemByName('barra-chocolate')
+    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha').amount
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local barrachocolate = Player.Functions.GetItemByName('barra-chocolate').amount
 
-    if pacotefarinha ~= nil and pacoteleite ~= nil and barrachocolate ~= nil then
+    if pacotefarinha~=nil and pacoteleite ~=nil and barrachocolate ~=nil and pacotefarinha >=2 and pacoteleite >=2 and barrachocolate >=2 then
 
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('pacote-leite', 2)
@@ -186,11 +186,11 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerWaffleNutela', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha')
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local frasconutela = Player.Functions.GetItemByName('frasco-nutela')
+    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha').amount
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local frasconutela = Player.Functions.GetItemByName('frasco-nutela').amount
 
-    if pacotefarinha ~= nil and pacoteleite ~= nil and frasconutela ~= nil then
+    if pacotefarinha~=nil and pacoteleite ~=nil and frasconutela ~=nil and pacotefarinha >=2 and pacoteleite >=2 and frasconutela >=2 then
 
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('pacote-leite', 2)
@@ -205,11 +205,11 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerPastelFrango', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha')
-    local barramanteiga = Player.Functions.GetItemByName('barra-manteiga')
-    local frango = Player.Functions.GetItemByName('frango')
+    local pacotefarinha = Player.Functions.GetItemByName('pacote-farinha').amount
+    local barramanteiga = Player.Functions.GetItemByName('barra-manteiga').amount
+    local frango = Player.Functions.GetItemByName('frango').amount
 
-    if pacotefarinha ~= nil and barramanteiga ~= nil and frango ~= nil then
+    if pacotefarinha~=nil and barramanteiga ~=nil and frango ~=nil and pacotefarinha >=2 and barramanteiga >=2 and frango >=2 then
 
         Player.Functions.RemoveItem('pacote-farinha', 2)
         Player.Functions.RemoveItem('barra-manteiga', 2)
@@ -227,10 +227,10 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerCafe', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local water_bottle = Player.Functions.GetItemByName('water_bottle')
-    local graoscafe = Player.Functions.GetItemByName('graos-cafe')
+    local water_bottle = Player.Functions.GetItemByName('water_bottle').amount
+    local graoscafe = Player.Functions.GetItemByName('graos-cafe').amount
 
-    if water_bottle ~= nil and graoscafe ~= nil then
+    if water_bottle >=2 and graoscafe >=2 then
 
         Player.Functions.RemoveItem('water_bottle', 2)
         Player.Functions.RemoveItem('graos-cafe', 2)
@@ -244,10 +244,10 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerLatte', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local graoscafe = Player.Functions.GetItemByName('graos-cafe')
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local graoscafe = Player.Functions.GetItemByName('graos-cafe').amount
 
-    if graoscafe ~= nil and pacoteleite ~= nil then
+    if pacoteleite~=nil and graoscafe ~=nil and graoscafe >=2 and pacoteleite >=2 then
 
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('graos-cafe', 2)
@@ -261,10 +261,10 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerBubbleTeaAmora', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local water_bottle = Player.Functions.GetItemByName('water_bottle')
-    local caixaamoras = Player.Functions.GetItemByName('caixa-amoras')
+    local water_bottle = Player.Functions.GetItemByName('water_bottle').amount
+    local caixaamoras = Player.Functions.GetItemByName('caixa-amoras').amount
 
-    if water_bottle ~= nil and caixaamoras ~= nil then
+    if water_bottle~=nil and caixaamoras ~=nil and water_bottle >=2 and caixaamoras >=2 then
 
         Player.Functions.RemoveItem('water_bottle', 2)
         Player.Functions.RemoveItem('caixa-amoras', 2)
@@ -278,10 +278,10 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerBubbleTeaMorango', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local water_bottle = Player.Functions.GetItemByName('water_bottle')
-    local caixamorangos = Player.Functions.GetItemByName('caixa-morangos')
+    local water_bottle = Player.Functions.GetItemByName('water_bottle').amount
+    local caixamorangos = Player.Functions.GetItemByName('caixa-morangos').amount
 
-    if water_bottle ~= nil and caixamorangos ~= nil then
+    if water_bottle~=nil and caixaamoras ~=nil and water_bottle >=2 and caixamorangos >=2 then
 
         Player.Functions.RemoveItem('water_bottle', 2)
         Player.Functions.RemoveItem('caixa-morangos', 2)
@@ -295,10 +295,10 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerBubbleTeaMenta', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local water_bottle = Player.Functions.GetItemByName('water_bottle')
-    local extratomenta = Player.Functions.GetItemByName('extrato-menta')
+    local water_bottle = Player.Functions.GetItemByName('water_bottle').amount
+    local extratomenta = Player.Functions.GetItemByName('extrato-menta').amount
 
-    if water_bottle ~= nil and extratomenta ~= nil then
+    if water_bottle~=nil and extratomenta ~=nil and water_bottle >=2 and extratomenta >=2 then
 
         Player.Functions.RemoveItem('water_bottle', 2)
         Player.Functions.RemoveItem('extrato-menta', 2)
@@ -312,10 +312,10 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerMilkshakeChocolate', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local barrachocolate = Player.Functions.GetItemByName('barra-chocolate')
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local barrachocolate = Player.Functions.GetItemByName('barra-chocolate').amount
 
-    if pacoteleite ~= nil and barrachocolate ~= nil then
+    if pacoteleite~=nil and barrachocolate ~=nil and pacoteleite >=2 and barrachocolate >=2 then
 
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('barra-chocolate', 2)
@@ -329,10 +329,10 @@ end)
 RegisterNetEvent('mt-UwUCafe:server:FazerMilkshakeMorango', function()
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-    local pacoteleite = Player.Functions.GetItemByName('pacote-leite')
-    local caixamorangos = Player.Functions.GetItemByName('caixa-morangos')
+    local pacoteleite = Player.Functions.GetItemByName('pacote-leite').amount
+    local caixamorangos = Player.Functions.GetItemByName('caixa-morangos').amount
 
-    if pacoteleite ~= nil and caixamorangos ~= nil then
+    if pacoteleite~=nil and caixamorangos ~=nil and pacoteleite >=2 and caixamorangos >=2 then
 
         Player.Functions.RemoveItem('pacote-leite', 2)
         Player.Functions.RemoveItem('caixa-morangos', 2)
@@ -346,25 +346,53 @@ end)
 ----------------------------------------------
 ------- Tirar dinheiro ingredientes ----------
 
-RegisterNetEvent('mt-UwUCafe:server:Tirar20dolares', function(data)
+RegisterNetEvent('mt-UwUCafe:server:Tirar20dolares', function(item,count)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
-    Player.Functions.RemoveMoney('bank', 200)
+    if Player.Functions.RemoveMoney('bank', 200) then
+        TriggerClientEvent('QBCore:Notify', src,"Money Remove from Your Bank", "success")
+        Player.Functions.AddItem(item, count)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], "add")
+    elseif Player.Functions.RemoveMoney('cash', 200) then
+        Player.Functions.AddItem(item, count)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], "add")
+        TriggerClientEvent('QBCore:Notify', src,"Money Remove from Your Cash", "success")
+    else
+        TriggerClientEvent('QBCore:Notify', src,"Not Enough Money", "error")
+    end
 end)
 
-RegisterNetEvent('mt-UwUCafe:server:Tirar30dolares', function(data)
+RegisterNetEvent('mt-UwUCafe:server:Tirar30dolares', function(item,count)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
-
-    Player.Functions.RemoveMoney('bank', 300)
+    if Player.Functions.RemoveMoney('bank', 300) then
+        TriggerClientEvent('QBCore:Notify', src,"Money Remove from Your Bank", "success")
+        Player.Functions.AddItem(item, count)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], "add")
+    elseif Player.Functions.RemoveMoney('cash', 300) then
+        TriggerClientEvent('QBCore:Notify', src,"Money Remove from Your Cash", "success")
+        Player.Functions.AddItem(item, count)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], "add")
+    else
+        TriggerClientEvent('QBCore:Notify', src,"Not Enough Money", "error")
+    end
 end)
 
-RegisterNetEvent('mt-UwUCafe:server:Tirar50dolares', function(data)
+RegisterNetEvent('mt-UwUCafe:server:Tirar50dolares', function(item,count)
     local src = source
     local Player = QBCore.Functions.GetPlayer(src)
 
-    Player.Functions.RemoveMoney('bank', 500)
+    if Player.Functions.RemoveMoney('bank', 500) then
+        TriggerClientEvent('QBCore:Notify', src,"Money Remove from Your Bank", "success")
+        Player.Functions.AddItem(item, count)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], "add")
+    elseif Player.Functions.RemoveMoney('cash', 500) then
+        TriggerClientEvent('QBCore:Notify', src,"Money Remove from Your Cash", "success")
+        Player.Functions.AddItem(item, count)
+        TriggerClientEvent('inventory:client:ItemBox', source, QBCore.Shared.Items[item], "add")
+    else
+        TriggerClientEvent('QBCore:Notify', src,"Not Enough Money", "error")
+    end
 end)
 
 -----------------------------------------------

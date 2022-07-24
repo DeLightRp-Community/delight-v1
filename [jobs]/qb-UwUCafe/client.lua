@@ -70,77 +70,77 @@ RegisterNetEvent('mt-UwUCafe:client:MenuComidas', function() -- Menu para fazer 
         },
         {
             header = "Straberry Cupcake",
-            txt = "Ingredients: <br> - 1 Milk <br> - 1 Buter <br> - 1 Flouer <br> - 1 Straberry Package",
+            txt = "Ingredients: <br> - 2 Milk <br> - 2 Buter <br> - 2 Flouer <br> - 2 Straberry Package",
             params = {
                 event = "mt-UwUCafe:client:FazerCupcakeMorango",
             }
         },
         {
             header = "Chocolat Cupcake",
-            txt = "Ingredients: <br> - 1 Milk <br> - 1 Buter <br> - 1 Flouer <br> - 1 Chocolat",
+            txt = "Ingredients: <br> - 2 Milk <br> - 2 Buter <br> - 2 Flouer <br> - 2 Chocolat",
             params = {
                 event = "mt-UwUCafe:client:FazerCupcakeChocolate",
             }
         },
         {
             header = "Limon Cupcake",
-            txt = "Ingredients: <br> - 1 Milk <br> - 1 Buter <br> - 1 Flouer <br> - 1 Limon",
+            txt = "Ingredients: <br> - 2 Milk <br> - 2 Buter <br> - 2 Flouer <br> - 2 Limon",
             params = {
                 event = "mt-UwUCafe:client:FazerCupcakeLimao",
             }
         },
         {
             header = "Straberry Ice Cream",
-            txt = "Ingredients: <br> - 1 Cream <br> - 1 Condensed milk <br> - 1 Straberry Package",
+            txt = "Ingredients: <br> - 2 Cream <br> - 2 Condensed milk <br> - 2 Straberry Package",
             params = {
                 event = "mt-UwUCafe:client:FazerGeladoMorango",
             }
         },
         {
             header = "Chocolat Ice Cream",
-            txt = "Ingredients: <br> - 1 Cream <br> - 1 Condensed milk <br> - 1 Chocolat",
+            txt = "Ingredients: <br> - 2 Cream <br> - 2 Condensed milk <br> - 2 Chocolat",
             params = {
                 event = "mt-UwUCafe:client:FazerGeladoChocolate",
             }
         },
         {
             header = "Vanilla Ice Cream",
-            txt = "Ingredients: <br> - 1 Cream <br> - 1 Condensed milk <br> - 1 Vanilla extract",
+            txt = "Ingredients: <br> - 2 Cream <br> - 2 Condensed milk <br> - 2 Vanilla extract",
             params = {
                 event = "mt-UwUCafe:client:FazerGeladoBaunilha",
             }
         },
         {
             header = "Nutela Pancake",
-            txt = "Ingredients: <br> - 1 Flouer <br> - 1 Milk <br> - 1 Sugar pack <br> - 1 Nutela",
+            txt = "Ingredients: <br> - 2 Flouer <br> - 2 Milk <br> - 2 Sugar pack <br> - 2 Nutela",
             params = {
                 event = "mt-UwUCafe:client:FazerPanquencaNutela",
             }
         },
         {
             header = "Oreo Pancake",
-            txt = "Ingredients: <br> - 1 Flouer <br> - 1 Milk <br> - 1 Sugar pack <br> - 1 Oreo",
+            txt = "Ingredients: <br> - 2 Flouer <br> - 2 Milk <br> - 2 Sugar pack <br> - 2 Oreo",
             params = {
                 event = "mt-UwUCafe:client:FazerPanquencaOreo",
             }
         },
         {
             header = "Chocolat Muffin",
-            txt = "Ingredients: <br> - 1 Flouer <br> - 1 Milk <br> - 1 Chocolat",
+            txt = "Ingredients: <br> - 2 Flouer <br> - 2 Milk <br> - 2 Chocolat",
             params = {
                 event = "mt-UwUCafe:client:FazerMuffinChocolate",
             }
         },
         {
             header = "Chicken pastel",
-            txt = "Ingredients: <br> - 1 Flouer <br> - 1 Buter <br> - 1 Chicken",
+            txt = "Ingredients: <br> - 2 Flouer <br> - 2 Buter <br> - 2 Chicken",
             params = {
                 event = "mt-UwUCafe:client:FazerPastelFrango",
             }
         },
         {
             header = "Nutela Waffle",
-            txt = "Ingredients: <br> - 1 Flouer <br> - 1 Milk <br> - 1 Nutela",
+            txt = "Ingredients: <br> - 2 Flouer <br> - 2 Milk <br> - 2 Nutela",
             params = {
                 event = "mt-UwUCafe:client:FazerWaffleNutela",
             }
@@ -163,49 +163,49 @@ RegisterNetEvent('mt-UwUCafe:client:MenuBebidas', function() -- Menu para fazer 
         },
         {
             header = "Coffee",
-            txt = "Ingredients: <br> - 1 Coffee beans <br> - 1 Water Bottle",
+            txt = "Ingredients: <br> - 2 Coffee beans <br> - 2 Water Bottle",
             params = {
                 event = "mt-UwUCafe:client:FazerCafe",
             }
         },
         {
             header = "Latte",
-            txt = "Ingredients: <br> - 1 Coffee beans <br> - 1 Milk",
+            txt = "Ingredients: <br> - 2 Coffee beans <br> - 2 Milk",
             params = {
                 event = "mt-UwUCafe:client:FazerLatte",
             }
         },
         {
             header = "Blackberry Bubble Tea",
-            txt = "Ingredients: <br> - 1 box of blackberries <br> - 1 Water Bottle",
+            txt = "Ingredients: <br> - 2 box of blackberries <br> - 2 Water Bottle",
             params = {
                 event = "mt-UwUCafe:client:FazerBubbleTeaAmora",
             }
         },
         {
             header = "Straberry Bubble Tea",
-            txt = "Ingredients: <br> - 1 Straberry Package <br> - 1 Water Bottle",
+            txt = "Ingredients: <br> - 2 Straberry Package <br> - 2 Water Bottle",
             params = {
                 event = "mt-UwUCafe:client:FazerBubbleTeaMorango",
             }
         },
         {
             header = "Mint Bubble Tea",
-            txt = "Ingredients: <br> - 1 Mint extract <br> - 1 Water Bottle",
+            txt = "Ingredients: <br> - 2 Mint extract <br> - 2 Water Bottle",
             params = {
                 event = "mt-UwUCafe:client:FazerBubbleTeaMenta",
             }
         },
         {
             header = "Straberry Milkshake",
-            txt = "Ingredients: <br> - 1 Straberry Package <br> - 1 Milk",
+            txt = "Ingredients: <br> - 2 Straberry Package <br> - 2 Milk",
             params = {
                 event = "mt-UwUCafe:client:FazerMilkshakeMorango",
             }
         },
         {
             header = "Chocolat Milkshake",
-            txt = "Ingredients: <br> - 1 Chocolat <br> - 1 Milk",
+            txt = "Ingredients: <br> - 2 Chocolat <br> - 2 Milk",
             params = {
                 event = "mt-UwUCafe:client:FazerMilkshakeChocolate",
             }
@@ -729,9 +729,16 @@ RegisterNetEvent('mt-UwUCafe:client:ComerCupcake', function() -- Comer Cupcake
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function()
+        
         TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(40, 70))
         TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        local player = QBCore.Functions.GetPlayerData()
+        local number = player.metadata["hunger"] +math.random(50,70)
+        if number>100 then
+            number=100
+        end 
+        TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", number)
     end)
 end)
 
@@ -746,6 +753,12 @@ RegisterNetEvent('mt-UwUCafe:client:ComerPastel', function() -- Comer Cupcake
         TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(40, 70))
         TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        local player = QBCore.Functions.GetPlayerData()
+        local number = player.metadata["hunger"] +50
+        if number>100 then
+            number=100
+        end 
+        TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", number)
     end)
 end)
 
@@ -760,6 +773,12 @@ RegisterNetEvent('mt-UwUCafe:client:ComerMuffin', function() -- Comer Cupcake
         TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(40, 70))
         TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        local player = QBCore.Functions.GetPlayerData()
+        local number = player.metadata["hunger"] +50
+        if number>100 then
+            number=100
+        end 
+        TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", number)
     end)
 end)
 
@@ -774,12 +793,14 @@ RegisterNetEvent('mt-UwUCafe:client:ComerWaffle', function() -- Comer Cupcake
         TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(40, 70))
         TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        
+        TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", 50)
     end)
 end)
 
 RegisterNetEvent('mt-UwUCafe:client:ComerGelado', function() -- Comer gelado
     TriggerEvent('animations:client:EmoteCommandStart', {"uwusandy"})
-    QBCore.Functions.Progressbar('comer_gelado', 'EATING A GELADO...', 5000, false, true, {
+    QBCore.Functions.Progressbar('comer_gelado', 'EATING A Icecream...', 5000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
@@ -788,6 +809,12 @@ RegisterNetEvent('mt-UwUCafe:client:ComerGelado', function() -- Comer gelado
         TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", QBCore.Functions.GetPlayerData().metadata["hunger"] + math.random(20, 50))
         TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        local player = QBCore.Functions.GetPlayerData()
+        local number = player.metadata["hunger"] +30
+        if number>100 then
+            number=100
+        end 
+        TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", number)
     end)
 end)
 
@@ -803,6 +830,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComerPanqueca', function() -- Comer panqueca
         TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
         exports['ps-buffs']:StaminaBuffEffect(60000, 1.4)
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        
+        TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", 100)
     end)
 end)
 
@@ -816,6 +845,12 @@ RegisterNetEvent('mt-UwUCafe:client:BeberBubbleTea', function() -- Comer panquec
     }, {}, {}, {}, function()
         TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + math.random(30, 50))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        local player = QBCore.Functions.GetPlayerData()
+        local number = player.metadata["thirst"] +60
+        if number>100 then
+            number=100
+        end 
+        TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", number)
     end)
 end)
 
@@ -829,6 +864,12 @@ RegisterNetEvent('mt-UwUCafe:client:BeberMilkshake', function() -- Comer panquec
     }, {}, {}, {}, function()
         TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + math.random(30, 50))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+        local player = QBCore.Functions.GetPlayerData()
+        local number = player.metadata["thirst"] +40
+        if number>100 then
+            number=100
+        end 
+        TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", number)
     end)
 end)
 
@@ -842,7 +883,10 @@ RegisterNetEvent('mt-UwUCafe:client:BeberCafe', function() -- Comer panqueca
     }, {}, {}, {}, function()
         TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + math.random(30, 50))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('hud:server:RelieveStress', 30)
+        TriggerServerEvent('hud:server:RelieveStress', 20)
+        
+        -- TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", 100)
+        TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", 100)
     end)
 end)
 
@@ -857,6 +901,13 @@ RegisterNetEvent('mt-UwUCafe:client:BeberLatte', function() -- Comer panqueca
         TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", QBCore.Functions.GetPlayerData().metadata["thirst"] + math.random(30, 50))
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
         TriggerServerEvent('hud:server:RelieveStress', math.random(10, 30))
+        -- TriggerServerEvent("QBCore:Server:SetMetaData", "hunger", 100)
+        local player = QBCore.Functions.GetPlayerData()
+        local number = player.metadata["thirst"] +30
+        if number>100 then
+            number=100
+        end 
+        TriggerServerEvent("QBCore:Server:SetMetaData", "thirst", number)
     end)
 end)
 
@@ -916,8 +967,7 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarLeite', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "pacote-leite", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar20dolares')
+        TriggerServerEvent('mt-UwUCafe:server:Tirar20dolares',"pacote-leite",10)
     end)
 end)
 
@@ -930,8 +980,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarManteiga', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "barra-manteiga", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar20dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "barra-manteiga", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar20dolares',"barra-manteiga",10)
     end)
 end)
 
@@ -944,8 +994,9 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarFarinha', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "pacote-farinha", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar20dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "pacote-farinha", 10)
+
+        TriggerServerEvent('mt-UwUCafe:server:Tirar20dolares',"pacote-farinha",10)
     end)
 end)
 
@@ -958,8 +1009,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarMorangos', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "caixa-morangos", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "caixa-morangos", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares',"caixa-morangos", 10)
     end)
 end)
 
@@ -972,8 +1023,7 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarChocolate', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "barra-chocolate", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares',"barra-chocolate",10)
     end)
 end)
 
@@ -986,8 +1036,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarLimao', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "limao", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar30dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "limao", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar30dolares',"limao",10)
     end)
 end)
 
@@ -1000,8 +1050,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarNatas', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "pacote-natas", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "pacote-natas", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares',"pacote-natas", 10)
     end)
 end)
 
@@ -1014,8 +1064,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarCondensado', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "leite-condensado", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "leite-condensado", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares', "leite-condensado", 10)
     end)
 end)
 
@@ -1028,8 +1078,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarBaunilha', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "extrato-baunilha", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "extrato-baunilha", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares', "extrato-baunilha", 10)
     end)
 end)
 
@@ -1042,8 +1092,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarAcucar', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "pacote-acucar", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar20dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "pacote-acucar", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar20dolares',"pacote-acucar",10)
     end)
 end)
 
@@ -1056,8 +1106,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarNutela', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "frasco-nutela", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "frasco-nutela", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares', "frasco-nutela", 10)
     end)
 end)
 
@@ -1070,8 +1120,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarOreo', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "pacote-oreo", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "pacote-oreo", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares', "pacote-oreo", 10)
     end)
 end)
 
@@ -1084,8 +1134,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarCafe', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "graos-cafe", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "graos-cafe", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares', "graos-cafe", 10)
     end)
 end)
 
@@ -1098,8 +1148,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarMenta', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "extrato-menta", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "extrato-menta", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares',"extrato-menta", 10)
     end)
 end)
 
@@ -1112,8 +1162,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarAmoras', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "caixa-amoras", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "caixa-amoras", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares', "caixa-amoras", 10)
     end)
 end)
 
@@ -1126,8 +1176,8 @@ RegisterNetEvent('mt-UwUCafe:client:ComprarFrango', function()
         disableCombat = true,
     }, {}, {}, {}, function()
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('QBCore:Server:AddItem', "frango", 10)
-        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares')
+        -- TriggerServerEvent('QBCore:Server:AddItem', "frango", 10)
+        TriggerServerEvent('mt-UwUCafe:server:Tirar50dolares', "frango", 10)
     end)
 end)
 

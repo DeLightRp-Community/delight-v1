@@ -11,6 +11,7 @@ AddEventHandler('qb-lapdance:buy', function()
         if PlayerMoney >= Cost then
             if Player then
                 Player.Functions.RemoveMoney("cash", Cost)
+
                 TriggerClientEvent("qb-nightclub:bitch")
             else
                 TriggerClientEvent('QBCore:Notify', src, "not enough money", "error", 1700)

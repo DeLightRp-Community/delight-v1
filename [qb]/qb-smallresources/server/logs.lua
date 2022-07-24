@@ -50,6 +50,7 @@ local Webhooks = {
     ["taxi_shiftlog"]= 'https://discord.com/api/webhooks/975265817702826014/QTXz3NEImrZNvPde2ZzhEYgG4csFbSuivXPDA0EES5x0jAOCVz0Vb4iYtivAAvou72xf',
     ["mechanic_shiftlog"]= 'https://discord.com/api/webhooks/975265817702826014/QTXz3NEImrZNvPde2ZzhEYgG4csFbSuivXPDA0EES5x0jAOCVz0Vb4iYtivAAvou72xf',
     ["adminlog"] = 'https://discord.com/api/webhooks/983413654068277318/S7gT-ziQkUKjTJq0ckG3cu4uv9QykmwL7-YSyu5FUd8StSrm5fqza8LKqwED0eC6ihKA',
+    ['admin'] = 'https://discord.com/api/webhooks/1000465983275806760/8rN7_z8YlIHszy2pw77EbmCnao-zs9Ld0qC3Q4mcmue5W_30QKmqt-7r4UfLgeDoWtJl',
     --robberys
     ["truckrobbery"]= 'https://discord.com/api/webhooks/987986835114426388/zCis6idsMN5rFR7MYSUyp86JwrY9CBSD4IR24o2U0o8lafJlFNeDEKq3MV69Eq6IvkzS',
     ['storerobbery'] = 'https://discord.com/api/webhooks/987977180883591198/VrKGCE1J2XeLKwMiitC2L4rc-4tqY64rskfr5HJjS44Rb2VmKcLPAlvZghD8a4z4r8v4',

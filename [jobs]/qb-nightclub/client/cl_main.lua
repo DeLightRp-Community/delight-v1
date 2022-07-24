@@ -1,6 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 isLoggedIn = true
-
+local dance = false
 local onDuty = false
 local payed = false
 function DrawText3Ds(x, y, z, text)
@@ -77,13 +77,11 @@ AddEventHandler("qb-nightclub:Storage", function()
     })
 end)
 
-RegisterNetEvent("qb-nightclub:bitch")
-AddEventHandler("qb-nightclub:bitch", function()
 
-TaskPlayAnim(ped2, "mini@strip_club@private_dance@part2", "priv_dance_p2", 8.0, -8.0, -1, 0, 0, false, false, false)
+RegisterNetEvent('qb-nightclub:bitch:2', function()
+    dance = true
+    TaskPlayAnim(ped2, "mini@strip_club@private_dance@part2", "priv_dance_p2", 8.0, -8.0, -1, 0, 0, false, false, false)
 
-    
-    
 end)
 
 Citizen.CreateThread(function()
@@ -147,8 +145,8 @@ Citizen.CreateThread(function()
             }, {
                 options = {
                     {
-                        type = "server",
-                        event = "qb-lapdance:buy",
+                        type = "client",
+                        event = "qb-nightclub:bitch:2",
                         icon = "fas fa-box",
                         label = "Dance For me Bitch!",
                         --job = "nightclub",
@@ -250,15 +248,20 @@ function nightPeds()
      while not HasModelLoaded(model) do
          Wait(1)
      end
-     ped2 = CreatePed(0, model , 384.9, 252.34, 91.63, true)
-     FreezeEntityPosition(ped2, true)
-     SetEntityHeading(ped2, 44.38 )
-     SetEntityInvincible(ped2, true)
-     SetBlockingOfNonTemporaryEvents(ped2, true)
+     ped3 = CreatePed(0, model , 384.9, 252.34, 91.63, true)
+     FreezeEntityPosition(ped3, true)
+     SetEntityHeading(ped3, 44.38 )
+     SetEntityInvincible(ped3, true)
+     SetBlockingOfNonTemporaryEvents(ped3, true)
      RequestAnimDict("mini@strip_club@private_dance@part2")
 	while not HasAnimDictLoaded("mini@strip_club@private_dance@part2") do
 		Citizen.Wait(20)
 	end
+    while true do
+        Wait(1000)
+        TaskPlayAnim(ped3, "mini@strip_club@private_dance@part2", "priv_dance_p2", 8.0, -8.0, -1, 0, 0, false, false, false)
+        Wait(7000)
+    end
 
     model = GetHashKey("a_c_panther")
      RequestModel(model)

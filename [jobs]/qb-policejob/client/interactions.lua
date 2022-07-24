@@ -234,6 +234,7 @@ RegisterNetEvent('police:client:PutPlayerInVehicle', function()
     end
 end)
 
+
 RegisterNetEvent('police:client:SetPlayerOutVehicle', function()
     local player, distance = QBCore.Functions.GetClosestPlayer()
     if player ~= -1 and distance < 2.5 then
@@ -409,21 +410,33 @@ end)
 RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
     local ped = PlayerPedId()
     if not isHandcuffed then
-        isHandcuffed = true
-        TriggerServerEvent("police:server:SetHandcuffStatus", true)
-        ClearPedTasksImmediately(ped)
-        if GetSelectedPedWeapon(ped) ~= `WEAPON_UNARMED` then
-            SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
-        end
-        if not isSoftcuff then
-            cuffType = 16
-            GetCuffedAnimation(playerId)
-            QBCore.Functions.Notify(Lang:t("info.cuff"), 'primary')
+        FreezeEntityPosition(ped,true)
+        local circles = 1
+        local time = 5
+        local success = exports['qb-lock']:StartLockPickCircle(circles, time)
+        if success then
+            -- print("win")
+            FreezeEntityPosition(ped,false)
         else
-            cuffType = 49
-            GetCuffedAnimation(playerId)
-            QBCore.Functions.Notify(Lang:t("info.cuffed_walk"), 'primary')
+            FreezeEntityPosition(ped,false)
+            isHandcuffed = true
+            TriggerServerEvent("police:server:SetHandcuffStatus", true)
+            ClearPedTasksImmediately(ped)
+            if GetSelectedPedWeapon(ped) ~= `WEAPON_UNARMED` then
+                SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+            end
+            if not isSoftcuff then
+                cuffType = 16
+                GetCuffedAnimation(playerId)
+                QBCore.Functions.Notify(Lang:t("info.cuff"), 'primary')
+            else
+                
+                cuffType = 49
+                GetCuffedAnimation(playerId)
+                QBCore.Functions.Notify(Lang:t("info.cuffed_walk"), 'primary')
+            end
         end
+        
     else
         isHandcuffed = false
         isEscorted = false
