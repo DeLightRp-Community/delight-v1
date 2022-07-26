@@ -504,7 +504,7 @@ QBShared.Items = {
 
 	["dslrcamera"]					= { ["name"] = "dslrcamera", 					["label"] = "PD Camera", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "dslrcamera.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "DSLR Camera, with cloud uplink.. cool right?"},
 	
-	["vpn"]					        = { ["name"] = "vpn", 							["label"] = "vpn", 						["weight"] = 500, 		["type"] = "item", 		["image"] = "vpn.png", 					["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "????"},	
+	["vpn"]					        = { ["name"] = "vpn", 							["label"] = "vpn", 						["weight"] = 500, 		["type"] = "item", 		["image"] = "vpn.png", 					["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "????", ["decay"] = 3.0},	
 
 	["tcard"]					    = { ["name"] = "tcard", 					  	["label"] = "tcard", 				    ["weight"] = 500, 		["type"] = "item", 		["image"] = "tcard.png", 				["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "????"},	
 	

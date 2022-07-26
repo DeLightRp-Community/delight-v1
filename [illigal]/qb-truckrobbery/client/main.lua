@@ -119,8 +119,7 @@ RegisterNetEvent('useVPN', function(data)
 			StopAnimTask(ped, "amb@world_human_seat_wall_tablet@female@base", "base", 1.0)
 			--DeleteEntity(tabletObject)
 			deletebase()
-			TriggerServerEvent("QBCore:Server:RemoveItem", "vpn", 1)
-				TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["vpn"], "remove")
+			exports['ps-dispatch']:VanRobberyHack()
 		else
 			local ped = PlayerPedId()
 			--DeleteEntity(tabletObject)
@@ -130,10 +129,9 @@ RegisterNetEvent('useVPN', function(data)
 
 			QBCore.Functions.Notify('Failed', "error")
 			if chance == 5 then
-				TriggerEvent("qb-truckrobbery:notif2")
+				exports['ps-dispatch']:VanRobberyHack()
 				QBCore.Functions.Notify('police find out', "error")
-				TriggerServerEvent("QBCore:Server:RemoveItem", "vpn", 1)
-				TriggerEvent('inventory:client:ItemBox', QBCore.Shared.Items["vpn"], "remove")
+				
 			end
 
 		end
@@ -245,6 +243,7 @@ AddEventHandler('qb-armoredtruckheist:client:911alert', function()
 		PoliceAlert = 1
 	end
 end)
+
 
 --[[RegisterNetEvent('qb-armoredtruckheist:client:robberyCall')
 AddEventHandler('qb-armoredtruckheist:client:robberyCall', function(streetLabel, coords)
@@ -437,7 +436,16 @@ end
 end)
 
 RegisterNetEvent('qb-truckrobbery:plantc4', function(data)
-	CheckVehicleInformation()
+	exports["memorygame"]:thermiteminigame(10, 3, 3, 10,
+    function() -- success
+		CheckVehicleInformation()
+		exports['ps-dispatch']:VanRobbery()
+    end,
+    function() -- failure
+        exports['ps-dispatch']:VanRobbery()
+    end)
+
+	
 end)
 
 function CheckVehicleInformation()

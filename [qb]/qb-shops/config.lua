@@ -549,7 +549,7 @@ Config.Products = {
             price = 20,
             amount = 100,
             info = {},
-            type = 'hunting',
+            type = 'item',
             slot = 1,
             requiredJob = { "nightclub"}
         },
@@ -558,7 +558,7 @@ Config.Products = {
             price = 100,
             amount = 500,
             info = {},
-            type = 'hunting',
+            type = 'item',
             slot = 2,
             requiredJob = { "nightclub"}
         },
@@ -1171,11 +1171,11 @@ Config.Locations = {
 
     ["nightclub"] = {
         ["label"] = "Night Club",
-        ["coords"] = vector4(358.09, 280.79, 94.19, 254.43),
+        ["coords"] = vector4(352.49, 274.08, 94.19, 284.02),
         ["ped"] = 's_m_y_barman_01',
         ["scenario"] = "WORLD_HUMAN_COP_IDLES",
         ["radius"] = 1.5,
-        ["targetIcon"] = "fas fa-gun",
+        ["targetIcon"] = "fas fa-shopping-basket",
         ["targetLabel"] = "Open Night Shop",
         ["products"] = Config.Products["nightclub"],
         ["showblip"] = false,

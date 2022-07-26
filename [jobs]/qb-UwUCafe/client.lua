@@ -602,7 +602,7 @@ RegisterNetEvent('mt-UwUCafe:client:FrigorificoIngredients', function() -- Frigo
     })
 end)
 
-RegisterNetEvent('mt-UwUCafe:client:miz', function() -- Frigorifico para Ingredients
+RegisterNetEvent('mt-UwUCafe:client:table', function() -- Frigorifico para Ingredients
     TriggerEvent("inventory:client:SetCurrentStash", "frigorificouwu21")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "frigorificouwu21", {
         maxweight = 20000,
@@ -610,7 +610,7 @@ RegisterNetEvent('mt-UwUCafe:client:miz', function() -- Frigorifico para Ingredi
     })
 end)
 
-RegisterNetEvent('mt-UwUCafe:client:miz2', function() -- Frigorifico para Ingredients
+RegisterNetEvent('mt-UwUCafe:client:table2', function() -- Frigorifico para Ingredients
     TriggerEvent("inventory:client:SetCurrentStash", "frigorificouwu222")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "frigorificouwu222", {
         maxweight = 20000,
@@ -642,7 +642,7 @@ RegisterNetEvent('mt-UwUCafe:client:Tabuleiro2', function() -- tabuleiro2
     })
 end)
 
-RegisterNetEvent('mt-UwUCafe:client:miz3', function() -- Frigorifico para Ingredients
+RegisterNetEvent('mt-UwUCafe:client:table3', function() -- Frigorifico para Ingredients
     TriggerEvent("inventory:client:SetCurrentStash", "frigorificouwu3")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "frigorificouwu3", {
         maxweight = 20000,
@@ -650,7 +650,7 @@ RegisterNetEvent('mt-UwUCafe:client:miz3', function() -- Frigorifico para Ingred
     })
 end)
 
-RegisterNetEvent('mt-UwUCafe:client:miz4', function() -- Frigorifico para Ingredients
+RegisterNetEvent('mt-UwUCafe:client:table4', function() -- Frigorifico para Ingredients
     TriggerEvent("inventory:client:SetCurrentStash", "frigorificouwu4")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "frigorificouwu4", {
         maxweight = 20000,
@@ -658,7 +658,7 @@ RegisterNetEvent('mt-UwUCafe:client:miz4', function() -- Frigorifico para Ingred
     })
 end)
 
-RegisterNetEvent('mt-UwUCafe:client:miz5', function() -- Frigorifico para Ingredients
+RegisterNetEvent('mt-UwUCafe:client:table5', function() -- Frigorifico para Ingredients
     TriggerEvent("inventory:client:SetCurrentStash", "frigorificouwu5")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "frigorificouwu5", {
         maxweight = 20000,
