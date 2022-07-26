@@ -44,7 +44,6 @@ end)
 RegisterServerEvent("nv:officers:refresh")
 AddEventHandler("nv:officers:refresh", function()
     local new = ""
-
     for k,v in pairs(QBCore.Functions.GetPlayers()) do
         local xPlayer = QBCore.Functions.GetPlayer(v)
         if xPlayer and (xPlayer.PlayerData.job.name == 'police') then
