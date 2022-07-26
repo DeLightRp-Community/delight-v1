@@ -40,6 +40,8 @@ function AddMoney(account, amount)
 	MySQL.Async.execute('UPDATE management_funds SET amount = ? WHERE job_name = ? and type = "boss"', { Accounts[account], account })
 end
 
+exports("AddMoney", AddMoney);
+
 function RemoveMoney(account, amount)
 	local isRemoved = false
 	if amount > 0 then

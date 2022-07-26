@@ -131,7 +131,7 @@ RegisterNetEvent('qb-djbooth:client:musicMenu', function()
                 type = 'text',
                 isRequired = true,
                 name = 'song',
-                text = 'YouTube URL'
+                text = 'Discord Music URL(MP3)'
             }
         }
     })
