@@ -481,11 +481,11 @@ RegisterNetEvent('qb-ambulance:client:polmav', function(k)
     QBCore.Functions.SpawnVehicle("polmav", function(veh)
         SetVehicleNumberPlateText(veh, Lang:t('info.heli_plate')..tostring(math.random(1000, 9999)))
         SetEntityHeading(veh, coords.w)
-        SetVehicleLivery(veh, 2) -- Ambulance Livery
+        SetVehicleLivery(veh, 1) -- Ambulance Livery
         exports['LegacyFuel']:SetFuel(veh, 100.0)
         TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
         TriggerEvent("vehiclekeys:client:SetOwner", QBCore.Functions.GetPlate(veh))
-        SetVehicleEngineOn(veh, true, true)
+        SetVehicleEngineOn(veh, false, false)
     end, coords, true)
 end)
 

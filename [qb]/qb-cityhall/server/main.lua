@@ -58,18 +58,6 @@ RegisterNetEvent('qb-cityhall:server:requestId', function(item, cost)
         info.lastname = Player.PlayerData.charinfo.lastname
         info.birthdate = Player.PlayerData.charinfo.birthdate
         info.type = "Class C Driver License"
-    elseif item == "weaponlicense" then
-        info.firstname = Player.PlayerData.charinfo.firstname
-        info.lastname = Player.PlayerData.charinfo.lastname
-        info.birthdate = Player.PlayerData.charinfo.birthdate
-        local licenseTable = Player.PlayerData.metadata["licences"]
-        if licenseTable["weapon"] then
-            TriggerClientEvent('QBCore:Notify', src, "You allready Have license", "error")
-            return
-        end
-        licenseTable["weapon"] = true
-        print(json.encode(licenseTable))
-        Player.Functions.SetMetaData("licences", licenseTable)
     end
     
     if not Player.Functions.AddItem(item, 1, nil, info) then return end
