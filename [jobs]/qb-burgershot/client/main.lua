@@ -64,7 +64,7 @@ RegisterNetEvent("qb-burgershot:Tray1")
 AddEventHandler("qb-burgershot:Tray1", function()
     TriggerEvent("inventory:client:SetCurrentStash", "burgertray1")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "burgertray1", {
-        maxweight = 10000,
+        maxweight = 100000,
         slots = 6,
     })
 end)
@@ -73,7 +73,7 @@ RegisterNetEvent("qb-burgershot:Tray4")
 AddEventHandler("qb-burgershot:Tray4", function()
     TriggerEvent("inventory:client:SetCurrentStash", "burgertray4")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "burgertray4", {
-        maxweight = 10000,
+        maxweight = 100000,
         slots = 6,
     })
 end)
@@ -82,7 +82,7 @@ RegisterNetEvent("qb-burgershot:Tray3")
 AddEventHandler("qb-burgershot:Tray3", function()
     TriggerEvent("inventory:client:SetCurrentStash", "burgertray3")
     TriggerServerEvent("inventory:server:OpenInventory", "stash", "burgertray3", {
-        maxweight = 10000,
+        maxweight = 100000,
         slots = 6,
     })
 end)

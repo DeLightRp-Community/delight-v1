@@ -1,3 +1,3 @@
 Config = {}
 
-Config.MinimumStoreRobberyPolice = 0
+Config.MinimumStoreRobberyPolice = 6
