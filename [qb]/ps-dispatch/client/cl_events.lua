@@ -658,7 +658,7 @@ local function Illegal_Mining()
     })
 end exports('Illegal_Mining', Illegal_Mining)
 
-local function StoreSafeRobbery(camId)
+local function StoreSafeRobbery()
     local currentPos = GetEntityCoords(PlayerPedId())
     local locationInfo = getStreetandZone(currentPos)
     local gender = GetPedGender()
@@ -667,7 +667,6 @@ local function StoreSafeRobbery(camId)
         dispatchCode = "10-90",
         firstStreet = locationInfo,
         gender = gender,
-        camId = camId,
         model = nil,
         plate = nil,
         priority = 2, -- priority

@@ -14,11 +14,6 @@ Config.Cityhalls = {
             title = "City Services"
         },
         licenses = {
-            ["weaponlicense"] = {
-                label = "Weapon License",
-                cost = 20000,
-                metadata = "weapon"
-            },
             ["id_card"] = {
                 label = "ID Card",
                 cost = 500,

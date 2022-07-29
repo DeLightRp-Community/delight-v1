@@ -658,6 +658,7 @@ QBCore.Functions.CreateCallback('qb-phone:server:GetGarageVehicles', function(so
         {Player.PlayerData.citizenid})
     if result[1] ~= nil then
         for k, v in pairs(result) do
+            print(v.vehicle)
             local VehicleData = QBCore.Shared.Vehicles[v.vehicle]
             local VehicleGarage = "None"
             if v.garage ~= nil then

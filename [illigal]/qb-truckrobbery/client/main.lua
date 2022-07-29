@@ -290,20 +290,20 @@ end
 --
 RegisterNetEvent('AttackTransport:Pozwolwykonac')
 AddEventHandler('AttackTransport:Pozwolwykonac', function()
-MissionNotification()
-ClearPedTasks(dealer)
-TaskWanderStandard(dealer, 100,100)
-local DrawCoord = math.random(1,5)
-if DrawCoord == 1 then
-VehicleCoords = VehicleSpawn1
-elseif DrawCoord == 2 then
-VehicleCoords = VehicleSpawn2
-elseif DrawCoord == 3 then
-VehicleCoords = VehicleSpawn3
-elseif DrawCoord == 4 then
-VehicleCoords = VehicleSpawn4
-elseif DrawCoord == 5 then
-VehicleCoords = VehicleSpawn5
+	MissionNotification()
+	ClearPedTasks(dealer)
+	TaskWanderStandard(dealer, 100,100)
+	local DrawCoord = math.random(1,5)
+	if DrawCoord == 1 then
+		VehicleCoords = VehicleSpawn1
+	elseif DrawCoord == 2 then
+		VehicleCoords = VehicleSpawn2
+	elseif DrawCoord == 3 then
+		VehicleCoords = VehicleSpawn3
+	elseif DrawCoord == 4 then
+		VehicleCoords = VehicleSpawn4
+	elseif DrawCoord == 5 then
+		VehicleCoords = VehicleSpawn5
 end
 
 RequestModel(GetHashKey('stockade'))
