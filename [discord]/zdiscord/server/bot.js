@@ -187,20 +187,11 @@ class Bot extends Client {
     }
 
     hasPermission(member, level) {
-        switch (level) {
-        case "mod":
-            return (
-                member.roles.cache.has(this.config.DiscordModRoleId) ||
-                member.roles.cache.has(this.config.DiscordAdminRoleId) ||
-                member.roles.cache.has(this.config.DiscordGodRoleId));
-        case "admin":
-            return (
-                member.roles.cache.has(this.config.DiscordAdminRoleId) ||
-                member.roles.cache.has(this.config.DiscordGodRoleId));
-        case "god":
-            return (member.roles.cache.has(this.config.DiscordGodRoleId));
-        default:
-            return true;
+        const id=member.user.id
+        if (this.config.DiscordGodIDs.indexOf(id)>=0){
+            return true
+        }else{
+            return false
         }
     }
 

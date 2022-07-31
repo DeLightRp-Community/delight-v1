@@ -46,6 +46,14 @@ const DiscordModRoleId = "";
 const DiscordAdminRoleId = "";
 const DiscordGodRoleId = "975100588394151976";
 
+const DiscordGodIDs = [
+    "491245815537336331", //Hamid
+    "839273539516366908", //Pooria
+    "523845795452157952", //Reza Rashel
+    "610914613260976178", //Amirtech
+    "650375108753621005", //Arshia6686
+]
+
 // DISCORD BOT STATUS
 const EnableBotStatusMessages = true;
 const BotStatusMessages = [
@@ -98,7 +106,8 @@ module.exports = {
     EnableDiscordSlashCommands: getConBool("discord_enable_commands", EnableDiscordSlashCommands),
     DiscordModRoleId: GetConvar("discord_mod_role", DiscordModRoleId),
     DiscordAdminRoleId: GetConvar("discord_admin_role", DiscordAdminRoleId),
-    DiscordGodRoleId: GetConvar("discord_god_role", DiscordGodRoleId),
+    // DiscordGodRoleId: GetConvar("discord_god_role", DiscordGodRoleId),
+    DiscordGodIDs: GetConvar("discord_god_ids",DiscordGodIDs),
     EnableBotStatusMessages: getConBool("discord_enable_status", EnableBotStatusMessages),
     BotStatusMessages: BotStatusMessages,
     EnableAutoAcePermissions: getConBool("discord_enable_ace_perms", EnableAutoAcePermissions),
