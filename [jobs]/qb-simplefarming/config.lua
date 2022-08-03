@@ -139,16 +139,16 @@ Config.Sell = {
         ["price"] = 30
     },
     ["greenpepper"] = {
-        ["price"] = 30
+        ["price"] = 26
     },
     ["chillypepper"] = {
-        ["price"] = 45
+        ["price"] = 26
     },
     ["hotsauce"] = {
         ["price"] = 30
     },
     ["tomato"] = {
-        ["price"] = 30
+        ["price"] = 25
     },
     ["tomatopaste"] = {
         ["price"] = 45

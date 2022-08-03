@@ -12,10 +12,10 @@ Config.Locations = {
     --[1] = {coords = vector3(813.7376, -749.700, 27.529), text = "Drink Station", config = Drink},
     [1] = {coords = vector3(809.89, -761.22, 26.78), text = "Prep Station", config = Prep},
     [2] = {coords = vector3(806.64, -757.7, 26.78), text = "Dough Station", config = Dough},
-    [3] = {coords = vector3(806.21, -763.18, 26.78), text = "Oven", config = Oven},
-    [4] = {coords = vector3(814.72, -760.01, 22.3), text = "Cheese", config = Cheese},
-    [5] = {coords = vector3(807.66, -761.22, 26.78), text = "fries", config = fries},
-    [6] = {coords = vector3(802.23, -756.91, 26.78), text = "specialp", config = specialp},
+    -- [3] = {coords = vector3(806.21, -763.18, 26.78), text = "Oven", config = Oven},
+    [3] = {coords = vector3(814.72, -760.01, 22.3), text = "Cheese", config = Cheese},
+    [4] = {coords = vector3(807.66, -761.22, 26.78), text = "fries", config = fries},
+    [5] = {coords = vector3(802.23, -756.91, 26.78), text = "specialp", config = specialp},
 }
 
 
@@ -49,15 +49,15 @@ Config.JobStash = {
 Prep = {
     [1] = {
         label = "Make Pizza Sauce", 
-        description = "Mushrooms = 1 | Onion = 1 | Tomatoes = 4 ", 
+        description = "Mushrooms = 1 | Onion = 1 | Tomatoes = 2 ", 
         item = "sauce", --item that will be given
         required = {
             [1] = {itemName = "mushrooms", amount = 1},
             [2] = {itemName = "onion", amount = 1},
-            [3] = {itemName = "burger-tomato", amount = 4},
+            [3] = {itemName = "tomato", amount = 2},
         },
         progressbar = "Making Pizza Sauce", -- text to display on progressbar
-        progresstime = 10000, -- in milliseconds
+        progresstime = 3000, -- in milliseconds
         dictionary = "mini@repair", --dictionary name for animation
         animname = "fixing_a_player", --animation name
     },
@@ -71,48 +71,51 @@ specialp = {
         required = {
             [1] = {itemName = "coca_leaf", amount = 1},
             [2] = {itemName = "pizza-dough", amount = 1},
-            [3] = {itemName = "burger-tomato", amount = 1},
+            [3] = {itemName = "tomato", amount = 1},
             [4] = {itemName = "mushrooms", amount = 1},
+            [5] = {itemName = "greenpepper", amount = 1},
         },
         progressbar = "Making special pizza", -- text to display on progressbar
-        progresstime = 15000, -- in milliseconds
+        progresstime = 4000, -- in milliseconds
         dictionary = "mini@repair", --dictionary name for animation
         animname = "fixing_a_player", --animation name
     },
 }
 
-Oven = {
-    [1] = {
-        label = "Make Cheese Pizza", 
-        description = "Pizza Dough = 1 | Sauce = 3 | Cheese = 4 ", 
-        item = "cheese-pizza", --item that will be given
-        required = {
-            [1] = {itemName = "pizza-dough", amount = 1},
-            [2] = {itemName = "sauce", amount = 3},
-            [3] = {itemName = "cheese", amount = 4},
-        }, -- required items to make
-        progressbar = "Making Cheese Pizza", -- text to display on progressbar
-        progresstime = 10000, -- in milliseconds
-        dictionary = "anim@mp_player_intmenu@key_fob@", --dictionary name for animation
-        animname = "fob_click", --animation name
-    },
+-- Oven = {
+--     [1] = {
+--         label = "Make Cheese Pizza", 
+--         description = "Pizza Dough = 1 | Sauce = 3 | Cheese = 4 ", 
+--         item = "cheese-pizza", --item that will be given
+--         required = {
+--             [1] = {itemName = "pizza-dough", amount = 1},
+--             [2] = {itemName = "sauce", amount = 3},
+--             [3] = {itemName = "cheese", amount = 4},
+--         }, -- required items to make
+--         progressbar = "Making Cheese Pizza", -- text to display on progressbar
+--         progresstime = 4000, -- in milliseconds
+--         dictionary = "anim@mp_player_intmenu@key_fob@", --dictionary name for animation
+--         animname = "fob_click", --animation name
+--     },
 
-    [2] = {
-        label = "Make Slice Pizza", 
-        description = "Pizza Dough = 1 | Sauce = 2 | Cheese = 2 ", 
-        item = "cheese-pizza", --item that will be given
-        required = {
-            [1] = {itemName = "pizza-dough", amount = 1},
-            [2] = {itemName = "sauce", amount = 2},
-            [3] = {itemName = "cheese", amount = 2},
-        }, -- required items to make
-        progressbar = "Making Cheese Pizza", -- text to display on progressbar
-        progresstime = 10000, -- in milliseconds
-        dictionary = "anim@mp_player_intmenu@key_fob@", --dictionary name for animation
-        animname = "fob_click", --animation name
-    },
-}
-
+--     [2] = {
+--         label = "Make Slice Pizza", 
+--         description = "Pizza Dough = 1 | Sauce = 2 | Cheese = 2 | tomato = 1 | chillypepper = 2", 
+--         item = "cheese-pizza", --item that will be given
+--         required = {
+--             [1] = {itemName = "pizza-dough", amount = 1},
+--             [2] = {itemName = "sauce", amount = 2},
+--             [3] = {itemName = "cheese", amount = 2},
+--             [4] = {itemName = "tomato", amount = 1},
+--             [5] = {itemName = "chillypepper", amount = 1},
+--         }, -- required items to make
+--         progressbar = "Making Cheese Pizza", -- text to display on progressbar
+--         progresstime = 4000, -- in milliseconds
+--         dictionary = "anim@mp_player_intmenu@key_fob@", --dictionary name for animation
+--         animname = "fob_click", --animation name
+--     },
+-- }
+-- 
 fries = {
     [1] = {
         label = "Make Dough", 
@@ -152,7 +155,7 @@ Cheese = {
         item = "cheese", --item that will be given
         required = {}, -- required items to make
         progressbar = "Grabbing Cheese", -- text to display on progressbar
-        progresstime = 4000, -- in milliseconds
+        progresstime = 3000, -- in milliseconds
         dictionary = "mini@repair", --dictionary name for animation
         animname = "fixing_a_player", --animation name
     }
@@ -179,8 +182,8 @@ Config.Items = {
                 slot = 2,
             },
             [3] = {
-                name = "burger-tomato",
-                price = 10,
+                name = "tomato",
+                price = 35,
                 amount = 50,
                 info = {},
                 type = "item",
@@ -233,6 +236,22 @@ Config.Items = {
                 info = {},
                 type = "item",
                 slot = 9,
+            },
+            [10] = {
+                name = "greenpepper",
+                price = 33,
+                amount = 50,
+                info = {},
+                type = "item",
+                slot = 10,
+            },
+            [11] = {
+                name = "chillypepper",
+                price = 33,
+                amount = 50,
+                info = {},
+                type = "item",
+                slot = 11,
             },
         }
     }

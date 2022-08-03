@@ -20,10 +20,10 @@ RegisterCommand("mlist", function(source, args)
     end
 end)
 
-RegisterCommand("callsign", function(source, args)
+RegisterCommand("mcallsign", function(source, args)
     local src = source
     local xPlayer = QBCore.Functions.GetPlayer(source)
-
+    print("Hello")
     if xPlayer and (xPlayer.PlayerData.job.name == 'ambulance') and args[1] then
         if args[1] == 'none' then
             CallSigns[xPlayer.PlayerData.license] = "NO TAG"

@@ -1,17 +1,20 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 --Blip Creation 
 
+
+
 Citizen.CreateThread(function()
-    DigitalDen = AddBlipForCoord(1132.19, -472.15, 66.48)
-    SetBlipSprite (DigitalDen, 107)
-    SetBlipDisplay(DigitalDen, 4)
-    SetBlipScale(DigitalDen, 1.5)
-    SetBlipAsShortRange(DigitalDen, true)
-    SetBlipColour(DigitalDen, 3)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("DigitalDen")
-    EndTextCommandSetBlipName(DigitalDen)
-end) 
+    Dealer = AddBlipForCoord( vector3(1132.19, -472.15, 66.48))
+    SetBlipSprite (Dealer, 606)
+    SetBlipDisplay(Dealer, 1)
+    SetBlipScale  (Dealer, 0.60)
+    SetBlipAsShortRange(Dealer, true)
+    SetBlipColour(Dealer, 27)
+    BeginTextCommandSetBlipName('STRING')
+    AddTextComponentSubstringPlayerName('DigitalDen')
+    EndTextCommandSetBlipName(Dealer)
+end)
+
 
 RegisterNetEvent("qb-digitalden:Tray")
 AddEventHandler("qb-digitalden:Tray", function()

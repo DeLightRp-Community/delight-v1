@@ -53,6 +53,7 @@ ConsumeablesEat = {
     
     --pizza 
     ["cheese-pizza"] = 70,
+    ["ppizza"] = 70,
 }
 
 ConsumeablesDrink = {

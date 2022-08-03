@@ -311,6 +311,49 @@ RegisterNetEvent('qb-resturant:DrinkMenu', function(data)
    })
 end)
 
+
+RegisterNetEvent('qb-resturant:pizzas', function(data)
+
+    exports['qb-menu']:openMenu({
+       {
+           header = "Make pizza",
+           isMenuHeader = true, -- Set to true to make a nonclickable title
+       },
+
+       {
+           header = "Make Cheese Pizza",
+           txt = "Pizza Dough = 1 | Sauce = 1 | Cheese = 3 | chillypepper = 1",
+           params = {
+               event = "qb-restaurant:cpizza", 
+               args = {
+                   number = 0,
+               }
+           }
+       },
+       {
+           header = "Make Pizza Margherita",
+           txt = "Pizza Dough = 1 | Sauce = 1 | Cheese = 3 | chillypepper = 1",
+           params = {
+               event = "qb-restaurant:ppizza",
+               args = {
+                   number = 1,
+               }
+           }
+       },
+
+       {
+           header = "close",
+           txt = "",
+           params = {
+               event = "",
+               args = {
+                   number = 2,
+               }
+           }
+       },
+   })
+end)
+
 RegisterNetEvent('qb-resturant:MilkshakeMenu', function(data)
 
     exports['qb-menu']:openMenu({
@@ -393,6 +436,77 @@ AddEventHandler("qb-resturant:mShake", function()
     end, 'burger-mshakeformula')
 end)
 
+RegisterNetEvent("qb-restaurant:cpizza")
+AddEventHandler("qb-restaurant:cpizza", function()
+    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+        if HasItem then
+           MakeMSShake()
+        else
+            QBCore.Functions.Notify("You don't have any item", "error")
+        end
+    end, 'pizza-dough')
+end)
+function MakeMSShake()
+    TriggerServerEvent('QBCore:Server:RemoveItem', "pizza-dough", 1)
+    TriggerServerEvent('QBCore:Server:RemoveItem', "sauce", 1)
+    TriggerServerEvent('QBCore:Server:RemoveItem', "cheese", 3)
+    TriggerServerEvent('QBCore:Server:RemoveItem', "chillypepper", 1)
+    QBCore.Functions.Progressbar("milk_bot", "Makeing", 4000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+		disableMouse = false,
+		disableCombat = true,
+    }, {
+		animDict = "amb@prop_human_bbq@male@idle_a",
+		anim = "idle_b",
+		flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        TriggerServerEvent('QBCore:Server:AddItem', "cheese-pizza", 1)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["cheese-pizza"], "add")
+        QBCore.Functions.Notify("You made a Milkshake", "success")
+    end, function() -- Cancel
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        QBCore.Functions.Notify("Failed", "error")    
+    end)
+end
+
+RegisterNetEvent("qb-restaurant:ppizza")
+AddEventHandler("qb-restaurant:ppizza", function()
+    QBCore.Functions.TriggerCallback('QBCore:HasItem', function(HasItem)
+        if HasItem then
+           MakeMSShake()
+        else
+            QBCore.Functions.Notify("You don't have any item", "error")
+        end
+    end, 'pizza-dough')
+end)
+function MakeMSShake()
+    TriggerServerEvent('QBCore:Server:RemoveItem', "pizza-dough", 1)
+    TriggerServerEvent('QBCore:Server:RemoveItem', "sauce", 1)
+    TriggerServerEvent('QBCore:Server:RemoveItem', "cheese", 3)
+    TriggerServerEvent('QBCore:Server:RemoveItem', "chillypepper", 1)
+    QBCore.Functions.Progressbar("milk_bot", "Makeing", 4000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+		disableMouse = false,
+		disableCombat = true,
+    }, {
+		animDict = "amb@prop_human_bbq@male@idle_a",
+		anim = "idle_b",
+		flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        TriggerServerEvent('QBCore:Server:AddItem', "ppizza", 1)
+        TriggerEvent("inventory:client:ItemBox", QBCore.Shared.Items["ppizza"], "add")
+        QBCore.Functions.Notify("You made a Milkshake", "success")
+    end, function() -- Cancel
+        StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@idle_a", "idle_b", 1.0)
+        QBCore.Functions.Notify("Failed", "error")    
+    end)
+end
+
+
 function MakeMSShake()
     TriggerServerEvent('QBCore:Server:RemoveItem', "burger-mshakeformula", 1)
     QBCore.Functions.Progressbar("milk_bot", "Makeing", 3000, false, true, {
@@ -422,6 +536,11 @@ exports['qb-target']:AddBoxZone("drinkmenu", vector3(813.91, -749.33, 26.78), 1.
 
 exports['qb-target']:AddBoxZone("milkmenu", vector3(811.41, -764.74, 26.78), 1.6, 1, { name="milkMenu", heading=345, minZ=24.58,maxZ=28.58 }, 
 { options = { {  event = "qb-resturant:MilkshakeMenu", icon = "fas fa-credit-card", label = "Milkshake Drinks", job = "pizza"  }, },
+  distance = 1.0
+})
+
+exports['qb-target']:AddBoxZone("pizzam", vector3(805.61, -763.32, 26.78), 1.7, 0.9, { name="pizza", heading=0, minZ=24.18,maxZ=28.18 }, 
+{ options = { {  event = "qb-resturant:pizzas", icon = "fas fa-credit-card", label = "pizza Station", job = "pizza"  }, },
   distance = 1.0
 })
 
