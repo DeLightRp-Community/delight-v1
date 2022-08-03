@@ -145,7 +145,7 @@ AddEventHandler("qb-burgershot:CreateMurderMeal", function()
     if onDuty then
     	QBCore.Functions.TriggerCallback('qb-burgershot:server:get:ingredientMurderMeal', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making A Murder Meal..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making A Murder Meal..", 14000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -178,7 +178,7 @@ AddEventHandler("qb-burgershot:BleederBurger", function()
     if onDuty then
     	QBCore.Functions.TriggerCallback('qb-burgershot:server:get:ingredientBurger', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making Burgers..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making Burgers..", 14000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -212,7 +212,7 @@ AddEventHandler("qb-burgershot:MoneyShot", function()
     if onDuty then
     	QBCore.Functions.TriggerCallback('qb-burgershot:server:get:ingredientBurger', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making Burgers..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making Burgers..", 14000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -246,7 +246,7 @@ AddEventHandler("qb-burgershot:HeartStopper", function()
     if onDuty then
     	QBCore.Functions.TriggerCallback('qb-burgershot:server:get:ingredientBurger', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making Burgers..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making Burgers..", 14000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -281,7 +281,7 @@ AddEventHandler("qb-burgershot:Torpedo", function()
     if onDuty then
     	QBCore.Functions.TriggerCallback('qb-burgershot:server:get:ingredientTorpedo', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making A Torpedo..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making A Torpedo..", 14000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -313,7 +313,7 @@ AddEventHandler("qb-burgershot:MeatFree", function()
     if onDuty then
     	QBCore.Functions.TriggerCallback('qb-burgershot:server:get:ingredientMeatfree', function(HasItems)  
     		if HasItems then
-				QBCore.Functions.Progressbar("pickup_sla", "Making A Meat Free Burger..", 4000, false, true, {
+				QBCore.Functions.Progressbar("pickup_sla", "Making A Meat Free Burger..", 14000, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,

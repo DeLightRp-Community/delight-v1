@@ -457,6 +457,8 @@ QBShared.Items = {
 	['mining_copperfragment'] 		 = {['name'] = 'mining_copperfragment', 		['label'] = 'Copper Fragment', 			['weight'] = 500, 		['type'] = 'item', 		['image'] = 'mining_copperfragment.png', 	['unique'] = false, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Copper fragment from mining'},
 	['mining_copperbar'] 			 = {['name'] = 'mining_copperbar', 				['label'] = 'Copper Bar', 				['weight'] = 500, 		['type'] = 'item', 		['image'] = 'mining_copperbar.png', 		['unique'] = false, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Copper Bar'},
 
+	['ppizza'] 			               = {['name'] = 'ppizza', 				['label'] = 'Pizza Margherita', 				['weight'] = 500, 		['type'] = 'item', 		['image'] = 'ppizza.png', 		['unique'] = false, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Copper Bar'},
+
 
 	["wet_weed"] 		 	 	 	 = {["name"] = "wet_weed",           			["label"] = "Moist Weed",	 			["weight"] = 3000, 		["type"] = "item", 		["image"] = "wet_weed.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["expire"] = 90,  ["description"] = "Wet weed that needs to be treated!"},
     ["coke"] 		 	 	 	     = {["name"] = "coke",           				["label"] = "Cocaine", 					["weight"] = 1000,		["type"] = "item", 		["image"] = "coke.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,   ["expire"] = 90,  ["description"] = "Processed cocaine"},
