@@ -115,7 +115,7 @@ specialp = {
 --         animname = "fob_click", --animation name
 --     },
 -- }
--- 
+
 fries = {
     [1] = {
         label = "Make Dough", 
